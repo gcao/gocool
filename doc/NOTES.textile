@@ -1,0 +1,11 @@
+h2. 2009-02-06
+  
+h3. Installed plugins: rspec, rspec-rails
+
+<pre>  
+./script/plugin install git://github.com/dchelimsky/rspec.git
+./script/plugin install git://github.com/dchelimsky/rspec-rails.git
+./script/generate rspec
+</pre>
+
+h3. Deleted test directory

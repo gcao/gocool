@@ -1,0 +1,6 @@
+2009-02-06
+  Created using rails 2.3RC1
+  Installed plugins: rspec, rspec-rails
+  Deleted test directory
+  
+More information can be found in doc/NOTES.textile
