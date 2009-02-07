@@ -1,0 +1,3 @@
+h2. Deployment
+
+  * Setup database, Passenger etc on production server

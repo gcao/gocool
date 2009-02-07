@@ -1,8 +1,16 @@
+h2. 2009-02-07
+
+h3. Add capistrano support
+
+* Copy Capfile from "Bort":http://github.com/fudgestudios/bort.
+* Create config/deploy.rb, copy content from Bort:config/deploy/production.rb
+* Update project name
+
 h2. 2009-02-06
   
 h3. Installed plugins: rspec, rspec-rails
 
-<pre>  
+<pre>
 ./script/plugin install git://github.com/dchelimsky/rspec.git
 ./script/plugin install git://github.com/dchelimsky/rspec-rails.git
 ./script/generate rspec
