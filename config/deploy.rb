@@ -2,8 +2,8 @@
 #  Application
 #############################################################
  
-set :application, "letbego"
-set :deploy_to, "/deploy/letbego"
+set :application, "gocool"
+set :deploy_to, "/deploy/gocool"
  
 #############################################################
 #  Settings
@@ -32,7 +32,7 @@ set :scm, :git
 set :branch, "master"
 set :scm_user, 'gcao'
 set :scm_passphrase, ""
-set :repository, "git@github.com:gcao/letbego.git"
+set :repository, "git@github.com:gcao/gocool.git"
 set :deploy_via, :remote_cache
  
 #############################################################
@@ -48,7 +48,7 @@ adapter: mysql
 encoding: utf8
 username: root
 password:
-database: letbego_production
+database: gocool_production
 host: localhost
 EOF
     
