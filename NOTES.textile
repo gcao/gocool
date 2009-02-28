@@ -1,3 +1,16 @@
+h2. 2009-02-28
+
+h3. Install jRails plugin
+
+* ./script/plugin install http://ennerchi.googlecode.com/svn/trunk/plugins/jrails
+
+h3. Install Haml plugin
+
+* cd ..; git clone git://github.com/nex3/haml.git
+* cd haml
+* rake install
+* cd ../gocool; haml --rails .
+
 h2. 2009-02-07
 
 h3. Add capistrano support
