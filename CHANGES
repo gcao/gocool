@@ -1,6 +1,7 @@
 2009-02-28
   Installed jRails plugin(which comes with jQuery 1.2.6 & jQuery UI 1.5)
   Installed Haml plugin
+  Added models
 
 2009-02-06
   Created using rails 2.3RC1
