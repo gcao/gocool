@@ -5,7 +5,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :username, :last_name, :first_name, :chinese_name, :pinyin_name, :other_names
       t.boolean :is_amateur
       t.string :rank
-      t.integer :sex # 0 - Not specified, 1 - Male, 2 - Female
+      t.string :sex # male, female
       t.integer :birth_year
       t.date :birthday
       t.string :province_state, :city
