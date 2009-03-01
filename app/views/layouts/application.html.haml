@@ -1,0 +1,11 @@
+!!! transitional
+%html
+  %head
+    %meta{"http-equiv" => "content-type", :content => "text/html;charset=UTF-8"}
+    %title= "Games Database (Weiqi/Daoqi)"
+    %link{:href => "/stylesheets/default.css", :media => "screen", :rel => "stylesheets", :type => "text/css"}
+    = javascript_include_tag :defaults
+    = active_scaffold_includes
+  %body
+    = yield
+    
