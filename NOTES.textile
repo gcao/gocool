@@ -1,3 +1,17 @@
+h2. 2009-03-07
+
+h3. Add dynamic menu
+
+* Download jqueryslidemenu.js, jqueryslidemenu.css, down.gif, right.gif from 
+  http://www.dynamicdrive.com/style/csslibrary/item/jquery_multi_level_css_menu_2/#
+* Create app/views/layouts/_menu_head.html.erb, _menu_body.html.haml
+
+h3. Add calendar support
+
+* Install calendar_date_select plugin
+* sudo gem install calendar_date_select
+* Add to environment.rb (config.gem "calendar_date_select")
+  
 h2. 2009-02-28
 
 h3. Install jRails plugin
