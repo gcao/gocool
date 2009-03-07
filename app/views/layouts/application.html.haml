@@ -12,6 +12,7 @@
     = javascript_include_tag ["jrails", "application"]
     = active_scaffold_includes
     = render :partial => "layouts/menu_head"
+    = calendar_date_select_includes "silver"
   %body
     = render :partial => "layouts/menu_body"
     = yield
