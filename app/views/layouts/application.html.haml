@@ -3,14 +3,16 @@
   %head
     %meta{"http-equiv" => "content-type", :content => "text/html;charset=UTF-8"}
     %title= "Games Database (Weiqi/Daoqi)"
-    %link{:href => "/stylesheets/default.css", :media => "screen", :rel => "stylesheets", :type => "text/css"}
-    %script{:src => "http://www.google.com/jsapi", :type => "text/javascript"}
+    = stylesheet_link_tag 'default', :media => 'all'
     = javascript_include_tag ["jquery"]
+    %script{:src => "http://www.google.com/jsapi", :type => "text/javascript"}
     :javascript
       google.load("prototype", "1.6.0.3");
       google.load("scriptaculous", "1.8.2");
     = javascript_include_tag ["jrails", "application"]
     = active_scaffold_includes
+    = render :partial => "layouts/menu_head"
   %body
+    = render :partial => "layouts/menu_body"
     = yield
     
