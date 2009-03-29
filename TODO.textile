@@ -2,6 +2,12 @@ h2. Features
 
 h3. Integrate sgf_parser
 
+h3. Support upload SGF files
+
+* one sgf file
+* many sgf files in one shot
+* zipped sgf files
+
 h3. Integrate jsgameviewer
 
 h3. Authentication/authorization

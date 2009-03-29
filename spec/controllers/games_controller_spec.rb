@@ -7,4 +7,7 @@ describe GamesController do
     
     response.code.should == "200"
   end
+  
+  it "#upload_games" do
+  end
 end

@@ -4,3 +4,6 @@
 [submodule "vendor/gems/sgf_parser-0.1.0"]
 	path = vendor/gems/sgf_parser-0.1.0
 	url = git@github.com:gcao/sgf_parser.git
+[submodule "vendor/rails"]
+	path = vendor/rails
+	url = git://github.com/rails/rails.git
