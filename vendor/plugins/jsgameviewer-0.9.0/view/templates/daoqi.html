@@ -1,0 +1,50 @@
+﻿<div id="GV1" class="gameviewerdq">
+	<div id="GV1_banner" class="gvbannerdq">
+		<div id="GV1_bannerbg" class="gvbanner-overlay">下一手&nbsp;<span id="GV1_nextPlayer" class="gvcontrol-text">&nbsp;</span></div>
+		<div class="gvmove-outerdq gvbutton"><a title="跳到第XX手 [Alt Shift G]" href="#TB_inline?test=0&width=250&height=56&inlineId=GV1_goTo&focus=GV1_goToInput&modal=true&test1=0" class="thickbox">第&nbsp;<span id="GV1_curMove" class="gvcontrol-text">0</span>&nbsp;手</a></div>
+		<div class="gvbanner-overlay">
+			<div class="gvprisoners-outerdq">
+				<div class="gvblack-prisoners-outerdq"><span id="GV1_blackPrisonersOuter" class="gvbutton"><a href="#" onclick="return false;">黑被提<span id="GV1_blackPrisoners" class="gvcontrol-text">0</span></a></span></div>
+				<div class="gvwhite-prisoners-outerdq"><span id="GV1_whitePrisonersOuter" class="gvbutton"><a href="#" onclick="return false;">白被提<span id="GV1_whitePrisoners" class="gvcontrol-text">0</span></a></span></div>
+			</div>
+			<div class="gvopen-window-outerdq"><a title="在新窗口打开 [Alt Shift W]" href="#", onclick="gv.GV1.openInWindow();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-newwindow"/></a></div>
+		</div>
+	</div>
+	<div class="gvboard-realdq"></div>
+	<div id="GV1_boardOuter" class="gvboard-outerdq">
+		<div id="GV1_board" class="gvboarddq gvsprite-19-boarddq">
+			<div id="GV1_boardPoints" class="gvboard-overlay"></div>
+			<div id="GV1_boardMarks" class="gvboard-overlay"></div>
+			<div id="GV1_boardBranches" class="gvboard-overlay"></div>
+			<div id="GV1_moveMarks"></div>
+			<div id="GV1_prisoners" class="gvboard-overlay"></div>
+			<div id="GV1_boardFascade" class="gvboard-overlay gvboard-fascade"><img src="/jsgameviewer/view/images/default.gif" class="gvsprite-19-blankboarddq"/></div>
+		</div>
+		<div id="GV1_vlabel" class="gvboardvlabel"></div>
+		<div id="GV1_hlabel" class="gvboardhlabel"></div>
+	</div>
+	<div id="GV1_toolbar" class="gvtoolbardq">
+		<div id="GV1_refresh" class="gvtb-item"><a class="toggleopacity" title="刷新棋谱内容 [Alt Shift R]" href="#" onclick="gv.GV1.refresh();return false;"><img id="GV1_refreshImg" border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-refresh"/></a></div>
+		<div id="GV1_toggleNumber" class="gvtb-item"><a class="toggleopacity" title="显示/隐藏手数 [Alt Shift M]" href="#" onclick="gv.GV1.toggleNumber();return false;"><img id="GV1_toggleNumberImg" border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-shownumber"/></a></div>
+		<div id="GV1_backAll" class="gvtb-item"><a class="toggleopacity" title="到棋局开始 [Ctrl Alt &#8592;]" href="#" onclick="gv.GV1.backAll();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-backall"/></a></div>
+		<div id="GV1_backC" class="gvtb-item"><a class="toggleopacity" title="上一评论或分支 [Alt Shift &#8592;]" href="#" onclick="gv.GV1.backToComment();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-backc"/></a></div>
+		<div id="GV1_backN" class="gvtb-item"><a class="toggleopacity" title="快退 [Ctrl &#8592;]" href="#" onclick="gv.GV1.backN();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-backn"/></a></div>
+		<div id="GV1_back" class="gvtb-item"><a class="toggleopacity" title="上一手 [&#8592;]" href="#" onclick="gv.GV1.back();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-back"/></a></div>
+		<div id="GV1_forward" class="gvtb-item"><a class="toggleopacity" title="下一手 [&#8594;]" href="#" onclick="gv.GV1.forward();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-forward"/></a></div>
+		<div id="GV1_forwardN" class="gvtb-item"><a class="toggleopacity" title="快进 [Ctrl &#8594;]" href="#" onclick="gv.GV1.forwardN();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-forwardn"/></a></div>
+		<div id="GV1_forwardC" class="gvtb-item"><a class="toggleopacity" title="下一评论或分支 [Alt Shift &#8594;]" href="#" onclick="gv.GV1.forwardToComment();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-forwardc"/></a></div>
+		<div id="GV1_forwardAll" class="gvtb-item"><a class="toggleopacity" title="到棋局结束 [Ctrl Alt &#8594;]" href="#" onclick="gv.GV1.forwardAll();return false;"><img border="0px" src="/jsgameviewer/view/images/default.gif" class="gvsprite-forwardall"/></a></div>
+		<div id="GV1_branches" class="gvtb-branches"></div>
+	</div>
+	<div id="GV1_pointLabel" align="center" class="gvpoint-labeldq"></div>
+	<div id="GV1_rightPane" class="gvright-panedq">
+		<div id="GV1_info" class="gvinfo"></div>
+		<div id="GV1_comment" class="gvcomment"></div>
+	</div>
+	<div id="GV1_goTo" style="display:none;">
+	<form name="GV1_goToForm" action="#" onsubmit="return false;">
+	跳到第<input id="GV1_goToInput" name="goToInput" type="text" size="5" style="text-align:center" onKeyDown="gv.GV1.goToKeyDown(this,event);"></input>手
+	&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="执行" onclick="gv.GV1.goToOkHandler();"/>&nbsp;&nbsp;<input type="submit" value="取消" onclick="tb_remove();gv.GV1.postThickBoxFix();"/>
+	</form>
+	</div>
+</div>

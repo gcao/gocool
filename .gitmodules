@@ -10,3 +10,6 @@
 [submodule "vendor/plugins/active_scaffold"]
 	path = vendor/plugins/active_scaffold
 	url = git://github.com/activescaffold/active_scaffold.git
+[submodule "vendor/plugins/jsgameviewer"]
+	path = vendor/plugins/jsgameviewer
+	url = git@github.com:gcao/jsgameviewer.git
