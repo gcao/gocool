@@ -1,3 +1,22 @@
+h2. 2009-03-29
+
+h3. Add rails as a submodule
+
+h3. Move jsgameviewer from public to vendor/plugins/jsgameviewer-0.9.0
+
+* Need to create install.rb and run to copy content over to public/jsgameviewer
+* Add public/jsgameviewer to apache config (/etc/apache2/httpd.conf)
+<pre>
+Alias /jsgameviewer /Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0
+<Directory "/Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0/">
+    AllowOverride None
+    Options ExecCGI
+    Order allow,deny
+    Allow from all
+</Directory>
+</pre>
+* Add php support to apache
+
 h2. 2009-03-07
 
 h3. Add dynamic menu

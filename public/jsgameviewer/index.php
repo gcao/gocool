@@ -8,6 +8,7 @@ $longName = $name . $version;
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link rel="stylesheet" href="/jsgameviewer/view/default.css"/>
+<!-- <script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script> -->
 <script language="JavaScript" type="text/javascript" src="/jsgameviewer/php/main.php"></script>
 <title><?php echo $longName?></title>
 <style type="text/css">
@@ -56,9 +57,9 @@ $container = "gvcontainer1";
 $scripts = array(
 //	"new GameController().show();",
 //	"new GameController().setGameType(DAOQI).load('/jsgameviewer/games/testmarks.sgf');",
-//	"new GameController().load('/jsgameviewer/games/test4.sgf');",
+	"new GameController().load('/jsgameviewer/games/danghu10.sgf');",
 //	"new GameController().load('/jsgameviewer/php/proxy.php?charset=gb2312&url=http://weiqi.spbrts.tom.com/qipu/200712/20cn-ming-f-3sgf.htm').setObserverInterval(20).startUpdater().saveSession('/jsgameviewer/index.php',10);",
-	"new GameController().createDGSPlayer().setUsername('appoolloo').loadDGSGame(388918).setPlayerInterval(8).startUpdater();"
+//	"new GameController().createDGSPlayer().setUsername('appoolloo').loadDGSGame(388918).setPlayerInterval(8).startUpdater();"
 );
 foreach($scripts as $script){
 ?>

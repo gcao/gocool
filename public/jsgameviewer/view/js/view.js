@@ -22,7 +22,7 @@ var DAOQI_TEMPLATE = null;
 
 Object.extend(GameController.prototype, {
   destroyView: function(){
-    jq("#"+this.id).remove();
+    jQuery("#"+this.id).remove();
   },
 
   /* initialize view
@@ -38,7 +38,7 @@ Object.extend(GameController.prototype, {
     if (conf.gameType == DAOQI){
       conf.gridSize = conf.gridSizeDQ;
       if (DAOQI_TEMPLATE == null){
-        jq.ajax({
+        jQuery.ajax({
           async: false,
           dataType: "application/xml",
           url: CONFIG.viewDir+"templates/daoqi.html",
@@ -52,7 +52,7 @@ Object.extend(GameController.prototype, {
     } else {
       conf.gridSize = conf.gridSizeWQ;
       if (WEIQI_TEMPLATE == null){
-        jq.ajax({
+        jQuery.ajax({
           async: false,
           dataType: "application/xml",
           url: CONFIG.viewDir+"templates/weiqi.html",
@@ -67,25 +67,22 @@ Object.extend(GameController.prototype, {
     if (c.id != 'GV1')
       s = s.replace(/GV1/g, c.id);
     if (conf.container == null) {
-      jq("#"+c.id).replaceWith(s);
+      jQuery("#"+c.id).replaceWith(s);
     } else {
-      jq("#"+conf.container).empty().append(s);
+      jQuery("#"+conf.container).empty().append(s);
     }
     fdSliderController.construct();
-    document.getElementById(c.id+"_boardFascade").onmousemove = function(e){
+    jQuery("#"+c.id+"_boardFascade").mousemove(function(e){
       c.registerKeyListener();
       var arr = c.eventToXY(e);
-      jq("#"+c.id+"_pointLabel").empty().append(c.xyToLabel(arr[0],arr[1]));
-    };
-    document.getElementById(c.id+"_boardFascade").onmouseout = function(e){
-      e = e || window.event;
-      jq("#"+c.id+"_pointLabel").empty();
-    };
-    document.getElementById(c.id+"_boardFascade").onmousedown = function(e){
-      e = e || window.event;
+      jQuery("#"+c.id+"_pointLabel").empty().append(c.xyToLabel(arr[0],arr[1]));
+    }).mouseout(function(e){
+      jQuery("#"+c.id+"_pointLabel").empty();
+    }).mousedown(function(e){
       var arr = c.eventToXY(e);
       c.fromX = arr[0];
       c.fromY = arr[1];
+      // console.log("fromX: " + c.fromX + ", fromY: " + c.fromY);
       if (e.ctrlKey && e.shiftKey){
         c.sendMove_(arr[0], arr[1]);
       } else if (e.ctrlKey || c.config.gameType == WEIQI){
@@ -93,62 +90,60 @@ Object.extend(GameController.prototype, {
       } else if (c.config.gameType == DAOQI){
         this.style.cursor = 'move';
       }
-    };
-    document.getElementById(c.id+"_boardFascade").onmouseup = function(e){
+    }).mouseup(function(e){
       this.style.cursor = 'auto';
-      e = e || window.event;
       var arr = c.eventToXY(e);
       var toX = arr[0], toY = arr[1];
+      // console.log("toX: " + toX + ", toY: " + toY);
       if (c.fromX == undefined || c.fromX == NaN || c.fromY == undefined || c.fromY == NaN)
         return;
       if (c.fromX != toX || c.fromY != toY) {
         c.moveBoard(toX-c.fromX, toY-c.fromY);
       }
-    };
+    });
     c.setToggleNumberImg();
-    jq("#"+c.id+"_goToInput").keydown(function(){
-      e = e || window.event;
+    jQuery("#"+c.id+"_goToInput").keydown(function(){
       if(e.keyCode==13){
         gvGoTo(id);
       }
     });
     c.addPrisonerHandlers();
     c.registerKeyListener();
-    jq(document).ready(function(){tb_init("a.thickbox")});
+    jQuery(document).ready(function(){tb_init("a.thickbox")});
     return c;
   },
   
   addPrisonerHandlers: function(){
     var c = this;
-    jq("#" + this.id + "_moveOuter, #" + this.id + "_blackPrisonersOuter, #" + this.id + "_whitePrisonersOuter")
+    jQuery("#" + this.id + "_moveOuter, #" + this.id + "_blackPrisonersOuter, #" + this.id + "_whitePrisonersOuter")
       .mouseout(function(){
-        jq("#"+c.id+"_prisoners").empty();        
+        jQuery("#"+c.id+"_prisoners").empty();        
       });
-    jq("#" + this.id + "_blackPrisonersOuter").mouseover(function(){
-      jq("#"+c.id+"_prisoners").empty();
+    jQuery("#" + this.id + "_blackPrisonersOuter").mouseover(function(){
+      jQuery("#"+c.id+"_prisoners").empty();
       if (c.gameState.blackPrisoners > 0){
-        jq.each(c.gameState.blackPrisonerPoints, function(i,item){
+        jQuery.each(c.gameState.blackPrisonerPoints, function(i,item){
           c.showPrisoner(item);
         });
       }
     });
-    jq("#" + this.id + "_whitePrisonersOuter").mouseover(function(){
-      jq("#"+c.id+"_prisoners").empty();
+    jQuery("#" + this.id + "_whitePrisonersOuter").mouseover(function(){
+      jQuery("#"+c.id+"_prisoners").empty();
       if (c.gameState.whitePrisoners > 0){
-        jq.each(c.gameState.whitePrisonerPoints, function(i,item){
+        jQuery.each(c.gameState.whitePrisonerPoints, function(i,item){
           c.showPrisoner(item);
         });
       }
     });
-    jq("#" + this.id + "_moveOuter").mouseover(function(){
-      jq("#"+c.id+"_prisoners").empty();
+    jQuery("#" + this.id + "_moveOuter").mouseover(function(){
+      jQuery("#"+c.id+"_prisoners").empty();
       if (c.gameState.currentNode.blackPrisoners > 0){
-        jq.each(c.gameState.currentNode.blackPrisonerPoints, function(i,item){
+        jQuery.each(c.gameState.currentNode.blackPrisonerPoints, function(i,item){
           c.showPrisoner(item);
         });
       }
       if (c.gameState.currentNode.whitePrisoners > 0){
-        jq.each(c.gameState.currentNode.whitePrisonerPoints, function(i,item){
+        jQuery.each(c.gameState.currentNode.whitePrisonerPoints, function(i,item){
           c.showPrisoner(item);
         });
       }
@@ -175,7 +170,7 @@ Object.extend(GameController.prototype, {
           }
         }
         s += "'></div>";
-        jq("#"+c.id+"_prisoners").append(s);
+        jQuery("#"+c.id+"_prisoners").append(s);
       });
     } else {
       var cssClass = color == STONE_BLACK? "gvsprite-21-markblack" : "gvsprite-21-markwhite";
@@ -184,12 +179,12 @@ Object.extend(GameController.prototype, {
         s += "background-color:"+conf.boardColor+";";
       }
       s += "'></div>";
-      jq("#"+c.id+"_prisoners").append(s);
+      jQuery("#"+c.id+"_prisoners").append(s);
     }
   },
 
   removeKeyListener: function(){
-    jq("#"+this.id+"_bannerbg").css("background-color",this.config.inactiveBackground);
+    jQuery("#"+this.id+"_bannerbg").css("background-color",this.config.inactiveBackground);
   },
   
   registerKeyListener: function(){
@@ -197,7 +192,7 @@ Object.extend(GameController.prototype, {
     for(var i=1; i<=gv.length; i++){
       gv[gv.getId(i)].removeKeyListener();
     }
-    jq("#"+this.id+"_bannerbg").css("background-color",c.config.activeBackground);
+    jQuery("#"+this.id+"_bannerbg").css("background-color",c.config.activeBackground);
     document.onkeydown = function(e){
       var keyCode;
       if (window.event)
@@ -274,29 +269,29 @@ Object.extend(GameController.prototype, {
     var c = this;
     // show/hide resign button
     if (c.isMyTurn()){
-      jq("#" + c.id + "_resign").show();
+      jQuery("#" + c.id + "_resign").show();
     } else {
-      jq("#" + c.id + "_resign").hide();
+      jQuery("#" + c.id + "_resign").hide();
     }
-    var infoNode = jq("#" + c.id + "_info").empty();
+    var infoNode = jQuery("#" + c.id + "_info").empty();
     var game = c.game;
     if (game == undefined || game == null)
       return c;
     if (notNull(game.name)){
-      infoNode.append("<div align='center' style='font-weight:bold'>"+jq.trim(game.name)+"</div>");
+      infoNode.append("<div align='center' style='font-weight:bold'>"+jQuery.trim(game.name)+"</div>");
     }
     if (notNull(game.date)){
-      infoNode.append("<div>&#26102;&#38388;&#65306;"+jq.trim(game.date)+"</div>");
+      infoNode.append("<div>&#26102;&#38388;&#65306;"+jQuery.trim(game.date)+"</div>");
     }
     if (notNull(game.place)){
-      infoNode.append("<div>&#22320;&#28857;&#65306;"+jq.trim(game.place)+"</div>");
+      infoNode.append("<div>&#22320;&#28857;&#65306;"+jQuery.trim(game.place)+"</div>");
     }
     var playFirst = "&nbsp;&lt;-&nbsp;&#20808;&#34892;";
     // black player name + rank
     var blackRank = "";
     if (notNull(game.blackRank))
       blackRank = "&nbsp;("+game.blackRank+")";
-    var blackPlayer = "<div>&#40657;&#26041;&#65306;<strong>"+jq.trim(game.blackName)+"</strong>"+blackRank;
+    var blackPlayer = "<div>&#40657;&#26041;&#65306;<strong>"+jQuery.trim(game.blackName)+"</strong>"+blackRank;
     if (game.getFirstPlayer() == STONE_BLACK)
       blackPlayer += playFirst;
     blackPlayer += "</div>";
@@ -305,7 +300,7 @@ Object.extend(GameController.prototype, {
     var whiteRank = "";
     if (notNull(game.whiteRank))
       whiteRank = "&nbsp;("+game.whiteRank+")";
-    var whitePlayer = "<div>&#30333;&#26041;&#65306;<strong>"+jq.trim(game.whiteName)+"</strong>"+whiteRank;
+    var whitePlayer = "<div>&#30333;&#26041;&#65306;<strong>"+jQuery.trim(game.whiteName)+"</strong>"+whiteRank;
     if (game.getFirstPlayer() == STONE_WHITE)
       whitePlayer += playFirst;
     whitePlayer += "</div>";
@@ -313,19 +308,19 @@ Object.extend(GameController.prototype, {
     if (game.handicap > 0){
       infoNode.append("<div>&#35753;&#23376;&#65306;"+game.handicap+"</div>");
     } else {
-      infoNode.append("<div>&#35268;&#21017;&#65306;"+jq.trim(game.rule)+"</div>");
+      infoNode.append("<div>&#35268;&#21017;&#65306;"+jQuery.trim(game.rule)+"</div>");
       if (game.rule == "Chinese")
         infoNode.append("<div>&#36148;&#23376;&#65306;"+game.komi+"</div>");
       else
         infoNode.append("<div>&#36148;&#30446;&#65306;"+game.komi+"</div>");
     }
     infoNode.append("<div>&#25163;&#25968;&#65306;"+game.getMoves()+"</div>");
-    infoNode.append("<div>&#32467;&#26524;&#65306;"+jq.trim(game.result)+"</div>");
+    infoNode.append("<div>&#32467;&#26524;&#65306;"+jQuery.trim(game.result)+"</div>");
     return c;
   },
   
   removeGameInfo: function(){
-    jq("#" + this.id + "_info").empty();
+    jQuery("#" + this.id + "_info").empty();
     return this;
   },
   
@@ -376,7 +371,7 @@ Object.extend(GameController.prototype, {
       }
     }
     if (s.length > 0)
-      jq("#"+c.id+"_boardPoints").append(s);
+      jQuery("#"+c.id+"_boardPoints").append(s);
     // add branches
     c.setBranches();
     // show move mark
@@ -387,9 +382,9 @@ Object.extend(GameController.prototype, {
       c.removeMoveMark();
     // move labels
     var vlabelStart = (conf.y0-conf.vbw)*conf.gridSize;
-    document.getElementById(c.id+"_vlabel").style.backgroundPosition="0px "+vlabelStart+"px";
+    jQuery("#"+c.id+"_vlabel").css("backgroundPosition", "0px "+vlabelStart+"px");
     var hlabelStart = (conf.x0-conf.vbw)*conf.gridSize;
-    document.getElementById(c.id+"_hlabel").style.backgroundPosition=hlabelStart+"px 0px";
+    jQuery("#"+c.id+"_hlabel").css("backgroundPosition", hlabelStart+"px 0px");
     // move marks
     c.setMarks(node.marks);
     return c;
@@ -491,13 +486,13 @@ Object.extend(GameController.prototype, {
       c.mapToPoints(x,y,function(x,y){
         var s = c.createStone(x,y,color,moveNumber);
         if (s != null){
-          jq("#"+c.id+"_boardPoints").append(s);
+          jQuery("#"+c.id+"_boardPoints").append(s);
         }
       });
     } else {
       var s = c.createStone(x,y,color,moveNumber);
       if (s != null){
-        jq("#"+c.id+"_boardPoints").append(s);
+        jQuery("#"+c.id+"_boardPoints").append(s);
       }
     }
     return c;
@@ -525,11 +520,11 @@ Object.extend(GameController.prototype, {
     var conf = c.config;
     if (conf.gameType == DAOQI){
       this.mapToPoints(x,y,function(x,y){
-        var stone = jq("#"+c.getStoneId(x,y));
+        var stone = jQuery("#"+c.getStoneId(x,y));
         stone.remove();
       });
     } else {
-      var stone = jq("#"+c.getStoneId(x,y));
+      var stone = jQuery("#"+c.getStoneId(x,y));
       stone.remove();
     }
     return c;
@@ -539,7 +534,7 @@ Object.extend(GameController.prototype, {
    * remove all stones on the board
    */
   removeAllStones: function(){
-    jq("#"+this.id+"_boardPoints").children().remove();
+    jQuery("#"+this.id+"_boardPoints").children().remove();
     return this;
   },
   
@@ -549,14 +544,14 @@ Object.extend(GameController.prototype, {
       s += "&#40657;";
     else if (color == STONE_WHITE)
       s += "&#30333;";
-    jq("#"+this.id+"_nextPlayer").empty().append(s);
+    jQuery("#"+this.id+"_nextPlayer").empty().append(s);
     return this;
   },
   
   setMoveNumber: function(moveNumber){
     if (moveNumber == 0)
       moveNumber = "0";
-    jq("#"+this.id+"_curMove").empty().append(moveNumber);
+    jQuery("#"+this.id+"_curMove").empty().append(moveNumber);
     return this;
   },
   
@@ -564,14 +559,14 @@ Object.extend(GameController.prototype, {
     var c = this;
     var conf = c.config;
     if (conf.gameType == DAOQI){
-      jq("#"+c.id+"_moveMarks").empty();
+      jQuery("#"+c.id+"_moveMarks").empty();
       c.mapToPoints(x,y,function(x,y){
         var area = c.xyToArea(x,y);
-        jq("#"+c.id+"_moveMarks").append("<div class='gvsprite-19-markmove' style='position:absolute;left:"+
+        jQuery("#"+c.id+"_moveMarks").append("<div class='gvsprite-19-markmove' style='position:absolute;left:"+
           area[0]+"px;top:"+area[1]+"px;width:"+area[2]+"px;height:"+area[3]+"px'>&nbsp;</div>");
       });
     } else {
-      jq("#"+c.id+"_moveMark").css({position: "absolute", left:x*conf.gridSize, top:y*conf.gridSize, width:conf.gridSize, height:conf.gridSize});
+      jQuery("#"+c.id+"_moveMark").css({position: "absolute", left:x*conf.gridSize, top:y*conf.gridSize, width:conf.gridSize, height:conf.gridSize});
     }
     return c;
   },
@@ -579,16 +574,16 @@ Object.extend(GameController.prototype, {
   removeMoveMark: function(){
     var c = this;
     if (c.config.gameType == DAOQI){
-      jq("#"+c.id+"_moveMarks").empty();
+      jQuery("#"+c.id+"_moveMarks").empty();
     } else {
-      jq("#"+c.id+"_moveMark").css({width:0, height:0});
+      jQuery("#"+c.id+"_moveMark").css({width:0, height:0});
     }
     return c;
   },
   
   setMarks: function(marks){
     var c = this;
-    jq("#"+c.id+"_boardMarks").empty();
+    jQuery("#"+c.id+"_boardMarks").empty();
     if (marks == undefined || marks == null)
       return c;
     var conf = c.config;
@@ -630,7 +625,7 @@ Object.extend(GameController.prototype, {
                 }
               }
               s += "'>"+mark[3]+"</div>";
-              jq("#"+c.id+"_boardMarks").append(s);
+              jQuery("#"+c.id+"_boardMarks").append(s);
             });
             continue;
         }
@@ -646,7 +641,7 @@ Object.extend(GameController.prototype, {
             }
           }
           s += "'></div>";
-          jq("#"+c.id+"_boardMarks").append(s);
+          jQuery("#"+c.id+"_boardMarks").append(s);
         });
       }
     } else {
@@ -682,7 +677,7 @@ Object.extend(GameController.prototype, {
               s += "background-color:"+conf.boardColor+";";
             }
             s += "'>"+mark[3]+"</div>";
-            jq("#"+c.id+"_boardMarks").append(s);
+            jQuery("#"+c.id+"_boardMarks").append(s);
             continue;
         }
         var s = "<div class='"+styleClass+"' style='position:absolute;left:"+left+"px;top:"+top+"px;";
@@ -690,7 +685,7 @@ Object.extend(GameController.prototype, {
           s += "background-color:"+conf.boardColor+";";
         }
         s += "'></div>";
-        jq("#"+c.id+"_boardMarks").append(s);
+        jQuery("#"+c.id+"_boardMarks").append(s);
       }
     }
     return this;
@@ -701,17 +696,17 @@ Object.extend(GameController.prototype, {
       b = "0";
     if (w == 0)
       w = "0";
-    jq("#"+this.id+"_blackPrisoners").empty().append(b);
-    jq("#"+this.id+"_whitePrisoners").empty().append(w);
+    jQuery("#"+this.id+"_blackPrisoners").empty().append(b);
+    jQuery("#"+this.id+"_whitePrisoners").empty().append(w);
     return this;
   },
   
   setBranches: function(){
     var c = this;
     var conf = c.config;
-    jq("#"+c.id+"_boardBranches").empty();
-    jq("#"+c.id+"_branches").empty();
-    jq("#"+c.id+"_branches").css({height:0});
+    jQuery("#"+c.id+"_boardBranches").empty();
+    jQuery("#"+c.id+"_branches").empty();
+    jQuery("#"+c.id+"_branches").css({height:0});
     var gameState = c.gameState;
     var node = gameState.currentNode;
     if (node.hasChildren() && node.children.length >= 2){
@@ -727,8 +722,8 @@ Object.extend(GameController.prototype, {
           }
         }
         var s = "<div class='gvtb-branch gvbutton'><a href='#' title='" + title + "' onclick='gv."+c.id+".goToBranch("+i+");return false;'>"+BRANCHES[i]+"</a></div>";
-        jq("#"+c.id+"_branches").append(s);
-        jq("#"+c.id+"_branches").css({height:n*23});
+        jQuery("#"+c.id+"_branches").append(s);
+        jQuery("#"+c.id+"_branches").css({height:n*23});
         var child = node.children[i];
         if (child.type == NODE_MOVE){
           var x = child.x, y = child.y;
@@ -738,12 +733,12 @@ Object.extend(GameController.prototype, {
               if (c.isInCentralArea(x,y))
                 styleClass = "gvbranch-real";
               var area = c.xyToArea(x,y);
-              jq("#"+c.id+"_boardBranches").append("<div class='"+styleClass+"' style='left:"+area[0]+"px;top:"+area[1]
+              jQuery("#"+c.id+"_boardBranches").append("<div class='"+styleClass+"' style='left:"+area[0]+"px;top:"+area[1]
                 +"px;width:"+area[2]+"px;height:"+area[3]+"px;'>"+BRANCHES[i]+"</div>");              
             });
           } else {
             var area = c.xyToArea(x,y);
-            jq("#"+c.id+"_boardBranches").append("<div class='gvbranch' style='left:"+area[0]+"px;top:"+area[1]
+            jQuery("#"+c.id+"_boardBranches").append("<div class='gvbranch' style='left:"+area[0]+"px;top:"+area[1]
               +"px;width:"+area[2]+"px;height:"+area[3]+"px;'>"+BRANCHES[i]+"</div>");
           }
         }
@@ -753,9 +748,9 @@ Object.extend(GameController.prototype, {
   },
   
   removeBranches: function(){
-    jq("#"+this.id+"_boardBranches").empty();
-    jq("#"+this.id+"_branches").empty();
-    jq("#"+this.id+"_branches").css({height: 0});
+    jQuery("#"+this.id+"_boardBranches").empty();
+    jQuery("#"+this.id+"_branches").empty();
+    jQuery("#"+this.id+"_branches").css({height: 0});
     return this;
   },
   
@@ -771,13 +766,13 @@ Object.extend(GameController.prototype, {
       if (node.comment != undefined && node.comment != null)
         comment += "<br/>"+node.comment.replace(/\n/g, "<br/>\n");
     }
-    jq("#"+c.id+"_comment").empty().append(comment);
-    jq("#"+c.id+"_comment").height(c.rightPaneHeight - jq("#"+c.id+"_info").height()-12);
+    jQuery("#"+c.id+"_comment").empty().append(comment);
+    jQuery("#"+c.id+"_comment").height(c.rightPaneHeight - jQuery("#"+c.id+"_info").height()-12);
     return this;
   },
   
   removeComment: function(){
-    jq("#"+this.id+"_comment").empty();
+    jQuery("#"+this.id+"_comment").empty();
     return this;
   },
   
@@ -815,9 +810,9 @@ Object.extend(GameController.prototype, {
         }
       }
     }
-    jq("#"+c.id+"_boardPoints").empty();
+    jQuery("#"+c.id+"_boardPoints").empty();
     if (s.length > 0)
-      jq("#"+c.id+"_boardPoints").append(s);
+      jQuery("#"+c.id+"_boardPoints").append(s);
     return c;
   },
   
@@ -848,7 +843,7 @@ Object.extend(GameController.prototype, {
         changed = true;
       }
       if (changed){
-        jq.each(points, function(i,point){
+        jQuery.each(points, function(i,point){
           c.removeStone(point.x,point.y);
           if (point.deleteFlag){
             c.addStone(point.x, point.y, point.color);
@@ -873,7 +868,7 @@ Object.extend(GameController.prototype, {
 
     if (gameState.play(x,y)){
       var node = gameState.currentNode;
-      jq.each(node.points, function(i,point){
+      jQuery.each(node.points, function(i,point){
         c.removeStone(point.x,point.y);
         if (!point.deleteFlag){
           c.addStone(point.x, point.y, point.color);
@@ -891,7 +886,7 @@ Object.extend(GameController.prototype, {
     var gs = c.gameState;
     if (gs != null && gs.canRemove()){
       var node = gs.currentNode;
-      jq.each(node.points, function(i,point){
+      jQuery.each(node.points, function(i,point){
         c.removeStone(point.x,point.y);
         if (point.deleteFlag){
           c.addStone(point.x, point.y, point.color);
@@ -938,7 +933,7 @@ Object.extend(GameController.prototype, {
     if (gameState.isFirst())
       return false;
     var node = gameState.currentNode;
-    jq.each(node.points, function(i,point){
+    jQuery.each(node.points, function(i,point){
       c.removeStone(point.x,point.y);
       if (point.deleteFlag){
         c.addStone(point.x, point.y, point.color);
@@ -963,7 +958,7 @@ Object.extend(GameController.prototype, {
       changed = true;
     }
     if (changed){
-      jq.each(points, function(i,point){
+      jQuery.each(points, function(i,point){
         c.removeStone(point.x,point.y);
         if (point.deleteFlag){
           c.addStone(point.x, point.y, point.color);
@@ -990,7 +985,7 @@ Object.extend(GameController.prototype, {
         break;
     }
     if (changed){
-      jq.each(points, function(i,point){
+      jQuery.each(points, function(i,point){
         c.removeStone(point.x,point.y);
         if (point.deleteFlag){
           c.addStone(point.x, point.y, point.color);
@@ -1009,7 +1004,7 @@ Object.extend(GameController.prototype, {
     c.removeAllStones();
     gameState.backAll();
     var node = gameState.currentNode;
-    jq.each(node.points, function(i, point){
+    jQuery.each(node.points, function(i, point){
       if (point.color == STONE_BLACK || point.color == STONE_WHITE){
         c.addStone(point.x,point.y,point.color);
       }
@@ -1051,7 +1046,7 @@ Object.extend(GameController.prototype, {
     if (!gameState.forward())
       return false;
     var node = gameState.currentNode;
-    jq.each(node.points, function(i,point){
+    jQuery.each(node.points, function(i,point){
       c.removeStone(point.x,point.y);
       if (!point.deleteFlag){
         c.addStone(point.x, point.y, point.color);
@@ -1075,7 +1070,7 @@ Object.extend(GameController.prototype, {
       changed = true;
     }
     if (changed){
-      jq.each(points, function(i,point){
+      jQuery.each(points, function(i,point){
         c.removeStone(point.x,point.y);
         if (!point.deleteFlag){
           c.addStone(point.x, point.y, point.color);
@@ -1102,7 +1097,7 @@ Object.extend(GameController.prototype, {
         break;
     }
     if (changed){
-      jq.each(points, function(i,point){
+      jQuery.each(points, function(i,point){
         c.removeStone(point.x,point.y);
         if (!point.deleteFlag){
           c.addStone(point.x, point.y, point.color);
@@ -1133,7 +1128,7 @@ Object.extend(GameController.prototype, {
     if (!gameState.goToBranch(n))
       return c;
     var node = gameState.currentNode;
-    jq.each(node.points, function(i,point){
+    jQuery.each(node.points, function(i,point){
       c.removeStone(point.x,point.y);
       if (!point.deleteFlag){
         c.addStone(point.x, point.y, point.color);
@@ -1164,7 +1159,7 @@ Object.extend(GameController.prototype, {
         changed = true;
       }
       if (changed){
-        jq.each(points, function(i,point){
+        jQuery.each(points, function(i,point){
           c.removeStone(point.x,point.y);
           if (!point.deleteFlag){
             c.addStone(point.x, point.y, point.color);
@@ -1181,7 +1176,7 @@ Object.extend(GameController.prototype, {
         changed = true;
       }
       if (changed){
-        jq.each(points, function(i,point){
+        jQuery.each(points, function(i,point){
           c.removeStone(point.x,point.y);
           if (point.deleteFlag){
             c.addStone(point.x, point.y, point.color);
@@ -1196,11 +1191,11 @@ Object.extend(GameController.prototype, {
   setToggleNumberImg: function(){
     var c = this;
     if (c.config.showMoveNumber){
-      jq("#"+c.id+"_toggleNumberImg").removeClass("gvsprite-hidenumber");
-      jq("#"+c.id+"_toggleNumberImg").addClass("gvsprite-shownumber");
+      jQuery("#"+c.id+"_toggleNumberImg").removeClass("gvsprite-hidenumber");
+      jQuery("#"+c.id+"_toggleNumberImg").addClass("gvsprite-shownumber");
     } else {
-      jq("#"+c.id+"_toggleNumberImg").removeClass("gvsprite-shownumber");
-      jq("#"+c.id+"_toggleNumberImg").addClass("gvsprite-hidenumber");
+      jQuery("#"+c.id+"_toggleNumberImg").removeClass("gvsprite-shownumber");
+      jQuery("#"+c.id+"_toggleNumberImg").addClass("gvsprite-hidenumber");
     }
     return c;
   },

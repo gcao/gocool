@@ -27,10 +27,10 @@ Object.extend(GameController.prototype, {
   reset: function(){
     this._initialized = false;
     if (this.config.container != null) 
-      jq("#" + this.config.container).empty().append(this.getPlaceHolder());
+      jQuery("#" + this.config.container).empty().append(this.getPlaceHolder());
     else {
       if (document.getElementById(this.id) != null)
-        jq("#"+this.id).replaceWith(this.getPlaceHolder());
+        jQuery("#"+this.id).replaceWith(this.getPlaceHolder());
       else
         document.write(this.getPlaceHolder());
     }
@@ -40,12 +40,12 @@ Object.extend(GameController.prototype, {
   show: function(){
     if (!this.initialized())
       this.init();
-    jq("#" + this.id).show();
+    jQuery("#" + this.id).show();
     return this;
   },
   
   hide: function(){
-    jq("#" + this.id).hide();
+    jQuery("#" + this.id).hide();
     return this;
   },
 
@@ -81,7 +81,7 @@ Object.extend(GameController.prototype, {
       return this;
     }
     var c = this;
-    jq.ajax({url:url,
+    jQuery.ajax({url:url,
       success:function(response){
         try {
           // if game data haven't changed, don't reload the game
@@ -112,10 +112,10 @@ Object.extend(GameController.prototype, {
   
   loadInline: function(divId, n){
     try {
-      if (jq("#"+divId).length == 0){
+      if (jQuery("#"+divId).length == 0){
         return this;
       }
-      var s = jq.trim(jq("#"+divId).text());
+      var s = jQuery.trim(jQuery("#"+divId).text());
       // if game data haven't changed, don't reload the game
       if (this.game && this.game.dataSize && this.game.dataSize == s.length){
         return this;
@@ -138,7 +138,7 @@ Object.extend(GameController.prototype, {
   refresh: function(force){
     var url = this.game.url;
     var c = this;
-    jq.ajax({url:url,
+    jQuery.ajax({url:url,
       ifModified: true,
       success:function(response){
         try {
@@ -231,7 +231,7 @@ Object.extend(GameController.prototype, {
   saveSession: function(url, interval){
     if (!this.sessionSaver){
       this.sessionSaver = setInterval(function(){
-        jq.ajax({url: url});
+        jQuery.ajax({url: url});
       }, interval*1000);
     }
     return this;
@@ -251,7 +251,7 @@ Object.extend(GameController.prototype, {
     if (this.username){
       return this.username;
     } else if (this.usernameElemId){
-      return jq.trim(jq('#' + this.usernameElemId).text());
+      return jQuery.trim(jQuery('#' + this.usernameElemId).text());
     } else {
       return null;
     }

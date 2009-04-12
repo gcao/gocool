@@ -94,7 +94,7 @@ Object.extend(DGSPlayer.prototype, {
     var sgf_prev = xyToSgf.call(this, prevX, prevY);
     if (sgf_prev != null)
       url += "&sgf_prev=" + sgf_prev;
-    jq.ajax({url: url,
+    jQuery.ajax({url: url,
       success:function(response){
         if (response.charAt(0) == '0'){ // success
           c.refresh();
@@ -131,7 +131,7 @@ Object.extend(DGSPlayer.prototype, {
     }
     var moveNumber = node.moveNumber;
     var url = c.config.baseDir + "php/dgs.php?command=RESIGN&gid="+gid+"&move="+moveNumber;
-    jq.ajax({url: url,
+    jQuery.ajax({url: url,
       success:function(response){
         if (response.charAt(0) == '0'){ // success
           c.refresh();

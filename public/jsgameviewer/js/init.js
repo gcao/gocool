@@ -1,5 +1,3 @@
-var jq = jQuery.noConflict();
-
 var gv = {
   name: "jsgameviewer",
   version: "1.0a",
@@ -56,7 +54,7 @@ function clone(myObj){
 
 // return true if obj is String and not empty
 function notNull(obj){
-  return obj != undefined && obj != null && jq.trim(obj).length > 0;
+  return obj != undefined && obj != null && jQuery.trim(obj).length > 0;
 }
 
 function getId(x, y){

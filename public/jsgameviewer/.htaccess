@@ -1,3 +1,4 @@
+# Make sure AllowOverride for this directory is set to All or other option
 <IfModule mod_security.c>
   SecFilterEngine Off
 </IfModule>
@@ -13,12 +14,12 @@
   mod_gzip_maximum_file_size    500000
   mod_gzip_maximum_inmem_size   60000
   mod_gzip_min_http             1000
-  mod_gzip_handle_methods        GET POST
+  mod_gzip_handle_methods       GET POST
   mod_gzip_item_include         file       \.php$
   mod_gzip_item_include         file       \.html$
   mod_gzip_item_exclude         file       \.js$
   mod_gzip_item_exclude         file       \.css$
-  mod_gzip_item_exclude         mime       ^image/
+  mod_gzip_item_exclude         mime       images/
   mod_gzip_dechunk              Yes
   mod_gzip_send_vary            On
 </IfModule>
@@ -26,5 +27,6 @@
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/gif  A86400000
-#  ExpiresByType text/css   A86400000
 </IfModule>
+
+AddType 'text/plain; charset=gb2312' sgf

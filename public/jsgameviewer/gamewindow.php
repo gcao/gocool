@@ -21,7 +21,7 @@ $s .= ").";
 $s .= isset($_GET['url'])?"load('".urldecode($_GET['url'])."')" : "show()";
 $s .= ";\n";
 #if (isset($_GET['url']))
-#  $s .= "jq(function(){if (gv.game) document.title = gv.game.getTitle();});\n";
+#  $s .= "jQuery(function(){if (gv.game) document.title = gv.game.getTitle();});\n";
 echo $s;
 ?>
 </script>

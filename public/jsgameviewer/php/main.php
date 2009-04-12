@@ -2,7 +2,7 @@
 include("common.php");
 
 $files = array(
-	'../js/jquery.js',
+  '../js/jquery.js',
 	'../js/slider.js',
 	'../js/init.js',
 	'../js/config.js',
