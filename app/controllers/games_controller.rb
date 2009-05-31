@@ -8,4 +8,8 @@ class GamesController < ApplicationController
       :black_name, :black_rank, :white_name, :white_rank, :rule, :komi, :result, :winner, :moves]
     config.nested.add_link "Content", [:game_data]
   end
+  
+  def upload
+    file = params[:file]
+  end
 end
