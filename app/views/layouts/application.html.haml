@@ -15,5 +15,7 @@
     = calendar_date_select_includes "silver"
   %body
     = render :partial => "layouts/menu_body"
+    - if flash[:message]
+      #flashContainer= flash[:message]
     = yield
     

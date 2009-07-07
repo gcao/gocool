@@ -10,6 +10,9 @@ class GamesController < ApplicationController
   end
   
   def upload
-    file = params[:file]
+    if request.post?
+      file = params[:file]
+      flash[:message] = 'File is uploaded.'
+    end
   end
 end

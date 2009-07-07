@@ -3,3 +3,5 @@
 
 en:
   hello: "Hello world"
+  upload_email: "Email (optional)"
+  upload_email_note: this can be useful when you decide to create an account and manage uploaded files
