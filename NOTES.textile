@@ -1,3 +1,19 @@
+h2. 2009-07-07
+
+h3. Add authentication through nifty_generators
+
+* sudo gem install nifty-generators
+* script/generate nifty_authentication
+* Create app/helpers/layout_helper.rb, copy content from nifty_layout/generators/layout_helper.rb (because nifty_authentication uses it)
+
+h3. Install Compass to integrate SASS with Rails
+
+* sudo gem install chriseppstein-compass
+* compass --rails -f blueprint .
+* Remove this line from application.html.haml, for some reason this is not reachable!
+
+<pre>= stylesheet_link_tag 'compiled/partials/_base.css'</pre>
+
 h2. 2009-03-29
 
 h3. Add rails as a submodule

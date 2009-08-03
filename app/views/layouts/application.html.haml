@@ -3,19 +3,24 @@
   %head
     %meta{"http-equiv" => "content-type", :content => "text/html;charset=UTF-8"}
     %title= "Games Database (Weiqi/Daoqi)"
-    = stylesheet_link_tag 'default', :media => 'all'
+    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     %script{:src => "http://www.google.com/jsapi", :type => "text/javascript"}
     :javascript
       google.load("jquery", "1.2.6");
       google.load("prototype", "1.6.0.3");
       google.load("scriptaculous", "1.8.2");
     = javascript_include_tag ["jrails", "application"]
-    = active_scaffold_includes
+    -#= active_scaffold_includes
     = render :partial => "layouts/menu_head"
-    = calendar_date_select_includes "silver"
+    -#= calendar_date_select_includes "silver"
   %body
-    = render :partial => "layouts/menu_body"
-    - if flash[:message]
-      #flashContainer= flash[:message]
-    = yield
+    .container.showgrid
+      = render :partial => "layouts/menu_body"
+      %br/
+      - if flash[:message]
+        #flashContainer= flash[:message]
+      = yield
     

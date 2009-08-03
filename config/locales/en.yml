@@ -2,6 +2,11 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
-  upload_email: "Email (optional)"
-  upload_email_note: this can be useful when you decide to create an account and manage uploaded files
+  upload:
+    email_label: Email
+    email_note: this can be useful when you decide to create an account and manage uploaded files
+    file_label: File
+    submit_button: Upload
+    reset_button: Clear
+    
+  
