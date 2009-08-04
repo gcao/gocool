@@ -1,0 +1,5 @@
+Jul 14 15:32:56 devserver-92 proteus_log[5588]: [INFO] [10201] [plans:plans] Got 200 response from ProductCatalog::PromoPackageGateway Service
+Jul 14 15:32:56 devserver-92 proteus_log[5588]: [FATAL] [10201] [select_number:select_number] PhoneNumberGateway Service timed out
+
+
+Jul 14 17:57:50 devserver-92 proteus_log[5598]: [INFO] [10201] [billing_and_shipping:billing_and_shipping] [10.111.16.19][proteus-user][Proteus TM Billing and Shipping Page For US][Save Credit Card Information][success]

@@ -4,9 +4,13 @@
 en:
   upload:
     email_label: Email
-    email_note: this can be useful when you decide to create an account and manage uploaded files
     file_label: File
+    email_required: Email is required.
+    file_required: No file is chosen.
     submit_button: Upload
     reset_button: Clear
+    success: The game is uploaded successfully.
+    page_title: Upload Games
+    page_header: Upload Games
     
   
