@@ -1,3 +1,20 @@
+h2. 2009-08-04
+
+h3. Try out AMAZON EC2
+
+* Found AMI: ami-b7aa4cde (http://www.webficient.com/2009/05/03/help-test-our-new-amazon-ec2-images)
+* In amazon EC2 management console
+  Create key pair: amazon, downloaded amazon.pem
+  Create security group to grant access to port 22 globally.
+* Local
+<pre>
+cd
+mkdir .ec2 && cd .ec2
+mv ~/Downloads/amazon.pem .
+chmod 0600 amazon.pem
+ssh -i amazon.pem root@&;t;IP>
+</pre>
+
 h2. 2009-07-07
 
 h3. Add authentication through nifty_generators
@@ -24,12 +41,12 @@ h3. Move jsgameviewer from public to vendor/plugins/jsgameviewer-0.9.0
 * Add public/jsgameviewer to apache config (/etc/apache2/httpd.conf)
 <pre>
 Alias /jsgameviewer /Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0
-<Directory "/Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0/">
+&lt;Directory "/Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0/">
     AllowOverride None
     Options ExecCGI
     Order allow,deny
     Allow from all
-</Directory>
+&lt;/Directory>
 </pre>
 * Add php support to apache
 
