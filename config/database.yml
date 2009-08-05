@@ -19,7 +19,7 @@ production:
   adapter: mysql
   database: gocool_production
   user: mysql
-  password: replace_me!
+  password: <%= %x(msp).strip %>
   pool: 5
   timeout: 5000
 
