@@ -7,6 +7,7 @@
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+    = yield :head
   %body.bp.three-col
     #container
       %hr.space

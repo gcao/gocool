@@ -1,0 +1,8 @@
+- content_for :head do
+  %script{:src => "http://localhost/jsgameviewer/js/loader.js", :type => "text/javascript"}
+  %script{:src => "http://localhost/jsgameviewer/js/site_handler.js", :type => "text/javascript"}
+%h1=@page_header
+-if flash[:success]
+  .span-10
+    .success= flash[:success]
+%a.jsgv{:href => @upload.upload.url}Download SGF

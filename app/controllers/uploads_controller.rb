@@ -9,13 +9,19 @@ class UploadsController < ApplicationController
     if @upload.valid?
       @upload.save!
       flash[:success] = t('upload.success')
+      render :show
     else
       if @upload.errors[:email]
         flash[:error] = t('upload.email_required')
       elsif @upload.errors[:upload_file_name]
         flash[:error] = t('upload.file_required')
       end
-      render :action => :index
+      render :index
     end
+  end
+  
+  def show
+    @upload = Upload.find(params[:id])
+    render :text => 'Game not found', :status => '404' unless @upload
   end
 end

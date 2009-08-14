@@ -11,7 +11,7 @@ When /^I go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^I press "([^\"]*)"$/ do |button|
+When /^I click "([^\"]*)"$/ do |button|
   click_button(button)
 end
 
