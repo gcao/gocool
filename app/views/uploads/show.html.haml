@@ -3,6 +3,7 @@
   %script{:src => "http://localhost/jsgameviewer/js/site_handler.js", :type => "text/javascript"}
 %h1=@page_header
 -if flash[:success]
-  .span-10
+  .span-12
     .success= flash[:success]
-%a.jsgv{:href => @upload.upload.url}Download SGF
+.span-24
+  %a.jsgv{:href => @upload.upload.url}Download SGF

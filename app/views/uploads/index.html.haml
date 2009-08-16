@@ -15,8 +15,12 @@
     .span-2
       = form.label :upload, t('upload.file_label')
     .span-8.last
-      = form.file_field :upload
+      #file_fields
+        = form.file_field :upload
     %hr.space
     .span-10{:align => 'center'}
       = form.submit t('upload.submit_button')
       %input{:type => "reset", :value => t('upload.reset_button')}
+      
+%script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", :type => "text/javascript"}
+= javascript_include_tag "upload"

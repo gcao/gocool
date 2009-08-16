@@ -526,7 +526,7 @@ body.bp .bottom {
   margin-bottom: 0;
   padding-bottom: 0; }
 body.bp .showgrid {
-  background: url(/images/grid.png?1247002235); }
+  background: url('/images/grid.png?1247002235'); }
 body.bp .error {
   padding: .8em;
   margin-bottom: 1em;
@@ -573,8 +573,8 @@ body.bp div.border {
   margin-right: 5px;
   border-right: 1px solid #eeeeee; }
 body.bp div.colborder {
-  padding-right: 4px;
-  margin-right: 5px;
+  padding-right: 24px;
+  margin-right: 25px;
   border-right: 1px solid #eeeeee; }
 body.bp hr {
   background: #dddddd;

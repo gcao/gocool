@@ -7,11 +7,9 @@
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-    %script{:src => "http://www.google.com/jsapi", :type => "text/javascript"}
-    :javascript
-      google.load("jquery", "1.2.6");
-      google.load("prototype", "1.6.0.3");
-      google.load("scriptaculous", "1.8.2");
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js", :type => "text/javascript"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js", :type => "text/javascript"}
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.2/scriptaculous.js", :type => "text/javascript"}
     = javascript_include_tag ["jrails", "application"]
     -#= active_scaffold_includes
     = render :partial => "layouts/menu_head"
