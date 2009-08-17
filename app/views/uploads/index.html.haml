@@ -1,24 +1,24 @@
 %h1=@page_header || t('upload.page_header')
 -form_for :upload, :html => {:multipart => true, :class => 'bp'} do |form|
-  %fieldset.span-10
+  %fieldset.span-18
     -if flash[:success]
-      .span-10
+      .span-18
         .success= flash[:success]
     -elsif flash[:error]
-      .span-10
+      .span-18
         .error= flash[:error]
     .span-2
       = form.label :email, t('upload.email_label')
-    .span-8.last
-      = form.text_field :email, "maxlength" => 40
+    .span-16.last
+      = form.text_field :email, "maxlength" => 60
 
     .span-2
       = form.label :upload, t('upload.file_label')
-    .span-8.last
+    .span-16.last
       #file_fields
-        = form.file_field :upload
+        = form.file_field :upload, :size => 60
     %hr.space
-    .span-10{:align => 'center'}
+    .span-14{:align => 'center'}
       = form.submit t('upload.submit_button')
       %input{:type => "reset", :value => t('upload.reset_button')}
       
