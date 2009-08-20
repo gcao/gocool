@@ -8,6 +8,8 @@ h3. Support upload SGF files
 * many sgf files in one shot
 * zipped sgf files
 
+h3. Support post SGF content (e.g. copy SGF from another page and paste to textarea)
+
 h3. Integrate jsgameviewer
 
 h3. Authentication/authorization

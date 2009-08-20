@@ -5,6 +5,7 @@ describe UploadsController do
 
   describe "create" do
     it "should create upload with valid params" do
+      Upload.any_instance.expects(:save_attached_files).returns(true)
       post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
       
       response.should be_success
@@ -14,6 +15,7 @@ describe UploadsController do
     end
     
     it "should show the uploaded game" do
+      Upload.any_instance.expects(:save_attached_files).returns(true)
       post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
       
       response.should be_success

@@ -1,3 +1,9 @@
+h2. 2009-08-17
+
+h3. Cucumber + Selenium issue:
+
+* See here: https://webrat.lighthouseapp.com/projects/10503/tickets/277-selenium-tests-not-working-after-050-upgrade
+
 h2. 2009-08-04
 
 h3. Try out AMAZON EC2
