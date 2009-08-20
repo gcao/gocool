@@ -1,0 +1,55 @@
+(;GM[1]FF[3]
+RU[Japanese]SZ[19]HA[0]KM[5.5]
+PW[White]
+PB[Black]
+GN[White (W) vs. Black (B)]
+DT[1999-07-28]
+SY[Cgoban 1.9.2]TM[30:00(5x1:00)];
+AW[ea][eb][ec][bd][dd][ae][ce][de][cf][ef][cg][dg][eh][ci][di][bj][ej]
+AB[da][db][cc][dc][cd][be][bf][ag][bg][bh][ch][dh]LB[bd:A]PL[2]
+C[guff plays A and adum tenukis to fill a 1-point ko. white to kill.
+]
+(;W[bc];B[bb]
+(;W[ca];B[cb]
+(;W[ab];B[ba]
+(;W[bi]
+C[RIGHT
+black can't push (but no such luck in the actual game)
+])
+
+(;W[ad];B[af])
+
+(;W[ac];B[af])
+)
+
+(;W[bi];B[ac])
+)
+
+(;W[ab];B[ac]
+(;W[ad];B[af])
+
+(;W[ba];B[ad])
+
+(;W[ca];B[ad])
+)
+
+(;W[bi];B[ac])
+
+(;W[cb];B[ca])
+
+(;W[ba];B[ac]
+(;W[cb];B[ad])
+
+(;W[ca];B[ad])
+)
+
+(;W[ac];B[ab];W[ca];B[ad])
+)
+
+(;W[bi];B[bc]
+(;W[ah];B[ad])
+
+(;W[ad];B[ac])
+)
+
+)
