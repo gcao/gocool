@@ -5,6 +5,7 @@ class UploadsController < ApplicationController
   end
   
   def create
+    upload_multiple and return if params[:upload][:upload].length > 1
     @upload = Upload.new(params[:upload])
     if @upload.valid?
       @upload.save!
@@ -23,5 +24,13 @@ class UploadsController < ApplicationController
   def show
     @upload = Upload.find(params[:id])
     render :text => 'Game not found', :status => '404' unless @upload
+  end
+  
+  private
+  
+  def upload_multiple
+    uploads = params[:upload][:upload].map {|file|
+      Upload.new(:email => params[:upload][:email], :upload => file)
+    }
   end
 end

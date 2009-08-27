@@ -24,6 +24,8 @@ Rails::Initializer.run do |config|
   config.gem "calendar_date_select"
   config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com'
   config.gem 'right_aws'
+  config.gem 'haml'
+  config.gem 'chriseppstein-compass', :lib => 'compass', :source => 'http://gems.github.com'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
