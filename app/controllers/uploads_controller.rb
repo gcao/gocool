@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  layout proc{"upload"}
+  layout "upload"
 
   def index
   end
