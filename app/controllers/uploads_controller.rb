@@ -5,8 +5,15 @@ class UploadsController < ApplicationController
   end
   
   def create
-    upload_multiple and return if params[:upload][:upload].length > 1
-    @upload = Upload.new(params[:upload])
+    email = params[:upload][:email]
+    files = process_upload_param(params[:upload][:upload])
+    
+    if files.is_a? Array
+      @uploads = upload_multiple(email, files) 
+      return
+    end
+    
+    @upload = Upload.new(:email => email, :upload => files)
     if @upload.valid?
       @upload.save!
       flash[:success] = t('upload.success')
@@ -28,9 +35,25 @@ class UploadsController < ApplicationController
   
   private
   
-  def upload_multiple
-    uploads = params[:upload][:upload].map {|file|
-      Upload.new(:email => params[:upload][:email], :upload => file)
+  def process_upload_param upload_param
+    return upload_param unless upload_param.is_a? Array
+    upload_param.reject!{|p| p.blank? }
+    if upload_param.size == 1
+      upload_param[0]
+    elsif upload_param.size == 0
+      nil
+    else
+      upload_param
+    end
+  end
+  
+  def upload_multiple email, files
+    files.map {|file|
+      upload = Upload.new(:email => email, :upload => file)
+      if upload.valid?
+        upload.save!
+      end
+      upload
     }
   end
 end

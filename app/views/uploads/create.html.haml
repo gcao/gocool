@@ -1,0 +1,14 @@
+- content_for :head do
+  %script{:src => "http://localhost/jsgameviewer/js/loader.js", :type => "text/javascript"}
+  %script{:src => "http://localhost/jsgameviewer/js/site_handler.js", :type => "text/javascript"}
+
+%h1=@page_header
+- @uploads.each do |upload|
+  - if upload.valid?
+    .span-24
+      %a.jsgv{:href => upload.upload.url}Download SGF
+  - else
+    .span-24
+      = upload.upload_file_name
+    .span-12
+      .error = upload.errors[:upload]
