@@ -5,15 +5,39 @@ class UploadsController < ApplicationController
   end
   
   def create
-    email = params[:upload][:email]
-    files = process_upload_param(params[:upload][:upload])
+    email = normalize_email(params[:upload][:email])
+    files = extract_files params[:upload]
     
-    if files.is_a? Array
-      @uploads = upload_multiple(email, files) 
-      return
+    if files.length == 1
+      upload_single email, files[0]
+    else
+      upload_multiple email, files
     end
-    
-    @upload = Upload.new(:email => email, :upload => files)
+  end
+  
+  def show
+    @upload = Upload.find(params[:id])
+    render :text => 'Game not found', :status => '404' unless @upload
+  end
+  
+  def search
+    @uploads = Upload.find_all_by_email normalize_email(params[:email])
+  end
+  
+  private
+  
+  def normalize_email email
+    return if email.blank?
+    email.strip.downcase
+  end
+  
+  def extract_files params
+    file_params = params.except(:email)
+    return file_params.values
+  end
+  
+  def upload_single email, file
+    @upload = Upload.new(:email => email, :upload => file)
     if @upload.valid?
       @upload.save!
       flash[:success] = t('upload.success')
@@ -28,27 +52,8 @@ class UploadsController < ApplicationController
     end
   end
   
-  def show
-    @upload = Upload.find(params[:id])
-    render :text => 'Game not found', :status => '404' unless @upload
-  end
-  
-  private
-  
-  def process_upload_param upload_param
-    return upload_param unless upload_param.is_a? Array
-    upload_param.reject!{|p| p.blank? }
-    if upload_param.size == 1
-      upload_param[0]
-    elsif upload_param.size == 0
-      nil
-    else
-      upload_param
-    end
-  end
-  
   def upload_multiple email, files
-    files.map {|file|
+    @uploads =  files.map {|file|
       upload = Upload.new(:email => email, :upload => file)
       if upload.valid?
         upload.save!
