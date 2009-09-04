@@ -9,6 +9,8 @@ class Upload < ActiveRecord::Base
   
   def parse
     game = SGF::Parser.parse_file self.upload.path
+    self.status = STATUS_PARSE_SUCCESS
+    self.save!
   # rescue => e
   #   self.status = STATUS_PARSE_FAILURE
   end
