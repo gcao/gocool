@@ -8,10 +8,11 @@ class Upload < ActiveRecord::Base
   validates_presence_of :upload_file_name, :message => I18n.translate('upload.file_required')
   
   def parse
-    game = SGF::Parser.parse_file self.upload.path
+    game = SGF::Parser.parse_file self.upload.path, true
     self.status = STATUS_PARSE_SUCCESS
+  rescue SGF::ParseError
+    self.status = STATUS_PARSE_FAILURE
+  ensure
     self.save!
-  # rescue => e
-  #   self.status = STATUS_PARSE_FAILURE
   end
 end
