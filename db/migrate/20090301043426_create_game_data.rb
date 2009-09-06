@@ -4,10 +4,10 @@ class CreateGameData < ActiveRecord::Migration
       t.integer :game_id
       t.string :format # sgf
       t.string :charset
-      t.string :source_type # data, path, url
+      t.string :source_type # data, path, url, upload
+      t.string :source
       t.text :data
-      t.string :path
-      t.string :url
+      t.references :upload
       t.boolean :is_commented
       t.string :commented_by
       t.text :description

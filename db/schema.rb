@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
     t.string   "format"
     t.string   "charset"
     t.string   "source_type"
+    t.string   "source"
     t.text     "data"
-    t.string   "path"
-    t.string   "url"
+    t.integer  "upload_id"
     t.boolean  "is_commented"
     t.string   "commented_by"
     t.text     "description"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   end
 
   create_table "uploads", :force => true do |t|
+    t.integer  "game_data_id"
     t.string   "email",               :null => false
     t.string   "upload_file_name",    :null => false
     t.string   "upload_content_type"

@@ -53,6 +53,16 @@ describe UploadsController do
       response.should render_template(:index)
       response.body.should include(I18n.translate("upload.file_required"))
     end
+    
+    it "should create game on valid SGF" do
+      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
+      
+      response.should be_success
+      
+      upload = assigns(:upload)
+      upload.game.should_not be_nil
+      upload.game_data.should_not be_nil
+    end
   end
   
   describe "search" do

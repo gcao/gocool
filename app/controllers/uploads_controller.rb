@@ -40,6 +40,7 @@ class UploadsController < ApplicationController
     @upload = Upload.new(:email => email, :upload => file)
     if @upload.valid?
       @upload.save!
+      save_game(@upload, parse(@upload))
       flash[:success] = t('upload.success')
       render :show
     else
@@ -60,5 +61,21 @@ class UploadsController < ApplicationController
       end
       upload
     }
+  end
+  
+  def parse upload
+    SGF::Parser.parse_file(upload.upload.path)
+  end
+  
+  def save_game upload, sgf_game
+    game = Game.new
+    game.load_parsed_game(sgf_game)
+    game.save!
+    
+    game_data = GameData.new
+    game_data.game = game
+    game_data.source_type = GameData::SOURCE_UPLOAD
+    game_data.upload_id = upload.id
+    game_data.save!
   end
 end
