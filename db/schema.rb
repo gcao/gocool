@@ -28,22 +28,28 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   end
 
   create_table "games", :force => true do |t|
-    t.string   "game_type",          :default => "weiqi"
+    t.integer  "game_type"
     t.string   "status",             :default => "finished"
-    t.integer  "rule",               :default => 1
+    t.integer  "rule"
+    t.string   "rule_raw"
     t.integer  "board_size"
     t.integer  "handicap"
-    t.string   "first_color",        :default => "black"
+    t.integer  "start_color"
     t.float    "komi"
+    t.string   "komi_raw"
     t.string   "result"
-    t.string   "winner"
+    t.integer  "winner"
+    t.string   "winner_raw"
     t.integer  "moves"
     t.float    "win_points"
     t.string   "name"
     t.string   "event"
     t.string   "place"
     t.string   "source"
+    t.string   "program"
     t.datetime "played_at"
+    t.string   "played_at_raw"
+    t.string   "time_rule"
     t.boolean  "is_online_game"
     t.integer  "gaming_platform_id"
     t.text     "description"
@@ -155,7 +161,6 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   end
 
   create_table "uploads", :force => true do |t|
-    t.integer  "game_data_id"
     t.string   "email",               :null => false
     t.string   "upload_file_name",    :null => false
     t.string   "upload_content_type"

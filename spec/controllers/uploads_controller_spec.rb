@@ -63,6 +63,12 @@ describe UploadsController do
       upload.game.should_not be_nil
       upload.game_data.should_not be_nil
     end
+    
+    describe "remember email" do
+      it "should show remembered email and mask local part" do
+        pending
+      end
+    end
   end
   
   describe "search" do

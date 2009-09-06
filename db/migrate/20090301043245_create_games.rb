@@ -1,18 +1,25 @@
 class CreateGames < ActiveRecord::Migration
   def self.up
     create_table :games do |t|
-      t.string :game_type, :default => 'weiqi' # weiqi, daoqi
+      t.integer :game_type
       t.string :status, :default => 'finished' # planned, finished, playing
-      t.integer :rule, :default => 1 # 1 - Chinese, 2 - Japanese, 3 - Korean, 4 - Ying
-      t.integer :board_size, :handicap
-      t.string :first_color, :default => 'black' # black, white
+      t.integer :rule # 1 - Chinese, 2 - Japanese, 3 - Korean, 4 - Ying
+      t.string :rule_raw
+      t.string :rule_raw
+      t.integer :board_size
+      t.integer :handicap
+      t.integer :start_color
       t.float :komi
+      t.string :komi_raw
       t.string :result
-      t.string :winner # black, white
+      t.integer :winner
+      t.string :winner_raw
       t.integer :moves
       t.float :win_points
-      t.string :name, :event, :place, :source
+      t.string :name, :event, :place, :source, :program
       t.datetime :played_at
+      t.string :played_at_raw
+      t.string :time_rule
       t.boolean :is_online_game
       t.integer :gaming_platform_id
       t.text :description
