@@ -18,31 +18,31 @@ describe UploadsController do
 
   describe "create" do
     it "should create upload with valid params" do
-      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
+      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
       upload = Upload.find_by_email('test@test.com')
       upload.should_not be_blank
-      upload.upload.url.should =~ %r(^/system/uploads/1/original/simple.sgf)
+      upload.upload.url.should =~ %r(^/system/uploads/1/original/good.sgf)
     end
     
     it "should format email before save" do
-      post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
+      post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
       assigns(:upload).email.should == 'test@test.com'
     end
     
     it "should remember formatted email in session" do
-      post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
+      post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       session[:upload_email].should == 'test@test.com'
     end
     
     it "should create multiple uploads with multiple files" do
       post :create, :upload => {:email => 'test@test.com', 
-        :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain'), 
-        :upload_234 => fixture_file_upload('/sgf/test.sgf', 'text/plain')}
+        :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain'), 
+        :upload_234 => fixture_file_upload('/sgf/good1.sgf', 'text/plain')}
       
       response.should be_success
       uploads = Upload.find_all_by_email('test@test.com')
@@ -50,15 +50,15 @@ describe UploadsController do
     end
     
     it "should show the uploaded game" do
-      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
+      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
       response.should render_template(:show)
-      response.should include_text("/system/uploads/1/original/simple.sgf")
+      response.should include_text("/system/uploads/1/original/good.sgf")
     end
     
     it "should remain on the upload page with error if email is not given" do
-      post :create, :upload => {:email => nil, :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
+      post :create, :upload => {:email => nil, :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
       response.should render_template(:index)
@@ -74,7 +74,7 @@ describe UploadsController do
     end
     
     it "should create game on valid SGF" do
-      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
+      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
       
