@@ -5,7 +5,7 @@ class UploadsController < ApplicationController
   end
   
   def create
-    email = normalize_email(params[:upload][:email])
+    email = init_email
     files = extract_files params[:upload]
     
     session[:upload_email] = email
@@ -27,6 +27,15 @@ class UploadsController < ApplicationController
   end
   
   private
+  
+  def init_email
+    if params[:upload][:email]
+      email = params[:upload][:email]
+    else
+      email = session[:upload_email]
+    end
+    normalize_email(email)
+  end
   
   def normalize_email email
     return if email.blank?

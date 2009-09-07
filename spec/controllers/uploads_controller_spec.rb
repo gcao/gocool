@@ -39,6 +39,17 @@ describe UploadsController do
       session[:upload_email].should == 'test@test.com'
     end
     
+    it "should use remembered email if email is missing" do
+      session[:upload_email] = 'test@test.com'
+
+      post :create, :upload => {:upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}      
+
+      response.should be_success
+      upload = Upload.find_by_email('test@test.com')
+      upload.should_not be_blank
+      upload.upload.url.should =~ %r(^/system/uploads/1/original/good.sgf)
+    end
+    
     it "should create multiple uploads with multiple files" do
       post :create, :upload => {:email => 'test@test.com', 
         :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain'), 
