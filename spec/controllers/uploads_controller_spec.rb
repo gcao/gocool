@@ -2,6 +2,19 @@ require File.expand_path(File.dirname(__FILE__) + "/spec_helper")
 
 describe UploadsController do
   integrate_views
+  
+  describe "index" do
+    describe "remember email" do
+      it "should show remembered email and mask local part" do
+        session[:upload_email] = 'test@test.com'
+        
+        get :index
+        
+        response.should be_success
+        response.should have_tag('span', :text => '****@test.com')
+      end
+    end
+  end
 
   describe "create" do
     it "should create upload with valid params" do
@@ -18,6 +31,12 @@ describe UploadsController do
       
       response.should be_success
       assigns(:upload).email.should == 'test@test.com'
+    end
+    
+    it "should remember formatted email in session" do
+      post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/simple.sgf', 'text/plain')}
+      
+      session[:upload_email].should == 'test@test.com'
     end
     
     it "should create multiple uploads with multiple files" do
@@ -62,12 +81,6 @@ describe UploadsController do
       upload = assigns(:upload)
       upload.game.should_not be_nil
       upload.game_data.should_not be_nil
-    end
-    
-    describe "remember email" do
-      it "should show remembered email and mask local part" do
-        pending
-      end
     end
   end
   

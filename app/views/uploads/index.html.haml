@@ -10,6 +10,10 @@
     .span-2
       = form.label :email, t('upload.email_label')
     .span-16.last
+    -if show_masked_email?
+      %span#upload_masked_email
+        = masked_email
+    -else
       = form.text_field :email, "maxlength" => 60
 
     .span-2

@@ -8,6 +8,8 @@ class UploadsController < ApplicationController
     email = normalize_email(params[:upload][:email])
     files = extract_files params[:upload]
     
+    session[:upload_email] = email
+    
     if files.length == 1
       upload_single email, files[0]
     else
