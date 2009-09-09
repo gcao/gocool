@@ -10,7 +10,10 @@ class UploadsController < ApplicationController
     
     session[:upload_email] = email
     
-    if files.length == 1
+    if files.length == 0
+      flash[:error] =t('upload.file_required')
+      render :index
+    elsif files.length == 1
       upload_single email, files[0]
     else
       upload_multiple email, files
@@ -29,7 +32,7 @@ class UploadsController < ApplicationController
   private
   
   def init_email
-    if params[:upload][:email]
+    if params[:upload] and params[:upload][:email]
       email = params[:upload][:email]
     else
       email = session[:upload_email]
@@ -43,6 +46,8 @@ class UploadsController < ApplicationController
   end
   
   def extract_files params
+    return [] if params.nil?
+    
     file_params = params.except(:email)
     return file_params.values
   end

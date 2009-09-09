@@ -11,7 +11,7 @@ describe UploadsController do
         get :index
         
         response.should be_success
-        response.should have_tag('span', :text => '****@test.com')
+        response.should have_tag('span', :text => /\*\*\*\*@test\.com/)
       end
     end
   end
@@ -74,6 +74,14 @@ describe UploadsController do
       response.should be_success
       response.should render_template(:index)
       response.body.should include(I18n.translate("upload.email_required"))
+    end
+    
+    it "should remain on the upload page with error if file is not given" do
+      post :create, :upload => {:email => 'test@test.com'}
+      
+      response.should be_success
+      response.should render_template(:index)
+      response.body.should include(I18n.translate("upload.file_required"))
     end
     
     it "should remain on the upload page with error if file is not attached" do
