@@ -1,3 +1,9 @@
+function addEmailClickHandler() {
+  jQuery('.email_edit').click(function(){
+    jQuery('#emailContainer').html('<input id="upload_email" maxlength="60" name="upload[email]" size="60" type="text" />');
+  });
+}
+
 function addUploadField() {
   var x = Math.floor(Math.random()*10000);
   var fieldId = 'upload_upload' + x;
@@ -11,5 +17,6 @@ function removeUploadField(id) {
 }
 
 jQuery(document).ready(function(){
+  addEmailClickHandler();
   jQuery('#upload_upload').change(addUploadField);
 });

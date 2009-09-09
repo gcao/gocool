@@ -7,20 +7,25 @@
     -elsif flash[:error]
       .span-18
         .error= flash[:error]
-    .span-2
-      = form.label :email, t('upload.email_label')
-    .span-16.last
-      -if show_masked_email?
-        %span#upload_masked_email
-          = masked_email
-      -else
-        = form.text_field :email, "maxlength" => 60
+    .form_row
+      .span-2
+        = form.label :email, t('upload.email_label')
+      #emailContainer.span-16.last
+        -if show_masked_email?
+          %span#upload_masked_email.email_edit
+            = masked_email
+            %span.note
+              = t('upload.click_to_change_email')
+        -else
+          = form.text_field :email, "maxlength" => 60
 
-    .span-2
-      = form.label :upload, t('upload.file_label')
-    .span-16.last
-      #file_fields
-        = form.file_field :upload, :size => 60
+    .form_row
+      .span-2
+        = form.label :upload, t('upload.file_label')
+      .span-16.last
+        #file_fields
+          = form.file_field :upload, :size => 60
+
     %hr.space
     .span-14{:align => 'center'}
       = form.submit t('upload.submit_button')
