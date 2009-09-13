@@ -20,4 +20,28 @@ class Upload < ActiveRecord::Base
   ensure
     self.save!
   end
+  
+  def after_save
+    convert_to_utf
+  end
+  
+  def convert_to_utf
+    file_encoding = %x(file -i #{self.upload.path}).strip
+    
+    if contains_not_recognizable_chars?(file_encoding)
+      %x(cp #{self.upload.path} #{self.raw_file_path})
+      convert_cmd = "#{ENV['ICONV_PATH']} -f gb18030 #{self.upload.path} > #{self.upload.path}.tmp"
+      %x(#{convert_cmd} && cp #{self.upload.path}.tmp #{self.upload.path} && rm #{self.upload.path}.tmp)
+    end
+  end
+  
+  def contains_not_recognizable_chars? encoding
+    not (encoding.include?('charset=us-ascii') or encoding.include?('charset=utf'))
+  end
+  
+  def raw_file_path
+    paths = self.upload.path.split('/')
+    paths[-1] = 'RAW_' + paths[-1]
+    paths.join('/')
+  end
 end

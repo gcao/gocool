@@ -101,6 +101,15 @@ describe UploadsController do
       upload.game.should_not be_nil
       upload.game_data.should_not be_nil
     end
+    
+    it "should convert from GB to UTF" do
+      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/chinese_gb.sgf', 'text/plain')}
+      
+      response.should be_success
+      
+      upload = assigns(:upload)
+      upload.game.name.should == "遇仙谱"
+    end
   end
   
   describe "search" do
