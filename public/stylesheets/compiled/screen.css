@@ -912,11 +912,11 @@ body.three-col #content {
 
 /* line 1, ../../../app/stylesheets/partials/_app.sass */
 form.bp input.text, form.bp input.title, form.bp input[type="text"] {
-  margin-top: 0; }
+  margin: 0; }
 
 /* line 4, ../../../app/stylesheets/partials/_app.sass */
 .form_row {
-  margin-bottom: 0.5em; }
+  margin-top: 0.5em; }
 
 /* line 7, ../../../app/stylesheets/partials/_app.sass */
 span.note {

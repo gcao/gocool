@@ -7,7 +7,7 @@
     -elsif flash[:error]
       .span-18
         .error= flash[:error]
-    .form_row
+    .form_row.span-18
       .span-2
         = form.label :email, t('upload.email_label')
       #emailContainer.span-16.last
@@ -19,7 +19,7 @@
         -else
           = form.text_field :email, "maxlength" => 60
 
-    .form_row
+    .form_row.span-18
       .span-2
         = form.label :upload, t('upload.file_label')
       .span-16.last
@@ -33,3 +33,13 @@
       
 %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", :type => "text/javascript"}
 = javascript_include_tag "upload"
+= javascript_include_tag "/validanguage/validanguage_uncompressed.js"
+:javascript
+  validanguage.el.upload_email = {
+    required: true,
+    errorMsg: "#{t('upload.email_required')}"
+  };
+  validanguage.el.upload_upload = {
+    required: true,
+    errorMsg: "#{t('upload.file_required')}"
+  };
