@@ -9,7 +9,7 @@
         .error= flash[:error]
     .form_row.span-18
       .span-2
-        = form.label :email, t('upload.email_label')
+        = form.label :email, mark_required + t('upload.email_label')
       #emailContainer.span-16.last
         -if show_masked_email?
           %span#upload_masked_email.email_edit
@@ -21,7 +21,7 @@
 
     .form_row.span-18
       .span-2
-        = form.label :upload, t('upload.file_label')
+        = form.label :upload, mark_required + t('upload.file_label')
       .span-16.last
         #file_fields
           = form.file_field :upload, :size => 60
@@ -30,6 +30,11 @@
     .span-14{:align => 'center'}
       = form.submit t('upload.submit_button')
       %input{:type => "reset", :value => t('upload.reset_button')}
+    
+    .form_legend.span-18
+      %span
+        = mark_required
+        = t('shared.marked_required')
       
 %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", :type => "text/javascript"}
 = javascript_include_tag "upload"

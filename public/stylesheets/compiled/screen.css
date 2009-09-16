@@ -911,14 +911,29 @@ body.three-col #content {
     overflow-x: hidden; }
 
 /* line 1, ../../../app/stylesheets/partials/_app.sass */
-form.bp input.text, form.bp input.title, form.bp input[type="text"] {
-  margin: 0; }
+span.note {
+  font-style: italic;
+  color: #666666; }
 
-/* line 4, ../../../app/stylesheets/partials/_app.sass */
+/* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }
 
-/* line 7, ../../../app/stylesheets/partials/_app.sass */
-span.note {
-  font-style: italic;
+/* line 5, ../../../app/stylesheets/partials/_form.sass */
+form.bp input.text, form.bp input.title, form.bp input[type="text"] {
+  margin: 0; }
+/* line 8, ../../../app/stylesheets/partials/_form.sass */
+form.bp input.failedField {
+  -moz-background-clip: border;
+  -moz-background-inline-policy: continuous;
+  -moz-background-origin: padding;
+  background: #FFAAAA none repeat scroll 0 0; }
+
+/* line 14, ../../../app/stylesheets/partials/_form.sass */
+span.required_field {
+  color: #ff0000; }
+
+/* line 17, ../../../app/stylesheets/partials/_form.sass */
+.form_legend {
+  font-size: small;
   color: #666666; }
