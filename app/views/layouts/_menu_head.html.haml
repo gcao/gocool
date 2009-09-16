@@ -1,0 +1,12 @@
+/ [if lte IE 7]
+  :sass
+    html
+      .jqueryslidemenu
+        height: 1% /*Holly Hack for IE7 and below*/
+
+= stylesheet_link_tag 'jqueryslidemenu', :media => 'all'
+= javascript_include_tag ["jqueryslidemenu"]
+:javascript
+  arrowimages.down[1]="/images/down.gif";
+  arrowimages.right[1]="/images/right.gif";
+
