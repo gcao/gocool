@@ -10,7 +10,7 @@ describe PastiesController do
     it "should create game data with valid params" do
       data = "(;GM[1]FF[3]GN[White (W) vs. Black (B)];)"
 
-      post :create, :email => 'test@test.com', :data => data
+      post :create, :pastie => {:email => 'test@test.com', :data => data}
       
       response.should be_success
       game_data = GameData.find_by_source('test@test.com')

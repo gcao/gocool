@@ -1,19 +1,21 @@
 class UploadsController < ApplicationController
-  layout "upload"
+  layout "simple"
 
   def index
   end
   
   def create
-    email = init_email
+    email = process_email(params[:upload] && params[:upload][:email])
     files = extract_files params[:upload]
     
-    session[:upload_email] = email
-    
-    if files.length == 0
-      flash[:error] =t('upload.file_required')
+    errors = validate(email, files)
+    unless errors.blank?
+      flash[:error] = errors.join("\n")
       render :index
-    elsif files.length == 1
+      return
+    end
+    
+    if files.length == 1
       upload_single email, files[0]
     else
       upload_multiple email, files
@@ -22,7 +24,7 @@ class UploadsController < ApplicationController
   
   def show
     @upload = Upload.find(params[:id])
-    render :text => 'Game not found', :status => '404' unless @upload
+    render :text => t('upload.game_not_found'), :status => '404' unless @upload
   end
   
   def search
@@ -31,18 +33,12 @@ class UploadsController < ApplicationController
   
   private
   
-  def init_email
-    if params[:upload] and params[:upload][:email]
-      email = params[:upload][:email]
-    else
-      email = session[:upload_email]
+  def validate email, files
+    returning([]) do |errors|
+      email_error = validate_email(email)
+      errors << email_error if email_error
+      errors << t('upload.file_required') if files.blank?
     end
-    normalize_email(email)
-  end
-  
-  def normalize_email email
-    return if email.blank?
-    email.strip.downcase
   end
   
   def extract_files params
@@ -61,7 +57,7 @@ class UploadsController < ApplicationController
       render :show
     else
       if @upload.errors[:email]
-        flash[:error] = t('upload.email_required')
+        flash[:error] = t('email.invalid')
       elsif @upload.errors[:upload_file_name]
         flash[:error] = t('upload.file_required')
       end

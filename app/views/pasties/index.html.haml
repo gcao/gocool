@@ -1,5 +1,5 @@
-%h1=@page_header || t('upload.page_header')
--form_for :upload, :html => {:multipart => true, :class => 'bp'} do |form|
+%h1=@page_header || t('pastie.page_header')
+-form_for :pastie, :html => {:class => 'bp'} do |form|
   %fieldset.span-18
     -if flash[:success]
       .span-18
@@ -21,14 +21,13 @@
 
     .form_row.span-18
       .span-2
-        = form.label :upload, mark_required + t('upload.file_label')
+        = form.label :data, mark_required + t('pastie.data_label')
       .span-16.last
-        #file_fields
-          = form.file_field :upload, :size => 60
+        = form.text_area :data, :cols => 80, :rows => 20
 
     %hr.space
     .span-14{:align => 'center'}
-      = form.submit t('upload.submit_button')
+      = form.submit t('form.submit_button')
       %input{:type => "reset", :value => t('form.reset_button')}
     
     .form_legend.span-18
@@ -36,15 +35,13 @@
         = mark_required
         = t('form.marked_required')
       
-%script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", :type => "text/javascript"}
-= javascript_include_tag "upload"
 = javascript_include_tag "/validanguage/validanguage_uncompressed.js"
 :javascript
-  validanguage.el.upload_email = {
+  validanguage.el.pastie_email = {
     required: true,
     errorMsg: "#{t('email.required')}"
   };
-  validanguage.el.upload_upload = {
+  validanguage.el.pastie_data = {
     required: true,
-    errorMsg: "#{t('upload.file_required')}"
+    errorMsg: "#{t('pastie.data_required')}"
   };
