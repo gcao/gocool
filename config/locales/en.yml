@@ -3,17 +3,26 @@
 
 en:
   shared:
+  form:
     marked_required: Marked are required fields
+    click_to_change: (Click to change)
+    submit_button: Submit
+    reset_button: Clear
+  email:
+    label: Email
+    required: Email is required.
+    invalid: Email is invalid.
   upload:
-    email_label: Email
-    file_label: File
-    email_required: Email is required.
+    file_label: "File (*.sgf)"
     file_required: No file is chosen.
     submit_button: Upload
-    reset_button: Clear
     success: The game is uploaded successfully.
     page_title: Upload Games
     page_header: Upload Games
-    click_to_change_email: (Click to change)
+    game_not_found: Game is not found.
+  pastie:
+    page_title: Paste Game
+    page_header: Paste Game
+    data_label: SGF Content
     
   

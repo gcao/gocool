@@ -36,11 +36,11 @@ describe UploadsController do
     it "should remember formatted email in session" do
       post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
-      session[:upload_email].should == 'test@test.com'
+      session[:email].should == 'test@test.com'
     end
     
     it "should use remembered email if email is missing" do
-      session[:upload_email] = 'test@test.com'
+      session[:email] = 'test@test.com'
 
       post :create, :upload => {:upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}      
 
@@ -73,7 +73,7 @@ describe UploadsController do
       
       response.should be_success
       response.should render_template(:index)
-      response.body.should include(I18n.translate("upload.email_required"))
+      response.body.should include(I18n.translate("email.required"))
     end
     
     it "should remain on the upload page with error if file is not given" do
