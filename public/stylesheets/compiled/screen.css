@@ -915,6 +915,20 @@ span.note {
   font-style: italic;
   color: #666666; }
 
+/* line 5, ../../../app/stylesheets/partials/_app.sass */
+.sgf_good {
+  color: #008800; }
+
+/* line 8, ../../../app/stylesheets/partials/_app.sass */
+.sgf_bad {
+  color: red;
+  font-weight: bold;
+  text-decoration: underline; }
+
+/* line 13, ../../../app/stylesheets/partials/_app.sass */
+.sgf_rest {
+  color: #888888; }
+
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }
@@ -937,3 +951,7 @@ span.required_field {
 .form_legend {
   font-size: small;
   color: #666666; }
+
+/* line 21, ../../../app/stylesheets/partials/_form.sass */
+#pastie_data {
+  width: 630px; }

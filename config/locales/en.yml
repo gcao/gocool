@@ -16,7 +16,7 @@ en:
     file_label: "File (*.sgf)"
     file_required: No file is chosen.
     submit_button: Upload
-    success: The game is uploaded successfully.
+    success: Upload is successful.
     page_title: Upload Games
     page_header: Upload Games
     game_not_found: Game is not found.
@@ -24,5 +24,8 @@ en:
     page_title: Paste Game
     page_header: Paste Game
     data_label: SGF Content
+    success: The pasted game is saved.
+    data_required: SGF content is required.
+    data_invalid_parse_error: "SGF content can not be parsed: "
     
   

@@ -10,7 +10,7 @@ class UploadsController < ApplicationController
     
     errors = validate(email, files)
     unless errors.blank?
-      flash[:error] = errors.join("\n")
+      flash[:error] = errors.join("<br/>")
       render :index
       return
     end
