@@ -10,16 +10,17 @@ h3. Try out AMAZON EC2
 
 * Found AMI: ami-b7aa4cde (http://www.webficient.com/2009/05/03/help-test-our-new-amazon-ec2-images)
 * In amazon EC2 management console
-  Create key pair: amazon, downloaded amazon.pem
-  Create security group to grant access to port 22 globally.
+**  Create key pair: amazon, downloaded amazon.pem
+**  Create security group to grant access to port 22 globally.
 * Local
-<pre>
-cd
-mkdir .ec2 && cd .ec2
-mv ~/Downloads/amazon.pem .
-chmod 0600 amazon.pem
-ssh -i amazon.pem root@&;t;IP>
-</pre>
+
+  <pre>
+  cd
+  mkdir .ec2 && cd .ec2
+  mv ~/Downloads/amazon.pem .
+  chmod 0600 amazon.pem
+  ssh -i amazon.pem root@&;t;IP>
+  </pre>
 
 h2. 2009-07-07
 
@@ -35,7 +36,7 @@ h3. Install Compass to integrate SASS with Rails
 * compass --rails -f blueprint .
 * Remove this line from application.html.haml, for some reason this is not reachable!
 
-<pre>= stylesheet_link_tag 'compiled/partials/_base.css'</pre>
+  <pre>= stylesheet_link_tag 'compiled/partials/_base.css'</pre>
 
 h2. 2009-03-29
 
@@ -45,15 +46,15 @@ h3. Move jsgameviewer from public to vendor/plugins/jsgameviewer-0.9.0
 
 * Need to create install.rb and run to copy content over to public/jsgameviewer
 * Add public/jsgameviewer to apache config (/etc/apache2/httpd.conf)
-<pre>
-Alias /jsgameviewer /Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0
-&lt;Directory "/Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0/">
-    AllowOverride None
-    Options ExecCGI
-    Order allow,deny
-    Allow from all
-&lt;/Directory>
-</pre>
+  <pre>
+  Alias /jsgameviewer /Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0
+  &lt;Directory "/Users/gcao/proj/gocool/vendor/plugins/jsgameviewer-0.9.0/">
+      AllowOverride None
+      Options ExecCGI
+      Order allow,deny
+      Allow from all
+  &lt;/Directory>
+  </pre>
 * Add php support to apache
 
 h2. 2009-03-07
@@ -95,10 +96,10 @@ h2. 2009-02-06
   
 h3. Installed plugins: rspec, rspec-rails
 
-<pre>
-./script/plugin install git://github.com/dchelimsky/rspec.git
-./script/plugin install git://github.com/dchelimsky/rspec-rails.git
-./script/generate rspec
-</pre>
+  <pre>
+  ./script/plugin install git://github.com/dchelimsky/rspec.git
+  ./script/plugin install git://github.com/dchelimsky/rspec-rails.git
+  ./script/generate rspec
+  </pre>
 
 h3. Deleted test directory

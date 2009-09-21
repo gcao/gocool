@@ -42,7 +42,13 @@
 :javascript
   validanguage.el.upload_email = {
     required: true,
-    errorMsg: "#{t('email.required')}"
+    errorMsg: "#{t('email.required')}",
+    validations: [
+      {
+        name: "validanguage.validateEmail(text)",
+        errorMsg: "#{t('email.invalid')}"
+      }
+    ]
   };
   validanguage.el.upload_upload = {
     required: true,

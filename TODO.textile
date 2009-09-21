@@ -23,6 +23,13 @@ h3. Support comments
 * option 1: Install act_as_commentable plugin 
 * option 2: Support through Disqus
 
+h3. Integrate with a CMS (e.g. MediaWiki or Radiant CMS)
+
+h3. Integrate with a forum software (e.g. Discuz! or phpBB3)
+
 h2. Deployment
 
-* Setup database, Passenger etc on production server
+* Create AMI instance that has apache+passenger+php+mysql+rails
+* Setup repeatable deployment for Capistrano + EC2
+* Backup databases, uploaded files to S3
+* Restore databases, upload files from S3
