@@ -49,37 +49,35 @@ class UploadsController < ApplicationController
   end
   
   def upload_single email, file
-    @upload = Upload.new(:email => email, :upload => file)
+    @upload = Upload.new(:upload => file)
     if @upload.valid?
       @upload.save!
       save_game(@upload, parse(@upload))
       flash[:success] = t('upload.success')
       render :show
     else
-      if @upload.errors[:email]
-        flash[:error] = t('email.invalid')
-      elsif @upload.errors[:upload_file_name]
-        flash[:error] = t('upload.file_required')
-      end
+      flash[:error] = t('upload.file_required')
       render :index
     end
   end
   
   def upload_multiple email, files
-    @uploads =  files.map {|file|
-      upload = Upload.new(:email => email, :upload => file)
-      if upload.valid?
-        upload.save!
-      end
-      upload
-    }
+    raise "TODO"
+    # @uploads =  files.map {|file|
+    #   upload = Upload.new(:upload => file)
+    #   if upload.valid?
+    #     upload.save!
+    #     save_game(email, upload, parse(upload))
+    #   end
+    #   upload
+    # }
   end
   
   def parse upload
     SGF::Parser.parse_file(upload.upload.path)
   end
   
-  def save_game upload, sgf_game
+  def save_game email, upload, sgf_game
     game = Game.new
     game.load_parsed_game(sgf_game)
     game.save!
@@ -87,6 +85,7 @@ class UploadsController < ApplicationController
     game_source = GameSource.new
     game_source.game = game
     game_source.source_type = GameSource::SOURCE_UPLOAD
+    game_source.source = email
     game_source.upload_id = upload.id
     game_source.save!
   end
