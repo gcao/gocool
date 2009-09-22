@@ -15,6 +15,7 @@ describe PastiesController do
       response.should be_success
       game_data = GameData.find_by_source('test@test.com')
       game_data.data.should == data
+      assigns(:game_data).should == game_data
     end
 
     it "should remain on the paste page with error if email is not given" do

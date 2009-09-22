@@ -937,7 +937,7 @@ span.note {
 form.bp input.text, form.bp input.title, form.bp input[type="text"] {
   margin: 0; }
 /* line 8, ../../../app/stylesheets/partials/_form.sass */
-form.bp input.failedField {
+form.bp input.failedField, form.bp textarea.failedField {
   -moz-background-clip: border;
   -moz-background-inline-policy: continuous;
   -moz-background-origin: padding;
@@ -953,5 +953,5 @@ span.required_field {
   color: #666666; }
 
 /* line 21, ../../../app/stylesheets/partials/_form.sass */
-#pastie_data {
+#pastie_email, #pastie_data {
   width: 630px; }
