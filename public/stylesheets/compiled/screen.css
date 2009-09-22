@@ -921,11 +921,12 @@ span.note {
 
 /* line 8, ../../../app/stylesheets/partials/_app.sass */
 .sgf_bad {
+  background: #000;
   color: red;
   font-weight: bold;
-  text-decoration: underline; }
+  padding: 0 4px; }
 
-/* line 13, ../../../app/stylesheets/partials/_app.sass */
+/* line 14, ../../../app/stylesheets/partials/_app.sass */
 .sgf_rest {
   color: #888888; }
 
