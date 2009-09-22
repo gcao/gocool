@@ -16,8 +16,8 @@ class PastiesController < ApplicationController
     @game.load_parsed_game(@sgf_game)
     @game.save!
 
-    @game_data = GameData.new(:game => @game, :source => params[:pastie][:email], :data => params[:pastie][:data])
-    @game_data.save!
+    @game_source = GameSource.new(:game => @game, :source => params[:pastie][:email], :data => params[:pastie][:data])
+    @game_source.save!
     flash[:success] = t('pastie.success')
     render :show
   end

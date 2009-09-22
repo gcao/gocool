@@ -1,6 +1,6 @@
-class CreateGameData < ActiveRecord::Migration
+class CreateGameSources < ActiveRecord::Migration
   def self.up
-    create_table :game_data do |t|
+    create_table :game_sources do |t|
       t.integer :game_id
       t.string :format # sgf
       t.string :charset
@@ -17,6 +17,6 @@ class CreateGameData < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :game_data
+    drop_table :game_sources
   end
 end

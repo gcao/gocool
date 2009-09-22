@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
   
-  map.resources :game_data
+  map.resources :game_sources
 
   map.resources :uploads
   map.resources :pasties

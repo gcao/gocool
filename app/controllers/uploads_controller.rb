@@ -84,10 +84,10 @@ class UploadsController < ApplicationController
     game.load_parsed_game(sgf_game)
     game.save!
     
-    game_data = GameData.new
-    game_data.game = game
-    game_data.source_type = GameData::SOURCE_UPLOAD
-    game_data.upload_id = upload.id
-    game_data.save!
+    game_source = GameSource.new
+    game_source.game = game
+    game_source.source_type = GameSource::SOURCE_UPLOAD
+    game_source.upload_id = upload.id
+    game_source.save!
   end
 end

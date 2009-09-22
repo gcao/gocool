@@ -1,6 +1,4 @@
-class GameData < ActiveRecord::Base
-  set_table_name :game_data
-  
+class GameSource < ActiveRecord::Base
   belongs_to :game
   belongs_to :upload
   

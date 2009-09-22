@@ -11,7 +11,7 @@
 
 ActiveRecord::Schema.define(:version => 20090803144454) do
 
-  create_table "game_data", :force => true do |t|
+  create_table "game_sources", :force => true do |t|
     t.integer  "game_id"
     t.string   "format"
     t.string   "charset"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
 
   create_table "games", :force => true do |t|
     t.integer  "game_type"
-    t.string   "status",             :default => "finished"
+    t.string   "status",                 :default => "finished"
     t.integer  "rule"
     t.string   "rule_raw"
     t.integer  "board_size"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
     t.string   "black_rank"
     t.string   "white_name"
     t.string   "white_rank"
-    t.integer  "game_data_id"
+    t.integer  "primary_game_source_id"
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"

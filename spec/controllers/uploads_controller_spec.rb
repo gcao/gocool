@@ -99,7 +99,7 @@ describe UploadsController do
       
       upload = assigns(:upload)
       upload.game.should_not be_nil
-      upload.game_data.should_not be_nil
+      upload.game_source.should_not be_nil
     end
     
     it "should convert from GB to UTF" do

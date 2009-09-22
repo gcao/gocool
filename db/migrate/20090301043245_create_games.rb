@@ -26,7 +26,7 @@ class CreateGames < ActiveRecord::Migration
       # player info
       t.integer :black_id, :white_id # player_id or online_player_id
       t.string :black_name, :black_rank, :white_name, :white_rank
-      t.integer :game_data_id
+      t.integer :primary_game_source_id
       t.string :updated_by
       t.timestamps
     end

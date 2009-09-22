@@ -13,9 +13,9 @@ describe PastiesController do
       post :create, :pastie => {:email => 'test@test.com', :data => data}
       
       response.should be_success
-      game_data = GameData.find_by_source('test@test.com')
-      game_data.data.should == data
-      assigns(:game_data).should == game_data
+      game_source = GameSource.find_by_source('test@test.com')
+      game_source.data.should == data
+      assigns(:game_source).should == game_source
     end
 
     it "should remain on the paste page with error if email is not given" do
@@ -39,9 +39,9 @@ describe PastiesController do
       
       response.should be_success
       
-      game_data = assigns(:game_data)
-      game_data.game.should_not be_nil
-      game_data.game.name.should == "White (W) vs. Black (B)"
+      game_source = assigns(:game_source)
+      game_source.game.should_not be_nil
+      game_source.game.name.should == "White (W) vs. Black (B)"
     end
     
     it "should remain on the paste page with error if SGF content is invalid" do
