@@ -1,3 +1,5 @@
+ENV['CUCUMBER_PROFILE'] ||= 'selenium' # uncomment this line to run acceptance tests in Selenium mode
+
 # Sets up the Rails environment for Cucumber
 ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')

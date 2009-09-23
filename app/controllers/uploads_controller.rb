@@ -52,7 +52,7 @@ class UploadsController < ApplicationController
     @upload = Upload.new(:upload => file)
     if @upload.valid?
       @upload.save!
-      save_game(@upload, parse(@upload))
+      save_game(email, @upload, parse(@upload))
       flash[:success] = t('upload.success')
       render :show
     else
