@@ -84,7 +84,7 @@ class UploadsController < ApplicationController
     
     game_source = GameSource.new
     game_source.game = game
-    game_source.source_type = GameSource::SOURCE_UPLOAD
+    game_source.source_type = GameSource::UPLOAD_TYPE
     game_source.source = email
     game_source.upload_id = upload.id
     game_source.save!
