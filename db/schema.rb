@@ -161,7 +161,6 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   end
 
   create_table "uploads", :force => true do |t|
-    t.string   "email",               :null => false
     t.string   "upload_file_name",    :null => false
     t.string   "upload_content_type"
     t.integer  "upload_file_size"

@@ -15,11 +15,20 @@ begin
     t.feature_pattern = "features/enhanced/*.feature features/plain/*.feature"
   end
   
-  task :features => 'db:test:prepare'
-  task :'features:selenium' => 'db:test:prepare'
+  task :features => 'db:cucumber:reset'
+  task :'features:selenium' => 'db:cucumber:reset'
 rescue LoadError
   desc 'Cucumber rake task not available'
   task :features do
     abort 'Cucumber rake task is not available. Be sure to install cucumber as a gem or plugin'
+  end
+end
+
+namespace :db do
+  namespace :cucumber do
+    task :reset do
+      RAILS_ENV = 'cucumber'
+      Rake::Task[:'db:migrate:reset'].invoke
+    end
   end
 end
