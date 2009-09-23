@@ -1,3 +1,15 @@
+h2. 2009-09-23
+
+h3. Patch webrat to get upload file work
+
+* See here: http://github.com/ijcd/webrat/commit/d79a2920fb17b59e88673d5245c2fc8fbcb7c5f1
+* Add below code to .../gems/webrat-0.5.3/lib/webrat/selenium/selenium_session.rb line 51
+  <pre>
+    def attach_file(field_locator, path, content_type = nil)
+      fill_in(field_locator, :with => path)
+    end
+  </pre>
+
 h2. 2009-08-17
 
 h3. Cucumber + Selenium issue:
