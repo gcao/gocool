@@ -43,4 +43,8 @@ class Upload < ActiveRecord::Base
     paths[-1] = 'RAW_' + paths[-1]
     paths.join('/')
   end
+  
+  def parse
+    SGF::Parser.parse_file(self.upload.path)
+  end
 end

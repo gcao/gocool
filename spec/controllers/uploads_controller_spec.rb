@@ -21,7 +21,7 @@ describe UploadsController do
       post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
-      upload = Upload.find_by_email('test@test.com')
+      upload = assigns(:upload)
       upload.should_not be_blank
       upload.upload.url.should =~ %r(^/system/uploads/1/original/good.sgf)
     end
@@ -30,7 +30,7 @@ describe UploadsController do
       post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
-      assigns(:upload).email.should == 'test@test.com'
+      assigns(:upload).game_source.source.should == 'test@test.com'
     end
     
     it "should remember formatted email in session" do
@@ -45,19 +45,20 @@ describe UploadsController do
       post :create, :upload => {:upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}      
 
       response.should be_success
-      upload = Upload.find_by_email('test@test.com')
+      upload = assigns(:upload)
       upload.should_not be_blank
       upload.upload.url.should =~ %r(^/system/uploads/1/original/good.sgf)
     end
     
     it "should create multiple uploads with multiple files" do
+      pending
       post :create, :upload => {:email => 'test@test.com', 
         :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain'), 
         :upload_234 => fixture_file_upload('/sgf/good1.sgf', 'text/plain')}
       
       response.should be_success
-      uploads = Upload.find_all_by_email('test@test.com')
-      uploads.size.should == 2
+      game_source = GameSource.find_by_email('test@test.com')
+      game_source.uploads.should == 2
     end
     
     it "should show the uploaded game" do
@@ -114,7 +115,8 @@ describe UploadsController do
   
   describe "search" do
     it "should show uploads uploaded by email" do
-      upload = Upload.create!(:email => 'test1@test.com', :upload_file_name => 'test.sgf')
+      pending
+      upload = Upload.create!(:upload_file_name => 'test.sgf')
       
       get :search, :email => 'test1@test.com'
       
@@ -124,7 +126,8 @@ describe UploadsController do
     end
     
     it "should be case insensitive" do
-      upload = Upload.create!(:email => 'test1@test.com', :upload_file_name => 'test.sgf')
+      pending
+      upload = Upload.create!(:upload_file_name => 'test.sgf')
       
       get :search, :email => ' TEST1@TEST.COM '
       
