@@ -5,10 +5,10 @@ class UploadsController < ApplicationController
   end
   
   def create
-    email = process_email(params[:upload] && params[:upload][:email])
+    @email = process_email(params[:upload] && params[:upload][:email])
     files = extract_files params[:upload]
     
-    errors = validate(email, files)
+    errors = validate(@email, files)
     unless errors.blank?
       flash[:error] = errors.join("<br/>")
       render :index
@@ -16,9 +16,9 @@ class UploadsController < ApplicationController
     end
     
     if files.length == 1
-      upload_single email, files[0]
+      upload_single @email, files[0]
     else
-      upload_multiple email, files
+      upload_multiple @email, files
     end
   end
   
@@ -71,6 +71,18 @@ class UploadsController < ApplicationController
     #   end
     #   upload
     # }
+  end
+  
+  def rescue_action(e)
+    if e.is_a? SGF::ParseError
+      flash[:error] = e.to_s
+      render :index
+    elsif e.is_a? SGF::BinaryFileError
+      flash[:error] = t('upload.is_binary_file')
+      render :index
+    else
+      super
+    end
   end
   
   def save_game email, upload

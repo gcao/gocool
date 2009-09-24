@@ -15,7 +15,7 @@
             %span.note
               = t('form.click_to_change')
         -else
-          %input#upload_email(type="text" name="upload[email]" maxlength="60" size="60")
+          %input#upload_email(type="text" name="upload[email]" maxlength="60" size="60"){:value => @email}
 
     .form_row.span-18
       .span-2
