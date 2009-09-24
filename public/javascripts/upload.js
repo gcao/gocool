@@ -1,6 +1,6 @@
 function addEmailClickHandler() {
   jQuery('.email_edit').click(function(){
-    jQuery('#emailContainer').html('<input id="upload_email" maxlength="60" name="upload[email]" size="60" type="text" />');
+    jQuery('#email_container').html('<input id="upload_email" maxlength="60" name="upload[email]" size="60" type="text" />');
     jQuery('#upload_email').focus();
   });
 }

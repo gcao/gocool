@@ -5,6 +5,6 @@ module ApplicationHelper
   end
   
   def show_flash container_class
-    render 'shared/show_flash', :locals => {:container_class => container_class}
+    render :partial => 'shared/show_flash', :locals => {:container_class => container_class}
   end
 end

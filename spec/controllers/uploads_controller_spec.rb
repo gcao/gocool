@@ -112,28 +112,5 @@ describe UploadsController do
       upload.game.name.should == "遇仙谱"
     end
   end
-  
-  describe "search" do
-    it "should show uploads uploaded by email" do
-      pending
-      upload = Upload.create!(:upload_file_name => 'test.sgf')
-      
-      get :search, :email => 'test1@test.com'
-      
-      response.should be_success
-      response.should render_template(:search)
-      assigns(:uploads).should == [upload]
-    end
-    
-    it "should be case insensitive" do
-      pending
-      upload = Upload.create!(:upload_file_name => 'test.sgf')
-      
-      get :search, :email => ' TEST1@TEST.COM '
-      
-      response.should be_success
-      assigns(:uploads).should == [upload]
-    end
-  end
 
 end

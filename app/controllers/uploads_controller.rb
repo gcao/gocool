@@ -27,11 +27,11 @@ class UploadsController < ApplicationController
     render :text => t('upload.game_not_found'), :status => '404' unless @upload
   end
   
-  def search
-    @uploads = Upload.find_all_by_email normalize_email(params[:email])
-  end
-  
   private
+  
+  def set_title
+    @title = t('upload.page_title')
+  end
   
   def validate email, files
     returning([]) do |errors|

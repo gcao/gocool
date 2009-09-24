@@ -3,6 +3,13 @@
 
 en:
   shared:
+    title: Go Library
+  menu:
+    uploads: Upload Game
+    pasties: Paste SGF
+    players: Players
+    games: Games
+    tournaments: Tournaments
   form:
     marked_required: Marked are required fields
     click_to_change: (Click to change)

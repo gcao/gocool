@@ -27,6 +27,10 @@ class PastiesController < ApplicationController
 
   private
   
+  def set_title
+    @title = t('pastie.page_title')
+  end
+  
   def validate email, data
     returning([]) do |errors|
       email_error = validate_email(email)

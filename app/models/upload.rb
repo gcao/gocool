@@ -12,8 +12,8 @@ class Upload < ActiveRecord::Base
   end
   
   def parse
-    game = SGF::Parser.parse_file self.upload.path
     self.status = STATUS_PARSE_SUCCESS
+    SGF::Parser.parse_file self.upload.path
   rescue SGF::ParseError
     self.status = STATUS_PARSE_FAILURE
   ensure
@@ -25,6 +25,8 @@ class Upload < ActiveRecord::Base
   end
   
   def convert_to_utf
+    return unless File.exists?(self.upload.path)
+
     file_encoding = %x(file -i #{self.upload.path}).strip
     
     if contains_not_recognizable_chars?(file_encoding)
@@ -42,9 +44,5 @@ class Upload < ActiveRecord::Base
     paths = self.upload.path.split('/')
     paths[-1] = 'RAW_' + paths[-1]
     paths.join('/')
-  end
-  
-  def parse
-    SGF::Parser.parse_file(self.upload.path)
   end
 end

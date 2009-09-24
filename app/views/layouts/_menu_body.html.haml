@@ -1,14 +1,18 @@
 #myslidemenu.jqueryslidemenu
   %ul
     %li
-      %a{:href => "#"} Players
+      %a(href="/uploads")= t('menu.uploads')
     %li
-      %a{:href => "#"} Games
+      %a(href="/pasties")= t('menu.pasties')
     %li
-      %a{:href => "#"} Tournaments
+      %a(href="#")= t('menu.players')
+    %li
+      %a(href="#")= t('menu.games')
+    %li
+      %a(href="#")= t('menu.tournaments')
       %ul
         %li
-          %a{:href => "#"} Ying's Cup
+          %a(href="#") Ying's Cup
         %li
-          %a{:href => "#"} Samsung's Cup
-  %br{:style => "clear: left"}
+          %a(href="#") Samsung's Cup
+  %br(style="clear:left")

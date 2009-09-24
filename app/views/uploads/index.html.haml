@@ -1,4 +1,5 @@
 %h1= @page_header || t('upload.page_header')
+
 %form.bp(action="/uploads" enctype="multipart/form-data" method="post")
   %fieldset.span-18
     = show_flash 'span-18'
@@ -7,7 +8,7 @@
         %label(for="upload_email")
           %span.required_field *
           = t('email.label')
-      #emailContainer.span-16.last
+      #email_container.span-16.last
         -if show_masked_email?
           %span#upload_masked_email.email_edit
             = masked_email
@@ -35,7 +36,6 @@
         %span.required_field *
         = t('form.marked_required')
       
-%script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript")
 = javascript_include_tag "upload"
 = javascript_include_tag "/validanguage/validanguage_uncompressed.js"
 :javascript
