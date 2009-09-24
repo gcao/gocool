@@ -3,4 +3,8 @@ module ApplicationHelper
   def mark_required
     "<span class='required_field'>*</span>&nbsp;"
   end
+  
+  def show_flash container_class
+    render 'shared/show_flash', :locals => {:container_class => container_class}
+  end
 end
