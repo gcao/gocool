@@ -5,6 +5,7 @@ en:
   shared:
     title: Go Library
   menu:
+    home: Home
     uploads: Upload Game
     pasties: Paste SGF
     players: Players

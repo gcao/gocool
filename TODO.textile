@@ -1,6 +1,6 @@
 h2. Features
 
-h3. Integrate sgf_parser
+h3. DONE Integrate sgf_parser
 
 h3. Support upload SGF files
 
@@ -12,7 +12,7 @@ h3. Support post SGF content (e.g. copy SGF from another page and paste to texta
 
 h3. Support broadcast game (Take a SGF url and view it, take a html page and view all games it linked to)
 
-h3. Integrate jsgameviewer
+h3. DONE Integrate jsgameviewer
 
 h3. Authentication/authorization
 
