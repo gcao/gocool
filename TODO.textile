@@ -4,9 +4,11 @@ h3. DONE Integrate sgf_parser
 
 h3. Support upload SGF files
 
-* one sgf file
+* DONE one sgf file
 * many sgf files in one shot
 * zipped sgf files
+
+* suppress upload same file, redirect user to previously uploaded game
 
 h3. Support post SGF content (e.g. copy SGF from another page and paste to textarea)
 

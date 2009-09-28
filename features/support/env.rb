@@ -1,4 +1,4 @@
-ENV['CUCUMBER_PROFILE'] ||= 'selenium' # uncomment this line to run acceptance tests in Selenium mode
+# ENV['CUCUMBER_PROFILE'] ||= 'selenium' # uncomment this line to run acceptance tests in Selenium mode
 
 # Sets up the Rails environment for Cucumber
 ENV["RAILS_ENV"] ||= "cucumber"

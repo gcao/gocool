@@ -38,6 +38,7 @@ en:
     file_required: No file is chosen.
     submit_button: Upload
     success: Upload is successful.
+    game_found: Game has been added before.
     page_title: Upload Games
     page_header: Upload Games
     game_not_found: Game is not found.
