@@ -16,10 +16,23 @@ en:
     click_to_change: (Click to change)
     submit_button: Submit
     reset_button: Clear
+    view_button: View
   email:
     label: Email
     required: Email is required.
     invalid: Email is invalid.
+  homepage:
+    welcome: Welcome to Gocool Game Library
+    description: "Here you can upload, review or share games with friends. Please enjoy!"
+    recent_games:
+    recent_games:
+      label: Recently added games
+      game_name: Game Name
+      black_player: Black Player
+      white_player: White Player
+      moves: Moves
+      result: Result
+      create_time: Added At
   upload:
     file_label: "File (*.sgf)"
     file_required: No file is chosen.
@@ -36,4 +49,3 @@ en:
     data_required: SGF content is required.
     data_invalid_parse_error: "SGF content can not be parsed: "
     
-  

@@ -1,12 +1,8 @@
 %h1=@page_header || t('pastie.page_header')
+
 -form_for :pastie, :html => {:class => 'bp'} do |form|
   %fieldset.span-18
-    -if flash[:success]
-      .span-18
-        .success= flash[:success]
-    -elsif flash[:error]
-      .span-18
-        .error= flash[:error]
+    = show_flash 'span-18'
     .form_row.span-18
       .span-2
         = form.label :email, mark_required + t('email.label')

@@ -956,3 +956,12 @@ span.required_field {
 /* line 21, ../../../app/stylesheets/partials/_form.sass */
 #pastie_email, #pastie_data {
   width: 630px; }
+
+/* line 1, ../../../app/stylesheets/partials/_homepage.sass */
+#description {
+  font-size: large; }
+
+/* line 4, ../../../app/stylesheets/partials/_homepage.sass */
+#recently_uploads_label {
+  font-size: extra-large;
+  background-color: #aaccaa; }

@@ -1,0 +1,13 @@
+#recent_games_container
+  %table#recent_games_table
+    %tr#header_row
+      %th#game_name_column= t('homepage.recent_games.game_name')
+      %th#black_player_column= t('homepage.recent_games.black_player')
+      %th#white_player_column= t('homepage.recent_games.white_player')
+      %th#moves_column= t('homepage.recent_games.moves')
+      %th#result_column= t('homepage.recent_games.result')
+      %th#create_time_column= t('homepage.recent_games.create_time')
+      %th#actions_column &nbsp;
+    = render 'recent_game', :collection => @recent_game_sources, :as => :game_source
+    
+      

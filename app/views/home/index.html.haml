@@ -1,0 +1,7 @@
+%h1#welcome= t('homepage.welcome')
+#description= t('homepage.description')
+%hr.space
+
+#recent_games
+  %h2#recent_games_label= t('homepage.recent_games.label')
+  = render 'recent_games'

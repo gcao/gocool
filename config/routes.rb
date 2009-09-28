@@ -39,6 +39,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users
   
+  map.resources :games
   map.resources :game_sources
 
   map.resources :uploads
