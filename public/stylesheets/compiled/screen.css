@@ -962,6 +962,5 @@ span.required_field {
   font-size: large; }
 
 /* line 4, ../../../app/stylesheets/partials/_homepage.sass */
-#recently_uploads_label {
-  font-size: extra-large;
-  background-color: #aaccaa; }
+#recent_games_label {
+  font-size: extra-large; }

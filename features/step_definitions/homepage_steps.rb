@@ -4,6 +4,6 @@ Given /^I have uploaded a few games$/ do
 end
 
 Then /I should see recently uploaded games/ do
-  response.should contain(I18n.translate('homepage.recently_uploads'))
+  response.should contain(I18n.translate('homepage.recent_games.label'))
   response.should contain('White (W) vs. Black (B)')
 end

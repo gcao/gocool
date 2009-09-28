@@ -1,0 +1,1389 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+  <title>ActiveScaffold :: Demo</title>
+  <script src="activescaffold_demo_files/prototype.js" type="text/javascript"></script>
+<script src="activescaffold_demo_files/effects.js" type="text/javascript"></script>
+<script src="activescaffold_demo_files/dragdrop.js" type="text/javascript"></script>
+<script src="activescaffold_demo_files/controls.js" type="text/javascript"></script>
+<script src="activescaffold_demo_files/code_highlighter.js" type="text/javascript"></script>
+<script src="activescaffold_demo_files/ruby.js" type="text/javascript"></script>
+<script src="activescaffold_demo_files/application.js" type="text/javascript"></script>
+  <script src="activescaffold_demo_files/form_enhancements.js" type="text/javascript"></script><script src="activescaffold_demo_files/rico_corner.js" type="text/javascript"></script><script src="activescaffold_demo_files/dhtml_history.js" type="text/javascript"></script><style type="text/css" charset="utf-8">/* See license.txt for terms of usage */
+
+#firebugBody {
+    position: fixed;
+    top:0;
+    left:0;
+    margin:0;
+    padding:0;
+    width:1px;
+    height:1px;
+    overflow:visible;
+}
+
+.firebugCanvas {
+    position:fixed;
+    top: 0;
+    left: 0;
+    display:none;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+.firebugHighlight {
+    z-index: 2147483647;
+    position: absolute;
+    background-color: #3875d7;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0 none;
+}
+
+.firebugLayoutBoxParent {
+    z-index: 2147483647;
+    position: absolute;
+    background-color: transparent;
+    border-top: 0 none;
+    border-right: 1px dashed #BBBBBB;
+    border-bottom: 1px dashed #BBBBBB;
+    border-left: 0 none;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+.firebugRuler {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0 none;
+}
+
+.firebugRulerH {
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: url(chrome://firebug/skin/rulerH.png) repeat-x;
+    border-top: 1px solid #BBBBBB;
+    border-right: 1px dashed #BBBBBB;
+    border-bottom: 1px solid #000000;
+}
+
+.firebugRulerV {
+    top: 0;
+    left: -15px;
+    width: 14px;
+    height: 100%;
+    background: url(chrome://firebug/skin/rulerV.png) repeat-y;
+    border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #000000;
+    border-bottom: 1px dashed #BBBBBB;
+}
+
+.overflowRulerX > .firebugRulerV {
+    left: 0;
+}
+
+.overflowRulerY > .firebugRulerH {
+    top: 0;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.firebugLayoutBox {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.firebugLayoutBoxOffset {
+    z-index: 2147483647;
+    position: absolute;
+    opacity: 0.8;
+}
+
+.firebugLayoutBoxMargin {
+    background-color: #EDFF64;
+}
+
+.firebugLayoutBoxBorder {
+    background-color: #666666;
+}
+
+.firebugLayoutBoxPadding {
+    background-color: SlateBlue;
+}
+
+.firebugLayoutBoxContent {
+    background-color: SkyBlue;
+}
+
+/*.firebugHighlightGroup .firebugLayoutBox {
+    background-color: transparent;
+}
+
+.firebugHighlightBox {
+    background-color: Blue !important;
+}*/
+
+.firebugLayoutLine {
+    z-index: 2147483647;
+    background-color: #000000;
+    opacity: 0.4;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0 none;
+}
+
+.firebugLayoutLineLeft,
+.firebugLayoutLineRight {
+    position: fixed;
+    width: 1px;
+    height: 100%;
+}
+
+.firebugLayoutLineTop,
+.firebugLayoutLineBottom {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+}
+
+.firebugLayoutLineTop {
+    margin-top: -1px;
+    border-top: 1px solid #999999;
+}
+
+.firebugLayoutLineRight {
+    border-right: 1px solid #999999;
+}
+
+.firebugLayoutLineBottom {
+    border-bottom: 1px solid #999999;
+}
+
+.firebugLayoutLineLeft {
+    margin-left: -1px;
+    border-left: 1px solid #999999;
+}
+</style></head><body><input value="{&quot;DhtmlHistory_pageLoaded&quot;:true}" id="historyStorageField" name="historyStorageField" style="display: none;" type="text"><script src="activescaffold_demo_files/active_scaffold.js" type="text/javascript"></script>
+<link href="activescaffold_demo_files/stylesheet.css" media="screen" rel="Stylesheet" type="text/css">
+<!--[if IE]><link href="/stylesheets/active_scaffold/default/stylesheet-ie.css?1254139261" media="screen" rel="Stylesheet" type="text/css" /><![endif]-->
+
+  <link href="activescaffold_demo_files/reset.css" media="all" rel="Stylesheet" type="text/css">
+<link href="activescaffold_demo_files/main.css" media="all" rel="Stylesheet" type="text/css">
+  <!--[if IE]><link href="/stylesheets/main-ie.css?1200954690" media="all" rel="Stylesheet" type="text/css" /><![endif]-->
+
+  <div id="wrap">
+    <div id="header"><a href="http://www.activescaffold.com/"><h1>ActiveScaffold</h1></a>
+      <h2 class="description">A <a href="http://rubyonrails.org/">Ruby on Rails</a> plugin from the makers of <a href="http://www.ajaxscaffold.com/">AjaxScaffold</a></h2>
+      <ul id="nav">
+        <li><a href="http://activescaffold.com/">Home</a></li>
+        <li><a href="http://activescaffold.com/docs">Documentation</a></li>
+        <li><a href="http://activescaffold.com/team">Team</a></li>
+        <li><a href="http://activescaffold.com/help">Help</a></li>
+        <li><a href="http://activescaffold.com/contribute">Contribute</a></li>
+        <li><a href="http://activescaffold.com/blog">Blog</a></li>
+        <li><a class="selected" href="http://demo.activescaffold.com/">Demo</a></li>
+        <div class="clear-fix"></div>
+     </ul>
+      <p id="latest-release">
+        Latest release is <strong>1.1.1</strong>:
+        <small>
+          <a href="http://activescaffold.googlecode.com/files/active_scaffold_1.1.1.zip">download</a> |
+          <a href="http://activescaffold.googlecode.com/svn/tags/active_scaffold/">svn</a>
+        </small>
+      </p>
+    </div>
+    <div id="sub-nav">
+      
+<div id="jump">
+  <label>Go to demo:</label>
+  <select onchange="window.location = this.value">
+    <option selected="selected">Scenario:</option>
+    <option value="/users">user management</option>
+<option value="/nature/lakes">habtm</option>
+<option value="/nature/parks">has_many</option>
+<option value="/nature/dens">belongs_to</option>
+<option value="/nature/bears">has_one</option>
+<option value="/nature/dens">join model</option>
+<option value="/nature/tracking_devices">polymorphic</option>
+<option value="/secured_records">security</option>
+<option value="/roles">field/form overrides</option>
+  </select>
+
+  <select onchange="window.location = this.value">
+    <option selected="selected">Scaffold:</option>
+    
+  </select>
+</div>
+      <a href="http://activescaffold.googlecode.com/svn/applications/demo/" id="download">
+        Download the demo from SVN
+      </a>
+      <ul id="menu">
+    <li class="label">User Management:</li>
+  
+    <li><a href="http://demo.activescaffold.com/users">users</a></li>
+    <li><a href="http://demo.activescaffold.com/roles">roles</a></li>
+    <li><a href="http://demo.activescaffold.com/permissions">permissions</a></li>
+  </ul>
+    </div>
+    <div id="roles-active-scaffold" class="active-scaffold active-scaffold-roles blue-theme">
+  <div style="padding-top: 0pt;" class="active-scaffold-header"><div style="background-color: rgb(255, 255, 255);"><span style="border-style: solid; border-color: rgb(127, 173, 219); border-width: 0px 1px; overflow: hidden; background-color: rgb(0, 92, 184); display: block; height: 1px; font-size: 1px; margin-left: 1px; margin-right: 1px;"></span><span style="border-style: solid; border-color: rgb(127, 173, 219); border-width: 0px 1px; overflow: hidden; background-color: rgb(0, 92, 184); display: block; height: 1px; font-size: 1px; margin-left: 0px; margin-right: 0px;"></span></div>
+    
+  <div class="actions">
+    
+    
+      
+      <a href="http://demo.activescaffold.com/roles/new?_method=get" class="new action" id="roles-new--link" position="top">Create New</a>
+    
+      
+      <a href="http://demo.activescaffold.com/roles/show_search?_method=get" class="show_search action" id="roles-show_search--link" position="top">Search</a>
+    
+
+    <img alt="loading indicator" class="loading-indicator" id="roles-table-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+  </div>
+
+<h2>Roles</h2>
+  </div>
+  <table cellpadding="0" cellspacing="0">
+    <tbody class="before-header" id="roles-search-container"></tbody>
+  </table>
+  <div id="roles-content">
+    <table cellpadding="0" cellspacing="0">
+  <thead>
+    <tr>
+          <th id="roles-description-column">
+          <a href="http://demo.activescaffold.com/roles/update_table?page=1&amp;sort=description&amp;sort_direction=ASC" onclick="addActiveScaffoldPageToHistory('/roles/update_table?page=1&amp;sort=description&amp;sort_direction=ASC', 'roles'); new Ajax.Updater('roles-content', '/roles/update_table?page=1&amp;sort=description&amp;sort_direction=ASC', {asynchronous:true, evalScripts:true, method:'get', onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}, onLoading:function(request){Element.addClassName('roles-description-column','loading');}}); return false;">Description</a>
+    </th>
+    <th id="roles-name-column">
+          <a href="http://demo.activescaffold.com/roles/update_table?page=1&amp;sort=name&amp;sort_direction=ASC" onclick="addActiveScaffoldPageToHistory('/roles/update_table?page=1&amp;sort=name&amp;sort_direction=ASC', 'roles'); new Ajax.Updater('roles-content', '/roles/update_table?page=1&amp;sort=name&amp;sort_direction=ASC', {asynchronous:true, evalScripts:true, method:'get', onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}, onLoading:function(request){Element.addClassName('roles-name-column','loading');}}); return false;">Name</a>
+    </th>
+    <th id="roles-omnipotent-column">
+          <a href="http://demo.activescaffold.com/roles/update_table?page=1&amp;sort=omnipotent&amp;sort_direction=ASC" onclick="addActiveScaffoldPageToHistory('/roles/update_table?page=1&amp;sort=omnipotent&amp;sort_direction=ASC', 'roles'); new Ajax.Updater('roles-content', '/roles/update_table?page=1&amp;sort=omnipotent&amp;sort_direction=ASC', {asynchronous:true, evalScripts:true, method:'get', onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}, onLoading:function(request){Element.addClassName('roles-omnipotent-column','loading');}}); return false;">Omnipotent</a>
+    </th>
+    <th id="roles-system_role-column">
+          <a href="http://demo.activescaffold.com/roles/update_table?page=1&amp;sort=system_role&amp;sort_direction=ASC" onclick="addActiveScaffoldPageToHistory('/roles/update_table?page=1&amp;sort=system_role&amp;sort_direction=ASC', 'roles'); new Ajax.Updater('roles-content', '/roles/update_table?page=1&amp;sort=system_role&amp;sort_direction=ASC', {asynchronous:true, evalScripts:true, method:'get', onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}, onLoading:function(request){Element.addClassName('roles-system_role-column','loading');}}); return false;">System role</a>
+    </th>
+    <th id="roles-permissions-column">
+          <a href="http://demo.activescaffold.com/roles/update_table?page=1&amp;sort=permissions&amp;sort_direction=ASC" onclick="addActiveScaffoldPageToHistory('/roles/update_table?page=1&amp;sort=permissions&amp;sort_direction=ASC', 'roles'); new Ajax.Updater('roles-content', '/roles/update_table?page=1&amp;sort=permissions&amp;sort_direction=ASC', {asynchronous:true, evalScripts:true, method:'get', onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}, onLoading:function(request){Element.addClassName('roles-permissions-column','loading');}}); return false;">Permissions</a>
+    </th>
+    <th id="roles-users-column">
+          <a href="http://demo.activescaffold.com/roles/update_table?page=1&amp;sort=users&amp;sort_direction=ASC" onclick="addActiveScaffoldPageToHistory('/roles/update_table?page=1&amp;sort=users&amp;sort_direction=ASC', 'roles'); new Ajax.Updater('roles-content', '/roles/update_table?page=1&amp;sort=users&amp;sort_direction=ASC', {asynchronous:true, evalScripts:true, method:'get', onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}, onLoading:function(request){Element.addClassName('roles-users-column','loading');}}); return false;">Users</a>
+    </th>
+<th class="actions">
+</th>
+
+    </tr>
+  </thead>
+  <tbody class="messages">
+    <tr>
+      <td colspan="7" class="messages-container">
+        <div id="roles-messages">
+          
+  
+
+  
+
+  
+
+
+        </div>
+        <p id="roles-empty-message" class="empty-message" style="display: none;">
+          No Entries
+        </p>
+      </td>
+    </tr>
+  </tbody>
+  <tbody class="records" id="roles-tbody">
+          
+<tr class="record " id="roles-list-2111-row">
+  
+    
+    <td class="description-column ">
+      Administrator
+    </td>
+  
+    
+    <td class="name-column ">
+      ciao
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      yes
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column ">
+      <a href="http://demo.activescaffold.com/roles/nested/2111?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2111-link" position="after">yy, hhh</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2111?_method=get&amp;associations=users" class="nested action" id="roles-nested-2111-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2111-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2111?_method=get" class="edit action" id="roles-edit-2111-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2111?_method=delete" class="destroy action" id="roles-destroy-2111-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2111?_method=get" class="show action" id="roles-show-2111-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2111-row a.action'),
+  $('roles-list-2111-row'),
+  $('roles-record-2111-loading-indicator'),
+  {refresh_url: '/roles/row/2111?_method=get'}
+);
+</script>
+
+<tr class="record even-record" id="roles-list-2112-row">
+  
+    
+    <td class="description-column ">
+      Runing
+    </td>
+  
+    
+    <td class="name-column ">
+      DaMan
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      yes
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2112?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2112-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2112?_method=get&amp;associations=users" class="nested action" id="roles-nested-2112-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2112-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2112?_method=get" class="edit action" id="roles-edit-2112-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2112?_method=delete" class="destroy action" id="roles-destroy-2112-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2112?_method=get" class="show action" id="roles-show-2112-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2112-row a.action'),
+  $('roles-list-2112-row'),
+  $('roles-record-2112-loading-indicator'),
+  {refresh_url: '/roles/row/2112?_method=get'}
+);
+</script>
+
+<tr class="record " id="roles-list-2113-row">
+  
+    
+    <td class="description-column ">
+      new_role
+    </td>
+  
+    
+    <td class="name-column ">
+      New Role
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      no
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2113?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2113-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2113?_method=get&amp;associations=users" class="nested action" id="roles-nested-2113-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2113-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2113?_method=get" class="edit action" id="roles-edit-2113-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2113?_method=delete" class="destroy action" id="roles-destroy-2113-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2113?_method=get" class="show action" id="roles-show-2113-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2113-row a.action'),
+  $('roles-list-2113-row'),
+  $('roles-record-2113-loading-indicator'),
+  {refresh_url: '/roles/row/2113?_method=get'}
+);
+</script>
+
+<tr class="record even-record" id="roles-list-2114-row">
+  
+    
+    <td class="description-column ">
+      g
+    </td>
+  
+    
+    <td class="name-column ">
+      g
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      no
+    </td>
+  
+    
+    <td class="system_role-column  empty">
+      -
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2114?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2114-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2114?_method=get&amp;associations=users" class="nested action" id="roles-nested-2114-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2114-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2114?_method=get" class="edit action" id="roles-edit-2114-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2114?_method=delete" class="destroy action" id="roles-destroy-2114-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2114?_method=get" class="show action" id="roles-show-2114-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2114-row a.action'),
+  $('roles-list-2114-row'),
+  $('roles-record-2114-loading-indicator'),
+  {refresh_url: '/roles/row/2114?_method=get'}
+);
+</script>
+
+<tr class="record " id="roles-list-2115-row">
+  
+    
+    <td class="description-column ">
+      test4 description
+    </td>
+  
+    
+    <td class="name-column ">
+      test4
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      no
+    </td>
+  
+    
+    <td class="system_role-column ">
+      false
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2115?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2115-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2115?_method=get&amp;associations=users" class="nested action" id="roles-nested-2115-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2115-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2115?_method=get" class="edit action" id="roles-edit-2115-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2115?_method=delete" class="destroy action" id="roles-destroy-2115-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2115?_method=get" class="show action" id="roles-show-2115-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2115-row a.action'),
+  $('roles-list-2115-row'),
+  $('roles-record-2115-loading-indicator'),
+  {refresh_url: '/roles/row/2115?_method=get'}
+);
+</script>
+
+<tr class="record even-record" id="roles-list-2116-row">
+  
+    
+    <td class="description-column ">
+      rwer
+    </td>
+  
+    
+    <td class="name-column ">
+      werwer
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      no
+    </td>
+  
+    
+    <td class="system_role-column  empty">
+      -
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2116?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2116-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2116?_method=get&amp;associations=users" class="nested action" id="roles-nested-2116-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2116-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2116?_method=get" class="edit action" id="roles-edit-2116-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2116?_method=delete" class="destroy action" id="roles-destroy-2116-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2116?_method=get" class="show action" id="roles-show-2116-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2116-row a.action'),
+  $('roles-list-2116-row'),
+  $('roles-record-2116-loading-indicator'),
+  {refresh_url: '/roles/row/2116?_method=get'}
+);
+</script>
+
+<tr class="record " id="roles-list-2117-row">
+  
+    
+    <td class="description-column ">
+      awesomeness
+    </td>
+  
+    
+    <td class="name-column ">
+      thedude
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      yes
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2117?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2117-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2117?_method=get&amp;associations=users" class="nested action" id="roles-nested-2117-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2117-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2117?_method=get" class="edit action" id="roles-edit-2117-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2117?_method=delete" class="destroy action" id="roles-destroy-2117-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2117?_method=get" class="show action" id="roles-show-2117-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2117-row a.action'),
+  $('roles-list-2117-row'),
+  $('roles-record-2117-loading-indicator'),
+  {refresh_url: '/roles/row/2117?_method=get'}
+);
+</script>
+
+<tr class="record even-record" id="roles-list-2118-row">
+  
+    
+    <td class="description-column ">
+      a
+    </td>
+  
+    
+    <td class="name-column ">
+      a
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      no
+    </td>
+  
+    
+    <td class="system_role-column  empty">
+      -
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2118?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2118-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2118?_method=get&amp;associations=users" class="nested action" id="roles-nested-2118-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2118-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2118?_method=get" class="edit action" id="roles-edit-2118-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2118?_method=delete" class="destroy action" id="roles-destroy-2118-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2118?_method=get" class="show action" id="roles-show-2118-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2118-row a.action'),
+  $('roles-list-2118-row'),
+  $('roles-record-2118-loading-indicator'),
+  {refresh_url: '/roles/row/2118?_method=get'}
+);
+</script>
+
+<tr class="record " id="roles-list-2120-row">
+  
+    
+    <td class="description-column ">
+      eee
+    </td>
+  
+    
+    <td class="name-column ">
+      fff
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      no
+    </td>
+  
+    
+    <td class="system_role-column  empty">
+      -
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2120?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2120-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2120?_method=get&amp;associations=users" class="nested action" id="roles-nested-2120-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2120-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2120?_method=get" class="edit action" id="roles-edit-2120-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2120?_method=delete" class="destroy action" id="roles-destroy-2120-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2120?_method=get" class="show action" id="roles-show-2120-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2120-row a.action'),
+  $('roles-list-2120-row'),
+  $('roles-record-2120-loading-indicator'),
+  {refresh_url: '/roles/row/2120?_method=get'}
+);
+</script>
+
+<tr class="record even-record" id="roles-list-2121-row">
+  
+    
+    <td class="description-column ">
+      test_role
+    </td>
+  
+    
+    <td class="name-column ">
+      test_role
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      no
+    </td>
+  
+    
+    <td class="system_role-column  empty">
+      -
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2121?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2121-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2121?_method=get&amp;associations=users" class="nested action" id="roles-nested-2121-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2121-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2121?_method=get" class="edit action" id="roles-edit-2121-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2121?_method=delete" class="destroy action" id="roles-destroy-2121-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2121?_method=get" class="show action" id="roles-show-2121-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2121-row a.action'),
+  $('roles-list-2121-row'),
+  $('roles-record-2121-loading-indicator'),
+  {refresh_url: '/roles/row/2121?_method=get'}
+);
+</script>
+
+<tr class="record " id="roles-list-2122-row">
+  
+    
+    <td class="description-column ">
+      Builder
+    </td>
+  
+    
+    <td class="name-column ">
+      Bob
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      yes
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2122?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2122-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2122?_method=get&amp;associations=users" class="nested action" id="roles-nested-2122-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2122-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2122?_method=get" class="edit action" id="roles-edit-2122-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2122?_method=delete" class="destroy action" id="roles-destroy-2122-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2122?_method=get" class="show action" id="roles-show-2122-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2122-row a.action'),
+  $('roles-list-2122-row'),
+  $('roles-record-2122-loading-indicator'),
+  {refresh_url: '/roles/row/2122?_method=get'}
+);
+</script>
+
+<tr class="record even-record" id="roles-list-2123-row">
+  
+    
+    <td class="description-column ">
+      zzz
+    </td>
+  
+    
+    <td class="name-column ">
+      zz
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      no
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2123?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2123-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2123?_method=get&amp;associations=users" class="nested action" id="roles-nested-2123-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2123-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2123?_method=get" class="edit action" id="roles-edit-2123-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2123?_method=delete" class="destroy action" id="roles-destroy-2123-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2123?_method=get" class="show action" id="roles-show-2123-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2123-row a.action'),
+  $('roles-list-2123-row'),
+  $('roles-record-2123-loading-indicator'),
+  {refresh_url: '/roles/row/2123?_method=get'}
+);
+</script>
+
+<tr class="record " id="roles-list-2124-row">
+  
+    
+    <td class="description-column ">
+      z
+    </td>
+  
+    
+    <td class="name-column ">
+      z
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      yes
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2124?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2124-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2124?_method=get&amp;associations=users" class="nested action" id="roles-nested-2124-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2124-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2124?_method=get" class="edit action" id="roles-edit-2124-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2124?_method=delete" class="destroy action" id="roles-destroy-2124-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2124?_method=get" class="show action" id="roles-show-2124-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2124-row a.action'),
+  $('roles-list-2124-row'),
+  $('roles-record-2124-loading-indicator'),
+  {refresh_url: '/roles/row/2124?_method=get'}
+);
+</script>
+
+<tr class="record even-record" id="roles-list-2125-row">
+  
+    
+    <td class="description-column ">
+      asdds
+    </td>
+  
+    
+    <td class="name-column ">
+      asddsa
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      yes
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2125?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2125-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2125?_method=get&amp;associations=users" class="nested action" id="roles-nested-2125-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2125-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2125?_method=get" class="edit action" id="roles-edit-2125-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2125?_method=delete" class="destroy action" id="roles-destroy-2125-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2125?_method=get" class="show action" id="roles-show-2125-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2125-row a.action'),
+  $('roles-list-2125-row'),
+  $('roles-record-2125-loading-indicator'),
+  {refresh_url: '/roles/row/2125?_method=get'}
+);
+</script>
+
+<tr class="record " id="roles-list-2126-row">
+  
+    
+    <td class="description-column ">
+      sdafdsa
+    </td>
+  
+    
+    <td class="name-column ">
+      asdsasdsda
+    </td>
+  
+    
+    <td class="omnipotent-column ">
+      yes
+    </td>
+  
+    
+    <td class="system_role-column ">
+      true
+    </td>
+  
+    
+    <td class="permissions-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2126?_method=get&amp;associations=permissions" class="nested action" id="roles-nested-2126-link" position="after">-</a>
+    </td>
+  
+    
+    <td class="users-column  empty">
+      <a href="http://demo.activescaffold.com/roles/nested/2126?_method=get&amp;associations=users" class="nested action" id="roles-nested-2126-link" position="after">-</a>
+    </td>
+      <td class="actions">
+    <table cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td class="indicator-container">
+      <img alt="loading indicator" class="loading-indicator" id="roles-record-2126-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+    </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/edit/2126?_method=get" class="edit action" id="roles-edit-2126-link" position="replace">Edit</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/destroy/2126?_method=delete" class="destroy action" id="roles-destroy-2126-link" onclick="return confirm('Are you sure?');">Delete</a>
+      </td>
+    
+      
+      <td>
+        <a href="http://demo.activescaffold.com/roles/show/2126?_method=get" class="show action" id="roles-show-2126-link" position="replace">Show</a>
+      </td>
+    
+  </tr>
+</tbody></table>
+  </td>
+  </tr>
+
+<script type="text/javascript">
+actions = new ActiveScaffold.Actions.Record(
+  $$('#roles-list-2126-row a.action'),
+  $('roles-list-2126-row'),
+  $('roles-record-2126-loading-indicator'),
+  {refresh_url: '/roles/row/2126?_method=get'}
+);
+</script>
+
+            </tbody>
+</table>
+<div style="padding-bottom: 0pt;" class="active-scaffold-footer">
+  <div class="active-scaffold-found"><span class="active-scaffold-records">443</span> Found</div>
+  <div class="active-scaffold-pagination">
+              
+  <img alt="loading indicator" class="loading-indicator" id="roles-pagination-loading-indicator" src="activescaffold_demo_files/indicator.gif" style="visibility: hidden;">
+  
+  1 <a href="http://demo.activescaffold.com/roles/update_table?page=2" onclick="new Ajax.Updater('roles-content', '/roles/update_table?page=2', {asynchronous:true, evalScripts:true, method:'get', onComplete:function(request){$('roles-pagination-loading-indicator').style.visibility = 'hidden';}, onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}}); $('roles-pagination-loading-indicator').style.visibility = 'visible';; return false;">2</a> <a href="http://demo.activescaffold.com/roles/update_table?page=3" onclick="new Ajax.Updater('roles-content', '/roles/update_table?page=3', {asynchronous:true, evalScripts:true, method:'get', onComplete:function(request){$('roles-pagination-loading-indicator').style.visibility = 'hidden';}, onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}}); $('roles-pagination-loading-indicator').style.visibility = 'visible';; return false;">3</a> .. <a href="http://demo.activescaffold.com/roles/update_table?page=30" onclick="new Ajax.Updater('roles-content', '/roles/update_table?page=30', {asynchronous:true, evalScripts:true, method:'get', onComplete:function(request){$('roles-pagination-loading-indicator').style.visibility = 'hidden';}, onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}}); $('roles-pagination-loading-indicator').style.visibility = 'visible';; return false;">30</a>
+  <a class="next" href="http://demo.activescaffold.com/roles/update_table?page=2" onclick="addActiveScaffoldPageToHistory('/roles/update_table?page=2', 'roles');; new Ajax.Updater('roles-content', '/roles/update_table?page=2', {asynchronous:true, evalScripts:true, method:'get', onComplete:function(request){$('roles-pagination-loading-indicator').style.visibility = 'hidden';}, onFailure:function(request){ActiveScaffold.report_500_response('roles-active-scaffold')}}); $('roles-pagination-loading-indicator').style.visibility = 'visible';; return false;">Next</a>
+
+  </div>
+  <br clear="both">
+<div style="background-color: rgb(255, 255, 255);"><span style="border-style: solid; border-color: rgb(127, 173, 219); border-width: 0px 1px; overflow: hidden; background-color: rgb(0, 92, 184); display: block; height: 1px; font-size: 1px; margin-left: 0px; margin-right: 0px;"></span><span style="border-style: solid; border-color: rgb(127, 173, 219); border-width: 0px 1px; overflow: hidden; background-color: rgb(0, 92, 184); display: block; height: 1px; font-size: 1px; margin-left: 1px; margin-right: 1px;"></span></div></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+Rico.Corner.round($$('#roles-active-scaffold div.active-scaffold-header').first(), {color: 'fromElement', bgColor: 'fromParent', corners: 'top', compact: true});
+Rico.Corner.round($$('#roles-active-scaffold div.active-scaffold-footer').first(), {color: 'fromElement', bgColor: 'fromParent', corners: 'bottom', compact: true});
+
+new ActiveScaffold.Actions.Table($$('#roles-active-scaffold div.active-scaffold-header a.action'), $('roles-search-container'), $('roles-table-loading-indicator'))
+ActiveScaffold.server_error_response = '<p class="error-message message">'
+  + "Request Failed (code 500, Internal Error)"
+  + '<a href="#" onclick="Element.remove(this.parentNode); return false;">'
+  + "Close"
+  + '</a>'
+  + '</p>';
+</script>
+
+    <div id="content">
+      <h3>Source</h3>
+      <h4>/controllers/roles_controller.rb </h4>
+<pre><code class="ruby"><span class="keywords">class</span> <span class="constants">RolesController</span> &lt; <span class="constants">DemoController</span>
+
+  active_scaffold <span class="symbol">:roles</span> <span class="keywords">do</span> |config|
+    config<span class="method">.theme</span> = <span class="symbol">:blue</span>
+    config<span class="method">.actions</span><span class="method">.exclude</span> <span class="symbol">:search</span>
+    config<span class="method">.actions</span> &lt;&lt; <span class="symbol">:field_search</span>
+  <span class="keywords">end</span>
+
+<span class="keywords">end</span></code></pre>
+<h4>/models/role.rb </h4>
+<pre><code class="ruby"><span class="keywords">class</span> <span class="constants">Role</span> &lt; <span class="constants">ActiveRecord</span>:<span class="symbol">:Base</span>
+  has_and_belongs_to_many <span class="symbol">:users</span>
+  has_and_belongs_to_many <span class="symbol">:permissions</span>
+
+  validates_presence_of <span class="symbol">:name</span>
+<span class="keywords">end</span></code></pre>
+<h4>/helpers/roles_helper.rb </h4>
+<pre><code class="ruby"><span class="keywords">module</span> <span class="constants">RolesHelper</span>
+  include <span class="constants">DemoHelper</span>
+
+  <span class="keywords">def</span> omnipotent_column<span class="brackets">(</span>record<span class="brackets">)</span>
+    record<span class="method">.omnipotent?</span> ? <span class="string">'yes'</span> : <span class="string">'no'</span>
+  <span class="keywords">end</span>
+
+  <span class="keywords">def</span> omnipotent_form_column<span class="brackets">(</span>record, name<span class="brackets">)</span>
+    check_box <span class="symbol">:record</span>, <span class="symbol">:omnipotent</span>, <span class="symbol">:name</span> =&gt; name
+  <span class="keywords">end</span>
+<span class="keywords">end</span></code></pre>
+
+    </div>
+  </div>
+
+  
+    <script src="activescaffold_demo_files/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+    _uacct = "UA-79951-10";
+    urchinTracker();
+    </script>
+  
+
+</body></html>

@@ -1,8 +1,9 @@
-%td= game_source.game.game_name
-%td= game_source.game.black_name
-%td= game_source.game.white_name
-%td= game_source.game.moves
-%td= game_source.game.result
-%td= game_source.game.created_at
-%td
-  %a{:href => game_source_url(game_source, :format => :sgf)}= t('form.view_button')
+%tr{:class => "record " + (recent_game_counter%2 == 0 ? "even-record":"")}
+  %td= game_source.game.name
+  %td= game_source.game.black_name
+  %td= game_source.game.white_name
+  %td= game_source.game.moves
+  %td= game_source.game.result
+  %td= game_source.game.created_at
+  %td.actions
+    %a{:href => game_source_url(game_source, :format => :sgf)}= t('form.view_button')
