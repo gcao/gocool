@@ -11,3 +11,6 @@
         %th#actions_column &nbsp;
     %tbody.records
       = render :partial => 'recent_game', :collection => @recent_game_sources, :as => :game_source
+      
+  = will_paginate @recent_game_sources
+
