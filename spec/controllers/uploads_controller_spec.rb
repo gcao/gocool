@@ -120,7 +120,6 @@ describe UploadsController do
 
       post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
-      response.should be_success
       response.should redirect_to(game_source_url(u.game_source.id))
     end
   end
