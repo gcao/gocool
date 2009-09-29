@@ -1,0 +1,75 @@
+.jqueryslidemenu
+  font: bold 12px Verdana
+  background: #414141
+  width: 100%
+
+  ul
+    margin: 0
+    padding: 0
+    list-style-type: none
+
+    li
+      position: relative
+      display: inline
+      float: left
+
+      a
+        display: block
+        background: #414141
+        color: white
+        padding: 8px 10px
+        border-right: 1px solid #778
+        color: #2d2b2b
+        text-decoration: none
+
+
+* html .jqueryslidemenu ul li a
+  display: inline-block
+
+
+.jqueryslidemenu ul li
+  a
+    &:link, &:visited
+      color: white
+
+    &:hover
+      background: black
+      color: white
+
+  ul
+    position: absolute
+    left: 0
+    display: block
+    visibility: hidden
+
+    li
+      display: list-item
+      float: none
+
+      ul
+        top: 0
+
+      a
+        font: normal 13px Verdana
+        width: 160px
+        padding: 5px
+        margin: 0
+        border-top-width: 0
+        border-bottom: 1px solid gray
+
+
+.jqueryslidemenuz ul li ul li a:hover
+  background: #eff9ff
+  color: black
+
+
+.downarrowclass
+  position: absolute
+  top: 12px
+  right: 7px
+
+
+.rightarrowclass
+  position: absolute
+  top: 6px
+  right: 5px

@@ -910,6 +910,81 @@ body.three-col #content {
   * html body.three-col #content {
     overflow-x: hidden; }
 
+/* line 1, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+.jqueryslidemenu {
+  font: bold 12px Verdana;
+  background: #414141;
+  width: 100%; }
+  /* line 6, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+  .jqueryslidemenu ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+    /* line 11, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+    .jqueryslidemenu ul li {
+      position: relative;
+      display: inline;
+      float: left; }
+      /* line 16, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+      .jqueryslidemenu ul li a {
+        display: block;
+        background: #414141;
+        color: white;
+        padding: 8px 10px;
+        border-right: 1px solid #778;
+        color: #2d2b2b;
+        text-decoration: none; }
+
+/* line 26, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+* html .jqueryslidemenu ul li a {
+  display: inline-block; }
+
+/* line 32, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+.jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited {
+  color: white; }
+/* line 35, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+.jqueryslidemenu ul li a:hover {
+  background: black;
+  color: white; }
+/* line 39, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+.jqueryslidemenu ul li ul {
+  position: absolute;
+  left: 0;
+  display: block;
+  visibility: hidden; }
+  /* line 45, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+  .jqueryslidemenu ul li ul li {
+    display: list-item;
+    float: none; }
+    /* line 49, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+    .jqueryslidemenu ul li ul li ul {
+      top: 0; }
+    /* line 52, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+    .jqueryslidemenu ul li ul li a {
+      font: normal 13px Verdana;
+      width: 160px;
+      padding: 5px;
+      margin: 0;
+      border-top-width: 0;
+      border-bottom: 1px solid gray; }
+
+/* line 61, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+.jqueryslidemenuz ul li ul li a:hover {
+  background: #eff9ff;
+  color: black; }
+
+/* line 66, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+.downarrowclass {
+  position: absolute;
+  top: 12px;
+  right: 7px; }
+
+/* line 72, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+.rightarrowclass {
+  position: absolute;
+  top: 6px;
+  right: 5px; }
+
 /* line 1, ../../../app/stylesheets/partials/_app.sass */
 span.note {
   font-style: italic;

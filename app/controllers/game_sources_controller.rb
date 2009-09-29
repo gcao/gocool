@@ -1,6 +1,4 @@
 class GameSourcesController < ApplicationController
-  layout "simple"
-  
   def show
     @game_source = GameSource.find(params[:id])
     

@@ -1,6 +1,4 @@
 class UploadsController < ApplicationController
-  layout "simple"
-
   def index
   end
   

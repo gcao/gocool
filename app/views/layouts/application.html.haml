@@ -1,22 +1,25 @@
 !!! transitional
 %html
   %head
-    %meta{"http-equiv" => "content-type", :content => "text/html;charset=UTF-8"}
-    %title= "Games Database (Weiqi/Daoqi)"
+    %meta(http-equiv="content-type" content="text/html;charset=UTF-8")
+    %title= @title
+
+    %link(href="/stylesheets/active_scaffold/default/stylesheet.css" media="screen" rel="stylesheet" type="text/css")
+    /[if IE]
+      %link(href="/stylesheets/active_scaffold/default/stylesheet-ie.css" media="screen" rel="stylesheet" type="text/css")
+    
     = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-    = render "layouts/external_javascripts"
-    = javascript_include_tag ["jrails", "application"]
-    = active_scaffold_includes
-    = render "layouts/menu_head"
-    = calendar_date_select_includes "silver"
-  %body
-    .container.showgrid
+
+    = yield :head
+  %body.bp.three-col
+    #container
       = render "layouts/menu_body"
-      %br/
-      - if flash[:message]
-        #flashContainer= flash[:message]
+      %hr.space
       = yield
-    
+      
+      %script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript")
+      = render "layouts/menu_js"
+      = yield :footer

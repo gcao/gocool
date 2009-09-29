@@ -1,8 +1,6 @@
 class PastiesController < ApplicationController
   include ParseErrorHelper
 
-  layout "simple"
-  
   def create
     email = process_email(params[:pastie] && params[:pastie][:email])
     data = params[:pastie] && params[:pastie][:data]
