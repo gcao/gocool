@@ -49,15 +49,28 @@ class UploadsController < ApplicationController
   end
   
   def upload_single email, file
-    @upload = Upload.new(:upload => file)
+    @upload = Upload.new(:email => email, :upload => file)
     if @upload.valid?
       @upload.save!
-      save_game(email, @upload)
+      
+      process_duplicate_upload(@upload) and return
+      
+      @upload.save_game
       flash[:success] = t('upload.success')
       render :show
     else
       flash[:error] = t('upload.file_required')
       render :index
+    end
+  end
+  
+  def process_duplicate_upload upload
+    upload.update_hash_code
+    found_upload = Upload.with_hash(upload.hash_code).first
+    if found_upload and found_upload.game_source
+      upload.delete
+      flash[:notice] = t('upload.game_found')
+      redirect_to :controller => 'game_sources', :action => 'show', :id => found_upload.game_source.id
     end
   end
   
@@ -83,18 +96,5 @@ class UploadsController < ApplicationController
     else
       super
     end
-  end
-  
-  def save_game email, upload
-    game = Game.new
-    game.load_parsed_game(upload.parse)
-    game.save!
-    
-    game_source = GameSource.new
-    game_source.game = game
-    game_source.source_type = GameSource::UPLOAD_TYPE
-    game_source.source = email
-    game_source.upload_id = upload.id
-    game_source.save!
   end
 end

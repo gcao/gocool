@@ -1,4 +1,5 @@
-require 'tempfile'
+require 'digest/md5'
+
 module Gocool
   module Md5
     def self.file_to_md5 filename
@@ -6,10 +7,7 @@ module Gocool
     end
     
     def self.string_to_md5 input
-      f = Tempfile.new('sgf')
-      f.print input
-      f.close
-      file_to_md5 f.path
+      Digest::MD5.hexdigest(input.strip.gsub(/\s+/, ""))
     end
   end
 end

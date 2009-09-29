@@ -4,6 +4,7 @@
 en:
   shared:
     title: Go Library
+    download_sgf: Download SGF
   menu:
     home: Home
     uploads: Upload Game

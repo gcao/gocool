@@ -22,7 +22,7 @@ describe UploadsController do
       
       response.should be_success
       upload = assigns(:upload)
-      upload.should_not be_blank
+      upload.email.should == "test@test.com"
       upload.upload.url.should =~ %r(^/system/uploads/1/original/good.sgf)
     end
     
@@ -30,7 +30,9 @@ describe UploadsController do
       post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
-      assigns(:upload).game_source.source.should == 'test@test.com'
+      upload = assigns(:upload)
+      upload.email.should == "test@test.com"
+      upload.game_source.source.should == 'test@test.com'
     end
     
     it "should remember formatted email in session" do
@@ -46,7 +48,6 @@ describe UploadsController do
 
       response.should be_success
       upload = assigns(:upload)
-      upload.should_not be_blank
       upload.upload.url.should =~ %r(^/system/uploads/1/original/good.sgf)
     end
     
@@ -110,6 +111,17 @@ describe UploadsController do
       
       upload = assigns(:upload)
       upload.game.name.should == "遇仙谱"
+    end
+    
+    it "should show found game on uploading duplicate game" do
+      u = Upload.create!(:upload => File.new(File.expand_path(File.dirname(__FILE__) + "/../fixtures/sgf/good.sgf")))
+      u.update_hash_code
+      u.save_game
+
+      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
+      
+      response.should be_success
+      response.should redirect_to(game_source_url(u.game_source.id))
     end
   end
 

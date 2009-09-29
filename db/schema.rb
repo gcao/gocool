@@ -22,10 +22,14 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
     t.boolean  "is_commented"
     t.string   "commented_by"
     t.text     "description"
+    t.string   "hash_code"
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "game_sources", ["game_id"], :name => "index_game_sources_on_game_id"
+  add_index "game_sources", ["hash_code"], :name => "index_game_sources_on_hash_code"
 
   create_table "games", :force => true do |t|
     t.integer  "game_type"
@@ -167,9 +171,13 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
     t.datetime "upload_updated_at"
     t.string   "status"
     t.text     "status_detail"
+    t.string   "email"
+    t.string   "hash_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "uploads", ["hash_code"], :name => "index_uploads_on_hash_code"
 
   create_table "users", :force => true do |t|
     t.string   "username"
