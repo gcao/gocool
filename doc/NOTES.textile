@@ -1,3 +1,10 @@
+h2. 2009-09-30
+
+h3. Pagination
+
+* Use will_paginate
+* See this page for pagination style: file:///Users/gcao/.gem/ruby/1.8/gems/mislav-will_paginate-2.3.11/examples/index.html
+
 h2. 2009-09-23
 
 h3. Patch webrat to get upload file work

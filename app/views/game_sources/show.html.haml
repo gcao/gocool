@@ -5,4 +5,7 @@
 
 = show_flash 'span-24'
 .span-24
-  %a.jsgv{:href => game_source_url(@game_source, :format => :sgf)}= t('shared.download_sgf')
+  %a(href="javascript:history.back();")= t('link.back')
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  %a.jsgv{:href => game_source_url(@game_source, :format => :sgf)}= t('link.download_sgf')
+  

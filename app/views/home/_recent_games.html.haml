@@ -12,5 +12,5 @@
     %tbody.records
       = render :partial => 'recent_game', :collection => @recent_game_sources, :as => :game_source
       
-  = will_paginate @recent_game_sources
+  .digg_pagination= will_paginate @recent_game_sources
 

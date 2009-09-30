@@ -4,7 +4,6 @@
 en:
   shared:
     title: Go Library
-    download_sgf: Download SGF
   menu:
     home: Home
     uploads: Upload Game
@@ -12,6 +11,10 @@ en:
     players: Players
     games: Games
     tournaments: Tournaments
+  link:
+    home: Home
+    back: Go Back
+    download_sgf: Download SGF
   form:
     marked_required: Marked are required fields
     click_to_change: (Click to change)
@@ -26,7 +29,6 @@ en:
     welcome: Welcome to Gocool Game Library
     description: "Here you can upload, review or share games with friends. Please enjoy!"
     recent_games:
-    recent_games:
       label: Recently added games
       game_name: Game Name
       black_player: Black Player
@@ -37,6 +39,7 @@ en:
   upload:
     file_label: "File (*.sgf)"
     file_required: No file is chosen.
+    is_binary_file: "The uploaded file is a binary file, can not be parsed."
     submit_button: Upload
     success: Upload is successful.
     game_found: Game has been added before.
