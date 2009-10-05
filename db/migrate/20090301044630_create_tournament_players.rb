@@ -3,7 +3,7 @@ class CreateTournamentPlayers < ActiveRecord::Migration
     create_table :tournament_players do |t|
       t.integer :tournament_id, :player_id
       t.boolean :is_seed_player
-      t.boolean :passed
+      t.boolean :is_winner
       t.text :description
       t.string :updated_by
       t.timestamps

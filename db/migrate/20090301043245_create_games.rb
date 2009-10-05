@@ -13,7 +13,6 @@ class CreateGames < ActiveRecord::Migration
       t.string :komi_raw
       t.string :result
       t.integer :winner
-      t.string :winner_raw
       t.integer :moves
       t.float :win_points
       t.string :name, :event, :place, :source, :program
