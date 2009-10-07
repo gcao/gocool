@@ -6,7 +6,7 @@ class Game < ActiveRecord::Base
     self.black_name = sgf_game.black_player
     self.black_rank = sgf_game.black_rank
     self.white_name = sgf_game.white_player
-    self.white_rank = sgf_game.whit_rank
+    self.white_rank = sgf_game.white_rank
     self.played_at_raw = sgf_game.played_on
     self.rule_raw = sgf_game.rule
     self.komi_raw = sgf_game.komi
@@ -16,7 +16,7 @@ class Game < ActiveRecord::Base
     self.place = sgf_game.place
     self.event = sgf_game.event
     
-    if self.place =~ /www.kgs.com/i
+    if self.place =~ /www\.gokgs\.com/i
       self.is_online_game = true
       self.gaming_platform = GamingPlatform.kgs
       self.black_player_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name).id

@@ -2,7 +2,7 @@ class CreateGamingPlatforms < ActiveRecord::Migration
   def self.up
     create_table :gaming_platforms do |t|
       t.integer    :nation_region_id
-      t.string     :name
+      t.string     :name, :null => false, :unique => true
       t.string     :url
       t.boolean    :is_turn_based
       t.text       :description

@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
     t.string   "komi_raw"
     t.string   "result"
     t.integer  "winner"
-    t.string   "winner_raw"
     t.integer  "moves"
     t.float    "win_points"
     t.string   "name"
@@ -71,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
 
   create_table "gaming_platforms", :force => true do |t|
     t.integer  "nation_region_id"
-    t.string   "name"
+    t.string   "name",             :null => false
     t.string   "url"
     t.boolean  "is_turn_based"
     t.text     "description"
@@ -89,7 +88,6 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   end
 
   create_table "online_players", :force => true do |t|
-    t.integer  "player_id"
     t.integer  "gaming_platform_id"
     t.string   "username"
     t.date     "registered_at"
@@ -98,6 +96,9 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "online_players", ["gaming_platform_id"], :name => "index_online_players_on_gaming_platform_id"
+  add_index "online_players", ["username"], :name => "index_online_players_on_username"
 
   create_table "players", :force => true do |t|
     t.integer  "nation_region_id"
@@ -139,7 +140,7 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
     t.integer  "tournament_id"
     t.integer  "player_id"
     t.boolean  "is_seed_player"
-    t.boolean  "passed"
+    t.boolean  "is_winner"
     t.text     "description"
     t.string   "updated_by"
     t.datetime "created_at"
