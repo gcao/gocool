@@ -14,6 +14,7 @@ class Game < ActiveRecord::Base
     self.komi_raw = sgf_game.komi
     self.time_rule = sgf_game.time_rule
     self.result = sgf_game.result
+    self.moves = sgf_game.moves
     self.program = sgf_game.program
     self.place = sgf_game.place
     self.event = sgf_game.event
