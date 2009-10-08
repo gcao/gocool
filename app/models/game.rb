@@ -21,8 +21,8 @@ class Game < ActiveRecord::Base
     if self.place =~ /www\.gokgs\.com/i
       self.is_online_game = true
       self.gaming_platform = GamingPlatform.kgs
-      self.black_player_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name).id
-      self.white_player_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.white_name).id
+      self.black_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name).id
+      self.white_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.white_name).id
     end
   end
 end
