@@ -1,4 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env ruby
 # curl -F upload[email]=admin@gocool.com -F upload[upload]=@spec/fixtures/sgf/kgs-19-2009-08/2009-08-01-1.sgf http://localhost:3000/uploads
 
-curl -F upload[email]=admin@gocool.com -F upload[upload]=@$0 http://localhost:3000/uploads
+if ARGV.size == 0
+  puts <<-USAGE
+Usage: 
+  upload_sgf <SGF_FILE>
+  USAGE
+  exit 1
+end
+
+puts %x(curl -F upload[email]=admin@gocool.com -F upload[upload]=@#{ARGV[0]} http://localhost:3000/uploads)

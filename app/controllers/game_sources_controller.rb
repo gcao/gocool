@@ -15,7 +15,8 @@ class GameSourcesController < ApplicationController
     when GameSource::PASTIE_TYPE
       render :text => game_source.data
     when GameSource::UPLOAD_TYPE
-      render :file => game_source.upload.upload.path
+      response.headers['X-Sendfile'] = game_source.upload.upload.path
+      render :nothing => true
     else
       raise 'TODO'
     end
