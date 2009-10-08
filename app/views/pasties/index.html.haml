@@ -30,20 +30,23 @@
       %span
         = mark_required
         = t('form.marked_required')
-      
-= javascript_include_tag "/validanguage/validanguage_uncompressed.js"
-:javascript
-  validanguage.el.pastie_email = {
-    required: true,
-    errorMsg: "#{t('email.required')}",
-    validations: [
-      {
-        name: "validanguage.validateEmail(text)",
-        errorMsg: "#{t('email.invalid')}"
-      }
-    ]
-  };
-  validanguage.el.pastie_data = {
-    required: true,
-    errorMsg: "#{t('pastie.data_required')}"
-  };
+
+- content_for :footer do      
+  = javascript_include_tag "/validanguage/validanguage_uncompressed.js"
+  :javascript
+    validanguage.el.pastie_email = {
+      validations: [
+        {
+          name: validanguage.validateRequired,
+          errorMsg: "#{t('email.required')}",
+        },
+        {
+          name: validanguage.validateEmail,
+          errorMsg: "#{t('email.invalid')}"
+        }
+      ]
+    };
+    validanguage.el.pastie_data = {
+      required: true,
+      errorMsg: "#{t('pastie.data_required')}"
+    };

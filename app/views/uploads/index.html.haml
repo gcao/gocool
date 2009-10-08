@@ -36,20 +36,23 @@
         %span.required_field *
         = t('form.marked_required')
       
-= javascript_include_tag "upload"
-= javascript_include_tag "/validanguage/validanguage_uncompressed.js"
-:javascript
-  validanguage.el.upload_email = {
-    required: true,
-    errorMsg: "#{t('email.required')}",
-    validations: [
-      {
-        name: "validanguage.validateEmail(text)",
-        errorMsg: "#{t('email.invalid')}"
-      }
-    ]
-  };
-  validanguage.el.upload_upload = {
-    required: true,
-    errorMsg: "#{t('upload.file_required')}"
-  };
+- content_for :footer do
+  = javascript_include_tag "upload"
+  = javascript_include_tag "validanguage_uncompressed"
+  :javascript
+    validanguage.el.upload_email = {
+      validations: [
+        {
+          name: validanguage.validateRequired,
+          errorMsg: "#{t('email.required')}",
+        },
+        {
+          name: validanguage.validateEmail,
+          errorMsg: "#{t('email.invalid')}"
+        }
+      ]
+    };
+    validanguage.el.upload_upload = {
+      required: true,
+      errorMsg: "#{t('upload.file_required')}"
+    };

@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   end
 
   create_table "online_players", :force => true do |t|
-    t.integer  "gaming_platform_id"
-    t.string   "username"
+    t.integer  "gaming_platform_id", :null => false
+    t.string   "username",           :null => false
     t.date     "registered_at"
     t.text     "description"
     t.string   "updated_by"
@@ -97,8 +97,7 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
     t.datetime "updated_at"
   end
 
-  add_index "online_players", ["gaming_platform_id"], :name => "index_online_players_on_gaming_platform_id"
-  add_index "online_players", ["username"], :name => "index_online_players_on_username"
+  add_index "online_players", ["gaming_platform_id", "username"], :name => "index_online_players_on_gaming_platform_id_and_username"
 
   create_table "players", :force => true do |t|
     t.integer  "nation_region_id"

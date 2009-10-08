@@ -1,4 +1,6 @@
 class Game < ActiveRecord::Base
+  belongs_to :gaming_platform
+  
   def load_parsed_game sgf_game
     self.board_size = sgf_game.board_size
     self.handicap = sgf_game.handicap
