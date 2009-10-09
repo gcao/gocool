@@ -1,0 +1,1 @@
+tail -0f log/development.log /var/log/apache2/access_log /var/log/apache2/error_log
