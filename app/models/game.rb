@@ -1,5 +1,17 @@
 class Game < ActiveRecord::Base
   belongs_to :gaming_platform
+
+  def black_name_with_rank
+    s = self.black_name
+    s << "(" << self.black_rank << ")" unless self.black_rank.blank?
+    s
+  end
+
+  def white_name_with_rank
+    s = self.white_name
+    s << "(" << self.white_rank << ")" unless self.white_rank.blank?
+    s
+  end
   
   def load_parsed_game sgf_game
     self.board_size = sgf_game.board_size

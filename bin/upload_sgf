@@ -9,4 +9,4 @@ Usage:
   exit 1
 end
 
-puts %x(curl -F upload[email]=admin@gocool.com -F upload[upload]=@#{ARGV[0]} http://localhost:3000/uploads)
+puts %x(curl -F upload[email]=admin@gocool.com -F upload[upload]=@#{ARGV[0]} http://localhost/uploads)

@@ -35,6 +35,8 @@ en:
       white_player: White Player
       moves: Moves
       result: Result
+      play_time: Played On
+      place: Place
       create_time: Added At
   upload:
     file_label: "File (*.sgf)"
