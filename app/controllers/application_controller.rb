@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
   def set_title
     @title = t('shared.title')
   end
+  
+  def send_file file
+    if ENV["USE_XSENDFILE"] == "true"
+      response.headers['X-Sendfile'] = file
+      render :nothing => true
+    else
+      render :file => file
+    end
+  end
 end

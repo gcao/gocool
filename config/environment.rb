@@ -50,5 +50,6 @@ Rails::Initializer.run do |config|
   config.load_paths += %W(#{RAILS_ROOT}/app/misc)
 end
 
-ENV['ICONV_PATH'] = "/opt/local/bin/iconv"
+ENV['ICONV_PATH']    = "/opt/local/bin/iconv"
 ENV['ROWS_PER_PAGE'] = "15"
+ENV["USE_XSENDFILE"] = "false"
