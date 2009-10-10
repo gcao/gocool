@@ -1,7 +1,7 @@
 %tr{:class => "record " + (recent_game_counter%2 == 0 ? "even-record":"")}
   %td= game_source.game.name
-  %td= game_source.game.black_name_with_rank
-  %td= game_source.game.white_name_with_rank
+  = black_player_html(game_source.game)
+  = white_player_html(game_source.game)
   %td= game_source.game.moves
   %td= game_source.game.result
   %td= game_source.game.played_at_raw

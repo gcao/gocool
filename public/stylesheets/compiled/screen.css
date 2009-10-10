@@ -1142,6 +1142,10 @@ span.note {
   position: relative;
   float: right; }
 
+/* line 25, ../../../app/stylesheets/partials/_app.sass */
+table#recent_games_table td.winner {
+  background: #bfb; }
+
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }

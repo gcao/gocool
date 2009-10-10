@@ -1,5 +1,8 @@
 class Game < ActiveRecord::Base
   belongs_to :gaming_platform
+  
+  WINNER_BLACK = 1
+  WINNER_WHITE = 2
 
   def black_name_with_rank
     s = self.black_name
@@ -36,6 +39,12 @@ class Game < ActiveRecord::Base
       self.gaming_platform = GamingPlatform.kgs
       self.black_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name).id
       self.white_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.white_name).id
+    end
+    
+    if self.result =~ /B+/i
+      self.winner = WINNER_BLACK
+    elsif self.result =~ /W+/i
+      self.winner = WINNER_WHITE
     end
   end
 end
