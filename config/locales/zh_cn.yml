@@ -12,6 +12,9 @@ zh_cn:
     home: 首页
     back: 返回
     download_sgf: 下载SGF文件
+    pagination:
+      prev: "&#171; 前一页"
+      next: "后一页 &#187;"
   form:
     marked_required: 标记的必须填写
     click_to_change: (点击后即可修改内容)

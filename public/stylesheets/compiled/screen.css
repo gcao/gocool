@@ -1132,6 +1132,16 @@ span.note {
 .sgf_rest {
   color: #888888; }
 
+/* line 17, ../../../app/stylesheets/partials/_app.sass */
+#recent_games_label {
+  margin-bottom: 0px;
+  height: 15px; }
+
+/* line 21, ../../../app/stylesheets/partials/_app.sass */
+#recent_games_pagination .pagination {
+  position: relative;
+  float: right; }
+
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }

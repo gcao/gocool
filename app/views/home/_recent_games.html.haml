@@ -1,4 +1,6 @@
 #recent_games_container.active-scaffold.blue-theme
+  #recent_games_pagination.digg_pagination= will_paginate @recent_game_sources, :prev_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+  
   %table#recent_games_table
     %thead
       %tr#header_row
@@ -14,5 +16,4 @@
     %tbody.records
       = render :partial => 'recent_game', :collection => @recent_game_sources, :as => :game_source
       
-  .digg_pagination= will_paginate @recent_game_sources
 

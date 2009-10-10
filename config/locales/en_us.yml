@@ -15,6 +15,9 @@ en_us:
     home: Home
     back: Go Back
     download_sgf: Download SGF
+    pagination:
+      prev: "&#171; Previous"
+      next: "Next &#187;"
   form:
     marked_required: Marked are required fields
     click_to_change: (Click to change)
