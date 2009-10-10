@@ -1,6 +1,5 @@
 - if RAILS_ENV == 'development'
   = stylesheet_link_tag 'http://localhost/jsgameviewer/view/default.css', :media => 'screen, projection'
-  %script(src = "http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type = "text/javascript")
   %script(src = "http://localhost/jsgameviewer/js/en_us.js" type = "text/javascript")
   %script(src = "http://localhost/jsgameviewer/js/zh_cn.js" type = "text/javascript")
   %script(src = "http://localhost/jsgameviewer/js/thickbox.js" type = "text/javascript")
@@ -12,5 +11,11 @@
   %script(src = "http://localhost/jsgameviewer/js/loader.js" type = "text/javascript")
   %script(src = "http://localhost/jsgameviewer/js/site_handler.js" type = "text/javascript")
 - else
+  %script(src = "http://localhost/jsgameviewer/js/en_us.js" type = "text/javascript")
+  %script(src = "http://localhost/jsgameviewer/js/zh_cn.js" type = "text/javascript")
   %script(src = "http://localhost/jsgameviewer/js/loader.js" type = "text/javascript")
   %script(src = "http://localhost/jsgameviewer/js/site_handler.js" type = "text/javascript")
+
+-if @locale == 'zh_cn'
+  :javascript
+    var jsgvTranslations = jsgv_zh_cn;
