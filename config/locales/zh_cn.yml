@@ -1,0 +1,54 @@
+zh_cn:
+  shared:
+    title: 棋酷网
+  menu:
+    home: 首页
+    uploads: 上传对局
+    pasties: 粘贴SGF
+    players: 棋手
+    games: 棋局
+    tournaments: 比赛
+  link:
+    home: 首页
+    back: 返回
+    download_sgf: 下载SGF文件
+  form:
+    marked_required: 标记的必须填写
+    click_to_change: (点击后即可修改内容)
+    submit_button: 提交
+    reset_button: 清除
+    view_button: 打开
+  email:
+    label: 电子邮件
+    required: 电子邮件必须填写。
+    invalid: 电子邮件格式不正确。
+  homepage:
+    welcome: 欢迎访问棋库网
+    description: "你可以上传、打谱或与棋友分享对局心得。"
+    recent_games:
+      label: 最近增加的棋局
+      game_name: 名称
+      black_player: 黑方
+      white_player: 白方
+      moves: 步数
+      result: 结果
+      play_time: 对局日期
+      place: 对局地点
+      create_time: 加入时间
+  upload:
+    file_label: "文件 (*.sgf)"
+    file_required: 没有选中文件
+    is_binary_file: "上传的文件格式不正确。"
+    submit_button: 上传
+    success: 文件已成功上传。
+    game_found: 棋局已经存在。
+    page_title: 上传棋局
+    page_header: 上传棋局
+    game_not_found: 没有找到棋局。
+  pastie:
+    page_title: 粘贴棋局内容
+    page_header: 粘贴棋局内容
+    data_label: "棋局内容（SGF)"
+    success: 棋局内容已保存到数据库中。
+    data_required: 请将SGF格式的棋局内容拷贝到文本框。
+    data_invalid_parse_error: "SGF格式不正确："

@@ -11,9 +11,14 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   
   before_filter :set_title
+  before_filter :set_locale
   
   def set_title
     @title = t('shared.title')
+  end
+  
+  def set_locale
+    I18n.locale = cookies[:locale] = @locale = params[:locale] || cookies[:locale]
   end
   
   def send_file file
