@@ -1,4 +1,5 @@
 class OnlinePlayer < ActiveRecord::Base
+  belongs_to :player
   belongs_to :gaming_platform
   
   named_scope :on_platform, lambda {|platform| {:conditions => ["gaming_platform_id = ?", platform.id]} }

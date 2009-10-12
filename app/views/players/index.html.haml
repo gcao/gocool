@@ -1,18 +1,20 @@
 %h1= @page_header || t('player.page_header')
 
--remote_form_for :player do |form|
+-form_remote_tag :url => '/players/search_online_players', :html => {:method => 'get'} do
   .form_row.span-18
     %span
       %label(for="player_platform")
         = t('player.platform_label')
     %span
-      =gaming_platforms_select form, 'platform'
+      =gaming_platforms_select 'platform'
     %span
       &nbsp;&nbsp;&nbsp;&nbsp;
       %label(for="player_username")
         = t('player.username_label')
     %span
-      =form.text_field('username')
+      =text_field_tag 'username'
+    %span
+      =submit_tag t('form.submit_button')
       
 #players_result_container
   #players_result

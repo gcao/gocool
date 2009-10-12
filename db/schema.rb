@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   end
 
   create_table "online_players", :force => true do |t|
+    t.integer  "player_id"
     t.integer  "gaming_platform_id", :null => false
     t.string   "username",           :null => false
     t.date     "registered_at"
@@ -98,22 +99,23 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   end
 
   add_index "online_players", ["gaming_platform_id", "username"], :name => "index_online_players_on_gaming_platform_id_and_username"
+  add_index "online_players", ["player_id"], :name => "index_online_players_on_player_id"
 
   create_table "players", :force => true do |t|
     t.integer  "nation_region_id"
     t.string   "username"
-    t.string   "last_name"
-    t.string   "first_name"
-    t.string   "chinese_name"
-    t.string   "pinyin_name"
+    t.string   "last_name_en"
+    t.string   "first_name_en"
+    t.string   "first_name_cn"
+    t.string   "last_name_cn"
+    t.string   "middle_name_en"
     t.string   "other_names"
     t.boolean  "is_amateur"
     t.string   "rank"
     t.string   "sex"
     t.integer  "birth_year"
     t.date     "birthday"
-    t.string   "province_state"
-    t.string   "city"
+    t.string   "birth_place"
     t.string   "website"
     t.string   "email"
     t.text     "description"
