@@ -26,7 +26,7 @@ zh_cn:
     required: 电子邮件必须填写。
     invalid: 电子邮件格式不正确。
   homepage:
-    welcome: 欢迎访问棋库网
+    welcome: 欢迎访问棋酷网
     description: "你可以上传、打谱或与棋友分享对局心得。"
     recent_games:
       label: 最近增加的棋局
