@@ -4,11 +4,11 @@
   %fieldset.span-18
     = show_flash 'span-18'
     .form_row.span-18
-      .span-2
+      .span-3
         %label(for="upload_email")
           %span.required_field *
           = t('email.label')
-      #email_container.span-16.last
+      #email_container.span-15.last
         -if show_masked_email?
           %span#upload_masked_email.email_edit
             = masked_email
@@ -18,11 +18,11 @@
           %input#upload_email(type="text" name="upload[email]" maxlength="60" size="60"){:value => @email}
 
     .form_row.span-18
-      .span-2
+      .span-3
         %label(for="upload_upload")
           %span.required_field *
           = t('upload.file_label')
-      .span-16.last
+      .span-15.last
         #file_fields
           %input#upload_upload(type="file" name="upload[upload]" size="60")
 

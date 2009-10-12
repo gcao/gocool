@@ -58,4 +58,8 @@ en_us:
     success: The pasted game is saved.
     data_required: SGF content is required.
     data_invalid_parse_error: "SGF content can not be parsed: "
-    
+  player:
+    page_title: Players
+    page_header: Players
+    platform_label: "Gaming platform:"
+    username_label: "Username:"

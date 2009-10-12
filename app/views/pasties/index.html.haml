@@ -4,9 +4,9 @@
   %fieldset.span-18
     = show_flash 'span-18'
     .form_row.span-18
-      .span-2
+      .span-3
         = form.label :email, mark_required + t('email.label')
-      #emailContainer.span-16.last
+      #emailContainer.span-15.last
         -if show_masked_email?
           %span#upload_masked_email.email_edit
             = masked_email
@@ -16,9 +16,9 @@
           = form.text_field :email, "maxlength" => 60
 
     .form_row.span-18
-      .span-2
+      .span-3
         = form.label :data, mark_required + t('pastie.data_label')
-      .span-16.last
+      .span-15.last
         = form.text_area :data, :cols => 120, :rows => 20
 
     %hr.space
