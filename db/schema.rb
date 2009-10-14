@@ -104,11 +104,11 @@ ActiveRecord::Schema.define(:version => 20090803144454) do
   create_table "players", :force => true do |t|
     t.integer  "nation_region_id"
     t.string   "username"
-    t.string   "last_name_en"
     t.string   "first_name_en"
+    t.string   "last_name_en"
+    t.string   "full_name_en"
     t.string   "first_name_cn"
     t.string   "last_name_cn"
-    t.string   "middle_name_en"
     t.string   "other_names"
     t.boolean  "is_amateur"
     t.string   "rank"

@@ -63,3 +63,9 @@ en_us:
     page_header: Players
     platform_label: "Gaming platform:"
     username_label: "Username:"
+    online_players:
+      platform: Gaming Platform
+      username: Username
+      games: Games
+      games_won: Won
+      games_lost: Lost
