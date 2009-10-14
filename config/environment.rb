@@ -22,11 +22,11 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "sgf_parser", :lib => 'sgf'
-  config.gem "calendar_date_select"
-  config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com'
-  config.gem 'haml'
-  config.gem 'chriseppstein-compass', :lib => 'compass', :source => 'http://gems.github.com'
-  config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
+  config.gem "calendar_date_select", :version => ">=1.15"
+  config.gem 'thoughtbot-paperclip', :version => ">=2.3.0", :lib => 'paperclip', :source => 'http://gems.github.com'
+  config.gem 'haml', :version => ">=2.2.3"
+  config.gem 'chriseppstein-compass', :version => ">=0.8.11", :lib => 'compass', :source => 'http://gems.github.com'
+  config.gem 'mislav-will_paginate', :version => ">=2.3.11", :lib => 'will_paginate', :source => 'http://gems.github.com'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

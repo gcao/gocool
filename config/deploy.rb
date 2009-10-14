@@ -9,8 +9,10 @@ set :deploy_via, :remote_cache
 set :user, "root"
 set :use_sudo, false
 
+ami_host = `ami_host`.strip
+
 # AMI ami-0d729464: ubuntu 9.04 server base 
-server "ec2-67-202-52-61.compute-1.amazonaws.com", :app, :web, :db, :primary => true
+server ami_host, :app, :web, :db, :primary => true
 
 namespace :deploy do
   task :start do
