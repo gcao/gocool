@@ -1,0 +1,9 @@
+%tr{:class => "record " + (online_player_counter%2 == 0 ? "even-record":"")}
+  %td= online_player.gaming_platform.name
+  %td= online_player.username
+  %td= 0
+  %td= 0
+  %td= 0
+  %td= 0
+  %td.actions
+    %a{:href => online_player_url(online_player)}= t('form.detail_button')

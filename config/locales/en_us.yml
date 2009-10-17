@@ -24,6 +24,7 @@ en_us:
     submit_button: Submit
     reset_button: Clear
     view_button: View
+    detail_button: Detail
   email:
     label: Email
     required: Email is required.
@@ -67,5 +68,6 @@ en_us:
       platform: Gaming Platform
       username: Username
       games: Games
-      games_won: Won
-      games_lost: Lost
+      won: Won
+      lost: Lost
+      last_game_time: Last Game
