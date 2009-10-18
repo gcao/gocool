@@ -1,11 +1,13 @@
-%table#players_result
-  %thead
-    %tr.header
-      %th#platform_column= t('player.online_players.platform')
-      %th#username_column= t('player.online_players.username')
-      %th#games_column= t('player.online_players.games')
-      %th#won_column= t('player.online_players.won')
-      %th#lost_column= t('player.online_players.lost')
-      %th#actions_column &nbsp;
-  %tbody.records
-    = render :partial => 'online_player', :collection => @online_players, :as => :online_player
+#players_result
+  #recent_games_pagination.digg_pagination= will_paginate @online_players, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+  %table
+    %thead
+      %tr.header
+        %th#platform_column= t('player.online_players.platform')
+        %th#username_column= t('player.online_players.username')
+        %th#games_column= t('player.online_players.games')
+        %th#won_column= t('player.online_players.won')
+        %th#lost_column= t('player.online_players.lost')
+        %th#actions_column &nbsp;
+    %tbody.records
+      = render :partial => 'online_player', :collection => @online_players, :as => :online_player

@@ -21,18 +21,11 @@
   #players_result
 
 - content_for :footer do      
-  = javascript_include_tag "validanguage_uncompressed"
+  = javascript_include_tag "jquery.livequery"
   :javascript
-    validanguage.el.username = {
-      validations: [
-        {
-          name: validanguage.validateRequired,
-          errorMsg: "#{t('player.search.username_invalid')}",
-        },
-        {
-          name: validanguage.validateMinLength,
-          minLength: 2,
-          errorMsg: "#{t('player.search.username_invalid')}"
-        }
-      ]
-    };
+    jQuery(document).ready(function($) {
+      $('div.pagination a').livequery('click', function() {
+        $('#players_result').load(this.href);
+        return false;
+      });
+    });
