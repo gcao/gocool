@@ -1138,7 +1138,7 @@ span.note {
 /* line 5, ../../../app/stylesheets/partials/_form.sass */
 form.bp input.text, form.bp input.title, form.bp input[type="text"] {
   margin: 0;
-  padding: 3px;
+  padding: 3px 5px;
   border: 1px solid #ccc; }
 /* line 10, ../../../app/stylesheets/partials/_form.sass */
 form.bp input.failedField, form.bp textarea.failedField {

@@ -25,6 +25,7 @@ en_us:
     reset_button: Clear
     view_button: View
     detail_button: Detail
+    search_button: Search
   email:
     label: Email
     required: Email is required.

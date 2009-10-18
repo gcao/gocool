@@ -6,7 +6,7 @@ class OnlinePlayer < ActiveRecord::Base
   has_one :online_player_won_game
   has_one :online_player_lost_game
     
-  default_scope :include => :gaming_platform
+  default_scope :order => 'username'
 
   named_scope :with_games, :include => :games
   named_scope :on_platform, lambda {|platform| {:include => :gaming_platform, :conditions => ["gaming_platform_id = ?", platform.id]} }
