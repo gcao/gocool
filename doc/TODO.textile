@@ -35,3 +35,10 @@ h2. Deployment
 * Setup repeatable deployment for Capistrano + EC2
 * Backup databases, uploaded files to S3
 * Restore databases, upload files from S3
+
+h3. Deploy staging environment to same machine using different virtual host
+
+* Gocool
+* jsgameviewer
+* Database
+  

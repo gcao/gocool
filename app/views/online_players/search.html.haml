@@ -6,7 +6,6 @@
       %th#games_column= t('player.online_players.games')
       %th#won_column= t('player.online_players.won')
       %th#lost_column= t('player.online_players.lost')
-      %th#last_game_time_column= t('player.online_players.last_game_time')
       %th#actions_column &nbsp;
   %tbody.records
     = render :partial => 'online_player', :collection => @online_players, :as => :online_player

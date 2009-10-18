@@ -1137,24 +1137,26 @@ span.note {
 
 /* line 5, ../../../app/stylesheets/partials/_form.sass */
 form.bp input.text, form.bp input.title, form.bp input[type="text"] {
-  margin: 0; }
-/* line 8, ../../../app/stylesheets/partials/_form.sass */
+  margin: 0;
+  padding: 3px;
+  border: 1px solid #ccc; }
+/* line 10, ../../../app/stylesheets/partials/_form.sass */
 form.bp input.failedField, form.bp textarea.failedField {
   -moz-background-clip: border;
   -moz-background-inline-policy: continuous;
   -moz-background-origin: padding;
   background: #FFAAAA none repeat scroll 0 0; }
 
-/* line 14, ../../../app/stylesheets/partials/_form.sass */
+/* line 16, ../../../app/stylesheets/partials/_form.sass */
 span.required_field {
   color: #ff0000; }
 
-/* line 17, ../../../app/stylesheets/partials/_form.sass */
+/* line 19, ../../../app/stylesheets/partials/_form.sass */
 .form_legend {
   font-size: small;
   color: #666666; }
 
-/* line 21, ../../../app/stylesheets/partials/_form.sass */
+/* line 23, ../../../app/stylesheets/partials/_form.sass */
 #pastie_email, #pastie_data {
   width: 590px; }
 

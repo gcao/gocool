@@ -71,3 +71,5 @@ en_us:
       won: Won
       lost: Lost
       last_game_time: Last Game
+    search:
+      username_invalid: Username must be longer than 2 characters.
