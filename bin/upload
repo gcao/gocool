@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+limit = ARGV.length > 0 ? ARGV[0].to_i : 1000000
+sgf_files_pattern = File.join(File.dirname(__FILE__), "..", "spec", "fixtures", "sgf", "kgs-19-2009-08", "*.sgf")
+
+puts sgf_files_pattern
+
+Dir[sgf_files_pattern].each do |filename|
+  break if limit <= 0
+  limit -= 1
+  
+  puts filename
+  `upload_sgf #{filename}`
+end

@@ -41,4 +41,11 @@ h3. Deploy staging environment to same machine using different virtual host
 * Gocool
 * jsgameviewer
 * Database
-  
+
+h2. Design Considerations
+
+h3. Misc
+
+* Do not use AJAX on search form submission and pagination because browser history does not work well with ajax
+* Remember parameters on pagination, e.g. on players page, remember gaming platform, username when navigate to next page
+* Flash message cleanup
