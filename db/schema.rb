@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(:version => 20091018124350) do
     t.integer  "player_id"
     t.integer  "gaming_platform_id", :null => false
     t.string   "username",           :null => false
+    t.string   "rank"
     t.date     "registered_at"
     t.text     "description"
     t.string   "updated_by"

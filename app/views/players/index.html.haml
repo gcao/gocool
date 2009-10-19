@@ -1,7 +1,7 @@
 %h1= @page_header || t('player.page_header')
 
 -form_remote_tag :url => '/online_players/search', :update => 'players_result', :method => :get, :html => {:class => 'bp'} do
-  .span-18
+  .span-24
     %span
       %label(for="player_platform")
         = t('player.platform_label')
@@ -16,8 +16,7 @@
     %span
       =submit_tag t('form.search_button')
       
-%hr.space
-#players_result_container.span-18.active-scaffold.blue-theme
+#players_result_container.span-24.active-scaffold.blue-theme
   #players_result
 
 - content_for :footer do      

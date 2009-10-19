@@ -4,6 +4,15 @@
 en_us:
   shared:
     title: Go Library
+    games_table:
+      game_name: Game Name
+      black_player: Black Player
+      white_player: White Player
+      moves: Moves
+      result: Result
+      play_time: Played On
+      place: Place
+      create_time: Added At
   menu:
     home: Home
     uploads: Upload Game
@@ -71,4 +80,4 @@ en_us:
       games: Games
       won: Won
       lost: Lost
-    games_played_by: <PLATFORM_NAME> PLAYER_NAME's games
+    games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp;&nbsp; PLAYER_NAME's games"

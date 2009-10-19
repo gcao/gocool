@@ -13,6 +13,12 @@ class OnlinePlayer < ActiveRecord::Base
   named_scope :username_like, lambda {|username| {:conditions => ["username like ?", "%#{username}%"]} }
   named_scope :include, lambda {|associations| {:include => associations} }
   
+  def long_name
+    s = self.username
+    s << "(" << self.rank << ")" unless self.rank.blank?
+    s
+  end
+  
   def self.find_or_create platform, username, rank
     on_platform(platform).find_by_username(username) || create!(:gaming_platform_id => platform.id, :username => username, :rank => rank)
   end
