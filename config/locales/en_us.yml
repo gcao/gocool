@@ -80,4 +80,4 @@ en_us:
       games: Games
       won: Won
       lost: Lost
-    games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp;&nbsp; PLAYER_NAME's games"
+    games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME's games"

@@ -1,6 +1,6 @@
-%h1= t('player.games_played_by').gsub('PLATFORM_NAME', @online_player.gaming_platform.name).gsub('PLAYER_NAME', @online_player.long_name)
+%h1= t('player.games_played_by').gsub('PLATFORM_NAME', @online_player.gaming_platform.name).gsub('PLAYER_NAME', @online_player.username)
 
-#games
+#games.active-scaffold.blue-theme
   %table
     %thead
       %tr.header
@@ -10,9 +10,8 @@
         %th#moves_column= t('shared.games_table.moves')
         %th#result_column= t('shared.games_table.result')
         %th#play_time_column= t('shared.games_table.play_time')
-        %th#place_column= t('shared.games_table.place')
         %th#create_time_column= t('shared.games_table.create_time')
         %th#actions_column &nbsp;
     %tbody.records
-      = render :partial => 'online_player', :collection => @online_players, :as => :online_player
+      = render :partial => 'game', :collection => @games
 

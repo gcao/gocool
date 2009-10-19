@@ -1136,6 +1136,10 @@ span.note {
   color: red;
   font-size: small; }
 
+/* line 21, ../../../app/stylesheets/partials/_app.sass */
+table#recent_games_table td.winner, div#games table td.winner {
+  background: #bfb; }
+
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }
@@ -1174,7 +1178,3 @@ span.required_field {
   font-size: extra-large;
   margin-bottom: 0px;
   height: 15px; }
-
-/* line 9, ../../../app/stylesheets/partials/_homepage.sass */
-table#recent_games_table td.winner {
-  background: #bfb; }

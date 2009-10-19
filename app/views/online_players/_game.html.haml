@@ -1,0 +1,10 @@
+%tr{:class => "record " + (game_counter%2 == 0 ? "even-record":"")}
+  %td= game.name
+  = black_player_html(game)
+  = white_player_html(game)
+  %td= game.moves
+  %td= game.result
+  %td= game.played_at_raw
+  %td= game.created_at
+  %td.actions
+    %a{:href => "#TODO"}= t('form.view_button')
