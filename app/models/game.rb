@@ -3,6 +3,11 @@ class Game < ActiveRecord::Base
   
   WINNER_BLACK = 1
   WINNER_WHITE = 2
+  
+  default_scope :order => "created_at desc"
+  
+  named_scope :by_online_player, lambda {|p| {:conditions => 
+    ["gaming_platform_id = ? and (black_id = ? or white_id = ?)", p.gaming_platform_id, p.id, p.id]} }
 
   def black_name_with_rank
     s = self.black_name
@@ -37,8 +42,8 @@ class Game < ActiveRecord::Base
     if self.place =~ /www\.gokgs\.com/i
       self.is_online_game = true
       self.gaming_platform = GamingPlatform.kgs
-      self.black_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name).id
-      self.white_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.white_name).id
+      self.black_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name, self.black_rank).id
+      self.white_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.white_name, self.white_rank).id
     end
     
     if self.result =~ /B+/i

@@ -13,8 +13,8 @@ class OnlinePlayer < ActiveRecord::Base
   named_scope :username_like, lambda {|username| {:conditions => ["username like ?", "%#{username}%"]} }
   named_scope :include, lambda {|associations| {:include => associations} }
   
-  def self.find_or_create platform, username
-    on_platform(platform).find_by_username(username) || create!(:gaming_platform_id => platform.id, :username => username)
+  def self.find_or_create platform, username, rank
+    on_platform(platform).find_by_username(username) || create!(:gaming_platform_id => platform.id, :username => username, :rank => rank)
   end
   
   def self.search platform_name, username, page_size, page_no

@@ -71,3 +71,4 @@ en_us:
       games: Games
       won: Won
       lost: Lost
+    games_played_by: <PLATFORM_NAME> PLAYER_NAME's games

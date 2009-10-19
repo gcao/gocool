@@ -1,0 +1,14 @@
+%h1= t('player.games_played_by').gsub('PLATFORM_NAME', @online_player.gaming_platform.name).gsub('PLAYER_NAME', @online_player.username)
+
+#games
+  #games_pagination.digg_pagination= will_paginate @games, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+  %table
+    %thead
+      %tr.header
+        %th#black_column= t('player.online_players.platform')
+        %th#white_column= t('player.online_players.username')
+        %th#played_on_column= t('player.online_players.lost')
+        %th#actions_column &nbsp;
+    %tbody.records
+      = render :partial => 'online_player', :collection => @online_players, :as => :online_player
+
