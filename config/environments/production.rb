@@ -25,3 +25,6 @@ config.action_controller.perform_caching             = true
 
 # Enable threaded mode
 # config.threadsafe!
+
+require 'syslog_logger'
+RAILS_DEFAULT_LOGGER = SyslogLogger.new
