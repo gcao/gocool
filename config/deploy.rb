@@ -4,7 +4,6 @@ set :deploy_to, "/data/apps/#{application}"
 set :scm, :git
 set :repository, "git://github.com/gcao/gocool.git"
 set :git_enable_submodules, true
-set :deploy_via, :remote_cache 
  
 set :user, "root"
 set :use_sudo, false
@@ -24,4 +23,10 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     try_runner "touch #{current_path}/tmp/restart.txt"
   end
+end
+
+after "deploy:update_code", :copy_over_config_files
+
+task :copy_over_config_files do
+  run "for config_file in #{deploy_to}/#{shared_dir}/config/*; do ln -nfs $config_file #{release_path}/config/`basename $config_file`; done"
 end
