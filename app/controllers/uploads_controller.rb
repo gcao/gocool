@@ -73,15 +73,14 @@ class UploadsController < ApplicationController
   end
   
   def upload_multiple email, files
-    raise "TODO"
-    # @uploads =  files.map {|file|
-    #   upload = Upload.new(:upload => file)
-    #   if upload.valid?
-    #     upload.save!
-    #     save_game(email, upload, parse(upload))
-    #   end
-    #   upload
-    # }
+    @uploads =  files.map {|file|
+      upload = Upload.new(:email => email, :upload => file)
+      if upload.valid?
+        upload.save!
+        upload.save_game
+      end
+      upload
+    }
   end
   
   def rescue_action(e)

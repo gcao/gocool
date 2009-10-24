@@ -23,7 +23,7 @@ describe UploadsController do
       response.should be_success
       upload = assigns(:upload)
       upload.email.should == "test@test.com"
-      upload.upload.url.should =~ %r(^/system/uploads/1/original/good.sgf)
+      upload.upload.url.should =~ %r(^/system/uploads/#{upload.id}/original/good.sgf)
     end
     
     it "should format email before save" do
@@ -48,26 +48,38 @@ describe UploadsController do
 
       response.should be_success
       upload = assigns(:upload)
-      upload.upload.url.should =~ %r(^/system/uploads/1/original/good.sgf)
+      upload.upload.url.should =~ %r(^/system/uploads/#{upload.id}/original/good.sgf)
     end
     
     it "should create multiple uploads with multiple files" do
-      pending
       post :create, :upload => {:email => 'test@test.com', 
         :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain'), 
         :upload_234 => fixture_file_upload('/sgf/good1.sgf', 'text/plain')}
       
       response.should be_success
-      game_source = GameSource.find_by_email('test@test.com')
-      game_source.uploads.should == 2
+      uploads = Upload.find_all_by_email('test@test.com')
+      uploads.size.should == 2
+    end
+    
+    it "should show upload status for all files" do
+      post :create, :upload => {:email => 'test@test.com', 
+        :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain'), 
+        :upload_234 => fixture_file_upload('/sgf/good1.sgf', 'text/plain')}
+      
+      response.should be_success
+      uploads = Upload.find_all_by_email('test@test.com')
+      uploads.size.should == 2
+      response.should include_text("http://test.host/uploads/#{uploads[0].id}")
+      response.should include_text("http://test.host/uploads/#{uploads[1].id}")
     end
     
     it "should show the uploaded game" do
       post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
       response.should be_success
+      upload = assigns(:upload)
       response.should render_template(:show)
-      response.should include_text("/system/uploads/1/original/good.sgf")
+      response.should include_text("/system/uploads/#{upload.id}/original/good.sgf")
     end
     
     it "should remain on the upload page with error if email is not given" do
