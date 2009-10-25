@@ -3,7 +3,7 @@
   %td= upload_result.status
   %td= upload_result.detail
   %td.actions
-    - if upload_result.status == t('upload.status.success')
+    - if upload_result.status == t('uploads.status.success')
       %a{:href => game_source_url(upload_result.upload.game_source)}= t('form.view_button')
-    - if upload_result.status == t('upload.status.already_uploaded')
+    - if upload_result.status == t('uploads.status.already_uploaded')
       %a{:href => game_source_url(upload_result.existing_upload.game_source)}= t('form.view_button')

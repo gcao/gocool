@@ -1,4 +1,4 @@
-%h1=@page_header || t('pastie.page_header')
+%h1=@page_header || t('pasties.page_header')
 
 -form_for :pastie, :html => {:class => 'bp'} do |form|
   %fieldset.span-18
@@ -17,7 +17,7 @@
 
     .form_row.span-18
       .span-3
-        = form.label :data, mark_required + t('pastie.data_label')
+        = form.label :data, mark_required + t('pasties.data_label')
       .span-15.last
         = form.text_area :data, :cols => 120, :rows => 20
 
@@ -48,5 +48,5 @@
     };
     validanguage.el.pastie_data = {
       required: true,
-      errorMsg: "#{t('pastie.data_required')}"
+      errorMsg: "#{t('pasties.data_required')}"
     };

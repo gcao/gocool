@@ -19,14 +19,14 @@ class PastiesController < ApplicationController
     @game_source = GameSource.new(:game => @game, :source_type => GameSource::PASTIE_TYPE,
       :source => params[:pastie][:email], :data => params[:pastie][:data])
     @game_source.save!
-    flash[:success] = t('pastie.success')
+    flash[:success] = t('pasties.success')
     render :show
   end
 
   private
   
   def set_title
-    @title = t('pastie.page_title')
+    @title = t('pasties.page_title')
   end
   
   def validate email, data
@@ -34,12 +34,12 @@ class PastiesController < ApplicationController
       email_error = validate_email(email)
       errors << email_error if email_error
       if data.blank?
-        errors << t('pastie.data_required') 
+        errors << t('pasties.data_required') 
       else
         begin
           @sgf_game = SGF::Parser.parse data
         rescue => e
-          errors << t('pastie.data_invalid_parse_error') + convert_parse_error_to_html(e)
+          errors << t('pasties.data_invalid_parse_error') + convert_parse_error_to_html(e)
         end
       end
     end

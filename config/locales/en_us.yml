@@ -3,7 +3,7 @@
 
 en_us:
   shared:
-    title: Go Library
+    page_title: Go Library
     games_table:
       game_name: Game Name
       black_player: Black Player
@@ -40,6 +40,7 @@ en_us:
     required: Email is required.
     invalid: Email is invalid.
   homepage:
+    page_title: Home
     welcome: Welcome to Gocool Game Library
     description: "Here you can upload, review or share games with friends. Please enjoy!"
     recent_games:
@@ -52,7 +53,7 @@ en_us:
       play_time: Played On
       place: Place
       create_time: Added At
-  upload:
+  uploads:
     file_label: "File (*.sgf)"
     file_required: No file is chosen.
     is_binary_file: "The uploaded file is a binary file, can not be parsed."
@@ -73,14 +74,14 @@ en_us:
       validation_error: Validation Error
       error: Error
     already_uploaded_detail: This game has been uploaded before.
-  pastie:
+  pasties:
     page_title: Paste Game
     page_header: Paste Game
     data_label: SGF Content
     success: The pasted game is saved.
     data_required: SGF content is required.
     data_invalid_parse_error: "SGF content can not be parsed: "
-  player:
+  players:
     page_title: Players
     page_header: Players
     platform_label: "Gaming platform:"
@@ -92,3 +93,6 @@ en_us:
       won: Won
       lost: Lost
     games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME's games"
+  games:
+    page_title: Games
+    page_header: Games

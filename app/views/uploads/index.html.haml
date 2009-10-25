@@ -1,4 +1,4 @@
-%h1= @page_header || t('upload.page_header')
+%h1= @page_header || t('uploads.page_header')
 
 %form.bp(action="/uploads" enctype="multipart/form-data" method="post")
   %fieldset.span-18
@@ -21,14 +21,14 @@
       .span-3
         %label(for="upload_upload")
           %span.required_field *
-          = t('upload.file_label')
+          = t('uploads.file_label')
       .span-15.last
         #file_fields
           %input#upload_upload(type="file" name="upload[upload]" size="60")
 
     %hr.space
     .span-14{:align => 'center'}
-      %input.upload_submit(type="submit" name="commit"){:value => t('upload.submit_button')}
+      %input.upload_submit(type="submit" name="commit"){:value => t('uploads.submit_button')}
       %input(type="reset"){:value => t('form.reset_button')}
     
     .form_legend.span-18
@@ -54,5 +54,5 @@
     };
     validanguage.el.upload_upload = {
       required: true,
-      errorMsg: "#{t('upload.file_required')}"
+      errorMsg: "#{t('uploads.file_required')}"
     };

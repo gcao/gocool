@@ -23,14 +23,14 @@ class UploadsController < ApplicationController
   private
   
   def set_title
-    @title = t('upload.page_title')
+    @title = t('uploads.page_title')
   end
   
   def validate email, files
     returning([]) do |errors|
       email_error = validate_email(email)
       errors << email_error if email_error
-      errors << t('upload.file_required') if files.blank?
+      errors << t('uploads.file_required') if files.blank?
     end
   end
   
@@ -43,17 +43,17 @@ class UploadsController < ApplicationController
   
   def process_single_upload upload_result
     case upload_result.status 
-    when t('upload.status.success')
-      flash[:success] = t('upload.success')
+    when t('uploads.status.success')
+      flash[:success] = t('uploads.success')
       @upload = upload_result.upload
       redirect_to game_source_url(@upload.game_source)
-    when t('upload.status.already_uploaded')
-      flash[:notice] = t('upload.game_found')
+    when t('uploads.status.already_uploaded')
+      flash[:notice] = t('uploads.game_found')
       redirect_to game_source_url(upload_result.existing_upload.game_source)
-    when t('upload.status.validation_error')
-      flash[:error] = t('upload.file_required')
+    when t('uploads.status.validation_error')
+      flash[:error] = t('uploads.file_required')
       render :index
-    when t('upload.status.error')
+    when t('uploads.status.error')
       flash[:error] = upload_result.detail
       render :index
     end

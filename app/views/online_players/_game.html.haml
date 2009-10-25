@@ -7,4 +7,4 @@
   %td= game.played_at_raw
   %td= game.created_at
   %td.actions
-    %a{:href => "#TODO"}= t('form.view_button')
+    %a{:href => game_source_url(game.primary_source)}= t('form.view_button')

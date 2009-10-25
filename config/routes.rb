@@ -30,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   #     admin.resources :products
   #   end
 
-  map.home 'home', :controller => 'home', :action => 'index'
+  map.homepage 'homepage', :controller => 'homepage', :action => 'index'
   map.signup 'signup', :controller => 'users', :action => 'new'
   map.logout 'logout', :controller => 'sessions', :action => 'destroy'
   map.login 'login', :controller => 'sessions', :action => 'new'
@@ -48,7 +48,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :online_players, :collection => {:search => :get}
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "home"
+  map.root :controller => "homepage"
 
   # See how all your routes lay out with "rake routes"
 

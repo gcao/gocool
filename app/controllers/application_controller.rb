@@ -5,18 +5,18 @@ class ApplicationController < ActionController::Base
   include Authentication, EmailParamHandler
   include ExceptionNotifiable if RAILS_ENV=='production'
 
-  
   helper :all # include all helpers, all the time
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
   
-  before_filter :set_title
+  before_filter :set_title_and_header
   before_filter :set_locale
   
-  def set_title
-    @title = t('shared.title')
+  def set_title_and_header
+    @page_title = t('shared.page_title') + " - " + t("#{params[:controller]}.page_title")
+    @page_header = t("#{params[:controller]}.page_header")
   end
   
   def set_locale
