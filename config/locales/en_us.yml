@@ -62,6 +62,17 @@ en_us:
     page_title: Upload Games
     page_header: Upload Games
     game_not_found: Game is not found.
+    result:
+      header: Upload Result
+      file_name: File Name
+      status: Status
+      detail: Detail
+    status:
+      success: Success
+      already_uploaded: Found
+      validation_error: Validation Error
+      error: Error
+    already_uploaded_detail: This game has been uploaded before.
   pastie:
     page_title: Paste Game
     page_header: Paste Game

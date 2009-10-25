@@ -17,19 +17,18 @@ describe UploadsController do
   end
 
   describe "create" do
-    it "should create upload with valid params" do
+    it "should create upload and redirect to show game with valid params" do
       post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
-      response.should be_success
       upload = assigns(:upload)
       upload.email.should == "test@test.com"
       upload.upload.url.should =~ %r(^/system/uploads/#{upload.id}/original/good.sgf)
+      response.should redirect_to(game_source_url(upload.game_source))
     end
     
     it "should format email before save" do
       post :create, :upload => {:email => ' TEST@TEST.COM ', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
       
-      response.should be_success
       upload = assigns(:upload)
       upload.email.should == "test@test.com"
       upload.game_source.source.should == 'test@test.com'
@@ -46,9 +45,9 @@ describe UploadsController do
 
       post :create, :upload => {:upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}      
 
-      response.should be_success
       upload = assigns(:upload)
       upload.upload.url.should =~ %r(^/system/uploads/#{upload.id}/original/good.sgf)
+      response.should redirect_to(game_source_url(upload.game_source))
     end
     
     it "should create multiple uploads with multiple files" do
@@ -65,21 +64,12 @@ describe UploadsController do
       post :create, :upload => {:email => 'test@test.com', 
         :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain'), 
         :upload_234 => fixture_file_upload('/sgf/good1.sgf', 'text/plain')}
-      
+
       response.should be_success
       uploads = Upload.find_all_by_email('test@test.com')
       uploads.size.should == 2
-      response.should include_text("http://test.host/uploads/#{uploads[0].id}")
-      response.should include_text("http://test.host/uploads/#{uploads[1].id}")
-    end
-    
-    it "should show the uploaded game" do
-      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
-      
-      response.should be_success
-      upload = assigns(:upload)
-      response.should render_template(:show)
-      response.should include_text("/system/uploads/#{upload.id}/original/good.sgf")
+      response.should include_text(game_source_url(uploads[0].game_source))
+      response.should include_text(game_source_url(uploads[1].game_source))
     end
     
     it "should remain on the upload page with error if email is not given" do
@@ -105,21 +95,9 @@ describe UploadsController do
       response.should render_template(:index)
       response.body.should include(I18n.translate("upload.file_required"))
     end
-    
-    it "should create game on valid SGF" do
-      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
-      
-      response.should be_success
-      
-      upload = assigns(:upload)
-      upload.game.should_not be_nil
-      upload.game_source.should_not be_nil
-    end
-    
+        
     it "should convert from GB to UTF" do
       post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/chinese_gb.sgf', 'text/plain')}
-      
-      response.should be_success
       
       upload = assigns(:upload)
       upload.game.name.should == "遇仙谱"

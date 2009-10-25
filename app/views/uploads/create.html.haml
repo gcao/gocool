@@ -2,5 +2,5 @@
   %script{:src => "http://localhost/jsgameviewer/js/loader.js", :type => "text/javascript"}
   %script{:src => "http://localhost/jsgameviewer/js/site_handler.js", :type => "text/javascript"}
 
-%h1= @page_header
-= render 'upload_results', :collection => @uploads
+%h1= t('upload.result.header')
+= render 'upload_results'
