@@ -911,58 +911,66 @@ body.three-col #content {
     overflow-x: hidden; }
 
 /* line 1, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-.jqueryslidemenu {
+div.jqueryslidemenu {
   font: bold 12px Verdana;
   background: #414141;
   width: 100%; }
   /* line 6, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-  .jqueryslidemenu ul {
-    margin: 0;
+  div.jqueryslidemenu ul {
+    margin: 10px 0 0 0;
     padding: 0;
     list-style-type: none; }
     /* line 11, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-    .jqueryslidemenu ul li {
+    div.jqueryslidemenu ul li {
       position: relative;
       display: inline;
       float: left; }
       /* line 16, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-      .jqueryslidemenu ul li a {
+      div.jqueryslidemenu ul li a {
         display: block;
         background: #414141;
-        color: white;
         padding: 8px 10px;
         border-right: 1px solid #778;
         color: #2d2b2b;
         text-decoration: none; }
     /* line 25, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-    .jqueryslidemenu ul li#locale_zh_cn, .jqueryslidemenu ul li#locale_en_us {
+    div.jqueryslidemenu ul li.active a {
+      background: #777; }
+    /* line 28, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+    div.jqueryslidemenu ul li#locale_zh_cn {
+      float: right; }
+      /* line 30, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+      div.jqueryslidemenu ul li#locale_zh_cn a {
+        border-right: none; }
+    /* line 33, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+    div.jqueryslidemenu ul li#locale_en_us {
       float: right; }
 
-/* line 29, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+/* line 37, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
 * html .jqueryslidemenu ul li a {
   display: inline-block; }
 
-/* line 35, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+/* line 43, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
 .jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited {
   color: white; }
-/* line 38, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+/* line 46, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
 .jqueryslidemenu ul li a:hover {
   background: black;
   color: white; }
-/* line 42, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+/* line 50, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
 .jqueryslidemenu ul li ul {
   position: absolute;
   left: 0;
   display: block;
   visibility: hidden; }
-  /* line 48, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+  /* line 56, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
   .jqueryslidemenu ul li ul li {
     display: list-item;
     float: none; }
-    /* line 52, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+    /* line 60, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
     .jqueryslidemenu ul li ul li ul {
       top: 0; }
-    /* line 55, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+    /* line 63, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
     .jqueryslidemenu ul li ul li a {
       font: normal 13px Verdana;
       width: 160px;
@@ -971,18 +979,18 @@ body.three-col #content {
       border-top-width: 0;
       border-bottom: 1px solid gray; }
 
-/* line 64, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+/* line 72, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
 .jqueryslidemenuz ul li ul li a:hover {
   background: #eff9ff;
   color: black; }
 
-/* line 69, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+/* line 77, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
 .downarrowclass {
   position: absolute;
   top: 12px;
   right: 7px; }
 
-/* line 75, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
+/* line 83, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
 .rightarrowclass {
   position: absolute;
   top: 6px;

@@ -1,10 +1,10 @@
-.jqueryslidemenu
+div.jqueryslidemenu
   font: bold 12px Verdana
   background: #414141
   width: 100%
 
   ul
-    margin: 0
+    margin: 10px 0 0 0
     padding: 0
     list-style-type: none
 
@@ -16,13 +16,21 @@
       a
         display: block
         background: #414141
-        color: white
         padding: 8px 10px
         border-right: 1px solid #778
         color: #2d2b2b
         text-decoration: none
+    
+    li.active
+      a
+        background: #777
         
-    li#locale_zh_cn, li#locale_en_us
+    li#locale_zh_cn
+      float: right
+      a
+        border-right: none
+    
+    li#locale_en_us
       float: right
 
 

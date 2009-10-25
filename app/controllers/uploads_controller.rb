@@ -22,10 +22,6 @@ class UploadsController < ApplicationController
   
   private
   
-  def set_title
-    @title = t('uploads.page_title')
-  end
-  
   def validate email, files
     returning([]) do |errors|
       email_error = validate_email(email)
