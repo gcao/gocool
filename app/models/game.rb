@@ -53,4 +53,23 @@ class Game < ActiveRecord::Base
       self.winner = WINNER_WHITE
     end
   end
+  
+  def self.search gaming_platform_id, first_player, second_player
+    raise ArgumentError.new(I18n.t('error.first_player_name_required')) if first_player.blank?
+    
+    unless gaming_platform_id.blank?
+      platform_condition = "gaming_platform_id = #{gaming_platform_id.to_i} and "
+    end
+    
+    f = "%#{first_player.strip}%"
+    s = "%#{second_player.try(:strip)}%"
+    
+    if second_player.blank?
+      conditions = ["#{platform_condition} (black_name like ? or white_name like ?)", f, f]
+    else
+      conditions = ["#{platform_condition} ((black_name like ? and second_player like ?) or (white_name like ? and black_name like ?))", f, s, f, s]
+    end
+    
+    find(:all, :conditions => conditions, :order => 'black_name, white_name')
+  end
 end

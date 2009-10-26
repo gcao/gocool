@@ -22,8 +22,8 @@
         %td(width="140") &nbsp;
       
       
-#games_result_container.span-24.active-scaffold.blue-theme
-  #games_result
+#games_container.span-24.active-scaffold.blue-theme
+  =render 'games' if @games
 
 - content_for :footer do
   = javascript_include_tag "validanguage_uncompressed"
