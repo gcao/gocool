@@ -1177,6 +1177,13 @@ span.required_field {
 #pastie_email, #pastie_data {
   width: 590px; }
 
+/* line 27, ../../../app/stylesheets/partials/_form.sass */
+table#games_search_form th, table#games_search_form td {
+  vertical-align: top; }
+  /* line 29, ../../../app/stylesheets/partials/_form.sass */
+  table#games_search_form th *, table#games_search_form td * {
+    margin-top: 0; }
+
 /* line 1, ../../../app/stylesheets/partials/_homepage.sass */
 #description {
   font-size: large; }

@@ -1,3 +1,38 @@
 %h1= @page_header || t('players.page_header')
 
-TODO
+-form_tag '/games', :method => :get, :class => 'bp' do
+  .span-24
+    %table#games_search_form
+      %tr
+        %td
+          %span
+            %label(for="platform")
+              = t('games.platform_label')
+            =gaming_platforms_select 'platform'
+        %td
+          =text_field_tag 'first_player'
+        %td
+          %label(for="second_player")
+            = t('games.vs_label')
+        %td
+          =text_field_tag 'second_player'
+        %td
+          =submit_tag t('form.search_button')
+          %input{:type => "reset", :value => t('form.reset_button')}
+        %td(width="140") &nbsp;
+      
+      
+#games_result_container.span-24.active-scaffold.blue-theme
+  #games_result
+
+- content_for :footer do
+  = javascript_include_tag "validanguage_uncompressed"
+  :javascript
+    validanguage.el.first_player = {
+      validations: [
+        {
+          name: validanguage.validateRequired,
+          errorMsg: "#{t('games.first_player_required')}",
+        }
+      ]
+    };
