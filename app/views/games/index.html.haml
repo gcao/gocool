@@ -17,6 +17,7 @@
         %td
           =text_field_tag 'second_player'
         %td
+          %input{:type => "hidden", :name => "op", :value => "search"}
           =submit_tag t('form.search_button')
           %input{:type => "reset", :value => t('form.reset_button')}
         %td(width="140") &nbsp;

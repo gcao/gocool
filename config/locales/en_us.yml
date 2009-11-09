@@ -101,3 +101,4 @@ en_us:
     first_player_label: "Players: "
     vs_label: "vs"
     first_player_required: Required
+    first_player_is_required: Please enter at least one player's name or username.
