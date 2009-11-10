@@ -14,7 +14,7 @@ describe GamesController do
     
     it "should return list of games on valid request" do
       Game.create!(:black_name => 'first_player', :white_name => 'second_player', :name => 'first vs second')
-      Game.create!(:black_name => 'second_player', :white_name => 'white_player', :name => 'second vs first')
+      Game.create!(:black_name => 'second_player', :white_name => 'first_player', :name => 'second vs first')
       
       get :index, :op => 'search', :first_player => 'first'
       
@@ -24,7 +24,7 @@ describe GamesController do
     end
     
     it "should return first player is required error if first player is blank" do
-      get :index, :op => 'search', :first_player => 'first'
+      get :index, :op => 'search', :first_player => ''
       
       response.should be_success
       response.body.should have_tag("div.error", I18n.t('games.first_player_is_required'))

@@ -1148,6 +1148,25 @@ span.note {
 table#recent_games_table td.winner, div#games table td.winner {
   background: #bfb; }
 
+/* line 25, ../../../app/stylesheets/partials/_app.sass */
+table#games_search_form input[type='text'] {
+  width: 150px; }
+
+/* line 28, ../../../app/stylesheets/partials/_app.sass */
+table#games_search_form label {
+  position: relative; }
+  /* line 31, ../../../app/stylesheets/partials/_app.sass */
+  table#games_search_form label em.msg {
+    position: absolute;
+    text-align: right;
+    left: 0px;
+    top: -18px;
+    width: 158px;
+    font-size: .8em;
+    font-style: normal;
+    line-height: 2.5;
+    color: #aaa; }
+
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }

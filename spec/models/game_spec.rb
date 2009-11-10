@@ -29,4 +29,11 @@ describe Game do
     game.program.should == parsed_game.program
     game.result.should == parsed_game.result
   end
+  
+  it "search should return games found" do
+    game1 = Game.create!(:black_name => 'first_player', :white_name => 'second_player', :name => 'first vs second')
+    game2 = Game.create!(:black_name => 'second_player', :white_name => 'first_player', :name => 'second vs first')
+    
+    Game.search(nil, 'first', nil).should == [game1, game2]
+  end
 end
