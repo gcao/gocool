@@ -22,7 +22,7 @@ class Game < ActiveRecord::Base
   }
 
   named_scope :played_by, lambda {|player1, player2|
-    raise ArgumentError.new(I18n.t('error.first_player_name_required')) if player1.blank?
+    raise ArgumentError.new(I18n.t('games.first_player_is_required')) if player1.blank?
 
     player1 = "%#{player1.strip}%"
 

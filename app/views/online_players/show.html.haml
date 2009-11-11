@@ -1,6 +1,8 @@
 %h1= t('players.games_played_by').gsub('PLATFORM_NAME', @online_player.gaming_platform.name).gsub('PLAYER_NAME', @online_player.username)
 
 #games.active-scaffold.blue-theme
+  #games_pagination.digg_pagination= will_paginate @games, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+
   %table
     %thead
       %tr.header
