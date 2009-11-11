@@ -8,4 +8,4 @@
   %td= game.place
   %td= game.created_at
   %td.actions
-    %a{:href => '#'}= t('form.view_button')
+    = view_game_html(game)

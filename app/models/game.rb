@@ -5,10 +5,41 @@ class Game < ActiveRecord::Base
   WINNER_BLACK = 1
   WINNER_WHITE = 2
   
-  default_scope :order => "created_at desc"
+  #default_scope :order => "created_at desc"
   
-  named_scope :by_online_player, lambda {|p| {:conditions => 
-    ["gaming_platform_id = ? and (black_id = ? or white_id = ?)", p.gaming_platform_id, p.id, p.id]} }
+  named_scope :by_online_player, lambda {|p|
+    {
+       :conditions => ["gaming_platform_id = ? and (black_id = ? or white_id = ?)", p.gaming_platform_id, p.id, p.id]
+    }
+  }
+
+  named_scope :on_platform, lambda { |online_platform_id|
+    if online_platform_id.blank?
+      {}
+    else
+      { :conditions => ["gaming_platform_id = ?", online_platform_id]}
+    end
+  }
+
+  named_scope :played_by, lambda {|player1, player2|
+    raise ArgumentError.new(I18n.t('error.first_player_name_required')) if player1.blank?
+
+    player1 = "%#{player1.strip}%"
+
+    if player2.blank?
+      { :conditions => ["black_name like ? or white_name like ?", player1, player1] }
+    else
+      player2 = "%#{player2.strip}%"
+      {
+        :conditions => [
+          "(black_name like ? and second_player like ?) or (white_name like ? and black_name like ?)",
+          player1, player2, player1, player2
+        ]
+      }
+    end
+  }
+
+  named_scope :sort_by_players, :order => "black_name, white_name"
 
   def black_name_with_rank
     s = self.black_name
@@ -23,22 +54,22 @@ class Game < ActiveRecord::Base
   end
   
   def load_parsed_game sgf_game
-    self.board_size = sgf_game.board_size
-    self.handicap = sgf_game.handicap
-    self.name = sgf_game.name
-    self.black_name = sgf_game.black_player
-    self.black_rank = sgf_game.black_rank
-    self.white_name = sgf_game.white_player
-    self.white_rank = sgf_game.white_rank
-    self.played_at_raw = sgf_game.played_on
-    self.rule_raw = sgf_game.rule
-    self.komi_raw = sgf_game.komi
-    self.time_rule = sgf_game.time_rule
-    self.result = sgf_game.result
-    self.moves = sgf_game.moves
-    self.program = sgf_game.program
-    self.place = sgf_game.place
-    self.event = sgf_game.event
+    self.board_size     = sgf_game.board_size
+    self.handicap       = sgf_game.handicap
+    self.name           = sgf_game.name
+    self.black_name     = sgf_game.black_player
+    self.black_rank     = sgf_game.black_rank
+    self.white_name     = sgf_game.white_player
+    self.white_rank     = sgf_game.white_rank
+    self.played_at_raw  = sgf_game.played_on
+    self.rule_raw       = sgf_game.rule
+    self.komi_raw       = sgf_game.komi
+    self.time_rule      = sgf_game.time_rule
+    self.result         = sgf_game.result
+    self.moves          = sgf_game.moves
+    self.program        = sgf_game.program
+    self.place          = sgf_game.place
+    self.event          = sgf_game.event
     
     if self.place =~ /www\.gokgs\.com/i
       self.is_online_game = true
@@ -55,21 +86,6 @@ class Game < ActiveRecord::Base
   end
   
   def self.search gaming_platform_id, first_player, second_player
-    raise ArgumentError.new(I18n.t('error.first_player_name_required')) if first_player.blank?
-    
-    unless gaming_platform_id.blank?
-      platform_condition = "gaming_platform_id = #{gaming_platform_id.to_i} and "
-    end
-    
-    f = "%#{first_player.strip}%"
-    s = "%#{second_player.try(:strip)}%"
-    
-    if second_player.blank?
-      conditions = ["#{platform_condition} (black_name like ? or white_name like ?)", f, f]
-    else
-      conditions = ["#{platform_condition} ((black_name like ? and second_player like ?) or (white_name like ? and black_name like ?))", f, s, f, s]
-    end
-    
-    find(:all, :conditions => conditions, :order => 'black_name, white_name')
+    self.on_platform(gaming_platform_id).played_by(first_player, second_player).sort_by_players
   end
 end
