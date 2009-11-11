@@ -32,4 +32,9 @@ class ApplicationController < ActionController::Base
       render :file => file
     end
   end
+
+  def page_params
+    page_size = (params[:page_size] || ENV['ROWS_PER_PAGE']).to_i
+    { :per_page => page_size, :page => params[:page] }
+  end
 end

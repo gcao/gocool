@@ -23,11 +23,10 @@ class OnlinePlayer < ActiveRecord::Base
     on_platform(platform).find_by_username(username) || create!(:gaming_platform_id => platform.id, :username => username, :rank => rank)
   end
   
-  def self.search platform_name, username, page_size, page_no
+  def self.search platform_name, username
     k = self
     k = k.on_platform(GamingPlatform.find_by_name(platform_name)) unless platform_name.blank?
     k = k.username_like(username) unless username.blank?
     k = k.include(:gaming_platform, :online_player_game, :online_player_won_game, :online_player_lost_game)
-    k.paginate(:per_page => page_size, :page => page_no)
   end
 end
