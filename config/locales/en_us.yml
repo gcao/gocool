@@ -98,8 +98,8 @@ en_us:
     page_title: Games
     page_header: Games
     platform_label: "Gaming platform:"
-    first_player_label: Player 1
+    player1_label: Player 1
     vs_label: "vs"
-    second_player_label: Player 2
-    first_player_required: Required
-    first_player_is_required: Please enter player 1's name or username.
+    player2_label: Player 2
+    player1_required: Required
+    player1_is_required: Please enter player 1's name or username.

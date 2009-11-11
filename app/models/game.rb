@@ -13,11 +13,11 @@ class Game < ActiveRecord::Base
     }
   }
 
-  named_scope :on_platform, lambda { |online_platform_id|
-    if online_platform_id.blank?
-      {}
+  named_scope :on_platform, lambda { |platform_name|
+    if platform_name and platform = GamingPlatform.find_by_name(platform_name)
+      { :conditions => ["gaming_platform_id = ?", platform.id] }
     else
-      { :conditions => ["gaming_platform_id = ?", online_platform_id]}
+      {}
     end
   }
 
@@ -85,7 +85,7 @@ class Game < ActiveRecord::Base
     end
   end
   
-  def self.search gaming_platform_id, first_player, second_player
-    self.on_platform(gaming_platform_id).played_by(first_player, second_player).sort_by_players
+  def self.search platform_name, player1, player2
+    self.on_platform(platform_name).played_by(player1, player2).sort_by_players
   end
 end

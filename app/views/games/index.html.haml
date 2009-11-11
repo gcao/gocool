@@ -10,20 +10,20 @@
           %span
             %label(for="platform")
               = t('games.platform_label')
-            =gaming_platforms_select 'platform'
+            =gaming_platforms_select 'platform', @platform
         %td
-          %label(for="first_player")
+          %label(for="player1")
             %em.msg
-              = t('games.first_player_label')
-          =text_field_tag 'first_player'
+              = t('games.player1_label')
+          =text_field_tag 'player1', @player1
         %td
-          %label(for="second_player")
+          %label(for="player2")
             = t('games.vs_label')
         %td
-          %label(for="second_player")
+          %label(for="player2")
             %em.msg
-              = t('games.second_player_label')
-          =text_field_tag 'second_player'
+              = t('games.player2_label')
+          =text_field_tag 'player2', @player2
         %td
           %input{:type => "hidden", :name => "op", :value => "search"}
           =submit_tag t('form.search_button')
@@ -37,11 +37,11 @@
 - content_for :footer do
   = javascript_include_tag "validanguage_uncompressed"
   :javascript
-    validanguage.el.first_player = {
+    validanguage.el.player1 = {
       validations: [
         {
           name: validanguage.validateRequired,
-          errorMsg: "#{t('games.first_player_required')}",
+          errorMsg: "#{t('games.player1_required')}",
         }
       ]
     };
