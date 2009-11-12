@@ -103,3 +103,6 @@ en_us:
     player2_label: Player 2
     player1_required: Required
     player1_is_required: Please enter player 1's name or username.
+  game_sources:
+    page_title: Games
+    page_header: Games

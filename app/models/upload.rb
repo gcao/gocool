@@ -63,6 +63,8 @@ class Upload < ActiveRecord::Base
     game_source.source = self.email
     game_source.upload_id = self.id
     game_source.save!
+
+    game.update_attribute(:primary_game_source_id, game_source.id)
   end
   
   private
