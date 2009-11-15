@@ -106,3 +106,13 @@ en_us:
   game_sources:
     page_title: Games
     page_header: Games
+  games_widget:
+    game_name: Game Name
+    black_player: Black Player
+    white_player: White Player
+    moves: Moves
+    result: Result
+    play_time: Played On
+    place: Place
+    create_time: Added At
+    

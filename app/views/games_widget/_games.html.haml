@@ -1,0 +1,17 @@
+.games_widget.active-scaffold.blue-theme
+  .digg_pagination= will_paginate @games, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+
+  %table.games_table
+    %thead
+      %tr.header
+        %th.game_name_column=    t('games_widget.game_name')
+        %th.black_player_column= t('games_widget.black_player')
+        %th.white_player_column= t('games_widget.white_player')
+        %th.moves_column=        t('games_widget.moves')
+        %th.result_column=       t('games_widget.result')
+        %th.play_time_column=    t('games_widget.play_time')
+        %th.place_column=        t('games_widget.place')
+        %th.create_time_column=  t('games_widget.create_time')
+        %th.actions_column      &nbsp;
+    %tbody.records
+      = render :partial => 'games_widget/game', :collection => games, :as => :game
