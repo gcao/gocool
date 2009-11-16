@@ -1193,13 +1193,17 @@ span.required_field {
   color: #666666; }
 
 /* line 23, ../../../app/stylesheets/partials/_form.sass */
+#upload_email {
+  width: 413px; }
+
+/* line 26, ../../../app/stylesheets/partials/_form.sass */
 #pastie_email, #pastie_data {
   width: 590px; }
 
-/* line 27, ../../../app/stylesheets/partials/_form.sass */
+/* line 30, ../../../app/stylesheets/partials/_form.sass */
 table#games_search_form th, table#games_search_form td {
   vertical-align: top; }
-  /* line 29, ../../../app/stylesheets/partials/_form.sass */
+  /* line 32, ../../../app/stylesheets/partials/_form.sass */
   table#games_search_form th *, table#games_search_form td * {
     margin-top: 0; }
 

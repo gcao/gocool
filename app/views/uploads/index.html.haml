@@ -1,6 +1,6 @@
 %h1= @page_header || t('uploads.page_header')
 
-%form.bp(action="/uploads" enctype="multipart/form-data" method="post")
+%form.bp(action="/uploads" name="uploadForm" enctype="multipart/form-data" method="post")
   %fieldset.span-18
     = show_flash 'span-18'
     .form_row.span-18
@@ -29,7 +29,7 @@
     %hr.space
     .span-14{:align => 'center'}
       %input.upload_submit(type="submit" name="commit"){:value => t('uploads.submit_button')}
-      %input(type="reset"){:value => t('form.reset_button')}
+      %input(type="reset" id="resetButton"){:value => t('form.reset_button')}
     
     .form_legend.span-18
       %span
