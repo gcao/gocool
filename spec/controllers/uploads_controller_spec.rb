@@ -95,6 +95,14 @@ describe UploadsController do
       response.should render_template(:index)
       response.body.should include(I18n.translate("upload.file_required"))
     end
+
+    it "should decompress compressed file (*.zip)" do
+      post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/good_bad.zip', 'application/zip')}
+
+      response.should be_success
+      uploads = Upload.find_all_by_email('test@test.com')
+      uploads.size.should == 2
+    end
         
     it "should convert from GB to UTF" do
       post :create, :upload => {:email => 'test@test.com', :upload => fixture_file_upload('/sgf/chinese_gb.sgf', 'text/plain')}
