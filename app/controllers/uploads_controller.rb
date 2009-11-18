@@ -12,6 +12,8 @@ class UploadsController < ApplicationController
       render :index
       return
     end
+
+#    files = process_compressed_files(files)
     
     @upload_results = Uploader.new.process @email, files
     if @upload_results.size == 1
@@ -36,20 +38,31 @@ class UploadsController < ApplicationController
     file_params = params.except(:email)
     return file_params.values
   end
+
+#  def process_compressed_files files
+#    files.inject([]) do |result, file|
+#      if compressed_file?(file)
+#        logger.info file.inspect
+#      else
+#        result << file
+#      end
+#      result
+#    end
+#  end
   
   def process_single_upload upload_result
     case upload_result.status 
-    when t('uploads.status.success')
+    when UploadResult::SUCCESS
       flash[:success] = t('uploads.success')
       @upload = upload_result.upload
       redirect_to game_source_url(@upload.game_source)
-    when t('uploads.status.already_uploaded')
+    when UploadResult::FOUND
       flash[:notice] = t('uploads.game_found')
       redirect_to game_source_url(upload_result.existing_upload.game_source)
-    when t('uploads.status.validation_error')
+    when UploadResult::VALIDATION_ERROR
       flash[:error] = t('uploads.file_required')
       render :index
-    when t('uploads.status.error')
+    when UploadResult::ERROR
       flash[:error] = upload_result.detail
       render :index
     end
