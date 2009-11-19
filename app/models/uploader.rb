@@ -1,7 +1,7 @@
 class Uploader
 
   def process email, files
-    uploads = files.map {|file| Upload.create!(:email => email, :upload => file)}
+    uploads = files.map {|file| Upload.create!(:email => email, :upload => file) }
     uploads = uploads.inject([]) do |new_uploads, upload|
       new_uploads << process_compressed_upload(upload)
     end.flatten
@@ -15,9 +15,9 @@ class Uploader
   def process_upload upload
     result = UploadResult.new
     result.upload = upload
-    if not upload.path.downcase.include?(".sgf")
+    if not upload.is_sgf?
       result.status = UploadResult::VALIDATION_ERROR
-      result.detail = "#{upload.path} is not a SGF file."
+      result.detail = "#{upload.upload_file_name} is not a SGF file."
     elsif found = process_duplicate_upload(upload)
       result.status = UploadResult::FOUND
       result.detail = I18n.t('uploads.already_uploaded_detail')
@@ -27,14 +27,14 @@ class Uploader
       result.status = UploadResult::SUCCESS
     end
     result
-#  rescue => e
-#    result.status = UploadResult::ERROR
-#    result.detail = e.to_s
-#    result
+  rescue => e
+    result.status = UploadResult::ERROR
+    result.detail = e.to_s
+    result
   end
 
   def process_compressed_upload upload
-    return unless upload.upload_file_name =~ /\.zip$/i
+    return upload unless upload.upload_file_name =~ /\.zip$/i
 
     filename = upload.upload_file_name
     cmd = "cd /tmp && rm -rf #{filename} && mkdir #{filename} && cd #{filename} && unzip #{upload.path}"

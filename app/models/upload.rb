@@ -64,6 +64,10 @@ class Upload < ActiveRecord::Base
 
     game.update_attribute(:primary_game_source_id, game_source.id)
   end
+
+  def is_sgf?
+    upload and upload.path.downcase.include?(".sgf")
+  end
   
   private
   
@@ -81,9 +85,5 @@ class Upload < ActiveRecord::Base
   
   def contains_not_recognizable_chars? encoding
     not (encoding.include?('charset=us-ascii') or encoding.include?('charset=utf'))
-  end
-
-  def is_sgf?
-    upload and upload.path.downcase.include?(".sgf")
   end
 end
