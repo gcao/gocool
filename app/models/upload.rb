@@ -40,8 +40,6 @@ class Upload < ActiveRecord::Base
   
   def after_save
     super
-    
-    return unless File.exists?(self.upload.path)
 
     if @file_changed
       convert_to_utf
@@ -70,6 +68,8 @@ class Upload < ActiveRecord::Base
   private
   
   def convert_to_utf
+    return unless is_sgf? and File.exists?(upload.path)
+
     file_encoding = %x(file -i #{self.upload.path}).strip
     
     if contains_not_recognizable_chars?(file_encoding)
@@ -81,5 +81,9 @@ class Upload < ActiveRecord::Base
   
   def contains_not_recognizable_chars? encoding
     not (encoding.include?('charset=us-ascii') or encoding.include?('charset=utf'))
+  end
+
+  def is_sgf?
+    upload and upload.path.downcase.include?(".sgf")
   end
 end

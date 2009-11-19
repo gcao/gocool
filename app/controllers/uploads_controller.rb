@@ -12,8 +12,6 @@ class UploadsController < ApplicationController
       render :index
       return
     end
-
-#    files = process_compressed_files(files)
     
     @upload_results = Uploader.new.process @email, files
     if @upload_results.size == 1
@@ -38,17 +36,6 @@ class UploadsController < ApplicationController
     file_params = params.except(:email)
     return file_params.values
   end
-
-#  def process_compressed_files files
-#    files.inject([]) do |result, file|
-#      if compressed_file?(file)
-#        logger.info file.inspect
-#      else
-#        result << file
-#      end
-#      result
-#    end
-#  end
   
   def process_single_upload upload_result
     case upload_result.status 

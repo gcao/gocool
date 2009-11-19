@@ -55,7 +55,7 @@ en_us:
       place: Place
       create_time: Added At
   uploads:
-    file_label: "File (*.sgf)"
+    file_label: "File <br/>(*.sgf, *.zip)"
     file_required: No file is chosen.
     is_binary_file: "The uploaded file is a binary file, can not be parsed."
     submit_button: Upload
@@ -115,4 +115,3 @@ en_us:
     play_time: Played On
     place: Place
     create_time: Added At
-    
