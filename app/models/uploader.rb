@@ -37,7 +37,7 @@ class Uploader
     return upload unless upload.upload_file_name =~ /\.zip$/i
 
     filename = upload.upload_file_name
-    cmd = "cd /tmp && rm -rf #{filename} && mkdir #{filename} && cd #{filename} && unzip #{upload.path}"
+    cmd = "cd /tmp && rm -rf #{filename} && mkdir #{filename} && cd #{filename} && unzip #{upload.upload.path}"
     puts cmd
     system(cmd)
     uploads = []
