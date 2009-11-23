@@ -3,6 +3,7 @@ class UploadResult
   FOUND             = 2
   VALIDATION_ERROR  = 3
   ERROR             = 4
+  SGF_ERROR         = 5
 
   attr_accessor :upload, :status, :detail, :existing_upload
   

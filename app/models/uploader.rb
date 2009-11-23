@@ -19,13 +19,21 @@ class Uploader
       result.status = UploadResult::VALIDATION_ERROR
       result.detail = "#{upload.upload_file_name} is not a SGF file."
     elsif found = process_duplicate_upload(upload)
-      result.status = UploadResult::FOUND
-      result.detail = I18n.t('uploads.already_uploaded_detail')
       result.existing_upload = found
+      result.status = UploadResult::FOUND
+      if found.game_source
+        result.detail = I18n.t('uploads.already_uploaded_detail')
+      else
+        result.detail = found.status + ": " + found.status_detail
+      end
     else
       upload.save_game
       result.status = UploadResult::SUCCESS
     end
+    result
+  rescue SGF::ParseError => e
+    result.status = UploadResult::SGF_ERROR
+    result.detail = upload.status_detail
     result
   rescue => e
     result.status = UploadResult::ERROR

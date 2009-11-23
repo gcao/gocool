@@ -20,8 +20,9 @@ class Upload < ActiveRecord::Base
   def parse
     self.status = STATUS_PARSE_SUCCESS
     SGF::Parser.parse_file self.upload.path
-  rescue
+  rescue SGF::ParseError => e
     self.status = STATUS_PARSE_FAILURE
+    self.status_detail = e.message
     raise
   ensure
     self.save!

@@ -74,6 +74,7 @@ en_us:
       already_uploaded: Found
       validation_error: Validation Error
       error: Error
+      parse_error: SGF Format Error
     already_uploaded_detail: This game has been uploaded before.
   pasties:
     page_title: Paste Game
