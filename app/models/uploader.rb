@@ -49,7 +49,8 @@ class Uploader
     puts cmd
     system(cmd)
     uploads = []
-    Dir["/tmp/#{filename}/*"].each do |path|
+    Dir["/tmp/#{filename}/**/*"].each do |path|
+      next if File.directory?(path)
       uploads << Upload.create!(:email => upload.email, :upload => File.new(path))
     end
     upload.delete

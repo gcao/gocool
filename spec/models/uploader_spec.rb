@@ -36,4 +36,15 @@ describe Uploader do
 
     Upload.find_all_by_email('uploader@test.com').size.should == 2
   end
+
+  it "process should be able to handle zip file with sub directories" do
+    results = @uploader.process 'uploader@test.com', [File.new(File.dirname(__FILE__) + "/../fixtures/sgf/files_in_dir.zip")]
+
+    results[0].status.should == UploadResult::SUCCESS
+    results[0].upload.upload_file_name.should == 'good.sgf'
+    results[1].status.should == UploadResult::SUCCESS
+    results[1].upload.upload_file_name.should == 'good1.sgf'
+
+    Upload.find_all_by_email('uploader@test.com').size.should == 2
+  end
 end
