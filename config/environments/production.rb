@@ -28,3 +28,10 @@ config.action_controller.perform_caching             = true
 
 require 'syslog_logger'
 RAILS_DEFAULT_LOGGER = SyslogLogger.new
+
+config.action_mailer.raise_delivery_errors = true
+ActionMailer::Base.delivery_method = :sendmail
+ActionMailer::Base.sendmail_settings = {
+  :location  => '/usr/sbin/sendmail',
+  :arguments => '-i -t'
+}
