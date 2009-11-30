@@ -1,5 +1,9 @@
 h2. 2009-11-25
 
+* Problem: all games except first are ignored (due to FOUND status)
+** Reason: md5 command is not found
+** Fix: create a symbolic link to md5sum
+
 h3. Production issue
 
 * Error: A Errno::EEXIST occurred in uploads#create (see details in email)
@@ -15,6 +19,7 @@ h3. Production issue
 ** Fix: Install unzip package, connect to console to delete old zip files
 
 * Problem: Seeds are not loaded. KGS games are not added to platform.
+** Fix: move seeds data to migration
 
 * Problem: Game does not show up because the old jsgameviewer is used
 
