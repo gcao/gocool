@@ -1,0 +1,9 @@
+%a.jsgv{:href => url}= t('link.download_sgf')
+#gameContainer
+
+- content_for :footer do
+  -if ENV["USE_OLD_JSGAMEVIEWER"] == 'true'
+    :javascript
+      jQuery(document).ready(function(){
+        new GameController({container: "gameContainer"}).load("#{url}");
+      });

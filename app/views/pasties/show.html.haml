@@ -5,4 +5,4 @@
 
 = show_flash 'span-24'
 .span-24
-  %a.jsgv{:href => game_source_url(@game_source, :format => :sgf)}= t('shared.download_sgf')
+  = render "shared/show_game", :locals => {:url => game_source_url(@game_source, :format => :sgf)}

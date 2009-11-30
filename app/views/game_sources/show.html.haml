@@ -7,5 +7,4 @@
 .span-24
   %a(href="javascript:history.back();")= t('link.back')
   &nbsp;&nbsp;&nbsp;&nbsp;
-  %a.jsgv{:href => game_source_url(@game_source, :format => :sgf)}= t('link.download_sgf')
-  
+  = render :partial => "shared/show_game", :locals => {:url => game_source_url(@game_source, :format => :sgf)}
