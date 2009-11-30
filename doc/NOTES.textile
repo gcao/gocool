@@ -1,3 +1,23 @@
+h2. 2009-11-25
+
+h3. Production issue
+
+* Error: A Errno::EEXIST occurred in uploads#create (see details in email)
+** Fix: create /data/apps/gocool/shared/system/uploads
+
+* Error: A Errno::EACCES occurred in uploads#create: Permission denied - /data/apps/gocool/releases/20091125130621/public/system/uploads
+** Fix: make /data/apps/gocool/shared/system/uploads writable
+
+* Problem: each log line is repeated ~10 times
+** Fix: Remove duplicate lines in /etc/syslog.conf
+
+* Problem: zipped file are not extracted into individual SGF files
+** Fix: Install unzip package, connect to console to delete old zip files
+
+* Problem: Seeds are not loaded. KGS games are not added to platform.
+
+* Problem: Game does not show up because the old jsgameviewer is used
+
 h2. 2009-09-30
 
 h3. Pagination
