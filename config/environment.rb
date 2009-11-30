@@ -49,10 +49,3 @@ Rails::Initializer.run do |config|
   
   config.load_paths += %W(#{RAILS_ROOT}/app/misc)
 end
-
-# Some of these are overwritten in <ENVIRONMENT_NAME>.rb
-# Some are overwritten in config/initializers/???.rb, ???.rb is created during deployment
-ENV['ICONV_PATH']    = "/opt/local/bin/iconv"
-ENV['ROWS_PER_PAGE'] = "15"
-ENV["USE_XSENDFILE"] = "false"
-ENV['USE_OLD_JSGAMEVIEWER'] = "false"

@@ -29,5 +29,7 @@ end
 after "deploy:update_code", :copy_over_config_files
 
 task :copy_over_config_files do
-  run "for config_file in #{deploy_to}/#{shared_dir}/config/*; do ln -nfs $config_file #{release_path}/config/`basename $config_file`; done"
+  `cp -rf #{deploy_to}/#{shared_dir}/config/* #{release_path}/config/`
+  # run "for config_file in #{deploy_to}/#{shared_dir}/config/*.*; do ln -nfs $config_file #{release_path}/config/`basename $config_file`; done"
+  # run "for config_file in #{deploy_to}/#{shared_dir}/config/initializers/*.*; do ln -nfs $config_file #{release_path}/config/initializers/`basename $config_file`; done"
 end
