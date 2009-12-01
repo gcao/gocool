@@ -1,8 +1,20 @@
-h2. 2009-11-25
+h2. 2009-12-01
+
+h3. Production issue
+
+* Problem: Page loading is too slow
+** Reason: slow query?
+** Fix: 
+
+h2. 2009-11-30
+
+h3. Production issue
 
 * Problem: all games except first are ignored (due to FOUND status)
 ** Reason: md5 command is not found
 ** Fix: create a symbolic link to md5sum
+
+h2. 2009-11-25
 
 h3. Production issue
 
@@ -22,6 +34,7 @@ h3. Production issue
 ** Fix: move seeds data to migration
 
 * Problem: Game does not show up because the old jsgameviewer is used
+** Fix: switch to old jsgameviewer and make it configurable
 
 h2. 2009-09-30
 

@@ -32,7 +32,7 @@ class Game < ActiveRecord::Base
       player2 = "%#{player2.strip}%"
       {
         :conditions => [
-          "(black_name like ? and second_player like ?) or (white_name like ? and black_name like ?)",
+          "(black_name like ? and white_name like ?) or (white_name like ? and black_name like ?)",
           player1, player2, player1, player2
         ]
       }
@@ -71,18 +71,21 @@ class Game < ActiveRecord::Base
     self.place          = sgf_game.place
     self.event          = sgf_game.event
     
-    if self.place =~ /www\.gokgs\.com/i
-      self.is_online_game = true
-      self.gaming_platform = GamingPlatform.kgs
-      self.black_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name, self.black_rank).id
-      self.white_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.white_name, self.white_rank).id
-    end
+    process_kgs_game
     
     if self.result =~ /B+/i
       self.winner = WINNER_BLACK
     elsif self.result =~ /W+/i
       self.winner = WINNER_WHITE
     end
+  end
+
+  def process_kgs_game
+    return if self.place !~ /kgs/i
+    self.is_online_game = true
+    self.gaming_platform = GamingPlatform.kgs
+    self.black_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name, self.black_rank).id
+    self.white_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.white_name, self.white_rank).id
   end
   
   def self.search platform_name, player1, player2
