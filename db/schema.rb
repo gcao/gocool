@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091018124350) do
+ActiveRecord::Schema.define(:version => 20091201134825) do
 
   create_table "game_sources", :force => true do |t|
     t.integer  "game_id"
@@ -67,6 +67,11 @@ ActiveRecord::Schema.define(:version => 20091018124350) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "games", ["black_id"], :name => "games_black_id"
+  add_index "games", ["gaming_platform_id", "black_id", "white_id"], :name => "games_platform_black_white"
+  add_index "games", ["gaming_platform_id"], :name => "games_platform_id"
+  add_index "games", ["white_id"], :name => "games_white_id"
 
   create_table "gaming_platforms", :force => true do |t|
     t.integer  "nation_region_id"
