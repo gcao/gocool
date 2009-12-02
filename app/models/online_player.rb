@@ -18,7 +18,12 @@ class OnlinePlayer < ActiveRecord::Base
   end
   
   def self.find_or_create platform, username, rank
-    on_platform(platform).find_by_username(username) || create!(:gaming_platform_id => platform.id, :username => username, :rank => rank)
+    player = on_platform(platform).find_by_username(username)
+    unless player
+      player = create!(:gaming_platform_id => platform.id, :username => username, :rank => rank)
+      OnlinePlayerStat.create!(:online_player_id => player.id)
+    end
+    player
   end
   
   def self.search platform_name, username

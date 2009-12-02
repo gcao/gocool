@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(:version => 20091202144212) do
     t.integer  "games_lost_as_white", :default => 0
     t.datetime "first_game_played"
     t.datetime "last_game_played"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "online_player_stats", ["online_player_id"], :name => "index_online_player_stats_on_online_player_id", :unique => true

@@ -17,6 +17,7 @@ class CreateOnlinePlayerStats < ActiveRecord::Migration
       t.integer :games_lost_as_white, :default => 0
       t.datetime :first_game_played
       t.datetime :last_game_played
+      t.timestamps
     end
 
     add_index :online_player_stats, :online_player_id, :unique => true
@@ -25,8 +26,8 @@ class CreateOnlinePlayerStats < ActiveRecord::Migration
     ActiveRecord::Base.connection.execute <<-SQL
 CREATE PROCEDURE #{INCREMENT_SP_NAME} (IN black_id INT, IN white_id INT, IN winner INT)
 BEGIN
-  DECLARE black_won, black_lost INT;
-  DECLARE white_won, white_lost INT;
+  DECLARE black_won, black_lost INT DEFAULT 0;
+  DECLARE white_won, white_lost INT DEFAULT 0;
 
   IF winner = 1 THEN
     SET black_won  = 1;
@@ -60,8 +61,8 @@ END
     ActiveRecord::Base.connection.execute <<-SQL
 CREATE PROCEDURE #{DECREMENT_SP_NAME} (IN black_id INT, IN white_id INT, IN winner INT)
 BEGIN
-  DECLARE black_won, black_lost INT;
-  DECLARE white_won, white_lost INT;
+  DECLARE black_won, black_lost INT DEFAULT 0;
+  DECLARE white_won, white_lost INT DEFAULT 0;
 
   IF winner = 1 THEN
     SET black_won  = 1;
