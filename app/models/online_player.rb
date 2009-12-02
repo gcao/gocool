@@ -2,9 +2,7 @@ class OnlinePlayer < ActiveRecord::Base
   belongs_to :player
   belongs_to :gaming_platform
   
-  has_one :online_player_game
-  has_one :online_player_won_game
-  has_one :online_player_lost_game
+  has_one :stat, :class_name => 'OnlinePlayerStat'
     
   default_scope :order => 'username'
 
@@ -27,6 +25,6 @@ class OnlinePlayer < ActiveRecord::Base
     k = self
     k = k.on_platform(GamingPlatform.find_by_name(platform_name)) unless platform_name.blank?
     k = k.username_like(username) unless username.blank?
-    k = k.include(:gaming_platform, :online_player_game, :online_player_won_game, :online_player_lost_game)
+    k = k.include(:gaming_platform, :stat)
   end
 end
