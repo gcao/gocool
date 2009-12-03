@@ -1145,17 +1145,17 @@ span.note {
   font-size: small; }
 
 /* line 21, ../../../app/stylesheets/partials/_app.sass */
-table#recent_games_table td.winner, div#games table td.winner {
+table .records tr.record td.winner {
   background: #bfb; }
 
-/* line 25, ../../../app/stylesheets/partials/_app.sass */
+/* line 24, ../../../app/stylesheets/partials/_app.sass */
 table#games_search_form input[type='text'] {
   width: 150px; }
 
-/* line 28, ../../../app/stylesheets/partials/_app.sass */
+/* line 27, ../../../app/stylesheets/partials/_app.sass */
 table#games_search_form label {
   position: relative; }
-  /* line 31, ../../../app/stylesheets/partials/_app.sass */
+  /* line 30, ../../../app/stylesheets/partials/_app.sass */
   table#games_search_form label em.msg {
     position: absolute;
     text-align: right;

@@ -1,2 +1,3 @@
 webrat-*.html
 db/*.sqlite3
+app/stylesheets/.sass-cache
