@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # curl -F upload[email]=admin@gocool.com -F upload[upload]=@spec/fixtures/sgf/kgs-19-2009-08/2009-08-01-1.sgf http://localhost:3000/uploads
+# curl -F upload[email]=gcao99@gmail.com -F "upload[upload]=@~/proj/kgs/KGS-2002-19-3646-.zip;type=application/zip" http://www.go-cool.org/uploads
 
 if ARGV.size == 0
   puts <<-USAGE

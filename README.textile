@@ -1,0 +1,5 @@
+Deployment: http://www.go-cool.org/
+Monitoring: New Relic RPM (http://rpm.newrelic.com)
+
+Issue tracking: http://www.pivotaltracker.com/projects/43301
+Continuous Integration: to be added to http://www.coderuncode.com
