@@ -1,6 +1,7 @@
 class CreateOnlinePlayerStats < ActiveRecord::Migration
   INCREMENT_SP_NAME = "increment_online_player_stats"
   DECREMENT_SP_NAME = "decrement_online_player_stats"
+  RESET_SP_NAME     = "reset_online_player_stats"
 
   INS_TRIGGER_NAME = "games_ins_trigger"
   UPD_TRIGGER_NAME = "games_upd_trigger"
@@ -92,6 +93,34 @@ BEGIN
 END
     SQL
 
+    ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{RESET_SP_NAME}"
+    ActiveRecord::Base.connection.execute <<-SQL
+CREATE PROCEDURE #{RESET_SP_NAME}()
+BEGIN
+  DECLARE _black_id, _white_id, _winner, end_of_cursor INT DEFAULT 0;
+  DECLARE game_cursor CURSOR FOR
+    SELECT black_id, white_id, winner FROM games WHERE gaming_platform_id > 0;
+
+  DECLARE CONTINUE HANDLER FOR NOT FOUND 
+    SET end_of_cursor = 1;
+
+  UPDATE online_player_stats SET games_as_black = 0, games_won_as_black = 0, games_lost_as_black = 0,
+    games_as_white = 0, games_won_as_white = 0, games_lost_as_white = 0;
+
+  OPEN game_cursor;
+
+  WHILE end_of_cursor = 0 DO
+    IF _winner > 0 THEN
+      CALL #{INCREMENT_SP_NAME}(_black_id, _white_id, _winner);
+    END IF;
+
+    FETCH game_cursor INTO _black_id, _white_id, _winner;
+  END WHILE;
+
+  CLOSE game_cursor;
+END
+    SQL
+
     ActiveRecord::Base.connection.execute "DROP TRIGGER IF EXISTS #{INS_TRIGGER_NAME}"
     ActiveRecord::Base.connection.execute <<-SQL
 CREATE TRIGGER #{INS_TRIGGER_NAME}
@@ -124,6 +153,7 @@ END
   def self.down
     ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{INCREMENT_SP_NAME}"
     ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{DECREMENT_SP_NAME}"
+    ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{RESET_SP_NAME}"
     ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{INS_TRIGGER_NAME}"
     ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{UPD_TRIGGER_NAME}"
     ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{DEL_TRIGGER_NAME}"
