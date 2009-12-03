@@ -1,15 +1,15 @@
 #myslidemenu.jqueryslidemenu
   %ul
     %li.homepage
-      %a(href="/")= t('menu.home')
+      %a{:href=>root_url}= t('menu.home')
     %li.uploads
-      %a(href="/uploads")= t('menu.uploads')
+      %a{:href=>uploads_url}= t('menu.uploads')
     %li.pasties
-      %a(href="/pasties")= t('menu.pasties')
+      %a{:href=>pasties_url}= t('menu.pasties')
     %li.players
-      %a(href="/players")= t('menu.players')
+      %a{:href=>players_url}= t('menu.players')
     %li.games
-      %a(href="/games")= t('menu.games')
+      %a{:href=>games_url}= t('menu.games')
     -# %li
     -#   %a(href="#")= t('menu.tournaments')
     -#   %ul

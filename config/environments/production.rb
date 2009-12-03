@@ -26,6 +26,8 @@ config.action_controller.perform_caching             = true
 # Enable threaded mode
 # config.threadsafe!
 
+config.gem 'rubaidh-google_analytics', :lib => 'rubaidh/google_analytics', :source => 'http://gems.github.com'
+
 require 'syslog_logger'
 RAILS_DEFAULT_LOGGER = SyslogLogger.new
 
