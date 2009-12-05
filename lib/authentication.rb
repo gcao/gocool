@@ -1,3 +1,4 @@
+# TOREMOVE?
 # This module is included in your application controller which makes
 # several methods available to all controllers and views. Here's a
 # common example you might add to your application layout file.
@@ -21,17 +22,16 @@ module Authentication
   end
   
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= env['warden'].user
   end
   
   def logged_in?
-    current_user
+    request.env['warden'].authenticated?
   end
   
   def login_required
     unless logged_in?
-      flash[:error] = "You must first log in or sign up before accessing this page."
-      redirect_to login_url
+      throw :warden
     end
   end
 end
