@@ -6,7 +6,7 @@ body
   -moz-background-clip: border
   -moz-background-inline-policy: continuous
   -moz-background-origin: padding
-  background: #0D2345 url(/app/images/default/bodybg.gif) repeat-x scroll 0 90px
+  background: #0D2345 url(/app/images/bodybg.gif) repeat-x scroll 0 90px
   text-align: center
 
 a 
@@ -177,4 +177,27 @@ a:hover
     margin: 0
 
 #container
-  margin-top: -8px
+  margin-top: 0
+  text-align: left
+
+// GOCOOL MENU
+div.jqueryslidemenu
+  display: inline
+  background: none
+  width: 400px
+  text-indent: 0 !important
+  font-weight: normal
+
+  ul
+    float: right
+    
+    li
+      a
+        background: none
+        padding: 0px 10px 4px
+        border: 0
+
+    li.active
+      a
+        background: none
+        font-weight: bold
