@@ -5,54 +5,7 @@
     %title TEST
 
     = stylesheet_link_tag 'compiled/test.css'
-
-    = yield :head
   %body
-    #header
-      .wrap.s_clear
-        %h2
-          %a{ :href => root_url, :title => "Games Library" }
-            = image_tag "logo.gif"
-        #umenu
-          %cite
-            %a.noborder{ :href => "space.php?uid=779" }
-              appoolloo
-            %span#loginstatus
-              %a{ :href => "member.php?action=switchstatus" }
-                =t('discuz.online')
-          %span.pipe
-            |
-          %a#myprompt{ :href => "notice.php" }
-            =t('discuz.reminder')
-          %span#myprompt_check
-            %a#pm_ntc{ :href => "pm.php", :target => "_blank" }
-              =t('discuz.messages')
-            %span.pipe
-              |
-            %a{ :href => "memcp.php" }
-              =t('discuz.my_space')
-            %a{ :href => "logging.php?action=logout&amp;formhash=988dbf94" }
-              =t('discuz.logout')
-        #ad_headerbanner
-        #menu
-          %ul
-            %li
-              %span.frameswitch
-                %a.frameon(target="_top" href="frame.php?frameon=yes")
-                  =t('discuz.split_mode')
-            %li.current
-              %a#mn_index{ :href => "index.php", :hidefocus => "true" }
-                =t('discuz.forum')
-            %li.menu_2
-              %a#mn_search{ :href => "search.php", :hidefocus => "true" }
-                =t('discuz.search')
-            %li.menu_4
-              %a#mn_faq{ :href => "faq.php", :hidefocus => "true" }
-                =t('discuz.help')
-            %li.menu_5
-              %a{ :href => "misc.php?action=nav", :hidefocus => "true", :onclick => "showWindow('nav', this.href);return false;" }
-                =t('discuz.navigation')
-    #nav
-      %a(href="index.php")=t('discuz.forum_name')
-      &raquo;
-      =t('discuz.help')
+    = render 'layouts/header_integration'
+
+    = render 'layouts/footer_integration'

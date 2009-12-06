@@ -1,169 +1,69 @@
-/* line 1, ../../../app/stylesheets/partials/_discuz.sass */
-body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset {
-  margin: 0;
-  padding: 0; }
+body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0; padding: 0; }
 
-/* line 5, ../../../app/stylesheets/partials/_discuz.sass */
-body {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #0D2345 url(/app/images/default/bodybg.gif) repeat-x scroll 0 90px;
-  text-align: center; }
+body { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #0D2345 url(/app/images/default/bodybg.gif) repeat-x scroll 0 90px; text-align: center; }
 
-/* line 12, ../../../app/stylesheets/partials/_discuz.sass */
-a {
-  text-decoration: none; }
+a { color: #000000; text-decoration: none; }
 
-/* line 16, ../../../app/stylesheets/partials/_discuz.sass */
-* {
-  word-wrap: break-word; }
+* { word-wrap: break-word; }
 
-/* line 19, ../../../app/stylesheets/partials/_discuz.sass */
-body, td, input, textarea, select, button {
-  color: #444444;
-  font-family: Verdana,Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  font-size-adjust: none;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1.6em; }
+body, td, input, textarea, select, button { color: #444444; font-family: Verdana,Helvetica,Arial,sans-serif; font-size: 12px; font-size-adjust: none; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1.6em; }
 
-/* line 29, ../../../app/stylesheets/partials/_discuz.sass */
-#header {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #FFFFFF none repeat scroll 0 0;
-  border-bottom: 1px solid #00B2E8;
-  margin-bottom: 8px;
-  width: 100%; }
+#header { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #FFFFFF none repeat scroll 0 0; border-bottom: 1px solid #00B2E8; margin-bottom: 8px; width: 100%; }
 
-/* line 38, ../../../app/stylesheets/partials/_discuz.sass */
-a img {
-  border: medium none; }
+a img { border: medium none; }
 
-/* line 41, ../../../app/stylesheets/partials/_discuz.sass */
-#header .wrap {
-  padding: 8px 0 4px;
-  position: relative; }
+#header h2 { float: left; }
 
-/* line 45, ../../../app/stylesheets/partials/_discuz.sass */
-.wrap {
-  margin: 0 auto;
-  text-align: left; }
+#header .wrap { height: 120px; padding: 8px 0 4px; position: relative; }
 
-/* line 49, ../../../app/stylesheets/partials/_discuz.sass */
-#umenu, #umenu a, #umenu .pipe {
-  color: #666666; }
+.wrap { margin: 0 auto; text-align: left; }
 
-/* line 52, ../../../app/stylesheets/partials/_discuz.sass */
-#umenu {
-  line-height: 20px;
-  position: absolute;
-  right: 0;
-  top: 0; }
+#umenu, #umenu a, #umenu .pipe { color: #666666; }
 
-/* line 58, ../../../app/stylesheets/partials/_discuz.sass */
-#umenu, #umenu a, #umenu .pipe {
-  color: #666666; }
+#umenu { line-height: 20px; position: absolute; right: 0; top: 0; }
 
-/* line 61, ../../../app/stylesheets/partials/_discuz.sass */
-#umenu {
-  line-height: 20px; }
+#umenu, #umenu a, #umenu .pipe { color: #666666; }
 
-/* line 64, ../../../app/stylesheets/partials/_discuz.sass */
-#umenu cite {
-  font-weight: 700; }
+#umenu { line-height: 20px; }
 
-/* line 67, ../../../app/stylesheets/partials/_discuz.sass */
-#umenu a {
-  margin: 0 6px; }
+#umenu cite { font-weight: 700; }
 
-/* line 70, ../../../app/stylesheets/partials/_discuz.sass */
-.pipe {
-  margin: 0 5px; }
+#umenu a { margin: 0 6px; }
 
-/* line 73, ../../../app/stylesheets/partials/_discuz.sass */
-.lighttxt, .lighttxt a, .pipe {
-  color: #999999; }
+.pipe { margin: 0 5px; }
 
-/* line 76, ../../../app/stylesheets/partials/_discuz.sass */
-em, cite, strong, th {
-  font-style: normal;
-  text-align: left; }
+.lighttxt, .lighttxt a, .pipe { color: #999999; }
 
-/* line 80, ../../../app/stylesheets/partials/_discuz.sass */
-#menu {
-  bottom: 0;
-  height: 26px;
-  position: absolute;
-  right: 0; }
+em, cite, strong, th { font-style: normal; text-align: left; }
 
-/* line 86, ../../../app/stylesheets/partials/_discuz.sass */
-#menu li {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #EBF4FD url(/app/images/default/mtabbg.gif) repeat-x scroll 0 100%;
-  display: inline;
-  float: left;
-  margin-left: 5px; }
+#menu { bottom: 0; height: 26px; position: absolute; right: 0; }
 
-/* line 95, ../../../app/stylesheets/partials/_discuz.sass */
-ul li {
-  list-style-image: none;
-  list-style-position: outside;
-  list-style-type: none; }
+#menu li { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #EBF4FD url(/app/images/default/mtabbg.gif) repeat-x scroll 0 100%; display: inline; float: left; margin-left: 5px; }
 
-/* line 100, ../../../app/stylesheets/partials/_discuz.sass */
-#menu a {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: transparent none repeat scroll 0 0;
-  border-color: #B0E4EF;
-  border-style: solid;
-  border-width: 1px 1px 0;
-  color: #666666;
-  float: left;
-  height: 25px;
-  line-height: 25px;
-  overflow: hidden;
-  padding: 0 14px;
-  text-decoration: none; }
+ul li { list-style-image: none; list-style-position: outside; list-style-type: none; }
 
-/* line 116, ../../../app/stylesheets/partials/_discuz.sass */
-#menu li.current a {
-  background-color: #1E4B7E;
-  border-color: #00B2E8;
-  color: #C3D3E4;
-  height: 26px; }
+#menu a { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: transparent none repeat scroll 0 0; border-color: #B0E4EF; border-style: solid; border-width: 1px 1px 0; color: #666666; float: left; height: 25px; line-height: 25px; overflow: hidden; padding: 0 14px; text-decoration: none; }
 
-/* line 122, ../../../app/stylesheets/partials/_discuz.sass */
-a:hover {
-  text-decoration: underline; }
+#menu li.current a { background-color: #1E4B7E; border-color: #00B2E8; color: #C3D3E4; height: 26px; }
 
-/* line 125, ../../../app/stylesheets/partials/_discuz.sass */
-.noborder, .noborder td {
-  border: medium none !important; }
+a:hover { text-decoration: underline; }
 
-/* line 128, ../../../app/stylesheets/partials/_discuz.sass */
-#nav, #nav a {
-  color: #C3D3E4; }
+.noborder, .noborder td { border: medium none !important; }
 
-/* line 131, ../../../app/stylesheets/partials/_discuz.sass */
-#nav {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: transparent url(/app/images/icon_nav.gif) no-repeat scroll 0 50%;
-  line-height: 3em;
-  margin: -8px auto 0;
-  text-align: left;
-  text-indent: 25px; }
+#nav, #nav a { color: #C3D3E4; }
 
-/* line 141, ../../../app/stylesheets/partials/_discuz.sass */
-#nav, #nav a {
-  color: #C3D3E4; }
+#nav { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: transparent url(/app/images/icon_nav.gif) no-repeat scroll 0 50%; line-height: 3em; margin: -8px auto 0; text-align: left; text-indent: 25px; }
+
+#nav, #nav a { color: #C3D3E4; }
+
+#footer, #footer a { color: #8691A2; }
+
+#footer { padding: 1em 0; }
+
+#footer, #footer a { color: #8691A2; }
+
+#footlink { float: right; text-align: right; }
+
+.smalltext { font-family: Verdana,Helvetica,Arial,sans-serif; font-size: 0.83em; }
+
+#rightinfo { float: left; }

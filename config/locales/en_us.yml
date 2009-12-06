@@ -117,14 +117,16 @@ en_us:
     place: Place
     create_time: Added At
   discuz:
-    online: ??
-    reminder: ??
-    messages: ???
-    my_space: ????
-    logout: ??
-    split_mode: ????
-    forum: ??
-    search: ??
-    help: ??
-    navigation: ??
-    forum_name: ??
+    online: 在线
+    reminder: 提醒
+    messages: 短消息
+    my_space: 个人空间
+    logout: 退出
+    split_mode: 分栏模式
+    forum: 论坛
+    search: 搜索
+    help: 帮助
+    navigation: 导航
+    forum_name: 棋人
+    contact_us: 联系我们
+    forum_stats: 论坛统计
