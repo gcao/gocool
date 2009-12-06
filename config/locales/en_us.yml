@@ -117,6 +117,7 @@ en_us:
     place: Place
     create_time: Added At
   discuz:
+    gocool_app: 棋谱库
     online: 在线
     reminder: 提醒
     messages: 短消息

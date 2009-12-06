@@ -1,8 +1,7 @@
 #header
   .wrap.s_clear
     %h2
-      %a{ :href => root_url, :title => "Games Library" }
-        = image_tag "logo.gif"
+      %a{ :href => root_url, :title => "Games Library" }= image_tag "logo.gif"
     #umenu
       %cite
         %a.noborder{ :href => "space.php?uid=779" }
@@ -25,11 +24,14 @@
           =t('discuz.logout')
     #menu
       %ul
+        %li.current
+          %a#mn_index{ :href => "/app", :hidefocus => "true" }
+            =t('discuz.gocool_app')
         %li
           %span.frameswitch
             %a.frameon(target="_top" href="frame.php?frameon=yes")
               =t('discuz.split_mode')
-        %li.current
+        %li
           %a#mn_index{ :href => "index.php", :hidefocus => "true" }
             =t('discuz.forum')
         %li.menu_2
