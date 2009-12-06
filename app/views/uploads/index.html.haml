@@ -1,6 +1,6 @@
 %h1= @page_header || t('uploads.page_header')
 
-%form.bp(action="/uploads" name="uploadForm" enctype="multipart/form-data" method="post")
+%form.bp{:action=>uploads_url, :name=>"uploadForm", :enctype=>"multipart/form-data", :method=>"post"}
   %fieldset.span-18
     = show_flash 'span-18'
     .form_row.span-18
