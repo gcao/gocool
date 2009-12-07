@@ -10,8 +10,13 @@ Warden::Manager.serialize_from_session{ |klass, id| id }
 # Declare your strategies here
 Warden::Strategies.add(:my_strategy) do
   def authenticate!
-    if params[:username] == 'admin'
-      success!(params[:username])
+    logger.info '************* authenticate! ***************'
+    return unless ENV['INTEGRATE_WITH_FORUM']
+
+    session_id = request.cookie[ENV['SESSION_ID_KEY']]
+    session = Discuz::Session.find(session_id)
+    unless session.username.blank?
+      success!(session)
     end
   end
 end

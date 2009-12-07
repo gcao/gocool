@@ -30,3 +30,11 @@ production:
 cucumber:
   <<: *TEST
   database: gocool_cucumber
+
+discuz:
+  adapter: mysql
+  database: bbs
+  user: root
+  password: <%= %x(msp).strip %>
+  pool: 5
+  timeout: 5000
