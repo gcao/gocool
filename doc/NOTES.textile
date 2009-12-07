@@ -1,3 +1,19 @@
+h2. 2009-12-07
+
+h3. Integrate with Discuz!
+
+* Log in
+** Use /bbs/logging.php?action=login
+** Specify return URL (how?)
+
+* Log out
+** Use /bbs/logging.php?action=logout
+** Modify logging.php to not require formhash on logging out
+
+* URL for the user
+** Grab user id from database
+** Use /bbs/space.php?uid=###
+
 h2. 2009-12-01
 
 h3. Production issue

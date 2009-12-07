@@ -118,6 +118,8 @@ en_us:
     create_time: Added At
   discuz:
     gocool_app: 棋谱库
+    registration: 注册
+    login: 登录
     online: 在线
     reminder: 提醒
     messages: 短消息
