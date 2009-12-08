@@ -31,6 +31,7 @@ module Authentication
   
   def login_required
     unless logged_in?
+      request.env['warden'].authenticate!
       throw :warden
     end
   end

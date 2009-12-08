@@ -3,17 +3,22 @@ Rails.configuration.middleware.use RailsWarden::Manager do |manager|
   manager.failure_app = LoginController
 end
 
-# Setup Session Serialization
-Warden::Manager.serialize_into_session{ |user| user }
-Warden::Manager.serialize_from_session{ |klass, id| id }
+class Warden::Serializers::Session
+  def serialize user
+    user
+  end
+
+  def deseriaze klass, id
+    id
+  end
+end
 
 # Declare your strategies here
 Warden::Strategies.add(:my_strategy) do
   def authenticate!
-    logger.info '************* authenticate! ***************'
     return unless ENV['INTEGRATE_WITH_FORUM']
 
-    session_id = request.cookie[ENV['SESSION_ID_KEY']]
+    session_id = request.cookies[ENV['SESSION_ID_KEY']]
     session = Discuz::Session.find(session_id)
     unless session.username.blank?
       success!(session)

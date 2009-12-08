@@ -5,3 +5,4 @@ ENV['USE_OLD_JSGAMEVIEWER'] = "false"
 
 ENV['INTEGRATE_WITH_FORUM'] = 'true'
 ENV['SESSION_ID_KEY'] = 'Z7H_sid'
+ENV['SESSION_TABLE_NAME'] = 'discuz_sessions'
