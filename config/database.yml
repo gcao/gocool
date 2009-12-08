@@ -1,6 +1,6 @@
 # SQLite version 3.x
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
-development:
+development: &DEV
   adapter: mysql
   database: gocool_dev
   user: root
@@ -11,13 +11,9 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test: &TEST
-  adapter: mysql
+test:
+  <<: *DEV
   database: gocool_test
-  user: root
-  password: <%= %x(msp).strip %>
-  pool: 5
-  timeout: 5000
 
 production:
   adapter: mysql
@@ -28,13 +24,9 @@ production:
   timeout: 5000
 
 cucumber:
-  <<: *TEST
+  <<: *DEV
   database: gocool_cucumber
 
 discuz:
-  adapter: mysql
+  <<: *DEV
   database: bbs
-  user: root
-  password: <%= %x(msp).strip %>
-  pool: 5
-  timeout: 5000

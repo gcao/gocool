@@ -1,6 +1,6 @@
 module Discuz
   class Base < ActiveRecord::Base
-    establish_connection ENV['DISCUZ']
+    establish_connection 'discuz'
     self.abstract_class = true
   end
 end

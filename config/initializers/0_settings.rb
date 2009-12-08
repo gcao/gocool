@@ -4,5 +4,7 @@ ENV["USE_XSENDFILE"] = "false"
 ENV['USE_OLD_JSGAMEVIEWER'] = "false"
 
 ENV['INTEGRATE_WITH_FORUM'] = 'true'
-ENV['SESSION_ID_KEY'] = 'Z7H_sid'
-ENV['SESSION_TABLE_NAME'] = 'discuz_sessions'
+ENV['DISCUZ_COOKIE_SID'] = 'Z7H_sid'
+ENV['DISCUZ_COOKIE_AUTH'] = 'Z7H_auth'
+ENV['DISCUZ_COOKIE_USERNAME'] = 'uchome_loginuser'
+ENV['DISCUZ_SESSIONS_TABLE'] = 'discuz_sessions'

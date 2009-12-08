@@ -22,16 +22,16 @@ module Authentication
   end
   
   def current_user
-    @current_user ||= env['warden'].user
+    request.env['warden'].user
   end
   
   def logged_in?
-    request.env['warden'].authenticated?
+    current_user.nil?
   end
   
   def login_required
+    request.env['warden'].authenticate!
     unless logged_in?
-      request.env['warden'].authenticate!
       throw :warden
     end
   end
