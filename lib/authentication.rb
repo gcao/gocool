@@ -28,9 +28,13 @@ module Authentication
   def logged_in?
     current_user.nil?
   end
+
+  def login_check
+    request.env['warden'].authenticate!
+  end
   
   def login_required
-    request.env['warden'].authenticate!
+    login_check
     unless logged_in?
       throw :warden
     end
