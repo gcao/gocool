@@ -17,26 +17,31 @@
 #   before_filter :login_required, :except => [:index, :show]
 module Authentication
   def self.included(controller)
-    controller.send :helper_method, :current_user, :logged_in?
+    controller.send :helper_method, :login_session, :logged_in?
     controller.filter_parameter_logging :password
   end
   
-  def current_user
-    request.env['warden'].user
+  def login_session
+    request.env['forum_session']
   end
   
   def logged_in?
-    current_user.nil?
+    not login_session.nil?
   end
 
   def login_check
-    request.env['warden'].authenticate!
+    request.env['forum_session'] = nil
+    return unless ENV['INTEGRATE_WITH_FORUM']
+
+    username  = request.cookies[ENV['DISCUZ_COOKIE_USERNAME']]
+    auth      = request.cookies[ENV['DISCUZ_COOKIE_AUTH']]
+
+    return if auth.blank? or username.blank?
+
+    request.env['forum_session'] = Discuz::Session.find_by_username username
   end
   
   def login_required
-    login_check
-    unless logged_in?
-      throw :warden
-    end
+    redirect_to login_url unless login_check
   end
 end
