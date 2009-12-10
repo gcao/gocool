@@ -181,64 +181,66 @@ a:hover {
 
 /* line 153, ../../../app/stylesheets/partials/_discuz.sass */
 #footer {
-  padding: 1em 0; }
+  padding: 1em 0;
+  position: relative; }
 
-/* line 156, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 157, ../../../app/stylesheets/partials/_discuz.sass */
 #footer, #footer a {
   color: #8691A2; }
 
-/* line 159, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 160, ../../../app/stylesheets/partials/_discuz.sass */
 #footlink {
   float: right;
   text-align: right; }
 
-/* line 163, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 164, ../../../app/stylesheets/partials/_discuz.sass */
 .smalltext {
   font-family: Verdana,Helvetica,Arial,sans-serif;
   font-size: 0.83em; }
 
-/* line 167, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 168, ../../../app/stylesheets/partials/_discuz.sass */
 #rightinfo {
   float: left; }
 
-/* line 172, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 173, ../../../app/stylesheets/partials/_discuz.sass */
 #header a, #nav a, #footer a {
   text-decoration: none; }
 
-/* line 176, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 177, ../../../app/stylesheets/partials/_discuz.sass */
 #header p, #footer p {
   margin: 0; }
 
-/* line 179, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 180, ../../../app/stylesheets/partials/_discuz.sass */
 #container {
   margin-top: 0;
   text-align: left;
   padding: 5px; }
 
-/* line 185, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 186, ../../../app/stylesheets/partials/_discuz.sass */
 div.jqueryslidemenu {
   display: inline;
   background: none;
   width: 400px;
   text-indent: 0 !important;
   font-weight: normal; }
-  /* line 192, ../../../app/stylesheets/partials/_discuz.sass */
+  /* line 193, ../../../app/stylesheets/partials/_discuz.sass */
   div.jqueryslidemenu ul {
     float: right; }
-    /* line 196, ../../../app/stylesheets/partials/_discuz.sass */
+    /* line 197, ../../../app/stylesheets/partials/_discuz.sass */
     div.jqueryslidemenu ul li a {
       background: none;
       padding: 0px 10px 4px;
       border: 0; }
-    /* line 202, ../../../app/stylesheets/partials/_discuz.sass */
+    /* line 203, ../../../app/stylesheets/partials/_discuz.sass */
     div.jqueryslidemenu ul li.active a {
       background: none;
-      font-weight: bold; }
+      font-weight: bold;
+      text-decoration: underline !important; }
 
-/* line 206, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 208, ../../../app/stylesheets/partials/_discuz.sass */
 input[type='file'] {
   font-size: 11px; }
 
-/* line 209, ../../../app/stylesheets/partials/_discuz.sass */
+/* line 211, ../../../app/stylesheets/partials/_discuz.sass */
 .form_legend {
   font-size: 11px; }

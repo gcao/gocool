@@ -8,10 +8,9 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  # layout 'application_integrated'
-
-  # Scrub sensitive parameters from your log
-  filter_parameter_logging :password
+  if ENV['INTEGRATE_WITH_FORUM'] == 'true'
+    layout 'application_integrated'
+  end
   
   before_filter :set_title_and_header
   before_filter :set_locale

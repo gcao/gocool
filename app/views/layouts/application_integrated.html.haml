@@ -8,12 +8,10 @@
     /[if IE]
       = stylesheet_link_tag "active_scaffold/default/stylesheet-ie.css"
 
-    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/discuz.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-
-    = stylesheet_link_tag 'compiled/test.css', :media => 'screen, projection'
 
     = yield :head
   %body.bp
@@ -32,5 +30,5 @@
       = javascript_include_tag "application"
       = yield :footer
 
-      %br
+      %p &nbsp;
     = render 'discuz/footer'
