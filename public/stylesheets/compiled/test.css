@@ -1,228 +1,70 @@
-/* line 1, ../../../app/stylesheets/partials/_discuz.sass */
-body {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #0D2345 url(/app/images/bodybg.gif) repeat-x scroll 0 90px;
-  text-align: center; }
+body { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #0D2345 url(/app/images/bodybg.gif) repeat-x scroll 0 90px; text-align: center; }
 
-/* line 8, ../../../app/stylesheets/partials/_discuz.sass */
-body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset {
-  margin: 0;
-  padding: 0; }
+body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0; padding: 0; }
 
-/* line 12, ../../../app/stylesheets/partials/_discuz.sass */
-body, td, input, textarea, select, button {
-  color: #444444;
-  font-family: Verdana,Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  font-size-adjust: none;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1.6em; }
+body, td, input, textarea, select, button { color: #444444; font-family: Verdana,Helvetica,Arial,sans-serif; font-size: 12px; font-size-adjust: none; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1.6em; }
 
-/* line 22, ../../../app/stylesheets/partials/_discuz.sass */
-a {
-  color: #000000;
-  text-decoration: none; }
-  /* line 26, ../../../app/stylesheets/partials/_discuz.sass */
-  a img {
-    border: medium none; }
+a { color: #000000; text-decoration: none; }
+a img { border: medium none; }
 
-/* line 29, ../../../app/stylesheets/partials/_discuz.sass */
-* {
-  word-wrap: break-word; }
+* { word-wrap: break-word; }
 
-/* line 32, ../../../app/stylesheets/partials/_discuz.sass */
-.wrap {
-  margin: 0 auto;
-  text-align: left; }
+.wrap { margin: 0 auto; text-align: left; }
 
-/* line 36, ../../../app/stylesheets/partials/_discuz.sass */
-.pipe {
-  margin: 0 5px; }
+.pipe { margin: 0 5px; }
 
-/* line 39, ../../../app/stylesheets/partials/_discuz.sass */
-.lighttxt, .lighttxt a, .pipe {
-  color: #999999; }
+.lighttxt, .lighttxt a, .pipe { color: #999999; }
 
-/* line 42, ../../../app/stylesheets/partials/_discuz.sass */
-em, cite, strong, th {
-  font-style: normal;
-  text-align: left; }
+em, cite, strong, th { font-style: normal; text-align: left; }
 
-/* line 46, ../../../app/stylesheets/partials/_discuz.sass */
-ul li {
-  list-style-image: none;
-  list-style-position: outside;
-  list-style-type: none; }
+ul li { list-style-image: none; list-style-position: outside; list-style-type: none; }
 
-/* line 51, ../../../app/stylesheets/partials/_discuz.sass */
-a:hover {
-  text-decoration: underline; }
+a:hover { text-decoration: underline; }
 
-/* line 54, ../../../app/stylesheets/partials/_discuz.sass */
-.noborder, .noborder td {
-  border: medium none !important; }
+.noborder, .noborder td { border: medium none !important; }
 
-/* line 57, ../../../app/stylesheets/partials/_discuz.sass */
-#header {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #FFFFFF none repeat scroll 0 0;
-  border-bottom: 1px solid #00B2E8;
-  margin-bottom: 8px;
-  width: 100%; }
-  /* line 66, ../../../app/stylesheets/partials/_discuz.sass */
-  #header h2 {
-    float: left;
-    margin: 0; }
-  /* line 70, ../../../app/stylesheets/partials/_discuz.sass */
-  #header .wrap {
-    height: 120px;
-    padding: 8px 0 4px;
-    position: relative; }
+#header { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #FFFFFF none repeat scroll 0 0; border-bottom: 1px solid #00B2E8; margin-bottom: 8px; width: 100%; }
+#header h2 { float: left; margin: 0; }
+#header .wrap { height: 120px; padding: 8px 0 4px; position: relative; }
 
-/* line 75, ../../../app/stylesheets/partials/_discuz.sass */
-#umenu, #umenu a, #umenu .pipe {
-  color: #666666; }
+#umenu, #umenu a, #umenu .pipe { color: #666666; }
 
-/* line 78, ../../../app/stylesheets/partials/_discuz.sass */
-#umenu {
-  line-height: 20px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  line-height: 20px; }
-  /* line 85, ../../../app/stylesheets/partials/_discuz.sass */
-  #umenu cite {
-    font-weight: 700; }
-  /* line 88, ../../../app/stylesheets/partials/_discuz.sass */
-  #umenu a {
-    margin: 0 6px; }
+#umenu { line-height: 20px; position: absolute; right: 0; top: 0; line-height: 20px; }
+#umenu cite { font-weight: 700; }
+#umenu a { margin: 0 6px; }
 
-/* line 91, ../../../app/stylesheets/partials/_discuz.sass */
-#menu {
-  bottom: 0;
-  height: 26px;
-  position: absolute;
-  right: 0; }
-  /* line 97, ../../../app/stylesheets/partials/_discuz.sass */
-  #menu li {
-    -moz-background-clip: border;
-    -moz-background-inline-policy: continuous;
-    -moz-background-origin: padding;
-    background: #EBF4FD url(/app/images/mtabbg.gif) repeat-x scroll 0 100%;
-    display: inline;
-    float: left;
-    margin-left: 5px; }
-  /* line 106, ../../../app/stylesheets/partials/_discuz.sass */
-  #menu a {
-    -moz-background-clip: border;
-    -moz-background-inline-policy: continuous;
-    -moz-background-origin: padding;
-    background: transparent none repeat scroll 0 0;
-    border-color: #B0E4EF;
-    border-style: solid;
-    border-width: 1px 1px 0;
-    color: #666666;
-    float: left;
-    height: 25px;
-    line-height: 25px;
-    overflow: hidden;
-    padding: 0 14px;
-    text-decoration: none; }
-  /* line 122, ../../../app/stylesheets/partials/_discuz.sass */
-  #menu li.current a {
-    background-color: #1E4B7E;
-    border-color: #00B2E8;
-    color: #C3D3E4;
-    height: 26px; }
+#menu { bottom: 0; height: 26px; position: absolute; right: 0; }
+#menu li { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #EBF4FD url(/app/images/mtabbg.gif) repeat-x scroll 0 100%; display: inline; float: left; margin-left: 5px; }
+#menu a { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: transparent none repeat scroll 0 0; border-color: #B0E4EF; border-style: solid; border-width: 1px 1px 0; color: #666666; float: left; height: 25px; line-height: 25px; overflow: hidden; padding: 0 14px; text-decoration: none; }
+#menu li.current a { background-color: #1E4B7E; border-color: #00B2E8; color: #C3D3E4; height: 26px; }
 
-/* line 129, ../../../app/stylesheets/partials/_discuz.sass */
-#nav, #nav a {
-  color: #C3D3E4; }
+#nav, #nav a { color: #C3D3E4; }
 
-/* line 132, ../../../app/stylesheets/partials/_discuz.sass */
-#nav {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: transparent url(/app/images/icon_nav.gif) no-repeat scroll 0 50%;
-  line-height: 3em;
-  margin: -8px auto 0;
-  text-align: left;
-  text-indent: 25px; }
+#nav { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: "transparent url(/app/images/icon_nav.gif) no-repeat scroll 0 50%"; line-height: 3em; margin: -8px auto 0; text-align: left; text-indent: 25px; }
 
-/* line 143, ../../../app/stylesheets/partials/_discuz.sass */
-#footer, #footer a {
-  color: #8691A2; }
+#footer, #footer a { color: #8691A2; }
 
-/* line 146, ../../../app/stylesheets/partials/_discuz.sass */
-#footer {
-  padding: 1em 0;
-  position: relative; }
+#footer { padding: 1em 0; position: relative; }
 
-/* line 150, ../../../app/stylesheets/partials/_discuz.sass */
-#footlink {
-  float: right;
-  text-align: right; }
+#footlink { float: right; text-align: right; }
 
-/* line 154, ../../../app/stylesheets/partials/_discuz.sass */
-.smalltext {
-  font-family: Verdana,Helvetica,Arial,sans-serif;
-  font-size: 0.83em; }
+.smalltext { font-family: Verdana,Helvetica,Arial,sans-serif; font-size: 0.83em; }
 
-/* line 158, ../../../app/stylesheets/partials/_discuz.sass */
-#rightinfo {
-  float: left; }
+#rightinfo { float: left; }
 
-/* line 163, ../../../app/stylesheets/partials/_discuz.sass */
-#header a, #nav a, #footer a {
-  text-decoration: none; }
+#header a, #nav a, #footer a { text-decoration: none; }
 
-/* line 167, ../../../app/stylesheets/partials/_discuz.sass */
-#header p, #footer p {
-  margin: 0; }
+#header p, #footer p { margin: 0; }
 
-/* line 170, ../../../app/stylesheets/partials/_discuz.sass */
-#container {
-  margin-top: 0;
-  text-align: left;
-  padding: 5px; }
+#container { margin-top: 0; text-align: left; padding: 5px; }
 
-/* line 176, ../../../app/stylesheets/partials/_discuz.sass */
-div.jqueryslidemenu {
-  display: inline;
-  background: none;
-  width: 400px;
-  text-indent: 0 !important;
-  font-weight: normal; }
-  /* line 183, ../../../app/stylesheets/partials/_discuz.sass */
-  div.jqueryslidemenu ul {
-    float: right; }
-    /* line 187, ../../../app/stylesheets/partials/_discuz.sass */
-    div.jqueryslidemenu ul li a {
-      background: none;
-      padding: 0px 10px 4px;
-      border: 0; }
-    /* line 193, ../../../app/stylesheets/partials/_discuz.sass */
-    div.jqueryslidemenu ul li.active a {
-      background: none;
-      font-weight: bold;
-      text-decoration: underline !important; }
+div.jqueryslidemenu { display: inline; background: none; width: 400px; text-indent: 0 !important; font-weight: normal; }
+div.jqueryslidemenu ul { float: right; }
+div.jqueryslidemenu ul li a { background: none; padding: 0px 10px 4px; border: 0; }
+div.jqueryslidemenu ul li.active a { background: none; font-weight: bold; text-decoration: underline !important; }
 
-/* line 198, ../../../app/stylesheets/partials/_discuz.sass */
-input[type='file'] {
-  font-size: 11px; }
+input[type='file'] { font-size: 11px; }
 
-/* line 201, ../../../app/stylesheets/partials/_discuz.sass */
-.form_legend {
-  font-size: 11px; }
+.form_legend { font-size: 11px; }
 
-/* line 204, ../../../app/stylesheets/partials/_discuz.sass */
-#games_widget_container, #players_result_container {
-  display: block;
-  float: none; }
+#games_widget_container, #players_result_container { display: block; float: none; }
