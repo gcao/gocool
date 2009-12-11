@@ -1,6 +1,6 @@
 zh_cn:
   shared:
-    page_title: "棋人"
+    page_title: "棋人 - 棋谱库"
     games_table:
       game_name: "对局名称"
       black_player: "黑方"
@@ -18,7 +18,7 @@ zh_cn:
     games: "对局"
     tournaments: "赛事"
   link:
-    home: "首页"
+    home: "棋谱库首页"
     back: "返回"
     download_sgf: "下载SGF文件"
     pagination:
