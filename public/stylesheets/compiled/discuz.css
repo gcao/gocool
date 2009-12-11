@@ -1473,3 +1473,8 @@ input[type='file'] {
 /* line 211, ../../../app/stylesheets/partials/_discuz.sass */
 .form_legend {
   font-size: 11px; }
+
+/* line 214, ../../../app/stylesheets/partials/_discuz.sass */
+#games_widget_container, #players_result_container {
+  display: block;
+  float: none; }
