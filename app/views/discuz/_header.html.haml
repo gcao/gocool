@@ -1,7 +1,7 @@
 #header
   .wrap.s_clear
     %h2
-      %a{ :href => root_url, :title => "Games Library" }= image_tag "logo.gif"
+      %a{ :href => '/bbs/index.php', :title => "Games Library" }= image_tag "logo.gif"
     #umenu
       -if logged_in?
         = render 'discuz/logged_in'
@@ -14,22 +14,22 @@
             =t('discuz.gocool_app')
         %li
           %span.frameswitch
-            %a.frameon(target="_top" href="frame.php?frameon=yes")
+            %a.frameon(target="_top" href="/bbs/frame.php?frameon=yes")
               =t('discuz.split_mode')
         %li
-          %a#mn_index{ :href => "index.php", :hidefocus => "true" }
+          %a#mn_index{ :href => "/bbs/index.php", :hidefocus => "true" }
             =t('discuz.forum')
         %li.menu_2
-          %a#mn_search{ :href => "search.php", :hidefocus => "true" }
+          %a#mn_search{ :href => "/bbs/search.php", :hidefocus => "true" }
             =t('discuz.search')
         %li.menu_4
-          %a#mn_faq{ :href => "faq.php", :hidefocus => "true" }
+          %a#mn_faq{ :href => "/bbs/faq.php", :hidefocus => "true" }
             =t('discuz.help')
         %li.menu_5
-          %a{ :href => "misc.php?action=nav", :hidefocus => "true", :onclick => "showWindow('nav', this.href);return false;" }
+          %a{ :href => "/bbs/misc.php?action=nav", :hidefocus => "true", :onclick => "showWindow('nav', this.href);return false;" }
             =t('discuz.navigation')
 #nav
-  %a(href="index.php")=t('discuz.forum_name')
+  %a(href="/bbs/index.php")=t('discuz.forum_name')
   &raquo;
   =t('discuz.gocool_app')
 

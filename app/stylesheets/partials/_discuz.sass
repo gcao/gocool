@@ -1,22 +1,15 @@
-body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset 
-  margin: 0
-  padding: 0
-
-body 
+body
   -moz-background-clip: border
   -moz-background-inline-policy: continuous
   -moz-background-origin: padding
   background: #0D2345 url(/app/images/bodybg.gif) repeat-x scroll 0 90px
   text-align: center
 
-a 
-  color: #000000
-  text-decoration: none
+body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset
+  margin: 0
+  padding: 0
 
-* 
-  word-wrap: break-word
-
-body, td, input, textarea, select, button 
+body, td, input, textarea, select, button
   color: #444444
   font-family: Verdana,Helvetica,Arial,sans-serif
   font-size: 12px
@@ -26,51 +19,19 @@ body, td, input, textarea, select, button
   font-weight: normal
   line-height: 1.6em
 
-#header
-  -moz-background-clip: border
-  -moz-background-inline-policy: continuous
-  -moz-background-origin: padding
-  background: #FFFFFF none repeat scroll 0 0
-  border-bottom: 1px solid #00B2E8
-  margin-bottom: 8px
-  width: 100%
+a 
+  color: #000000
+  text-decoration: none
 
-a img
-  border: medium none
+  img
+    border: medium none
 
-#header h2
-  float: left
-  margin: 0
-
-#header .wrap
-  height: 120px
-  padding: 8px 0 4px
-  position: relative
+* 
+  word-wrap: break-word
 
 .wrap
   margin: 0 auto
   text-align: left
-
-#umenu, #umenu a, #umenu .pipe
-  color: #666666
-
-#umenu
-  line-height: 20px
-  position: absolute
-  right: 0
-  top: 0
-
-#umenu, #umenu a, #umenu .pipe
-  color: #666666
-
-#umenu
-  line-height: 20px
-
-#umenu cite
-  font-weight: 700
-
-#umenu a
-  margin: 0 6px
 
 .pipe
   margin: 0 5px
@@ -82,53 +43,88 @@ em, cite, strong, th
   font-style: normal
   text-align: left
 
-#menu
-  bottom: 0
-  height: 26px
-  position: absolute
-  right: 0
-
-#menu li
-  -moz-background-clip: border
-  -moz-background-inline-policy: continuous
-  -moz-background-origin: padding
-  background: #EBF4FD url(/app/images/mtabbg.gif) repeat-x scroll 0 100%
-  display: inline
-  float: left
-  margin-left: 5px
-
 ul li
   list-style-image: none
   list-style-position: outside
   list-style-type: none
-
-#menu a
-  -moz-background-clip: border
-  -moz-background-inline-policy: continuous
-  -moz-background-origin: padding
-  background: transparent none repeat scroll 0 0
-  border-color: #B0E4EF
-  border-style: solid
-  border-width: 1px 1px 0
-  color: #666666
-  float: left
-  height: 25px
-  line-height: 25px
-  overflow: hidden
-  padding: 0 14px
-  text-decoration: none
-
-#menu li.current a
-  background-color: #1E4B7E
-  border-color: #00B2E8
-  color: #C3D3E4
-  height: 26px
 
 a:hover
   text-decoration: underline
 
 .noborder, .noborder td
   border: medium none !important
+
+#header
+  -moz-background-clip: border
+  -moz-background-inline-policy: continuous
+  -moz-background-origin: padding
+  background: #FFFFFF none repeat scroll 0 0
+  border-bottom: 1px solid #00B2E8
+  margin-bottom: 8px
+  width: 100%
+
+  h2
+    float: left
+    margin: 0
+
+  .wrap
+    height: 120px
+    padding: 8px 0 4px
+    position: relative
+
+#umenu, #umenu a, #umenu .pipe
+  color: #666666
+
+#umenu
+  line-height: 20px
+  position: absolute
+  right: 0
+  top: 0
+  line-height: 20px
+
+  cite
+    font-weight: 700
+
+  a
+    margin: 0 6px
+
+#menu
+  bottom: 0
+  height: 26px
+  position: absolute
+  right: 0
+
+  li
+    -moz-background-clip: border
+    -moz-background-inline-policy: continuous
+    -moz-background-origin: padding
+    background: #EBF4FD url(/app/images/mtabbg.gif) repeat-x scroll 0 100%
+    display: inline
+    float: left
+    margin-left: 5px
+
+  a
+    -moz-background-clip: border
+    -moz-background-inline-policy: continuous
+    -moz-background-origin: padding
+    background: transparent none repeat scroll 0 0
+    border-color: #B0E4EF
+    border-style: solid
+    border-width: 1px 1px 0
+    color: #666666
+    float: left
+    height: 25px
+    line-height: 25px
+    overflow: hidden
+    padding: 0 14px
+    text-decoration: none
+
+  li.current a
+    background-color: #1E4B7E
+    border-color: #00B2E8
+    color: #C3D3E4
+    height: 26px
+
 
 #nav, #nav a
   color: #C3D3E4
@@ -143,9 +139,6 @@ a:hover
   text-align: left
   text-indent: 25px
 
-#nav, #nav a
-  color: #C3D3E4
-
 // FOOTER
 #footer, #footer a
   color: #8691A2
@@ -153,9 +146,6 @@ a:hover
 #footer
   padding: 1em 0
   position: relative
-
-#footer, #footer a
-  color: #8691A2
 
 #footlink
   float: right
@@ -168,7 +158,7 @@ a:hover
 #rightinfo
   float: left
 
-// OVERWRITE STYLES
+// OVERWRITE GOCOOL STYLES
 #header, #nav, #footer
   a
     text-decoration: none
