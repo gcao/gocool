@@ -9,3 +9,5 @@ ENV['DISCUZ_COOKIE_SID']      = 'Z7H_sid'
 ENV['DISCUZ_COOKIE_AUTH']     = 'Z7H_auth'
 ENV['DISCUZ_COOKIE_USERNAME'] = 'uchome_loginuser'
 ENV['DISCUZ_SESSIONS_TABLE']  = 'discuz_sessions'
+
+ENV['DEFAULT_LOCALE'] = 'zh_cn'

@@ -1,57 +1,132 @@
 zh_cn:
   shared:
-    title: 棋酷网
+    page_title: "棋人"
+    games_table:
+      game_name: "对局名称"
+      black_player: "黑方"
+      white_player: "白方"
+      moves: "步数"
+      result: "结果"
+      play_time: "对局时间"
+      place: "对局地点"
+      create_time: "上传时间"
   menu:
-    home: 首页
-    uploads: 上传对局
-    pasties: 粘贴SGF
-    players: 棋手
-    games: 棋局
-    tournaments: 比赛
+    home: "首页"
+    uploads: "上载对局"
+    pasties: "上传SGF数据"
+    players: "棋手"
+    games: "对局"
+    tournaments: "赛事"
   link:
-    home: 首页
-    back: 返回
-    download_sgf: 下载SGF文件
+    home: "首页"
+    back: "返回"
+    download_sgf: "下载SGF文件"
     pagination:
       prev: "&#171; 前一页"
       next: "后一页 &#187;"
   form:
-    marked_required: 标记的必须填写
-    click_to_change: (点击后即可修改内容)
-    submit_button: 提交
-    reset_button: 清除
-    view_button: 打开
+    marked_required: "必填内容"
+    click_to_change: "(点此修改)"
+    submit_button: "提交"
+    reset_button: "清除"
+    view_button: "欣赏对局"
+    detail_button: "详细信息"
+    search_button: "搜索"
+    select_all: "全部"
   email:
-    label: 电子邮件
-    required: 电子邮件必须填写。
-    invalid: 电子邮件格式不正确。
+    label: "Email"
+    required: "Email为空."
+    invalid: "Email不正确."
   homepage:
-    welcome: 欢迎访问棋酷网
-    description: "你可以上传、打谱或与棋友分享对局心得。"
+    page_title: "首页"
+    welcome: "欢迎访问棋人棋谱库。"
+    description: "本棋谱库支持上传、打谱以及与棋友分享对局。"
     recent_games:
-      label: 最近增加的棋局
-      game_name: 名称
-      black_player: 黑方
-      white_player: 白方
-      moves: 步数
-      result: 结果
-      play_time: 对局日期
-      place: 对局地点
-      create_time: 加入时间
-  upload:
-    file_label: "文件 (*.sgf)"
-    file_required: 没有选中文件
-    is_binary_file: "上传的文件格式不正确。"
-    submit_button: 上传
-    success: 文件已成功上传。
-    game_found: 棋局已经存在。
-    page_title: 上传棋局
-    page_header: 上传棋局
-    game_not_found: 没有找到棋局。
-  pastie:
-    page_title: 粘贴棋局内容
-    page_header: 粘贴棋局内容
-    data_label: "棋局内容（SGF)"
-    success: 棋局内容已保存到数据库中。
-    data_required: 请将SGF格式的棋局内容拷贝到文本框。
-    data_invalid_parse_error: "SGF格式不正确："
+      label: "最近上传的对局"
+      game_name: "对局名称"
+      black_player: "黑方"
+      white_player: "白方"
+      moves: "步数"
+      result: "结果"
+      play_time: "对局时间"
+      place: "对局地点"
+      create_time: "上传时间"
+  uploads:
+    file_label: "文件 <br/>(*.sgf, *.zip)"
+    file_required: "文件为空."
+    is_binary_file: "文件内容不正确。"
+    submit_button: "上传"
+    success: "上传成功。"
+    game_found: "库中已经保存有你要上传的对局。"
+    page_title: "上传对局"
+    page_header: "上传对局"
+    game_not_found: "对局不存在。"
+    result:
+      header: "上传处理结果"
+      file_name: "文件名"
+      status: "结果"
+      detail: "详细信息"
+    status:
+      success: "成功"
+      already_uploaded: "已存在"
+      validation_error: "未正确填写全部内容"
+      error: "未知错误"
+      parse_error: "SGF格式错误"
+    already_uploaded_detail: "库中已经保存有你要上传的对局。"
+  pasties:
+    page_title: "上传SGF数据"
+    page_header: "上传SGF数据"
+    data_label: "SGF数据"
+    success: "对局保存成功。"
+    data_required: "SGF数据为空"
+    data_invalid_parse_error: "SGF格式错误："
+  players:
+    page_title: "棋手"
+    page_header: "棋手"
+    platform_label: "对局平台："
+    username_label: "用户名："
+    online_players:
+      platform: "对局平台"
+      username: "用户名"
+      games: "对局数"
+      won: "胜局数"
+      lost: "败局数"
+    games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME 的对局"
+  games:
+    page_title: "对局"
+    page_header: "对局"
+    platform_label: "对局平台："
+    player1_label: "棋手"
+    vs_label: "对"
+    player2_label: "对手"
+    player1_required: "必填"
+    player1_is_required: "请输入棋手用户名。"
+  game_sources:
+    page_title: "对局"
+    page_header: "对局"
+  games_widget:
+    game_name: "对局名称"
+    black_player: "黑方"
+    white_player: "白方"
+    moves: "步数"
+    result: "结果"
+    play_time: "对局时间"
+    place: "对局地点"
+    create_time: "上传时间"
+  discuz:
+    gocool_app: "棋谱库"
+    registration: "注册"
+    login: "登录"
+    online: "在线"
+    reminder: "提醒"
+    messages: "短消息"
+    my_space: "个人空间"
+    logout: "退出"
+    split_mode: "分栏模式"
+    forum: "论坛"
+    search: "搜索"
+    help: "帮助"
+    navigation: "导航"
+    forum_name: "棋人"
+    contact_us: "联系我们"
+    forum_stats: "论坛统计"

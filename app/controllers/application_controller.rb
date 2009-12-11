@@ -21,8 +21,8 @@ class ApplicationController < ActionController::Base
   end
   
   def set_locale
-    I18n.locale = @locale = params[:locale] || cookies[:locale] || "en_us"
-    cookies[:locale] = {:value => @locale, :expires => 100.years.from_now }
+    I18n.locale = @locale = params[:locale] || cookies[:gocool_locale] || ENV['DEFAULT_LOCALE']
+    cookies[:gocool_locale] = {:value => @locale, :expires => 100.years.from_now }
   end
   
   def send_file file
