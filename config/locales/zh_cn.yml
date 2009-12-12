@@ -20,6 +20,7 @@ zh_cn:
   link:
     home: "棋谱库首页"
     back: "返回"
+    close: "关闭窗口"
     download_sgf: "下载SGF文件"
     pagination:
       prev: "&#171; 前一页"
