@@ -3,7 +3,7 @@ class GameSourcesController < ApplicationController
     @game_source = GameSource.find(params[:id])
     
     respond_to do |format|
-      format.html
+      format.html { render :layout => 'simple' }
       format.sgf  { render_sgf(@game_source) }
     end
   end
