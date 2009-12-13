@@ -33,12 +33,13 @@ module Authentication
     request.env['forum_session'] = nil
     return unless ENV['INTEGRATE_WITH_FORUM']
 
-    username  = request.cookies[ENV['DISCUZ_COOKIE_USERNAME']]
-    auth      = request.cookies[ENV['DISCUZ_COOKIE_AUTH']]
+    sid = request.cookies[ENV['DISCUZ_COOKIE_PREFIX'] + "_sid"]
+    return if sid.blank?
 
-    return if auth.blank? or username.blank?
-
-    request.env['forum_session'] = Discuz::Session.find_by_username username
+    session = Discuz::Session.find sid
+    request.env['forum_session'] = session unless session.username.blank?
+  rescue ActiveRecord::RecordNotFound
+    # ignore error
   end
   
   def login_required

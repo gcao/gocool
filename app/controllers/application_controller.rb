@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
   if ENV['INTEGRATE_WITH_FORUM'] == 'true'
     layout 'application_integrated'
+    before_filter :login_check
   end
   
   before_filter :set_title_and_header
