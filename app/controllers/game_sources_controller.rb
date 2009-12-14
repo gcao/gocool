@@ -1,4 +1,7 @@
 class GameSourcesController < ApplicationController
+  def index
+  end
+  
   def show
     @game_source = GameSource.find(params[:id])
     
