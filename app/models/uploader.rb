@@ -1,7 +1,7 @@
 class Uploader
 
-  def process email, files
-    uploads = files.map {|file| Upload.create!(:email => email, :upload => file) }
+  def process_files files
+    uploads = files.map {|file| GameSource.create!(:upload => file) }
     uploads = uploads.inject([]) do |new_uploads, upload|
       new_uploads << process_compressed_upload(upload)
     end.flatten
@@ -51,7 +51,7 @@ class Uploader
     uploads = []
     Dir["/tmp/#{filename}/**/*"].each do |path|
       next if File.directory?(path)
-      uploads << Upload.create!(:email => upload.email, :upload => File.new(path))
+      uploads << GameSource.create!(:email => upload.email, :upload => File.new(path))
     end
     upload.delete
     uploads
@@ -59,7 +59,7 @@ class Uploader
   
   def process_duplicate_upload upload
     upload.update_hash_code
-    if found_upload = Upload.with_hash(upload.hash_code).first
+    if found_upload = GameSource.with_hash(upload.hash_code).first
       upload.delete
       found_upload
     end

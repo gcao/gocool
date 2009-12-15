@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091202144212) do
+ActiveRecord::Schema.define(:version => 20091215131610) do
 
   create_table "game_sources", :force => true do |t|
     t.integer  "game_id"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20091202144212) do
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+    t.string   "status"
+    t.text     "status_detail"
+    t.string   "uploader"
+    t.integer  "uploader_id"
   end
 
   add_index "game_sources", ["game_id"], :name => "index_game_sources_on_game_id"
@@ -210,6 +218,9 @@ ActiveRecord::Schema.define(:version => 20091202144212) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_type",     :default => 0
+    t.integer  "external_id"
+    t.integer  "role",          :default => 0
   end
 
 end
