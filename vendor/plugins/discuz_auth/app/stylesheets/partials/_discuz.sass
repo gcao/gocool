@@ -2,7 +2,7 @@ body
   -moz-background-clip: border
   -moz-background-inline-policy: continuous
   -moz-background-origin: padding
-  background= "#0D2345 #{image_url("/app/images/bodybg.gif")} repeat-x scroll 0 90px"
+  background: #0D2345 url(../images/bodybg.gif) repeat-x scroll 0 90px
   text-align: center
 
 body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset
@@ -19,14 +19,14 @@ body, td, input, textarea, select, button
   font-weight: normal
   line-height: 1.6em
 
-a 
+a
   color: #000000
   text-decoration: none
 
   img
     border: medium none
 
-* 
+*
   word-wrap: break-word
 
 .wrap
@@ -102,7 +102,7 @@ a:hover
     -moz-background-clip: border
     -moz-background-inline-policy: continuous
     -moz-background-origin: padding
-    background= "#EBF4FD #{image_url("/app/images/mtabbg.gif")} repeat-x scroll 0 100%"
+    background: #EBF4FD url(../app/images/mtabbg.gif) repeat-x scroll 0 100%
     display: inline
     float: left
     margin-left: 5px
@@ -137,7 +137,7 @@ a:hover
   -moz-background-clip: border
   -moz-background-inline-policy: continuous
   -moz-background-origin: padding
-  background: "transparent #{image_url("/app/images/icon_nav.gif")} no-repeat scroll 0 50%"
+  background: transparent url(../images/icon_nav.gif) no-repeat scroll 0 50%
   line-height: 3em
   margin: -8px auto 0
   text-align: left
@@ -161,50 +161,3 @@ a:hover
 
 #rightinfo
   float: left
-
-// OVERWRITE GOCOOL STYLES
-#header, #nav, #footer
-  a
-    text-decoration: none
-
-#header, #footer
-  p
-    margin: 0
-
-#container
-  margin-top: 0
-  text-align: left
-  padding: 5px
-
-// GOCOOL MENU
-div.jqueryslidemenu
-  display: inline
-  background: none
-  width: 400px
-  text-indent: 0 !important
-  font-weight: normal
-
-  ul
-    float: right
-    
-    li
-      a
-        background: none
-        padding: 0px 10px 4px
-        border: 0
-
-    li.active
-      a
-        background: none
-        font-weight: bold
-        text-decoration: underline !important
-
-input[type='file']
-  font-size: 11px
-
-.form_legend
-  font-size: 11px
-
-#games_widget_container, #players_result_container
-  display: block
-  float: none
