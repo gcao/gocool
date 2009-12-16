@@ -1,7 +1,7 @@
 #header
   .wrap.s_clear
     %h2
-      %a{ :href => '/bbs/index.php', :title => "Games Library" }= image_tag "logo.gif"
+      %a{ :href => '/bbs/index.php', :title => t('discuz.forum_name') }= image_tag "logo.gif"
     #umenu
       -if logged_in?
         = render 'discuz/logged_in'

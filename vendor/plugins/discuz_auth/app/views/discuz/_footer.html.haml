@@ -7,22 +7,22 @@
             =t('discuz.forum_name')
         %span.pipe
           |
-        %a{ :href => "mailto:gcao99@gmail.com" }
+        %a{ :href => "#{ENV['FORUM_CONTACT']}" }
           =t('discuz.contact_us')
         %span.pipe
           |
-        %a{ :href => "stats.php" }
+        %a{ :href => "/bbs/stats.php" }
           =t('discuz.forum_stats')
         %span.pipe
           |
-        %a{ :href => "archiver/", :target => "_blank" }
+        %a{ :href => "/bbs/archiver/", :target => "_blank" }
           Archiver
         %span.pipe
           |
-        %a{ :href => "wap/", :target => "_blank" }
+        %a{ :href => "/bbs/wap/", :target => "_blank" }
           WAP
       %p.smalltext
-        GMT+8, 2009-12-6 09:33
+        = Time.now
     #rightinfo
       %p
         Powered by
