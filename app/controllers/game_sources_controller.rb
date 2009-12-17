@@ -22,32 +22,20 @@ class GameSourcesController < ApplicationController
     
     respond_to do |format|
       format.html { render :layout => 'simple' }
-      format.sgf  { render_sgf(@game_source) }
+      format.sgf  { send_file(@game_source.upload.path) }
     end
   end
   
   private
-  
-  def render_sgf game_source
-    case game_source.source_type
-    when GameSource::PASTIE_TYPE
-      render :text => game_source.data
-    when GameSource::UPLOAD_TYPE
-      send_file game_source.upload.upload.path
-    else
-      raise 'TODO'
-    end
-  end
 
   def process_single_upload upload_result
     case upload_result.status
     when UploadResult::SUCCESS
       flash[:success] = t('uploads.success')
-      @upload = upload_result.upload
-      redirect_to game_source_url(@upload.game_source)
+      redirect_to game_source_url(@game_source = upload_result.game_source)
     when UploadResult::FOUND
       flash[:notice] = t('uploads.game_found')
-      redirect_to game_source_url(upload_result.existing_upload.game_source)
+      redirect_to game_source_url(upload_result.found_game_source)
     when UploadResult::VALIDATION_ERROR
       flash[:error] = t('uploads.file_required')
       render :index

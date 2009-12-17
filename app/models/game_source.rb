@@ -6,6 +6,7 @@ class GameSource < ActiveRecord::Base
   PASTIE_TYPE = 'pastie'
 
   belongs_to :game
+  has_attached_file :upload
 
   default_scope :include => :game
   
@@ -22,8 +23,15 @@ class GameSource < ActiveRecord::Base
     self.status = STATUS_PARSE_FAILURE
     self.status_detail = e.message
     raise
+  end
+
+  def parse_and_save
+    game = Game.new
+    game.load_parsed_game(parse)
+    game.primary_game_source_id = id
+    game.save!
   ensure
-    self.save!
+    save!
   end
 
   def raw_file_path

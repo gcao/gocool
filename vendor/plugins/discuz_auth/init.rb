@@ -1,4 +1,4 @@
-ENV['INTEGRATE_WITH_FORUM']   = 'false'
+ENV['INTEGRATE_WITH_FORUM']   = 'true'
 ENV['FORUM_REGISTRATION_URL'] = '/bbs/register.php'
 ENV['DISCUZ_COOKIE_PREFIX']   = 'XXX'
-ENV['DISCUZ_TABLE_PREFIX']    = 'discuz'
+ENV['DISCUZ_TABLE_PREFIX']    = 'cdb'
