@@ -2,8 +2,9 @@ class GameSource < ActiveRecord::Base
   STATUS_PARSE_SUCCESS = 'parse_success'
   STATUS_PARSE_FAILURE = 'parse_failure'
 
-  UPLOAD_TYPE = 'upload'
-  PASTIE_TYPE = 'pastie'
+  UPLOAD_FILE = 'file'
+  UPLOAD_SGF  = 'sgf'
+  UPLOAD_URL  = 'url'
 
   belongs_to :game
   has_attached_file :upload
@@ -15,6 +16,17 @@ class GameSource < ActiveRecord::Base
   }
   
   named_scope :recent, :order => 'created_at DESC'
+
+  def self.create_from_sgf data, sgf_game
+    game_source = create!(:source_type => GameSource::UPLOAD_SGF, :data => data)
+
+    game = Game.new(:primary_source => game_source)
+    game.load_parsed_game(sgf_game)
+    game.save!
+
+    game_source.update_attribute(:game_id, game.id)
+    game_source
+  end
 
   def parse
     self.status = STATUS_PARSE_SUCCESS

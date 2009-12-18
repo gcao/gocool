@@ -1,4 +1,6 @@
 class GameSourcesController < ApplicationController
+  include ParseErrorHelper
+  
   UPLOAD_FILE = 'file'
   UPLOAD_SGF  = 'sgf'
   UPLOAD_URL  = 'url'
@@ -60,10 +62,33 @@ class GameSourcesController < ApplicationController
   end
 
   def process_sgf
-    sgf = params[:upload][:data]
+    data = params[:upload][:data]
+    if error = validate_sgf(data)
+      flash[:error] = error
+      render :index
+      return
+    end
+
+    @game_source = GameSource.create_from_sgf data, @sgf_game
+
+    flash[:success] = t('uploads.success')
+    render :show
   end
 
   def process_url
     url = params[:upload][:url]
+  end
+
+  def validate_sgf data
+    if data.blank?
+      t('uploads.data_required')
+    else
+      begin
+        @sgf_game = SGF::Parser.parse data
+        nil
+      rescue => e
+        t('uploads.data_invalid_parse_error') + convert_parse_error_to_html(e)
+      end
+    end
   end
 end

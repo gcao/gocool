@@ -1,7 +1,7 @@
 - content_for :footer do
   = javascript_include_tag "validanguage_uncompressed"
 
-%h1= @page_header || t('game_sources.page_header')
+%h1= t('uploads.page_header')
 
 #upload_forms
   = render :partial => 'upload_form'

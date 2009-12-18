@@ -13,12 +13,11 @@
 
     %hr.space
     .span-14{:align => 'center'}
-      %input(type='hidden' name='upload[type]' value='sgf')
+      %input(type='hidden' name='upload_type' value='sgf')
       %input.upload_submit{:type => "submit", :name => "commit", :value => t('form.submit_button')}
       %input{:type => "reset", :value => t('form.reset_button')}
 
 - content_for :footer do
-  = javascript_include_tag "validanguage_uncompressed"
   :javascript
     validanguage.el.upload_data = {
       required: true,
