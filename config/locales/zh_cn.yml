@@ -74,6 +74,10 @@ zh_cn:
       error: "未知错误"
       parse_error: "SGF格式错误"
     already_uploaded_detail: "库中已经保存有你要上传的对局。"
+
+    data_required: "SGF数据为空"
+    data_invalid_parse_error: "SGF格式错误："
+
   pasties:
     page_title: "上传SGF数据"
     page_header: "上传SGF数据"

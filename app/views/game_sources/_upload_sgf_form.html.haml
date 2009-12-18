@@ -1,0 +1,26 @@
+%form.bp{:action=>game_sources_url, :name=>"uploadSgfForm", :method=>"post"}
+  %fieldset.span-18.no-border
+    - if @upload_type == GameSourcesController::UPLOAD_SGF
+      = show_flash 'span-18'
+
+    .form_row.span-18
+      .span-3
+        %label(for='data')
+          = mark_required
+          = t('pasties.data_label')
+      .span-15.last
+        %textarea#upload_data{:name => "upload[data]", :cols => 120, :rows => 20}
+
+    %hr.space
+    .span-14{:align => 'center'}
+      %input(type='hidden' name='upload[type]' value='sgf')
+      %input.upload_submit{:type => "submit", :name => "commit", :value => t('form.submit_button')}
+      %input{:type => "reset", :value => t('form.reset_button')}
+
+- content_for :footer do
+  = javascript_include_tag "validanguage_uncompressed"
+  :javascript
+    validanguage.el.upload_data = {
+      required: true,
+      errorMsg: "#{t('uploads.data_required')}"
+    };

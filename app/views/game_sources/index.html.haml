@@ -3,4 +3,8 @@
 
 %h1= @page_header || t('game_sources.page_header')
 
-= render :partial => 'upload_form'
+#upload_forms
+  = render :partial => 'upload_form'
+  %hr
+  
+  = render :partial => 'upload_sgf_form'

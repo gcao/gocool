@@ -2,6 +2,12 @@
   margin-top: 0.5em
   
 form.bp
+  fieldset.no-border
+    border: none
+
+  textarea, select
+    margin: 0
+
   input.text, input.title, input[type="text"]
     margin: 0
     padding: 3px 5px
@@ -23,7 +29,7 @@ span.required_field
 #upload_email
   width: 413px
 
-#pastie_email, #pastie_data
+#upload_data
   width: 590px
 
 table#games_search_form
@@ -31,3 +37,4 @@ table#games_search_form
     vertical-align: top
     *
       margin-top: 0
+

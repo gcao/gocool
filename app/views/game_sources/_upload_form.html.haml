@@ -1,6 +1,7 @@
 %form.bp{:action=>game_sources_url, :name=>"uploadForm", :enctype=>"multipart/form-data", :method=>"post"}
-  %fieldset.span-18
-    = show_flash 'span-18'
+  %fieldset.span-18.no-border
+    - if @upload_type == GameSourcesController::UPLOAD_FILE
+      = show_flash 'span-18'
 
     .form_row.span-18
       .span-3
@@ -13,13 +14,9 @@
 
     %hr.space
     .span-14{:align => 'center'}
+      %input(type='hidden' name='upload[type]' value='file')
       %input.upload_submit(type="submit" name="commit"){:value => t('uploads.submit_button')}
       %input(type="reset" id="resetButton"){:value => t('form.reset_button')}
-
-    .form_legend.span-18
-      %span
-        %span.required_field *
-        = t('form.marked_required')
 
 - content_for :footer do
   = javascript_include_tag "upload"

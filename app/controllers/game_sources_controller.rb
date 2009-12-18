@@ -1,19 +1,18 @@
 class GameSourcesController < ApplicationController
+  UPLOAD_FILE = 'file'
+  UPLOAD_SGF  = 'sgf'
+  UPLOAD_URL  = 'url'
+
   def index
   end
 
   def create
-    files = params[:upload].values
+    @upload_type = params[:upload_type]
 
-    if files.length == 0
-      flash[:error] = "TODO"
-      return
-    end
-
-    @upload_results = Uploader.new.process_files files
-    if @upload_results.size == 1
-      process_single_upload @upload_results.first
-      return
+    case @upload_type
+      when UPLOAD_FILE then process_files
+      when UPLOAD_SGF  then process_sgf
+      when UPLOAD_URL  then process_url
     end
   end
   
@@ -27,6 +26,21 @@ class GameSourcesController < ApplicationController
   end
   
   private
+
+  def process_files
+    files = params[:upload].values
+
+    if files.length == 0
+      flash[:error] = "TODO"
+      return
+    end
+
+    @upload_results = Uploader.new.process_files files
+    if @upload_results.size == 1
+      process_single_upload @upload_results.first
+      return
+    end
+  end
 
   def process_single_upload upload_result
     case upload_result.status
@@ -43,5 +57,13 @@ class GameSourcesController < ApplicationController
       flash[:error] = upload_result.detail
       render :index
     end
+  end
+
+  def process_sgf
+    sgf = params[:upload][:data]
+  end
+
+  def process_url
+    url = params[:upload][:url]
   end
 end
