@@ -5,8 +5,6 @@ describe GameSourcesController do
     it "should take uploaded files" do
       post :create, :upload => {:upload => fixture_file_upload('/sgf/good.sgf', 'text/plain')}
 
-      response.should be_success
-
       game_source = assigns(:game_source)
       response.should redirect_to game_source_url(game_source.id)
     end

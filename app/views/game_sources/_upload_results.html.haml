@@ -1,0 +1,10 @@
+#update_results_container.active-scaffold.blue-theme
+  %table#update_results_table
+    %thead
+      %tr.header
+        %th#file_name_column= t('uploads.result.file_name')
+        %th#upload_status_column= t('uploads.result.status')
+        %th#upload_detail_column= t('uploads.result.detail')
+        %th#actions_column &nbsp;
+    %tbody.records
+      = render :partial => 'upload_result', :collection => @upload_results
