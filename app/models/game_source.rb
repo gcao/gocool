@@ -24,7 +24,14 @@ class GameSource < ActiveRecord::Base
     game.load_parsed_game(sgf_game)
     game.save!
 
-    game_source.update_attribute(:game_id, game.id)
+    temp_file = "/tmp/game_#{game_source.id}_#{rand(100)}.sgf"
+    File.open(temp_file, "w") do |file|
+      file.print data
+    end
+
+    game_source.upload = File.new temp_file
+    game_source.game = game
+    game_source.save!
     game_source
   end
 
@@ -78,7 +85,7 @@ class GameSource < ActiveRecord::Base
   def convert_to_utf
     return unless is_sgf? and File.exists?(upload.path)
 
-    file_encoding = %x(file -i #{self.upload.path}).strip
+    file_encoding = %x(/usr/bin/file -i #{self.upload.path}).strip
 
     if contains_not_recognizable_chars?(file_encoding)
       %x(cp #{self.upload.path} #{self.raw_file_path})
@@ -88,6 +95,6 @@ class GameSource < ActiveRecord::Base
   end
 
   def contains_not_recognizable_chars? encoding
-    not (encoding.include?('charset=us-ascii') or encoding.include?('charset=utf'))
+    encoding.include?('charset=') and not (encoding.include?('charset=us-ascii') or encoding.include?('charset=utf'))
   end
 end
