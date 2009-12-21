@@ -35,6 +35,26 @@ class GameSource < ActiveRecord::Base
     game_source
   end
 
+  def self.create_from_url url
+    open(url) do |file|
+      game_source = create!(:source_type => GameSource::UPLOAD_URL, :data => url)
+
+      temp_file = "/tmp/game_#{game_source.id}_#{rand(100)}.sgf"
+      File.open(temp_file, "w") do |to_file|
+        to_file.print(file.readlines)
+      end
+
+      game = Game.new(:primary_source => game_source)
+      game.load_parsed_game(SGF::Parser.parse_file(temp_file))
+      game.save!
+
+      game_source.upload = File.new temp_file
+      game_source.game = game
+      game_source.save!
+      game_source
+    end
+  end
+
   def parse
     self.status = STATUS_PARSE_SUCCESS
     SGF::Parser.parse_file self.upload.path

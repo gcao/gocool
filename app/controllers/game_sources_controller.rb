@@ -77,6 +77,11 @@ class GameSourcesController < ApplicationController
 
   def process_url
     url = params[:upload][:url]
+
+    @game_source = GameSource.create_from_url url
+
+    flash[:success] = t('uploads.success')
+    render :show, :layout => "simple"
   end
 
   def validate_sgf data
