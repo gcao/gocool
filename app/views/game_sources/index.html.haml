@@ -4,7 +4,10 @@
 %h1= t('uploads.page_header')
 
 #upload_forms
-  = render :partial => 'upload_form'
+  = render :partial => 'upload_file_form'
   %hr
   
   = render :partial => 'upload_sgf_form'
+  %hr
+
+  = render :partial => 'upload_url_form'

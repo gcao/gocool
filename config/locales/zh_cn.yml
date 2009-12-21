@@ -78,6 +78,9 @@ zh_cn:
     data_required: "SGF数据为空"
     data_invalid_parse_error: "SGF格式错误："
 
+    url_label: "URL"
+    url_required: "URL为空."
+
   pasties:
     page_title: "上传SGF数据"
     page_header: "上传SGF数据"
