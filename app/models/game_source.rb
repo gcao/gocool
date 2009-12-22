@@ -71,10 +71,10 @@ class GameSource < ActiveRecord::Base
   end
 
   def parse_and_save
-    game = Game.new
-    game.load_parsed_game(parse)
-    game.primary_game_source_id = id
-    game.save!
+    self.game = Game.new
+    self.game.load_parsed_game(parse)
+    self.game.primary_game_source_id = id
+    self.game.save!
   ensure
     save!
   end

@@ -72,7 +72,7 @@ class GameSourcesController < ApplicationController
     end
 
     hash_code = Gocool::Md5.string_to_md5 data
-    if @game_source = GameSource.with_hash(hash_code)
+    if @game_source = GameSource.with_hash(hash_code).first
       flash[:notice] = t('uploads.game_found')
     else
       @game_source = GameSource.create_from_sgf data, @sgf_game, hash_code
@@ -86,7 +86,7 @@ class GameSourcesController < ApplicationController
     url = params[:upload][:url]
 
     hash_code = Gocool::Md5.string_to_md5 url
-    if @game_source = GameSource.with_url_hash(hash_code)
+    if @game_source = GameSource.with_url_hash(hash_code).first
       flash[:notice] = t('uploads.game_found')
     else
       @game_source = GameSource.create_from_url url, hash_code
