@@ -1239,12 +1239,15 @@ span.required_field {
 #upload_data, #upload_url {
   width: 590px; }
 
-/* line 36, ../../../app/stylesheets/partials/_form.sass */
-table#games_search_form th, table#games_search_form td {
-  vertical-align: top; }
+/* line 35, ../../../app/stylesheets/partials/_form.sass */
+table#games_search_form {
+  margin-bottom: 0; }
   /* line 38, ../../../app/stylesheets/partials/_form.sass */
-  table#games_search_form th *, table#games_search_form td * {
-    margin-top: 0; }
+  table#games_search_form th, table#games_search_form td {
+    vertical-align: top; }
+    /* line 40, ../../../app/stylesheets/partials/_form.sass */
+    table#games_search_form th *, table#games_search_form td * {
+      margin-top: 0; }
 
 /* line 1, ../../../app/stylesheets/partials/_homepage.sass */
 #description {

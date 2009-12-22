@@ -27,8 +27,7 @@
           %input{:type => "hidden", :name => "op", :value => "search"}
           =submit_tag t('form.search_button')
           %input{:type => "reset", :value => t('form.reset_button')}
-      
-      
+%hr.space
 #games_widget_container
   = render_games_widget @games
 
