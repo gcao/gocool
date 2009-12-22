@@ -24,8 +24,10 @@
       :javascript
         var gocool_locale = "#{@locale}";
       = render "layouts/menu_js"
-      = javascript_include_tag "application"
+      = javascript_include_tag %w(application tooltip)
       = yield :footer
 
       %p &nbsp;
+      #cursor
+      = image_tag "arrow.gif", :id => "pointer", :alt => "", :width => 0, :height => 0
     = render 'discuz/footer'

@@ -1181,6 +1181,25 @@ table#games_search_form label {
     line-height: 2.5;
     color: #aaa; }
 
+/* line 47, ../../../app/stylesheets/partials/_app.sass */
+#cursor {
+  background-color: lightyellow;
+  border: 1px solid black;
+  font-size: 10px;
+  left: -300px;
+  padding: 5px;
+  position: absolute;
+  visibility: hidden;
+  width: 150px;
+  z-index: 100; }
+
+/* line 58, ../../../app/stylesheets/partials/_app.sass */
+#pointer {
+  left: -300px;
+  position: absolute;
+  visibility: hidden;
+  z-index: 101; }
+
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }

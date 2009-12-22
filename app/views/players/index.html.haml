@@ -9,7 +9,7 @@
       =gaming_platforms_select 'platform'
     %span
       &nbsp;&nbsp;&nbsp;&nbsp;
-      %label(for="player_username")
+      %label#username_label(for="username")
         = t('players.username_label')
     %span
       =text_field_tag 'username'
@@ -27,4 +27,7 @@
         $('#players_result').load(this.href);
         return false;
       });
+      $('#username_label, #username').mouseover(function(){
+        mousetip("#{t('shared.username_supports_wildcards')}");
+      }).mouseout(hidemousetip);
     });
