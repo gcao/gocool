@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include Discuz::Authentication, EmailParamHandler
+  include Discuz::Authentication
   include ExceptionNotifiable if RAILS_ENV=='production'
 
   helper :all # include all helpers, all the time

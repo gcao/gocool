@@ -17,10 +17,6 @@ class GameSource < ActiveRecord::Base
   
   named_scope :recent, :order => 'created_at DESC'
 
-  named_scope :with_url_hash, lambda {|hash|
-    {:conditions => ["source_type = ? and hash_code = ?", UPLOAD_URL, hash]}
-  }
-
   def self.create_from_sgf data, sgf_game, hash_code = nil
     hash_code ||= Gocool::Md5.string_to_md5 data
     game_source = create!(:source_type => GameSource::UPLOAD_SGF, :data => data, :hash_code => hash_code)

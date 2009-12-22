@@ -1,12 +1,16 @@
 - content_for :footer do
+  :javascript
+    if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
+
   = render "shared/jsgameviewer"
 
 = show_flash 'span-24'
 .span-24
   %a(href="/app")= t('link.home')
   &nbsp;&nbsp;&nbsp;&nbsp;
-  %a(href="javascript:history.back();")= t('link.back')
-  &nbsp;&nbsp;&nbsp;&nbsp;
+  %span#backLink
+    %a(href="javascript:history.back();")= t('link.back')
+    &nbsp;&nbsp;&nbsp;&nbsp;
   %a(href="javascript:window.close();")= t('link.close')
   &nbsp;&nbsp;&nbsp;&nbsp;
   = render :partial => "shared/show_game", :locals => {:url => game_source_url(@game_source, :format => :sgf)}
