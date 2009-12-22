@@ -27,7 +27,7 @@
         $('#players_result').load(this.href);
         return false;
       });
-      $('#username_label, #username').mouseover(function(){
+      jQuery('#username_label, #username').mouseover(function(){
         mousetip("#{t('shared.username_supports_wildcards')}");
       }).mouseout(hidemousetip);
     });

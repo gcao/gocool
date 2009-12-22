@@ -22,12 +22,12 @@ class Game < ActiveRecord::Base
   named_scope :played_by, lambda {|player1, player2|
     raise ArgumentError.new(I18n.t('games.first_player_is_required')) if player1.blank?
 
-    player1 = "%#{player1.strip}%"
+    player1 = player1.strip.gsub('*', '%')
 
     if player2.blank?
       { :conditions => ["black_name like ? or white_name like ?", player1, player1] }
     else
-      player2 = "%#{player2.strip}%"
+      player2 = player2.strip.gsub('*', '%')
       {
         :conditions => [
           "(black_name like ? and white_name like ?) or (white_name like ? and black_name like ?)",

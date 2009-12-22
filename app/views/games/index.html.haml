@@ -11,15 +11,15 @@
               = t('games.platform_label')
             =gaming_platforms_select 'platform', @platform
         %td
-          %label(for="player1")
+          %label#player1_label(for="player1")
             %em.msg
               = t('games.player1_label')
           =text_field_tag 'player1', @player1
         %td
-          %label(for="player2")
+          %label#vs_label(for="player2")
             = t('games.vs_label')
         %td
-          %label(for="player2")
+          %label#player2_label(for="player2")
             %em.msg
               = t('games.player2_label')
           =text_field_tag 'player2', @player2
@@ -43,3 +43,6 @@
         }
       ]
     };
+    jQuery('#player1, #player2, #player1_label, #vs_label, #player2_label').mouseover(function(){
+      mousetip("#{t('shared.username_supports_wildcards')}");
+    }).mouseout(hidemousetip);
