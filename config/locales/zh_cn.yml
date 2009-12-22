@@ -13,7 +13,6 @@ zh_cn:
   menu:
     home: "首页"
     uploads: "上载对局"
-    pasties: "上传SGF数据"
     players: "棋手"
     games: "对局"
     tournaments: "赛事"
@@ -47,20 +46,20 @@ zh_cn:
       game_name: "对局名称"
       black_player: "黑方"
       white_player: "白方"
+      handicap: "让子"
       moves: "步数"
       result: "结果"
       play_time: "对局时间"
       place: "对局地点"
       create_time: "上传时间"
   uploads:
+    page_title: "上传对局"
+    page_header: "上传对局"
     file_label: "文件 <br/>(*.sgf, *.zip)"
     file_required: "文件为空."
-    is_binary_file: "文件内容不正确。"
     submit_button: "上传"
     success: "上传成功。"
     game_found: "库中已经保存有你要上传的对局。"
-    page_title: "上传对局"
-    page_header: "上传对局"
     game_not_found: "对局不存在。"
     result:
       header: "上传处理结果"
@@ -81,13 +80,6 @@ zh_cn:
     url_label: "URL"
     url_required: "URL为空."
 
-  pasties:
-    page_title: "上传SGF数据"
-    page_header: "上传SGF数据"
-    data_label: "SGF数据"
-    success: "对局保存成功。"
-    data_required: "SGF数据为空"
-    data_invalid_parse_error: "SGF格式错误："
   players:
     page_title: "棋手"
     page_header: "棋手"

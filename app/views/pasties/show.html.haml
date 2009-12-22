@@ -1,8 +1,0 @@
-- content_for :head do
-  = render "shared/jsgameviewer"
-  
-%h1= @page_header
-
-= show_flash 'span-24'
-.span-24
-  = render "shared/show_game", :locals => {:url => game_source_url(@game_source, :format => :sgf)}
