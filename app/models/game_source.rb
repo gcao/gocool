@@ -9,7 +9,7 @@ class GameSource < ActiveRecord::Base
   belongs_to :game
   has_attached_file :upload
 
-  default_scope :include => :game
+  default_scope :include => :game, :conditions => "game_id is not null"
   
   named_scope :with_hash, lambda { |hash|
     {:conditions => ["hash_code = ?", hash]}
