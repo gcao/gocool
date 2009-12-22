@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+if ARGV.size == 0
+  puts <<-USAGE
+Usage:
+  #{File.basename(__FILE__)} <FILES_TO_UPLOAD>
+  <FILES_TO_UPLOAD> can be one or more SGF files or zip files that contain SGF files.
+Example:
+  #{File.basename(__FILE__)} games/game1.sgf games/game2.sgf
+  #{File.basename(__FILE__)} ~/games.zip
+
+  USAGE
+
+  exit 1
+end
+
+ENV["RAILS_ENV"] ||= "development"
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+Uploader.new.process_files ARGV.map{ |filename| File.new(filename) }

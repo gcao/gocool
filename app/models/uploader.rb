@@ -47,7 +47,7 @@ class Uploader
     uploads = []
     Dir["/tmp/#{filename}/**/*"].each do |path|
       next if File.directory?(path)
-      uploads << GameSource.create!(:email => upload.email, :upload => File.new(path))
+      uploads << GameSource.create!(:source_type => GameSource::UPLOAD_FILE, :upload => File.new(path))
     end
     upload.delete
     uploads
