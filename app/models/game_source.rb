@@ -17,8 +17,13 @@ class GameSource < ActiveRecord::Base
   
   named_scope :recent, :order => 'created_at DESC'
 
-  def self.create_from_sgf data, sgf_game
-    game_source = create!(:source_type => GameSource::UPLOAD_SGF, :data => data)
+  named_scope :with_url_hash, lambda {|hash|
+    {:conditions => ["source_type = ? and hash_code = ?", UPLOAD_URL, hash]}
+  }
+
+  def self.create_from_sgf data, sgf_game, hash_code = nil
+    hash_code ||= Gocool::Md5.string_to_md5 data
+    game_source = create!(:source_type => GameSource::UPLOAD_SGF, :data => data, :hash_code => hash_code)
 
     game = Game.new(:primary_source => game_source)
     game.load_parsed_game(sgf_game)
@@ -35,9 +40,10 @@ class GameSource < ActiveRecord::Base
     game_source
   end
 
-  def self.create_from_url url
+  def self.create_from_url url, hash_code = nil
     open(url) do |file|
-      game_source = create!(:source_type => GameSource::UPLOAD_URL, :data => url)
+      hash_code ||= Gocool::Md5.string_to_md5 url
+      game_source = create!(:source_type => GameSource::UPLOAD_URL, :source => url, :hash_code => hash_code)
 
       temp_file = "/tmp/game_#{game_source.id}_#{rand(100)}.sgf"
       File.open(temp_file, "w") do |to_file|

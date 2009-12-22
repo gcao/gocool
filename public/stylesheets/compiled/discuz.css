@@ -1130,42 +1130,46 @@ div.digg_pagination {
   background: #FFF; }
 
 /* line 4, ../../../app/stylesheets/partials/_app.sass */
+.no-margin {
+  margin: 0 !important; }
+
+/* line 7, ../../../app/stylesheets/partials/_app.sass */
 span.note {
   font-style: italic;
   color: #666666; }
 
-/* line 8, ../../../app/stylesheets/partials/_app.sass */
+/* line 11, ../../../app/stylesheets/partials/_app.sass */
 .sgf_good {
   color: #008800; }
 
-/* line 11, ../../../app/stylesheets/partials/_app.sass */
+/* line 14, ../../../app/stylesheets/partials/_app.sass */
 .sgf_bad {
   background: #000;
   color: red;
   font-weight: bold;
   padding: 0 4px; }
 
-/* line 17, ../../../app/stylesheets/partials/_app.sass */
+/* line 20, ../../../app/stylesheets/partials/_app.sass */
 .sgf_rest {
   color: #888888; }
 
-/* line 20, ../../../app/stylesheets/partials/_app.sass */
+/* line 23, ../../../app/stylesheets/partials/_app.sass */
 .vdError {
   color: red;
   font-size: small; }
 
-/* line 24, ../../../app/stylesheets/partials/_app.sass */
+/* line 27, ../../../app/stylesheets/partials/_app.sass */
 table .records tr.record td.winner {
   background: #bfb; }
 
-/* line 27, ../../../app/stylesheets/partials/_app.sass */
+/* line 30, ../../../app/stylesheets/partials/_app.sass */
 table#games_search_form input[type='text'] {
   width: 150px; }
 
-/* line 30, ../../../app/stylesheets/partials/_app.sass */
+/* line 33, ../../../app/stylesheets/partials/_app.sass */
 table#games_search_form label {
   position: relative; }
-  /* line 33, ../../../app/stylesheets/partials/_app.sass */
+  /* line 36, ../../../app/stylesheets/partials/_app.sass */
   table#games_search_form label em.msg {
     position: absolute;
     text-align: right;
@@ -1213,7 +1217,7 @@ span.required_field {
   width: 413px; }
 
 /* line 32, ../../../app/stylesheets/partials/_form.sass */
-#upload_data {
+#upload_data, #upload_url {
   width: 590px; }
 
 /* line 36, ../../../app/stylesheets/partials/_form.sass */

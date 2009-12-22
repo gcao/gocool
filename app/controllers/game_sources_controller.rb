@@ -48,10 +48,12 @@ class GameSourcesController < ApplicationController
     case upload_result.status
     when UploadResult::SUCCESS
       flash[:success] = t('uploads.success')
-      redirect_to game_source_url(@game_source = upload_result.game_source)
+      @game_source = upload_result.game_source
+      render :show, :layout => "simple"
     when UploadResult::FOUND
       flash[:notice] = t('uploads.game_found')
-      redirect_to game_source_url(upload_result.found_game_source)
+      @game_source = upload_result.found_game_source
+      render :show, :layout => "simple"
     when UploadResult::VALIDATION_ERROR
       flash[:error] = t('uploads.file_required')
       render :index
@@ -69,18 +71,28 @@ class GameSourcesController < ApplicationController
       return
     end
 
-    @game_source = GameSource.create_from_sgf data, @sgf_game
+    hash_code = Gocool::Md5.string_to_md5 data
+    if @game_source = GameSource.with_hash(hash_code)
+      flash[:notice] = t('uploads.game_found')
+    else
+      @game_source = GameSource.create_from_sgf data, @sgf_game, hash_code
+      flash[:success] = t('uploads.success')
+    end
 
-    flash[:success] = t('uploads.success')
     render :show, :layout => "simple"
   end
 
   def process_url
     url = params[:upload][:url]
 
-    @game_source = GameSource.create_from_url url
+    hash_code = Gocool::Md5.string_to_md5 url
+    if @game_source = GameSource.with_url_hash(hash_code)
+      flash[:notice] = t('uploads.game_found')
+    else
+      @game_source = GameSource.create_from_url url, hash_code
+      flash[:success] = t('uploads.success')
+    end
 
-    flash[:success] = t('uploads.success')
     render :show, :layout => "simple"
   end
 
