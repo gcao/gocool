@@ -1,15 +1,6 @@
 zh_cn:
   shared:
     page_title: "棋人 - 棋谱库"
-    games_table:
-      game_name: "对局名称"
-      black_player: "黑方"
-      white_player: "白方"
-      moves: "步数"
-      result: "结果"
-      play_time: "对局时间"
-      place: "对局地点"
-      create_time: "上传时间"
   menu:
     home: "首页"
     uploads: "上载对局"
@@ -74,6 +65,7 @@ zh_cn:
       parse_error: "SGF格式错误"
     already_uploaded_detail: "库中已经保存有你要上传的对局。"
 
+    data_label: "SGF内容"
     data_required: "SGF数据为空"
     data_invalid_parse_error: "SGF格式错误："
 
@@ -108,6 +100,8 @@ zh_cn:
     game_name: "对局名称"
     black_player: "黑方"
     white_player: "白方"
+    handicap: "让子"
+    komi: "贴子/目"
     moves: "步数"
     result: "结果"
     play_time: "对局时间"

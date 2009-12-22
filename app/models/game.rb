@@ -91,4 +91,12 @@ class Game < ActiveRecord::Base
   def self.search platform_name, player1, player2
     self.on_platform(platform_name).played_by(player1, player2).sort_by_players
   end
+
+  def handicap_str
+    self.handicap <= 0 ? "" : self.handicap.to_s
+  end
+
+  def komi_str
+    self.komi.blank? ? self.komi_raw : self.komi
+  end
 end

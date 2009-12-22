@@ -2,6 +2,8 @@
   %td= game_source.game.name
   = black_player_html(game_source.game)
   = white_player_html(game_source.game)
+  %td= game_source.game.handicap_str
+  %td= game_source.game.komi_str
   %td= game_source.game.moves
   %td= game_source.game.result
   %td= game_source.game.played_at_raw
