@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215131610) do
+ActiveRecord::Schema.define(:version => 20091222164427) do
 
   create_table "game_sources", :force => true do |t|
     t.integer  "game_id"
@@ -195,21 +195,6 @@ ActiveRecord::Schema.define(:version => 20091215131610) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "uploads", :force => true do |t|
-    t.string   "upload_file_name",    :null => false
-    t.string   "upload_content_type"
-    t.integer  "upload_file_size"
-    t.datetime "upload_updated_at"
-    t.string   "status"
-    t.text     "status_detail"
-    t.string   "email"
-    t.string   "hash_code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "uploads", ["hash_code"], :name => "index_uploads_on_hash_code"
 
   create_table "users", :force => true do |t|
     t.string   "username"

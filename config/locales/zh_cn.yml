@@ -47,6 +47,8 @@ zh_cn:
   uploads:
     page_title: "上传对局"
     page_header: "上传对局"
+    description_label: "介绍"
+    description_note: "请输入简单介绍内容，以便下次登录时搜索你上传的对局。"
     file_label: "文件 <br/>(*.sgf, *.zip)"
     file_required: "文件为空."
     zip_file_note: "如果你上传的是 zip 文件，系统需要花比较长时间处理，在系统处理过程中，浏览器可能显示错误。如果显示错误，请勿重传以免系统过载，并等待 10~20 分钟后检查上传是否成功。谢谢合作！"

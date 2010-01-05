@@ -5,6 +5,14 @@
 
     .form_row.span-18
       .span-3
+        %label(for="upload_description")
+          =t('uploads.description_label')
+      .span-15.last
+        %input#upload_description(type="text" name="upload_description" size="80")
+        %p= t('uploads.description_note')
+
+    .form_row.span-18
+      .span-3
         %label(for="upload_upload")
           %span.required_field *
           = t('uploads.file_label')

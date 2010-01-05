@@ -9,6 +9,7 @@ class GameSourcesController < ApplicationController
   end
 
   def create
+    @description = params[:upload_description]
     @upload_type = params[:upload_type]
 
     case @upload_type
@@ -37,7 +38,7 @@ class GameSourcesController < ApplicationController
       return
     end
 
-    @upload_results = Uploader.new.process_files files
+    @upload_results = Uploader.new.process_files @description, files
     if @upload_results.size == 1
       process_single_upload @upload_results.first
       return
@@ -75,7 +76,7 @@ class GameSourcesController < ApplicationController
     if @game_source = GameSource.with_hash(hash_code).first
       flash[:notice] = t('uploads.game_found')
     else
-      @game_source = GameSource.create_from_sgf data, @sgf_game, hash_code
+      @game_source = GameSource.create_from_sgf @description, data, @sgf_game, hash_code
       flash[:success] = t('uploads.success')
     end
 
@@ -89,7 +90,7 @@ class GameSourcesController < ApplicationController
     if @game_source = GameSource.with_hash(hash_code).first
       flash[:notice] = t('uploads.game_found')
     else
-      @game_source = GameSource.create_from_url url, hash_code
+      @game_source = GameSource.create_from_url @description, url, hash_code
       flash[:success] = t('uploads.success')
     end
 

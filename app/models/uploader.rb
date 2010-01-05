@@ -1,7 +1,7 @@
 class Uploader
 
-  def process_files files
-    uploads = files.map {|file| GameSource.create!(:source_type => GameSource::UPLOAD_FILE, :upload => file) }
+  def process_files description, files
+    uploads = files.map {|file| GameSource.create!(:source_type => GameSource::UPLOAD_FILE, :description => description, :upload => file) }
     uploads = uploads.inject([]) do |new_uploads, upload|
       new_uploads << process_compressed_upload(upload)
     end.flatten

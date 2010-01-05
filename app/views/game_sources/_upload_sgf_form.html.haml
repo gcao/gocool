@@ -5,6 +5,13 @@
 
     .form_row.span-18
       .span-3
+        %label(for="upload_description3")
+          =t('uploads.description_label')
+      .span-15.last
+        %input#upload_description3(type="text" name="upload_description" size="80")
+
+    .form_row.span-18
+      .span-3
         %label(for='data')
           = mark_required
           = t('uploads.data_label')
