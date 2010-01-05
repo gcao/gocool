@@ -5,6 +5,7 @@ zh_cn:
   menu:
     home: "首页"
     uploads: "上载对局"
+    upload_search: "上载对局搜索"
     players: "棋手"
     games: "对局"
     tournaments: "赛事"

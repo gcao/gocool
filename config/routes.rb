@@ -43,6 +43,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :games
   map.resources :game_sources
+  map.resources :upload_search
 
   map.resources :uploads
   map.resources :pasties
