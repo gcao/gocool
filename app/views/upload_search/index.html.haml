@@ -1,8 +1,10 @@
 %h1= @page_header || t('upload_search.page_header')
 
--form_tag upload_search_path, :method => :get, :class => 'bp' do
-  .span-24
-    = show_flash 'span-24'
+-# shortcuts: my uploads, today's uploads, yesterday' uploads, this week's uploads, last week's uploads etc.
+-# search by description
+-# search by upload time
+
+= render :partial => "search_by_description"
 
 %hr.space
 #game_sources_container

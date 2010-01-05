@@ -77,6 +77,11 @@ zh_cn:
     url_label: "URL"
     url_required: "URL为空."
 
+  upload_search:
+    page_title: "上传对局搜索"
+    page_header: "上传对局搜索"
+    description_label: "上传说明"
+    description_required: "上传说明为空"
   players:
     page_title: "棋手"
     page_header: "棋手"

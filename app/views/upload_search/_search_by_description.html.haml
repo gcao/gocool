@@ -1,0 +1,23 @@
+%form.bp{:action=>upload_search_url, :name=>"searchByDescriptionForm", :method=>"post"}
+  %fieldset.span-18.no-border
+    = show_flash 'span-18'
+
+    .form_row.span-18
+      .span-3
+        %label(for="search_description")
+          =t('upload_search.description_label')
+      .span-15.last
+        %input#search_description(type="text" name="search[description]" size="80")
+
+    %hr.space
+    .span-14{:align => 'center'}
+      %input(type='hidden' name='search_type' value='description')
+      %input.upload_submit{:type => "submit", :name => "commit", :value => t('form.search_button')}
+      %input{:type => "reset", :value => t('form.reset_button')}
+
+- content_for :footer do
+  :javascript
+    validanguage.el.search_description = {
+      required: true,
+      errorMsg: "#{t('upload_search.description_required')}"
+    };
