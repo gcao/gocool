@@ -1,4 +1,4 @@
-%tr{:class => "record " + (recent_game_counter%2 == 0 ? "even-record":"")}
+%tr{:class => "record " + (upload_counter%2 == 0 ? "even-record":"")}
   %td= upload.game.name
   = black_player_html(upload.game)
   = white_player_html(upload.game)

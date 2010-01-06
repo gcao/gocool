@@ -14,6 +14,10 @@ class Upload < ActiveRecord::Base
   named_scope :with_hash, lambda { |hash|
     {:conditions => ["hash_code = ?", hash]}
   }
+
+  named_scope :with_description, lambda { |description|
+    {:conditions => ["description like ?", "%#{description}%"]}
+  }
   
   named_scope :recent, :order => 'created_at DESC'
 
