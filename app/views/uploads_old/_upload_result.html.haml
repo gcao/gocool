@@ -4,6 +4,6 @@
   %td= display_upload_detail(upload_result)
   %td.actions
     - if upload_result.status == UploadResult::SUCCESS
-      %a{:href => upload_url(upload_result.upload)}= t('form.view_button')
-    - elsif upload_result.status == UploadResult::FOUND
-      %a{:href => upload_url(upload_result.found_upload)}= t('form.view_button')
+      %a{:href => upload_url(upload_result.upload.upload)}= t('form.view_button')
+    - if upload_result.status == UploadResult::FOUND and upload_result.existing_upload.upload
+      %a{:href => upload_url(upload_result.existing_upload.upload)}= t('form.view_button')

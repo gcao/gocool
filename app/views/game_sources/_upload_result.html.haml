@@ -1,9 +1,0 @@
-%tr{:class => "record " + (upload_result_counter%2 == 0 ? "even-record":"")}
-  %td= upload_result.game_source.upload_file_name
-  %td= display_upload_status(upload_result)
-  %td= display_upload_detail(upload_result)
-  %td.actions
-    - if upload_result.status == UploadResult::SUCCESS
-      %a{:href => game_source_url(upload_result.game_source)}= t('form.view_button')
-    - elsif upload_result.status == UploadResult::FOUND
-      %a{:href => game_source_url(upload_result.found_game_source)}= t('form.view_button')

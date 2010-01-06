@@ -1,5 +1,5 @@
 #recent_games.active-scaffold.blue-theme
-  #recent_games_pagination.digg_pagination= will_paginate @recent_game_sources, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+  #recent_games_pagination.digg_pagination= will_paginate @recent_uploads, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
   
   %table#recent_games_table
     %thead
@@ -16,4 +16,4 @@
         %th#create_time_column=  t('games_widget.create_time')
         %th#actions_column &nbsp;
     %tbody.records
-      = render :partial => 'recent_game', :collection => @recent_game_sources, :as => :game_source
+      = render :partial => 'recent_game', :collection => @recent_uploads, :as => :upload

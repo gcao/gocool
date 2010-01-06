@@ -31,8 +31,8 @@ module ApplicationHelper
   end
 
   def view_game_html(game)
-    if game.primary_game_source_id
-      "<a target='_new#{rand(1000)}' href='#{game_source_url(game.primary_game_source_id)}'>#{t('form.view_button')}</a>"
+    if game.primary_upload_id
+      "<a target='_new#{rand(1000)}' href='#{upload_url(game.primary_upload_id)}'>#{t('form.view_button')}</a>"
     else
       '&nbsp;'
     end

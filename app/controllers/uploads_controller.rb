@@ -1,4 +1,4 @@
-class GameSourcesController < ApplicationController
+class UploadsController < ApplicationController
   include ParseErrorHelper
   
   UPLOAD_FILE = 'file'
@@ -20,11 +20,11 @@ class GameSourcesController < ApplicationController
   end
   
   def show
-    @game_source = GameSource.find(params[:id])
+    @upload = Upload.find(params[:id])
     
     respond_to do |format|
       format.html { render :layout => 'simple' }
-      format.sgf  { send_file(@game_source.upload.path) }
+      format.sgf  { send_file(@upload.upload.path) }
     end
   end
   
@@ -49,11 +49,11 @@ class GameSourcesController < ApplicationController
     case upload_result.status
     when UploadResult::SUCCESS
       flash[:success] = t('uploads.success')
-      @game_source = upload_result.game_source
+      @upload = upload_result.upload
       render :show, :layout => "simple"
     when UploadResult::FOUND
       flash[:notice] = t('uploads.game_found')
-      @game_source = upload_result.found_game_source
+      @upload = upload_result.found_upload
       render :show, :layout => "simple"
     when UploadResult::VALIDATION_ERROR
       flash[:error] = t('uploads.file_required')
@@ -73,10 +73,10 @@ class GameSourcesController < ApplicationController
     end
 
     hash_code = Gocool::Md5.string_to_md5 data
-    if @game_source = GameSource.with_hash(hash_code).first
+    if @upload = Upload.with_hash(hash_code).first
       flash[:notice] = t('uploads.game_found')
     else
-      @game_source = GameSource.create_from_sgf @description, data, @sgf_game, hash_code
+      @upload = Upload.create_from_sgf @description, data, @sgf_game, hash_code
       flash[:success] = t('uploads.success')
     end
 
@@ -87,10 +87,10 @@ class GameSourcesController < ApplicationController
     url = params[:upload][:url]
 
     hash_code = Gocool::Md5.string_to_md5 url
-    if @game_source = GameSource.with_hash(hash_code).first
+    if @upload = Upload.with_hash(hash_code).first
       flash[:notice] = t('uploads.game_found')
     else
-      @game_source = GameSource.create_from_url @description, url, hash_code
+      @upload = Upload.create_from_url @description, url, hash_code
       flash[:success] = t('uploads.success')
     end
 

@@ -1,13 +1,13 @@
 %tr{:class => "record " + (recent_game_counter%2 == 0 ? "even-record":"")}
-  %td= game_source.game.name
-  = black_player_html(game_source.game)
-  = white_player_html(game_source.game)
-  %td= game_source.game.handicap_str
-  %td= game_source.game.komi_str
-  %td= game_source.game.moves
-  %td= game_source.game.result
-  %td= game_source.game.played_at_raw
-  %td= game_source.game.place
-  %td= game_source.game.created_at
+  %td= upload.game.name
+  = black_player_html(upload.game)
+  = white_player_html(upload.game)
+  %td= upload.game.handicap_str
+  %td= upload.game.komi_str
+  %td= upload.game.moves
+  %td= upload.game.result
+  %td= upload.game.played_at_raw
+  %td= upload.game.place
+  %td= upload.game.created_at
   %td.actions
-    %a{:target => "_new#{rand(1000)}", :href => game_source_url(game_source)}= t('form.view_button')
+    %a{:target => "_new#{rand(1000)}", :href => upload_url(upload)}= t('form.view_button')

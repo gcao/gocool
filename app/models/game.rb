@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :gaming_platform
-  belongs_to :primary_source, :class_name => 'GameSource', :foreign_key => 'primary_game_source_id'
+  belongs_to :primary_source, :class_name => 'GameSource', :foreign_key => 'primary_upload_id'
   
   WINNER_BLACK = 1
   WINNER_WHITE = 2

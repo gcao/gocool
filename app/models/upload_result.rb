@@ -5,7 +5,7 @@ class UploadResult
   ERROR             = 4
   SGF_ERROR         = 5
 
-  attr_accessor :game_source, :status, :detail, :found_game_source
+  attr_accessor :upload, :status, :detail, :found_upload
   
   def initialize attrs = {}
     attrs.each do |key, value|

@@ -1,4 +1,4 @@
-class GameSource < ActiveRecord::Base
+class Upload < ActiveRecord::Base
   STATUS_PARSE_SUCCESS = 'parse_success'
   STATUS_PARSE_FAILURE = 'parse_failure'
 
@@ -7,7 +7,7 @@ class GameSource < ActiveRecord::Base
   UPLOAD_URL  = 'url'
 
   belongs_to :game
-  has_attached_file :upload
+  has_attached_file :file
 
   default_scope :include => :game, :conditions => "game_id is not null"
   
@@ -19,41 +19,41 @@ class GameSource < ActiveRecord::Base
 
   def self.create_from_sgf description, data, sgf_game, hash_code = nil
     hash_code ||= Gocool::Md5.string_to_md5 data
-    game_source = create!(:source_type => GameSource::UPLOAD_SGF, :description => description, :data => data, :hash_code => hash_code)
+    upload = create!(:source_type => Upload::UPLOAD_SGF, :description => description, :data => data, :hash_code => hash_code)
 
-    game = Game.new(:primary_source => game_source)
+    game = Game.new(:primary_source => upload)
     game.load_parsed_game(sgf_game)
     game.save!
 
-    temp_file = "/tmp/game_#{game_source.id}_#{rand(100)}.sgf"
+    temp_file = "/tmp/game_#{upload.id}_#{rand(100)}.sgf"
     File.open(temp_file, "w") do |file|
       file.print data
     end
 
-    game_source.upload = File.new temp_file
-    game_source.game = game
-    game_source.save!
-    game_source
+    upload.upload = File.new temp_file
+    upload.game = game
+    upload.save!
+    upload
   end
 
   def self.create_from_url description, url, hash_code = nil
     open(url) do |file|
       hash_code ||= Gocool::Md5.string_to_md5 url
-      game_source = create!(:source_type => GameSource::UPLOAD_URL, :description => description, :source => url, :hash_code => hash_code)
+      upload = create!(:source_type => Upload::UPLOAD_URL, :description => description, :source => url, :hash_code => hash_code)
 
-      temp_file = "/tmp/game_#{game_source.id}_#{rand(100)}.sgf"
+      temp_file = "/tmp/game_#{upload.id}_#{rand(100)}.sgf"
       File.open(temp_file, "w") do |to_file|
         to_file.print(file.readlines)
       end
 
-      game = Game.new(:primary_source => game_source)
+      game = Game.new(:primary_source => upload)
       game.load_parsed_game(SGF::Parser.parse_file(temp_file))
       game.save!
 
-      game_source.upload = File.new temp_file
-      game_source.game = game
-      game_source.save!
-      game_source
+      upload.upload = File.new temp_file
+      upload.game = game
+      upload.save!
+      upload
     end
   end
 
@@ -69,7 +69,7 @@ class GameSource < ActiveRecord::Base
   def parse_and_save
     self.game = Game.new
     self.game.load_parsed_game(parse)
-    self.game.primary_game_source_id = id
+    self.game.primary_upload_id = id
     self.game.save!
   ensure
     save!

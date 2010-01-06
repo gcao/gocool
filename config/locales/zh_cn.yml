@@ -4,8 +4,8 @@ zh_cn:
     username_supports_wildcards: "* 代表任何字符。例如：<br/>cool* = cool开头<br/>go*cool = go开头cool结尾<br/>*99 = 99结尾"
   menu:
     home: "首页"
-    uploads: "上载对局"
-    upload_search: "上载对局搜索"
+    uploads: "上传对局"
+    upload_search: "上传对局搜索"
     players: "棋手"
     games: "对局"
     tournaments: "赛事"
@@ -80,8 +80,8 @@ zh_cn:
   upload_search:
     page_title: "上传对局搜索"
     page_header: "上传对局搜索"
-    description_label: "上传说明"
-    description_required: "上传说明为空"
+    description_label: "上传介绍"
+    description_required: "上传介绍为空"
   players:
     page_title: "棋手"
     page_header: "棋手"
@@ -103,9 +103,6 @@ zh_cn:
     player2_label: "对手"
     player1_required: "必填"
     player1_is_required: "请输入棋手用户名。"
-  game_sources:
-    page_title: "对局"
-    page_header: "对局"
   games_widget:
     game_name: "对局名称"
     black_player: "黑方"

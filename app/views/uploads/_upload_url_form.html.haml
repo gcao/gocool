@@ -1,6 +1,6 @@
-%form.bp{:action=>game_sources_url, :name=>"uploadUrlForm", :method=>"post"}
+%form.bp{:action=>uploads_url, :name=>"uploadUrlForm", :method=>"post"}
   %fieldset.span-18.no-border
-    - if @upload_type == GameSourcesController::UPLOAD_URL
+    - if @upload_type == UploadsController::UPLOAD_URL
       = show_flash 'span-18'
 
     .form_row.span-18

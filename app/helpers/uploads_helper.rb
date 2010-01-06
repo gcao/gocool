@@ -1,4 +1,4 @@
-module GameSourcesHelper
+module UploadsHelper
   def display_upload_status upload_result
     case upload_result.status
       when UploadResult::SUCCESS then t('uploads.status.success')

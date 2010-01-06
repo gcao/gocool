@@ -7,4 +7,6 @@
 = render :partial => "search_by_description"
 
 %hr.space
-#game_sources_container
+#uploads_container
+  - if @uploads
+    = render :partial => "uploads", :locals => {:uploads => @uploads}

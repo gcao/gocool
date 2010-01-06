@@ -1,7 +1,7 @@
 class Uploader
 
   def process_files description, files
-    uploads = files.map {|file| GameSource.create!(:source_type => GameSource::UPLOAD_FILE, :description => description, :upload => file) }
+    uploads = files.map {|file| Upload.create!(:source_type => Upload::UPLOAD_FILE, :description => description, :upload => file) }
     uploads = uploads.inject([]) do |new_uploads, upload|
       new_uploads << process_compressed_upload(upload)
     end.flatten
@@ -14,12 +14,12 @@ class Uploader
 
   def process_upload upload
     result = UploadResult.new
-    result.game_source = upload
+    result.upload = upload
     if not upload.is_sgf?
       result.status = UploadResult::VALIDATION_ERROR
       result.detail = "#{upload.upload_file_name} is not a SGF file."
     elsif found = process_duplicate_upload(upload)
-      result.found_game_source = found
+      result.found_upload = found
       result.status = UploadResult::FOUND
       result.detail = I18n.t('uploads.already_uploaded_detail')
     else
@@ -47,7 +47,7 @@ class Uploader
     uploads = []
     Dir["/tmp/#{filename}/**/*"].each do |path|
       next if File.directory?(path)
-      uploads << GameSource.create!(:source_type => GameSource::UPLOAD_FILE, :upload => File.new(path))
+      uploads << Upload.create!(:source_type => Upload::UPLOAD_FILE, :upload => File.new(path))
     end
     upload.delete
     uploads
@@ -55,7 +55,7 @@ class Uploader
   
   def process_duplicate_upload upload
     upload.update_hash_code
-    if found_upload = GameSource.with_hash(upload.hash_code).first
+    if found_upload = Upload.with_hash(upload.hash_code).first
       upload.delete
       found_upload
     end

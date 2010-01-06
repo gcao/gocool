@@ -1,0 +1,6 @@
+- content_for :head do
+  %script{:src => "http://localhost/jsgameviewer/js/loader.js", :type => "text/javascript"}
+  %script{:src => "http://localhost/jsgameviewer/js/site_handler.js", :type => "text/javascript"}
+
+%h1= t('uploads.result.header')
+= render 'upload_results'

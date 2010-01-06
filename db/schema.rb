@@ -9,39 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091222164427) do
-
-  create_table "game_sources", :force => true do |t|
-    t.integer  "game_id"
-    t.string   "format"
-    t.string   "charset"
-    t.string   "source_type"
-    t.string   "source"
-    t.text     "data"
-    t.integer  "upload_id"
-    t.boolean  "is_commented"
-    t.string   "commented_by"
-    t.text     "description"
-    t.string   "hash_code"
-    t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "upload_file_name"
-    t.string   "upload_content_type"
-    t.integer  "upload_file_size"
-    t.datetime "upload_updated_at"
-    t.string   "status"
-    t.text     "status_detail"
-    t.string   "uploader"
-    t.integer  "uploader_id"
-  end
-
-  add_index "game_sources", ["game_id"], :name => "index_game_sources_on_game_id"
-  add_index "game_sources", ["hash_code"], :name => "index_game_sources_on_hash_code"
+ActiveRecord::Schema.define(:version => 20091215131610) do
 
   create_table "games", :force => true do |t|
     t.integer  "game_type"
-    t.string   "status",                 :default => "finished"
+    t.string   "status",             :default => "finished"
     t.integer  "rule"
     t.string   "rule_raw"
     t.integer  "board_size"
@@ -70,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20091222164427) do
     t.string   "black_rank"
     t.string   "white_name"
     t.string   "white_rank"
-    t.integer  "primary_game_source_id"
+    t.integer  "primary_upload_id"
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -195,6 +167,34 @@ ActiveRecord::Schema.define(:version => 20091222164427) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "uploads", :force => true do |t|
+    t.integer  "game_id"
+    t.string   "format"
+    t.string   "charset"
+    t.string   "source_type"
+    t.string   "source"
+    t.text     "data"
+    t.integer  "upload_id"
+    t.boolean  "is_commented"
+    t.string   "commented_by"
+    t.text     "description"
+    t.string   "hash_code"
+    t.string   "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+    t.string   "status"
+    t.text     "status_detail"
+    t.string   "uploader"
+    t.integer  "uploader_id"
+  end
+
+  add_index "uploads", ["game_id"], :name => "index_uploads_on_game_id"
+  add_index "uploads", ["hash_code"], :name => "index_uploads_on_hash_code"
 
   create_table "users", :force => true do |t|
     t.string   "username"

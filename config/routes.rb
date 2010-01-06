@@ -42,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.resources :games
-  map.resources :game_sources
+  map.resources :uploads
   map.upload_search 'upload_search', :controller => 'upload_search', :action => 'index'
 
   map.resources :uploads
