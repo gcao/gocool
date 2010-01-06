@@ -30,7 +30,7 @@ class Upload < ActiveRecord::Base
       file.print data
     end
 
-    upload.upload = File.new temp_file
+    upload.file = File.new temp_file
     upload.game = game
     upload.save!
     upload
@@ -50,7 +50,7 @@ class Upload < ActiveRecord::Base
       game.load_parsed_game(SGF::Parser.parse_file(temp_file))
       game.save!
 
-      upload.upload = File.new temp_file
+      upload.file = File.new temp_file
       upload.game = game
       upload.save!
       upload
@@ -59,7 +59,7 @@ class Upload < ActiveRecord::Base
 
   def parse
     self.status = STATUS_PARSE_SUCCESS
-    SGF::Parser.parse_file self.upload.path
+    SGF::Parser.parse_file self.file.path
   rescue SGF::ParseError => e
     self.status = STATUS_PARSE_FAILURE
     self.status_detail = e.message
@@ -76,13 +76,13 @@ class Upload < ActiveRecord::Base
   end
 
   def raw_file_path
-    paths = self.upload.path.split('/')
+    paths = self.file.path.split('/')
     paths[-1] = 'RAW_' + paths[-1]
     paths.join('/')
   end
 
   def before_save
-    @file_changed = self.changed.include?("upload_file_name") || self.changed.include?("upload_file_size") || self.changed.include?("upload_updated_at")
+    @file_changed = self.changed.include?("file_file_name") || self.changed.include?("file_file_size") || self.changed.include?("file_updated_at")
     true
   end
 
@@ -95,24 +95,24 @@ class Upload < ActiveRecord::Base
   end
 
   def update_hash_code
-    self.hash_code = Gocool::Md5.file_to_md5(self.upload.path)
+    self.hash_code = Gocool::Md5.file_to_md5(self.file.path)
   end
 
   def is_sgf?
-    upload and upload.path.downcase.include?(".sgf")
+    file and file.path.downcase.include?(".sgf")
   end
 
   private
 
   def convert_to_utf
-    return unless is_sgf? and File.exists?(upload.path)
+    return unless is_sgf? and File.exists?(file.path)
 
-    file_encoding = %x(/usr/bin/file -i #{self.upload.path}).strip
+    file_encoding = %x(/usr/bin/file -i #{self.file.path}).strip
 
     if contains_not_recognizable_chars?(file_encoding)
-      %x(cp #{self.upload.path} #{self.raw_file_path})
-      convert_cmd = "#{ENV['ICONV_PATH']} -f gb18030 #{self.upload.path} > #{self.upload.path}.tmp"
-      %x(#{convert_cmd} && cp #{self.upload.path}.tmp #{self.upload.path} && rm #{self.upload.path}.tmp)
+      %x(cp #{self.file.path} #{self.raw_file_path})
+      convert_cmd = "#{ENV['ICONV_PATH']} -f gb18030 #{self.file.path} > #{self.file.path}.tmp"
+      %x(#{convert_cmd} && cp #{self.file.path}.tmp #{self.file.path} && rm #{self.file.path}.tmp)
     end
   end
 

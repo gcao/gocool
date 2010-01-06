@@ -24,7 +24,7 @@ class UploadsController < ApplicationController
     
     respond_to do |format|
       format.html { render :layout => 'simple' }
-      format.sgf  { send_file(@upload.upload.path) }
+      format.sgf  { send_file(@upload.file.path) }
     end
   end
   
