@@ -82,6 +82,8 @@ zh_cn:
     page_header: "上传对局搜索"
     description_label: "上传介绍"
     description_required: "上传介绍为空"
+    from_date_label: "上传时间：从"
+    to_date_label: "到"
   players:
     page_title: "棋手"
     page_header: "棋手"

@@ -1,0 +1,20 @@
+-form_tag upload_search_path, :name => "searchByDateForm", :method => :post, :class => 'bp' do
+  %fieldset.span-24.no-border
+    = show_flash 'span-24'
+
+    .form_row.span-24
+      %label#from_date_label(for="from_date")
+        = t('upload_search.from_date_label')
+      =text_field_tag 'from_date', @from_date
+      %label#to_date_label(for="to_date")
+        = t('upload_search.to_date_label')
+      =text_field_tag 'to_date', @to_date
+      %input{:type => "hidden", :name => "search_type", :value => "date"}
+      =submit_tag t('form.search_button')
+      %input{:type => "reset", :value => t('form.reset_button')}
+
+#uploads_by_date_container
+  - if search_by_date? and @uploads
+    = render :partial => "uploads", :locals => {:uploads => @uploads}
+
+%hr

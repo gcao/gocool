@@ -1,19 +1,20 @@
-%form.bp{:action=>upload_search_url, :name=>"searchByDescriptionForm", :method=>"post"}
-  %fieldset.span-18.no-border
-    = show_flash 'span-18'
+%form.bp{:action=>upload_search_url, :name=>"searchByDescriptionForm", :method=>"get"}
+  %fieldset.span-24.no-border
+    = show_flash 'span-24'
 
-    .form_row.span-18
-      .span-3
-        %label(for="search_description")
-          =t('upload_search.description_label')
-      .span-15.last
-        %input#search_description(type="text" name="description" size="80")
-
-    %hr.space
-    .span-14{:align => 'center'}
+    .form_row.span-24
+      %label(for="search_description")
+        =t('upload_search.description_label')
+      %input#search_description(type="text" name="description" size="80"){:value => @description}
       %input(type='hidden' name='search_type' value='description')
       %input.upload_submit{:type => "submit", :name => "commit", :value => t('form.search_button')}
       %input{:type => "reset", :value => t('form.reset_button')}
+
+#uploads_by_description_container
+  - if search_by_description? and @uploads
+    = render :partial => "uploads", :locals => {:uploads => @uploads}
+
+%hr
 
 - content_for :footer do
   :javascript
