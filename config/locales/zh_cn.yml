@@ -108,6 +108,7 @@ zh_cn:
     player1_is_required: "请输入棋手用户名。"
   games_widget:
     game_name: "对局名称"
+    upload_description: "上传说明"
     black_player: "黑方"
     white_player: "白方"
     handicap: "让子"

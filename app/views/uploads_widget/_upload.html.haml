@@ -1,5 +1,6 @@
 %tr{:class => "record " + (upload_counter%2 == 0 ? "even-record":"")}
-  %td= upload.game.name
+  %td= upload.game.created_at
+  %td= upload.description
   = black_player_html(upload.game)
   = white_player_html(upload.game)
   %td= upload.game.handicap_str
@@ -8,6 +9,5 @@
   %td= upload.game.result
   %td= upload.game.played_at_raw
   %td= upload.game.place
-  %td= upload.game.created_at
   %td.actions
     %a{:target => "_new#{rand(1000)}", :href => upload_url(upload)}= t('form.view_button')
