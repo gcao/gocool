@@ -11,8 +11,8 @@
       %input{:type => "reset", :value => t('form.reset_button')}
 
 #uploads_by_description_container
-  - if search_by_description? and @uploads
-    = render :partial => "uploads", :locals => {:uploads => @uploads}
+  - if search_by_description?
+    = render_uploads_widget @uploads
 
 - content_for :footer do
   :javascript

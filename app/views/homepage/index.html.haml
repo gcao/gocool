@@ -4,4 +4,5 @@
 
 #recent_games_container
   %h2#recent_games_label= t('homepage.recent_games.label')
-  = render 'recent_games'
+
+  = render_uploads_widget @uploads

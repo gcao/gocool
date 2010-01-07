@@ -1,7 +1,7 @@
-#recent_games.active-scaffold.blue-theme
-  #recent_games_pagination.digg_pagination= will_paginate @recent_uploads, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
-  
-  %table#recent_games_table
+#uploads.active-scaffold.blue-theme
+  #uploads_pagination.digg_pagination= will_paginate @uploads, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+
+  %table#uploads_table
     %thead
       %tr.header
         %th#game_name_column=    t('games_widget.game_name')
@@ -16,4 +16,4 @@
         %th#create_time_column=  t('games_widget.create_time')
         %th#actions_column &nbsp;
     %tbody.records
-      = render :partial => 'recent_game', :collection => @recent_uploads, :as => :upload
+      = render :partial => 'uploads_widget/upload', :collection => uploads, :as => :upload
