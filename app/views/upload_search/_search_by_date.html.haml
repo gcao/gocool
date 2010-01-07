@@ -5,10 +5,10 @@
     .form_row.span-24
       %label#from_date_label(for="from_date")
         = t('upload_search.from_date_label')
-      =text_field_tag 'from_date', @from_date
+      =text_field_tag 'from_date', @from_date, :class => "date_input"
       %label#to_date_label(for="to_date")
         = t('upload_search.to_date_label')
-      =text_field_tag 'to_date', @to_date
+      =text_field_tag 'to_date', @to_date, :class => "date_input"
       %input{:type => "hidden", :name => "search_type", :value => "date"}
       =submit_tag t('form.search_button')
       %input{:type => "reset", :value => t('form.reset_button')}
