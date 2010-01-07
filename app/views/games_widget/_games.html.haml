@@ -1,5 +1,5 @@
 .games_widget.active-scaffold.blue-theme
-  .digg_pagination= will_paginate @games, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+  .digg_pagination= will_paginate @games_for_widget, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
 
   %table.games_table
     %thead
@@ -16,4 +16,4 @@
         %th.create_time_column=  t('games_widget.create_time')
         %th.actions_column      &nbsp;
     %tbody.records
-      = render :partial => 'games_widget/game', :collection => games, :as => :game
+      = render :partial => 'games_widget/game', :collection => @games_for_widget, :as => :game

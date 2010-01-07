@@ -1,5 +1,5 @@
 #uploads.active-scaffold.blue-theme
-  #uploads_pagination.digg_pagination= will_paginate @uploads, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+  #uploads_pagination.digg_pagination= will_paginate @uploads_for_widget, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
 
   %table#uploads_table
     %thead
@@ -16,4 +16,4 @@
         %th#create_time_column=  t('games_widget.create_time')
         %th#actions_column &nbsp;
     %tbody.records
-      = render :partial => 'uploads_widget/upload', :collection => uploads, :as => :upload
+      = render :partial => 'uploads_widget/upload', :collection => @uploads_for_widget, :as => :upload

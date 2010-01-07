@@ -1,5 +1,8 @@
 module GamesWidgetHelper
   def render_games_widget games
-    render 'games_widget/games', :locals => {:games => games} if games
+    return unless games
+
+    @games_for_widget = games
+    render :partial => 'games_widget/games'
   end
 end
