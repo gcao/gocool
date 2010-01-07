@@ -1,6 +1,6 @@
 %form.bp{:action=>upload_search_url, :name=>"searchByDescriptionForm", :method=>"get"}
   %fieldset.span-24.no-border
-    = show_flash 'span-24'
+    = show_flash 'span-24' if search_by_description?
 
     .form_row.span-24
       %label(for="search_description")
@@ -13,8 +13,6 @@
 #uploads_by_description_container
   - if search_by_description? and @uploads
     = render :partial => "uploads", :locals => {:uploads => @uploads}
-
-%hr
 
 - content_for :footer do
   :javascript

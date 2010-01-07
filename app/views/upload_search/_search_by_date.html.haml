@@ -1,6 +1,6 @@
 -form_tag upload_search_path, :name => "searchByDateForm", :method => :post, :class => 'bp' do
   %fieldset.span-24.no-border
-    = show_flash 'span-24'
+    = show_flash 'span-24' if search_by_date?
 
     .form_row.span-24
       %label#from_date_label(for="from_date")
@@ -17,4 +17,3 @@
   - if search_by_date? and @uploads
     = render :partial => "uploads", :locals => {:uploads => @uploads}
 
-%hr

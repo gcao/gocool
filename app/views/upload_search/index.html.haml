@@ -12,11 +12,7 @@
 -# search by description
 -# search by upload time
 
-- if search_by_date?
-  = render :partial => "search_by_date"
-  = render :partial => "search_by_description"
-- else
-  = render :partial => "search_by_description"
-  = render :partial => "search_by_date"
+= render :partial => "search_by_description"
+= render :partial => "search_by_date"
 
 %hr.space

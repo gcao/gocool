@@ -21,6 +21,10 @@ class Upload < ActiveRecord::Base
   
   named_scope :recent, :order => 'created_at DESC'
 
+  named_scope :between, lambda {|from, to|
+    {:conditions => ["date(created_at) >= ? and date(created_at) <= ?", from, to]}
+  }
+
   def self.create_from_sgf description, data, sgf_game, hash_code = nil
     hash_code ||= Gocool::Md5.string_to_md5 data
     upload = create!(:source_type => Upload::UPLOAD_SGF, :description => description, :data => data, :hash_code => hash_code)

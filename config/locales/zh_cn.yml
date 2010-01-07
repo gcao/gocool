@@ -84,6 +84,7 @@ zh_cn:
     description_required: "上传介绍为空"
     from_date_label: "上传时间：从"
     to_date_label: "到"
+    from_date_greater_than_to_date: "开始日期大于终止日期。"
   players:
     page_title: "棋手"
     page_header: "棋手"
