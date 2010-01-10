@@ -47,7 +47,7 @@ class Uploader
     uploads = []
     Dir["/tmp/#{filename}/**/*"].each do |path|
       next if File.directory?(path)
-      uploads << Upload.create!(:source_type => Upload::UPLOAD_FILE, :file => File.new(path))
+      uploads << Upload.create!(:description => upload.description, :source_type => Upload::UPLOAD_FILE, :file => File.new(path))
     end
     upload.delete
     uploads

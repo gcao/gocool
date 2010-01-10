@@ -17,4 +17,4 @@ end
 ENV["RAILS_ENV"] ||= "development"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 
-Uploader.new.process_files ARGV.map{ |filename| File.new(filename) }
+Uploader.new.process_files "direct_upload", ARGV.map{ |filename| File.new(filename) }

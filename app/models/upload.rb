@@ -16,13 +16,24 @@ class Upload < ActiveRecord::Base
   }
 
   named_scope :with_description, lambda { |description|
-    {:conditions => ["description like ?", "%#{description}%"]}
+    {:conditions => ["uploads.description like ?", "%#{description}%"]}
   }
   
   named_scope :recent, :order => 'created_at DESC'
 
   named_scope :between, lambda {|from, to|
-    {:conditions => ["date(created_at) >= ? and date(created_at) <= ?", from, to]}
+    if from
+      if to
+        conditions = ["date(uploads.created_at) >= ? and date(uploads.created_at) <= ?", from, to]
+      else
+        conditions = ["date(uploads.created_at) >= ?", from]
+      end
+    elsif to
+      conditions = ["date(uploads.created_at) <= ?", to]
+    end
+    if conditions
+      { :conditions => conditions }
+    end
   }
 
   def self.create_from_sgf description, data, sgf_game, hash_code = nil

@@ -1,6 +1,11 @@
 - content_for :head do
   = stylesheet_link_tag "date_input.css"
 
+- content_for :footer do
+  = javascript_include_tag %w(validanguage_uncompressed jquery.date_input jquery.date_input.zh_CN)
+  :javascript
+    jQuery(jQuery.date_input.initialize);
+
 %h1= @page_header || t('upload_search.page_header')
 
 -# shortcuts: my uploads, today's uploads, yesterday' uploads, this week's uploads, last week's uploads etc.
@@ -11,8 +16,3 @@
 = render :partial => "search_by_date"
 
 %hr.space
-
-- content_for :footer do
-  = javascript_include_tag %w(validanguage_uncompressed jquery.date_input jquery.date_input.zh_CN)
-  :javascript
-    jQuery(jQuery.date_input.initialize);
