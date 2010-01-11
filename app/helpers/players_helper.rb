@@ -1,4 +1,8 @@
 module PlayersHelper
+  def show_page_header player
+    t('players.games_played_by').gsub('PLAYER_NAME', player.full_name)
+  end
+
   def gaming_platforms_select field_name, value = nil
     platforms = GamingPlatform.all.map {|p| [p.name, p.description]}.
             # unshift(["all", t("form.select_all")]).

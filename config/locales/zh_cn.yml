@@ -97,7 +97,8 @@ zh_cn:
       games: "对局数"
       won: "胜局数"
       lost: "败局数"
-    games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME 的对局"
+    online_games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME 的对局"
+    games_played_by: "PLAYER_NAME 的对局"
   games:
     page_title: "对局"
     page_header: "对局"

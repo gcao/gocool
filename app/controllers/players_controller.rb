@@ -2,6 +2,11 @@ class PlayersController < ApplicationController
   def index
   end
 
+  def show
+    @player = Player.find params[:id]
+    @games = Game.by_player(@player).paginate(page_params)
+  end
+
   def search
     @platform = params[:platform]
     @name = params[:name]
