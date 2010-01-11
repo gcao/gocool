@@ -70,7 +70,7 @@ class Game < ActiveRecord::Base
     self.event          = sgf_game.event
     
     unless process_online_game
-      # TODO
+      process_non_online_game
     end
     
     if self.result =~ /B+/i

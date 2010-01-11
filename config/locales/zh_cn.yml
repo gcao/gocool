@@ -26,6 +26,7 @@ zh_cn:
     detail_button: "详细信息"
     search_button: "搜索"
     select_all: "全部"
+    select_other: "其他"
   email:
     label: "Email"
     required: "Email为空."
@@ -89,10 +90,10 @@ zh_cn:
     page_title: "棋手"
     page_header: "棋手"
     platform_label: "对局平台："
-    username_label: "用户名："
+    name_label: "棋手："
     online_players:
       platform: "对局平台"
-      username: "用户名"
+      name: "棋手"
       games: "对局数"
       won: "胜局数"
       lost: "败局数"
