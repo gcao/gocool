@@ -4,7 +4,7 @@ module PlayersHelper
             # unshift(["all", t("form.select_all")]).
             push(["", t("form.select_other")])
     options = platforms.map {|p|
-      if value and p[0] == value
+      if (value and p[0] == value) or (value.blank? and p[0].blank?)
         "<option value='#{p[0]}' selected='selected'>#{p[1]}</option>"
       else
         "<option value='#{p[0]}'>#{p[1]}</option>"

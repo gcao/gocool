@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
     @platform = params[:platform]
     @name = params[:name]
     if @platform.blank?
-      @players = Player.name_like(@name).paginate(page_params)
+      @players = Player.name_like(@name).with_stat.paginate(page_params)
       render :partial => "players", :layout => false
     elsif @platform.strip == 'all'
       # TODO

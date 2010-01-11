@@ -3,11 +3,10 @@
   %table
     %thead
       %tr.header
-        %th#platform_column= t('players.online_players.platform')
         %th#username_column= t('players.online_players.name')
         %th#games_column= t('players.online_players.games')
         %th#won_column= t('players.online_players.won')
         %th#lost_column= t('players.online_players.lost')
         %th#actions_column &nbsp;
     %tbody.records
-      = render :partial => 'online_player', :collection => @players, :as => :online_player
+      = render :partial => 'player', :collection => @players, :as => :player
