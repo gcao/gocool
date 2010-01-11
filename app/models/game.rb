@@ -18,10 +18,12 @@ class Game < ActiveRecord::Base
   }
 
   named_scope :on_platform, lambda { |platform_name|
-    if platform_name and platform = GamingPlatform.find_by_name(platform_name)
+    if platform_name.blank?
+      { :conditions => "gaming_platform_id is null" }
+    elsif platform_name and platform = GamingPlatform.find_by_name(platform_name)
       { :conditions => ["gaming_platform_id = ?", platform.id] }
     else
-      {}
+      raise "Platform name is not correct: '#{platform_name}'"
     end
   }
 
