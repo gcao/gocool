@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215131610) do
+ActiveRecord::Schema.define(:version => 20100111043013) do
 
   create_table "games", :force => true do |t|
     t.integer  "game_type"
@@ -103,14 +103,31 @@ ActiveRecord::Schema.define(:version => 20091215131610) do
   add_index "online_players", ["gaming_platform_id", "username"], :name => "index_online_players_on_gaming_platform_id_and_username"
   add_index "online_players", ["player_id"], :name => "index_online_players_on_player_id"
 
+  create_table "player_stats", :force => true do |t|
+    t.integer  "player_id",                          :null => false
+    t.integer  "games_as_black",      :default => 0
+    t.integer  "games_won_as_black",  :default => 0
+    t.integer  "games_lost_as_black", :default => 0
+    t.integer  "games_as_white",      :default => 0
+    t.integer  "games_won_as_white",  :default => 0
+    t.integer  "games_lost_as_white", :default => 0
+    t.datetime "first_game_played"
+    t.datetime "last_game_played"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "player_stats", ["player_id"], :name => "index_player_stats_on_player_id", :unique => true
+
   create_table "players", :force => true do |t|
     t.integer  "nation_region_id"
-    t.string   "username"
     t.string   "first_name_en"
     t.string   "last_name_en"
     t.string   "full_name_en"
-    t.string   "first_name_cn"
-    t.string   "last_name_cn"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "full_name"
+    t.string   "username"
     t.string   "other_names"
     t.boolean  "is_amateur"
     t.string   "rank"
@@ -125,6 +142,8 @@ ActiveRecord::Schema.define(:version => 20091215131610) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "players", ["full_name"], :name => "players_full_name"
 
   create_table "tournament_games", :force => true do |t|
     t.integer  "tournament_id"

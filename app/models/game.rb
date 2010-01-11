@@ -69,7 +69,9 @@ class Game < ActiveRecord::Base
     self.place          = sgf_game.place
     self.event          = sgf_game.event
     
-    process_kgs_game
+    unless process_online_game
+      # TODO
+    end
     
     if self.result =~ /B+/i
       self.winner = WINNER_BLACK
@@ -78,12 +80,26 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def process_kgs_game
-    return if self.place !~ /kgs/i
+  def process_online_game
+    if self.place =~ /kgs/i
+      platform = GamingPlatform.kgs
+    elsif self.place =~ /dragongoserver/i
+      platform = GamingPlatform.dgs
+    else
+      return
+    end
+
     self.is_online_game = true
-    self.gaming_platform = GamingPlatform.kgs
-    self.black_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.black_name, self.black_rank).id
-    self.white_id = OnlinePlayer.find_or_create(GamingPlatform.kgs, self.white_name, self.white_rank).id
+    self.gaming_platform = platform
+    self.black_id = OnlinePlayer.find_or_create(platform, self.black_name, self.black_rank).id
+    self.white_id = OnlinePlayer.find_or_create(platform, self.white_name, self.white_rank).id
+
+    true
+  end
+
+  def process_non_online_game
+    self.black_id = Player.find_or_create(self.black_name, self.black_rank).id
+    self.white_id = Player.find_or_create(self.white_name, self.white_rank).id
   end
   
   def self.search platform_name, player1, player2
