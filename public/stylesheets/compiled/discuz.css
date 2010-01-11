@@ -1,1493 +1,433 @@
-/* line 4, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_reset.sass */
-html, body {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline; }
-
-/* line 12, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_reset.sass */
-div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
-pre, a, abbr, acronym, address, code, del, dfn, em, img,
-dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline; }
-
-/* line 16, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_reset.sass */
-blockquote, q {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline;
-  quotes: "" ""; }
-  /* line 42, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_reset.sass */
-  blockquote:before, q:before,
-  blockquote:after, q:after {
-    content: ""; }
-
-/* line 18, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_reset.sass */
-th, td, caption {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline;
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle; }
-
-/* line 20, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_reset.sass */
-table {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline;
-  border-collapse: separate;
-  border-spacing: 0;
-  vertical-align: middle; }
-
-/* line 22, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_reset.sass */
-a img {
-  border: none; }
-
-/* line 22, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp body {
-  line-height: 1.5;
-  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
-  color: #333333;
-  font-size: 75%; }
-/* line 53, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp h1 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 3em;
-  line-height: 1;
-  margin-bottom: 0.5em; }
-  /* line 58, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-  body.bp h1 img {
-    margin: 0; }
-/* line 60, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp h2 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 2em;
-  margin-bottom: 0.75em; }
-/* line 64, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp h3 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 1.5em;
-  line-height: 1;
-  margin-bottom: 1em; }
-/* line 69, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp h4 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 1.2em;
-  line-height: 1.25;
-  margin-bottom: 1.25em; }
-/* line 74, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp h5 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 1em;
-  font-weight: bold;
-  margin-bottom: 1.5em; }
-/* line 79, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp h6 {
-  font-weight: normal;
-  color: #222222;
-  font-size: 1em;
-  font-weight: bold; }
-/* line 83, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp h2 img, body.bp h3 img, body.bp h4 img, body.bp h5 img, body.bp h6 img {
-  margin: 0; }
-/* line 85, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp p {
-  margin: 0 0 1.5em; }
-  /* line 87, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-  body.bp p img.left {
-    display: inline;
-    float: left;
-    margin: 1.5em 1.5em 1.5em 0;
-    padding: 0; }
-  /* line 91, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-  body.bp p img.right {
-    display: inline;
-    float: right;
-    margin: 1.5em 0 1.5em 1.5em;
-    padding: 0; }
-/* line 95, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp a {
-  text-decoration: underline;
-  color: #000099; }
-  /* line 12, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-  body.bp a:visited {
-    color: #000066; }
-  /* line 15, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-  body.bp a:focus {
-    color: black; }
-  /* line 18, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-  body.bp a:hover {
-    color: black; }
-  /* line 21, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/compass/stylesheets/compass/utilities/links/_link_colors.sass */
-  body.bp a:active {
-    color: #cc0099; }
-/* line 98, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp blockquote {
-  margin: 1.5em;
-  color: #666;
-  font-style: italic; }
-/* line 102, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp strong {
-  font-weight: bold; }
-/* line 104, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp em {
-  font-style: italic; }
-/* line 106, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp dfn {
-  font-style: italic;
-  font-weight: bold; }
-/* line 109, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp sup, body.bp sub {
-  line-height: 0; }
-/* line 111, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp abbr, body.bp acronym {
-  border-bottom: 1px dotted #666; }
-/* line 113, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp address {
-  margin: 0 0 1.5em;
-  font-style: italic; }
-/* line 116, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp del {
-  color: #666; }
-/* line 118, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp pre {
-  margin: 1.5em 0;
-  white-space: pre; }
-/* line 121, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp pre, body.bp code, body.bp tt {
-  font: 1em 'andale mono', 'lucida console', monospace;
-  line-height: 1.5; }
-/* line 123, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp li ul, body.bp li ol {
-  margin: 0 1.5em; }
-/* line 125, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp ul {
-  margin: 0 1.5em 1.5em 1.5em;
-  list-style-type: disc; }
-/* line 128, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp ol {
-  margin: 0 1.5em 1.5em 1.5em;
-  list-style-type: decimal; }
-/* line 131, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp dl {
-  margin: 0 0 1.5em 0; }
-  /* line 133, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-  body.bp dl dt {
-    font-weight: bold; }
-/* line 135, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp dd {
-  margin-left: 1.5em; }
-/* line 137, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp table {
-  margin-bottom: 1.4em;
-  width: 100%; }
-/* line 140, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp th {
-  font-weight: bold; }
-/* line 142, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp thead th {
-  background: #c3d9ff; }
-/* line 144, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp th, body.bp td, body.bp caption {
-  padding: 4px 10px 4px 5px; }
-/* line 146, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp tr.even td {
-  background: #e5ecf9; }
-/* line 148, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp tfoot {
-  font-style: italic; }
-/* line 150, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp caption {
-  background: #eee; }
-/* line 152, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp .quiet {
-  color: #666666; }
-/* line 154, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_typography.sass */
-body.bp .loud {
-  color: #111111; }
-/* line 31, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .container {
-  width: 950px;
-  margin: 0 auto;
-  overflow: hidden;
-  display: inline-block; }
-  /* line 5, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
-  body.bp .container {
-    display: block; }
-/* line 33, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .column, body.bp div.span-1, body.bp div.span-2, body.bp div.span-3, body.bp div.span-4, body.bp div.span-5, body.bp div.span-6, body.bp div.span-7, body.bp div.span-8, body.bp div.span-9, body.bp div.span-10, body.bp div.span-11, body.bp div.span-12, body.bp div.span-13, body.bp div.span-14, body.bp div.span-15, body.bp div.span-16, body.bp div.span-17, body.bp div.span-18, body.bp div.span-19, body.bp div.span-20, body.bp div.span-21, body.bp div.span-22, body.bp div.span-23, body.bp div.span-24 {
-  display: inline;
-  float: left;
-  margin-right: 10px; }
-  /* line 101, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-  * html body.bp .column, * html body.bp div.span-1, * html body.bp div.span-2, * html body.bp div.span-3, * html body.bp div.span-4, * html body.bp div.span-5, * html body.bp div.span-6, * html body.bp div.span-7, * html body.bp div.span-8, * html body.bp div.span-9, * html body.bp div.span-10, * html body.bp div.span-11, * html body.bp div.span-12, * html body.bp div.span-13, * html body.bp div.span-14, * html body.bp div.span-15, * html body.bp div.span-16, * html body.bp div.span-17, * html body.bp div.span-18, * html body.bp div.span-19, * html body.bp div.span-20, * html body.bp div.span-21, * html body.bp div.span-22, * html body.bp div.span-23, * html body.bp div.span-24 {
-    overflow-x: hidden; }
-/* line 36, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .last, body.bp div.last {
-  margin-right: 0; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-1 {
-  width: 30px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-2 {
-  width: 70px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-3 {
-  width: 110px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-4 {
-  width: 150px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-5 {
-  width: 190px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-6 {
-  width: 230px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-7 {
-  width: 270px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-8 {
-  width: 310px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-9 {
-  width: 350px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-10 {
-  width: 390px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-11 {
-  width: 430px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-12 {
-  width: 470px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-13 {
-  width: 510px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-14 {
-  width: 550px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-15 {
-  width: 590px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-16 {
-  width: 630px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-17 {
-  width: 670px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-18 {
-  width: 710px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-19 {
-  width: 750px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-20 {
-  width: 790px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-21 {
-  width: 830px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-22 {
-  width: 870px; }
-/* line 40, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-23 {
-  width: 910px; }
-/* line 42, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .span-24, body.bp div.span-24 {
-  width: 950px;
-  margin: 0; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-1, body.bp textarea.span-1, body.bp select.span-1 {
-  width: 30px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-2, body.bp textarea.span-2, body.bp select.span-2 {
-  width: 70px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-3, body.bp textarea.span-3, body.bp select.span-3 {
-  width: 110px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-4, body.bp textarea.span-4, body.bp select.span-4 {
-  width: 150px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-5, body.bp textarea.span-5, body.bp select.span-5 {
-  width: 190px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-6, body.bp textarea.span-6, body.bp select.span-6 {
-  width: 230px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-7, body.bp textarea.span-7, body.bp select.span-7 {
-  width: 270px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-8, body.bp textarea.span-8, body.bp select.span-8 {
-  width: 310px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-9, body.bp textarea.span-9, body.bp select.span-9 {
-  width: 350px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-10, body.bp textarea.span-10, body.bp select.span-10 {
-  width: 390px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-11, body.bp textarea.span-11, body.bp select.span-11 {
-  width: 430px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-12, body.bp textarea.span-12, body.bp select.span-12 {
-  width: 470px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-13, body.bp textarea.span-13, body.bp select.span-13 {
-  width: 510px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-14, body.bp textarea.span-14, body.bp select.span-14 {
-  width: 550px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-15, body.bp textarea.span-15, body.bp select.span-15 {
-  width: 590px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-16, body.bp textarea.span-16, body.bp select.span-16 {
-  width: 630px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-17, body.bp textarea.span-17, body.bp select.span-17 {
-  width: 670px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-18, body.bp textarea.span-18, body.bp select.span-18 {
-  width: 710px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-19, body.bp textarea.span-19, body.bp select.span-19 {
-  width: 750px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-20, body.bp textarea.span-20, body.bp select.span-20 {
-  width: 790px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-21, body.bp textarea.span-21, body.bp select.span-21 {
-  width: 830px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-22, body.bp textarea.span-22, body.bp select.span-22 {
-  width: 870px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-23, body.bp textarea.span-23, body.bp select.span-23 {
-  width: 910px !important; }
-/* line 47, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp input.span-24, body.bp textarea.span-24, body.bp select.span-24 {
-  width: 950px !important; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-1 {
-  padding-right: 40px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-2 {
-  padding-right: 80px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-3 {
-  padding-right: 120px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-4 {
-  padding-right: 160px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-5 {
-  padding-right: 200px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-6 {
-  padding-right: 240px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-7 {
-  padding-right: 280px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-8 {
-  padding-right: 320px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-9 {
-  padding-right: 360px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-10 {
-  padding-right: 400px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-11 {
-  padding-right: 440px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-12 {
-  padding-right: 480px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-13 {
-  padding-right: 520px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-14 {
-  padding-right: 560px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-15 {
-  padding-right: 600px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-16 {
-  padding-right: 640px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-17 {
-  padding-right: 680px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-18 {
-  padding-right: 720px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-19 {
-  padding-right: 760px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-20 {
-  padding-right: 800px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-21 {
-  padding-right: 840px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-22 {
-  padding-right: 880px; }
-/* line 51, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-23 {
-  padding-right: 920px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-1 {
-  padding-left: 40px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-2 {
-  padding-left: 80px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-3 {
-  padding-left: 120px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-4 {
-  padding-left: 160px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-5 {
-  padding-left: 200px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-6 {
-  padding-left: 240px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-7 {
-  padding-left: 280px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-8 {
-  padding-left: 320px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-9 {
-  padding-left: 360px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-10 {
-  padding-left: 400px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-11 {
-  padding-left: 440px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-12 {
-  padding-left: 480px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-13 {
-  padding-left: 520px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-14 {
-  padding-left: 560px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-15 {
-  padding-left: 600px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-16 {
-  padding-left: 640px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-17 {
-  padding-left: 680px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-18 {
-  padding-left: 720px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-19 {
-  padding-left: 760px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-20 {
-  padding-left: 800px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-21 {
-  padding-left: 840px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-22 {
-  padding-left: 880px; }
-/* line 55, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-23 {
-  padding-left: 920px; }
-/* line 59, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-1, body.bp .pull-2, body.bp .pull-3, body.bp .pull-4, body.bp .pull-5, body.bp .pull-6, body.bp .pull-7, body.bp .pull-8, body.bp .pull-9, body.bp .pull-10, body.bp .pull-11, body.bp .pull-12, body.bp .pull-13, body.bp .pull-14, body.bp .pull-15, body.bp .pull-16, body.bp .pull-17, body.bp .pull-18, body.bp .pull-19, body.bp .pull-20, body.bp .pull-21, body.bp .pull-22, body.bp .pull-23, body.bp .pull-24 {
-  display: inline;
-  float: left;
-  position: relative; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-1 {
-  margin-left: -40px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-2 {
-  margin-left: -80px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-3 {
-  margin-left: -120px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-4 {
-  margin-left: -160px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-5 {
-  margin-left: -200px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-6 {
-  margin-left: -240px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-7 {
-  margin-left: -280px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-8 {
-  margin-left: -320px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-9 {
-  margin-left: -360px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-10 {
-  margin-left: -400px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-11 {
-  margin-left: -440px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-12 {
-  margin-left: -480px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-13 {
-  margin-left: -520px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-14 {
-  margin-left: -560px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-15 {
-  margin-left: -600px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-16 {
-  margin-left: -640px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-17 {
-  margin-left: -680px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-18 {
-  margin-left: -720px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-19 {
-  margin-left: -760px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-20 {
-  margin-left: -800px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-21 {
-  margin-left: -840px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-22 {
-  margin-left: -880px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-23 {
-  margin-left: -920px; }
-/* line 62, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .pull-24 {
-  margin-left: -960px; }
-/* line 64, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-1, body.bp .push-2, body.bp .push-3, body.bp .push-4, body.bp .push-5, body.bp .push-6, body.bp .push-7, body.bp .push-8, body.bp .push-9, body.bp .push-10, body.bp .push-11, body.bp .push-12, body.bp .push-13, body.bp .push-14, body.bp .push-15, body.bp .push-16, body.bp .push-17, body.bp .push-18, body.bp .push-19, body.bp .push-20, body.bp .push-21, body.bp .push-22, body.bp .push-23, body.bp .push-24 {
-  display: inline;
-  float: right;
-  position: relative; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-1 {
-  margin: 0 -40px 1.5em 40px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-2 {
-  margin: 0 -80px 1.5em 80px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-3 {
-  margin: 0 -120px 1.5em 120px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-4 {
-  margin: 0 -160px 1.5em 160px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-5 {
-  margin: 0 -200px 1.5em 200px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-6 {
-  margin: 0 -240px 1.5em 240px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-7 {
-  margin: 0 -280px 1.5em 280px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-8 {
-  margin: 0 -320px 1.5em 320px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-9 {
-  margin: 0 -360px 1.5em 360px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-10 {
-  margin: 0 -400px 1.5em 400px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-11 {
-  margin: 0 -440px 1.5em 440px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-12 {
-  margin: 0 -480px 1.5em 480px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-13 {
-  margin: 0 -520px 1.5em 520px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-14 {
-  margin: 0 -560px 1.5em 560px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-15 {
-  margin: 0 -600px 1.5em 600px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-16 {
-  margin: 0 -640px 1.5em 640px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-17 {
-  margin: 0 -680px 1.5em 680px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-18 {
-  margin: 0 -720px 1.5em 720px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-19 {
-  margin: 0 -760px 1.5em 760px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-20 {
-  margin: 0 -800px 1.5em 800px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-21 {
-  margin: 0 -840px 1.5em 840px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-22 {
-  margin: 0 -880px 1.5em 880px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-23 {
-  margin: 0 -920px 1.5em 920px; }
-/* line 67, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .push-24 {
-  margin: 0 -960px 1.5em 960px; }
-/* line 69, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .prepend-top {
-  margin-top: 1.5em; }
-/* line 71, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-body.bp .append-bottom {
-  margin-bottom: 1.5em; }
-/* line 9, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .clear {
-  clear: both; }
-/* line 12, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .nowrap {
-  white-space: nowrap; }
-/* line 16, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .clearfix {
-  overflow: hidden;
-  display: inline-block; }
-  /* line 5, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
-  body.bp .clearfix {
-    display: block; }
-/* line 18, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .small {
-  font-size: .8em;
-  margin-bottom: 1.875em;
-  line-height: 1.875em; }
-/* line 22, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .large {
-  font-size: 1.2em;
-  line-height: 2.5em;
-  margin-bottom: 1.25em; }
-/* line 26, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .first {
-  margin-left: 0;
-  padding-left: 0; }
-/* line 29, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .last {
-  margin-right: 0;
-  padding-right: 0; }
-/* line 32, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .top {
-  margin-top: 0;
-  padding-top: 0; }
-/* line 35, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_utilities.sass */
-body.bp .bottom {
-  margin-bottom: 0;
-  padding-bottom: 0; }
-/* line 7, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_debug.sass */
-body.bp .showgrid {
-  background: url('/images/grid.png?1259871871'); }
-/* line 5, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-body.bp .error {
-  padding: .8em;
-  margin-bottom: 1em;
-  border: 2px solid #dddddd;
-  background: #fbe3e4;
-  color: #8a1f11;
-  border-color: #fbc2c4; }
-  /* line 30, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-  body.bp .error a {
-    color: #8a1f11; }
-/* line 7, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-body.bp .notice {
-  padding: .8em;
-  margin-bottom: 1em;
-  border: 2px solid #dddddd;
-  background: #fff6bf;
-  color: #514721;
-  border-color: #ffd324; }
-  /* line 38, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-  body.bp .notice a {
-    color: #514721; }
-/* line 9, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-body.bp .success {
-  padding: .8em;
-  margin-bottom: 1em;
-  border: 2px solid #dddddd;
-  background: #e6efc2;
-  color: #264409;
-  border-color: #c6d880; }
-  /* line 46, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-  body.bp .success a {
-    color: #264409; }
-/* line 11, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-body.bp .hide {
-  display: none; }
-/* line 13, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-body.bp .highlight {
-  background: yellow; }
-/* line 15, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-body.bp .added {
-  background: #006600;
-  color: white; }
-/* line 17, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_interaction.sass */
-body.bp .removed {
-  background: #990000;
-  color: white; }
-/* line 36, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_scaffolding.sass */
-body.bp .box {
-  padding: 1.5em;
-  margin-bottom: 1.5em;
-  background: #E5ECF9; }
-/* line 39, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_scaffolding.sass */
-body.bp div.border {
-  padding-right: 4px;
-  margin-right: 5px;
-  border-right: 1px solid #eeeeee; }
-/* line 42, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_scaffolding.sass */
-body.bp div.colborder {
-  padding-right: 24px;
-  margin-right: 25px;
-  border-right: 1px solid #eeeeee; }
-/* line 44, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_scaffolding.sass */
-body.bp hr {
-  background: #dddddd;
-  color: #dddddd;
-  clear: both;
-  float: none;
-  width: 100%;
-  height: .1em;
-  margin: 0 0 1.45em;
-  border: none; }
-/* line 46, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_scaffolding.sass */
-body.bp hr.space {
-  background: #dddddd;
-  color: #dddddd;
-  clear: both;
-  float: none;
-  width: 100%;
-  height: .1em;
-  margin: 0 0 1.45em;
-  border: none;
-  background: #fff;
-  color: #fff; }
-
-/* line 15, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp label {
-  font-weight: bold; }
-/* line 17, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp fieldset {
-  padding: 1.4em;
-  margin: 0 0 1.5em 0; }
-/* line 20, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp legend {
-  font-weight: bold;
-  font-size: 1.2em; }
-/* line 24, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp input.text, form.bp input.title, form.bp input[type=text] {
-  margin: 0.5em 0;
-  background-color: #fff;
-  padding: 5px; }
-/* line 28, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp input.title {
-  font-size: 1.5em; }
-/* line 30, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp input[type=checkbox], form.bp input.checkbox,
-form.bp input[type=radio], form.bp input.radio {
-  position: relative;
-  top: 0.25em; }
-/* line 34, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp textarea {
-  margin: 0.5em 0;
-  padding: 5px; }
-/* line 37, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp select {
-  margin: 0.5em 0; }
-/* line 48, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp fieldset {
-  border: 1px solid #cccccc; }
-/* line 50, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp input.text, form.bp input.title,
-form.bp textarea,
-form.bp select {
-  border: 1px solid #bbbbbb; }
-  /* line 54, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-  form.bp input.text:focus, form.bp input.title:focus,
-  form.bp textarea:focus,
-  form.bp select:focus {
-    border: 1px solid #666666; }
-/* line 41, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp input.text, form.bp input.title {
-  width: 300px; }
-/* line 43, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_form.sass */
-form.bp textarea {
-  width: 390px;
-  height: 250px; }
-
-/* line 28, ../../../app/stylesheets/screen.sass */
-body.three-col #container {
-  width: 950px;
-  margin: 0 auto;
-  overflow: hidden;
-  display: inline-block; }
-  /* line 5, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/compass/stylesheets/compass/utilities/general/_hacks.sass */
-  body.three-col #container {
-    display: block; }
-/* line 30, ../../../app/stylesheets/screen.sass */
-body.three-col #header, body.three-col #footer {
-  display: inline;
-  float: left;
-  margin-right: 10px;
-  width: 950px; }
-  /* line 101, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-  * html body.three-col #header, * html body.three-col #footer {
-    overflow-x: hidden; }
-/* line 32, ../../../app/stylesheets/screen.sass */
-body.three-col #sidebar {
-  display: inline;
-  float: left;
-  margin-right: 10px;
-  width: 310px; }
-  /* line 101, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-  * html body.three-col #sidebar {
-    overflow-x: hidden; }
-/* line 36, ../../../app/stylesheets/screen.sass */
-body.three-col #content {
-  display: inline;
-  float: left;
-  margin-right: 0;
-  width: 630px; }
-  /* line 101, ../../../../../.gem/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/modules/_grid.sass */
-  * html body.three-col #content {
-    overflow-x: hidden; }
-
-/* line 1, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-div.jqueryslidemenu {
-  font: bold 12px Verdana;
-  background: #414141;
-  width: 100%; }
-  /* line 6, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-  div.jqueryslidemenu ul {
-    margin: 10px 0 0 0;
-    padding: 0;
-    list-style-type: none; }
-    /* line 11, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-    div.jqueryslidemenu ul li {
-      position: relative;
-      display: inline;
-      float: left; }
-      /* line 16, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-      div.jqueryslidemenu ul li a {
-        display: block;
-        background: #414141;
-        padding: 8px 10px;
-        border-right: 1px solid #778;
-        color: #2d2b2b;
-        text-decoration: none; }
-    /* line 25, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-    div.jqueryslidemenu ul li.active a {
-      background: #777; }
-    /* line 28, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-    div.jqueryslidemenu ul li#locale_zh_cn {
-      float: right; }
-      /* line 30, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-      div.jqueryslidemenu ul li#locale_zh_cn a {
-        border-right: none; }
-    /* line 33, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-    div.jqueryslidemenu ul li#locale_en_us {
-      float: right; }
-
-/* line 37, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-* html .jqueryslidemenu ul li a {
-  display: inline-block; }
-
-/* line 43, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-.jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited {
-  color: white; }
-/* line 46, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-.jqueryslidemenu ul li a:hover {
-  background: black;
-  color: white; }
-/* line 50, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-.jqueryslidemenu ul li ul {
-  position: absolute;
-  left: 0;
-  display: block;
-  visibility: hidden; }
-  /* line 56, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-  .jqueryslidemenu ul li ul li {
-    display: list-item;
-    float: none; }
-    /* line 60, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-    .jqueryslidemenu ul li ul li ul {
-      top: 0; }
-    /* line 63, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-    .jqueryslidemenu ul li ul li a {
-      font: normal 13px Verdana;
-      width: 160px;
-      padding: 5px;
-      margin: 0;
-      border-top-width: 0;
-      border-bottom: 1px solid gray; }
-
-/* line 72, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-.jqueryslidemenuz ul li ul li a:hover {
-  background: #eff9ff;
-  color: black; }
-
-/* line 77, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-.downarrowclass {
-  position: absolute;
-  top: 12px;
-  right: 7px; }
-
-/* line 83, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
-.rightarrowclass {
-  position: absolute;
-  top: 6px;
-  right: 5px; }
-
-/* line 1, ../../../app/stylesheets/partials/_pagination.sass */
-div .pagination {
-  position: relative;
-  float: right; }
-
-/* line 5, ../../../app/stylesheets/partials/_pagination.sass */
-div.digg_pagination {
-  background: white;
-  /* self-clearing method: */ }
-  /* line 7, ../../../app/stylesheets/partials/_pagination.sass */
-  div.digg_pagination a, div.digg_pagination span {
-    padding: .2em .5em;
-    display: block;
-    float: left;
-    margin-right: 1px; }
-  /* line 12, ../../../app/stylesheets/partials/_pagination.sass */
-  div.digg_pagination span.disabled {
-    color: #999;
-    border: 1px solid #DDD; }
-  /* line 15, ../../../app/stylesheets/partials/_pagination.sass */
-  div.digg_pagination span.current {
-    font-weight: bold;
-    background: #2E6AB1;
-    color: white;
-    border: 1px solid #2E6AB1; }
-  /* line 20, ../../../app/stylesheets/partials/_pagination.sass */
-  div.digg_pagination a {
-    text-decoration: none;
-    color: #105CB6;
-    border: 1px solid #9AAFE5; }
-    /* line 24, ../../../app/stylesheets/partials/_pagination.sass */
-    div.digg_pagination a:hover, div.digg_pagination a:focus {
-      color: #003;
-      border-color: #003; }
-  /* line 27, ../../../app/stylesheets/partials/_pagination.sass */
-  div.digg_pagination .page_info {
-    background: #2E6AB1;
-    color: white;
-    padding: .4em .6em;
-    width: 22em;
-    margin-bottom: .3em;
-    text-align: center; }
-    /* line 34, ../../../app/stylesheets/partials/_pagination.sass */
-    div.digg_pagination .page_info b {
-      color: #003;
-      background: #6aa6ed;
-      padding: .1em .25em; }
-  /* line 40, ../../../app/stylesheets/partials/_pagination.sass */
-  div.digg_pagination:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden; }
-  /* line 46, ../../../app/stylesheets/partials/_pagination.sass */
-  * html div.digg_pagination {
-    height: 1%; }
-  /* line 48, ../../../app/stylesheets/partials/_pagination.sass */
-  *:first-child+html div.digg_pagination {
-    overflow: hidden; }
-
-/* line 51, ../../../app/stylesheets/partials/_pagination.sass */
-.apple_pagination {
-  background: #F1F1F1;
-  border: 1px solid #E5E5E5;
-  text-align: center;
-  padding: 1em; }
-  /* line 56, ../../../app/stylesheets/partials/_pagination.sass */
-  .apple_pagination a, .apple_pagination span {
-    padding: .2em .3em; }
-  /* line 58, ../../../app/stylesheets/partials/_pagination.sass */
-  .apple_pagination span.disabled {
-    color: #AAA; }
-  /* line 60, ../../../app/stylesheets/partials/_pagination.sass */
-  .apple_pagination span.current {
-    font-weight: bold;
-    background: transparent url(apple-circle.gif) no-repeat 50% 50%; }
-  /* line 63, ../../../app/stylesheets/partials/_pagination.sass */
-  .apple_pagination a {
-    text-decoration: none;
-    color: black; }
-    /* line 66, ../../../app/stylesheets/partials/_pagination.sass */
-    .apple_pagination a:hover, .apple_pagination a:focus {
-      text-decoration: underline; }
-
-/* line 69, ../../../app/stylesheets/partials/_pagination.sass */
-.flickr_pagination {
-  text-align: center;
-  padding: .3em; }
-  /* line 72, ../../../app/stylesheets/partials/_pagination.sass */
-  .flickr_pagination a, .flickr_pagination span {
-    padding: .2em .5em; }
-  /* line 74, ../../../app/stylesheets/partials/_pagination.sass */
-  .flickr_pagination span.disabled {
-    color: #AAA; }
-  /* line 76, ../../../app/stylesheets/partials/_pagination.sass */
-  .flickr_pagination span.current {
-    font-weight: bold;
-    color: #FF0084; }
-  /* line 79, ../../../app/stylesheets/partials/_pagination.sass */
-  .flickr_pagination a {
-    border: 1px solid #DDDDDD;
-    color: #0063DC;
-    text-decoration: none; }
-    /* line 83, ../../../app/stylesheets/partials/_pagination.sass */
-    .flickr_pagination a:hover, .flickr_pagination a:focus {
-      border-color: #003366;
-      background: #0063DC;
-      color: white; }
-  /* line 87, ../../../app/stylesheets/partials/_pagination.sass */
-  .flickr_pagination .page_info {
-    color: #aaa;
-    padding-top: .8em; }
-  /* line 90, ../../../app/stylesheets/partials/_pagination.sass */
-  .flickr_pagination .prev_page, .flickr_pagination .next_page {
-    border-width: 2px; }
-  /* line 92, ../../../app/stylesheets/partials/_pagination.sass */
-  .flickr_pagination .prev_page {
-    margin-right: 1em; }
-  /* line 94, ../../../app/stylesheets/partials/_pagination.sass */
-  .flickr_pagination .next_page {
-    margin-left: 1em; }
-
-/* line 1, ../../../app/stylesheets/partials/_app.sass */
-#container {
-  background: #FFF; }
-
-/* line 4, ../../../app/stylesheets/partials/_app.sass */
-.no-margin {
-  margin: 0 !important; }
-
-/* line 7, ../../../app/stylesheets/partials/_app.sass */
-span.note {
-  font-style: italic;
-  color: #666666; }
-
-/* line 11, ../../../app/stylesheets/partials/_app.sass */
-.sgf_good {
-  color: #008800; }
-
-/* line 14, ../../../app/stylesheets/partials/_app.sass */
-.sgf_bad {
-  background: #000;
-  color: red;
-  font-weight: bold;
-  padding: 0 4px; }
-
-/* line 20, ../../../app/stylesheets/partials/_app.sass */
-.sgf_rest {
-  color: #888888; }
-
-/* line 23, ../../../app/stylesheets/partials/_app.sass */
-.vdError {
-  color: red;
-  font-size: small; }
-
-/* line 27, ../../../app/stylesheets/partials/_app.sass */
-table .records tr.record td.winner {
-  background: #bfb; }
-
-/* line 30, ../../../app/stylesheets/partials/_app.sass */
-table#games_search_form input[type='text'] {
-  width: 150px; }
-
-/* line 33, ../../../app/stylesheets/partials/_app.sass */
-table#games_search_form label {
-  position: relative; }
-  /* line 36, ../../../app/stylesheets/partials/_app.sass */
-  table#games_search_form label em.msg {
-    position: absolute;
-    text-align: right;
-    left: 0px;
-    top: -18px;
-    width: 158px;
-    font-size: .8em;
-    font-style: normal;
-    line-height: 2.5;
-    color: #aaa; }
-
-/* line 47, ../../../app/stylesheets/partials/_app.sass */
-#cursor {
-  background-color: lightyellow;
-  border: 1px solid black;
-  font-size: 10px;
-  left: -300px;
-  padding: 5px;
-  position: absolute;
-  visibility: hidden;
-  width: 150px;
-  z-index: 100; }
-
-/* line 58, ../../../app/stylesheets/partials/_app.sass */
-#pointer {
-  left: -300px;
-  position: absolute;
-  visibility: hidden;
-  z-index: 101; }
-
-/* line 1, ../../../app/stylesheets/partials/_form.sass */
-.form_row {
-  margin-top: 0.5em; }
-
-/* line 5, ../../../app/stylesheets/partials/_form.sass */
-form.bp fieldset.no-border {
-  border: none; }
-/* line 8, ../../../app/stylesheets/partials/_form.sass */
-form.bp textarea, form.bp select {
-  margin: 0; }
-/* line 11, ../../../app/stylesheets/partials/_form.sass */
-form.bp input.text, form.bp input.title, form.bp input[type="text"] {
-  margin: 0;
-  padding: 3px 5px;
-  border: 1px solid #ccc; }
-/* line 16, ../../../app/stylesheets/partials/_form.sass */
-form.bp input.failedField, form.bp textarea.failedField {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #FFAAAA none repeat scroll 0 0; }
-
-/* line 22, ../../../app/stylesheets/partials/_form.sass */
-span.required_field {
-  color: #ff0000; }
-
-/* line 25, ../../../app/stylesheets/partials/_form.sass */
-.form_legend {
-  font-size: small;
-  color: #666666; }
-
-/* line 29, ../../../app/stylesheets/partials/_form.sass */
-#upload_email {
-  width: 413px; }
-
-/* line 32, ../../../app/stylesheets/partials/_form.sass */
-#upload_data, #upload_url, #upload_description, #upload_description2, #upload_description3 {
-  width: 590px; }
-
-/* line 35, ../../../app/stylesheets/partials/_form.sass */
-table#games_search_form {
-  margin-bottom: 0; }
-  /* line 38, ../../../app/stylesheets/partials/_form.sass */
-  table#games_search_form th, table#games_search_form td {
-    vertical-align: top; }
-    /* line 40, ../../../app/stylesheets/partials/_form.sass */
-    table#games_search_form th *, table#games_search_form td * {
-      margin-top: 0; }
-
-/* line 1, ../../../app/stylesheets/partials/_homepage.sass */
-#description {
-  font-size: large; }
-
-/* line 4, ../../../app/stylesheets/partials/_homepage.sass */
-#recent_games_label {
-  font-size: extra-large;
-  margin-bottom: 0px;
-  height: 15px; }
-
-/* line 1, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-body {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #0D2345 url(../../images/bodybg.gif) repeat-x scroll 0 90px;
-  text-align: center; }
-
-/* line 8, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset {
-  margin: 0;
-  padding: 0; }
-
-/* line 12, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-body, td, input, textarea, select, button {
-  color: #444444;
-  font-family: Verdana,Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  font-size-adjust: none;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1.6em; }
-
-/* line 22, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-a {
-  color: #000000;
-  text-decoration: none; }
-  /* line 26, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-  a img {
-    border: medium none; }
-
-/* line 29, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-* {
-  word-wrap: break-word; }
-
-/* line 32, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-.wrap {
-  margin: 0 auto;
-  text-align: left; }
-
-/* line 36, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-.pipe {
-  margin: 0 5px; }
-
-/* line 39, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-.lighttxt, .lighttxt a, .pipe {
-  color: #999999; }
-
-/* line 42, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-em, cite, strong, th {
-  font-style: normal;
-  text-align: left; }
-
-/* line 46, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-ul li {
-  list-style-image: none;
-  list-style-position: outside;
-  list-style-type: none; }
-
-/* line 51, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-a:hover {
-  text-decoration: underline; }
-
-/* line 54, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-.noborder, .noborder td {
-  border: medium none !important; }
-
-/* line 57, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#header {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #FFFFFF none repeat scroll 0 0;
-  border-bottom: 1px solid #00B2E8;
-  margin-bottom: 8px;
-  width: 100%; }
-  /* line 66, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-  #header h2 {
-    float: left;
-    margin: 0; }
-  /* line 70, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-  #header .wrap {
-    height: 120px;
-    padding: 8px 0 4px;
-    position: relative; }
-
-/* line 75, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#umenu, #umenu a, #umenu .pipe {
-  color: #666666; }
-
-/* line 78, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#umenu {
-  line-height: 20px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  line-height: 20px; }
-  /* line 85, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-  #umenu cite {
-    font-weight: 700; }
-    /* line 88, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-    #umenu cite span a {
-      font-weight: 400;
-      margin: 0; }
-  /* line 92, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-  #umenu a {
-    margin: 0 6px; }
-
-/* line 95, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#menu {
-  bottom: 0;
-  height: 26px;
-  position: absolute;
-  right: 0; }
-  /* line 101, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-  #menu li {
-    -moz-background-clip: border;
-    -moz-background-inline-policy: continuous;
-    -moz-background-origin: padding;
-    background: #EBF4FD url(../../images/mtabbg.gif) repeat-x scroll 0 100%;
-    display: inline;
-    float: left;
-    margin-left: 5px; }
-  /* line 110, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-  #menu a {
-    -moz-background-clip: border;
-    -moz-background-inline-policy: continuous;
-    -moz-background-origin: padding;
-    background: transparent none repeat scroll 0 0;
-    border-color: #B0E4EF;
-    border-style: solid;
-    border-width: 1px 1px 0;
-    color: #666666;
-    float: left;
-    height: 25px;
-    line-height: 25px;
-    overflow: hidden;
-    padding: 0 14px;
-    text-decoration: none; }
-  /* line 126, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-  #menu li.current a {
-    background-color: #1E4B7E;
-    border-color: #00B2E8;
-    color: #C3D3E4;
-    height: 26px; }
-
-/* line 133, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#nav, #nav a {
-  color: #C3D3E4; }
-
-/* line 136, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#nav {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: transparent url(../../images/icon_nav.gif) no-repeat scroll 0 50%;
-  line-height: 3em;
-  margin: -8px auto 0;
-  text-align: left;
-  text-indent: 25px; }
-
-/* line 147, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#footer, #footer a {
-  color: #8691A2; }
-
-/* line 150, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#footer {
-  padding: 1em 0;
-  position: relative; }
-
-/* line 154, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#footlink {
-  float: right;
-  text-align: right; }
-
-/* line 158, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-.smalltext {
-  font-family: Verdana,Helvetica,Arial,sans-serif;
-  font-size: 0.83em; }
-
-/* line 162, ../../../vendor/plugins/discuz_auth/app/stylesheets/partials/_discuz.sass */
-#rightinfo {
-  float: left; }
-
-/* line 3, ../../../app/stylesheets/partials/_discuz_extra.sass */
-#header a, #nav a, #footer a {
-  text-decoration: none; }
-
-/* line 7, ../../../app/stylesheets/partials/_discuz_extra.sass */
-#header p, #footer p {
-  margin: 0; }
-
-/* line 10, ../../../app/stylesheets/partials/_discuz_extra.sass */
-#container {
-  margin-top: 0;
-  text-align: left;
-  padding: 5px; }
-
-/* line 16, ../../../app/stylesheets/partials/_discuz_extra.sass */
-div.jqueryslidemenu {
-  display: inline;
-  background: none;
-  width: 400px;
-  text-indent: 0 !important;
-  font-weight: normal; }
-  /* line 23, ../../../app/stylesheets/partials/_discuz_extra.sass */
-  div.jqueryslidemenu ul {
-    float: right; }
-    /* line 27, ../../../app/stylesheets/partials/_discuz_extra.sass */
-    div.jqueryslidemenu ul li a {
-      background: none;
-      padding: 0px 10px 4px;
-      border: 0; }
-    /* line 33, ../../../app/stylesheets/partials/_discuz_extra.sass */
-    div.jqueryslidemenu ul li.active a {
-      background: none;
-      font-weight: bold;
-      text-decoration: underline !important; }
-
-/* line 38, ../../../app/stylesheets/partials/_discuz_extra.sass */
-input[type='file'] {
-  font-size: 11px; }
-
-/* line 41, ../../../app/stylesheets/partials/_discuz_extra.sass */
-.form_legend {
-  font-size: 11px; }
-
-/* line 44, ../../../app/stylesheets/partials/_discuz_extra.sass */
-#games_widget_container, #players_result_container {
-  display: block;
-  float: none; }
+html, body { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+
+div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, pre, a, abbr, acronym, address, code, del, dfn, em, img, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+
+blockquote, q { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; quotes: "" ""; }
+blockquote:before, q:before, blockquote:after, q:after { content: ""; }
+
+th, td, caption { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; text-align: left; font-weight: normal; vertical-align: middle; }
+
+table { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; border-collapse: separate; border-spacing: 0; vertical-align: middle; }
+
+a img { border: none; }
+
+body.bp body { line-height: 1.5; font-family: Helvetica Neue, Arial, Helvetica, sans-serif; color: #333333; font-size: 75%; }
+body.bp h1 { font-weight: normal; color: #222222; font-size: 3em; line-height: 1; margin-bottom: 0.5em; }
+body.bp h1 img { margin: 0; }
+body.bp h2 { font-weight: normal; color: #222222; font-size: 2em; margin-bottom: 0.75em; }
+body.bp h3 { font-weight: normal; color: #222222; font-size: 1.5em; line-height: 1; margin-bottom: 1em; }
+body.bp h4 { font-weight: normal; color: #222222; font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
+body.bp h5 { font-weight: normal; color: #222222; font-size: 1em; font-weight: bold; margin-bottom: 1.5em; }
+body.bp h6 { font-weight: normal; color: #222222; font-size: 1em; font-weight: bold; }
+body.bp h2 img, body.bp h3 img, body.bp h4 img, body.bp h5 img, body.bp h6 img { margin: 0; }
+body.bp p { margin: 0 0 1.5em; }
+body.bp p img.left { display: inline; float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
+body.bp p img.right { display: inline; float: right; margin: 1.5em 0 1.5em 1.5em; padding: 0; }
+body.bp a { text-decoration: underline; color: #000099; }
+body.bp a:visited { color: #000066; }
+body.bp a:focus { color: black; }
+body.bp a:hover { color: black; }
+body.bp a:active { color: #cc0099; }
+body.bp blockquote { margin: 1.5em; color: #666; font-style: italic; }
+body.bp strong { font-weight: bold; }
+body.bp em { font-style: italic; }
+body.bp dfn { font-style: italic; font-weight: bold; }
+body.bp sup, body.bp sub { line-height: 0; }
+body.bp abbr, body.bp acronym { border-bottom: 1px dotted #666; }
+body.bp address { margin: 0 0 1.5em; font-style: italic; }
+body.bp del { color: #666; }
+body.bp pre { margin: 1.5em 0; white-space: pre; }
+body.bp pre, body.bp code, body.bp tt { font: 1em 'andale mono', 'lucida console', monospace; line-height: 1.5; }
+body.bp li ul, body.bp li ol { margin: 0 1.5em; }
+body.bp ul { margin: 0 1.5em 1.5em 1.5em; list-style-type: disc; }
+body.bp ol { margin: 0 1.5em 1.5em 1.5em; list-style-type: decimal; }
+body.bp dl { margin: 0 0 1.5em 0; }
+body.bp dl dt { font-weight: bold; }
+body.bp dd { margin-left: 1.5em; }
+body.bp table { margin-bottom: 1.4em; width: 100%; }
+body.bp th { font-weight: bold; }
+body.bp thead th { background: #c3d9ff; }
+body.bp th, body.bp td, body.bp caption { padding: 4px 10px 4px 5px; }
+body.bp tr.even td { background: #e5ecf9; }
+body.bp tfoot { font-style: italic; }
+body.bp caption { background: #eee; }
+body.bp .quiet { color: #666666; }
+body.bp .loud { color: #111111; }
+body.bp .container { width: 950px; margin: 0 auto; overflow: hidden; display: inline-block; }
+body.bp .container { display: block; }
+body.bp .column, body.bp div.span-1, body.bp div.span-2, body.bp div.span-3, body.bp div.span-4, body.bp div.span-5, body.bp div.span-6, body.bp div.span-7, body.bp div.span-8, body.bp div.span-9, body.bp div.span-10, body.bp div.span-11, body.bp div.span-12, body.bp div.span-13, body.bp div.span-14, body.bp div.span-15, body.bp div.span-16, body.bp div.span-17, body.bp div.span-18, body.bp div.span-19, body.bp div.span-20, body.bp div.span-21, body.bp div.span-22, body.bp div.span-23, body.bp div.span-24 { display: inline; float: left; margin-right: 10px; }
+* html body.bp .column, * html body.bp div.span-1, * html body.bp div.span-2, * html body.bp div.span-3, * html body.bp div.span-4, * html body.bp div.span-5, * html body.bp div.span-6, * html body.bp div.span-7, * html body.bp div.span-8, * html body.bp div.span-9, * html body.bp div.span-10, * html body.bp div.span-11, * html body.bp div.span-12, * html body.bp div.span-13, * html body.bp div.span-14, * html body.bp div.span-15, * html body.bp div.span-16, * html body.bp div.span-17, * html body.bp div.span-18, * html body.bp div.span-19, * html body.bp div.span-20, * html body.bp div.span-21, * html body.bp div.span-22, * html body.bp div.span-23, * html body.bp div.span-24 { overflow-x: hidden; }
+body.bp .last, body.bp div.last { margin-right: 0; }
+body.bp .span-1 { width: 30px; }
+body.bp .span-2 { width: 70px; }
+body.bp .span-3 { width: 110px; }
+body.bp .span-4 { width: 150px; }
+body.bp .span-5 { width: 190px; }
+body.bp .span-6 { width: 230px; }
+body.bp .span-7 { width: 270px; }
+body.bp .span-8 { width: 310px; }
+body.bp .span-9 { width: 350px; }
+body.bp .span-10 { width: 390px; }
+body.bp .span-11 { width: 430px; }
+body.bp .span-12 { width: 470px; }
+body.bp .span-13 { width: 510px; }
+body.bp .span-14 { width: 550px; }
+body.bp .span-15 { width: 590px; }
+body.bp .span-16 { width: 630px; }
+body.bp .span-17 { width: 670px; }
+body.bp .span-18 { width: 710px; }
+body.bp .span-19 { width: 750px; }
+body.bp .span-20 { width: 790px; }
+body.bp .span-21 { width: 830px; }
+body.bp .span-22 { width: 870px; }
+body.bp .span-23 { width: 910px; }
+body.bp .span-24, body.bp div.span-24 { width: 950px; margin: 0; }
+body.bp input.span-1, body.bp textarea.span-1, body.bp select.span-1 { width: 30px !important; }
+body.bp input.span-2, body.bp textarea.span-2, body.bp select.span-2 { width: 70px !important; }
+body.bp input.span-3, body.bp textarea.span-3, body.bp select.span-3 { width: 110px !important; }
+body.bp input.span-4, body.bp textarea.span-4, body.bp select.span-4 { width: 150px !important; }
+body.bp input.span-5, body.bp textarea.span-5, body.bp select.span-5 { width: 190px !important; }
+body.bp input.span-6, body.bp textarea.span-6, body.bp select.span-6 { width: 230px !important; }
+body.bp input.span-7, body.bp textarea.span-7, body.bp select.span-7 { width: 270px !important; }
+body.bp input.span-8, body.bp textarea.span-8, body.bp select.span-8 { width: 310px !important; }
+body.bp input.span-9, body.bp textarea.span-9, body.bp select.span-9 { width: 350px !important; }
+body.bp input.span-10, body.bp textarea.span-10, body.bp select.span-10 { width: 390px !important; }
+body.bp input.span-11, body.bp textarea.span-11, body.bp select.span-11 { width: 430px !important; }
+body.bp input.span-12, body.bp textarea.span-12, body.bp select.span-12 { width: 470px !important; }
+body.bp input.span-13, body.bp textarea.span-13, body.bp select.span-13 { width: 510px !important; }
+body.bp input.span-14, body.bp textarea.span-14, body.bp select.span-14 { width: 550px !important; }
+body.bp input.span-15, body.bp textarea.span-15, body.bp select.span-15 { width: 590px !important; }
+body.bp input.span-16, body.bp textarea.span-16, body.bp select.span-16 { width: 630px !important; }
+body.bp input.span-17, body.bp textarea.span-17, body.bp select.span-17 { width: 670px !important; }
+body.bp input.span-18, body.bp textarea.span-18, body.bp select.span-18 { width: 710px !important; }
+body.bp input.span-19, body.bp textarea.span-19, body.bp select.span-19 { width: 750px !important; }
+body.bp input.span-20, body.bp textarea.span-20, body.bp select.span-20 { width: 790px !important; }
+body.bp input.span-21, body.bp textarea.span-21, body.bp select.span-21 { width: 830px !important; }
+body.bp input.span-22, body.bp textarea.span-22, body.bp select.span-22 { width: 870px !important; }
+body.bp input.span-23, body.bp textarea.span-23, body.bp select.span-23 { width: 910px !important; }
+body.bp input.span-24, body.bp textarea.span-24, body.bp select.span-24 { width: 950px !important; }
+body.bp .append-1 { padding-right: 40px; }
+body.bp .append-2 { padding-right: 80px; }
+body.bp .append-3 { padding-right: 120px; }
+body.bp .append-4 { padding-right: 160px; }
+body.bp .append-5 { padding-right: 200px; }
+body.bp .append-6 { padding-right: 240px; }
+body.bp .append-7 { padding-right: 280px; }
+body.bp .append-8 { padding-right: 320px; }
+body.bp .append-9 { padding-right: 360px; }
+body.bp .append-10 { padding-right: 400px; }
+body.bp .append-11 { padding-right: 440px; }
+body.bp .append-12 { padding-right: 480px; }
+body.bp .append-13 { padding-right: 520px; }
+body.bp .append-14 { padding-right: 560px; }
+body.bp .append-15 { padding-right: 600px; }
+body.bp .append-16 { padding-right: 640px; }
+body.bp .append-17 { padding-right: 680px; }
+body.bp .append-18 { padding-right: 720px; }
+body.bp .append-19 { padding-right: 760px; }
+body.bp .append-20 { padding-right: 800px; }
+body.bp .append-21 { padding-right: 840px; }
+body.bp .append-22 { padding-right: 880px; }
+body.bp .append-23 { padding-right: 920px; }
+body.bp .prepend-1 { padding-left: 40px; }
+body.bp .prepend-2 { padding-left: 80px; }
+body.bp .prepend-3 { padding-left: 120px; }
+body.bp .prepend-4 { padding-left: 160px; }
+body.bp .prepend-5 { padding-left: 200px; }
+body.bp .prepend-6 { padding-left: 240px; }
+body.bp .prepend-7 { padding-left: 280px; }
+body.bp .prepend-8 { padding-left: 320px; }
+body.bp .prepend-9 { padding-left: 360px; }
+body.bp .prepend-10 { padding-left: 400px; }
+body.bp .prepend-11 { padding-left: 440px; }
+body.bp .prepend-12 { padding-left: 480px; }
+body.bp .prepend-13 { padding-left: 520px; }
+body.bp .prepend-14 { padding-left: 560px; }
+body.bp .prepend-15 { padding-left: 600px; }
+body.bp .prepend-16 { padding-left: 640px; }
+body.bp .prepend-17 { padding-left: 680px; }
+body.bp .prepend-18 { padding-left: 720px; }
+body.bp .prepend-19 { padding-left: 760px; }
+body.bp .prepend-20 { padding-left: 800px; }
+body.bp .prepend-21 { padding-left: 840px; }
+body.bp .prepend-22 { padding-left: 880px; }
+body.bp .prepend-23 { padding-left: 920px; }
+body.bp .pull-1, body.bp .pull-2, body.bp .pull-3, body.bp .pull-4, body.bp .pull-5, body.bp .pull-6, body.bp .pull-7, body.bp .pull-8, body.bp .pull-9, body.bp .pull-10, body.bp .pull-11, body.bp .pull-12, body.bp .pull-13, body.bp .pull-14, body.bp .pull-15, body.bp .pull-16, body.bp .pull-17, body.bp .pull-18, body.bp .pull-19, body.bp .pull-20, body.bp .pull-21, body.bp .pull-22, body.bp .pull-23, body.bp .pull-24 { display: inline; float: left; position: relative; }
+body.bp .pull-1 { margin-left: -40px; }
+body.bp .pull-2 { margin-left: -80px; }
+body.bp .pull-3 { margin-left: -120px; }
+body.bp .pull-4 { margin-left: -160px; }
+body.bp .pull-5 { margin-left: -200px; }
+body.bp .pull-6 { margin-left: -240px; }
+body.bp .pull-7 { margin-left: -280px; }
+body.bp .pull-8 { margin-left: -320px; }
+body.bp .pull-9 { margin-left: -360px; }
+body.bp .pull-10 { margin-left: -400px; }
+body.bp .pull-11 { margin-left: -440px; }
+body.bp .pull-12 { margin-left: -480px; }
+body.bp .pull-13 { margin-left: -520px; }
+body.bp .pull-14 { margin-left: -560px; }
+body.bp .pull-15 { margin-left: -600px; }
+body.bp .pull-16 { margin-left: -640px; }
+body.bp .pull-17 { margin-left: -680px; }
+body.bp .pull-18 { margin-left: -720px; }
+body.bp .pull-19 { margin-left: -760px; }
+body.bp .pull-20 { margin-left: -800px; }
+body.bp .pull-21 { margin-left: -840px; }
+body.bp .pull-22 { margin-left: -880px; }
+body.bp .pull-23 { margin-left: -920px; }
+body.bp .pull-24 { margin-left: -960px; }
+body.bp .push-1, body.bp .push-2, body.bp .push-3, body.bp .push-4, body.bp .push-5, body.bp .push-6, body.bp .push-7, body.bp .push-8, body.bp .push-9, body.bp .push-10, body.bp .push-11, body.bp .push-12, body.bp .push-13, body.bp .push-14, body.bp .push-15, body.bp .push-16, body.bp .push-17, body.bp .push-18, body.bp .push-19, body.bp .push-20, body.bp .push-21, body.bp .push-22, body.bp .push-23, body.bp .push-24 { display: inline; float: right; position: relative; }
+body.bp .push-1 { margin: 0 -40px 1.5em 40px; }
+body.bp .push-2 { margin: 0 -80px 1.5em 80px; }
+body.bp .push-3 { margin: 0 -120px 1.5em 120px; }
+body.bp .push-4 { margin: 0 -160px 1.5em 160px; }
+body.bp .push-5 { margin: 0 -200px 1.5em 200px; }
+body.bp .push-6 { margin: 0 -240px 1.5em 240px; }
+body.bp .push-7 { margin: 0 -280px 1.5em 280px; }
+body.bp .push-8 { margin: 0 -320px 1.5em 320px; }
+body.bp .push-9 { margin: 0 -360px 1.5em 360px; }
+body.bp .push-10 { margin: 0 -400px 1.5em 400px; }
+body.bp .push-11 { margin: 0 -440px 1.5em 440px; }
+body.bp .push-12 { margin: 0 -480px 1.5em 480px; }
+body.bp .push-13 { margin: 0 -520px 1.5em 520px; }
+body.bp .push-14 { margin: 0 -560px 1.5em 560px; }
+body.bp .push-15 { margin: 0 -600px 1.5em 600px; }
+body.bp .push-16 { margin: 0 -640px 1.5em 640px; }
+body.bp .push-17 { margin: 0 -680px 1.5em 680px; }
+body.bp .push-18 { margin: 0 -720px 1.5em 720px; }
+body.bp .push-19 { margin: 0 -760px 1.5em 760px; }
+body.bp .push-20 { margin: 0 -800px 1.5em 800px; }
+body.bp .push-21 { margin: 0 -840px 1.5em 840px; }
+body.bp .push-22 { margin: 0 -880px 1.5em 880px; }
+body.bp .push-23 { margin: 0 -920px 1.5em 920px; }
+body.bp .push-24 { margin: 0 -960px 1.5em 960px; }
+body.bp .prepend-top { margin-top: 1.5em; }
+body.bp .append-bottom { margin-bottom: 1.5em; }
+body.bp .clear { clear: both; }
+body.bp .nowrap { white-space: nowrap; }
+body.bp .clearfix { overflow: hidden; display: inline-block; }
+body.bp .clearfix { display: block; }
+body.bp .small { font-size: .8em; margin-bottom: 1.875em; line-height: 1.875em; }
+body.bp .large { font-size: 1.2em; line-height: 2.5em; margin-bottom: 1.25em; }
+body.bp .first { margin-left: 0; padding-left: 0; }
+body.bp .last { margin-right: 0; padding-right: 0; }
+body.bp .top { margin-top: 0; padding-top: 0; }
+body.bp .bottom { margin-bottom: 0; padding-bottom: 0; }
+body.bp .showgrid { background: url('/images/grid.png?1259871871'); }
+body.bp .error { padding: .8em; margin-bottom: 1em; border: 2px solid #dddddd; background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+body.bp .error a { color: #8a1f11; }
+body.bp .notice { padding: .8em; margin-bottom: 1em; border: 2px solid #dddddd; background: #fff6bf; color: #514721; border-color: #ffd324; }
+body.bp .notice a { color: #514721; }
+body.bp .success { padding: .8em; margin-bottom: 1em; border: 2px solid #dddddd; background: #e6efc2; color: #264409; border-color: #c6d880; }
+body.bp .success a { color: #264409; }
+body.bp .hide { display: none; }
+body.bp .highlight { background: yellow; }
+body.bp .added { background: #006600; color: white; }
+body.bp .removed { background: #990000; color: white; }
+body.bp .box { padding: 1.5em; margin-bottom: 1.5em; background: #E5ECF9; }
+body.bp div.border { padding-right: 4px; margin-right: 5px; border-right: 1px solid #eeeeee; }
+body.bp div.colborder { padding-right: 24px; margin-right: 25px; border-right: 1px solid #eeeeee; }
+body.bp hr { background: #dddddd; color: #dddddd; clear: both; float: none; width: 100%; height: .1em; margin: 0 0 1.45em; border: none; }
+body.bp hr.space { background: #dddddd; color: #dddddd; clear: both; float: none; width: 100%; height: .1em; margin: 0 0 1.45em; border: none; background: #fff; color: #fff; }
+
+form.bp label { font-weight: bold; }
+form.bp fieldset { padding: 1.4em; margin: 0 0 1.5em 0; }
+form.bp legend { font-weight: bold; font-size: 1.2em; }
+form.bp input.text, form.bp input.title, form.bp input[type=text] { margin: 0.5em 0; background-color: #fff; padding: 5px; }
+form.bp input.title { font-size: 1.5em; }
+form.bp input[type=checkbox], form.bp input.checkbox, form.bp input[type=radio], form.bp input.radio { position: relative; top: 0.25em; }
+form.bp textarea { margin: 0.5em 0; padding: 5px; }
+form.bp select { margin: 0.5em 0; }
+form.bp fieldset { border: 1px solid #cccccc; }
+form.bp input.text, form.bp input.title, form.bp textarea, form.bp select { border: 1px solid #bbbbbb; }
+form.bp input.text:focus, form.bp input.title:focus, form.bp textarea:focus, form.bp select:focus { border: 1px solid #666666; }
+form.bp input.text, form.bp input.title { width: 300px; }
+form.bp textarea { width: 390px; height: 250px; }
+
+body.three-col #container { width: 950px; margin: 0 auto; overflow: hidden; display: inline-block; }
+body.three-col #container { display: block; }
+body.three-col #header, body.three-col #footer { display: inline; float: left; margin-right: 10px; width: 950px; }
+* html body.three-col #header, * html body.three-col #footer { overflow-x: hidden; }
+body.three-col #sidebar { display: inline; float: left; margin-right: 10px; width: 310px; }
+* html body.three-col #sidebar { overflow-x: hidden; }
+body.three-col #content { display: inline; float: left; margin-right: 0; width: 630px; }
+* html body.three-col #content { overflow-x: hidden; }
+
+div.jqueryslidemenu { font: bold 12px Verdana; background: #414141; width: 100%; }
+div.jqueryslidemenu ul { margin: 10px 0 0 0; padding: 0; list-style-type: none; }
+div.jqueryslidemenu ul li { position: relative; display: inline; float: left; }
+div.jqueryslidemenu ul li a { display: block; background: #414141; padding: 8px 10px; border-right: 1px solid #778; color: #2d2b2b; text-decoration: none; }
+div.jqueryslidemenu ul li.active a { background: #777; }
+div.jqueryslidemenu ul li#locale_zh_cn { float: right; }
+div.jqueryslidemenu ul li#locale_zh_cn a { border-right: none; }
+div.jqueryslidemenu ul li#locale_en_us { float: right; }
+
+* html .jqueryslidemenu ul li a { display: inline-block; }
+
+.jqueryslidemenu ul li a:link, .jqueryslidemenu ul li a:visited { color: white; }
+.jqueryslidemenu ul li a:hover { background: black; color: white; }
+.jqueryslidemenu ul li ul { position: absolute; left: 0; display: block; visibility: hidden; }
+.jqueryslidemenu ul li ul li { display: list-item; float: none; }
+.jqueryslidemenu ul li ul li ul { top: 0; }
+.jqueryslidemenu ul li ul li a { font: normal 13px Verdana; width: 160px; padding: 5px; margin: 0; border-top-width: 0; border-bottom: 1px solid gray; }
+
+.jqueryslidemenuz ul li ul li a:hover { background: #eff9ff; color: black; }
+
+.downarrowclass { position: absolute; top: 12px; right: 7px; }
+
+.rightarrowclass { position: absolute; top: 6px; right: 5px; }
+
+div .pagination { position: relative; float: right; }
+
+div.digg_pagination { background: white; /* self-clearing method: */ }
+div.digg_pagination a, div.digg_pagination span { padding: .2em .5em; display: block; float: left; margin-right: 1px; }
+div.digg_pagination span.disabled { color: #999; border: 1px solid #DDD; }
+div.digg_pagination span.current { font-weight: bold; background: #2E6AB1; color: white; border: 1px solid #2E6AB1; }
+div.digg_pagination a { text-decoration: none; color: #105CB6; border: 1px solid #9AAFE5; }
+div.digg_pagination a:hover, div.digg_pagination a:focus { color: #003; border-color: #003; }
+div.digg_pagination .page_info { background: #2E6AB1; color: white; padding: .4em .6em; width: 22em; margin-bottom: .3em; text-align: center; }
+div.digg_pagination .page_info b { color: #003; background: #6aa6ed; padding: .1em .25em; }
+div.digg_pagination:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+* html div.digg_pagination { height: 1%; }
+*:first-child+html div.digg_pagination { overflow: hidden; }
+
+.apple_pagination { background: #F1F1F1; border: 1px solid #E5E5E5; text-align: center; padding: 1em; }
+.apple_pagination a, .apple_pagination span { padding: .2em .3em; }
+.apple_pagination span.disabled { color: #AAA; }
+.apple_pagination span.current { font-weight: bold; background: transparent url(apple-circle.gif) no-repeat 50% 50%; }
+.apple_pagination a { text-decoration: none; color: black; }
+.apple_pagination a:hover, .apple_pagination a:focus { text-decoration: underline; }
+
+.flickr_pagination { text-align: center; padding: .3em; }
+.flickr_pagination a, .flickr_pagination span { padding: .2em .5em; }
+.flickr_pagination span.disabled { color: #AAA; }
+.flickr_pagination span.current { font-weight: bold; color: #FF0084; }
+.flickr_pagination a { border: 1px solid #DDDDDD; color: #0063DC; text-decoration: none; }
+.flickr_pagination a:hover, .flickr_pagination a:focus { border-color: #003366; background: #0063DC; color: white; }
+.flickr_pagination .page_info { color: #aaa; padding-top: .8em; }
+.flickr_pagination .prev_page, .flickr_pagination .next_page { border-width: 2px; }
+.flickr_pagination .prev_page { margin-right: 1em; }
+.flickr_pagination .next_page { margin-left: 1em; }
+
+#container { background: #FFF; }
+
+.no-margin { margin: 0 !important; }
+
+span.note { font-style: italic; color: #666666; }
+
+.sgf_good { color: #008800; }
+
+.sgf_bad { background: #000; color: red; font-weight: bold; padding: 0 4px; }
+
+.sgf_rest { color: #888888; }
+
+.vdError { color: red; font-size: small; }
+
+table .records tr.record td.winner { background: #bfb; }
+
+table#games_search_form { width: auto; }
+
+table#games_search_form input[type='text'] { width: 150px; }
+
+table#games_search_form label { position: relative; }
+table#games_search_form label em.msg { position: absolute; text-align: right; left: 0px; top: -18px; width: 158px; font-size: .8em; font-style: normal; line-height: 2.5; color: #aaa; }
+
+#cursor { background-color: lightyellow; border: 1px solid black; font-size: 10px; left: -300px; padding: 5px; position: absolute; visibility: hidden; width: 150px; z-index: 100; }
+
+#pointer { left: -300px; position: absolute; visibility: hidden; z-index: 101; }
+
+.form_row { margin-top: 0.5em; }
+
+form.bp fieldset.no-border { border: none; }
+form.bp textarea, form.bp select { margin: 0; }
+form.bp input.text, form.bp input.title, form.bp input[type="text"] { margin: 0; padding: 3px 5px; border: 1px solid #ccc; }
+form.bp input.failedField, form.bp textarea.failedField { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #FFAAAA none repeat scroll 0 0; }
+
+span.required_field { color: #ff0000; }
+
+.form_legend { font-size: small; color: #666666; }
+
+#upload_email { width: 413px; }
+
+#upload_data, #upload_url, #upload_description, #upload_description2, #upload_description3 { width: 590px; }
+
+table#games_search_form { margin-bottom: 0; }
+table#games_search_form th, table#games_search_form td { vertical-align: top; }
+table#games_search_form th *, table#games_search_form td * { margin-top: 0; }
+
+#description { font-size: large; }
+
+#recent_games_label { font-size: extra-large; margin-bottom: 0px; height: 15px; }
+
+body { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #0D2345 url(../../images/bodybg.gif) repeat-x scroll 0 90px; text-align: center; }
+
+body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0; padding: 0; }
+
+body, td, input, textarea, select, button { color: #444444; font-family: Verdana,Helvetica,Arial,sans-serif; font-size: 12px; font-size-adjust: none; font-style: normal; font-variant: normal; font-weight: normal; line-height: 1.6em; }
+
+a { color: #000000; text-decoration: none; }
+a img { border: medium none; }
+
+* { word-wrap: break-word; }
+
+.wrap { margin: 0 auto; text-align: left; }
+
+.pipe { margin: 0 5px; }
+
+.lighttxt, .lighttxt a, .pipe { color: #999999; }
+
+em, cite, strong, th { font-style: normal; text-align: left; }
+
+ul li { list-style-image: none; list-style-position: outside; list-style-type: none; }
+
+a:hover { text-decoration: underline; }
+
+.noborder, .noborder td { border: medium none !important; }
+
+#header { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #FFFFFF none repeat scroll 0 0; border-bottom: 1px solid #00B2E8; margin-bottom: 8px; width: 100%; }
+#header h2 { float: left; margin: 0; }
+#header .wrap { height: 120px; padding: 8px 0 4px; position: relative; }
+
+#umenu, #umenu a, #umenu .pipe { color: #666666; }
+
+#umenu { line-height: 20px; position: absolute; right: 0; top: 0; line-height: 20px; }
+#umenu cite { font-weight: 700; }
+#umenu cite span a { font-weight: 400; margin: 0; }
+#umenu a { margin: 0 6px; }
+
+#menu { bottom: 0; height: 26px; position: absolute; right: 0; }
+#menu li { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: #EBF4FD url(../../images/mtabbg.gif) repeat-x scroll 0 100%; display: inline; float: left; margin-left: 5px; }
+#menu a { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: transparent none repeat scroll 0 0; border-color: #B0E4EF; border-style: solid; border-width: 1px 1px 0; color: #666666; float: left; height: 25px; line-height: 25px; overflow: hidden; padding: 0 14px; text-decoration: none; }
+#menu li.current a { background-color: #1E4B7E; border-color: #00B2E8; color: #C3D3E4; height: 26px; }
+
+#nav, #nav a { color: #C3D3E4; }
+
+#nav { -moz-background-clip: border; -moz-background-inline-policy: continuous; -moz-background-origin: padding; background: transparent url(../../images/icon_nav.gif) no-repeat scroll 0 50%; line-height: 3em; margin: -8px auto 0; text-align: left; text-indent: 25px; }
+
+#footer, #footer a { color: #8691A2; }
+
+#footer { padding: 1em 0; position: relative; }
+
+#footlink { float: right; text-align: right; }
+
+.smalltext { font-family: Verdana,Helvetica,Arial,sans-serif; font-size: 0.83em; }
+
+#rightinfo { float: left; }
+
+#header a, #nav a, #footer a { text-decoration: none; }
+
+#header p, #footer p { margin: 0; }
+
+#container { margin-top: 0; text-align: left; padding: 5px; }
+
+div.jqueryslidemenu { display: inline; background: none; width: 400px; text-indent: 0 !important; font-weight: normal; }
+div.jqueryslidemenu ul { float: right; }
+div.jqueryslidemenu ul li a { background: none; padding: 0px 10px 4px; border: 0; }
+div.jqueryslidemenu ul li.active a { background: none; font-weight: bold; text-decoration: underline !important; }
+
+input[type='file'] { font-size: 11px; }
+
+.form_legend { font-size: 11px; }
+
+#games_widget_container, #players_result_container { display: block; float: none; }
