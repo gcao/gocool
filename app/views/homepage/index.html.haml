@@ -1,6 +1,7 @@
 %h1#welcome= t('homepage.welcome')
-#description= t('homepage.description')
-%hr.space
+%p#description= t('homepage.description')
+
+= render :partial => "paragraph1"
 
 #recent_games_container
   %h2#recent_games_label= t('homepage.recent_games.label')

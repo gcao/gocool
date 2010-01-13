@@ -47,6 +47,10 @@ class Game < ActiveRecord::Base
 
   named_scope :sort_by_players, :order => "black_name, white_name"
 
+  def self.kgs
+    gaming_platform_id_is(GamingPlatform.kgs.id)
+  end
+
   def black_name_with_rank
     s = self.black_name
     s << "(" << self.black_rank << ")" unless self.black_rank.blank?

@@ -36,6 +36,16 @@ class Upload < ActiveRecord::Base
     end
   }
 
+  def self.recent_7_days
+    # Re-use searchlogic named scope
+    # Note: Date.today - 6.days = beginning of recent 7 days
+    created_at_greater_than(Date.today - 6.days)
+  end
+
+  def self.today
+    created_at_greater_than(Date.today)
+  end
+
   def self.create_from_sgf description, data, sgf_game, hash_code = nil
     hash_code ||= Gocool::Md5.string_to_md5 data
     upload = create!(:source_type => Upload::UPLOAD_SGF, :description => description, :data => data, :hash_code => hash_code)
