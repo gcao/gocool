@@ -33,9 +33,7 @@ BEGIN
   IF winner = 1 THEN
     SET black_won  = 1;
     SET white_lost = 1;
-  END IF;
-
-  IF winner = 2 THEN
+  ELSEIF winner = 2 THEN
     SET black_lost = 1;
     SET white_won  = 1;
   END IF;
@@ -68,9 +66,7 @@ BEGIN
   IF winner = 1 THEN
     SET black_won  = 1;
     SET white_lost = 1;
-  END IF;
-
-  IF winner = 2 THEN
+  ELSEIF winner = 2 THEN
     SET black_lost = 1;
     SET white_won  = 1;
   END IF;
