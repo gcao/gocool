@@ -1,7 +1,7 @@
 class CreateOnlineGameStats < ActiveRecord::Migration
-  INCREMENT_SP_NAME = "increment_game_stats"
-  DECREMENT_SP_NAME = "decrement_game_stats"
-  RESET_SP_NAME     = "reset_game_stats"
+  INCREMENT_SP_NAME = "increment_online_game_stats"
+  DECREMENT_SP_NAME = "decrement_online_game_stats"
+  RESET_SP_NAME     = "reset_online_game_stats"
 
   def self.up
     create_table :online_game_stats do |t|
