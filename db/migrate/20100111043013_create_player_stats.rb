@@ -110,11 +110,8 @@ BEGIN
   OPEN game_cursor;
 
   WHILE end_of_cursor = 0 DO
-    IF _winner > 0 THEN
-      CALL #{INCREMENT_SP_NAME}(_black_id, _white_id, _winner);
-    END IF;
-
     FETCH game_cursor INTO _black_id, _white_id, _winner;
+    CALL #{INCREMENT_SP_NAME}(_black_id, _white_id, _winner);
   END WHILE;
 
   CLOSE game_cursor;

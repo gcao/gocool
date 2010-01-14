@@ -106,12 +106,15 @@ class Game < ActiveRecord::Base
     self.black_id = OnlinePlayer.find_or_create(platform, self.black_name, self.black_rank).id
     self.white_id = OnlinePlayer.find_or_create(platform, self.white_name, self.white_rank).id
 
+    OnlineGameStat.find_or_create(black_id, white_id)
     true
   end
 
   def process_non_online_game
     self.black_id = Player.find_or_create(self.black_name, self.black_rank).id
     self.white_id = Player.find_or_create(self.white_name, self.white_rank).id
+
+    GameStat.find_or_create(black_id, white_id)
   end
   
   def self.search platform_name, player1, player2
