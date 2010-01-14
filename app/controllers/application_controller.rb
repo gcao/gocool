@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Discuz::Authentication
   include ExceptionNotifiable if RAILS_ENV=='production'
 
-  helper :all # include all helpers, all the time
+  helper :urls, :games_widget, :uploads_widget
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   if ENV['INTEGRATE_WITH_FORUM'] == 'true'

@@ -122,6 +122,8 @@ zh_cn:
     play_time: "对局时间"
     place: "对局地点"
     create_time: "上传时间"
+    game_not_found: "没找到对局"
+    upload_not_found: "没找到上载记录"
   discuz:
     gocool_app: "棋谱库"
     registration: "注册"
