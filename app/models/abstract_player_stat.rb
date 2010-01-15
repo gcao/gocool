@@ -1,4 +1,4 @@
-module CommonStat
+module AbstractPlayerStat
   def games
     games_as_black + games_as_white
   end

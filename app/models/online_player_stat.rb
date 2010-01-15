@@ -1,3 +1,3 @@
 class OnlinePlayerStat < ActiveRecord::Base
-  include CommonStat
+  include AbstractPlayerStat
 end

@@ -1,10 +1,10 @@
-class CreateOnlineGameStats < ActiveRecord::Migration
-  INCREMENT_SP_NAME = "increment_online_game_stats"
-  DECREMENT_SP_NAME = "decrement_online_game_stats"
-  RESET_SP_NAME     = "reset_online_game_stats"
+class CreateOnlinePairStats < ActiveRecord::Migration
+  INCREMENT_SP_NAME = "increment_online_pair_stats"
+  DECREMENT_SP_NAME = "decrement_online_pair_stats"
+  RESET_SP_NAME     = "reset_online_pair_stats"
 
   def self.up
-    create_table :online_game_stats do |t|
+    create_table :online_pair_stats do |t|
       t.integer :player_id, :null => false
       t.integer :opponent_id, :null => false
       t.integer :games_as_black, :default => 0
@@ -16,9 +16,9 @@ class CreateOnlineGameStats < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :online_game_stats, [:player_id]
-    add_index :online_game_stats, [:opponent_id]
-    add_index :online_game_stats, [:player_id, :opponent_id], :unique => true
+    add_index :online_pair_stats, [:player_id]
+    add_index :online_pair_stats, [:opponent_id]
+    add_index :online_pair_stats, [:player_id, :opponent_id], :unique => true
 
     ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{INCREMENT_SP_NAME}"
     ActiveRecord::Base.connection.execute <<-SQL
@@ -52,7 +52,7 @@ BEGIN
     END IF;
   END IF;
 
-  UPDATE online_game_stats SET
+  UPDATE online_pair_stats SET
     games_as_black        = games_as_black + 1,
     games_won_as_black    = games_won_as_black + black_won,
     games_lost_as_black   = games_lost_as_black + black_lost,
@@ -95,7 +95,7 @@ BEGIN
     END IF;
   END IF;
 
-  UPDATE online_game_stats SET
+  UPDATE online_pair_stats SET
     games_as_black        = games_as_black - 1,
     games_won_as_black    = games_won_as_black - black_won,
     games_lost_as_black   = games_lost_as_black - black_lost,
@@ -117,7 +117,7 @@ BEGIN
   DECLARE CONTINUE HANDLER FOR NOT FOUND
     SET end_of_cursor = 1;
 
-  UPDATE online_game_stats SET games_as_black = 0, games_won_as_black = 0, games_lost_as_black = 0,
+  UPDATE online_pair_stats SET games_as_black = 0, games_won_as_black = 0, games_lost_as_black = 0,
     games_as_white = 0, games_won_as_white = 0, games_lost_as_white = 0;
 
   OPEN game_cursor;

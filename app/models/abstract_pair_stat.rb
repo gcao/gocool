@@ -1,6 +1,6 @@
-module CommonGameStat
+module AbstractPairStat
   def self.included(klass)
-    klass.extend CommonGameStat::ClassMethods
+    klass.extend AbstractPairStat::ClassMethods
   end
   
   module ClassMethods

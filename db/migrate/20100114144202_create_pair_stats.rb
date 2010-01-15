@@ -1,10 +1,10 @@
-class CreateGameStats < ActiveRecord::Migration
-  INCREMENT_SP_NAME = "increment_game_stats"
-  DECREMENT_SP_NAME = "decrement_game_stats"
-  RESET_SP_NAME     = "reset_game_stats"
+class CreatePairStats < ActiveRecord::Migration
+  INCREMENT_SP_NAME = "increment_pair_stats"
+  DECREMENT_SP_NAME = "decrement_pair_stats"
+  RESET_SP_NAME     = "reset_pair_stats"
 
   def self.up
-    create_table :game_stats do |t|
+    create_table :pair_stats do |t|
       t.integer :player_id, :null => false
       t.integer :opponent_id, :null => false
       t.integer :games_as_black, :default => 0
@@ -16,9 +16,9 @@ class CreateGameStats < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :game_stats, [:player_id]
-    add_index :game_stats, [:opponent_id]
-    add_index :game_stats, [:player_id, :opponent_id], :unique => true
+    add_index :pair_stats, [:player_id]
+    add_index :pair_stats, [:opponent_id]
+    add_index :pair_stats, [:player_id, :opponent_id], :unique => true
 
 
     ActiveRecord::Base.connection.execute "DROP PROCEDURE IF EXISTS #{INCREMENT_SP_NAME}"
@@ -53,7 +53,7 @@ BEGIN
     END IF;
   END IF;
 
-  UPDATE game_stats SET
+  UPDATE pair_stats SET
     games_as_black        = games_as_black + 1,
     games_won_as_black    = games_won_as_black + black_won,
     games_lost_as_black   = games_lost_as_black + black_lost,
@@ -96,7 +96,7 @@ BEGIN
     END IF;
   END IF;
 
-  UPDATE game_stats SET
+  UPDATE pair_stats SET
     games_as_black        = games_as_black - 1,
     games_won_as_black    = games_won_as_black - black_won,
     games_lost_as_black   = games_lost_as_black - black_lost,
@@ -118,7 +118,7 @@ BEGIN
   DECLARE CONTINUE HANDLER FOR NOT FOUND
     SET end_of_cursor = 1;
 
-  UPDATE game_stats SET games_as_black = 0, games_won_as_black = 0, games_lost_as_black = 0,
+  UPDATE pair_stats SET games_as_black = 0, games_won_as_black = 0, games_lost_as_black = 0,
     games_as_white = 0, games_won_as_white = 0, games_lost_as_white = 0;
 
   OPEN game_cursor;
