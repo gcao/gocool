@@ -59,7 +59,13 @@ module ApplicationHelper
   private
 
   def url_for_player id, is_online_game
-    online_player_url(id) if id and is_online_game
+    if id
+      if is_online_game
+        online_player_url(id)
+      else
+        player_url(id)
+      end
+    end
   end
 
   def player_html name, url, is_winner
