@@ -2,7 +2,7 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 jQuery(document).ready(function(){
-  if (jQuery.browser.mozilla) jQuery('#firefox_container').hide();
+  if (!jQuery.browser.mozilla) jQuery('#firefox_container').show();
 });
 
 function changeLocale(locale){
