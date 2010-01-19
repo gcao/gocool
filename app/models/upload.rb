@@ -36,6 +36,13 @@ class Upload < ActiveRecord::Base
     end
   }
 
+  def self.create! attributes
+    if user = Thread.current[:user]
+      attributes.merge! :uploader => user.username, :uploader_id => user.id
+    end
+    super attributes
+  end
+
   def self.recent_7_days
     # Re-use searchlogic named scope
     # Note: Date.today - 6.days = beginning of recent 7 days

@@ -1,4 +1,5 @@
 /*********************
+//* http://www.dynamicdrive.com/style/csslibrary/item/jquery_multi_level_css_menu_horizontal_blue/
 //* jQuery Multi Level CSS Menu #2- By Dynamic Drive: http://www.dynamicdrive.com/
 //* Last update: Nov 7th, 08': Limit # of queued animations to minmize animation stuttering
 //* Menu avaiable at DD CSS Library: http://www.dynamicdrive.com/style/

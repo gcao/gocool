@@ -10,10 +10,13 @@
       %a{:href=>players_url}= t('menu.players')
     %li.games
       %a{:href=>games_url}= t('menu.games')
-    -# %li.my_uploads
-    -#   %a{:href=>my_uploads_url}= t('menu.my_uploads')
-    -# %li.my_games
-    -#   %a{:href=>my_games_url}= t('menu.my_games')
+    - if logged_in?
+      %li
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      %li.my_uploads
+        %a{:href=>my_uploads_url}= t('menu.my_uploads')
+      -# %li.my_favorites
+      -#   %a{:href=>'#'}= t('menu.my_favorites')
     -# %li
     -#   %a(href="#")= t('menu.tournaments')
     -#   %ul

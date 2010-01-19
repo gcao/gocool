@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   def authenticate_via_bbs
     login_check
     if forum_session = request.env['forum_session']
-      @user = User.find_or_create(:user_type => User::DISCUZ_USER, :external_id => forum_session.uid, :username => forum_session.username)
+      Thread.current[:user] = @user = User.find_or_create(:user_type => User::DISCUZ_USER, :external_id => forum_session.uid, :username => forum_session.username)
     end
   end
 end
