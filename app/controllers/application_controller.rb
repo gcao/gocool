@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   if ENV['INTEGRATE_WITH_FORUM'] == 'true'
     layout 'application_integrated'
-    before_filter :login_check
+    before_filter :authenticate_via_bbs
   end
   
   before_filter :set_title_and_header
@@ -38,5 +38,12 @@ class ApplicationController < ActionController::Base
   def page_params
     page_size = (params[:page_size] || ENV['ROWS_PER_PAGE']).to_i
     { :per_page => page_size, :page => params[:page] }
+  end
+
+  def authenticate_via_bbs
+    login_check
+    if forum_session = request.env['forum_session']
+      @user = User.find_or_create(:user_type => User::DISCUZ_USER, :external_id => forum_session.uid, :username => forum_session.username)
+    end
   end
 end

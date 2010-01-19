@@ -1,5 +1,6 @@
-# TOREMOVE?
 class User < ActiveRecord::Base
+  DISCUZ_USER = 1
+
   # new columns need to be added here to be writable through mass assignment
   attr_accessible :username, :email, :password, :password_confirmation
   
@@ -19,11 +20,15 @@ class User < ActiveRecord::Base
     user = find_by_username(login) || find_by_email(login)
     return user if user && user.matching_password?(pass)
   end
+
+  def self.find_or_create attributes
+    find_by_username(attributes[:username]) || create!(attributes)
+  end
   
   def matching_password?(pass)
     self.password_hash == encrypt_password(pass)
   end
-  
+
   private
   
   def prepare_password
