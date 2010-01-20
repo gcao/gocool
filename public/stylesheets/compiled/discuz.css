@@ -1163,18 +1163,18 @@ table .records tr.record td.winner {
   background: #bfb; }
 
 /* line 30, ../../../app/stylesheets/partials/_app.sass */
-table#games_search_form {
+table#games_search_form, table#pairs_search_form {
   width: auto; }
 
 /* line 33, ../../../app/stylesheets/partials/_app.sass */
-table#games_search_form input[type='text'] {
+table#games_search_form input[type='text'], table#pairs_search_form input[type='text'] {
   width: 150px; }
 
 /* line 36, ../../../app/stylesheets/partials/_app.sass */
-table#games_search_form label {
+table#games_search_form label, table#pairs_search_form label {
   position: relative; }
   /* line 39, ../../../app/stylesheets/partials/_app.sass */
-  table#games_search_form label em.msg {
+  table#games_search_form label em.msg, table#pairs_search_form label em.msg {
     position: absolute;
     text-align: right;
     left: 0px;
@@ -1244,13 +1244,13 @@ span.required_field {
   width: 590px; }
 
 /* line 35, ../../../app/stylesheets/partials/_form.sass */
-table#games_search_form {
+table#games_search_form, table#pairs_search_form {
   margin-bottom: 0; }
   /* line 38, ../../../app/stylesheets/partials/_form.sass */
-  table#games_search_form th, table#games_search_form td {
+  table#games_search_form th, table#games_search_form td, table#pairs_search_form th, table#pairs_search_form td {
     vertical-align: top; }
     /* line 40, ../../../app/stylesheets/partials/_form.sass */
-    table#games_search_form th *, table#games_search_form td * {
+    table#games_search_form th *, table#games_search_form td *, table#pairs_search_form th *, table#pairs_search_form td * {
       margin-top: 0; }
 
 /* line 4, ../../../app/stylesheets/partials/_homepage.sass */

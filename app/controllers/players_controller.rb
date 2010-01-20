@@ -18,12 +18,17 @@ class PlayersController < ApplicationController
     @name = params[:name]
     if @platform.blank?
       @players = Player.name_like(@name).with_stat.paginate(page_params)
-      render :partial => "players", :layout => false
-    elsif @platform.strip == 'all'
-      # TODO
+
+      respond_to do |format|
+        format.html { render :partial => "players", :layout => false }
+        format.json
+      end
     else
       @players = OnlinePlayer.search(@platform, @name).paginate(page_params)
-      render :partial => "online_players", :layout => false
+      respond_to do |format|
+        format.html { render :partial => "online_players", :layout => false }
+        format.json
+      end
     end
   end
 end

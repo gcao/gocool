@@ -1,0 +1,3 @@
+{
+  "PLAYERS": <%= @players.map{|player| {:id => player.id, :name => player.is_a?(Player) ? player.full_name : player.username}}.to_json %>
+}

@@ -1,5 +1,5 @@
 - content_for :head do
-  = stylesheet_include_tag "jquery.autocomplete"
+  = stylesheet_link_tag "jquery.autocomplete"
 
 %h1= @page_header || t('pairs.page_header')
 
@@ -17,7 +17,7 @@
           %label#player1_label(for="player1")
             %em.msg
               = t('games.player1_label')
-          =text_field_tag 'player1', @player1
+          =text_field_tag 'player1', @player1, :class => 'ac_input'
         %td
           %label#vs_label(for="player2")
             = t('games.vs_label')
@@ -25,7 +25,7 @@
           %label#player2_label(for="player2")
             %em.msg
               = t('games.player2_label')
-          =text_field_tag 'player2', @player2
+          =text_field_tag 'player2', @player2, :class => 'ac_input'
         %td
           %input{:type => "hidden", :name => "op", :value => "search"}
           =submit_tag t('form.search_button')
@@ -37,11 +37,23 @@
 - content_for :footer do
   = javascript_include_tag "validanguage_uncompressed", "jquery.autocomplete"
   :javascript
+    jQuery("#player1").autocomplete("#{search_players_path}.json", {
+      makeUrl: function(q) {
+        return "#{search_players_path}.json?name=" + q + "&platform=" + jQuery("#platform").val();
+      },
+      delay:10,
+      minChars:1,
+      matchSubset:1,
+      matchContains:1,
+      cacheLength:1,
+      autoFill:true
+    });
+
     validanguage.el.player1 = {
       validations: [
         {
           name: validanguage.validateRequired,
-          errorMsg: "#{t('games.player1_required')}",
+          errorMsg: "#{t('pairs.player1_required')}",
         }
       ]
     };
@@ -49,7 +61,7 @@
       validations: [
         {
           name: validanguage.validateRequired,
-          errorMsg: "#{t('games.player2_required')}",
+          errorMsg: "#{t('pairs.player2_required')}",
         }
       ]
     };
