@@ -3,11 +3,11 @@
 
 = render :partial => "paragraph1"
 
-- if @my_uploads.size > 0
+- if logged_in? and @my_uploads.size > 0
   #my_uploads_container
     %h2#my_uploads_label= t('homepage.my_uploads.label')
 
-    = render_uploads_widget @my_uploads
+    = render_uploads_widget @uploads
 
 #recent_uploads_container
   %h2#recent_uploads_label= t('homepage.recent_uploads.label')

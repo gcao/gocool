@@ -1,6 +1,6 @@
 class HomepageController < ApplicationController
   def index
-    @my_uploads = Upload.find_all_by_uploader_id(@user.id).paginate(page_params)
+    @my_uploads = Upload.recent.find_all_by_uploader_id(@user.id).paginate(page_params)
 
     @uploads = Upload.recent.paginate(page_params)
 

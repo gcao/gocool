@@ -1,7 +1,7 @@
 %tr{:class => "record " + (opponent_counter%2 == 0 ? "even-record":"")}
-  %td= opponent.opponent.full_name
+  %td= player_name(opponent.opponent)
   %td= opponent.games
   %td= opponent.games_won
   %td= opponent.games_lost
   %td.actions
-    %a{:href => url_for_opponent(opponent.opponent)}= t('form.detail_button')
+    %a{:href => url_for_player(opponent.opponent)}= t('form.detail_button')

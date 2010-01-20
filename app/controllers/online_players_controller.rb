@@ -6,6 +6,8 @@ class OnlinePlayersController < ApplicationController
     @games_total = @online_player.stat.games
     @games_won = @online_player.stat.games_won
     @games_lost = @online_player.stat.games_lost
+
+    @opponents = @online_player.opponents
   end
   
   def search

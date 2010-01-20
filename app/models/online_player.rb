@@ -3,6 +3,8 @@ class OnlinePlayer < ActiveRecord::Base
   belongs_to :gaming_platform
   
   has_one :stat, :class_name => 'OnlinePlayerStat'
+
+  has_many :opponents, :class_name => "OnlinePairStat", :foreign_key => 'player_id'
     
   default_scope :order => 'username'
 
