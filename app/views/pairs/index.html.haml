@@ -1,0 +1,55 @@
+- content_for :head do
+  = stylesheet_include_tag "jquery.autocomplete"
+
+%h1= @page_header || t('pairs.page_header')
+
+-form_tag pairs_path, :method => :get, :class => 'bp' do
+  .span-24
+    = show_flash 'span-24'
+    %table#pairs_search_form
+      %tr
+        %td
+          %span
+            %label(for="platform")
+              = t('games.platform_label')
+            =gaming_platforms_select 'platform', @platform
+        %td
+          %label#player1_label(for="player1")
+            %em.msg
+              = t('games.player1_label')
+          =text_field_tag 'player1', @player1
+        %td
+          %label#vs_label(for="player2")
+            = t('games.vs_label')
+        %td
+          %label#player2_label(for="player2")
+            %em.msg
+              = t('games.player2_label')
+          =text_field_tag 'player2', @player2
+        %td
+          %input{:type => "hidden", :name => "op", :value => "search"}
+          =submit_tag t('form.search_button')
+          %input{:type => "reset", :value => t('form.reset_button')}
+
+%hr.space
+#pairs_widget_container
+
+- content_for :footer do
+  = javascript_include_tag "validanguage_uncompressed", "jquery.autocomplete"
+  :javascript
+    validanguage.el.player1 = {
+      validations: [
+        {
+          name: validanguage.validateRequired,
+          errorMsg: "#{t('games.player1_required')}",
+        }
+      ]
+    };
+    validanguage.el.player2 = {
+      validations: [
+        {
+          name: validanguage.validateRequired,
+          errorMsg: "#{t('games.player2_required')}",
+        }
+      ]
+    };

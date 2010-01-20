@@ -103,6 +103,9 @@ zh_cn:
     lost: "败"
     my_lost: "我的败局"
     player_not_found: "没找到棋手"
+  pairs:
+    page_title: "棋手＋对手"
+    page_header: "棋手＋对手"
   games:
     page_title: "对局"
     page_header: "对局"
