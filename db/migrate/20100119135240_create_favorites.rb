@@ -1,9 +1,11 @@
 class CreateFavorites < ActiveRecord::Migration
   def self.up
     create_table :favorites do |t|
+      t.string :description
       t.integer :user_id, :null => false
       t.integer :favorite_type, :null => false
       t.integer :external_id
+      t.integer :external_id2
       t.text :options
       t.timestamps
     end

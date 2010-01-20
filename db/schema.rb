@@ -9,7 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100114153258) do
+ActiveRecord::Schema.define(:version => 20100119140904) do
+
+  create_table "favorites", :force => true do |t|
+    t.string   "description"
+    t.integer  "user_id",       :null => false
+    t.integer  "favorite_type", :null => false
+    t.integer  "external_id"
+    t.integer  "external_id2"
+    t.text     "options"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["user_id", "favorite_type"], :name => "index_favorites_on_user_id_and_favorite_type"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "games", :force => true do |t|
     t.integer  "game_type"
@@ -260,5 +274,8 @@ ActiveRecord::Schema.define(:version => 20100114153258) do
     t.integer  "external_id"
     t.integer  "role",          :default => 0
   end
+
+  add_index "users", ["user_type", "external_id"], :name => "index_users_on_user_type_and_external_id"
+  add_index "users", ["username"], :name => "index_users_on_username"
 
 end

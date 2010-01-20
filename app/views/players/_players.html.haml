@@ -3,10 +3,10 @@
   %table
     %thead
       %tr.header
-        %th#username_column= t('players.online_players.name')
-        %th#games_column= t('players.online_players.games')
-        %th#won_column= t('players.online_players.won')
-        %th#lost_column= t('players.online_players.lost')
+        %th#username_column= t('players_table.name')
+        %th#games_column= t('players_table.games')
+        %th#won_column= t('players_table.won')
+        %th#lost_column= t('players_table.lost')
         %th#actions_column &nbsp;
     %tbody.records
       = render :partial => 'player', :collection => @players, :as => :player

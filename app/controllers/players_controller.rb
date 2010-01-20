@@ -10,8 +10,7 @@ class PlayersController < ApplicationController
     @games_won = @player.stat.games_won
     @games_lost = @player.stat.games_lost
 
-    # @opponents_total = @player.opponent_stat.count
-    # @top_opponents_html = ""
+    @opponents = @player.opponents
   end
 
   def search

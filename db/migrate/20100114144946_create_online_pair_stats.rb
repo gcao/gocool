@@ -24,42 +24,28 @@ class CreateOnlinePairStats < ActiveRecord::Migration
     ActiveRecord::Base.connection.execute <<-SQL
 CREATE PROCEDURE #{INCREMENT_SP_NAME} (IN black_id INT, IN white_id INT, IN winner INT)
 BEGIN
-  DECLARE player_id, opponent_id INT;
   DECLARE black_won, black_lost INT DEFAULT 0;
   DECLARE white_won, white_lost INT DEFAULT 0;
 
-  IF black_id < white_id THEN
-    SET player_id = black_id;
-    SET opponent_id = white_id;
-
-    IF winner = 1 THEN
-      SET black_won  = 1;
-      SET white_lost = 1;
-    ELSEIF winner = 2 THEN
-      SET black_lost = 1;
-      SET white_won  = 1;
-    END IF;
-  ELSE
-    SET player_id = white_id;
-    SET opponent_id = black_id;
-
-    IF winner = 1 THEN
-      SET black_lost = 1;
-      SET white_won  = 1;
-    ELSEIF winner = 2 THEN
-      SET black_won  = 1;
-      SET white_lost = 1;
-    END IF;
+  IF winner = 1 THEN
+    SET black_won  = 1;
+    SET white_lost = 1;
+  ELSEIF winner = 2 THEN
+    SET black_lost = 1;
+    SET white_won  = 1;
   END IF;
 
   UPDATE online_pair_stats SET
     games_as_black        = games_as_black + 1,
     games_won_as_black    = games_won_as_black + black_won,
-    games_lost_as_black   = games_lost_as_black + black_lost,
+    games_lost_as_black   = games_lost_as_black + black_lost
+  WHERE player_id = black_id and opponent_id = white_id;
+
+  UPDATE online_pair_stats SET
     games_as_white        = games_as_white + 1,
     games_won_as_white    = games_won_as_white + white_won,
     games_lost_as_white   = games_lost_as_white + white_lost
-  WHERE player_id = player_id and opponent_id = opponent_id;
+  WHERE player_id = white_id and opponent_id = black_id;
 END
     SQL
 
@@ -67,42 +53,28 @@ END
     ActiveRecord::Base.connection.execute <<-SQL
 CREATE PROCEDURE #{DECREMENT_SP_NAME} (IN black_id INT, IN white_id INT, IN winner INT)
 BEGIN
-  DECLARE player_id, opponent_id INT;
   DECLARE black_won, black_lost INT DEFAULT 0;
   DECLARE white_won, white_lost INT DEFAULT 0;
 
-  IF black_id < white_id THEN
-    SET player_id = black_id;
-    SET opponent_id = white_id;
-
-    IF winner = 1 THEN
-      SET black_won  = 1;
-      SET white_lost = 1;
-    ELSEIF winner = 2 THEN
-      SET black_lost = 1;
-      SET white_won  = 1;
-    END IF;
-  ELSE
-    SET player_id = white_id;
-    SET opponent_id = black_id;
-
-    IF winner = 1 THEN
-      SET black_lost = 1;
-      SET white_won  = 1;
-    ELSEIF winner = 2 THEN
-      SET black_won  = 1;
-      SET white_lost = 1;
-    END IF;
+  IF winner = 1 THEN
+    SET black_won  = 1;
+    SET white_lost = 1;
+  ELSEIF winner = 2 THEN
+    SET black_lost = 1;
+    SET white_won  = 1;
   END IF;
 
   UPDATE online_pair_stats SET
     games_as_black        = games_as_black - 1,
     games_won_as_black    = games_won_as_black - black_won,
-    games_lost_as_black   = games_lost_as_black - black_lost,
+    games_lost_as_black   = games_lost_as_black - black_lost
+  WHERE player_id = black_id and opponent_id = white_id;
+
+  UPDATE online_pair_stats SET
     games_as_white        = games_as_white - 1,
     games_won_as_white    = games_won_as_white - white_won,
     games_lost_as_white   = games_lost_as_white - white_lost
-  WHERE player_id = player_id and opponent_id = opponent_id;
+  WHERE player_id = white_id and opponent_id = black_id;
 END
     SQL
 

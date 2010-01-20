@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
   has_one :stat, :class_name => 'PlayerStat'
 
-  # has_many :opponent_stat, :class_name => "PairStat"
+  has_many :opponents, :class_name => "PairStat"
 
   named_scope :name_like, lambda {|name| {:conditions => ["full_name like ?", name.gsub('*', '%')]} }
 

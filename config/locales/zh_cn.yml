@@ -36,12 +36,12 @@ zh_cn:
     invalid: "Email不正确."
   homepage:
     page_title: "首页"
-    welcome: "欢迎访问棋人棋谱库。"
-    description: "本棋谱库支持上传、打谱以及与棋友分享对局。"
+    welcome: "欢迎访问棋人棋谱库"
+    description: "本棋谱库支持上传对局、打谱以及分享下棋心得。"
     my_uploads:
       label: "我上传的对局"
     recent_uploads:
-      label: "上传的对局"
+      label: "全部对局"
   uploads:
     page_title: "上传对局"
     page_header: "上传对局"
@@ -89,15 +89,16 @@ zh_cn:
     page_header: "棋手"
     platform_label: "对局平台："
     name_label: "棋手："
-    online_players:
-      platform: "对局平台"
-      name: "棋手"
-      games: "对局数"
-      won: "胜局数"
-      lost: "败局数"
     online_games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME 的对局"
-    games_played_by: "PLAYER_NAME 的对局"
+    games_played_by: "棋手：PLAYER_NAME"
     opponents_header: "对手"
+  players_table:
+    platform: "对局平台"
+    opponent: "对手"
+    name: "棋手"
+    games: "对局数"
+    won: "胜局数"
+    lost: "败局数"
   games:
     page_title: "对局"
     page_header: "对局"
