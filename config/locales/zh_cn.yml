@@ -8,6 +8,7 @@ zh_cn:
     uploads: "上传对局"
     upload_search: "上传对局搜索"
     players: "棋手"
+    pairs: "棋手+对手"
     games: "对局"
     tournaments: "赛事"
     my_uploads: "我的上传"
