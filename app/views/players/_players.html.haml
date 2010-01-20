@@ -1,12 +1,16 @@
-#players_result
-  #players_result_pagination.digg_pagination= will_paginate @players, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
-  %table
-    %thead
-      %tr.header
-        %th#username_column= t('players_table.name')
-        %th#games_column= t('players_table.games')
-        %th#won_column= t('players_table.won')
-        %th#lost_column= t('players_table.lost')
-        %th#actions_column &nbsp;
-    %tbody.records
-      = render :partial => 'player', :collection => @players, :as => :player
+- if @players.size > 0
+  #players_result
+    #players_result_pagination.digg_pagination= will_paginate @players, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+    %table
+      %thead
+        %tr.header
+          %th#username_column= t('players_table.name')
+          %th#games_column= t('players_table.games')
+          %th#won_column= t('players_table.won')
+          %th#lost_column= t('players_table.lost')
+          %th#actions_column &nbsp;
+      %tbody.records
+        = render :partial => 'player', :collection => @players, :as => :player
+
+- else
+  = t('players_table.player_not_found')

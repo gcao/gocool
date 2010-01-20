@@ -101,6 +101,7 @@ zh_cn:
     my_won: "我的胜局"
     lost: "败"
     my_lost: "我的败局"
+    player_not_found: "没找到棋手"
   games:
     page_title: "对局"
     page_header: "对局"
