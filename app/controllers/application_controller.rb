@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   
   before_filter :set_title_and_header
   before_filter :set_locale
+
+  protected
   
   def set_title_and_header
     @page_title = t('shared.page_title') + " - " + t("#{params[:controller]}.page_title")

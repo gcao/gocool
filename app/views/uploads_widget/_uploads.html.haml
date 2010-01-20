@@ -1,6 +1,6 @@
 - if @uploads_for_widget.size > 0
-  #uploads.active-scaffold.blue-theme
-    #uploads_pagination.digg_pagination= will_paginate @uploads_for_widget, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
+  .uploads.active-scaffold.blue-theme
+    .uploads_pagination.digg_pagination= will_paginate @uploads_for_widget, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
 
     %table#uploads_table
       %thead

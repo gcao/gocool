@@ -10,7 +10,7 @@ zh_cn:
     players: "棋手"
     games: "对局"
     tournaments: "赛事"
-    my_uploads: "我的上载"
+    my_uploads: "我的上传"
     my_favorites: "我的收藏"
   link:
     home: "棋谱库首页"
@@ -38,17 +38,10 @@ zh_cn:
     page_title: "首页"
     welcome: "欢迎访问棋人棋谱库。"
     description: "本棋谱库支持上传、打谱以及与棋友分享对局。"
-    recent_games:
-      label: "最近上传的对局"
-      game_name: "对局名称"
-      black_player: "黑方"
-      white_player: "白方"
-      handicap: "让子"
-      moves: "步数"
-      result: "结果"
-      play_time: "对局时间"
-      place: "对局地点"
-      create_time: "上传时间"
+    my_uploads:
+      label: "我上传的对局"
+    recent_uploads:
+      label: "上传的对局"
   uploads:
     page_title: "上传对局"
     page_header: "上传对局"
@@ -115,8 +108,8 @@ zh_cn:
     player1_required: "必填"
     player1_is_required: "请输入棋手用户名。"
   my_uploads:
-    page_title: "我的上载"
-    page_header: "我的上载"
+    page_title: "我的上传"
+    page_header: "我的上传"
   games_widget:
     game_name: "对局名称"
     upload_description: "上传说明"

@@ -1,5 +1,7 @@
 class HomepageController < ApplicationController
   def index
+    @my_uploads = Upload.find_all_by_uploader_id(@user.id).paginate(page_params)
+
     @uploads = Upload.recent.paginate(page_params)
 
     @games_total = Game.count

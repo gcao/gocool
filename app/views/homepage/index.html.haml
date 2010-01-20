@@ -3,7 +3,13 @@
 
 = render :partial => "paragraph1"
 
-#recent_games_container
-  %h2#recent_games_label= t('homepage.recent_games.label')
+- if @my_uploads.size > 0
+  #my_uploads_container
+    %h2#my_uploads_label= t('homepage.my_uploads.label')
+
+    = render_uploads_widget @my_uploads
+
+#recent_uploads_container
+  %h2#recent_uploads_label= t('homepage.recent_uploads.label')
 
   = render_uploads_widget @uploads
