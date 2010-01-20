@@ -21,14 +21,31 @@ class PlayersController < ApplicationController
 
       respond_to do |format|
         format.html { render :partial => "players", :layout => false }
-        format.json
+        format.csv
       end
     else
       @players = OnlinePlayer.search(@platform, @name).paginate(page_params)
       respond_to do |format|
         format.html { render :partial => "online_players", :layout => false }
-        format.json
+        format.csv
       end
     end
+  end
+
+  def suggest
+    @name = params[:name]
+    render :text => "" and return if @name.blank?
+
+    @platform = params[:platform]
+
+    if @platform.blank?
+      @players = Player.name_like(@name).first(10)
+    else
+      @players = OnlinePlayer.search(@platform, @name).first(10)
+    end
+
+    render :text => @players.map{|player|
+      "#{player.id}|#{player.is_a?(Player) ? player.full_name : player.username}"
+    }.join("\n")
   end
 end

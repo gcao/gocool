@@ -49,7 +49,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :uploads
   map.resources :pasties
-  map.resources :players, :collection => {:search => :get}
+  map.resources :players, :collection => {:search => :get, :suggest => :get}
   map.resources :pairs
   map.resources :online_players, :collection => {:search => :get}
 

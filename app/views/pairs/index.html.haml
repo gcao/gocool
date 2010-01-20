@@ -37,16 +37,32 @@
 - content_for :footer do
   = javascript_include_tag "validanguage_uncompressed", "jquery.autocomplete"
   :javascript
-    jQuery("#player1").autocomplete("#{search_players_path}.json", {
+    function findValue(li) {
+      console.log(li);
+      return li[0];
+    }
+
+    function selectItem(li) {
+      findValue(li);
+    }
+
+    function formatItem(row) {
+      return row[1];
+    }
+
+    jQuery("#player1").autocomplete("#", {
       makeUrl: function(q) {
-        return "#{search_players_path}.json?name=" + q + "&platform=" + jQuery("#platform").val();
+        return "#{suggest_players_path}?name=" + q + "&platform=" + jQuery("#platform").val();
       },
       delay:10,
       minChars:1,
       matchSubset:1,
       matchContains:1,
       cacheLength:1,
-      autoFill:true
+      autoFill:true,
+      onItemSelect:selectItem,
+      onFindValue:findValue,
+      formatItem:formatItem
     });
 
     validanguage.el.player1 = {
