@@ -1253,6 +1253,17 @@ table#games_search_form, table#pairs_search_form {
     table#games_search_form th *, table#games_search_form td *, table#pairs_search_form th *, table#pairs_search_form td * {
       margin-top: 0; }
 
+/* line 43, ../../../app/stylesheets/partials/_form.sass */
+.ac_results {
+  padding: 3px 5px !important; }
+  /* line 46, ../../../app/stylesheets/partials/_form.sass */
+  .ac_results ul {
+    margin: 0px !important; }
+    /* line 49, ../../../app/stylesheets/partials/_form.sass */
+    .ac_results ul li {
+      padding: 0px;
+      text-align: left; }
+
 /* line 4, ../../../app/stylesheets/partials/_homepage.sass */
 #recent_games_label {
   font-size: extra-large;

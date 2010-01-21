@@ -18,17 +18,16 @@ class PlayersController < ApplicationController
     @name = params[:name]
     if @platform.blank?
       @players = Player.name_like(@name).with_stat.paginate(page_params)
-
-      respond_to do |format|
-        format.html { render :partial => "players", :layout => false }
-        format.csv
-      end
+#      if @players.size == 1
+#      else
+        render :partial => "players", :layout => false
+#      end
     else
       @players = OnlinePlayer.search(@platform, @name).paginate(page_params)
-      respond_to do |format|
-        format.html { render :partial => "online_players", :layout => false }
-        format.csv
-      end
+#      if @players.size == 1
+#      else
+        render :partial => "online_players", :layout => false
+#      end
     end
   end
 
@@ -36,6 +35,7 @@ class PlayersController < ApplicationController
     @name = params[:name]
     render :text => "" and return if @name.blank?
 
+    @name = "#{@name}*"
     @platform = params[:platform]
 
     if @platform.blank?
@@ -45,7 +45,7 @@ class PlayersController < ApplicationController
     end
 
     render :text => @players.map{|player|
-      "#{player.id}|#{player.is_a?(Player) ? player.full_name : player.username}"
+      "#{player.is_a?(Player) ? player.full_name : player.username}|#{player.id}"
     }.join("\n")
   end
 end
