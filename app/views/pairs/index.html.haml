@@ -57,6 +57,27 @@
       }
     });
 
+    jQuery("#player2").autocomplete("#", {
+      makeUrl: function(q) {
+        var player1_id = jQuery('#player1_id').val();
+        if (player1_id && player1_id.length == 0) return;
+
+        return "#{suggest2_players_path}?platform=" + jQuery("#platform").val() + "&player_id=" + player1_id + "&name=" + q;
+      },
+      delay:10,
+      minChars:0,
+      matchSubset:1,
+      matchContains:1,
+      mustMatch:1,
+      cacheLength:1,
+      autoFill:true,
+      selectFirst:true,
+      selectOny:true,
+      onItemSelect: function(li) {
+        jQuery('#player2_id').val(li.extra);
+      }
+    });
+
     validanguage.el.player1 = {
       validations: [
         {

@@ -3,7 +3,7 @@ class Player < ActiveRecord::Base
 
   has_many :opponents, :class_name => "PairStat"
 
-  named_scope :name_like, lambda {|name| {:conditions => ["lower(full_name) like ?", name.gsub('*', '%').downcase]} }
+  named_scope :name_like, lambda {|name| {:conditions => ["full_name like ?", name.gsub('*', '%')]} }
 
   named_scope :with_stat, :include => :stat
 

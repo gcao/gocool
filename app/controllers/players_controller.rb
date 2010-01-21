@@ -44,8 +44,42 @@ class PlayersController < ApplicationController
       @players = OnlinePlayer.search(@platform, @name).first(10)
     end
 
-    render :text => @players.map{|player|
+    render :text => players_to_csv(@players)
+  end
+
+  def suggest2
+    @player_id = params[:player_id]
+    render :text => "" and return if @player_id.blank?
+
+    @platform = params[:platform]
+    @name = params[:name]
+    @name = @name + "%" unless @name.blank?
+
+    if @platform.blank?
+      @pairs = PairStat.player_id_is(@player_id)
+      @pairs = @pairs.opponent_name_like @name unless @name.blank?
+      @pairs = @pairs.first(10)
+    else
+      @pairs = OnlinePairStat.player_id_is(@player_id)
+      @pairs = @pairs.opponent_name_like @name unless @name.blank?
+      @pairs = @pairs.first(10)
+    end
+
+    render :text => pairs_to_csv(@pairs)
+  end
+
+  private
+
+  def players_to_csv players
+    players.map{|player|
       "#{player.is_a?(Player) ? player.full_name : player.username}|#{player.id}"
     }.join("\n")
+  end
+
+  def pairs_to_csv pairs
+    pairs.map{|pair|
+      opponent = pair.opponent
+      "#{opponent.is_a?(Player) ? opponent.full_name : opponent.username}|#{opponent.id}"
+    }
   end
 end
