@@ -12,7 +12,11 @@ class OnlinePlayer < ActiveRecord::Base
   named_scope :on_platform, lambda {|platform| {:conditions => ["gaming_platform_id = ?", platform.id]} }
   named_scope :username_like, lambda {|username| {:conditions => ["username like ?", username.gsub('*', '%')]} }
   named_scope :include, lambda {|associations| {:include => associations} }
-  
+
+  def name
+    self.username
+  end
+
   def long_name
     s = self.username
     s << "(" << self.rank << ")" unless self.rank.blank?

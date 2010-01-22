@@ -45,6 +45,13 @@ class Game < ActiveRecord::Base
     end
   }
 
+  named_scope :played_between, lambda{|player1_id, player2_id|
+    raise ArgumentError.new "Player 1 is not set" if player1_id.blank?
+    raise ArgumentError.new "Player 2 is not set" if player2_id.blank?
+
+    { :conditions => ["(black_id = ? and white_id = ?) or (black_id = ? and white_id = ?)", player1_id, player2_id, player2_id, player1_id]}
+  }
+
   named_scope :sort_by_players, :order => "black_name, white_name"
 
   def self.kgs

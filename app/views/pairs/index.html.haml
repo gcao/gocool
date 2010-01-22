@@ -18,7 +18,7 @@
             %em.msg
               = t('games.player1_label')
           =text_field_tag 'player1', @player1, :class => 'ac_input'
-          =hidden_field_tag 'player1_id'
+          =hidden_field_tag 'player1_id', @player1_id
         %td
           %label#vs_label(for="player2")
             = t('games.vs_label')
@@ -27,7 +27,7 @@
             %em.msg
               = t('games.player2_label')
           =text_field_tag 'player2', @player2, :class => 'ac_input'
-          =hidden_field_tag 'player2_id'
+          =hidden_field_tag 'player2_id', @player2_id
         %td
           %input{:type => "hidden", :name => "op", :value => "search"}
           =submit_tag t('form.search_button')
@@ -35,6 +35,8 @@
 
 %hr.space
 #pairs_widget_container
+  - if @pair
+    = render :partial => "pair"
 
 - content_for :footer do
   = javascript_include_tag "validanguage_uncompressed", "jquery.autocomplete"

@@ -1,0 +1,8 @@
+%h2
+  = "<#{@pair.player.gaming_platform.name}>" if @online
+  = player_opponent_html(@pair.player, @pair.opponent)
+
+%p= "共有 #{@pair.games} 盘对局，其中#{@pair.player.name}胜 #{@pair.games_won} 局，#{@pair.opponent.name}胜 #{@pair.games_lost} 局。"
+
+#games_container
+  = render_games_widget @games

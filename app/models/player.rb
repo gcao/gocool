@@ -21,4 +21,8 @@ class Player < ActiveRecord::Base
     result = result.name_like(name) unless name.blank?
     result = result.include(:stat)
   end
+
+  def name
+    full_name
+  end
 end

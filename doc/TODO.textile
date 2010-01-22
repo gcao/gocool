@@ -49,3 +49,6 @@ h3. Misc
 * Do not use AJAX on search form submission and pagination because browser history does not work well with ajax
 * Remember parameters on pagination, e.g. on players page, remember gaming platform, username when navigate to next page
 * Flash message cleanup
+
+* When there is only one result returned, render it below the search form to make it easier to start another search
+** E.g. when search players and there is only one players, show its detail below the search form
