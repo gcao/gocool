@@ -1204,6 +1204,10 @@ table#games_search_form label, table#pairs_search_form label {
   visibility: hidden;
   z-index: 101; }
 
+/* line 68, ../../../app/stylesheets/partials/_app.sass */
+#pairs_widget_container .platform_name {
+  font-style: italic; }
+
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }

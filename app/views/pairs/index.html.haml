@@ -41,6 +41,12 @@
 - content_for :footer do
   = javascript_include_tag "validanguage_uncompressed", "jquery.autocomplete"
   :javascript
+    jQuery("#platform").change(function(){
+      jQuery("#player1, #player2, #player1_id, #player2_id").val("");
+    });
+    //jQuery("#pairs_search_form input[type=reset]").click(function(){
+    //
+    //});
     jQuery("#player1").autocomplete("#", {
       makeUrl: function(q) {
         return "#{suggest_players_path}?name=" + q + "&platform=" + jQuery("#platform").val();
@@ -49,7 +55,7 @@
       minChars:1,
       matchSubset:1,
       matchContains:1,
-      mustMatch:1,
+      mustMatch:0,
       cacheLength:1,
       autoFill:true,
       selectFirst:true,
@@ -70,7 +76,7 @@
       minChars:0,
       matchSubset:1,
       matchContains:1,
-      mustMatch:1,
+      mustMatch:0,
       cacheLength:1,
       autoFill:true,
       selectFirst:true,
