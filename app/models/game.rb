@@ -113,8 +113,8 @@ class Game < ActiveRecord::Base
     self.black_id = OnlinePlayer.find_or_create(platform, self.black_name, self.black_rank).id
     self.white_id = OnlinePlayer.find_or_create(platform, self.white_name, self.white_rank).id
 
-    OnlinePairStat.find_or_create(black_id, white_id)
-    OnlinePairStat.find_or_create(white_id, black_id)
+    OnlinePairStat.find_or_create(platform.id, black_id, white_id)
+    OnlinePairStat.find_or_create(platform.id, white_id, black_id)
     true
   end
 

@@ -90,8 +90,7 @@ zh_cn:
     page_header: "棋手"
     platform_label: "对局平台："
     name_label: "棋手："
-    online_games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME 的对局"
-    games_played_by: "棋手：PLAYER_NAME"
+    games_played_by: "PLATFORM_NAME 棋手：PLAYER_NAME"
     opponents_header: "对手"
   players_table:
     platform: "对局平台"

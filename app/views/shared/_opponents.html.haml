@@ -1,6 +1,6 @@
 %h2= t('players.opponents_header')
 
-#opponents_result.span-24.active-scaffold.blue-theme
+.opponents.span-24.active-scaffold.blue-theme
   -# #opponents_result_pagination.digg_pagination= will_paginate @opponents, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next')
   %table
     %thead
@@ -11,5 +11,5 @@
         %th.lost_column= t('players_table.my_lost')
         %th.actions_column &nbsp;
     %tbody.records
-      = render :partial => 'shared/opponent', :collection => @opponents
+      = render :partial => 'shared/opponent', :collection => @player_for_widget.opponents
 

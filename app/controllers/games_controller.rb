@@ -8,8 +8,7 @@ class GamesController < ApplicationController
       if @player1.blank?
         flash[:error] = t('games.player1_is_required')
       else
-        @games = Game.search(@platform, @player1, @player2).
-                      paginate(page_params)
+        @games = Game.search(@platform, @player1, @player2)
       end
     end
   end

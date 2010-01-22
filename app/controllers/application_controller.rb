@@ -5,7 +5,9 @@ class ApplicationController < ActionController::Base
   include Discuz::Authentication
   include ExceptionNotifiable if RAILS_ENV=='production'
 
-  helper :urls, :games_widget, :uploads_widget
+  include GamesWidgetHelper, UploadsWidgetHelper, PlayersWidgetHelper, PlayersWidgetHelper
+
+  helper :urls, :games_widget, :uploads_widget, :players_widget, :player_widget
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   if ENV['INTEGRATE_WITH_FORUM'] == 'true'
@@ -37,10 +39,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def page_params
-    page_size = (params[:page_size] || ENV['ROWS_PER_PAGE']).to_i
-    { :per_page => page_size, :page => params[:page] }
+  def page_params page_no_param = :page
+    page_size = (ENV['ROWS_PER_PAGE'] || 15).to_i
+    { :per_page => page_size, :page => params[page_no_param] }
   end
+  helper_method :page_params
 
   def authenticate_via_bbs
     login_check

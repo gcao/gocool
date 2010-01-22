@@ -25,4 +25,8 @@ class Player < ActiveRecord::Base
   def name
     full_name
   end
+
+  def games
+    Game.on_platform(nil).black_id_or_white_id_is(self.id)
+  end
 end

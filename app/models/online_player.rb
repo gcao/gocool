@@ -22,6 +22,10 @@ class OnlinePlayer < ActiveRecord::Base
     s << "(" << self.rank << ")" unless self.rank.blank?
     s
   end
+
+  def games
+    Game.on_platform(self.gaming_platform.name).black_id_or_white_id_is(self.id)
+  end
   
   def self.find_or_create platform, username, rank
     player = on_platform(platform).find_by_username(username)

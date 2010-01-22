@@ -1,5 +1,5 @@
 class PairStat < ActiveRecord::Base
-  include AbstractPlayerStat, AbstractPairStat
+  include AbstractPlayerStat
   
   belongs_to :player, :class_name => "Player", :foreign_key => :player_id
   belongs_to :opponent, :class_name => "Player", :foreign_key => :opponent_id
@@ -9,4 +9,8 @@ class PairStat < ActiveRecord::Base
   named_scope :opponent_name_like, lambda{ |name|
     { :conditions => ["players.full_name like ?", name] }
   }
+
+  def self.find_or_create player_id, opponent_id
+    find_by_player_id_and_opponent_id(player_id, opponent_id) || create!(:player_id => player_id, :opponent_id => opponent_id)
+  end
 end

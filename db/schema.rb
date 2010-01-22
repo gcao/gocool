@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20100119140904) do
   end
 
   create_table "online_pair_stats", :force => true do |t|
+    t.integer  "gaming_platform_id",                 :null => false
     t.integer  "player_id",                          :null => false
     t.integer  "opponent_id",                        :null => false
     t.integer  "games_as_black",      :default => 0

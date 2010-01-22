@@ -5,6 +5,7 @@ class CreateOnlinePairStats < ActiveRecord::Migration
 
   def self.up
     create_table :online_pair_stats do |t|
+      t.integer :gaming_platform_id, :null => false
       t.integer :player_id, :null => false
       t.integer :opponent_id, :null => false
       t.integer :games_as_black, :default => 0

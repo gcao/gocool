@@ -18,16 +18,13 @@ class PlayersController < ApplicationController
     @name = params[:name]
     if @platform.blank?
       @players = Player.name_like(@name).with_stat.paginate(page_params)
-#      if @players.size == 1
-#      else
-        render :partial => "players", :layout => false
-#      end
     else
       @players = OnlinePlayer.search(@platform, @name).paginate(page_params)
-#      if @players.size == 1
-#      else
-        render :partial => "online_players", :layout => false
-#      end
+    end
+    if @players.size == 1
+      render_player_widget @players.first
+    else
+      render_players_widget @players
     end
   end
 
