@@ -78,8 +78,8 @@ zh_cn:
   upload_search:
     page_title: "上传对局搜索"
     page_header: "上传对局搜索"
-    uploads_of_today: "今天上载"
-    uploads_of_7_days: "最近七天上载"
+    uploads_of_today: "今天上传"
+    uploads_of_7_days: "最近七天上传"
     description_label: "上传介绍："
     description_required: "上传介绍为空"
     from_date_label: "上传时间：从"
@@ -132,7 +132,7 @@ zh_cn:
     place: "对局地点"
     create_time: "上传时间"
     game_not_found: "没找到对局"
-    upload_not_found: "没找到上载记录"
+    upload_not_found: "没找到上传记录"
   discuz:
     gocool_app: "棋谱库"
     registration: "注册"

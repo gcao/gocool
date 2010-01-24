@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = Player.find params[:id]
-    @games = Game.by_player(@player).paginate(page_params)
+    @games = Game.by_player(@player)
 
     @games_total = @player.stat.games
     @games_won = @player.stat.games_won
@@ -17,9 +17,9 @@ class PlayersController < ApplicationController
     @platform = params[:platform]
     @name = params[:name]
     if @platform.blank?
-      @players = Player.name_like(@name).with_stat.paginate(page_params)
+      @players = Player.name_like(@name).with_stat
     else
-      @players = OnlinePlayer.search(@platform, @name).paginate(page_params)
+      @players = OnlinePlayer.search(@platform, @name)
     end
     if @players.size == 1
       render_player_widget @players.first

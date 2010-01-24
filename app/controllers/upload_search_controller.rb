@@ -2,7 +2,7 @@ class UploadSearchController < ApplicationController
   def index
     if search_by_description?
       @description = params[:description].try(:strip)
-      @uploads = Upload.with_description(@description).paginate(page_params)
+      @uploads = Upload.with_description(@description)
     elsif search_by_date?
       @from_date = params[:from_date]
       @to_date = params[:to_date]
@@ -11,7 +11,7 @@ class UploadSearchController < ApplicationController
       if from and to and from > to
         flash[:error] = t("upload_search.from_date_greater_than_to_date")
       else
-        @uploads = Upload.between(from, to).paginate(page_params)
+        @uploads = Upload.between(from, to)
       end
     end
   end
