@@ -11,7 +11,7 @@
       =text_field_tag 'to_date', @to_date, :class => "date_input"
       %input{:type => "hidden", :name => "search_type", :value => "date"}
       =submit_tag t('form.search_button')
-      %input{:type => "reset", :value => t('form.reset_button')}
+      =reset_button
 
 #uploads_by_date_container
   - if search_by_date?

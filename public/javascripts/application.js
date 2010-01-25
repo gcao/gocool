@@ -3,6 +3,10 @@
 
 jQuery(document).ready(function(){
   if (!jQuery.browser.mozilla) jQuery('#firefox_container').show();
+
+  jQuery("#container input[name=reset]").click(function(){
+    jQuery("#container form :input[type=text], #container form textarea").val("");
+  });
 });
 
 function changeLocale(locale){

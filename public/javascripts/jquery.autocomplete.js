@@ -126,6 +126,19 @@ jQuery.autocomplete = function(input, options) {
 		}
 	};
 
+  // Based on onChange()
+  this.trigger = 	function() {
+		var v = $input.val();
+		prev = v;
+		if (v.length >= options.minChars) {
+			$input.addClass(options.loadingClass);
+			requestData(v);
+		} else {
+			$input.removeClass(options.loadingClass);
+			$results.hide();
+		}
+	};
+
  	function moveSelect(step) {
 
 		var lis = jQuery("li", results);
@@ -469,7 +482,8 @@ jQuery.fn.autocomplete = function(url, options, data) {
 	options.resultsClass = options.resultsClass || "ac_results";
 	options.lineSeparator = options.lineSeparator || "\n";
 	options.cellSeparator = options.cellSeparator || "|";
-	options.minChars = options.minChars || 1;
+  // options.minChars = options.minChars || 1;
+  if (options.minChars != 0 && !options.minChars) options.minChars = 1;
 	options.delay = options.delay || 400;
 	options.matchCase = options.matchCase || 0;
 	options.matchSubset = options.matchSubset || 1;

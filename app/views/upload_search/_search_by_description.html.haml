@@ -8,7 +8,7 @@
       %input#search_description(type="text" name="description" size="80"){:value => @description}
       %input(type='hidden' name='search_type' value='description')
       %input.upload_submit{:type => "submit", :name => "commit", :value => t('form.search_button')}
-      %input{:type => "reset", :value => t('form.reset_button')}
+      =reset_button
 
 #uploads_by_description_container
   - if search_by_description?

@@ -31,7 +31,7 @@
         %td
           %input{:type => "hidden", :name => "op", :value => "search"}
           =submit_tag t('form.search_button')
-          %input{:type => "reset", :value => t('form.reset_button')}
+          =reset_button
 
 %hr.space
 #pairs_widget_container
@@ -44,9 +44,9 @@
     jQuery("#platform").change(function(){
       jQuery("#player1, #player2, #player1_id, #player2_id").val("");
     });
-    //jQuery("#pairs_search_form input[type=reset]").click(function(){
-    //
-    //});
+    jQuery("#player1").change(function(){
+      jQuery("#player2, #player2_id").val("");
+    });
     jQuery("#player1").autocomplete("#", {
       makeUrl: function(q) {
         return "#{suggest_players_path}?name=" + q + "&platform=" + jQuery("#platform").val();
@@ -84,6 +84,10 @@
       onItemSelect: function(li) {
         jQuery('#player2_id').val(li.extra);
       }
+    });
+
+    jQuery("#player2").focus(function(){
+      this.autocompleter.trigger();
     });
 
     validanguage.el.player1 = {

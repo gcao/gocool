@@ -66,6 +66,10 @@ module ApplicationHelper
     end
   end
 
+  def reset_button
+    "<input type='button' name='reset', value='#{t('form.reset_button')}'/>"
+  end
+
   private
 
   def url_for_player_id id, is_online_game
