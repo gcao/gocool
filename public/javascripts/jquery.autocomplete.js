@@ -116,8 +116,10 @@ jQuery.autocomplete = function(input, options) {
 		if( lastKeyPressCode == 46 || (lastKeyPressCode > 8 && lastKeyPressCode < 32) ) return $results.hide();
 		var v = $input.val();
 		if (v == prev) return;
+    v = jQuery.trim(v);
 		prev = v;
-		if (v.length >= options.minChars) {
+    $input.val(v);
+    if (v.length >= options.minChars) {
 			$input.addClass(options.loadingClass);
 			requestData(v);
 		} else {
