@@ -124,6 +124,7 @@ class Upload < ActiveRecord::Base
 
   def after_save
     if @file_changed
+      create_symbolic_link if is_sgf?
       convert_to_utf
     end
   end
@@ -143,6 +144,10 @@ class Upload < ActiveRecord::Base
   end
 
   private
+
+  def create_symbolic_link
+    `ln -F -s #{self.file.path} #{File.dirname(self.file.path)}/1.sgf`
+  end
 
   def convert_to_utf
     return unless is_sgf? and File.exists?(file.path)
