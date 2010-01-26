@@ -105,6 +105,8 @@ zh_cn:
   pairs:
     page_title: "棋手＋对手"
     page_header: "棋手＋对手"
+    player1_label: "棋手全名"
+    player2_label: "对手全名"
     player1_required: "必填"
     player2_required: "必填"
   games:

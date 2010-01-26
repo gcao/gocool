@@ -10,6 +10,8 @@ class OnlinePairStat < ActiveRecord::Base
     { :conditions => ["online_players.username like ?", name] }
   }
 
+  named_scope :sort_by_opponent_name, :order => "online_players.username"
+
   def self.find_or_create gaming_platform_id, player_id, opponent_id
     find_by_player_id_and_opponent_id(player_id, opponent_id) || create!(:gaming_platform_id => gaming_platform_id, :player_id => player_id, :opponent_id => opponent_id)
   end

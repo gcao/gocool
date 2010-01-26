@@ -8,8 +8,8 @@
       %a{:href=>upload_search_url}= t('menu.upload_search')
     %li.players
       %a{:href=>players_url}= t('menu.players')
-    -# %li.pairs
-    -#   %a{:href=>pairs_url}= t('menu.pairs')
+    %li.pairs
+      %a{:href=>pairs_url}= t('menu.pairs')
     %li.games
       %a{:href=>games_url}= t('menu.games')
     - if logged_in?

@@ -10,6 +10,8 @@ class PairStat < ActiveRecord::Base
     { :conditions => ["players.full_name like ?", name] }
   }
 
+  named_scope :sort_by_opponent_name, :order => "players.full_name"
+
   def self.find_or_create player_id, opponent_id
     find_by_player_id_and_opponent_id(player_id, opponent_id) || create!(:player_id => player_id, :opponent_id => opponent_id)
   end

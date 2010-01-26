@@ -2,6 +2,6 @@
 
 = render :partial => "player_widget/player_info"
 
-= render_games_widget @player_for_widget.games
+= render_games_widget @player_for_widget.games.sort_by_players
 
-= render :partial => "shared/opponents"
+= render_opponents_widget @player_for_widget.opponents.sort_by_opponent_name
