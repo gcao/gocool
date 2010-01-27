@@ -1,8 +1,0 @@
-= javascript_include_tag "jqueryslidemenu"
-:javascript
-  arrowimages.down[1]="/images/down.gif";
-  arrowimages.right[1]="/images/right.gif";
-  jQuery(document).ready(function(){
-    jQuery('#myslidemenu .#{params[:controller]}').addClass('active');
-    jQuery('#locale_#{I18n.locale}').addClass('active');
-  });

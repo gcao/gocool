@@ -17,11 +17,11 @@ function removeUploadField(id) {
   jQuery('#' + id).fadeOut(function(){jQuery(this).remove();})
 }
 
-jQuery(document).ready(function(){
+function initUploadPage() {
   addEmailClickHandler();
   jQuery('#upload_upload').change(addUploadField);
   jQuery('#resetButton').click(function(){
     document.uploadForm.reset();
     jQuery('.additionalUpload').remove();
   });
-});
+}

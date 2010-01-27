@@ -22,7 +22,6 @@
   #players_result
 
 - content_for :footer do      
-  = javascript_include_tag "jquery.livequery"
   :javascript
     jQuery(document).ready(function($) {
       $('div.pagination a').livequery('click', function() {

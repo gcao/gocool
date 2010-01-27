@@ -39,7 +39,6 @@
     = render :partial => "pair"
 
 - content_for :footer do
-  = javascript_include_tag "validanguage_uncompressed", "jquery.autocomplete"
   :javascript
     jQuery("#platform").change(function(){
       jQuery("#player1, #player2, #player1_id, #player2_id").val("");
