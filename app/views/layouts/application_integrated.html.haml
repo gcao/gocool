@@ -10,7 +10,7 @@
     = include_jquery
     - bundle do
       <link href="stylesheets/active_scaffold/default/stylesheet.css" media="screen" rel="stylesheet" type="text/css"/>
-      <link href="stylesheets/compiled/discuss.css" media="screen" rel="stylesheet" type="text/css"/>
+      <link href="stylesheets/compiled/discuz.css" media="screen" rel="stylesheet" type="text/css"/>
       <script src="javascripts/jqueryslidemenu.js" type="text/javascript"></script>
       <script src="javascripts/jquery.autocomplete.js" type="text/javascript"></script>
       <script src="javascripts/jquery.livequery.js" type="text/javascript"></script>
@@ -36,7 +36,8 @@
     = render 'discuz/header'
     #container
       %hr.space
-      
+
+      = yield
       = yield :footer
 
       %hr.space
