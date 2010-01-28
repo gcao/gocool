@@ -42,4 +42,10 @@ class PairsController < ApplicationController
       end
     end
   end
+
+  def show
+    @pair = PairStat.find(params[:id])
+    @online = false
+    @games = Game.played_between(@pair.player.id, @pair.opponent.id).gaming_platform_id_is(nil)
+  end
 end

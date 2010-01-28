@@ -16,4 +16,14 @@ module UrlsHelper
       raise "Invalid opponent: #{player.inspect}"
     end
   end
+
+  def url_for_pair pair
+    if pair.is_a? PairStat
+      pair_url(pair)
+    elsif pair.is_a? OnlinePairStat
+      online_pair_url(pair)
+    else
+      raise "Invalid opponent: #{pair.inspect}"
+    end
+  end
 end

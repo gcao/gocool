@@ -30,4 +30,5 @@ after "deploy:update_code", :copy_over_config_files
 
 task :copy_over_config_files do
   run "cp -rf #{deploy_to}/#{shared_dir}/config/* #{release_path}/config/"
+  run "chmod -R a+w #{release_path}/public/stylesheets/cache #{release_path}/javascripts/cache"
 end

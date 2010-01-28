@@ -33,8 +33,8 @@ zh_cn:
     select_other: "其他"
   email:
     label: "Email"
-    required: "Email为空."
-    invalid: "Email不正确."
+    required: "Email为空"
+    invalid: "Email不正确"
   homepage:
     page_title: "首页"
     welcome: "欢迎访问棋人棋谱库"
@@ -49,7 +49,7 @@ zh_cn:
     description_label: "介绍："
     description_note: "请输入简单介绍内容，以便下次登录时搜索你上传的对局。"
     file_label: "文件： <br/>(*.sgf, *.zip)"
-    file_required: "文件为空."
+    file_required: "文件为空"
     zip_file_note: "如果你上传的是 zip 文件，系统需要花比较长时间处理，在系统处理过程中，浏览器可能显示错误。如果显示错误，请勿重传以免系统过载，并等待 10~20 分钟后检查上传是否成功。谢谢合作！"
     submit_button: "上传"
     success: "上传成功。"
@@ -73,7 +73,7 @@ zh_cn:
     data_invalid_parse_error: "SGF格式错误："
 
     url_label: "URL："
-    url_required: "URL为空."
+    url_required: "URL为空"
 
   upload_search:
     page_title: "上传对局搜索"
@@ -111,6 +111,8 @@ zh_cn:
     player2_required: "必填"
     player_not_found: "未找到 PLAYER_NAME"
     no_game_between: "未找到 PLAYER1 和 PLAYER2 的对局。"
+    opponent_info_link: "棋手信息"
+    pair_info_link: "两人对局"
   games:
     page_title: "对局"
     page_header: "对局"

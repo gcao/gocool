@@ -15,4 +15,9 @@ class PairStat < ActiveRecord::Base
   def self.find_or_create player_id, opponent_id
     find_by_player_id_and_opponent_id(player_id, opponent_id) || create!(:player_id => player_id, :opponent_id => opponent_id)
   end
+
+  # To make it compatible with OnlinePairStat
+  def gaming_platform_id
+    nil
+  end
 end
