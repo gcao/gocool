@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'chriseppstein-compass', :version => ">=0.8.11", :lib => 'compass', :source => 'http://gems.github.com'
   config.gem 'mislav-will_paginate', :version => ">=2.3.11", :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'binarylogic-searchlogic', :lib => 'searchlogic'
+  config.gem 'hoptoad_notifier'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

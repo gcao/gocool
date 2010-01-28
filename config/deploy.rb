@@ -32,3 +32,10 @@ task :copy_over_config_files do
   run "cp -rf #{deploy_to}/#{shared_dir}/config/* #{release_path}/config/"
   run "chmod -R a+w #{release_path}/public/stylesheets/cache #{release_path}/public/javascripts/cache"
 end
+
+
+Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
+  $: << File.join(vendored_notifier, 'lib')
+end
+
+require 'hoptoad_notifier/capistrano'
