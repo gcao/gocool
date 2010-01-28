@@ -4,9 +4,8 @@ set :deploy_to, "/data/apps/#{application}"
 set :scm, :git
 set :repository, "http://github.com/gcao/gocool.git"
 set :git_enable_submodules, true
-set :deploy_via, :remote_cache
-#set :branch, 'master'
- 
+#set :deploy_via, :remote_cache
+
 set :user, "root"
 set :use_sudo, false
 
