@@ -25,3 +25,20 @@ function changeLocale(locale){
   
   window.location = location.pathname + queryString;
 }
+
+function showError(fieldId, errorMsg) {
+  //validanguage.el[fieldId].showError(errorMsg);
+  jQuery('#' + fieldId).addClass('failedField');
+  var errorMsgId = '#' + fieldId + "_errorMsg";
+  if (jQuery(errorMsgId).length > 0) {
+    jQuery(errorMsgId).text(errorMsg);
+  } else {
+    jQuery('#' + fieldId).after('<div class="vdError"><span id="' + fieldId + '_errorMsg">' + errorMsg + '</span></div>')
+  }
+}
+
+function showErrors(errors) {
+  jQuery.each(errors, function(i, value){
+    showError(value[0], value[1]);
+  });
+}

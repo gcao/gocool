@@ -36,9 +36,7 @@
   - if @status == :success
     = render :partial => "pair"
   - elsif @status == :pair_not_found
-    = t('no_game_between').sub("PLAYER1", @player1_name).gsub("PLAYER2", @player2_name)
-  - elsif @status == :player_not_found
-    TODO: display error
+    = t('pairs.no_game_between').sub("PLAYER1", @player1_name).gsub("PLAYER2", @player2_name)
 
 - content_for :footer do
   :javascript
@@ -100,3 +98,7 @@
         }
       ]
     };
+
+  - if @status == :player_not_found
+    :javascript
+      showErrors(#{@errors.to_json});

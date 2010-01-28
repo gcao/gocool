@@ -97,7 +97,9 @@ function hidemousetip(){if(supportedBrowser()){enabletip=false;document.getEleme
 document.onmousemove=positiontip;/* --------- javascripts/application.js --------- */ 
 
 jQuery(document).ready(function(){if(!jQuery.browser.mozilla)jQuery('#firefox_container').show();jQuery("#container input[name=reset]").click(function(){jQuery("#container form :input[type=text], #container form textarea").val("");});});function changeLocale(locale){if(gocool_locale==locale)return;var localeParam="locale="+locale;var queryString=location.search;if(queryString.match(/locale=/)){queryString=queryString.replace(/locale=[a-z_]+/,localeParam);}else if(queryString.match(/\s*/)){queryString="?"+localeParam;}else{queryString=queryString.replace('?','?'+localeParam+'&');}
-window.location=location.pathname+queryString;}/* --------- javascripts/upload.js --------- */ 
+window.location=location.pathname+queryString;}
+function showError(fieldId,errorMsg){jQuery('#'+fieldId).addClass('failedField');var errorMsgId='#'+fieldId+"_errorMsg";if(jQuery(errorMsgId).length>0){jQuery(errorMsgId).text(errorMsg);}else{jQuery('#'+fieldId).after('<div class="vdError"><span id="'+fieldId+'_errorMsg">'+errorMsg+'</span></div>')}}
+function showErrors(errors){jQuery.each(errors,function(i,value){showError(value[0],value[1]);});}/* --------- javascripts/upload.js --------- */ 
 
 function addEmailClickHandler(){jQuery('.email_edit').click(function(){jQuery('#email_container').html('<input id="upload_email" maxlength="60" name="upload[email]" size="60" type="text" />');jQuery('#upload_email').focus();});}
 function addUploadField(){var x=Math.floor(Math.random()*10000);var fieldId='upload_upload'+x;var fieldName='upload[upload_'+x+']';jQuery('#file_fields').append('<div id="'+fieldId+'" class="additionalUpload"><input name='+fieldName+' size="60" type="file" /><input type="button" value="Delete This" onclick="removeUploadField(\''+fieldId+'\')"/></div>');jQuery('#'+fieldId).change(addUploadField);}

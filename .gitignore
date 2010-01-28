@@ -3,3 +3,5 @@ webrat-*.html
 db/*.sqlite3
 app/stylesheets/.sass-cache
 vendor/plugins/discuz_auth/app/stylesheets/.sass-cache
+public/stylesheets/cache/bundle.css.filelist
+public/javascripts/cache/bundle.js.filelist
