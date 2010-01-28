@@ -15,11 +15,11 @@ class PlayersController < ApplicationController
 
   def search
     @platform = params[:platform]
-    @name = params[:name]
+    @opponent_name = params[:name]
     if @platform.blank?
-      @players = Player.name_like(@name).with_stat
+      @players = Player.name_like(@opponent_name).with_stat
     else
-      @players = OnlinePlayer.search(@platform, @name)
+      @players = OnlinePlayer.search(@platform, @opponent_name)
     end
     if @players.size == 1
       render_player_widget @players.first
@@ -45,20 +45,26 @@ class PlayersController < ApplicationController
   end
 
   def suggest2
-    @player_id = params[:player_id]
-    render :text => "" and return if @player_id.blank?
+    @player_name = params[:player]
+    render :text => "" and return if @player_name.blank?
 
     @platform = params[:platform]
-    @name = params[:name]
-    @name = @name + "%" unless @name.blank?
+    @opponent_name = params[:opponent]
+    @opponent_name += "%" unless @opponent_name.blank?
 
     if @platform.blank?
-      @pairs = PairStat.player_id_is(@player_id)
-      @pairs = @pairs.opponent_name_like @name unless @name.blank?
+      @player = Player.full_name_is(@player_name).first
+      render :text => "" and return if @player.blank?
+
+      @pairs = PairStat.player_id_is(@player.id)
+      @pairs = @pairs.opponent_name_like @opponent_name unless @opponent_name.blank?
       @pairs = @pairs.first(10)
     else
-      @pairs = OnlinePairStat.player_id_is(@player_id)
-      @pairs = @pairs.opponent_name_like @name unless @name.blank?
+      @player = OnlinePlayer.search(@platform, @player_name).first
+      render :text => "" and return if @player.blank?
+
+      @pairs = OnlinePairStat.player_id_is(@player.id)
+      @pairs = @pairs.opponent_name_like @opponent_name unless @opponent_name.blank?
       @pairs = @pairs.first(10)
     end
 

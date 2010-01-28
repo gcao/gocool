@@ -12,13 +12,12 @@
           %span
             %label(for="platform")
               = t('games.platform_label')
-            =gaming_platforms_select 'platform', @platform
+            =gaming_platforms_select 'platform', @platform_name
         %td
           %label#player1_label(for="player1")
             %em.msg
               = t('pairs.player1_label')
-          =text_field_tag 'player1', @player1, :class => 'ac_input'
-          =hidden_field_tag 'player1_id', @player1_id
+          =text_field_tag 'player1', @player1_name, :class => 'ac_input'
         %td
           %label#vs_label(for="player2")
             = t('games.vs_label')
@@ -26,8 +25,7 @@
           %label#player2_label(for="player2")
             %em.msg
               = t('pairs.player2_label')
-          =text_field_tag 'player2', @player2, :class => 'ac_input'
-          =hidden_field_tag 'player2_id', @player2_id
+          =text_field_tag 'player2', @player2_name, :class => 'ac_input'
         %td
           %input{:type => "hidden", :name => "op", :value => "search"}
           =submit_tag t('form.search_button')
@@ -35,17 +33,15 @@
 
 %hr.space
 #pairs_widget_container
-  - if @pair
+  - if @status == :success
     = render :partial => "pair"
+  - elsif @status == :pair_not_found
+    = t('no_game_between').sub("PLAYER1", @player1_name).gsub("PLAYER2", @player2_name)
+  - elsif @status == :player_not_found
+    TODO: display error
 
 - content_for :footer do
   :javascript
-    jQuery("#platform").change(function(){
-      jQuery("#player1, #player2, #player1_id, #player2_id").val("");
-    });
-    jQuery("#player1").change(function(){
-      jQuery("#player2, #player2_id").val("");
-    });
     jQuery("#player1").autocomplete("#", {
       makeUrl: function(q) {
         if (jQuery.trim(q).length == 0) return;
@@ -60,17 +56,15 @@
       selectFirst:true,
       selectOny:true,
       onItemSelect: function(li) {
-        jQuery('#player1_id').val(li.extra);
         jQuery('#player2').focus();
       }
     });
 
     jQuery("#player2").autocomplete("#", {
       makeUrl: function(q) {
-        var player1_id = jQuery('#player1_id').val();
-        //if (jQuery.trim(player1_id).length == 0) return;
+        var player = jQuery('#player1').val();
 
-        return "#{suggest2_players_path}?platform=" + jQuery("#platform").val() + "&player_id=" + player1_id + "&name=" + q;
+        return "#{suggest2_players_path}?platform=" + jQuery("#platform").val() + "&player=" + player + "&opponent=" + q;
       },
       minChars:0,
       matchSubset:1,
