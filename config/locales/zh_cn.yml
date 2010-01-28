@@ -109,7 +109,7 @@ zh_cn:
     player2_label: "对手全名"
     player1_required: "必填"
     player2_required: "必填"
-    player_not_found: "未找到"
+    player_not_found: "未找到 PLAYER_NAME"
     no_game_between: "未找到 PLAYER1 和 PLAYER2 的对局。"
   games:
     page_title: "对局"

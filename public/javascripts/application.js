@@ -27,7 +27,6 @@ function changeLocale(locale){
 }
 
 function showError(fieldId, errorMsg) {
-  //validanguage.el[fieldId].showError(errorMsg);
   jQuery('#' + fieldId).addClass('failedField');
   var errorMsgId = '#' + fieldId + "_errorMsg";
   if (jQuery(errorMsgId).length > 0) {
