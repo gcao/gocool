@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   include Discuz::Authentication
-  include GamesWidgetHelper, UploadsWidgetHelper, PlayersWidgetHelper, PlayersWidgetHelper, OpponentsWidgetHelper
+  include GamesWidgetHelper, UploadsWidgetHelper, PlayerWidgetHelper, PlayersWidgetHelper, OpponentsWidgetHelper
 
   helper :urls, :games_widget, :uploads_widget, :players_widget, :player_widget, :opponents_widget
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
