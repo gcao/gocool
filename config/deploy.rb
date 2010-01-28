@@ -2,7 +2,7 @@ set :application, "gocool"
 set :deploy_to, "/data/apps/#{application}"
  
 set :scm, :git
-set :repository, "git://github.com/gcao/gocool.git"
+set :repository, "http://github.com/gcao/gocool.git"
 set :git_enable_submodules, true
 set :deploy_via, :remote_cache
 #set :branch, 'master'
