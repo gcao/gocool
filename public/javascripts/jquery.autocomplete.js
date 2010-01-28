@@ -72,7 +72,7 @@ jQuery.autocomplete = function(input, options) {
 	}
 
 	$input
-	.keydown(function(e) {
+	.keyup(function(e) {
 		// track last key pressed
 		lastKeyPressCode = e.keyCode;
 		switch(e.keyCode) {
