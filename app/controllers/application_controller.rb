@@ -3,6 +3,8 @@
 
 class ApplicationController < ActionController::Base
   include Discuz::Authentication
+  # include ExceptionNotifiable if RAILS_ENV=='production'
+
   include GamesWidgetHelper, UploadsWidgetHelper, PlayersWidgetHelper, PlayersWidgetHelper, OpponentsWidgetHelper
 
   helper :urls, :games_widget, :uploads_widget, :players_widget, :player_widget, :opponents_widget
