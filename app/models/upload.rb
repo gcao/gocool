@@ -140,7 +140,7 @@ class Upload < ActiveRecord::Base
   end
 
   def is_sgf?
-    file and file.path.downcase.include?(".sgf")
+    file and file.path and file.path.downcase.include?(".sgf")
   end
 
   private

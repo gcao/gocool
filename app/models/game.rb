@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :gaming_platform
-  belongs_to :primary_source, :class_name => 'GameSource', :foreign_key => 'primary_upload_id'
+  belongs_to :primary_source, :class_name => 'Upload', :foreign_key => 'primary_upload_id'
   
   WINNER_BLACK = 1
   WINNER_WHITE = 2
@@ -59,13 +59,13 @@ class Game < ActiveRecord::Base
   end
 
   def black_name_with_rank
-    s = self.black_name
+    s = self.black_name || ""
     s << "(" << self.black_rank << ")" unless self.black_rank.blank?
     s
   end
 
   def white_name_with_rank
-    s = self.white_name
+    s = self.white_name || ""
     s << "(" << self.white_rank << ")" unless self.white_rank.blank?
     s
   end
