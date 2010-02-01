@@ -8,5 +8,6 @@ ENV['INTEGRATE_WITH_FORUM']   = 'true'
 ENV['FORUM_REGISTRATION_URL'] = '/bbs/register_qiren.php'
 ENV['DISCUZ_COOKIE_PREFIX']   = 'Z7H'
 ENV['DISCUZ_TABLE_PREFIX']    = 'discuz'
+ENV['DISCUZ_DB_ENCODING']     = 'utf8'
 
 ENV['DEFAULT_LOCALE'] = 'zh_cn'

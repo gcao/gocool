@@ -9,11 +9,19 @@ class Discuz::Post < Discuz::Base
   named_scope :order_by_id_desc, lambda{ {:order => 'pid desc'} }
 
   def author
-    Iconv.conv('utf8', 'gb18030', attributes['author'])
+    if utf8_encoding?
+      attributes['author']
+    else
+      Iconv.conv('utf8', 'gb18030', attributes['author'])
+    end
   end
 
   def subject
-    Iconv.conv('utf8', 'gb18030', attributes['subject'])
+    if utf8_encoding?
+      attributes['subject']
+    else
+      Iconv.conv('utf8', 'gb18030', attributes['subject'])
+    end
   end
 
   def user
