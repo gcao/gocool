@@ -1,5 +1,6 @@
 .idea
 webrat-*.html
+config/initializers/1_settings.rb
 db/*.sqlite3
 app/stylesheets/.sass-cache
 vendor/plugins/discuz_auth/app/stylesheets/.sass-cache

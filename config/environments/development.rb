@@ -19,3 +19,5 @@ config.action_mailer.raise_delivery_errors = false
 config.middleware.use "Rack::Bug",
                       :secret_key => "epT5uCIchlsHCeR9dloOeAPG66PtHd9K8l0q9avitiaA/KUrY7DE52hD4yWY+8z1",
                       :password   => "admin"                      
+
+config.gem 'rubaidh-google_analytics', :lib => 'rubaidh/google_analytics', :source => 'http://gems.github.com'

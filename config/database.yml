@@ -30,3 +30,4 @@ cucumber:
 discuz:
   <<: *DEV
   database: bbs
+  encoding: gbk
