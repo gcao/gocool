@@ -31,14 +31,11 @@ class DiscuzUploader
 
     desc_hash = post.to_upload_description
     desc_hash[:aid] = attachment.id
+    desc_hash[:filename] = attachment.filename
 
     filename = attachment.path
     if filename !~ /\.sgf$/i
-      if attachment.filename =~ /\.sgf$/i
-        filename = "/tmp/#{attachment.filename}"
-      else
-        filename = "/tmp/#{rand(10000)}.sgf"
-      end
+      filename = "/tmp/#{rand(10000)}.sgf"
       `ln -F -s #{attachment.path} #{filename}`
     end
 
