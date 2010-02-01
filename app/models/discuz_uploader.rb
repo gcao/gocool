@@ -32,8 +32,18 @@ class DiscuzUploader
     desc_hash = post.to_upload_description
     desc_hash[:aid] = attachment.id
 
+    filename = attachment.path
+    if filename !~ /\.sgf$/i
+      if attachment.filename =~ /\.sgf$/i
+        filename = "/tmp/#{attachment.filename}"
+      else
+        filename = "/tmp/#{rand(10000)}.sgf"
+      end
+      `ln -F -s #{attachment.path} #{filename}`
+    end
+
     upload = Upload.create!(:source_type => Upload::UPLOAD_FILE,
-                            :file => File.open(attachment.path),
+                            :file => File.new(filename),
                             :description => desc_hash.inspect,
                             :uploader => post.user.username,
                             :uploader_id => post.user.id)

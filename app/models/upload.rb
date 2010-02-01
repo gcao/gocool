@@ -75,15 +75,16 @@ class Upload < ActiveRecord::Base
   def self.create_from_url description, url, hash_code = nil
     open(url) do |file|
       hash_code ||= Gocool::Md5.string_to_md5 url
-      upload = create!(:source_type => Upload::UPLOAD_URL, :description => description, :source => url, :hash_code => hash_code)
 
-      temp_file = "/tmp/game_#{upload.id}_#{rand(100)}.sgf"
+      temp_file = "/tmp/game_#{rand(100000)}.sgf"
       File.open(temp_file, "w") do |to_file|
         to_file.print(file.readlines)
       end
-
-      upload.file = File.new temp_file
-      upload.save!
+      upload = create!(:source_type => Upload::UPLOAD_URL,
+                       :description => description,
+                       :source => url,
+                       :file => File.new(temp_file),
+                       :hash_code => hash_code)
 
       upload.parse_and_save
       upload
