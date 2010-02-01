@@ -131,7 +131,7 @@ class Game < ActiveRecord::Base
   end
 
   def handicap_str
-    self.handicap <= 0 ? "" : self.handicap.to_s
+    self.handicap.to_i <= 0 ? "" : self.handicap.to_s
   end
 
   def komi_str

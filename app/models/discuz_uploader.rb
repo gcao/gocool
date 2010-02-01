@@ -31,10 +31,21 @@ class DiscuzUploader
 
     desc_hash = post.to_upload_description
     desc_hash[:aid] = attachment.id
-    Upload.create!(:source_type => Upload::UPLOAD_FILE, :file => attachment.path,
-                   :description => desc_hash.inspect,
-                   :uploader => post.user.username,
-                   :uploader_id => post.user.id)
+
+    upload = Upload.create!(:source_type => Upload::UPLOAD_FILE,
+                            :file => File.open(attachment.path),
+                            :description => desc_hash.inspect,
+                            :uploader => post.user.username,
+                            :uploader_id => post.user.id)
+
+    upload.update_hash_code
+    if found_upload = Upload.with_hash(upload.hash_code).first
+      upload.delete
+      found_upload
+    else
+      upload.parse_and_save
+      upload
+    end
   end
 
   def upload_dgs_game post, dgs_game_id

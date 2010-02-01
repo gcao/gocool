@@ -7,6 +7,6 @@ class Discuz::Attachment < Discuz::Base
   end
 
   def path
-    "#{ENV["DISCUZ_HOME"]}/#{self.attachment}" 
+    "#{ENV["DISCUZ_HOME"]}/attachments/#{self.attachment}" 
   end
 end
