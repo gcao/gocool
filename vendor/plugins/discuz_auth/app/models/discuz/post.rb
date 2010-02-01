@@ -4,6 +4,10 @@ class Discuz::Post < Discuz::Base
 
   has_many :attachments, :class_name => 'Discuz::Attachment', :foreign_key => 'pid'
 
+  default_scope :order => 'pid'
+
+  named_scope :order_by_id_desc, lambda{ {:order => 'pid desc'} }
+
   def author
     Iconv.conv('utf8', 'gb18030', attributes['author'])
   end
@@ -21,7 +25,7 @@ class Discuz::Post < Discuz::Base
     %w(pid tid fid subject).each do |field|
       desc_hash[field] = self.send(field)
     end
-    desc_hash['upload_time'] = Time.at(self.dateline).to_s
+    desc_hash['upload_time'] = Time.at(self.dateline).strftime("%Y-%m-%d %H:%M")
     desc_hash
   end
 end
