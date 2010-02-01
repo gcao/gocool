@@ -74,9 +74,9 @@ class Game < ActiveRecord::Base
     self.board_size     = sgf_game.board_size
     self.handicap       = sgf_game.handicap
     self.name           = sgf_game.name
-    self.black_name     = sgf_game.black_player
+    self.black_name     = sgf_game.black_player.blank? ? "Unknown" : sgf_game.black_player
     self.black_rank     = sgf_game.black_rank
-    self.white_name     = sgf_game.white_player
+    self.white_name     = sgf_game.white_player.blank? ? "Unknown" : sgf_game.white_player
     self.white_rank     = sgf_game.white_rank
     self.played_at_raw  = sgf_game.played_on
     self.rule_raw       = sgf_game.rule
