@@ -82,13 +82,10 @@ class Upload < ActiveRecord::Base
         to_file.print(file.readlines)
       end
 
-      game = Game.new(:primary_source => upload)
-      game.load_parsed_game(SGF::Parser.parse_file(temp_file))
-      game.save!
-
       upload.file = File.new temp_file
-      upload.game = game
       upload.save!
+
+      upload.parse_and_save
       upload
     end
   end
