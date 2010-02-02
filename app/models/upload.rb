@@ -37,7 +37,7 @@ class Upload < ActiveRecord::Base
   }
 
   def self.create! attributes
-    if user = Thread.current[:user]
+    if attributes[:uploader_id].nil? and user = Thread.current[:user]
       attributes.merge! :uploader => user.username, :uploader_id => user.id
     end
     super attributes
