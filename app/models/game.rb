@@ -92,9 +92,9 @@ class Game < ActiveRecord::Base
       process_non_online_game
     end
     
-    if self.result =~ /B+/i or self.result.try(:include?, '黑胜')
+    if self.result =~ /B+/i or (self.result.try(:include?, '黑') and self.result.try(:include?, '胜'))
       self.winner = WINNER_BLACK
-    elsif self.result =~ /W+/i or self.result.try(:include?, '白胜')
+    elsif self.result =~ /W+/i or (self.result.try(:include?, '白') and self.result.try(:include?, '胜'))
       self.winner = WINNER_WHITE
     end
   end

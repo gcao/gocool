@@ -13,10 +13,10 @@
     &nbsp;
   %td
     = upload.game.moves
-    &nbsp;
+    = "&nbsp;" if upload.game.moves.blank?
   %td
     = upload.game.result
-    &nbsp;
+    = "&nbsp;" if upload.game.result.blank?
   %td
     = upload.game.played_at_raw
     &nbsp;

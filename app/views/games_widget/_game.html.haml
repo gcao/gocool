@@ -12,7 +12,7 @@
     &nbsp;
   %td
     = game.moves
-    &nbsp;
+    = "&nbsp;" if game.moves.blank?
   %td
     = game.result
     &nbsp;

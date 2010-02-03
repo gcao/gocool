@@ -4,6 +4,8 @@ class Discuz::Post < Discuz::Base
 
   has_many :attachments, :class_name => 'Discuz::Attachment', :foreign_key => 'pid'
 
+  belongs_to :thread, :class_name => 'Discuz::Thread', :foreign_key => 'tid'
+
   default_scope :order => 'pid'
 
   named_scope :order_by_id_desc, lambda{ {:order => 'pid desc'} }
@@ -17,10 +19,12 @@ class Discuz::Post < Discuz::Base
   end
 
   def subject
+    sub = first? ? attributes['subject'] : thread.subject
+
     if utf8_encoding?
-      attributes['subject']
+      sub
     else
-      Iconv.conv('utf8', 'gb18030', attributes['subject'])
+      Iconv.conv('utf8', 'gb18030', sub)
     end
   end
 
