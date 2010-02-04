@@ -12,4 +12,16 @@ class GamingPlatform < ActiveRecord::Base
   def self.tom
     @tom ||= self.find_by_name('TOM')
   end
+
+  def self.igs
+    @igs ||= self.find_by_name('IGS')
+  end
+
+  def self.sina
+    @sina ||= self.find_by_name('??')
+  end
+
+  def self.eweiqi
+    @eweiqi ||= self.find_by_name('??')
+  end
 end

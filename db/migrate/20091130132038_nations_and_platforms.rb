@@ -11,7 +11,7 @@ class NationsAndPlatforms < ActiveRecord::Migration
                            :description => 'The Dragon Go Server',
                            :url => 'www.dragongoserver.net', :is_turn_based => true)
     GamingPlatform.create!(:nation_region_id => china.id, :name => 'TOM',
-                           :description => 'TOM???',
+                           :description => 'TOM围棋网',
                            :url => 'weiqi.sports.tom.com', :is_turn_based => false)
   end
 

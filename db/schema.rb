@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20100201183639) do
     t.string   "black_rank"
     t.string   "white_name"
     t.string   "white_rank"
+    t.string   "black_team"
+    t.string   "white_team"
     t.integer  "primary_upload_id"
     t.string   "updated_by"
     t.datetime "created_at"

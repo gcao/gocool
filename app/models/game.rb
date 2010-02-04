@@ -109,6 +109,12 @@ class Game < ActiveRecord::Base
       platform = GamingPlatform.dgs
     elsif self.place =~ /tom/i
       platform = GamingPlatform.tom
+    elsif self.place =~ /弈城/i
+      platform = GamingPlatform.eweiqi
+    elsif self.place =~ /igs/i
+      platform = GamingPlatform.igs
+    elsif self.place =~ /新浪/i
+      platform = GamingPlatform.sina
     else
       return
     end
