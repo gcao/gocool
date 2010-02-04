@@ -6,6 +6,14 @@ class Discuz::Attachment < Discuz::Base
     filename =~ /\.sgf$/i
   end
 
+  def filename
+    if utf8_encoding?
+      attributes['filename']
+    else
+      Iconv.conv('utf8', 'gb18030', attributes['filename'])
+    end
+  end
+
   def path
     "#{ENV["DISCUZ_HOME"]}/attachments/#{self.attachment}" 
   end

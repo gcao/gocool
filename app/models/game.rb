@@ -76,8 +76,10 @@ class Game < ActiveRecord::Base
     self.name           = sgf_game.name
     self.black_name     = sgf_game.black_player.blank? ? "Unknown" : sgf_game.black_player
     self.black_rank     = sgf_game.black_rank
+    self.black_team     = sgf_game.black_team
     self.white_name     = sgf_game.white_player.blank? ? "Unknown" : sgf_game.white_player
     self.white_rank     = sgf_game.white_rank
+    self.white_team     = sgf_game.white_team
     self.played_at_raw  = sgf_game.played_on
     self.rule_raw       = sgf_game.rule
     self.komi_raw       = sgf_game.komi
@@ -87,6 +89,7 @@ class Game < ActiveRecord::Base
     self.program        = sgf_game.program
     self.place          = sgf_game.place
     self.event          = sgf_game.event
+    self.description    = sgf_game.comment
     
     unless process_online_game
       process_non_online_game
@@ -104,6 +107,8 @@ class Game < ActiveRecord::Base
       platform = GamingPlatform.kgs
     elsif self.place =~ /dragongoserver/i
       platform = GamingPlatform.dgs
+    elsif self.place =~ /tom/i
+      platform = GamingPlatform.tom
     else
       return
     end

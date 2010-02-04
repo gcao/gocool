@@ -8,4 +8,8 @@ class GamingPlatform < ActiveRecord::Base
   def self.dgs
     @dgs ||= self.find_by_name('DGS')
   end
+
+  def self.tom
+    @tom ||= self.find_by_name('TOM')
+  end
 end

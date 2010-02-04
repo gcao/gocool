@@ -1,4 +1,8 @@
 class DiscuzUploader
+  def logger
+    Logger.new(nil)
+  end
+  
   def upload post
     # fid != 18, 29
     return [] if [18, 29].include?(post.fid)
@@ -53,6 +57,8 @@ class DiscuzUploader
       upload.parse_and_save
       upload
     end
+  rescue => e
+    logger.error(e.inspect)
   end
 
   def upload_dgs_game post, dgs_game_id
@@ -70,5 +76,7 @@ class DiscuzUploader
     upload.uploader_id = post.user.id
     upload.save!
     upload
+  rescue => e
+    logger.error(e.inspect)
   end
 end
