@@ -83,6 +83,6 @@ class PlayersController < ApplicationController
     pairs.map{|pair|
       opponent = pair.opponent
       "#{opponent.is_a?(Player) ? opponent.full_name : opponent.username}|#{opponent.id}"
-    }
+    }.join("\n")
   end
 end

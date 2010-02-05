@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
   
   before_filter :set_title_and_header
-  before_filter :set_locale
+  # before_filter :set_locale
 
   protected
   

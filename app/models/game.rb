@@ -107,7 +107,7 @@ class Game < ActiveRecord::Base
       platform = GamingPlatform.kgs
     elsif self.place =~ /dragongoserver/i
       platform = GamingPlatform.dgs
-    elsif self.place =~ /tom/i
+    elsif self.place =~ /tom对弈/i
       platform = GamingPlatform.tom
     elsif self.place =~ /弈城/i
       platform = GamingPlatform.eweiqi
