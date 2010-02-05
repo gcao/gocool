@@ -1,6 +1,6 @@
 class DiscuzUploader
   def logger
-    Logger.new(nil)
+    RAILS_DEFAULT_LOGGER
   end
   
   def upload post
@@ -19,7 +19,7 @@ class DiscuzUploader
     dgs_games = post.message.scan(/\[dgs\](\d+)\[/i).flatten
     uploads += dgs_games.map {|game_id| upload_dgs_game post, game_id }
 
-    game_urls = post.message.scan(/http:[\:]+\.sgf/i).flatten
+    game_urls = post.message.scan(/http:[^:]+\.sgf/i).flatten
     uploads += game_urls.map {|url| upload_game_from post, url}
 
     remote_games = post.message.scan(/\[sgfremote\]([^\[]+)\[/i).flatten
