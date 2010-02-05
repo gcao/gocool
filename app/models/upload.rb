@@ -145,6 +145,18 @@ class Upload < ActiveRecord::Base
     file and file.path and file.path.downcase.include?(".sgf")
   end
 
+  def discuz_tid
+    if description =~ /"tid"=>(\d+),/i
+      $1
+    end
+  end
+
+  def discuz_thread_url
+    if discuz_tid
+      "/bbs/viewthread.php?tid=#{discuz_tid}"
+    end
+  end
+
   private
 
   def create_symbolic_link

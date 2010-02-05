@@ -30,6 +30,12 @@ module ApplicationHelper
     player_html(name, url, is_winner)
   end
 
+  def discuz_thread_html(upload)
+    if upload.discuz_tid
+      "<a href='#{upload.discuz_thread_url}' target='_new'>#{t('discuz.open_thread')}</a>"
+    end
+  end
+
   def view_game_html(game)
     if game.primary_upload_id
       "<a target='_new#{rand(1000)}' href='#{upload_url(game.primary_upload_id)}'>#{t('form.view_button')}</a>"

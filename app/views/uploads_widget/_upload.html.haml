@@ -1,27 +1,21 @@
 %tr{:class => "record " + (upload_counter%2 == 0 ? "even-record":"")}
   %td= upload.game.created_at
   %td
-    = upload.description
-    &nbsp;
+    = "#{h upload.description}&nbsp;"
   = black_player_html(upload.game)
   = white_player_html(upload.game)
   %td
-    = upload.game.handicap_str
-    &nbsp;
+    = "#{upload.game.handicap_str}&nbsp;"
   %td
-    = upload.game.komi_str
-    &nbsp;
+    = "#{upload.game.komi_str}&nbsp;"
   %td
-    = upload.game.moves
-    = "&nbsp;" if upload.game.moves.blank?
+    = "#{upload.game.moves}&nbsp;"
   %td
-    = upload.game.result
-    = "&nbsp;" if upload.game.result.blank?
+    = "#{h upload.game.result}&nbsp;"
   %td
-    = upload.game.played_at_raw
-    &nbsp;
+    = "#{upload.game.played_at_raw}&nbsp;"
   %td
-    = upload.game.place
-    &nbsp;
+    = "#{h upload.game.place}&nbsp;"
   %td.actions
     %a{:target => "_new#{rand(1000)}", :href => upload_url(upload)}= t('form.view_button')
+    = discuz_thread_html(upload)

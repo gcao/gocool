@@ -1,26 +1,20 @@
 %tr{:class => "record " + (game_counter%2 == 0 ? "even-record":"")}
   %td
-    = game.name
-    &nbsp;
+    = "#{h game.name}&nbsp;"
   = black_player_html(game)
   = white_player_html(game)
   %td
-    = game.handicap_str
-    &nbsp;
+    = "#{h game.handicap_str}&nbsp;"
   %td
-    = game.komi_str
-    &nbsp;
+    = "#{h game.komi_str}&nbsp;"
   %td
-    = game.moves
-    = "&nbsp;" if game.moves.blank?
+    = "#{game.moves}&nbsp;"
   %td
-    = game.result
-    &nbsp;
+    = "#{h game.result}&nbsp;"
   %td
-    = game.played_at_raw
-    &nbsp;
+    = "#{h game.played_at_raw}&nbsp;"
   %td
-    = game.place
-    &nbsp;
+    = "#{h game.place}&nbsp;"
   %td.actions
     = view_game_html(game)
+    = discuz_thread_html(game.primary_source)
