@@ -16,7 +16,11 @@ class Upload < ActiveRecord::Base
   }
 
   named_scope :with_description, lambda { |description|
-    {:conditions => ["uploads.description like ?", "%#{description}%"]}
+    if description.blank?
+      {}
+    else
+      {:conditions => ["uploads.description like ?", "%#{description.strip}%"]}
+    end
   }
   
   named_scope :recent, :order => 'created_at DESC'
@@ -155,8 +159,6 @@ class Upload < ActiveRecord::Base
     if contains_not_recognizable_chars?(file_encoding)
       %x(cp #{self.file.path} #{self.raw_file_path})
 
-#      convert_cmd = "#{ENV['ICONV_PATH']} -f gb18030 #{self.file.path} > #{self.file.path}.tmp"
-#      %x(#{convert_cmd} && cp #{self.file.path}.tmp #{self.file.path} && rm #{self.file.path}.tmp)
       contents = File.open(self.file.path).read
       output = Iconv.conv('utf8', 'gb18030', contents)
       File.open(self.file.path, 'w') do |file|

@@ -1133,47 +1133,68 @@ div.digg_pagination {
 .no-margin {
   margin: 0 !important; }
 
-/* line 7, ../../../app/stylesheets/partials/_app.sass */
+/* line 8, ../../../app/stylesheets/partials/_app.sass */
+body.bp hr.space0 {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: medium none;
+  clear: both;
+  color: #FFFFFF;
+  float: none;
+  height: 0;
+  margin: 0;
+  width: 100%; }
+/* line 18, ../../../app/stylesheets/partials/_app.sass */
+body.bp hr.space5 {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: medium none;
+  clear: both;
+  color: #FFFFFF;
+  float: none;
+  height: 5px;
+  margin: 0;
+  width: 100%; }
+
+/* line 28, ../../../app/stylesheets/partials/_app.sass */
 span.note {
   font-style: italic;
   color: #666666; }
 
-/* line 11, ../../../app/stylesheets/partials/_app.sass */
+/* line 32, ../../../app/stylesheets/partials/_app.sass */
 .sgf_good {
   color: #008800; }
 
-/* line 14, ../../../app/stylesheets/partials/_app.sass */
+/* line 35, ../../../app/stylesheets/partials/_app.sass */
 .sgf_bad {
   background: #000;
   color: red;
   font-weight: bold;
   padding: 0 4px; }
 
-/* line 20, ../../../app/stylesheets/partials/_app.sass */
+/* line 41, ../../../app/stylesheets/partials/_app.sass */
 .sgf_rest {
   color: #888888; }
 
-/* line 23, ../../../app/stylesheets/partials/_app.sass */
+/* line 44, ../../../app/stylesheets/partials/_app.sass */
 .vdError {
   color: red;
   font-size: small; }
 
-/* line 27, ../../../app/stylesheets/partials/_app.sass */
+/* line 48, ../../../app/stylesheets/partials/_app.sass */
 table .records tr.record td.winner {
   background: #bfb; }
 
-/* line 30, ../../../app/stylesheets/partials/_app.sass */
+/* line 51, ../../../app/stylesheets/partials/_app.sass */
 table#games_search_form, table#pairs_search_form {
   width: auto; }
 
-/* line 33, ../../../app/stylesheets/partials/_app.sass */
+/* line 54, ../../../app/stylesheets/partials/_app.sass */
 table#games_search_form input[type='text'], table#pairs_search_form input[type='text'] {
   width: 150px; }
 
-/* line 36, ../../../app/stylesheets/partials/_app.sass */
+/* line 57, ../../../app/stylesheets/partials/_app.sass */
 table#games_search_form label, table#pairs_search_form label {
   position: relative; }
-  /* line 39, ../../../app/stylesheets/partials/_app.sass */
+  /* line 60, ../../../app/stylesheets/partials/_app.sass */
   table#games_search_form label em.msg, table#pairs_search_form label em.msg {
     position: absolute;
     text-align: right;
@@ -1185,7 +1206,7 @@ table#games_search_form label, table#pairs_search_form label {
     line-height: 2.5;
     color: #aaa; }
 
-/* line 50, ../../../app/stylesheets/partials/_app.sass */
+/* line 71, ../../../app/stylesheets/partials/_app.sass */
 #cursor {
   background-color: lightyellow;
   border: 1px solid black;
@@ -1197,16 +1218,21 @@ table#games_search_form label, table#pairs_search_form label {
   width: 150px;
   z-index: 100; }
 
-/* line 61, ../../../app/stylesheets/partials/_app.sass */
+/* line 82, ../../../app/stylesheets/partials/_app.sass */
 #pointer {
   left: -300px;
   position: absolute;
   visibility: hidden;
   z-index: 101; }
 
-/* line 68, ../../../app/stylesheets/partials/_app.sass */
+/* line 89, ../../../app/stylesheets/partials/_app.sass */
 #pairs_widget_container .platform_name {
   font-style: italic; }
+
+/* line 92, ../../../app/stylesheets/partials/_app.sass */
+.header_with_link {
+  width: 100% !important;
+  height: 38px; }
 
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
