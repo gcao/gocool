@@ -132,7 +132,7 @@ zh_cn:
     black_player: "黑方"
     white_player: "白方"
     handicap: "让子"
-    komi: "贴子/目"
+    komi: "贴目"
     moves: "步数"
     result: "结果"
     play_time: "对局时间"

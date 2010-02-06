@@ -1,6 +1,6 @@
 %h1= @page_header || t('players.page_header')
 
--form_remote_tag :url => url_for(:controller => 'players', :action => 'search'), :update => 'players_result', :method => :get, :html => {:class => 'bp'} do
+-form_tag url_for(:controller => 'players', :action => 'search'), :id => 'players_search_form', :class => 'bp', :method => 'get' do
   .span-24
     %span
       %label(for="player_platform")
@@ -23,12 +23,17 @@
 
 - content_for :footer do      
   :javascript
-    jQuery(document).ready(function($) {
-      $('div.pagination a').livequery('click', function() {
-        $('#players_result').load(this.href);
-        return false;
-      });
-      jQuery('#name_label, #name').mouseover(function(){
-        mousetip("#{t('shared.username_supports_wildcards')}");
-      }).mouseout(hidemousetip);
+    $('#players_search_form').submit(function(){
+      $.get('#{url_for(:controller => 'players', :action => 'search')}',
+        {name: $('#name').val(), platform: $('#platform').val()}, function(data){
+          $('#players_result_container').html(data);
+        });
+      return false;
     });
+    $('div.pagination a').livequery('click', function() {
+      $('#players_result').load(this.href);
+      return false;
+    });
+    jQuery('#name_label, #name').mouseover(function(){
+      mousetip("#{t('shared.username_supports_wildcards')}");
+    }).mouseout(hidemousetip);
