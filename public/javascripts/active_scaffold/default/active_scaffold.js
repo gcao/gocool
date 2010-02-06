@@ -314,6 +314,10 @@ ActiveScaffold.Actions.Record.prototype = Object.extend(new ActiveScaffold.Actio
   instantiate_link: function(link) {
     var l = new ActiveScaffold.ActionLink.Record(link, this.target, this.loading_indicator);
     l.refresh_url = this.options.refresh_url;
+    if (link.hasClassName('delete')) {
+      l.url = l.url.replace(/\/delete(\?.*)?$/, '$1');
+      l.url = l.url.replace(/\/delete\/(.*)/, '/destroy/$1');
+    }
     if (l.position) l.url = l.url.append_params({adapter: '_list_inline_adapter'});
     l.set = this;
     return l;
@@ -426,5 +430,88 @@ ActiveScaffold.ActionLink.Table.prototype = Object.extend(new ActiveScaffold.Act
   close_handler: function(event) {
     this.close();
     if (event) Event.stop(event);
+  }
+});
+
+ActiveScaffold.InPlaceEditor = Class.create(Ajax.InPlaceEditor, {
+  setFieldFromAjax: function(url, options) {
+    this._controls.editor.remove();
+    new Ajax.Request(url, {
+      method: 'get',
+      onComplete: function(response) {
+        this._form.insert({top: response.responseText});
+        var fld = this._form.findFirstElement();
+        fld.name = this.options.paramName;
+        fld.className = 'editor_field';
+        if (this.options.submitOnBlur)
+          fld.onblur = this._boundSubmitHandler;
+        this._controls.editor = fld;
+      }.bind(this)
+    });
+  },
+
+  clonePatternField: function() {
+    var patternNodes = this.getPatternNodes(this.options.inplacePatternSelector);
+    if (patternNodes.editNode == null) {
+      alert('did not find any matching node for ' + this.options.editFieldSelector);
+      return;
+    }
+
+    var fld = patternNodes.editNode.cloneNode(true);
+    if (fld.id.length > 0) fld.id += this.options.nodeIdSuffix;
+    fld.name = this.options.paramName;
+    fld.className = 'editor_field';
+    this.setValue(fld, this._controls.editor.value);
+    if (this.options.submitOnBlur)
+      fld.onblur = this._boundSubmitHandler;
+    this._controls.editor.remove();
+    this._controls.editor = fld;
+    this._form.appendChild(this._controls.editor);
+
+    $A(patternNodes.additionalNodes).each(function(node) {
+      var patternNode = node.cloneNode(true);
+      if (patternNode.id.length > 0) {
+        patternNode.id = patternNode.id + this.options.nodeIdSuffix;
+      }
+      this._form.appendChild(patternNode);
+    }.bind(this));
+  },
+  
+  getPatternNodes: function(inplacePatternSelector) {
+    var nodes = {editNode: null, additionalNodes: []};
+    var selectedNodes = $$(inplacePatternSelector);
+    var firstNode = selectedNodes.first();
+    
+    if (typeof(firstNode) !== 'undefined') {
+      // AS inplace_edit_control_container -> we have to select all child nodes
+      // Workaround for ie which does not support css > selector
+      if (firstNode.className.indexOf('as_inplace_pattern') !== -1) {
+        selectedNodes = firstNode.childElements();
+      }
+      nodes.editNode = selectedNodes.first();
+      selectedNodes.shift();
+      nodes.additionalNodes = selectedNodes;
+    }
+    return nodes;
+  },
+  
+  setValue: function(editField, textValue) {
+    var function_name = 'setValueFor' + editField.nodeName.toLowerCase();
+    if (typeof(this[function_name]) == 'function') {
+      this[function_name](editField, textValue);
+    } else {
+      editField.value = textValue;
+    }
+  },
+  
+  setValueForselect: function(editField, textValue) {
+    var len = editField.options.length;
+    var i = 0;
+    while (i < len && editField.options[i].text != textValue) {
+      i++;
+    }
+    if (i < len) {
+      editField.value = editField.options[i].value
+    }
   }
 });
