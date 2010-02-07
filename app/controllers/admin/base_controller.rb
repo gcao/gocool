@@ -1,9 +1,5 @@
 class Admin::BaseController < ApplicationController
   layout 'admin'
 
-#  before_filter :set_locale
-#
-#  def set_locale
-#    I18n.locale = 'en'
-#  end
+  before_filter lambda{ raise 'NOT ENABLED' if RAILS_ENV != 'development' }
 end

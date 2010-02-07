@@ -60,6 +60,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'misc/:action/:id', :controller => 'misc'
 
   map.namespace :admin do |admin|
+    admin.resources :players, :active_scaffold => true
+    admin.resources :online_players, :active_scaffold => true
     admin.resources :games, :active_scaffold => true
     admin.resources :gaming_platforms, :active_scaffold => true
   end
