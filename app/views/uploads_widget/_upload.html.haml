@@ -2,20 +2,20 @@
   %td= upload.game.created_at
   %td
     = "#{h upload.description}&nbsp;"
-  = black_player_html(upload.game)
-  = white_player_html(upload.game)
+  =black_player_html(upload.game)
+  =white_player_html(upload.game)
   %td
-    = "#{upload.game.handicap_str}&nbsp;"
+    = "#{h upload.game.handicap_str}&nbsp;"
   %td
-    = "#{upload.game.komi_str}&nbsp;"
+    = "#{h upload.game.komi_str}&nbsp;"
   %td
     = "#{upload.game.moves}&nbsp;"
   %td
     = "#{h upload.game.result}&nbsp;"
   %td
-    = "#{upload.game.played_at_raw}&nbsp;"
+    = "#{h upload.game.played_at_raw}&nbsp;"
   %td
     = "#{h upload.game.place}&nbsp;"
   %td.actions
     %a{:target => "_new#{rand(1000)}", :href => upload_url(upload)}= t('form.view_button')
-    = discuz_thread_html(upload)
+    =discuz_thread_html(upload)

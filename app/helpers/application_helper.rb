@@ -89,7 +89,7 @@ module ApplicationHelper
 
   def player_html name, url, is_winner
     css_class = "winner" if is_winner
-    html = name
+    html = h(name)
     html = "<a href='#{url}'>#{html}</a>" if url
     "<td class='#{css_class}'>#{html}</td>"
   end

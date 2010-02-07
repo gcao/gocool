@@ -1,9 +1,9 @@
 %h2
   - if @online
     %span #{@pair.player.gaming_platform.name} &nbsp;
-  #{@pair.player.name} 对 #{@pair.opponent.name}
+  #{h @pair.player.name} 对 #{h @pair.opponent.name}
 
-%p= "共有 #{@pair.games} 盘对局，其中#{@pair.player.name}胜 #{@pair.games_won} 局，#{@pair.opponent.name}胜 #{@pair.games_lost} 局。"
+%p= "共有 #{@pair.games} 盘对局，其中#{h @pair.player.name}胜 #{@pair.games_won} 局，#{h @pair.opponent.name}胜 #{@pair.games_lost} 局。"
 
 #games_container
   = render_games_widget @games

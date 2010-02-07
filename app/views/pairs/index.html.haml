@@ -12,12 +12,12 @@
           %span
             %label(for="platform")
               = t('games.platform_label')
-            =gaming_platforms_select 'platform', @platform_name
+            =gaming_platforms_select 'platform', h(@platform_name)
         %td
           %label#player1_label(for="player1")
             %em.msg
               = t('pairs.player1_label')
-          =text_field_tag 'player1', @player1_name, :class => 'ac_input'
+          =text_field_tag 'player1', h(@player1_name), :class => 'ac_input'
         %td
           %label#vs_label(for="player2")
             = t('games.vs_label')
@@ -25,7 +25,7 @@
           %label#player2_label(for="player2")
             %em.msg
               = t('pairs.player2_label')
-          =text_field_tag 'player2', @player2_name, :class => 'ac_input'
+          =text_field_tag 'player2', h(@player2_name), :class => 'ac_input'
         %td
           %input{:type => "hidden", :name => "op", :value => "search"}
           =submit_tag t('form.search_button')

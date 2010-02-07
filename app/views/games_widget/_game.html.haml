@@ -1,8 +1,8 @@
 %tr{:class => "record " + (game_counter%2 == 0 ? "even-record":"")}
   %td
     = "#{h game.name}&nbsp;"
-  = black_player_html(game)
-  = white_player_html(game)
+  =black_player_html(game)
+  =white_player_html(game)
   %td
     = "#{h game.handicap_str}&nbsp;"
   %td
