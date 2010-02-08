@@ -15,6 +15,7 @@
     = "#{h game.played_at_raw}&nbsp;"
   %td
     = "#{h game.place}&nbsp;"
+  %td
+    = "#{upload_description_html(game.primary_source)}&nbsp;"
   %td.actions
     = view_game_html(game)
-    = discuz_thread_html(game.primary_source)
