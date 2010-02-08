@@ -31,7 +31,7 @@ module ApplicationHelper
   end
 
   def discuz_thread_html(upload)
-    if upload.discuz_tid
+    if upload.nil_or.discuz_tid
       "<a href='#{upload.discuz_thread_url}' target='_new'>#{t('discuz.open_thread')}</a>"
     end
   end
