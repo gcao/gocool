@@ -24,4 +24,10 @@ class GamingPlatform < ActiveRecord::Base
   def self.eweiqi
     @eweiqi ||= self.find_by_name('??')
   end
+
+  def link_html
+    url = self.url
+    url = "http://" + url unless url =~ /html\:/
+    "<a href='#{url}' target='_new'>#{name}</a>"
+  end
 end

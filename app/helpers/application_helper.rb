@@ -46,10 +46,6 @@ module ApplicationHelper
     end
   end
 
-  def kgs_html
-    "<a target='_kgs' href='http://www.gokgs.com/index.jsp?locale=zh_CN'>KGS</a>"
-  end
-
   def gaming_platforms_select field_name, value = nil
     platforms = GamingPlatform.all.map {|p| [p.name, p.description]}.
             push(["", t("form.select_other")])

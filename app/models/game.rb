@@ -56,10 +56,6 @@ class Game < ActiveRecord::Base
 
   named_scope :sort_by_players, :order => "black_name, white_name"
 
-  def self.kgs
-    gaming_platform_id_is(GamingPlatform.kgs.id)
-  end
-
   def is_online_game?
     not gaming_platform_id.blank?
   end
