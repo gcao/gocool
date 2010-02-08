@@ -5,5 +5,6 @@ class Admin::GamesController < Admin::BaseController
                       :handicap, :komi_raw, :rule_raw, :played_at_raw, :place]
     config.list.columns.remove :gaming_platform_id
     config.update.columns.remove :id, :gaming_platform
+    config.show.columns.remove :gaming_platform
   end
 end
