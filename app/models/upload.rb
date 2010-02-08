@@ -145,12 +145,12 @@ class Upload < ActiveRecord::Base
     file and file.path and file.path.downcase.include?(".sgf")
   end
 
-  DESCRIPTION_PATTERN = /"upload_time"=>"([^"]+)", .*"subject"=>"(.*)", .*:filename=>"([^"]*)"/
+  DESCRIPTION_PATTERN = /"upload_time"=>"([^"]+)", .*"subject"=>"([^"]*)"/
 
   def description
     desc = attributes['description']
     if desc =~ DESCRIPTION_PATTERN
-      "#{$1} #{$2} #{$3}"
+      "#{$1} #{$2}"
     else
       desc
     end
