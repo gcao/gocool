@@ -54,4 +54,5 @@ Rails::Initializer.run do |config|
   config.action_controller.relative_url_root = "/app"
 end
 
+Time.zone = "Beijing"
 require 'open-uri'

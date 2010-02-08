@@ -61,7 +61,7 @@ class Game < ActiveRecord::Base
   end
 
   def is_online_game?
-    gaming_platform_id.blank?
+    not gaming_platform_id.blank?
   end
 
   def black_name_with_rank
