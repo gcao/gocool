@@ -6,6 +6,8 @@ class Game < ActiveRecord::Base
 
   WINNER_BLACK = 1
   WINNER_WHITE = 2
+
+  default_scope :include => [:gaming_platform, :primary_source]
   
   named_scope :by_online_player, lambda {|p|
     {
