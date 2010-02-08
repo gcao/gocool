@@ -157,7 +157,7 @@ class Upload < ActiveRecord::Base
   end
 
   def discuz_tid
-    if description =~ /"tid"=>(\d+),/i
+    if attributes['description'] =~ /"tid"=>(\d+),/i
       $1
     end
   end

@@ -30,9 +30,11 @@ module ApplicationHelper
     player_html(name, url, is_winner)
   end
 
-  def discuz_thread_html(upload)
-    if upload.nil_or.discuz_tid
-      "<a href='#{upload.discuz_thread_url}' target='_new'>#{t('discuz.open_thread')}</a>"
+  def upload_description_html upload
+    if upload.discuz_tid.not_blank? and upload.description.not_nil?
+      "<a href='#{upload.discuz_thread_url}' target='_new'>#{h(upload.description)}</a>"
+    else
+      h upload.description
     end
   end
 
