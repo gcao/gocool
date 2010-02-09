@@ -1,5 +1,5 @@
 %tr{:class => "record " + (upload_counter%2 == 0 ? "even-record":"")}
-  %td= upload.game.created_at.strftime("%Y-%m-%d %I:%M%p")
+  %td= upload.game.created_at.strftime("%Y-%m-%d")
   %td
     = "#{upload_description_html(upload)}&nbsp;"
   =black_player_html(upload.game)

@@ -916,6 +916,650 @@ body.three-col #content {
   * html body.three-col #content {
     overflow-x: hidden; }
 
+/* line 2, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold {
+  margin: 5px 0; }
+  /* line 5, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold form, body.bp .active-scaffold table, body.bp .active-scaffold p, body.bp .active-scaffold div, body.bp .active-scaffold fieldset {
+    margin: 0;
+    padding: 0; }
+  /* line 9, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold table {
+    width: 100%;
+    border-collapse: separate; }
+  /* line 13, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold a {
+    color: #06c;
+    text-decoration: none; }
+    /* line 17, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold a:visited {
+      color: #06c;
+      text-decoration: none; }
+    /* line 21, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold a.disabled {
+      color: #999; }
+    /* line 24, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold a:hover {
+      background-color: #ff8; }
+  /* line 27, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .clear-fix {
+    clear: both; }
+/* line 31, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp noscript.active-scaffold {
+  border-left: solid 5px #f66;
+  background-color: #fbb;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 5px 20px 5px 5px;
+  color: #333; }
+/* line 40, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-header {
+  position: relative; }
+/* line 44, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold-header {
+  background-color: #005CB8; }
+/* line 48, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-header h2 {
+  padding: 2px 0px;
+  margin: 0;
+  color: #555;
+  font: bold 160% arial, sans-serif; }
+/* line 55, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold-header h2 {
+  color: #fff;
+  padding: 2px 5px 4px 5px; }
+/* line 60, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-header div.actions a {
+  float: right;
+  font: bold 14px arial;
+  letter-spacing: -1px;
+  text-decoration: none;
+  padding: 1px 2px;
+  white-space: nowrap;
+  margin-left: 5px;
+  background-position: 1px 50%;
+  background-repeat: no-repeat; }
+/* line 72, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .view .active-scaffold-header div.actions a {
+  float: left; }
+/* line 76, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold-header div.actions a {
+  color: #fff; }
+/* line 80, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-header div.actions a.disabled {
+  color: #666;
+  opacity: 0.5; }
+/* line 85, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold-header div.actions a.disabled {
+  color: #fff;
+  opacity: 0.5; }
+/* line 91, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-header div.actions a.new, body.bp .active-scaffold-header div.actions a.new_existing, body.bp .active-scaffold-header div.actions a.show_search {
+  padding-left: 19px;
+  background-position: 1px 50%;
+  background-repeat: no-repeat; }
+/* line 96, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-header div.actions a.new, body.bp .active-scaffold-header div.actions a.new_existing {
+  background-image: url(../../../images/active_scaffold/default/add.gif); }
+/* line 99, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-header div.actions a.show_search {
+  background-image: url(../../../images/active_scaffold/default/magnifier.png); }
+/* line 103, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold-header div.actions a:hover {
+  background-color: #378CDF; }
+/* line 107, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-header div.actions {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  text-align: right; }
+  /* line 113, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold-header div.actions a.disabled:hover {
+    background-color: transparent;
+    cursor: default; }
+/* line 119, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold th {
+  background-color: #555;
+  text-align: left; }
+  /* line 123, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold th a, body.bp .active-scaffold th p {
+    font: bold 11px arial, sans-serif;
+    display: block;
+    background-color: #555; }
+  /* line 128, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold th a {
+    color: #fff;
+    padding: 2px 15px 2px 5px; }
+    /* line 132, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold th a:visited {
+      color: #fff;
+      padding: 2px 15px 2px 5px; }
+  /* line 136, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold th p {
+    color: #eee;
+    padding: 2px 5px; }
+  /* line 140, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold th a:hover {
+    background-color: #000;
+    color: #ff8; }
+  /* line 144, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold th.sorted {
+    background-color: #333; }
+  /* line 147, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold th.asc a {
+    background: #333 url(../../../images/active_scaffold/default/arrow_up.gif) right 50% no-repeat; }
+    /* line 150, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold th.asc a:hover {
+      background: #333 url(../../../images/active_scaffold/default/arrow_up.gif) right 50% no-repeat; }
+  /* line 153, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold th.desc a {
+    background: #333 url(../../../images/active_scaffold/default/arrow_down.gif) right 50% no-repeat; }
+    /* line 156, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold th.desc a:hover {
+      background: #333 url(../../../images/active_scaffold/default/arrow_down.gif) right 50% no-repeat; }
+  /* line 159, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold th.loading a {
+    background: #333 url(../../../images/active_scaffold/default/indicator-small.gif) right 50% no-repeat; }
+    /* line 162, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold th.loading a:hover {
+      background: #333 url(../../../images/active_scaffold/default/indicator-small.gif) right 50% no-repeat; }
+/* line 166, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold tr.record td {
+  padding: 5px 4px;
+  color: #333;
+  font-family: Verdana, sans-serif;
+  font-size: 11px;
+  background-color: #E6F2FF;
+  border-bottom: solid 1px #C5DBF7;
+  border-left: solid 1px #C5DBF7; }
+/* line 175, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold tr.even-record td {
+  background-color: #fff;
+  border-left: solid 1px #ddd; }
+/* line 179, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold tr.record td.sorted {
+  background-color: #B9DCFF;
+  border-bottom: solid 1px #AFD0F5; }
+/* line 183, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold tr.even-record td.sorted {
+  background-color: #E6F2FF;
+  border-bottom: solid 1px #AFD0F5; }
+/* line 187, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold tbody.records td.empty {
+  color: #999;
+  text-align: center; }
+/* line 191, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold td.numeric {
+  text-align: right; }
+/* line 195, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-calculations td {
+  text-align: right; }
+/* line 200, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold tr.record td.actions {
+  border-right: solid 1px #ccc;
+  padding: 0;
+  min-width: 1%; }
+  /* line 205, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold tr.record td.actions table {
+    float: right;
+    width: auto;
+    margin-right: 5px; }
+    /* line 210, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold tr.record td.actions table td {
+      border: none;
+      text-align: right;
+      padding: 0 2px; }
+  /* line 215, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold tr.record td.actions a {
+    font: bold 11px verdana, sans-serif;
+    letter-spacing: -1px;
+    padding: 2px;
+    margin: 0 2px;
+    line-height: 16px;
+    white-space: nowrap; }
+/* line 223, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .view {
+  background-color: #DAFFCD;
+  padding: 4px;
+  border: solid 1px #7FcF00; }
+/* line 228, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold tbody.records td.inline-adapter-cell .view {
+  border-top: none; }
+/* line 231, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .before-header td.inline-adapter-cell .view {
+  border-bottom: none; }
+/* line 234, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold a.inline-adapter-close {
+  float: right;
+  text-indent: -4000px;
+  width: 16px;
+  height: 17px;
+  background: url(../../../images/active_scaffold/default/close.gif) 0 0 no-repeat; }
+/* line 243, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold .active-scaffold-header, body.bp .blue-theme .active-scaffold .active-scaffold-footer {
+  background-color: #1F7F00;
+  background: transparent; }
+/* line 248, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .active-scaffold .active-scaffold-header {
+  margin-right: 15px; }
+  /* line 251, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .active-scaffold .active-scaffold-header h2 {
+    font-size: 12px;
+    font-weight: bold; }
+/* line 256, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold .active-scaffold-header h2 {
+  color: #444; }
+/* line 261, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .active-scaffold .active-scaffold-footer {
+  color: #444; }
+/* line 264, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .active-scaffold .active-scaffold-header div.actions {
+  top: 0px;
+  right: 0px; }
+  /* line 268, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .active-scaffold .active-scaffold-header div.actions a {
+    font: bold 11px verdana, sans-serif;
+    padding: 0 2px 1px 17px; }
+/* line 273, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold .active-scaffold-header div.actions a {
+  color: #06c; }
+  /* line 276, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .blue-theme .active-scaffold .active-scaffold-header div.actions a:visited {
+    color: #06c; }
+  /* line 279, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .blue-theme .active-scaffold .active-scaffold-header div.actions a:hover {
+    background-color: #ff8; }
+/* line 284, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .active-scaffold td {
+  background-color: #ECFFE7;
+  border-bottom: solid 1px #CDF7C5;
+  border-left: solid 1px #CDF7C5; }
+  /* line 289, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .active-scaffold td.inline-adapter-cell {
+    background-color: #FFFFBB;
+    padding: 4px;
+    border: solid 1px #DDDF37;
+    border-top: none; }
+/* line 295, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .active-scaffold .active-scaffold-footer {
+  font-size: 11px; }
+/* line 299, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-calculations td {
+  background-color: #eee;
+  border-top: 2px solid #005CB8;
+  font: bold 12px arial, sans-serif; }
+/* line 305, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .active-scaffold-footer {
+  padding: 3px 0px 2px 0px;
+  border-bottom: none;
+  font: bold 12px arial, sans-serif; }
+/* line 311, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold-footer {
+  background-color: #005CB8;
+  color: #ccc; }
+/* line 316, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-footer .active-scaffold-pagination {
+  float: right;
+  white-space: nowrap;
+  margin-right: 5px; }
+/* line 322, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold-footer .active-scaffold-records {
+  margin-left: 5px; }
+/* line 326, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-footer a {
+  text-decoration: none;
+  letter-spacing: 0;
+  padding: 0 2px;
+  margin: 0 -2px;
+  font: bold 12px arial, sans-serif; }
+/* line 334, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .blue-theme .active-scaffold-footer a {
+  color: #fff; }
+  /* line 337, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .blue-theme .active-scaffold-footer a:visited {
+    color: #fff; }
+  /* line 340, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .blue-theme .active-scaffold-footer a:hover {
+    background-color: #378CDF; }
+/* line 345, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-footer .next {
+  margin-left: 0;
+  padding-left: 5px;
+  border-left: solid 1px #ccc; }
+/* line 350, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-footer .previous {
+  margin-right: 0;
+  padding-right: 5px;
+  border-right: solid 1px #ccc; }
+/* line 357, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .messages-container, body.bp .active-scaffold .active-scaffold .messages-container {
+  padding: 0;
+  margin: 0 7px;
+  border: none; }
+/* line 362, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .empty-message, body.bp .active-scaffold .filtered-message {
+  background-color: #e8e8e8;
+  padding: 4px;
+  text-align: center;
+  color: #666; }
+/* line 368, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .message {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 5px 20px 5px 5px;
+  color: #333;
+  position: relative;
+  margin: 2px 7px;
+  line-height: 12px; }
+  /* line 377, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .message a {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    padding: 0;
+    font: bold 11px verdana, sans-serif;
+    letter-spacing: -1px; }
+/* line 385, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .messages-container .message {
+  margin: 0; }
+/* line 388, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .error-message {
+  border-left: solid 5px #f66;
+  background-color: #fbb; }
+/* line 392, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .warning-message {
+  border-left: solid 5px #ff6;
+  background-color: #ffb; }
+/* line 396, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .info-message {
+  border-left: solid 5px #66f;
+  background-color: #bbf; }
+/* line 400, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .errorExplanation {
+  background-color: #fcc;
+  margin: 2px 0;
+  border: solid 1px #f66; }
+/* line 405, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold fieldset {
+  clear: both; }
+/* line 409, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .errorExplanation h2 {
+  padding: 2px 5px;
+  color: #333;
+  font-size: 11px;
+  margin: 0;
+  letter-spacing: 0;
+  font-family: Verdana;
+  background-color: #f66; }
+/* line 418, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .errorExplanation ul {
+  margin: 0;
+  padding: 0 2px 4px 25px;
+  list-style: disc; }
+/* line 423, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .errorExplanation p {
+  font-size: 11px;
+  padding: 2px 5px;
+  font-family: Verdana;
+  margin: 0; }
+/* line 429, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .errorExplanation ul li {
+  font: bold 11px verdana;
+  letter-spacing: -1px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent; }
+/* line 436, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .loading-indicator {
+  vertical-align: text-bottom;
+  width: 16px;
+  margin: 0; }
+/* line 441, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .active-scaffold-header .loading-indicator {
+  margin-bottom: 3px; }
+/* line 445, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .show-view dl {
+  margin-left: 5px; }
+/* line 448, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .show-view dt {
+  width: 12em;
+  float: left;
+  clear: left;
+  font: normal 11px verdana, sans-serif;
+  color: #555;
+  line-height: 16px; }
+/* line 456, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .show-view dd {
+  float: left;
+  font: bold 14px arial;
+  padding-left: 5px;
+  margin-bottom: 5px; }
+/* line 462, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .submit {
+  font-weight: bold;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  letter-spacing: 0;
+  margin: 0;
+  margin-top: 5px; }
+/* line 470, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold form p {
+  clear: both; }
+/* line 473, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold fieldset {
+  border: none; }
+/* line 476, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold h4 {
+  padding: 2px;
+  margin: 0;
+  text-transform: none;
+  color: #1F7F00;
+  letter-spacing: -1px;
+  font: bold 16px arial; }
+/* line 484, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold h5 {
+  padding: 2px;
+  margin: 0;
+  text-transform: none;
+  color: #1F7F00;
+  letter-spacing: -1px;
+  font: bold 16px arial;
+  padding: 0;
+  margin: 5px 0 2px 0;
+  font-size: 14px;
+  letter-spacing: 0; }
+/* line 496, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold ol {
+  clear: both;
+  float: none;
+  padding: 2px;
+  margin-left: 5px;
+  list-style: none; }
+/* line 503, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold p.form-footer {
+  clear: both; }
+/* line 506, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold a.cancel, body.bp .active-scaffold p.form-footer a {
+  font: bold 14px arial, sans-serif;
+  letter-spacing: 0; }
+/* line 510, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold li.form-element {
+  clear: both;
+  padding-top: 2px; }
+/* line 514, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold label {
+  font: normal 11px verdana, sans-serif;
+  color: #555; }
+/* line 519, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold li.form-element dt {
+  float: left;
+  width: 12em;
+  padding: 6px 0; }
+/* line 524, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold li.form-element dd {
+  float: left; }
+/* line 527, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .form dd {
+  margin: 0; }
+/* line 530, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .description {
+  color: #999;
+  font-size: 10px;
+  margin-left: 5px; }
+/* line 535, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .required label {
+  font-weight: bold; }
+/* line 538, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold label.example {
+  font-size: 11px;
+  font-family: arial;
+  color: #888; }
+/* line 543, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold input.text-input, body.bp .active-scaffold select {
+  font: bold 16px arial;
+  letter-spacing: -1px;
+  border: solid 1px #1F7F00; }
+/* line 548, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold input.text-input {
+  padding: 2px; }
+/* line 552, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .fieldWithErrors input, body.bp .active-scaffold .fieldWithErrors textarea, body.bp .active-scaffold .fieldWithErrors select {
+  border: solid 1px #f00; }
+/* line 555, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold select {
+  padding: 1px; }
+/* line 558, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold input.example {
+  color: #aaa; }
+/* line 561, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold select:focus, body.bp .active-scaffold input.text-input:focus {
+  background-color: #ffc; }
+/* line 564, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold textarea {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  padding: 1px;
+  border: solid 1px #1F7F00; }
+/* line 570, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .checkbox-list {
+  padding-left: 0px; }
+  /* line 573, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .checkbox-list li {
+    padding-right: 5px;
+    display: inline; }
+    /* line 577, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold .checkbox-list li label {
+      padding: 0 0 0 2px; }
+/* line 580, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .draggable-list {
+  float: left;
+  width: 300px;
+  margin-right: 15px;
+  min-height: 30px;
+  max-height: 100px;
+  overflow: auto;
+  background-color: #FFFF88; }
+  /* line 589, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .draggable-list.hover {
+    opacity: 0.5; }
+  /* line 592, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .draggable-list.selected {
+    background-color: #7FCF00; }
+  /* line 595, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .draggable-list li {
+    display: block; }
+  /* line 598, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .draggable-list input {
+    display: none; }
+/* line 601, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold li.sub-section {
+  clear: left;
+  padding: 5px 0; }
+/* line 605, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form {
+  float: left;
+  clear: left;
+  padding: 5px 0;
+  padding-left: 5px; }
+  /* line 611, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .sub-form h5 {
+    margin-left: -5px; }
+  /* line 614, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .sub-form table {
+    width: auto;
+    background: none; }
+    /* line 618, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold .sub-form table td {
+      width: auto;
+      background: none; }
+    /* line 622, ../../../app/stylesheets/partials/_activescaffold.sass */
+    body.bp .active-scaffold .sub-form table th {
+      font: normal 10px verdana, sans-serif;
+      color: #555;
+      padding: 0 5px 0 1px;
+      background: none; }
+/* line 628, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .horizontal-sub-form td label {
+  display: none; }
+/* line 632, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form .checkbox-list {
+  padding: 0 2px 2px 2px;
+  background-color: #fff;
+  border: solid 1px #1F7F00; }
+  /* line 637, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .sub-form .checkbox-list label {
+    display: block; }
+/* line 640, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form table td {
+  border: none;
+  background-color: transparent;
+  padding: 1px;
+  vertical-align: top;
+  color: #999; }
+/* line 647, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form .actions {
+  vertical-align: middle;
+  background-color: transparent;
+  clear: left; }
+/* line 652, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form .association-record a.destroy {
+  font-weight: bold;
+  display: block;
+  height: 16px;
+  padding: 0;
+  width: 16px;
+  text-indent: -4000px;
+  background: url(../../../images/active_scaffold/default/cross.png) 0 0 no-repeat; }
+/* line 661, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form .locked a.destroy {
+  display: none; }
+/* line 664, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form .association-record a {
+  font: bold 12px arial; }
+/* line 667, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form input.text-input, body.bp .active-scaffold .sub-form select {
+  letter-spacing: 0;
+  font: bold 12px arial; }
+/* line 671, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form .footer-wrapper {
+  margin-top: 3px;
+  margin-right: 10px; }
+/* line 675, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold .sub-form .footer {
+  color: #999;
+  padding: 3px 5px; }
+  /* line 679, ../../../app/stylesheets/partials/_activescaffold.sass */
+  body.bp .active-scaffold .sub-form .footer select, body.bp .active-scaffold .sub-form .footer input {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0; }
+/* line 684, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold a.visibility-toggle {
+  font-size: 100%; }
+/* line 688, ../../../app/stylesheets/partials/_activescaffold.sass */
+body.bp .active-scaffold-found {
+  float: left; }
+
 /* line 1, ../../../app/stylesheets/partials/_jqueryslidemenu.sass */
 div.jqueryslidemenu {
   font: bold 12px Verdana;
@@ -1124,6 +1768,11 @@ div.digg_pagination {
   /* line 94, ../../../app/stylesheets/partials/_pagination.sass */
   .flickr_pagination .next_page {
     margin-left: 1em; }
+
+/* line 2, ../../../app/stylesheets/partials/_activescaffold_extras.sass */
+body.bp .active-scaffold th {
+  color: #FFFFFF;
+  padding: 2px 15px 2px 5px; }
 
 /* line 1, ../../../app/stylesheets/partials/_app.sass */
 #container {
