@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
   before_filter :set_title_and_header
   # before_filter :set_locale
 
+  def is_admin?
+    # @current_user.nil_or.admin?
+    true
+  end
+  helper_method :logged_in?, :is_admin?
+
   protected
   
   def set_title_and_header
@@ -44,8 +50,8 @@ class ApplicationController < ActionController::Base
 
   def authenticate_via_bbs
     login_check
-    if forum_session = request.env['forum_session']
-      Thread.current[:user] = @user = User.find_or_create(:user_type => User::DISCUZ_USER, :external_id => forum_session.uid, :username => forum_session.username)
+    if logged_in?
+      Thread.current[:user] = @current_user = User.find_or_create(:user_type => User::DISCUZ_USER, :external_id => login_session.uid, :username => login_session.username)
     end
   end
 end

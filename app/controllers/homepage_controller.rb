@@ -10,7 +10,7 @@ class HomepageController < ApplicationController
     @games_of_dgs = Game.gaming_platform_id_is(GamingPlatform.dgs.id).count
 
     if logged_in?
-      @my_uploads = Upload.recent.find_all_by_uploader_id(@user.id)
+      @my_uploads = Upload.recent.find_all_by_uploader_id(@current_user.id)
     end
   end
 end
