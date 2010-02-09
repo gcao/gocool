@@ -1,35 +1,39 @@
--# This file is not in use
 !!! transitional
 %html
   %head
     %meta(http-equiv="content-type" content="text/html;charset=UTF-8")
     %title= @page_title
 
-    = stylesheet_link_tag "active_scaffold/default/stylesheet.css"
+    = stylesheet_link_tag 'compiled/discuz.css'
     /[if IE]
-      = stylesheet_link_tag "active_scaffold/default/stylesheet-ie.css"
-    
-    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
-    /[if IE]
-      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+      = stylesheet_link_tag 'compiled/ie.css'
 
     = yield :head
-  %body.bp.three-col
+  %body.bp
+    = render 'discuz/header'
     #container
-      = render "layouts/menu_body"
       %hr.space
+
       = yield
 
-      = include_jquery
-      :javascript
-        var gocool_locale = "#{@locale}";
-        arrowimages.down[1]="/images/down.gif";
-        arrowimages.right[1]="/images/right.gif";
-        jQuery(document).ready(function(){
-          jQuery('#myslidemenu .#{params[:controller]}').addClass('active');
-          jQuery('#locale_#{I18n.locale}').addClass('active');
-        });
+      %hr.space
+      #cursor
+      = image_tag "arrow.gif", :id => "pointer", :alt => "", :width => 0, :height => 0
 
-      = javascript_include_tag "application"
-      = yield :footer
+      #firefox_container(style="display:none")= t('shared.recommend_firefox')
+    = render 'discuz/footer'
+
+    :javascript
+      var controller_name = "#{params[:controller]}";
+    = include_jquery
+    - bundle do
+      <script src="javascripts/jqueryslidemenu.js" type="text/javascript"></script>
+      <script src="javascripts/jquery.autocomplete.js" type="text/javascript"></script>
+      <script src="javascripts/jquery.livequery.js" type="text/javascript"></script>
+      <script src="javascripts/jquery.date_input.js" type="text/javascript"></script>
+      <script src="javascripts/jquery.date_input.zh_CN.js" type="text/javascript"></script>
+      <script src="javascripts/validanguage.js" type="text/javascript"></script>
+      <script src="javascripts/tooltip.js" type="text/javascript"></script>
+      <script src="javascripts/application.js" type="text/javascript"></script>
+      <script src="javascripts/upload.js" type="text/javascript"></script>
+    = yield :footer

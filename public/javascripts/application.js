@@ -1,7 +1,8 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
 jQuery(document).ready(function(){
+  arrowimages.down[1]="/images/down.gif";
+  arrowimages.right[1]="/images/right.gif";
+  jQuery('#myslidemenu .#' + controller_name).addClass('active');
+
   if (!jQuery.browser.mozilla) jQuery('#firefox_container').show();
 
   jQuery("#container input[name=reset]").click(function(){
