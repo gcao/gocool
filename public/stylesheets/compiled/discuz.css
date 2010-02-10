@@ -1000,10 +1000,10 @@ body.bp .active-scaffold-header div.actions a.new, body.bp .active-scaffold-head
   background-repeat: no-repeat; }
 /* line 96, ../../../app/stylesheets/partials/_activescaffold.sass */
 body.bp .active-scaffold-header div.actions a.new, body.bp .active-scaffold-header div.actions a.new_existing {
-  background-image: url(../../../images/active_scaffold/default/add.gif); }
+  background-image: url(../../images/active_scaffold/default/add.gif); }
 /* line 99, ../../../app/stylesheets/partials/_activescaffold.sass */
 body.bp .active-scaffold-header div.actions a.show_search {
-  background-image: url(../../../images/active_scaffold/default/magnifier.png); }
+  background-image: url(../../images/active_scaffold/default/magnifier.png); }
 /* line 103, ../../../app/stylesheets/partials/_activescaffold.sass */
 body.bp .blue-theme .active-scaffold-header div.actions a:hover {
   background-color: #378CDF; }
@@ -1047,22 +1047,22 @@ body.bp .active-scaffold th {
     background-color: #333; }
   /* line 147, ../../../app/stylesheets/partials/_activescaffold.sass */
   body.bp .active-scaffold th.asc a {
-    background: #333 url(../../../images/active_scaffold/default/arrow_up.gif) right 50% no-repeat; }
+    background: #333 url(../../images/active_scaffold/default/arrow_up.gif) right 50% no-repeat; }
     /* line 150, ../../../app/stylesheets/partials/_activescaffold.sass */
     body.bp .active-scaffold th.asc a:hover {
-      background: #333 url(../../../images/active_scaffold/default/arrow_up.gif) right 50% no-repeat; }
+      background: #333 url(../../images/active_scaffold/default/arrow_up.gif) right 50% no-repeat; }
   /* line 153, ../../../app/stylesheets/partials/_activescaffold.sass */
   body.bp .active-scaffold th.desc a {
-    background: #333 url(../../../images/active_scaffold/default/arrow_down.gif) right 50% no-repeat; }
+    background: #333 url(../../images/active_scaffold/default/arrow_down.gif) right 50% no-repeat; }
     /* line 156, ../../../app/stylesheets/partials/_activescaffold.sass */
     body.bp .active-scaffold th.desc a:hover {
-      background: #333 url(../../../images/active_scaffold/default/arrow_down.gif) right 50% no-repeat; }
+      background: #333 url(../../images/active_scaffold/default/arrow_down.gif) right 50% no-repeat; }
   /* line 159, ../../../app/stylesheets/partials/_activescaffold.sass */
   body.bp .active-scaffold th.loading a {
-    background: #333 url(../../../images/active_scaffold/default/indicator-small.gif) right 50% no-repeat; }
+    background: #333 url(../../images/active_scaffold/default/indicator-small.gif) right 50% no-repeat; }
     /* line 162, ../../../app/stylesheets/partials/_activescaffold.sass */
     body.bp .active-scaffold th.loading a:hover {
-      background: #333 url(../../../images/active_scaffold/default/indicator-small.gif) right 50% no-repeat; }
+      background: #333 url(../../images/active_scaffold/default/indicator-small.gif) right 50% no-repeat; }
 /* line 166, ../../../app/stylesheets/partials/_activescaffold.sass */
 body.bp .active-scaffold tr.record td {
   padding: 5px 4px;
@@ -1134,7 +1134,7 @@ body.bp .active-scaffold a.inline-adapter-close {
   text-indent: -4000px;
   width: 16px;
   height: 17px;
-  background: url(../../../images/active_scaffold/default/close.gif) 0 0 no-repeat; }
+  background: url(../../images/active_scaffold/default/close.gif) 0 0 no-repeat; }
 /* line 243, ../../../app/stylesheets/partials/_activescaffold.sass */
 body.bp .blue-theme .active-scaffold .active-scaffold-header, body.bp .blue-theme .active-scaffold .active-scaffold-footer {
   background-color: #1F7F00;
@@ -1529,7 +1529,7 @@ body.bp .active-scaffold .sub-form .association-record a.destroy {
   padding: 0;
   width: 16px;
   text-indent: -4000px;
-  background: url(../../../images/active_scaffold/default/cross.png) 0 0 no-repeat; }
+  background: url(../../images/active_scaffold/default/cross.png) 0 0 no-repeat; }
 /* line 661, ../../../app/stylesheets/partials/_activescaffold.sass */
 body.bp .active-scaffold .sub-form .locked a.destroy {
   display: none; }
@@ -1773,6 +1773,9 @@ div.digg_pagination {
 body.bp .active-scaffold th {
   color: #FFFFFF;
   padding: 2px 15px 2px 5px; }
+/* line 6, ../../../app/stylesheets/partials/_activescaffold_extras.sass */
+body.bp .active-scaffold th, body.bp .active-scaffold td, body.bp .active-scaffold caption {
+  padding: 0; }
 
 /* line 1, ../../../app/stylesheets/partials/_app.sass */
 #container {
