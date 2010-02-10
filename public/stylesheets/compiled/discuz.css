@@ -1769,6 +1769,126 @@ div.digg_pagination {
   .flickr_pagination .next_page {
     margin-left: 1em; }
 
+/* line 1, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select {
+  color: white;
+  border: #777 1px solid;
+  display: block;
+  width: 218px;
+  z-index: 1000; }
+
+/* line 9, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+iframe.ie6_blocker {
+  position: absolute;
+  z-index: 999; }
+
+/* line 15, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select thead th {
+  font-weight: bold;
+  background-color: #aaa;
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
+  color: white !important; }
+/* line 22, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select .cds_buttons {
+  text-align: center;
+  padding: 5px 0px;
+  background-color: #555; }
+/* line 27, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select .cds_footer {
+  background-color: black;
+  padding: 3px;
+  font-size: 12px;
+  text-align: center; }
+/* line 33, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select table {
+  margin: 0px !important;
+  padding: 0px; }
+/* line 37, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select .cds_header {
+  background-color: #ccc;
+  border-bottom: 2px solid #aaa;
+  text-align: center; }
+  /* line 42, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+  .calendar_date_select .cds_header span {
+    font-size: 15px;
+    color: black;
+    font-weight: bold; }
+/* line 47, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select select {
+  font-size: 11px; }
+/* line 51, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select .cds_header a {
+  width: 22px;
+  height: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  color: black !important; }
+  /* line 58, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+  .calendar_date_select .cds_header a:hover {
+    color: white; }
+  /* line 61, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+  .calendar_date_select .cds_header a.prev {
+    float: left; }
+  /* line 64, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+  .calendar_date_select .cds_header a.next {
+    float: right; }
+  /* line 67, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+  .calendar_date_select .cds_header a.close {
+    float: right;
+    display: none; }
+/* line 72, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select .cds_header select.month {
+  width: 90px; }
+/* line 75, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select .cds_header select.year {
+  width: 61px; }
+/* line 78, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select .cds_buttons a {
+  color: white;
+  font-size: 9px; }
+/* line 82, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select td {
+  font-size: 12px;
+  width: 24px;
+  height: 21px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #fff; }
+  /* line 90, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+  .calendar_date_select td.weekend {
+    background-color: #eee;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd; }
+  /* line 95, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+  .calendar_date_select td div {
+    color: #000; }
+    /* line 98, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+    .calendar_date_select td div.other {
+      color: #ccc; }
+  /* line 101, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+  .calendar_date_select td.selected div {
+    color: white; }
+/* line 104, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select tbody td {
+  border-bottom: 1px solid #ddd; }
+/* line 108, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select td.selected {
+  background-color: #777; }
+/* line 111, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select td:hover {
+  background-color: #ccc; }
+/* line 114, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select td.today {
+  border: 1px dashed #999; }
+/* line 117, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.calendar_date_select td.disabled div {
+  color: #e6e6e6; }
+
+/* line 121, ../../../app/stylesheets/partials/_calendar_date_select.sass */
+.fieldWithErrors .calendar_date_select {
+  border: 2px solid red; }
+
 /* line 2, ../../../app/stylesheets/partials/_activescaffold_extras.sass */
 body.bp .active-scaffold th {
   color: #FFFFFF;
