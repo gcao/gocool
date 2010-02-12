@@ -5,13 +5,13 @@ class PlayersController < ApplicationController
   def auto_complete_for_name
     if params[:platform_id].blank?
       find_options = {
-        :conditions => [ "full_name LIKE ?", "%#{params[:name].downcase}%" ],
-        :order => "full_name ASC",
+        :conditions => [ "players.name LIKE ?", "%#{params[:name].downcase}%" ],
+        :order => "players.name ASC",
         :limit => 10 }
 
       @items = Player.find(:all, find_options)
 
-      render :inline => "<%= auto_complete_result @items, 'full_name' %>"
+      render :inline => "<%= auto_complete_result @items, 'name' %>"
     else
       render :text => ""
     end
@@ -31,11 +31,8 @@ class PlayersController < ApplicationController
   def search
     @platform = params[:platform]
     @opponent_name = params[:name]
-    if @platform.blank?
-      @players = Player.name_like(@opponent_name).with_stat
-    else
-      @players = OnlinePlayer.search(@platform, @opponent_name)
-    end
+    @players = Player.search(@platform, @opponent_name).with_stat
+
     if @players.size == 1
       render_player_widget @players.first
     else
@@ -50,16 +47,12 @@ class PlayersController < ApplicationController
     @name = "#{@name}*"
     @platform = params[:platform]
 
-    if @platform.blank?
-      @players = Player.name_like(@name).first(10)
-    else
-      @players = OnlinePlayer.search(@platform, @name).first(10)
-    end
+    @players = Player.search(@platform, @name).first(10)
 
     render :text => players_to_csv(@players)
   end
 
-  def suggest2
+  def suggest_opponents
     @player_name = params[:player]
     render :text => "" and return if @player_name.blank?
 
@@ -67,21 +60,12 @@ class PlayersController < ApplicationController
     @opponent_name = params[:opponent]
     @opponent_name += "%" unless @opponent_name.blank?
 
-    if @platform.blank?
-      @player = Player.full_name_is(@player_name).first
-      render :text => "" and return if @player.blank?
+    @player = Player.search(@platform, @player_name).first
+    render :text => "" and return if @player.blank?
 
-      @pairs = PairStat.player_id_is(@player.id)
-      @pairs = @pairs.opponent_name_like @opponent_name unless @opponent_name.blank?
-      @pairs = @pairs.first(10)
-    else
-      @player = OnlinePlayer.search(@platform, @player_name).first
-      render :text => "" and return if @player.blank?
-
-      @pairs = OnlinePairStat.player_id_is(@player.id)
-      @pairs = @pairs.opponent_name_like @opponent_name unless @opponent_name.blank?
-      @pairs = @pairs.first(10)
-    end
+    @pairs = PairStat.player_id_is(@player.id)
+    @pairs = @pairs.opponent_name_like @opponent_name unless @opponent_name.blank?
+    @pairs = @pairs.first(10)
 
     render :text => pairs_to_csv(@pairs)
   end
@@ -90,14 +74,14 @@ class PlayersController < ApplicationController
 
   def players_to_csv players
     players.map{|player|
-      "#{player.is_a?(Player) ? player.full_name : player.username}|#{player.id}"
+      "#{player.name}|#{player.id}"
     }.join("\n")
   end
 
   def pairs_to_csv pairs
     pairs.map{|pair|
       opponent = pair.opponent
-      "#{opponent.is_a?(Player) ? opponent.full_name : opponent.username}|#{opponent.id}"
+      "#{opponent.name}|#{opponent.id}"
     }.join("\n")
   end
 end

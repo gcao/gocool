@@ -1,29 +1,25 @@
 class Game < ActiveRecord::Base
   belongs_to :gaming_platform
   belongs_to :primary_source, :class_name => 'Upload', :foreign_key => 'primary_upload_id'
+  belongs_to :black_player, :class_name => 'Player', :foreign_key => 'black_id'
+  belongs_to :white_player, :class_name => 'Player', :foreign_key => 'white_id'
 
   WINNER_BLACK = 1
   WINNER_WHITE = 2
 
   default_scope :include => [:gaming_platform, :primary_source]
-  
-  named_scope :by_online_player, lambda {|p|
-    {
-       :conditions => ["gaming_platform_id = ? and (black_id = ? or white_id = ?)", p.gaming_platform_id, p.id, p.id]
-    }
-  }
 
   named_scope :by_player, lambda {|p|
     {
-       :conditions => ["gaming_platform_id is null and (black_id = ? or white_id = ?)", p.id, p.id]
+       :conditions => ["(black_id = ? or white_id = ?)", p.id, p.id]
     }
   }
 
   named_scope :on_platform, lambda { |platform_name|
     if platform_name.blank?
-      { :conditions => "gaming_platform_id is null" }
+      { :conditions => "games.gaming_platform_id is null" }
     elsif platform_name and platform = GamingPlatform.find_by_name(platform_name)
-      { :conditions => ["gaming_platform_id = ?", platform.id] }
+      { :conditions => ["games.gaming_platform_id = ?", platform.id] }
     else
       raise "Platform name is not correct: '#{platform_name}'"
     end
@@ -92,19 +88,7 @@ class Game < ActiveRecord::Base
     self.place          = sgf_game.place
     self.event          = sgf_game.event
     self.description    = sgf_game.comment
-    
-    unless process_online_game
-      process_non_online_game
-    end
-    
-    if self.result =~ /B+/i or (self.result.try(:include?, '黑') and self.result.try(:include?, '胜'))
-      self.winner = WINNER_BLACK
-    elsif self.result =~ /W+/i or (self.result.try(:include?, '白') and self.result.try(:include?, '胜'))
-      self.winner = WINNER_WHITE
-    end
-  end
 
-  def process_online_game
     if self.place =~ /kgs/i
       platform = GamingPlatform.kgs
     elsif self.place =~ /dragongoserver/i
@@ -117,25 +101,20 @@ class Game < ActiveRecord::Base
       platform = GamingPlatform.igs
     elsif self.place =~ /新浪/i
       platform = GamingPlatform.sina
-    else
-      return
     end
 
     self.gaming_platform = platform
-    self.black_id = OnlinePlayer.find_or_create(platform, self.black_name, self.black_rank).id
-    self.white_id = OnlinePlayer.find_or_create(platform, self.white_name, self.white_rank).id
-
-    OnlinePairStat.find_or_create(platform.id, black_id, white_id)
-    OnlinePairStat.find_or_create(platform.id, white_id, black_id)
-    true
-  end
-
-  def process_non_online_game
-    self.black_id = Player.find_or_create(self.black_name, self.black_rank).id
-    self.white_id = Player.find_or_create(self.white_name, self.white_rank).id
+    self.black_id = Player.find_or_create(platform, self.black_name, self.black_rank).id
+    self.white_id = Player.find_or_create(platform, self.white_name, self.white_rank).id
 
     PairStat.find_or_create(black_id, white_id)
     PairStat.find_or_create(white_id, black_id)
+    
+    if self.result =~ /B+/i or (self.result.try(:include?, '黑') and self.result.try(:include?, '胜'))
+      self.winner = WINNER_BLACK
+    elsif self.result =~ /W+/i or (self.result.try(:include?, '白') and self.result.try(:include?, '胜'))
+      self.winner = WINNER_WHITE
+    end
   end
   
   def self.search platform_name, player1, player2

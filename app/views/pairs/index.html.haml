@@ -37,11 +37,11 @@
     = render :partial => "pair"
   - elsif @status == :pair_not_found
     = t('pairs.no_game_between').sub("PLAYER1", @player1_name).gsub("PLAYER2", @player2_name)
-  - elsif @status == :player_not_found
-    :javascript
-      showErrors(#{@errors.to_json});
 
 - content_for :footer do
+  - if @status == :player_not_found
+    :javascript
+      showErrors(#{@errors.to_json});
   :javascript
     jQuery("#platform").change(function(){
       jQuery("#player1, #player2").val("");
@@ -71,7 +71,7 @@
       makeUrl: function(q) {
         var player = jQuery('#player1').val();
 
-        return "#{suggest2_players_path}?platform=" + jQuery("#platform").val() + "&player=" + player + "&opponent=" + q;
+        return "#{suggest_opponents_players_path}?platform=" + jQuery("#platform").val() + "&player=" + player + "&opponent=" + q;
       },
       minChars:0,
       matchSubset:1,

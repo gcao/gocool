@@ -1,5 +1,5 @@
 %h2
-  - if @online
+  - if @pair.player.gaming_platform
     %span #{@pair.player.gaming_platform.name} &nbsp;
   #{h @pair.player.name} 对 #{h @pair.opponent.name}
 

@@ -1,8 +1,8 @@
 %tr{:class => "record " + (opponent_counter%2 == 0 ? "even-record":"")}
   %td
-    %a{:href => url_for_player(opponent.opponent)}=h player_name(opponent.opponent)
+    %a{:href => player_url(opponent.opponent)}=h opponent.opponent.name
   %td= opponent.games
   %td= opponent.games_won
   %td= opponent.games_lost
   %td.actions
-    %a{:href => url_for_pair(opponent)}= t('pairs.pair_info_link')
+    %a{:href => pair_url(opponent)}= t('pairs.pair_info_link')

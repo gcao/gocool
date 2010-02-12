@@ -18,15 +18,15 @@ module ApplicationHelper
   
   def black_player_html(game)
     name      = game.black_name_with_rank
-    url       = url_for_player_id(game.black_id, game.is_online_game?)
     is_winner = game.winner == Game::WINNER_BLACK
+    url       = player_url(game.black_id) if game.black_id
     player_html(name, url, is_winner)
   end
   
   def white_player_html(game)
     name      = game.white_name_with_rank
-    url       = url_for_player_id(game.white_id, game.is_online_game?)
     is_winner = game.winner == Game::WINNER_WHITE
+    url       = player_url(game.white_id) if game.white_id
     player_html(name, url, is_winner)
   end
 
@@ -59,31 +59,11 @@ module ApplicationHelper
     select_tag field_name, options
   end
 
-  def player_name player
-    if player.is_a? Player
-      player.full_name
-    elsif player.is_a? OnlinePlayer
-      player.username
-    else
-      player.to_s
-    end
-  end
-
   def reset_button
     "<input type='button' name='reset', value='#{t('form.reset_button')}'/>"
   end
 
   private
-
-  def url_for_player_id id, is_online_game
-    if id
-      if is_online_game
-        online_player_url(id)
-      else
-        player_url(id)
-      end
-    end
-  end
 
   def player_html name, url, is_winner
     css_class = "winner" if is_winner

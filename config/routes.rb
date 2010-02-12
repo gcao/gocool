@@ -49,10 +49,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :uploads
   map.resources :pasties
-  map.resources :players, :collection => {:search => :get, :suggest => :get, :suggest2 => :get}
+  map.resources :players, :collection => {:search => :get, :suggest => :get, :suggest_opponents => :get}
   map.resources :pairs
-  map.resources :online_pairs
-  map.resources :online_players, :collection => {:search => :get}
+#  map.resources :online_pairs
+#  map.resources :online_players, :collection => {:search => :get}
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "homepage"
@@ -65,7 +65,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :admin do |admin|
     admin.resources :players, :active_scaffold => true
-    admin.resources :online_players, :active_scaffold => true
+#    admin.resources :online_players, :active_scaffold => true
     admin.resources :games, :active_scaffold => true
     admin.resources :gaming_platforms, :active_scaffold => true
   end

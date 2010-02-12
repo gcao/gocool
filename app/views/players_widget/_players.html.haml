@@ -4,8 +4,7 @@
     %table
       %thead
         %tr.header
-          - if @players.first.is_a? OnlinePlayer
-            %th.platform_column= t('players_table.platform')
+          %th.platform_column= t('players_table.platform')
           %th.name_column= t('players_table.name')
           %th.games_column= t('players_table.games')
           %th.won_column= t('players_table.won')
