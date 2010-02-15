@@ -1,0 +1,8 @@
+:javascript
+  var environment = "#{RAILS_ENV}";
+  var controller_name = "#{params[:controller]}";
+  var playerSuggestUrl = "#{suggest_players_path}";
+
+  function logMessage(message) {
+    if (environment == 'development') console.log(message);
+  }

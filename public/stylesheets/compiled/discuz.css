@@ -1421,7 +1421,7 @@ body.bp .active-scaffold input.text-input, body.bp .active-scaffold select {
   border: solid 1px #1F7F00; }
 /* line 548, ../../../app/stylesheets/partials/_activescaffold.sass */
 body.bp .active-scaffold input.text-input {
-  padding: 2px; }
+  padding: 2px 5px; }
 /* line 552, ../../../app/stylesheets/partials/_activescaffold.sass */
 body.bp .active-scaffold .fieldWithErrors input, body.bp .active-scaffold .fieldWithErrors textarea, body.bp .active-scaffold .fieldWithErrors select {
   border: solid 1px #f00; }
@@ -1645,6 +1645,50 @@ div.jqueryslidemenu {
   position: absolute;
   top: 6px;
   right: 5px; }
+
+/* line 1, ../../../app/stylesheets/partials/_jquery.autocomplete.sass */
+.ac_results {
+  padding: 0px;
+  border: 1px solid WindowFrame;
+  background-color: Window;
+  overflow: hidden; }
+  /* line 7, ../../../app/stylesheets/partials/_jquery.autocomplete.sass */
+  .ac_results ul {
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+  /* line 14, ../../../app/stylesheets/partials/_jquery.autocomplete.sass */
+  .ac_results iframe {
+    display: none;
+    display/**/: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: mask();
+    width: 3000px;
+    height: 3000px; }
+  /* line 25, ../../../app/stylesheets/partials/_jquery.autocomplete.sass */
+  .ac_results li {
+    margin: 0px;
+    padding: 2px 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font: menu;
+    font-size: 12px;
+    overflow: hidden; }
+
+/* line 36, ../../../app/stylesheets/partials/_jquery.autocomplete.sass */
+.ac_loading {
+  background: Window url('../images/loading10.gif') right center no-repeat; }
+
+/* line 40, ../../../app/stylesheets/partials/_jquery.autocomplete.sass */
+.ac_over {
+  background-color: Highlight;
+  color: HighlightText; }
 
 /* line 1, ../../../app/stylesheets/partials/_pagination.sass */
 div .pagination {
