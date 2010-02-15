@@ -1,4 +1,6 @@
 class GamingPlatform < ActiveRecord::Base
+  ALL = 999
+
   default_scope :order => 'name'
   
   def self.kgs

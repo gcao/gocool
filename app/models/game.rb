@@ -15,13 +15,13 @@ class Game < ActiveRecord::Base
     }
   }
 
-  named_scope :on_platform, lambda { |platform_name|
-    if platform_name.blank?
+  named_scope :on_platform, lambda { |platform|
+    if platform.blank?
       { :conditions => "games.gaming_platform_id is null" }
-    elsif platform_name and platform = GamingPlatform.find_by_name(platform_name)
-      { :conditions => ["games.gaming_platform_id = ?", platform.id] }
+    elsif platform.to_i == GamingPlatform::ALL
+      {}
     else
-      raise "Platform name is not correct: '#{platform_name}'"
+      { :conditions => ["games.gaming_platform_id = ?", platform] }
     end
   }
 
@@ -117,8 +117,8 @@ class Game < ActiveRecord::Base
     end
   end
   
-  def self.search platform_name, player1, player2
-    self.on_platform(platform_name).played_by(player1, player2).sort_by_players
+  def self.search platform, player1, player2
+    self.on_platform(platform).played_by(player1, player2).sort_by_players
   end
 
   def handicap_str

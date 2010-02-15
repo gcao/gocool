@@ -47,8 +47,8 @@ module ApplicationHelper
   end
 
   def gaming_platforms_select field_name, value = nil
-    platforms = GamingPlatform.all.map {|p| [p.name, p.description]}.
-            push(["", t("form.select_other")])
+    platforms = GamingPlatform.all.map {|p| [p.id, p.description]}.
+            push(["", t("form.select_other")]).unshift([GamingPlatform::ALL.to_s, ""])
     options = platforms.map {|p|
       if (value and p[0] == value) or (value.blank? and p[0].blank?)
         "<option value='#{p[0]}' selected='selected'>#{p[1]}</option>"

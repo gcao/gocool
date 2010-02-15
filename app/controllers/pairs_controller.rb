@@ -1,13 +1,12 @@
 class PairsController < ApplicationController
   def index
-    @platform_name   = params[:platform]
-    @player1_name    = params[:player1]
-    @player2_name    = params[:player2]
+    @platform     = params[:platform]
+    @player1_name = params[:player1]
+    @player2_name = params[:player2]
 
     if params[:op] == 'search'
       @status = :success
 
-      @platform = GamingPlatform.name_is(@platform_name).first
       @player1 = Player.on_platform(@platform).name_is(@player1_name).first
       @player2 = Player.on_platform(@platform).name_is(@player2_name).first
 
