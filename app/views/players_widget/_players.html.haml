@@ -4,11 +4,12 @@
     %table
       %thead
         %tr.header
+          %th.id_column=       "ID"
           %th.platform_column= t('players_table.platform')
-          %th.name_column= t('players_table.name')
-          %th.games_column= t('players_table.games')
-          %th.won_column= t('players_table.won')
-          %th.lost_column= t('players_table.lost')
+          %th.name_column=     t('players_table.name')
+          %th.games_column=    t('players_table.games')
+          %th.won_column=      t('players_table.won')
+          %th.lost_column=     t('players_table.lost')
           %th.actions_column &nbsp;
       %tbody.records
         = render :partial => 'players_widget/player', :collection => @players_for_widget, :as => :player

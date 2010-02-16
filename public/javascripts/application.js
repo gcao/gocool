@@ -10,23 +10,6 @@ jQuery(document).ready(function(){
   });
 });
 
-function changeLocale(locale){
-  if (gocool_locale == locale) return;
-  
-  var localeParam = "locale=" + locale;
-  
-  var queryString = location.search;
-  if (queryString.match(/locale=/)) {
-    queryString = queryString.replace(/locale=[a-z_]+/, localeParam);
-  } else if (queryString.match(/\s*/)){
-    queryString = "?" + localeParam;
-  } else {
-    queryString = queryString.replace('?', '?' + localeParam + '&');
-  }
-  
-  window.location = location.pathname + queryString;
-}
-
 function showError(fieldId, errorMsg) {
   jQuery('#' + fieldId).addClass('failedField');
   var errorMsgId = '#' + fieldId + "_errorMsg";
@@ -40,5 +23,11 @@ function showError(fieldId, errorMsg) {
 function showErrors(errors) {
   jQuery.each(errors, function(i, value){
     showError(value[0], value[1]);
+  });
+}
+
+function deleteGame(gameId) {
+  jQuery.post(gameUrl + "/" + gameId, {
+    _method: 'delete'
   });
 }

@@ -1,4 +1,5 @@
 %tr{:class => "record " + (opponent_counter%2 == 0 ? "even-record":"")}
+  %td= opponent.opponent.id
   %td
     %a{:href => player_url(opponent.opponent)}=h opponent.opponent.name
   %td= opponent.games

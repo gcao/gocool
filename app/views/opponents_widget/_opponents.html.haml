@@ -5,10 +5,11 @@
   %table
     %thead
       %tr.header
-        %th.name_column= t('players_table.opponent')
+        %th.id_column=    "ID"
+        %th.name_column=  t('players_table.opponent')
         %th.games_column= t('players_table.games')
-        %th.won_column= t('players_table.my_won')
-        %th.lost_column= t('players_table.my_lost')
+        %th.won_column=   t('players_table.my_won')
+        %th.lost_column=  t('players_table.my_lost')
         %th.actions_column &nbsp;
     %tbody.records
       = render :partial => 'opponents_widget/opponent', :collection => @opponents_for_widget

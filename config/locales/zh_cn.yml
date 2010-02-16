@@ -3,6 +3,8 @@ zh_cn:
     page_title: "棋人 - 棋谱库"
     name_supports_wildcards: "* 代表任何字符。例如：<br/>cool* = cool开头<br/>go*cool = go开头cool结尾<br/>*99 = 99结尾"
     recommend_firefox: "<span style='color:#999;font-size:150%'>请使用<a href='http://www.mozillaonline.com'><img src='http://sfx-images.mozilla.org/affiliates/Buttons/Firefox3.5/96x31_blue.png' alt='火狐浏览器' border='0' style='vertical-align:middle'/></a>浏览本站。</span>"
+    auth_failure_page_header: "操作失败"
+    operation_not_allowed: "操作失败，请和系统管理员联系。"
   menu:
     home: "首页"
     uploads: "上传对局"
@@ -27,6 +29,7 @@ zh_cn:
     submit_button: "提交"
     reset_button: "清除"
     view_button: "欣赏对局"
+    delete_button: "删除"
     detail_button: "详细信息"
     search_button: "搜索"
     select_all: "全部"
@@ -123,6 +126,7 @@ zh_cn:
     player2_label: "对手"
     player1_required: "必填"
     player1_is_required: "请输入棋手用户名。"
+    confirm_deletion: "你确定要删除第 GAME_ID 号对局吗？"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"

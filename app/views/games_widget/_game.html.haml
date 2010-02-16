@@ -1,4 +1,5 @@
-%tr{:class => "record " + (game_counter%2 == 0 ? "even-record":"")}
+%tr{:id => "game_row_#{game.id}", :class => "record " + (game_counter%2 == 0 ? "even-record":"")}
+  %td= game.id
   %td
     = "#{h game.name}&nbsp;"
   =black_player_html(game)
@@ -19,3 +20,5 @@
     = "#{upload_description_html(game.primary_source)}&nbsp;"
   %td.actions
     = view_game_html(game)
+    - show_if_admin do
+      = link_to_function t('form.delete_button'), "if (confirm(#{t('games.confirm_deletion').gsub('GAME_ID', game.id)})) deleteGame(#{game.id}); return false;"

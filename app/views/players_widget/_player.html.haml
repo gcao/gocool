@@ -1,4 +1,5 @@
 %tr{:class => "record " + (player_counter%2 == 0 ? "even-record":"")}
+  %td= player.id
   %td= player.gaming_platform.nil_or.name
   %td=h player.name
   %td= player.stat.games

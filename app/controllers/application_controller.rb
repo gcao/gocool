@@ -12,25 +12,26 @@ class ApplicationController < ActionController::Base
     before_filter :authenticate_via_bbs
   end
 
+  before_filter :admin_required, :only => [:edit, :update, :delete]
   before_filter :set_title_and_header
-  # before_filter :set_locale
 
   def is_admin?
-    # @current_user.nil_or.admin?
-    true
+     @current_user.nil_or.admin?
   end
   helper_method :logged_in?, :is_admin?
+
+  def admin_required
+    unless is_admin?
+      logger.warn "Unauthorized operation by '#{@current_user.nil_or.username}' from #{user_ip_address}"
+      render 'shared/admin_required'
+    end
+  end
 
   protected
   
   def set_title_and_header
     @page_title = t('shared.page_title') + " - " + t("#{params[:controller]}.page_title")
     @page_header = t("#{params[:controller]}.page_header")
-  end
-  
-  def set_locale
-    I18n.locale = @locale = params[:locale] || cookies[:gocool_locale] || ENV['DEFAULT_LOCALE']
-    cookies[:gocool_locale] = {:value => @locale, :expires => 100.years.from_now }
   end
   
   def send_file file
@@ -54,4 +55,19 @@ class ApplicationController < ActionController::Base
       Thread.current[:user] = @current_user = User.find_or_create(:user_type => User::DISCUZ_USER, :external_id => login_session.uid, :username => login_session.username)
     end
   end
+
+  def user_ip_address
+    @user_ip_address ||= (request.env['HTTP_X_FORWARDED_FOR'].to_s.split(',').first || request.remote_addr)
+  end
+
+  def show_if_admin content = nil
+    if is_admin?
+      if block_given?
+        yield
+      else
+        content
+      end
+    end
+  end
+  helper_method :show_if_admin
 end

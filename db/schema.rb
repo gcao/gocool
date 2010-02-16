@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100210204801) do
+ActiveRecord::Schema.define(:version => 20100216152710) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -198,6 +198,18 @@ ActiveRecord::Schema.define(:version => 20100210204801) do
   end
 
   add_index "players", ["name"], :name => "players_full_name"
+
+  create_table "problems", :force => true do |t|
+    t.string  "name"
+    t.string  "source"
+    t.string  "level"
+    t.integer "start_color"
+    t.string  "result"
+    t.boolean "multiple"
+    t.text    "description"
+    t.integer "source_id"
+    t.integer "solution_source_id"
+  end
 
   create_table "settings", :force => true do |t|
     t.string   "name",                              :null => false
