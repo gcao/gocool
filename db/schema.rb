@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100216152710) do
+ActiveRecord::Schema.define(:version => 20100217140117) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -88,55 +88,6 @@ ActiveRecord::Schema.define(:version => 20100216152710) do
     t.datetime "updated_at"
   end
 
-  create_table "online_pair_stats", :force => true do |t|
-    t.integer  "gaming_platform_id",                 :null => false
-    t.integer  "player_id",                          :null => false
-    t.integer  "opponent_id",                        :null => false
-    t.integer  "games_as_black",      :default => 0
-    t.integer  "games_won_as_black",  :default => 0
-    t.integer  "games_lost_as_black", :default => 0
-    t.integer  "games_as_white",      :default => 0
-    t.integer  "games_won_as_white",  :default => 0
-    t.integer  "games_lost_as_white", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "online_pair_stats", ["opponent_id"], :name => "index_online_pair_stats_on_opponent_id"
-  add_index "online_pair_stats", ["player_id", "opponent_id"], :name => "index_online_pair_stats_on_player_id_and_opponent_id", :unique => true
-  add_index "online_pair_stats", ["player_id"], :name => "index_online_pair_stats_on_player_id"
-
-  create_table "online_player_stats", :force => true do |t|
-    t.integer  "online_player_id",                   :null => false
-    t.integer  "games_as_black",      :default => 0
-    t.integer  "games_won_as_black",  :default => 0
-    t.integer  "games_lost_as_black", :default => 0
-    t.integer  "games_as_white",      :default => 0
-    t.integer  "games_won_as_white",  :default => 0
-    t.integer  "games_lost_as_white", :default => 0
-    t.datetime "first_game_played"
-    t.datetime "last_game_played"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "online_player_stats", ["online_player_id"], :name => "index_online_player_stats_on_online_player_id", :unique => true
-
-  create_table "online_players", :force => true do |t|
-    t.integer  "player_id"
-    t.integer  "gaming_platform_id", :null => false
-    t.string   "username",           :null => false
-    t.string   "rank"
-    t.date     "registered_at"
-    t.text     "description"
-    t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "online_players", ["gaming_platform_id", "username"], :name => "index_online_players_on_gaming_platform_id_and_username"
-  add_index "online_players", ["player_id"], :name => "index_online_players_on_player_id"
-
   create_table "pair_stats", :force => true do |t|
     t.integer  "player_id",                          :null => false
     t.integer  "opponent_id",                        :null => false
@@ -201,14 +152,14 @@ ActiveRecord::Schema.define(:version => 20100216152710) do
 
   create_table "problems", :force => true do |t|
     t.string  "name"
-    t.string  "source"
     t.string  "level"
     t.integer "start_color"
     t.string  "result"
     t.boolean "multiple"
     t.text    "description"
-    t.integer "source_id"
-    t.integer "solution_source_id"
+    t.string  "source"
+    t.integer "upload_id"
+    t.integer "solution_upload_id"
   end
 
   create_table "settings", :force => true do |t|

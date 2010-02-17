@@ -7,6 +7,8 @@ class Player < ActiveRecord::Base
   named_scope :on_platform, lambda {|platform|
     if platform.blank?
       {:conditions => ["players.gaming_platform_id is null"]}
+    elsif platform.is_a? GamingPlatform
+      {:conditions => ["players.gaming_platform_id = ?", platform.id]}
     elsif platform.to_i == GamingPlatform::ALL
       {}
     else
@@ -19,9 +21,10 @@ class Player < ActiveRecord::Base
   named_scope :include, lambda {|associations| {:include => associations} }
 
   def self.find_or_create platform, name, rank
-    player = on_platform(platform.nil_or.id).find_by_name(name)
+    player = on_platform(platform).find_by_name(name)
     unless player
-      player = create!(:gaming_platform_id => platform.nil_or.id, :name => name, :rank => rank)
+      gaming_platform_id = platform.id if platform
+      player = create!(:gaming_platform_id => gaming_platform_id, :name => name, :rank => rank)
       PlayerStat.create!(:player_id => player.id)
     end
     player
