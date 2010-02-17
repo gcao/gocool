@@ -131,9 +131,9 @@ class Game < ActiveRecord::Base
 
   def winner_str
     if winner == WINNER_BLACK
-      I18n.t('games.winner_black')
+      I18n.t('games_widget.winner_black')
     elsif winner == WINNER_WHITE
-      I18n.t('games.winner_white')
+      I18n.t('games_widget.winner_white')
     end
   end
 end
