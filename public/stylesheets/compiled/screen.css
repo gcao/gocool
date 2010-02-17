@@ -1936,7 +1936,17 @@ iframe.ie6_blocker {
 /* line 2, ../../../app/stylesheets/partials/_activescaffold_extras.sass */
 body.bp .active-scaffold th {
   color: #FFFFFF;
-  padding: 2px 15px 2px 5px; }
+  padding: 2px 5px 2px 5px; }
+  /* line 6, ../../../app/stylesheets/partials/_activescaffold_extras.sass */
+  body.bp .active-scaffold th a, body.bp .active-scaffold th a.visited {
+    padding-left: 0px;
+    padding-right: 0px; }
+/* line 10, ../../../app/stylesheets/partials/_activescaffold_extras.sass */
+body.bp .active-scaffold td.numeric {
+  text-align: left; }
+/* line 14, ../../../app/stylesheets/partials/_activescaffold_extras.sass */
+body.bp .active-scaffold tr.inline-adapter td.inline-adapter-cell {
+  padding: 0px; }
 
 /* line 1, ../../../app/stylesheets/partials/_app.sass */
 #container {

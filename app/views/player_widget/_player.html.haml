@@ -1,4 +1,12 @@
-%h1= player_widget_header
+.header_with_link
+  .span-12
+    %h1= player_widget_header
+
+  - show_if_admin do
+    - if @player_for_widget.stat.games == 0
+      = link_to_function t('form.delete_button'), "if (confirm('#{t('players_table.confirm_deletion').gsub('PLAYER_ID', @player_for_widget.id.to_s)}')) deletePlayer(#{@player_for_widget.id}); return false;"
+
+%hr.space0
 
 = render :partial => "player_widget/player_info"
 

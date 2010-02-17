@@ -87,12 +87,6 @@ en_us:
 #    page_header: Players
 #    platform_label: "Gaming platform:"
 #    username_label: "Username:"
-#    online_players:
-#      platform: Gaming Platform
-#      username: Username
-#      games: Games
-#      won: Won
-#      lost: Lost
 #    games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME's games"
 #  games:
 #    page_title: Games

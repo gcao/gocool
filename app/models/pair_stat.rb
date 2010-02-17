@@ -4,7 +4,7 @@ class PairStat < ActiveRecord::Base
   belongs_to :player, :class_name => "Player", :foreign_key => :player_id
   belongs_to :opponent, :class_name => "Player", :foreign_key => :opponent_id
 
-  default_scope :include => 'opponent'
+  default_scope :include => 'opponent', :conditions => ["pair_stats.games > 0"]
 
   named_scope :opponent_name_like, lambda{ |name|
     { :conditions => ["players.name like ?", name] }

@@ -128,4 +128,12 @@ class Game < ActiveRecord::Base
   def komi_str
     self.komi.blank? ? self.komi_raw : self.komi
   end
+
+  def winner_str
+    if winner == WINNER_BLACK
+      I18n.t('games_widget.winner_black')
+    elsif winner == WINNER_WHITE
+      I18n.t('games_widget.winner_white')
+    end
+  end
 end

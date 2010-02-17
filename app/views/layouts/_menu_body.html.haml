@@ -17,17 +17,11 @@
         &nbsp;&nbsp;&nbsp;&nbsp;
       %li.my_uploads
         %a{:href=>my_uploads_url}= t('menu.my_uploads')
+    - if is_admin?
+      %li.admin_players
+        %a{:href=>admin_players_url}= t('menu.admin_players')
+      %li.admin_games
+        %a{:href=>admin_games_url}= t('menu.admin_games')
       -# %li.my_favorites
       -#   %a{:href=>'#'}= t('menu.my_favorites')
-    -# %li
-    -#   %a(href="#")= t('menu.tournaments')
-    -#   %ul
-    -#     %li
-    -#       %a(href="#") Ying's Cup
-    -#     %li
-    -#       %a(href="#") Samsung's Cup
-    -# %li#locale_zh_cn
-    -#   %a(href="javascript:changeLocale('zh_cn')")  中文
-    -# %li#locale_en_us
-    -#   %a(href="javascript:changeLocale('en_us')") EN
   %br(style="clear:left")

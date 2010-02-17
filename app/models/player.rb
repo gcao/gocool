@@ -1,9 +1,8 @@
 class Player < ActiveRecord::Base
   belongs_to :gaming_platform
 
-  has_one :stat, :class_name => 'PlayerStat'
-
-  has_many :opponents, :class_name => "PairStat"
+  has_one :stat, :class_name => 'PlayerStat', :dependent => :destroy
+  has_many :opponents, :class_name => "PairStat", :dependent => :destroy
 
   named_scope :on_platform, lambda {|platform|
     if platform.blank?
@@ -37,5 +36,11 @@ class Player < ActiveRecord::Base
 
   def games
     Game.black_id_or_white_id_is(self.id)
+  end
+
+  def before_destroy
+    ActiveRecord::Base.connection.execute <<-SQL
+      delete from pair_stats where opponent_id = #{self.id}
+    SQL
   end
 end

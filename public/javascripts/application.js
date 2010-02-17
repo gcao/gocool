@@ -32,3 +32,11 @@ function deleteGame(gameId) {
   });
   jQuery('#game_row_' + gameId).remove();
 }
+
+function deletePlayer(playerId) {
+  jQuery.post(playersUrl + "/" + playerId, {
+    _method: 'delete'
+  });
+  jQuery('#player_row_' + playerId).remove();
+}
+

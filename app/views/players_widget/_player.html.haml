@@ -1,4 +1,4 @@
-%tr{:class => "record " + (player_counter%2 == 0 ? "even-record":"")}
+%tr{:id => "player_row_#{player.id}", :class => "record " + (player_counter%2 == 0 ? "even-record":"")}
   %td= player.id
   %td= player.gaming_platform.nil_or.name
   %td=h player.name
@@ -7,3 +7,6 @@
   %td= player.stat.games_lost
   %td.actions
     %a{:href => player_url(player)}= t('form.detail_button')
+    - show_if_admin do
+      - if player.stat.games == 0
+        = link_to_function t('form.delete_button'), "if (confirm('#{t('players_table.confirm_deletion').gsub('PLAYER_ID', player.id.to_s)}')) deletePlayer(#{player.id}); return false;"

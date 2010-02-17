@@ -28,6 +28,11 @@ class PlayersController < ApplicationController
     @opponents = @player.opponents.sort_by_opponent_name
   end
 
+  def destroy
+    Player.destroy(params[:id])
+    render :text => 'SUCCESS'
+  end
+
   def search
     @platform = params[:platform]
     @opponent_name = params[:name]
