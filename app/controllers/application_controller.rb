@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     before_filter :authenticate_via_bbs
   end
 
-  before_filter :admin_required, :only => [:edit, :update, :delete]
+  before_filter :admin_required, :only => [:edit, :update, :destroy]
   before_filter :set_title_and_header
 
   def is_admin?

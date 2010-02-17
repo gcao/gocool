@@ -1937,9 +1937,6 @@ iframe.ie6_blocker {
 body.bp .active-scaffold th {
   color: #FFFFFF;
   padding: 2px 15px 2px 5px; }
-/* line 6, ../../../app/stylesheets/partials/_activescaffold_extras.sass */
-body.bp .active-scaffold th, body.bp .active-scaffold td, body.bp .active-scaffold caption {
-  padding: 0; }
 
 /* line 1, ../../../app/stylesheets/partials/_app.sass */
 #container {

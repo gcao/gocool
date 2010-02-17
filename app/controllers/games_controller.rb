@@ -12,4 +12,9 @@ class GamesController < ApplicationController
       end
     end
   end
+
+  def destroy
+    Game.destroy(params[:id])
+    render :text => 'SUCCESS'
+  end
 end

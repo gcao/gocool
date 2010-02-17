@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   belongs_to :gaming_platform
-  belongs_to :primary_source, :class_name => 'Upload', :foreign_key => 'primary_upload_id'
+  belongs_to :primary_source, :class_name => 'Upload', :foreign_key => 'primary_upload_id', :dependent => :destroy
   belongs_to :black_player, :class_name => 'Player', :foreign_key => 'black_id'
   belongs_to :white_player, :class_name => 'Player', :foreign_key => 'white_id'
 

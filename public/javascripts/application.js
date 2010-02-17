@@ -27,7 +27,8 @@ function showErrors(errors) {
 }
 
 function deleteGame(gameId) {
-  jQuery.post(gameUrl + "/" + gameId, {
+  jQuery.post(gamesUrl + "/" + gameId, {
     _method: 'delete'
   });
+  jQuery('#game_row_' + gameId).remove();
 }

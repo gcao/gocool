@@ -21,4 +21,4 @@
   %td.actions
     = view_game_html(game)
     - show_if_admin do
-      = link_to_function t('form.delete_button'), "if (confirm(#{t('games.confirm_deletion').gsub('GAME_ID', game.id)})) deleteGame(#{game.id}); return false;"
+      = link_to_function t('form.delete_button'), "if (confirm('#{t('games.confirm_deletion').gsub('GAME_ID', game.id.to_s)}')) deleteGame(#{game.id}); return false;"
