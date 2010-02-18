@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100217140117) do
+ActiveRecord::Schema.define(:version => 20100218125438) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -76,6 +76,21 @@ ActiveRecord::Schema.define(:version => 20100217140117) do
     t.boolean  "is_turn_based"
     t.text     "description"
     t.string   "updated_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "inviter_id"
+    t.string   "invitees"
+    t.integer  "game_type"
+    t.integer  "status"
+    t.integer  "rule"
+    t.integer  "handicap"
+    t.integer  "start_side"
+    t.float    "komi"
+    t.string   "note"
+    t.string   "response"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,46 @@
+%h1= t('invitations.create_page_header')
+
+%form.bp{:action=>invitations_url, :method=>"post"}
+  = show_flash 'span-24'
+
+  %fieldset.span-18.no-border
+    .form_row.span-18
+      .span-3
+        %label(for="invitation_invitees")
+          %span.required_field *
+          =t('invitations.invitees_label')
+      .span-15.last
+        %input#invitation_invitees(type="text" name="invitation[invitees]" size="80" value="#{@invitees}")
+
+    .form_row.span-18
+      .span-3
+        %label(for="invitation_start_side")
+          = t('invitations.start_side_label')
+      .span-15.last
+        =start_side_select
+
+    .form_row.span-18
+      .span-3
+        %label(for="invitation_rule")
+          = t('invitations.rule_label')
+      .span-15.last
+        =t('invitations.chinese_rule')
+
+    .form_row.span-18
+      .span-3
+        %label(for="invitation_note")
+          = t('invitations.note_label')
+      .span-15.last
+        %input#invitation_note(type="text" name="invitation[note]" size="80" value="#{@note}")
+
+    %hr.space
+    .span-14{:align => 'center'}
+      %input{:type => "submit", :name => "commit", :value => t('form.submit_button')}
+      %input{:type => "reset", :value => t('form.reset_button')}
+
+- content_for :footer do
+  :javascript
+    validanguage.el.invitation_invitees = {
+      required: true,
+      errorMsg: "#{t('invitations.invitees_required')}"
+    };

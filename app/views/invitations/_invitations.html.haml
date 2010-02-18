@@ -1,0 +1,12 @@
+.active-scaffold.blue-theme
+  %table
+    %thead
+      %tr.header
+        %th.status_column=     t('invitations.status_label')
+        %th.inviter_column=    t('invitations.inviter_label')
+        %th.invitees_column=    t('invitations.invitees_table_label')
+        %th.start_side_column= t('invitations.start_side_label')
+        %th.note_column=       t('invitations.note_label')
+        %th.actions_column     &nbsp;
+    %tbody.records
+      = render :partial => 'invitation', :collection => @invitations

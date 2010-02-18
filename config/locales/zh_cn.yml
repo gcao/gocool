@@ -185,6 +185,24 @@ zh_cn:
   admin/games:
     page_title: "对局管理"
 
+  invitations:
+    page_title: "对局邀请"
+    page_header: "对局邀请"
+    create_page_header: "创建对局邀请"
+    create_link_label: "创建对局邀请"
+    inviter_label: "邀请人"
+    invitees_label: "棋友用户名"
+    invitees_table_label: "被邀请人"
+    start_side_label: "先行"
+    note_label: "说明"
+    rule_label: "规则"
+    status_label: ""
+    random_start: "系统决定"
+    inviter_start: "邀请人"
+    invitee_start: "被邀请人"
+    chinese_rule: "中国规则"
+    invitees_required: "必填"
+
   date:
     formats:
       default: "%Y-%m-%d"

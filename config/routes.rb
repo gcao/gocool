@@ -52,6 +52,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :players, :collection => {:search => :get, :suggest => :get, :suggest_opponents => :get}
   map.resources :pairs
 
+  map.resources :invitations
+
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "homepage"
   

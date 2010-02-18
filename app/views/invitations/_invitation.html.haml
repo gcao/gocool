@@ -1,0 +1,13 @@
+%tr{:id => "invitation_row_#{game.id}", :class => "record " + (invitation_counter%2 == 0 ? "even-record":"")}
+  %td
+    = invitation.status_str
+  %td
+    = invitation.inviter.name
+  %td
+    =h invitation.invitee
+  %td
+    = invitation.start_side_str
+  %td
+    =h invitation.note
+  %td.actions
+    %a(href="#{invitation_url(invitation)}")= t('form.view_button')
