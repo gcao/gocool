@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  before_filter :login_check
+
   def index
     @invitations = Invitation.mine
   end
@@ -13,7 +15,8 @@ class InvitationsController < ApplicationController
 
     invitees, unrecognized = Invitation.parse_invitees(@invitees)
 
-    @invitation = Invitation.new(params[:invitation].merge(:invitees => invitees))
+    attrs = params[:invitation].merge(:invitees => invitees.to_json).merge(:inviter_id => @current_user.id)
+    @invitation = Invitation.new(attrs)
 
     if unrecognized.blank? and @invitation.valid?
       @invitation.save!

@@ -16,7 +16,13 @@ class Invitation < ActiveRecord::Base
     unrecognized = []
     result = {}
     invitees.split(/ ,/).each do |invitee|
-      
+      invitee.strip!
+      begin
+        user = User.find_or_load invitee
+        result[user.id] = invitee
+      rescue ActiveRecord::RecordNotFound
+        unrecognized << invitee
+      end
     end
     return result, unrecognized
   end
