@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_load username
-    return user if user = find_by_username(username)
+    user = find_by_username(username)
+    return user if user 
 
     discuz_member = Discuz::Member.find_by_username(username)
     raise ActiveRecord::RecordNotFound.new("#{username} is not found") unless discuz_member

@@ -39,6 +39,9 @@
       %input{:type => "reset", :value => t('form.reset_button')}
 
 - content_for :footer do
+  - if @errors
+    :javascript
+      showErrors(#{@errors.to_json});
   :javascript
     validanguage.el.invitation_invitees = {
       required: true,

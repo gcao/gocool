@@ -2,7 +2,8 @@ class InvitationsController < ApplicationController
   before_filter :login_check
 
   def index
-    @invitations = Invitation.mine
+    @invitations_to_me = Invitation.to_me
+    @invitations_by_me = Invitation.by_me
   end
 
   def new
@@ -22,7 +23,8 @@ class InvitationsController < ApplicationController
       @invitation.save!
       redirect_to :action => :index
     else
-      # show error
+      @errors = []
+      @errors << ["invitation_invitees", t('invitations.user_not_found').gsub('USERNAME', unrecognized.join(", "))]
       render 'new'
     end
   end

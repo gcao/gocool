@@ -4,13 +4,14 @@ class CreateInvitations < ActiveRecord::Migration
       t.integer :inviter_id
       t.string :invitees, :limit => 1024 # In JSON format, like {"1":"test"}
       t.integer :game_type
-      t.integer :status
+      t.string :state
       t.integer :rule # 1 - Chinese, 2 - Japanese, 3 - Korean, 4 - Ying
       t.integer :handicap
       t.integer :start_side # 1 - inviter, 2 - invitee
       t.float :komi
       t.string :note
       t.string :response, :limit => 4000
+      t.integer :expires_in_days
       t.timestamps
     end
 
