@@ -11,7 +11,8 @@ class CreateInvitations < ActiveRecord::Migration
       t.float :komi
       t.string :note
       t.string :response, :limit => 4000
-      t.integer :expires_in_days
+      t.date :expires_on
+      t.integer :game_id
       t.timestamps
     end
 

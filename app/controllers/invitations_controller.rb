@@ -31,4 +31,34 @@ class InvitationsController < ApplicationController
 
   def show
   end
+
+  def accept
+    invitation = Invitation.find(:id)
+    if invitation
+      invitation.accept
+      render :text => "SUCCESS"
+    else
+      render :text => "NOT_FOUND"
+    end
+  end
+
+  def reject
+    invitation = Invitation.find(:id)
+    if invitation
+      invitation.reject
+      render :text => "SUCCESS"
+    else
+      render :text => "NOT_FOUND"
+    end
+  end
+
+  def cancel
+    invitation = Invitation.find(:id)
+    if invitation
+      invitation.cancel
+      render :text => "SUCCESS"
+    else
+      render :text => "NOT_FOUND"
+    end
+  end
 end

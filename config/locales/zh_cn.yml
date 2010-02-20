@@ -197,7 +197,7 @@ zh_cn:
     invitees_label: "棋友用户名"
     invitees_table_label: "被邀请人"
     start_side_label: "先行"
-    note_label: "说明"
+    note_label: "附加内容"
     rule_label: "规则"
     state_label: "状态"
     random_start: "系统决定"
@@ -206,6 +206,9 @@ zh_cn:
     chinese_rule: "中国规则"
     invitees_required: "必填"
     user_not_found: "没有找到 USERNAME"
+    accept: "接受"
+    reject: "拒绝"
+    cancel: "取消"
 
   date:
     formats:

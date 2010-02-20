@@ -4,10 +4,9 @@
       %tr.header
         %th.created_at_column= t('invitations.created_at_label')
         %th.state_column=     t('invitations.state_label')
-        %th.inviter_column=    t('invitations.inviter_label')
         %th.invitees_column=    t('invitations.invitees_table_label')
         %th.start_side_column= t('invitations.start_side_label')
         %th.note_column=       t('invitations.note_label')
         %th.actions_column     &nbsp;
     %tbody.records
-      = render :partial => 'invitation', :collection => @invitations
+      = render :partial => 'invitation_by_me', :collection => @invitations_by_me, :as => :invitation

@@ -82,18 +82,22 @@ ActiveRecord::Schema.define(:version => 20100218125438) do
 
   create_table "invitations", :force => true do |t|
     t.integer  "inviter_id"
-    t.string   "invitees"
+    t.string   "invitees",   :limit => 1024
     t.integer  "game_type"
-    t.integer  "status"
+    t.string   "state"
     t.integer  "rule"
     t.integer  "handicap"
     t.integer  "start_side"
     t.float    "komi"
     t.string   "note"
-    t.string   "response"
+    t.string   "response",   :limit => 4000
+    t.date     "expires_on"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "invitations", ["invitees"], :name => "invitations_invitees"
+  add_index "invitations", ["inviter_id"], :name => "invitations_inviter_id"
 
   create_table "nation_regions", :force => true do |t|
     t.string   "name"
