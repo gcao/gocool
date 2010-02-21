@@ -20,11 +20,15 @@ class GamingPlatform < ActiveRecord::Base
   end
 
   def self.sina
-    @sina ||= self.find_by_name('??')
+    @sina ||= self.find_by_name('新浪')
   end
 
   def self.eweiqi
-    @eweiqi ||= self.find_by_name('??')
+    @eweiqi ||= self.find_by_name('弈城')
+  end
+
+  def self.qiren
+    @qiren ||= self.find_by_name('棋人')
   end
 
   def link_html

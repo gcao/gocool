@@ -33,9 +33,10 @@ class InvitationsController < ApplicationController
   end
 
   def accept
-    invitation = Invitation.find(:id)
+    invitation = Invitation.find(params[:id])
     if invitation
       invitation.accept
+      invitation.save!
       render :text => "SUCCESS"
     else
       render :text => "NOT_FOUND"
@@ -43,9 +44,10 @@ class InvitationsController < ApplicationController
   end
 
   def reject
-    invitation = Invitation.find(:id)
+    invitation = Invitation.find(params[:id])
     if invitation
       invitation.reject
+      invitation.save!
       render :text => "SUCCESS"
     else
       render :text => "NOT_FOUND"
@@ -53,9 +55,10 @@ class InvitationsController < ApplicationController
   end
 
   def cancel
-    invitation = Invitation.find(:id)
+    invitation = Invitation.find(params[:id])
     if invitation
       invitation.cancel
+      invitation.save!
       render :text => "SUCCESS"
     else
       render :text => "NOT_FOUND"

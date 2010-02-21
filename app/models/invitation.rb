@@ -29,6 +29,8 @@ class Invitation < ActiveRecord::Base
   aasm_column :state
 
   aasm_initial_state :new
+
+  aasm_state :new
   aasm_state :accepted, :enter => :create_game
   aasm_state :rejected
   #aasm_state :changed_by_inviter
@@ -79,5 +81,9 @@ class Invitation < ActiveRecord::Base
 
   def created_by_me?
     Thread.current[:user].id == self.inviter_id
+  end
+
+  def create_game
+    
   end
 end
