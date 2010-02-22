@@ -36,9 +36,10 @@ class User < ActiveRecord::Base
 
   def qiren_player
     if qiren_player_id.blank?
-      Player.create!(:gaming_platform_id => GamingPlatform.qiren.id, :username => username, :email => email)
+      Player.create!(:gaming_platform_id => GamingPlatform.qiren.id, :name => username, :email => email)
+    else
+      Player.find qiren_player_id
     end
-    super
   end
 
   def admin?
