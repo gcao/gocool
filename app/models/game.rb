@@ -4,6 +4,8 @@ class Game < ActiveRecord::Base
   belongs_to :black_player, :class_name => 'Player', :foreign_key => 'black_id'
   belongs_to :white_player, :class_name => 'Player', :foreign_key => 'white_id'
 
+  has_one :detail, :class_name => 'GameDetail', :dependent => :destroy
+
   WINNER_BLACK = 1
   WINNER_WHITE = 2
 

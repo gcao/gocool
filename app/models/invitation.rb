@@ -84,6 +84,30 @@ class Invitation < ActiveRecord::Base
   end
 
   def create_game
-    
+    game = Game.new
+    game.gaming_platform_id = GamingPlatform.qiren.id
+    game.game_type = game_type
+    game.rule = rule
+    game.handicap = handicap
+    game.komi = komi
+    game.name = note
+
+    invitee = Thread.current[:user]
+    if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first
+      game.black_id = inviter.qiren_player.id
+      game.black_name = inviter.qiren_player.name
+      game.black_rank = inviter.qiren_player.rank
+      game.white_id = invitee.qiren_player.id
+      game.white_name = invitee.qiren_player.name
+      game.white_rank = invitee.qiren_player.rank
+    else # invitee plays first
+      game.black_id = invitee.qiren_player.id
+      game.black_name = invitee.qiren_player.name
+      game.black_rank = invitee.qiren_player.rank
+      game.white_id = inviter.qiren_player.id
+      game.white_name = inviter.qiren_player.name
+      game.white_rank = inviter.qiren_player.rank
+    end
+    game.save!
   end
 end

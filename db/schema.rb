@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100218125438) do
+ActiveRecord::Schema.define(:version => 20100222133928) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -25,9 +25,27 @@ ActiveRecord::Schema.define(:version => 20100218125438) do
   add_index "favorites", ["user_id", "favorite_type"], :name => "index_favorites_on_user_id_and_favorite_type"
   add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
+  create_table "game_comments", :force => true do |t|
+    t.integer "game_id"
+    t.integer "move_no"
+    t.integer "commenter_id"
+    t.boolean "by_player"
+    t.string  "content",      :limit => 4000
+  end
+
+  create_table "game_details", :force => true do |t|
+    t.integer "game_id"
+    t.integer "whose_turn"
+    t.integer "move_no"
+    t.string  "last_move"
+    t.string  "moves",      :limit => 4000
+  end
+
+  add_index "game_details", ["game_id"], :name => "game_details_game_id"
+
   create_table "games", :force => true do |t|
     t.integer  "game_type"
-    t.string   "status",             :default => "finished"
+    t.string   "state",              :default => "finished"
     t.integer  "rule"
     t.string   "rule_raw"
     t.integer  "board_size"
@@ -47,7 +65,6 @@ ActiveRecord::Schema.define(:version => 20100218125438) do
     t.datetime "played_at"
     t.string   "played_at_raw"
     t.string   "time_rule"
-    t.boolean  "is_online_game"
     t.integer  "gaming_platform_id"
     t.text     "description"
     t.integer  "black_id"
@@ -78,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20100218125438) do
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sort_order"
   end
 
   create_table "invitations", :force => true do |t|
@@ -92,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20100218125438) do
     t.string   "note"
     t.string   "response",   :limit => 4000
     t.date     "expires_on"
+    t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -269,11 +288,13 @@ ActiveRecord::Schema.define(:version => 20100218125438) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_type",     :default => 0
+    t.integer  "user_type",       :default => 0
     t.integer  "external_id"
-    t.integer  "role",          :default => 0
+    t.integer  "role",            :default => 0
+    t.integer  "qiren_player_id"
   end
 
+  add_index "users", ["qiren_player_id"], :name => "users_qiren_player_id"
   add_index "users", ["user_type", "external_id"], :name => "index_users_on_user_type_and_external_id"
   add_index "users", ["username"], :name => "index_users_on_username"
 
