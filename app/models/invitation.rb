@@ -91,6 +91,7 @@ class Invitation < ActiveRecord::Base
     game.handicap = handicap
     game.komi = komi
     game.name = note
+    game.start_side = start_side
 
     invitee = Thread.current[:user]
     if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first

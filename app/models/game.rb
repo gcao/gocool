@@ -1,10 +1,15 @@
 class Game < ActiveRecord::Base
+  include AASM
+
   belongs_to :gaming_platform
   belongs_to :primary_source, :class_name => 'Upload', :foreign_key => 'primary_upload_id', :dependent => :destroy
   belongs_to :black_player, :class_name => 'Player', :foreign_key => 'black_id'
   belongs_to :white_player, :class_name => 'Player', :foreign_key => 'white_id'
 
   has_one :detail, :class_name => 'GameDetail', :dependent => :destroy
+
+  BLACK = 1
+  WHITE = 2
 
   WINNER_BLACK = 1
   WINNER_WHITE = 2
@@ -53,6 +58,35 @@ class Game < ActiveRecord::Base
   }
 
   named_scope :sort_by_players, :order => "black_name, white_name"
+
+  # AASM state machine definition BEGIN
+  aasm_column :state
+
+  aasm_initial_state :new
+
+  aasm_state :new
+  aasm_state :black_to_play
+  aasm_state :white_to_play
+  aasm_state :finished
+
+  aasm_event :start do
+    transitions :to => :black_to_play, :from => [:new, :finished], :guard => :black_plays_first?
+    transitions :to => :white_to_play, :from => [:new, :finished], :guard => :white_plays_first?
+  end
+
+  aasm_event :stone_played do
+    transitions :to => :white_to_play, :from => [:black_to_play]
+    transitions :to => :black_to_play, :from => [:white_to_play]
+  end
+  # AASM state machine definition END
+
+  def black_plays_first?
+    not white_plays_first?
+  end
+
+  def white_plays_first?
+    start_side == WHITE
+  end
 
   def is_online_game?
     not gaming_platform_id.blank?

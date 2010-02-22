@@ -3,7 +3,7 @@ class CreateProblems < ActiveRecord::Migration
     create_table :problems do |t|
       t.string :name
       t.string :level
-      t.integer :start_color
+      t.integer :start_side
       t.string :result
       t.boolean :multiple
       t.text :description

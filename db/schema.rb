@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20100222133928) do
     t.string   "rule_raw"
     t.integer  "board_size"
     t.integer  "handicap"
-    t.integer  "start_color"
+    t.integer  "start_side"
     t.float    "komi"
     t.string   "komi_raw"
     t.string   "result"
@@ -191,7 +191,7 @@ ActiveRecord::Schema.define(:version => 20100222133928) do
   create_table "problems", :force => true do |t|
     t.string  "name"
     t.string  "level"
-    t.integer "start_color"
+    t.integer "start_side"
     t.string  "result"
     t.boolean "multiple"
     t.text    "description"
