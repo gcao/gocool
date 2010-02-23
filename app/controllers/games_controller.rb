@@ -13,6 +13,15 @@ class GamesController < ApplicationController
     end
   end
 
+  def show
+    @game = Game.find params[:id]
+
+    respond_to do |format|
+      format.html { render :text => "" }
+      format.sgf  { render :text => "" }
+    end
+  end
+
   def destroy
     Game.destroy(params[:id])
     render :text => 'SUCCESS'

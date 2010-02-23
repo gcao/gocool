@@ -31,7 +31,9 @@ module ApplicationHelper
   end
 
   def upload_description_html upload
-    if upload.discuz_tid.not_blank? and upload.description.not_nil?
+    if upload.nil?
+      ""
+    elsif upload.discuz_tid.not_blank? and upload.description.not_nil?
       "<a href='#{upload.discuz_thread_url}' target='_new'>#{h(upload.description)}</a>"
     else
       h upload.description

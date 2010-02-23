@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(:version => 20100222133928) do
     t.integer  "gaming_platform_id"
     t.integer  "temp_id"
     t.datetime "registered_at"
+    t.boolean  "open_for_invitation"
   end
 
   add_index "players", ["name"], :name => "players_full_name"

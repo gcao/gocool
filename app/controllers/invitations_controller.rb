@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_filter :login_check
+  before_filter :login_required
 
   def index
     @invitations_to_me = Invitation.to_me

@@ -42,7 +42,8 @@ module Discuz
     end
 
     def login_required
-      redirect_to login_url unless login_check
+      # redirect_to login_url unless login_check
+      redirect_to '/bbs/logging.php?action=login' unless login_check
     end
   end
 end

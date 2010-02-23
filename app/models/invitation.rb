@@ -74,7 +74,7 @@ class Invitation < ActiveRecord::Base
   def start_side_str
     case start_side
       when INVITER_PLAY_FIRST then I18n.t('invitations.inviter_start')
-      when INVITEE_PLAY_FIRST then I18n.t('invitations.inviter_start')
+      when INVITEE_PLAY_FIRST then I18n.t('invitations.invitee_start')
       else I18n.t('invitations.random_start')
     end
   end
@@ -92,6 +92,7 @@ class Invitation < ActiveRecord::Base
     game.komi = komi
     game.name = note
     game.start_side = start_side
+    game.for_rating = for_rating
 
     invitee = Thread.current[:user]
     if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first
@@ -109,6 +110,7 @@ class Invitation < ActiveRecord::Base
       game.white_name = inviter.qiren_player.name
       game.white_rank = inviter.qiren_player.rank
     end
+    game.start
     game.save!
   end
 end

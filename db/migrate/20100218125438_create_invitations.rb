@@ -9,6 +9,7 @@ class CreateInvitations < ActiveRecord::Migration
       t.integer :handicap
       t.integer :start_side # 1 - inviter, 2 - invitee
       t.float :komi
+      t.boolean :for_rating
       t.string :note
       t.string :response, :limit => 4000
       t.date :expires_on

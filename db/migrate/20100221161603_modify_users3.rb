@@ -1,6 +1,7 @@
 class ModifyUsers3 < ActiveRecord::Migration
   def self.up
     add_column :users, :qiren_player_id, :integer
+    add_column :players, :open_for_invitation, :boolean
     
     add_index :users, :qiren_player_id, :name => 'users_qiren_player_id'
   end
