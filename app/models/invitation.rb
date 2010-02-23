@@ -93,6 +93,7 @@ class Invitation < ActiveRecord::Base
     game.name = note
     game.start_side = start_side
     game.for_rating = for_rating
+    game.place = "#{GamingPlatform.qiren.name} #{GamingPlatform.qiren.url}"
 
     invitee = Thread.current[:user]
     if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first
@@ -112,5 +113,9 @@ class Invitation < ActiveRecord::Base
     end
     game.start
     game.save!
+
+    self.game_id = game.id
+    self.save!
+    game
   end
 end

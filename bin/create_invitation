@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+ENV["RAILS_ENV"] ||= "development"
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+Thread.current[:user] = user = User.find_or_load('appoolloo')
+invitees, ignore = Invitation.parse_invitees('appoolloo')
+
+invitation = Invitation.create!(:inviter_id => user.qiren_player, :invitees => invitees)
+invitation.accept
+
+puts "Game created: #{invitation.game.id}"

@@ -35,10 +35,12 @@ ActiveRecord::Schema.define(:version => 20100222133928) do
 
   create_table "game_details", :force => true do |t|
     t.integer "game_id"
+    t.string  "handicaps"
     t.integer "whose_turn"
     t.integer "move_no"
     t.string  "last_move"
-    t.string  "moves",      :limit => 4000
+    t.text    "moves",           :limit => 16777215
+    t.text    "formatted_moves", :limit => 16777215
   end
 
   add_index "game_details", ["game_id"], :name => "game_details_game_id"
