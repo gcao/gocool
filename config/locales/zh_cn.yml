@@ -47,7 +47,7 @@ zh_cn:
     my_uploads:
       label: "我上传的对局"
     recent_uploads:
-      label: "全部对局"
+      label: "所有上传的对局"
   uploads:
     page_title: "上传对局"
     page_header: "上传对局"
