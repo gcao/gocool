@@ -137,6 +137,10 @@ zh_cn:
     player1_required: "必填"
     player1_is_required: "请输入棋手用户名。"
     confirm_deletion: "你确定要删除第 GAME_ID 号对局吗？"
+    chinese_rule: "中国规则"
+    japanese_rule: "日本规则"
+    korean_rule: "韩国规则"
+    ying_rule: "应氏规则"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"

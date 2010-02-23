@@ -17,8 +17,8 @@ class GamesController < ApplicationController
     @game = Game.find params[:id]
 
     respond_to do |format|
-      format.html { render :text => "" }
-      format.sgf  { render :text => "" }
+      format.html { render :layout => 'simple' }
+      format.sgf  { render :text => SgfRenderer.new(@game).render }
     end
   end
 

@@ -14,6 +14,11 @@ class Game < ActiveRecord::Base
   WINNER_BLACK = 1
   WINNER_WHITE = 2
 
+  CHINESE_RULE  = 1
+  JAPANESE_RULE = 2
+  KOREAN_RULE   = 3
+  YING_RULE     = 4
+
   default_scope :include => [:gaming_platform, :primary_source]
 
   named_scope :by_player, lambda {|p|
@@ -170,6 +175,16 @@ class Game < ActiveRecord::Base
       I18n.t('games_widget.winner_black')
     elsif winner == WINNER_WHITE
       I18n.t('games_widget.winner_white')
+    end
+  end
+
+  def rule_str
+    case rule
+      when CHINESE_RULE then I18n.t('games.chinese_rule')
+      when JAPANESE_RULE then I18n.t('games.japanese_rule')
+      when KOREAN_RULE then I18n.t('games.korean_rule')
+      when YING_RULE then I18n.t('games.ying_rule')
+      else ""
     end
   end
 end

@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20100222133928) do
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "for_rating"
   end
 
   add_index "games", ["black_id"], :name => "games_black_id"
@@ -103,10 +104,11 @@ ActiveRecord::Schema.define(:version => 20100222133928) do
     t.string   "invitees",   :limit => 1024
     t.integer  "game_type"
     t.string   "state"
-    t.integer  "rule"
-    t.integer  "handicap"
+    t.integer  "rule",                       :default => 1
+    t.integer  "handicap",                   :default => 0
     t.integer  "start_side"
-    t.float    "komi"
+    t.float    "komi",                       :default => 7.5
+    t.boolean  "for_rating",                 :default => true
     t.string   "note"
     t.string   "response",   :limit => 4000
     t.date     "expires_on"
