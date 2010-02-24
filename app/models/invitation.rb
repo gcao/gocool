@@ -1,4 +1,5 @@
 class Invitation < ActiveRecord::Base
+  include ThreadGlobals
   include AASM
   
   belongs_to :inviter, :class_name => 'User', :foreign_key => 'inviter_id'
@@ -11,7 +12,7 @@ class Invitation < ActiveRecord::Base
                 :conditions => ["invitations.state not in ('accepted', 'rejected', 'canceled', 'expired')"]
 
   named_scope :by_me, lambda {
-    if user = Thread.current[:user]
+    if user = current_user
       {:conditions => ["invitations.inviter_id = ?", user.id]}
     else
       {:conditions => ["invitations.inviter_id is null"]}
@@ -19,7 +20,7 @@ class Invitation < ActiveRecord::Base
   }
 
   named_scope :to_me, lambda {
-    if user = Thread.current[:user]
+    if user = current_user
       {:conditions => ["invitations.invitees like ?", "%\"#{user.id}\":%"]}
     else
       {:conditions => ["invitations.invitees is null"]}
@@ -80,7 +81,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def created_by_me?
-    Thread.current[:user].id == self.inviter_id
+    current_user.id == self.inviter_id
   end
 
   def create_game
@@ -95,7 +96,7 @@ class Invitation < ActiveRecord::Base
     game.for_rating = for_rating
     game.place = "#{GamingPlatform.qiren.name} #{GamingPlatform.qiren.url}"
 
-    invitee = Thread.current[:user]
+    invitee = current_user
     if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first
       game.black_id = inviter.qiren_player.id
       game.black_name = inviter.qiren_player.name
