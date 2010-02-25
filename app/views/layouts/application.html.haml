@@ -8,6 +8,13 @@
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css'
 
+    - if RAILS_ENV == 'development' # Javascript debug help
+      <script src="javascripts/stacktrace.js" type="text/javascript"></script>
+      :javascript
+        window.onerror = function() {
+          alert(printStacktrace().join('\n\n'));
+        }
+
     - if @admin_page
       = include_jquery
       = render 'layouts/js_init'
