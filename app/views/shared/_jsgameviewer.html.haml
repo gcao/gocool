@@ -13,10 +13,9 @@
     %script(src = "/jsgameviewer/js/parser.js" type = "text/javascript")
     %script(src = "/jsgameviewer/js/controller.js" type = "text/javascript")
     %script(src = "/jsgameviewer/view/js/view.js" type = "text/javascript")
-    %script(src = "/jsgameviewer/js/loader.js" type = "text/javascript")
-    %script(src = "/jsgameviewer/js/site_handler.js" type = "text/javascript")
+    %script(src = "/jsgameviewer/js/updater.js" type = "text/javascript")
     %script(src = "/jsgameviewer/js/player.js" type = "text/javascript")
     %script(src = "/jsgameviewer/js/gocool.js" type = "text/javascript")
   - else
-    %script(src = "/jsgameviewer/js/loader.js" type = "text/javascript")
-    %script(src = "/jsgameviewer/js/site_handler.js" type = "text/javascript")
+    %link(href="/jsgameviewer/build/compressed.css" media="screen" rel="stylesheet" type="text/css")
+    %script(src = "/jsgameviewer/build/compressed.js" type = "text/javascript")

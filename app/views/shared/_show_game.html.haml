@@ -2,7 +2,13 @@
 #gameContainer
 
 - content_for :footer do
-  :javascript
-    jQuery(document).ready(function(){
-      new GameController({container: "gameContainer"}).load("#{url}");
-    });
+  - if @game.nil_or.current_user_is_player?
+    :javascript
+      jQuery(document).ready(function(){
+        new GameController({container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).setPlayerInterval(8).startUpdater();
+      });
+  - else
+    :javascript
+      jQuery(document).ready(function(){
+        new GameController({container: "gameContainer"}).load("#{url}");
+      });

@@ -1,6 +1,6 @@
 module ThreadGlobals
   def logged_in?
-    current_user.nil?
+    not current_user.nil?
   end
 
   def current_user

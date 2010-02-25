@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   # Roles
   ADMIN = 1
 
-  belongs_to :qiren_player, :class_name => 'Player', :foreign_key => 'qiren_player_id'
+  belongs_to :qiren_player_obj, :class_name => 'Player', :foreign_key => 'qiren_player_id'
   
   validates_presence_of :username
   validates_presence_of :user_type
@@ -36,9 +36,11 @@ class User < ActiveRecord::Base
 
   def qiren_player
     if qiren_player_id.blank?
-      Player.create!(:gaming_platform_id => GamingPlatform.qiren.id, :name => username, :email => email)
+      player = Player.create!(:gaming_platform_id => GamingPlatform.qiren.id, :name => username, :email => email)
+      update_attribute(:qiren_player_id, player.id)
+      player
     else
-      Player.find qiren_player_id
+      qiren_player_obj
     end
   end
 

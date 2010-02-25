@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  include ThreadGlobals
   before_filter :login_required, :only => [:resign]
 
   def index
