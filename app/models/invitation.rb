@@ -1,4 +1,5 @@
 class Invitation < ActiveRecord::Base
+  include ActionController::UrlWriter
   include ThreadGlobals
   include AASM
   
@@ -119,6 +120,11 @@ class Invitation < ActiveRecord::Base
     self.save!
 
     GameDetail.create!(:game_id => game.id)
+
+#    Discuz::PrivateMessage.send_message invitee, inviter,
+#                                        I18n.t('accept_invitation_subject').sub('USERNAME', invitee.username),
+#                                        I18n.t('accept_invitation_body').sub('USERNAME', invitee.username).sub("INVITATION_URL", invitation_url(self))
+
     game
   end
 end

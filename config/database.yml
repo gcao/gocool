@@ -31,3 +31,8 @@ discuz:
   <<: *DEV
   database: bbs
   encoding: gbk
+
+ucenter:
+  <<: *DEV
+  database: ucenter
+  encoding: gbk

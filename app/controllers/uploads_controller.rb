@@ -34,7 +34,7 @@ class UploadsController < ApplicationController
     files = params[:upload].values
 
     if files.length == 0
-      flash[:error] = "TODO"
+      flash.now[:error] = "TODO"
       return
     end
 
@@ -48,18 +48,18 @@ class UploadsController < ApplicationController
   def process_single_upload upload_result
     case upload_result.status
     when UploadResult::SUCCESS
-      flash[:success] = t('uploads.success')
+      flash.now[:success] = t('uploads.success')
       @upload = upload_result.upload
       render :show, :layout => "simple"
     when UploadResult::FOUND
-      flash[:notice] = t('uploads.game_found')
+      flash.now[:notice] = t('uploads.game_found')
       @upload = upload_result.found_upload
       render :show, :layout => "simple"
     when UploadResult::VALIDATION_ERROR
-      flash[:error] = t('uploads.file_required')
+      flash.now[:error] = t('uploads.file_required')
       render :index
     when UploadResult::ERROR
-      flash[:error] = upload_result.detail
+      flash.now[:error] = upload_result.detail
       render :index
     end
   end
@@ -67,17 +67,17 @@ class UploadsController < ApplicationController
   def process_sgf
     data = params[:upload][:data]
     if error = validate_sgf(data)
-      flash[:error] = error
+      flash.now[:error] = error
       render :index
       return
     end
 
     hash_code = Gocool::Md5.string_to_md5 data
     if @upload = Upload.with_hash(hash_code).first
-      flash[:notice] = t('uploads.game_found')
+      flash.now[:notice] = t('uploads.game_found')
     else
       @upload = Upload.create_from_sgf @description, data, @sgf_game, hash_code
-      flash[:success] = t('uploads.success')
+      flash.now[:success] = t('uploads.success')
     end
 
     render :show, :layout => "simple"
@@ -88,10 +88,10 @@ class UploadsController < ApplicationController
 
     hash_code = Gocool::Md5.string_to_md5 url
     if @upload = Upload.with_hash(hash_code).first
-      flash[:notice] = t('uploads.game_found')
+      flash.now[:notice] = t('uploads.game_found')
     else
       @upload = Upload.create_from_url @description, url, hash_code
-      flash[:success] = t('uploads.success')
+      flash.now[:success] = t('uploads.success')
     end
 
     render :show, :layout => "simple"

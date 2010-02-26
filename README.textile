@@ -1,5 +1,34 @@
-Deployment: http://www.go-cool.org/
+Deployment: http://www.go-cool.org/app
 Monitoring: New Relic RPM (http://rpm.newrelic.com)
 
 Issue tracking: http://www.pivotaltracker.com/projects/43301
 Continuous Integration: to be added to http://www.coderuncode.com
+
+Game Server NOTES
+
+Invitations
+Send private messages through forum
+Can not create/accept after 10 games (unless marked as unlimited)
+Can not create/accept invitations if you have pending games that are older than 5 days
+
+Play
+Can not play on newer game if you have pending games that are older than 5 days
+
+Resign
+Can resign at any time
+Send private message
+
+Guess Move
+Can send move no matter whether it is my turn
+Can undo all my guess moves(which is not applied)
+
+Comments
+Player can comment during the game
+Observers can comment after the game is finished
+
+Invitations:
+One to many DONE
+Open to all
+Restrictions
+Expiration date(default to 14 days)
+Handicaps(White plays first, remove random from who plays first dropdown, default to inviter)

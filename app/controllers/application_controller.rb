@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include ThreadGlobals
   include Discuz::Authentication
   include GamesWidgetHelper, UploadsWidgetHelper, PlayerWidgetHelper, PlayersWidgetHelper, OpponentsWidgetHelper
 

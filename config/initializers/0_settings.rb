@@ -10,4 +10,6 @@ ENV['DISCUZ_COOKIE_PREFIX']   = 'Z7H'
 ENV['DISCUZ_TABLE_PREFIX']    = 'discuz'
 ENV['DISCUZ_DB_ENCODING']     = 'utf8'
 
+ENV['UCENTER_TABLE_PREFIX']    = 'uc'
+
 ENV['DEFAULT_LOCALE'] = 'zh_cn'

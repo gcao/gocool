@@ -217,6 +217,13 @@ zh_cn:
     accept: "接受"
     reject: "拒绝"
     cancel: "取消"
+    accepted: "被邀请人接受了该邀请。"
+    rejected: "被邀请人拒绝了该邀请。"
+    canceled: "邀请人取消了该邀请。"
+    expired: "该邀请已过期。"
+    pending: "被邀请人还没有做出决定。"
+    accept_invitation_subject: "USERNAME接受了你的对局邀请。"
+    accept_invitation_body: "USERNAME接受了你的<a href='INVITATION_URL'>对局邀请</a>。"
 
   date:
     formats:

@@ -30,6 +30,18 @@ class InvitationsController < ApplicationController
   end
 
   def show
+    @invitation = Invitation.find(params[:id])
+    if @invitation.state == :rejected
+      flash.now[:error] = t('invitations.rejected')
+    elsif @invitation.state == :accepted
+      flash.now[:success] = t('invitations.accepted')
+    elsif @invitation.state == :canceled
+      flash.now[:error] = t('invitations.canceled')
+    elsif @invitation.state == :expired
+      flash.now[:error] = t('invitations.expired')
+    else
+      flash.now[:notice] = t('invitations.pending')
+    end
   end
 
   def accept

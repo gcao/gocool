@@ -8,7 +8,7 @@ class GamesController < ApplicationController
 
     if params[:op] == 'search'
       if @player1.blank?
-        flash[:error] = t('games.player1_is_required')
+        flash.now[:error] = t('games.player1_is_required')
       else
         @games = Game.search(@platform, @player1, @player2).sort_by_players
       end

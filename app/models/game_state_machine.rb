@@ -29,6 +29,10 @@ module GameStateMachine
       aasm_event :white_resign do
         transitions :to => :finished, :from => [:black_to_play, :white_to_play]
       end
+
+      def finished?
+        state == :finished
+      end
     end
   end
 end

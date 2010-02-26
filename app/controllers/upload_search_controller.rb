@@ -14,7 +14,7 @@ class UploadSearchController < ApplicationController
       from = Date.parse @from_date unless @from_date.blank?
       to = Date.parse @to_date unless @to_date.blank?
       if from and to and from > to
-        flash[:error] = t("upload_search.from_date_greater_than_to_date")
+        flash.now[:error] = t("upload_search.from_date_greater_than_to_date")
         @uploads = nil
       else
         @uploads = @uploads.between(from, to)

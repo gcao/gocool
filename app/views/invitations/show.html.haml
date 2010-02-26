@@ -1,0 +1,33 @@
+%h1= t('invitations.page_header')
+
+= show_flash 'span-24'
+
+.span-18.no-border
+  .form_row.span-18
+    .span-3
+      %label(for="invitation_invitees")
+    .span-15.last
+      = @invitation.invitees_str
+
+  .form_row.span-18
+    .span-3
+      %label(for="invitation_start_side")
+        = t('invitations.start_side_label')
+    .span-15.last
+      = start_side_str
+
+  .form_row.span-18
+    .span-3
+      %label(for="invitation_rule")
+        = t('invitations.rule_label')
+    .span-15.last
+      = t('invitations.chinese_rule')
+
+  .form_row.span-18
+    .span-3
+      %label(for="invitation_note")
+        = t('invitations.note_label')
+    .span-15.last
+      = @invitation.note
+
+
