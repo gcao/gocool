@@ -37,7 +37,7 @@ class Invitation < ActiveRecord::Base
 
   aasm_state :new
   aasm_state :accepted, :enter => :create_game
-  aasm_state :rejected
+  aasm_state :rejected, :enter => :send_reject_message
   #aasm_state :changed_by_inviter
   #aasm_state :changed_by_invitee
   aasm_state :canceled
@@ -68,6 +68,10 @@ class Invitation < ActiveRecord::Base
       end
     end
     return result, unrecognized
+  end
+
+  def after_create
+    send_invitation_message
   end
 
   def invitees_str
@@ -125,9 +129,25 @@ class Invitation < ActiveRecord::Base
     GameDetail.create!(:game_id => game.id)
 
     Discuz::PrivateMessage.send_message invitee, inviter,
-                                        I18n.t('accept_invitation_subject').sub('USERNAME', invitee.username),
-                                        I18n.t('accept_invitation_body').sub('USERNAME', invitee.username).sub("INVITATION_URL", "/app/invitations/#{id}")
+                                        I18n.t('invitations.accept_invitation_subject').sub('USERNAME', invitee.username),
+                                        I18n.t('invitations.accept_invitation_body').sub('USERNAME', invitee.username).sub("GAME_URL", "/app/games/#{game.id}")
 
     game
+  end
+
+  def send_reject_message
+    invitee = current_user
+    Discuz::PrivateMessage.send_message invitee, inviter,
+                                        I18n.t('invitations.reject_invitation_subject').sub('USERNAME', invitee.username),
+                                        I18n.t('invitations.reject_invitation_body').sub('USERNAME', invitee.username).sub("INVITATION_URL", "/app/invitations/#{id}")
+  end
+
+  def send_invitation_message
+    JSON.parse(invitees).keys.each do |invitee_id|
+      invitee = User.find invitee_id
+      Discuz::PrivateMessage.send_message inviter, invitee,
+                                          I18n.t('invitations.invitation_subject').sub('USERNAME', inviter.username),
+                                          I18n.t('invitations.invitation_body').sub('USERNAME', inviter.username).gsub("INVITATION_URL", "/app/invitations/#{id}")
+    end
   end
 end

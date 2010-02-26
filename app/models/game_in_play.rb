@@ -3,6 +3,7 @@ module GameInPlay
   OP_FAILURE = 1
 
   def current_user_is_player?
+#    raise current_user.inspect
     return unless logged_in?
 
     [black_id, white_id].include?(current_player.id)

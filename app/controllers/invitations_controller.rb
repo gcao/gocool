@@ -49,9 +49,10 @@ class InvitationsController < ApplicationController
     if invitation
       invitation.accept
       invitation.save!
-      render :text => "SUCCESS"
+      redirect_to game_url(invitation.game)
     else
-      render :text => "NOT_FOUND"
+      flash.now[:warn] = t('invitations.not_found')
+      redirect_to :action => :index
     end
   end
 
@@ -60,10 +61,10 @@ class InvitationsController < ApplicationController
     if invitation
       invitation.reject
       invitation.save!
-      render :text => "SUCCESS"
     else
-      render :text => "NOT_FOUND"
+      flash.now[:warn] = t('invitations.not_found')
     end
+    redirect_to :action => :index
   end
 
   def cancel
@@ -71,9 +72,9 @@ class InvitationsController < ApplicationController
     if invitation
       invitation.cancel
       invitation.save!
-      render :text => "SUCCESS"
     else
-      render :text => "NOT_FOUND"
+      flash.now[:warn] = t('invitations.not_found')
     end
+    redirect_to :action => :index
   end
 end

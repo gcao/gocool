@@ -31,16 +31,6 @@ class User < ActiveRecord::Base
     super
   end
 
-#  def qiren_player
-#    if qiren_player_id.blank?
-#      player = Player.create!(:gaming_platform_id => GamingPlatform.qiren.id, :name => username, :email => email)
-#      update_attribute(:qiren_player_id, player.id)
-#      player
-#    else
-#      qiren_player_obj
-#    end
-#  end
-
   def admin?
     role == ADMIN
   end

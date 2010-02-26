@@ -2,10 +2,11 @@
 #gameContainer
 
 - content_for :footer do
-  - if not @game.finished? and @game.nil_or.current_user_is_player?
+  - if not @game.finished? and @game.current_user_is_player?
     :javascript
       jQuery(document).ready(function(){
-        new GameController({container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).setPlayerInterval(8).startUpdater();
+        new GameController({container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
+          setPlayerInterval(15).startUpdater(true).saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});
       });
   - else
     :javascript

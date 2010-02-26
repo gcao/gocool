@@ -213,6 +213,7 @@ zh_cn:
     invitee_start: "被邀请人"
     chinese_rule: "中国规则"
     invitees_required: "必填"
+    not_found: "没有找到该邀请。"
     user_not_found: "没有找到 USERNAME"
     accept: "接受"
     reject: "拒绝"
@@ -222,8 +223,12 @@ zh_cn:
     canceled: "邀请人取消了该邀请。"
     expired: "该邀请已过期。"
     pending: "被邀请人还没有做出决定。"
-    accept_invitation_subject: "USERNAME接受了你的对局邀请。"
-    accept_invitation_body: "USERNAME接受了你的<a href='INVITATION_URL'>对局邀请</a>。"
+    invitation_subject: "USERNAME发了一个对局邀请"
+    invitation_body: "USERNAME发了一个对局邀请。<a href='INVITATION_URL/accept'>请点此接受该邀请</a>，<a href='INVITATION_URL/reject'>或点此拒绝</a>，<a href='INVITATION_URL'>或点此查看邀请内容</a>。"
+    accept_invitation_subject: "USERNAME接受了你的对局邀请"
+    accept_invitation_body: "USERNAME接受了你的对局邀请。<a href='GAME_URL'>请点此进入对局</a>。"
+    reject_invitation_subject: "USERNAME拒绝了你的对局邀请"
+    reject_invitation_body: "USERNAME拒绝了你的<a href='INVITATION_URL'>对局邀请</a>。"
 
   date:
     formats:

@@ -54,6 +54,8 @@ class ApplicationController < ActionController::Base
     login_check
     if logged_in?
       Thread.current[:user] = @current_user = User.find_or_load(login_session.username)
+    else
+      Thread.current[:user] = @current_user = nil
     end
   end
 

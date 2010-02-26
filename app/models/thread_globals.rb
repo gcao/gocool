@@ -8,6 +8,6 @@ module ThreadGlobals
   end
 
   def current_player
-    current_user.nil_or.qiren_player
+    current_user.nil? ? nil : current_user.qiren_player
   end
 end
