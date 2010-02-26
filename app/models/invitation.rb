@@ -9,8 +9,11 @@ class Invitation < ActiveRecord::Base
   INVITER_PLAY_FIRST = 1
   INVITEE_PLAY_FIRST = 2
 
-  default_scope :order => "created_at DESC",
-                :conditions => ["invitations.state not in ('accepted', 'rejected', 'canceled', 'expired')"]
+  default_scope :order => "created_at DESC"
+
+  named_scope :active, lambda {
+    {:conditions => ["invitations.state not in ('accepted', 'rejected', 'canceled', 'expired')"]}
+  }
 
   named_scope :by_me, lambda {
     if user = current_user
@@ -121,9 +124,9 @@ class Invitation < ActiveRecord::Base
 
     GameDetail.create!(:game_id => game.id)
 
-#    Discuz::PrivateMessage.send_message invitee, inviter,
-#                                        I18n.t('accept_invitation_subject').sub('USERNAME', invitee.username),
-#                                        I18n.t('accept_invitation_body').sub('USERNAME', invitee.username).sub("INVITATION_URL", invitation_url(self))
+    Discuz::PrivateMessage.send_message invitee, inviter,
+                                        I18n.t('accept_invitation_subject').sub('USERNAME', invitee.username),
+                                        I18n.t('accept_invitation_body').sub('USERNAME', invitee.username).sub("INVITATION_URL", "/app/invitations/#{id}")
 
     game
   end

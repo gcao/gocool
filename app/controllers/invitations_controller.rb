@@ -2,8 +2,8 @@ class InvitationsController < ApplicationController
   before_filter :login_required
 
   def index
-    @invitations_to_me = Invitation.to_me
-    @invitations_by_me = Invitation.by_me
+    @invitations_to_me = Invitation.active.to_me
+    @invitations_by_me = Invitation.active.by_me
   end
 
   def new
@@ -31,13 +31,13 @@ class InvitationsController < ApplicationController
 
   def show
     @invitation = Invitation.find(params[:id])
-    if @invitation.state == :rejected
+    if @invitation.state == 'rejected'
       flash.now[:error] = t('invitations.rejected')
-    elsif @invitation.state == :accepted
-      flash.now[:success] = t('invitations.accepted')
-    elsif @invitation.state == :canceled
+    elsif @invitation.state == 'accepted'
+      flash.now[:success] = t('invitations.accepted').sub('GAME_URL', game_url(@invitation.game_id))
+    elsif @invitation.state == 'canceled'
       flash.now[:error] = t('invitations.canceled')
-    elsif @invitation.state == :expired
+    elsif @invitation.state == 'expired'
       flash.now[:error] = t('invitations.expired')
     else
       flash.now[:notice] = t('invitations.pending')
