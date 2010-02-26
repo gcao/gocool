@@ -42,11 +42,11 @@ module GameInPlay
 
     if current_player.id == black_id
       black_resign
-      self.winner = WHITE
+      self.winner = Game::WHITE
       self.result = "W+R"
     elsif current_player.id == white_id
       white_resign
-      self.winner = BLACK
+      self.winner = Game::BLACK
       self.result = "B+R"
     else
       code = OP_FAILURE

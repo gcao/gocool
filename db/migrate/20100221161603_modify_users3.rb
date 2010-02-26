@@ -2,7 +2,7 @@ class ModifyUsers3 < ActiveRecord::Migration
   def self.up
     add_column :users, :qiren_player_id, :integer
     add_column :players, :open_for_invitation, :boolean
-    
+
     add_index :users, :qiren_player_id, :name => 'users_qiren_player_id'
 
     user_count = User.count
@@ -13,7 +13,7 @@ class ModifyUsers3 < ActiveRecord::Migration
         result.free
 
         user.email = email
-        user.player = Player.create!(:gaming_platform_id => GamingPlatform.qiren.id, :name => user.username, :email => email)
+        user.qiren_player = Player.create!(:gaming_platform_id => GamingPlatform.qiren.id, :name => user.username, :email => email)
         user.save!
       end
     end
