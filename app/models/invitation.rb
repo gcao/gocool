@@ -117,6 +117,8 @@ class Invitation < ActiveRecord::Base
 
     self.game_id = game.id
     self.save!
+
+    GameDetail.create!(:game_id => game.id)
     game
   end
 end

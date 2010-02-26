@@ -1,6 +1,5 @@
 class GamesController < ApplicationController
-  include ThreadGlobals
-  before_filter :login_required, :only => [:resign]
+  before_filter :login_required, :only => [:play, :resign]
 
   def index
     @platform = params[:platform]
@@ -30,15 +29,23 @@ class GamesController < ApplicationController
     render :text => 'SUCCESS'
   end
 
+  def play
+    @game = Game.find params[:id]
+    raise "Game #{params[:id]} is not found!" unless @game
+
+    code, message = @game.play params
+    render :text => "#{code}:#{message}"
+  end
+
   def resign
     @game = Game.find params[:id]
     raise "Game #{params[:id]} is not found!" unless @game
 
     if @game.current_user_is_player?
-      @game.resign
-      render :text => "0"
+      code, message = @game.resign
+      render :text => "#{code}:#{message}"
     else
-      render :text => "1: #{t('games.user_is_not_player')}"
+      render :text => "1:#{t('games.user_is_not_player')}"
     end
   end
 end

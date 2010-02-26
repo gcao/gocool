@@ -5,6 +5,8 @@ zh_cn:
     recommend_firefox: "<span style='color:#999;font-size:150%'>请使用<a href='http://www.mozillaonline.com'><img src='http://sfx-images.mozilla.org/affiliates/Buttons/Firefox3.5/96x31_blue.png' alt='火狐浏览器' border='0' style='vertical-align:middle'/></a>浏览本站。</span>"
     auth_failure_page_header: "操作失败"
     operation_not_allowed: "操作失败，请和系统管理员联系。"
+    not_logged_in: "你没有登录到服务器，或者你的登录已经过期。请重新登录。"
+    not_a_player_in_game: "对局 GAME_NO 不是你（USERNAME）的对局。"
   menu:
     home: "首页"
     uploads: "上传对局"

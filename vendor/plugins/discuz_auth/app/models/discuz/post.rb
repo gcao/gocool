@@ -29,7 +29,7 @@ class Discuz::Post < Discuz::Base
   end
 
   def user
-    @user ||= User.find_or_create(:username => self.author, :external_id => self.authorid)
+    @user ||= User.find_or_load(self.author)
   end
 
   def to_upload_description

@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   def authenticate_via_bbs
     login_check
     if logged_in?
-      Thread.current[:user] = @current_user = User.find_or_create(:user_type => User::DISCUZ_USER, :external_id => login_session.uid, :username => login_session.username)
+      Thread.current[:user] = @current_user = User.find_or_load(login_session.username)
     end
   end
 
