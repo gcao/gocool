@@ -7,6 +7,8 @@ zh_cn:
     operation_not_allowed: "操作失败，请和系统管理员联系。"
     not_logged_in: "你没有登录到服务器，或者你的登录已经过期。请重新登录。"
     not_a_player_in_game: "对局 GAME_NO 不是你（USERNAME）的对局。"
+    incorrect_move_number: "步数补正确：MOVE_NUMBER"
+    incorrect_move: "下子位置不正确：MOVE"
   menu:
     home: "首页"
     uploads: "上传对局"

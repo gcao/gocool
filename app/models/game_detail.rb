@@ -1,4 +1,6 @@
 class GameDetail < ActiveRecord::Base
+  include SGF::SGFHelper
+
   belongs_to :game
 
   def add_move x, y

@@ -1,5 +1,4 @@
 module GameInPlay
-  SGF_POSITIONS = "ABCDEFGHJKLMNOPQRST"
   OP_SUCCESS = 0
   OP_FAILURE = 1
 
@@ -17,17 +16,18 @@ module GameInPlay
     x = params[:x].to_i
     y = params[:y].to_i
 
-    if moves != move - 1
-      return OP_FAILURE, I18n.t('incorrect_move_number')
+    if moves.to_i != move - 1
+      return OP_FAILURE, I18n.t('incorrect_move_number').sub('MOVE_NUMBER', move)
     end
 
     if x < 0 or x > 18 or y < 0 or y > 18
-      return OP_FAILURE, I18n.t('incorrect_move')
+      return OP_FAILURE, I18n.t('incorrect_move').sub('MOVE', "#{x}, #{y}")
     end
 
     self.moves = move
+    self.save!
     detail.add_move x, y
-    save!
+    detail.save!
 
     return code, message
   end
@@ -55,15 +55,5 @@ module GameInPlay
 
     save!
     return code, message
-  end
-
-  def xy_to_sgf_pos x, y
-    SGF_POSITIONS[x, 1] + SGF_POSITIONS[y, 1]
-  end
-
-  def move_to_sgf color, x, y
-    sgf = color == Game::WHITE ? "W" : "B"
-    sgf << xy_to_sgf_pos(x, y)
-    sgf << ";"
   end
 end
