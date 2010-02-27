@@ -61,6 +61,8 @@ ActionController::Routing::Routes.draw do |map|
                            :controller => 'players',
                            :action => 'auto_complete_for_name'
 
+  map.chat 'chat', :controller => 'chat'
+  map.send_chat_message 'send_chat_message', :controller => 'chat', :action => 'send_message'
   map.connect 'misc/:action/:id', :controller => 'misc'
 
   map.namespace :admin do |admin|

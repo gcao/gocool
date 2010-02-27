@@ -1,0 +1,23 @@
+%html
+  %head
+    %script(src = "../javascripts/jquery.js" type = "text/javascript")
+    %script(src = "../javascripts/jquery.json.js" type = "text/javascript")
+    %script(src = "../javascripts/juggernaut/juggernaut.js" type = "text/javascript")
+    %script(src = "../javascripts/juggernaut/jquerynaut.js" type = "text/javascript")
+    %script(src = "../javascripts/juggernaut/swfobject.js" type = "text/javascript")
+    = juggernaut
+  %body
+    %form(action="/send_chat_message" method="get")
+      %div(style="margin:0;padding:0")
+      %input#chat_input(name="chat_input" size="20" type="text" value="")
+      %input(name="commit" type="submit" value="Add")
+
+    %ul#chat_data(style="list-style:none")
+
+    :javascript
+      $(document).ready(function(){
+        $('form').submit(function(){
+          $.get('/send_chat_message', { chat_input: $('#chat_input').val() } )
+          return false;
+        })
+      })
