@@ -12,22 +12,49 @@ module GameInPlay
     code = OP_SUCCESS
     message = ''
 
-    move = params[:move].to_i
     x = params[:x].to_i
     y = params[:y].to_i
-
-    if moves.to_i != move - 1
-      return OP_FAILURE, I18n.t('incorrect_move_number').sub('MOVE_NUMBER', move)
-    end
 
     if x < 0 or x > 18 or y < 0 or y > 18
       return OP_FAILURE, I18n.t('incorrect_move').sub('MOVE', "#{x}, #{y}")
     end
 
-    self.moves = move
-    self.save!
-    detail.add_move x, y
+    if moves > 0 and params[:parent_move_id].blank?
+      return OP_FAILURE, I18n.t('parent_move_required')
+    end
+
+    parent_move = GameMove.find params[:parent_move_id]
+
+    my_turn = current_player.id == black_id and detail.whose_turn == Game::BLACK or
+              current_player.id == white_id and detail.whose_turn == Game::WHITE
+
+    unless move = parent_move.child_that_matches(x, y)
+      move = GameMove.new
+      move.game_detail_id = detail.id
+      move.move_no = parent_move.move_no + 1
+      move.color = whose_turn
+      move.x = x
+      move.y = y
+      move.guess_player_id = current_player.id
+      move.parent_id = parent_move.id
+      move.save!
+    end
+
+    if my_turn
+      if parent_move.blank?
+        self.moves = 1
+        move.player_id = current_player.id
+        detail.first_move_id = move.id
+        detail.last_move_id = move.id
+      elsif parent_move.move_no == moves
+        self.moves += 1
+        move.player_id = current_player.id
+        detail.last_move_id = move.id
+      end
+    end
+
     detail.save!
+    self.save!
 
     return code, message
   end
