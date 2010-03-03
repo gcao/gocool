@@ -24,13 +24,15 @@ module GameInPlay
       return OP_FAILURE, I18n.t('parent_move_required')
     end
 
-    my_turn = current_player.id == black_id and detail.whose_turn == Game::BLACK or
-              current_player.id == white_id and detail.whose_turn == Game::WHITE
-
     parent_move = GameMove.find parent_move_id unless parent_move_id.blank?
 
     if parent_move # not first move
       unless move = parent_move.child_that_matches(x, y)
+        if guess_move?(parent_move.color, current_player.id)
+          # This is a counter move, should replace previous counter move
+          parent_move.children.each(&:destroy)
+        end
+
         move = GameMove.new
         move.game_detail_id = detail.id
         move.move_no = parent_move.move_no + 1
@@ -44,7 +46,7 @@ module GameInPlay
         move.save!
       end
 
-      if detail.last_move_id == parent_move.id and my_turn
+      if detail.last_move_id == parent_move.id and my_turn?
         self.moves += 1
         move.player_id = current_player.id
         detail.change_turn
@@ -59,7 +61,7 @@ module GameInPlay
       move.y = y
       move.save!
 
-      if my_turn
+      if my_turn?
         self.moves = 1
         move.player_id = current_player.id
         detail.change_turn
@@ -102,7 +104,13 @@ module GameInPlay
     return code, message
   end
 
+  def my_turn?
+    (current_player.id == black_id and detail.whose_turn == Game::BLACK) or
+            (current_player.id == white_id and detail.whose_turn == Game::WHITE)
+  end
+
   def guess_move? move_color, player_id
-    (move_color == Game::WHITE and player_id == black_id) or (move_color == Game::BLACK and player_id == white_id)
+    (move_color == Game::WHITE and player_id == black_id) or 
+            (move_color == Game::BLACK and player_id == white_id)
   end
 end
