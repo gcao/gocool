@@ -14,9 +14,10 @@ describe GameDetail do
     end
 
     it "should return moves with name on last node" do
-      @game.stubs(:current_player).returns(@player1)
+      Game.any_instance.stubs(:logged_in?).returns(true)
+      Game.any_instance.stubs(:current_player).returns(@player1)
       @game.play :x => 1, :y => 2
-      @game.detail.moves_to_sgf.should == ";B[ab]N[#{@game.detail.first_move.id}]"
+      @game.detail.moves_to_sgf.should == ";B[bc]N[#{@game.detail.first_move.id}]"
     end
   end
 end

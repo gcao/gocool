@@ -67,6 +67,7 @@ module GameInPlay
         detail.change_turn
         detail.first_move_id = move.id
         detail.last_move_id = move.id
+        detail.formatted_moves = move_to_sgf(move.color, move.x, move.y)
       else
         move.guess_player_id = current_player.id
       end
