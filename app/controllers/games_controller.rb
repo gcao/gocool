@@ -34,7 +34,11 @@ class GamesController < ApplicationController
     raise "Game #{params[:id]} is not found!" unless @game
 
     code, message = @game.play params
-    render :text => "#{code}:#{message}"
+    if code == GameInPlay::OP_SUCCESS
+      render :text => "#{code}:SGF CONTENT"
+    else
+      render :text => "#{code}:#{message}"
+    end
   end
 
   def resign

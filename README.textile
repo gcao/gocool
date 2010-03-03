@@ -21,6 +21,7 @@ Send private message
 Guess Move
 Can send move no matter whether it is my turn
 Can undo all my guess moves(which is not applied)
+Can overwrite previous counter move (my move against my guess move)
 
 Comments
 Player can comment during the game

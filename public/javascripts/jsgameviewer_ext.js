@@ -110,20 +110,21 @@ jQuery.extend(GocoolPlayer.prototype, {
   sendMove: function(){
     var c = this.gameController;
     var node = c.gameState.currentNode;
-    var parentNode = node.parent;
-    if (node.temp && (!parentNode || !parentNode.temp)){
-      // node contains the first try move.
-    } else {
-      //alert("This is not the first TRY move.");
-      alert(jsgvTranslations["not_first_move"]);
-      return false;
-    }
+    //var parentNode = node.parent;
+    //if (node.temp && (!parentNode || !parentNode.temp)){
+    //  // node contains the first try move.
+    //} else {
+    //  //alert("This is not the first TRY move.");
+    //  alert(jsgvTranslations["not_first_move"]);
+    //  return false;
+    //}
     var moveNumber = node.moveNumber;
     var x = node.x, y = node.y;
     var url = c.config.gocoolUrlPrefix + "games/" + c.gocoolId + "/play";
-    url += "?move=" + moveNumber;
-    url += "&x=" + x;
+    url += "?x=" + x;
     url += "&y=" + y;
+    if (node.parent && node.parent.name) url += "&parent_id=" + node.parent.name;
+    
     jQuery.ajax({url: url,
       success:function(response){
         if (response.charAt(0) == '0'){ // success

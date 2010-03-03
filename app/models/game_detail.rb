@@ -12,4 +12,17 @@ class GameDetail < ActiveRecord::Base
       self.whose_turn = Game::WHITE
     end
   end
+
+  def moves_to_sgf
+    return "" if game.moves == 0
+
+    if game.current_user_is_player?
+      sgf = formatted_moves
+      sgf << "N[#{last_move.id}]"
+      sgf << last_move.children_to_sgf(:with_name => true, :with_children => true)
+      sgf
+    else
+      formatted_moves.to_s
+    end
+  end
 end
