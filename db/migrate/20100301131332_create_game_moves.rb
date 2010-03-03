@@ -10,7 +10,6 @@ class CreateGameMoves < ActiveRecord::Migration
       t.string  :dead # json [[1,2], [1,3]]
       t.boolean :ko
       t.integer :guess_player_id
-      t.boolean :guess_matched
       t.datetime :played_at
       # fields for awesome_nested_set
       t.integer :parent_id

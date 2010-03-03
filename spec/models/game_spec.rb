@@ -31,9 +31,85 @@ describe Game do
   end
   
   it "search should return games found" do
+    pending
     game1 = Game.create!(:black_name => 'first_player', :white_name => 'second_player', :name => 'first vs second')
     game2 = Game.create!(:black_name => 'second_player', :white_name => 'first_player', :name => 'second vs first')
     
     Game.search(nil, 'first', nil).should == [game1, game2]
+  end
+
+  describe "play" do
+    before do
+      @player1 = Player.create!(:name => 'player1')
+      @player2 = Player.create!(:name => 'player2')
+    end
+
+    it "first move" do
+      game = Game.create!(:moves => 0, :black_id => @player1.id, :white_id => @player2.id)
+      GameDetail.create!(:game_id => game.id, :whose_turn => Game::BLACK)
+      game.stubs(:current_player).returns(@player1)
+      game.play({:x => 1, :y => 2})
+
+      game.moves.should == 1
+      game.detail.whose_turn.should == Game::WHITE
+      move = game.detail.first_move
+      move.move_no.should == 1
+      move.color.should == Game::BLACK
+      move.x.should == 1
+      move.y.should == 2
+      move.player_id.should == @player1.id
+      move.guess_player_id.should be_blank
+      game.detail.last_move.should == move
+    end
+
+    it "first guess move" do
+      game = Game.create!(:moves => 0, :black_id => @player1.id, :white_id => @player2.id)
+      GameDetail.create!(:game_id => game.id, :whose_turn => Game::BLACK)
+      game.stubs(:current_player).returns(@player2)
+      game.play({:x => 1, :y => 2})
+
+      game.moves.should == 0
+      game.detail.whose_turn.should == Game::BLACK
+      game.detail.first_move_id.should be_blank
+      game.detail.last_move_id.should be_blank
+      move = GameMove.find_by_game_detail_id(game.detail.id)
+      move.move_no.should == 1
+      move.color.should == Game::BLACK
+      move.x.should == 1
+      move.y.should == 2
+      move.player_id.should be_blank
+      move.guess_player_id.should == @player2.id
+    end
+
+    it "second move" do
+      game = Game.create!(:moves => 0, :black_id => @player1.id, :white_id => @player2.id)
+      GameDetail.create!(:game_id => game.id, :whose_turn => Game::BLACK)
+      # first move
+      game.stubs(:current_player).returns(@player1)
+      game.play({:x => 1, :y => 2})
+      first_move = game.detail.last_move
+      first_move.should_not be_blank
+      # second move
+      game.stubs(:current_player).returns(@player2)
+      game.play({:x => 3, :y => 4, :parent_move_id => first_move.id})
+p game.detail
+      
+      game.moves.should == 2
+      game.detail.whose_turn.should == Game::BLACK
+      move = game.detail.last_move
+      move.move_no.should == 2
+      move.color.should == Game::WHITE
+      move.x.should == 3
+      move.y.should == 4
+      move.player_id.should == @player2.id
+      move.guess_player_id.should be_blank
+      game.detail.first_move.should != move
+    end
+
+    it "second guess move" do
+    end
+
+    it "second move that matches a guess move" do
+    end
   end
 end

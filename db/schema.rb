@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100222133928) do
+ActiveRecord::Schema.define(:version => 20100301131332) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -36,12 +36,35 @@ ActiveRecord::Schema.define(:version => 20100222133928) do
   create_table "game_details", :force => true do |t|
     t.integer  "game_id"
     t.integer  "whose_turn"
-    t.datetime "last_move_time"
+    t.datetime "last_black_move_time"
+    t.datetime "last_white_move_time"
     t.string   "handicaps"
-    t.string   "formatted_moves", :limit => 4000
+    t.string   "formatted_moves",      :limit => 4000
+    t.integer  "first_move_id"
+    t.integer  "last_move_id"
   end
 
   add_index "game_details", ["game_id"], :name => "game_details_game_id"
+
+  create_table "game_moves", :force => true do |t|
+    t.integer  "game_detail_id",  :null => false
+    t.integer  "player_id"
+    t.integer  "move_no",         :null => false
+    t.integer  "color",           :null => false
+    t.integer  "x",               :null => false
+    t.integer  "y",               :null => false
+    t.string   "dead"
+    t.boolean  "ko"
+    t.integer  "guess_player_id"
+    t.boolean  "guess_matched"
+    t.datetime "played_at"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+  end
+
+  add_index "game_moves", ["game_detail_id"], :name => "game_moves_detail_id"
+  add_index "game_moves", ["guess_player_id"], :name => "game_moves_guess_player_id"
 
   create_table "games", :force => true do |t|
     t.integer  "game_type"
@@ -79,7 +102,7 @@ ActiveRecord::Schema.define(:version => 20100222133928) do
     t.string   "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "for_rating"
+    t.boolean  "for_rating"
   end
 
   add_index "games", ["black_id"], :name => "games_black_id"
