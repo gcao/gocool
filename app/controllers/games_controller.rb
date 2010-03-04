@@ -35,7 +35,7 @@ class GamesController < ApplicationController
 
     code, message = @game.play params
     if code == GameInPlay::OP_SUCCESS
-      render :text => "#{code}:SGF CONTENT"
+      render :text => "#{code}:#{SgfRenderer.new(@game).render}"
     else
       render :text => "#{code}:#{message}"
     end

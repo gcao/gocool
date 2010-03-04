@@ -24,6 +24,9 @@ class Game < ActiveRecord::Base
 
   default_scope :include => [:gaming_platform, :primary_source]
 
+  named_scope :with_detail, :include => [:detail]
+  named_scope :sort_by_last_move_time, :order => "game_details.last_move_time DESC"
+
   named_scope :by_player, lambda {|p|
     {
        :conditions => ["(black_id = ? or white_id = ?)", p.id, p.id]
@@ -31,7 +34,9 @@ class Game < ActiveRecord::Base
   }
 
   named_scope :on_platform, lambda { |platform|
-    if platform.blank?
+    if platform.is_a? GamingPlatform
+      { :conditions => ["games.gaming_platform_id = ?", platform.id] }
+    elsif platform.blank?
       { :conditions => "games.gaming_platform_id is null" }
     elsif platform.to_i == GamingPlatform::ALL
       {}

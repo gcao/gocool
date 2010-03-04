@@ -100,6 +100,7 @@ class Invitation < ActiveRecord::Base
     game.handicap = handicap
     game.komi = komi
     game.name = note
+    game.moves = 0
     game.start_side = start_side
     game.for_rating = for_rating
     game.place = "#{GamingPlatform.qiren.name} #{GamingPlatform.qiren.url}"
@@ -126,7 +127,7 @@ class Invitation < ActiveRecord::Base
     self.game_id = game.id
     self.save!
 
-    GameDetail.create!(:game_id => game.id)
+    GameDetail.create!(:game_id => game.id, :whose_turn => start_side)
 
     Discuz::PrivateMessage.send_message invitee, inviter,
                                         I18n.t('invitations.accept_invitation_subject').sub('USERNAME', invitee.username),

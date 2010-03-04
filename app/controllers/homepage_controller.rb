@@ -1,5 +1,6 @@
 class HomepageController < ApplicationController
   def index
+    @qiren_games = Game.on_platform(GamingPlatform.qiren).with_detail.sort_by_last_move_time
     @uploads = Upload.recent
 
     @games_total = Game.count

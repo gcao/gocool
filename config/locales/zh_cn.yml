@@ -51,7 +51,9 @@ zh_cn:
     my_uploads:
       label: "我上传的对局"
     recent_uploads:
-      label: "所有上传的对局"
+      label: "上传的对局"
+    qiren_games:
+      label: "本站棋友对局"
   uploads:
     page_title: "上传对局"
     page_header: "上传对局"

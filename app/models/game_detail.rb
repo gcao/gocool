@@ -18,8 +18,7 @@ class GameDetail < ActiveRecord::Base
 
     if game.current_user_is_player?
       sgf = formatted_moves
-      sgf << "N[#{last_move.id}]"
-      sgf << last_move.children_to_sgf(:with_name => true, :with_children => true)
+      sgf << last_move.children_to_sgf(:with_name => true, :with_children => true, :player_id => game.current_player.id)
       sgf
     else
       formatted_moves.to_s

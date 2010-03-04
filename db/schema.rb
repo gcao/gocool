@@ -36,10 +36,9 @@ ActiveRecord::Schema.define(:version => 20100301131332) do
   create_table "game_details", :force => true do |t|
     t.integer  "game_id"
     t.integer  "whose_turn"
-    t.datetime "last_black_move_time"
-    t.datetime "last_white_move_time"
+    t.datetime "last_move_time"
     t.string   "handicaps"
-    t.string   "formatted_moves",      :limit => 4000
+    t.string   "formatted_moves", :limit => 4000
     t.integer  "first_move_id"
     t.integer  "last_move_id"
   end
@@ -56,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20100301131332) do
     t.string   "dead"
     t.boolean  "ko"
     t.integer  "guess_player_id"
-    t.boolean  "guess_matched"
     t.datetime "played_at"
     t.integer  "parent_id"
     t.integer  "lft"

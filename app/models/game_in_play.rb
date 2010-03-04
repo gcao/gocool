@@ -17,11 +17,11 @@ module GameInPlay
     y = params[:y].to_i
 
     if x < 0 or x > 18 or y < 0 or y > 18
-      return OP_FAILURE, I18n.t('incorrect_move').sub('MOVE', "#{x}, #{y}")
+      return OP_FAILURE, I18n.t('games.incorrect_move').sub('MOVE', "#{x}, #{y}")
     end
 
     if moves > 0 and parent_move_id.blank?
-      return OP_FAILURE, I18n.t('parent_move_required')
+      return OP_FAILURE, I18n.t('games.parent_move_required')
     end
 
     parent_move = GameMove.find parent_move_id unless parent_move_id.blank?
@@ -49,8 +49,10 @@ module GameInPlay
       if detail.last_move_id == parent_move.id and my_turn?
         self.moves += 1
         move.player_id = current_player.id
+        detail.last_move_time = Time.now
         detail.change_turn
         detail.last_move_id = move.id
+        detail.formatted_moves += move.to_sgf(:with_name => true)
       end
     else # first move
       move = GameMove.new
@@ -64,15 +66,17 @@ module GameInPlay
       if my_turn?
         self.moves = 1
         move.player_id = current_player.id
+        detail.last_move_time = Time.now
         detail.change_turn
         detail.first_move_id = move.id
         detail.last_move_id = move.id
-        detail.formatted_moves = move_to_sgf(move.color, move.x, move.y)
+        detail.formatted_moves = move.to_sgf(:with_name => true)
       else
         move.guess_player_id = current_player.id
       end
     end
 
+    move.played_at = Time.now
     move.save!
     detail.save!
     save!

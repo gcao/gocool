@@ -6,7 +6,7 @@ class SgfRenderer
   def render
     sgf = "(;"
     sgf << render_property("GM", "1")
-    sgf << render_property("FF", "1")
+    sgf << render_property("FF", "4")
     sgf << render_property("CA", "UTF-8")
     sgf << render_property("SZ", @game.board_size || 19)
     sgf << render_property("PW", @game.white_player.name)

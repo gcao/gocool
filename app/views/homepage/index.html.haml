@@ -3,11 +3,20 @@
 
 = render :partial => "paragraph1"
 
+#qiren_games_container
+  %h2#qiren_games_label= t('homepage.qiren_games.label')
+
+  = render_games_widget @qiren_games
+
+%hr.space
+
 - if logged_in? and @my_uploads.size > 0
   #my_uploads_container
     %h2#my_uploads_label= t('homepage.my_uploads.label')
 
     = render_uploads_widget @my_uploads
+
+%hr.space
 
 #recent_uploads_container
   %h2#recent_uploads_label= t('homepage.recent_uploads.label')

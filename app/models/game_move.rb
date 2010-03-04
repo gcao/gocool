@@ -9,6 +9,9 @@ class GameMove < ActiveRecord::Base
   end
 
   def to_sgf options = {}
+    # Guess move by opponent
+    return "" if guess_player_id and options[:player_id] and guess_player_id != options[:player_id]
+    
     sgf = move_to_sgf(color, x, y)
     sgf << "N[#{self.id}]" if options[:with_name]
     sgf << children_to_sgf(options) if options[:with_children]

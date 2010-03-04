@@ -41,11 +41,8 @@ module ApplicationHelper
   end
 
   def view_game_html(game)
-    if game.primary_upload_id
-      "<a target='_new#{rand(1000)}' href='#{upload_url(game.primary_upload_id)}'>#{t('form.view_button')}</a>"
-    else
-      '&nbsp;'
-    end
+    url = game.primary_upload_id ? upload_url(game.primary_upload_id) : game_url(game)
+    "<a target='_new#{rand(1000)}' href='#{url}'>#{t('form.view_button')}</a>"
   end
 
   def gaming_platforms_select field_name, value = nil
