@@ -92,6 +92,10 @@ class Invitation < ActiveRecord::Base
     current_user.id == self.inviter_id
   end
 
+  def for_me?
+    logged_in? and JSON.parse(invitees)[current_user.id.to_s]
+  end
+
   def create_game
     game = Game.new
     game.gaming_platform_id = GamingPlatform.qiren.id

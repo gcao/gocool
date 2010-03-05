@@ -1,5 +1,6 @@
 class InvitationsController < ApplicationController
   before_filter :login_required
+  skip_filter :admin_required, :only => [:update]
 
   def index
     @invitations_to_me = Invitation.active.to_me
@@ -26,6 +27,18 @@ class InvitationsController < ApplicationController
       @errors = []
       @errors << ["invitation_invitees", t('invitations.user_not_found').gsub('USERNAME', unrecognized.join(", "))]
       render 'new'
+    end
+  end
+
+  def update
+    if params[:accept]
+      redirect_to :action => :accept
+    elsif params[:reject]
+      redirect_to :action => :reject
+    elsif params[:cancel]
+      redirect_to :action => :cancel
+    else
+      redirect_to :action => :show
     end
   end
 

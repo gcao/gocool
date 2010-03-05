@@ -10,5 +10,6 @@ invitation = Invitation.create!(:inviter_id => user.qiren_player, :invitees => i
 
 Thread.current[:user] = User.find_or_load('apollotest')
 invitation.accept
+invitation.save!
 
 puts "Game created: #{invitation.game.id}"

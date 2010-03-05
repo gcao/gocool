@@ -1,9 +1,16 @@
 %h1= t('invitations.page_header')
 
-%form.bp{:action=>invitations_url, :method=>"post"}
+- form_tag invitation_path(@invitation), :method=>:put, :class => "bp" do
   = show_flash 'span-24'
 
   .span-18.no-border
+    .form_row.span-18
+      .span-3
+        %label(for="invitation_inviter")
+          =t('invitations.inviter_label')
+      .span-15.last
+        #invitation_inviter= @invitation.inviter.username
+
     .form_row.span-18
       .span-3
         %label(for="invitation_invitees")
@@ -32,3 +39,12 @@
       .span-15.last
         = @invitation.note
 
+    - if @invitation.state == 'new' and (@invitation.created_by_me? or @invitation.for_me?)
+      .form_row.span-18
+        .span-3 &nbsp;
+        .span-15.last
+          - if @invitation.created_by_me?
+            %input{:type => "submit", :name => "cancel", :value => t('invitations.cancel')}
+          - else
+            %input{:type => "submit", :name => "accept", :value => t('invitations.accept')}
+            %input{:type => "submit", :name => "reject", :value => t('invitations.reject')}

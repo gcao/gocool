@@ -67,6 +67,8 @@ class DiscuzUploader
   end
 
   def upload_game_from post, url
+    return if url =~ %r(go-cool\.org/app)
+
     hash_code = Gocool::Md5.string_to_md5 url
     return if Upload.with_hash(hash_code).first
 
