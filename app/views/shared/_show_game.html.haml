@@ -2,7 +2,7 @@
 #gameContainer
 
 - content_for :footer do
-  - if not @game.finished? and @game.current_user_is_player?
+  - if @game and not @game.finished? and @game.current_user_is_player?
     = javascript_include_tag "jsgameviewer_ext"
     :javascript
       jQuery(document).ready(function(){
