@@ -23,7 +23,8 @@ class GameMove < ActiveRecord::Base
     return children.first.to_sgf(options) if children.size == 1
 
     children.map {|move|
-      "(#{move.to_sgf(options)})"
+      sgf = move.to_sgf(options)
+      sgf.blank? ? "" : "(#{sgf})"
     }.join
   end
 end

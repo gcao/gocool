@@ -49,7 +49,7 @@ class GamesController < ApplicationController
       code, message = @game.resign
       render :text => "#{code}:#{message}"
     else
-      render :text => "1:#{t('games.user_is_not_player')}"
+      render :text => "#{GameInPlay::OP_FAILURE}:#{t('games.user_is_not_player')}"
     end
   end
 end

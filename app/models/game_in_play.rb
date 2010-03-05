@@ -40,9 +40,7 @@ module GameInPlay
         move.x = x
         move.y = y
         move.parent_id = parent_move.id
-        if guess_move?(move.color, current_player.id)
-          move.guess_player_id = current_player.id
-        end
+        move.guess_player_id = current_player.id
         move.save!
       end
 
@@ -61,6 +59,7 @@ module GameInPlay
       move.color = detail.whose_turn
       move.x = x
       move.y = y
+      move.guess_player_id = current_player.id
       move.save!
 
       if my_turn?
@@ -71,8 +70,6 @@ module GameInPlay
         detail.first_move_id = move.id
         detail.last_move_id = move.id
         detail.formatted_moves = move.to_sgf(:with_name => true)
-      else
-        move.guess_player_id = current_player.id
       end
     end
 
@@ -80,6 +77,8 @@ module GameInPlay
     move.save!
     detail.save!
     save!
+
+    process_guess_moves
 
     return code, message
   end
@@ -102,11 +101,44 @@ module GameInPlay
       self.result = "B+R"
     else
       code = OP_FAILURE
-      message = I18n.t('not_a_player_in_game').sub('GAME_ID', self.id).sub('USERNAME', current_player.name)
+      message = I18n.t('games.not_a_player_in_game').sub('GAME_ID', self.id).sub('USERNAME', current_player.name)
     end
 
     save!
     return code, message
+  end
+
+  def process_guess_moves
+    return unless logged_in?
+
+    guess_move = detail.last_move.children.detect do |move|
+      my_color and my_color != move.color and current_player.id != move.guess_player_id
+    end
+
+    return unless guess_move
+
+    guess_move.player_id = guess_move.guess_player_id
+    guess_move.played_at = Time.now
+    guess_move.save!
+
+    detail.last_move = guess_move
+    detail.last_move_time = Time.now
+    detail.change_turn
+    detail.formatted_moves += guess_move.to_sgf(:with_name => true)
+    detail.save!
+
+    self.moves += 1
+    self.save!
+
+    process_guess_moves
+  end
+
+  def my_color
+    if current_player.id == black_id
+      Game::BLACK
+    elsif current_player.id == white_id
+      Game::WHITE
+    end
   end
 
   def my_turn?

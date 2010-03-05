@@ -20,7 +20,7 @@ class SgfRenderer
     sgf << render_property("HA", @game.handicap)
     sgf << render_property("RE", @game.result)
     sgf << @game.detail.nil_or.handicaps.to_s
-    sgf << @game.detail.nil_or.formatted_moves.to_s
+    sgf << @game.detail.nil_or.moves_to_sgf.to_s
     sgf << ")"
   end
 
