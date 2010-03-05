@@ -10,7 +10,7 @@ ENV['FORUM_REGISTRATION_URL'] = '/bbs/register_qiren.php'
 ENV['DISCUZ_COOKIE_PREFIX']   = 'Z7H'
 ENV['DISCUZ_TABLE_PREFIX']    = 'discuz'
 ENV['DISCUZ_DB_ENCODING']     = 'utf8'
-ENV['DISCUZ_KEEP_ALIVE_URL']  = '/bbs/search.php'
+ENV['DISCUZ_KEEP_ALIVE_URL']  = '/bbs/post.php?action=newthread&fid=99'
 ENV['FORUM_KEEP_ALIVE_INTERVAL'] = '90'
 
 ENV['UCENTER_TABLE_PREFIX']    = 'uc'
