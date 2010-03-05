@@ -11,8 +11,13 @@ class Game < ActiveRecord::Base
 
   has_one :detail, :class_name => 'GameDetail', :dependent => :destroy
 
+  WEIQI = 1
+  DAOQI = 2
+
+  NONE  = 0
   BLACK = 1
   WHITE = 2
+  ERASE = 3
 
   WINNER_BLACK = 1
   WINNER_WHITE = 2
