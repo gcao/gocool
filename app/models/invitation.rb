@@ -131,7 +131,7 @@ class Invitation < ActiveRecord::Base
 
     Discuz::PrivateMessage.send_message invitee, inviter,
                                         I18n.t('invitations.accept_invitation_subject').sub('USERNAME', invitee.username),
-                                        I18n.t('invitations.accept_invitation_body').sub('USERNAME', invitee.username).sub("GAME_URL", "/app/games/#{game.id}")
+                                        I18n.t('invitations.accept_invitation_body').sub('USERNAME', invitee.username).sub("GAME_URL", "#{ENV['BASE_URL']}/app/games/#{game.id}")
 
     game
   end
@@ -140,7 +140,7 @@ class Invitation < ActiveRecord::Base
     invitee = current_user
     Discuz::PrivateMessage.send_message invitee, inviter,
                                         I18n.t('invitations.reject_invitation_subject').sub('USERNAME', invitee.username),
-                                        I18n.t('invitations.reject_invitation_body').sub('USERNAME', invitee.username).sub("INVITATION_URL", "/app/invitations/#{id}")
+                                        I18n.t('invitations.reject_invitation_body').sub('USERNAME', invitee.username).sub("INVITATION_URL", "#{ENV['BASE_URL']}/app/invitations/#{id}")
   end
 
   def send_invitation_message
@@ -148,7 +148,7 @@ class Invitation < ActiveRecord::Base
       invitee = User.find invitee_id
       Discuz::PrivateMessage.send_message inviter, invitee,
                                           I18n.t('invitations.invitation_subject').sub('USERNAME', inviter.username),
-                                          I18n.t('invitations.invitation_body').sub('USERNAME', inviter.username).gsub("INVITATION_URL", "/app/invitations/#{id}")
+                                          I18n.t('invitations.invitation_body').sub('USERNAME', inviter.username).gsub("INVITATION_URL", "#{ENV['BASE_URL']}/app/invitations/#{id}")
     end
   end
 end

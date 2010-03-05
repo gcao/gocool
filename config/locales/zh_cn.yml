@@ -226,11 +226,11 @@ zh_cn:
     expired: "该邀请已过期。"
     pending: "被邀请人还没有做出决定。"
     invitation_subject: "USERNAME发了一个对局邀请"
-    invitation_body: "USERNAME发了一个对局邀请。<a href='INVITATION_URL/accept'>请点此接受该邀请</a>，<a href='INVITATION_URL/reject'>或点此拒绝</a>，<a href='INVITATION_URL'>或点此查看邀请内容</a>。"
+    invitation_body: "USERNAME发了一个对局邀请。请点 [url]INVITATION_URL[/url] 接受该邀请，或点 [url]INVITATION_URL/reject[/url] 拒绝，或点 [url]INVITATION_URL[/url] 查看邀请内容。"
     accept_invitation_subject: "USERNAME接受了你的对局邀请"
-    accept_invitation_body: "USERNAME接受了你的对局邀请。<a href='GAME_URL'>请点此进入对局</a>。"
+    accept_invitation_body: "USERNAME接受了你的对局邀请。请点 [url]GAME_URL[/url] 进入对局。"
     reject_invitation_subject: "USERNAME拒绝了你的对局邀请"
-    reject_invitation_body: "USERNAME拒绝了你的<a href='INVITATION_URL'>对局邀请</a>。"
+    reject_invitation_body: "USERNAME拒绝了你的对局邀请 [url]INVITATION_URL[/url]。"
 
   date:
     formats:
