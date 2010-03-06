@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100301131332) do
+ActiveRecord::Schema.define(:version => 20100306204843) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -26,11 +26,13 @@ ActiveRecord::Schema.define(:version => 20100301131332) do
   add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "game_comments", :force => true do |t|
-    t.integer "game_id"
-    t.integer "move_no"
-    t.integer "commenter_id"
-    t.boolean "by_player"
-    t.string  "content",      :limit => 4000
+    t.integer  "game_id"
+    t.integer  "move_no"
+    t.integer  "commenter_id"
+    t.boolean  "by_player"
+    t.string   "content",      :limit => 4000
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "game_details", :force => true do |t|
@@ -41,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20100301131332) do
     t.string   "formatted_moves", :limit => 4000
     t.integer  "first_move_id"
     t.integer  "last_move_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "game_details", ["game_id"], :name => "game_details_game_id"
@@ -59,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20100301131332) do
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "game_moves", ["game_detail_id"], :name => "game_moves_detail_id"
@@ -213,15 +219,17 @@ ActiveRecord::Schema.define(:version => 20100301131332) do
   add_index "players", ["name"], :name => "players_full_name"
 
   create_table "problems", :force => true do |t|
-    t.string  "name"
-    t.string  "level"
-    t.integer "start_side"
-    t.string  "result"
-    t.boolean "multiple"
-    t.text    "description"
-    t.string  "source"
-    t.integer "upload_id"
-    t.integer "solution_upload_id"
+    t.string   "name"
+    t.string   "level"
+    t.integer  "start_side"
+    t.string   "result"
+    t.boolean  "multiple"
+    t.text     "description"
+    t.string   "source"
+    t.integer  "upload_id"
+    t.integer  "solution_upload_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "settings", :force => true do |t|

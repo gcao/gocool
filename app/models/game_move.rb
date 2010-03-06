@@ -2,7 +2,31 @@ class GameMove < ActiveRecord::Base
   include SGF::SGFHelper
 
   belongs_to :game_detail
-  acts_as_nested_set
+  #acts_as_nested_set
+  #has_many :children, :class_name => 'GameMove', :foreign_key => 'parent_id', :order => "created_at"
+
+  named_scope :moves_after, lambda { |move|
+    {:conditions => ["game_detail_id = ? and id > ?", move.game_detail_id, move.id]}
+  }
+
+  def children moves = nil
+    return @children unless @children.nil?
+    
+    @children = []
+    moves ||= self.class.moves_after(self)
+    moves.each do |move|
+      if move.parent_id == id
+        @children << move
+        moves.delete move
+      end
+    end
+
+    @children.each do |move|
+      move.children moves
+    end
+
+    @children
+  end
 
   def child_that_matches x, y
     children.detect {|move| move.x == x and move.y == y }

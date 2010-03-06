@@ -45,8 +45,10 @@ jQuery.extend(GocoolPlayer.prototype, {
       success:function(response){
         if (response.charAt(0) == '0'){ // success
           var origUrl = c.game.url;
-          c.loadSgf(response.substr(2));
+          var xys = c.gameState.getXYs();
+          c.loadSgf(response.substr(2), 0);
           c.game.url = origUrl;
+          c.goToXYs(xys);
           c.startUpdater(true);
         } else { // failure
           alert(jsgvTranslations["error_thrown"] + "\n" + response);
