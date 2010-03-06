@@ -60,9 +60,14 @@ class InvitationsController < ApplicationController
   def accept
     invitation = Invitation.find(params[:id])
     if invitation
-      invitation.accept
-      invitation.save!
-      redirect_to game_url(invitation.game)
+      if invitation.state == 'new'
+        invitation.accept
+        invitation.save!
+      elsif invitation.state == 'accepted'
+        redirect_to game_url(invitation.game)
+      else
+        redirect_to :action => :show
+      end
     else
       flash.now[:warn] = t('invitations.not_found')
       redirect_to :action => :index
@@ -72,8 +77,10 @@ class InvitationsController < ApplicationController
   def reject
     invitation = Invitation.find(params[:id])
     if invitation
-      invitation.reject
-      invitation.save!
+      if invitation.state == 'new'
+        invitation.reject
+        invitation.save!
+      end
     else
       flash.now[:warn] = t('invitations.not_found')
     end
@@ -83,8 +90,10 @@ class InvitationsController < ApplicationController
   def cancel
     invitation = Invitation.find(params[:id])
     if invitation
-      invitation.cancel
-      invitation.save!
+      if invitation.state == 'new'
+        invitation.cancel
+        invitation.save!
+      end
     else
       flash.now[:warn] = t('invitations.not_found')
     end

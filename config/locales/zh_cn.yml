@@ -226,7 +226,7 @@ zh_cn:
     expired: "该邀请已过期。"
     pending: "被邀请人还没有做出决定。"
     invitation_subject: "USERNAME发了一个对局邀请"
-    invitation_body: "USERNAME发了一个对局邀请。请点 [url]INVITATION_URL[/url] 接受该邀请，或点 [url]INVITATION_URL/reject[/url] 拒绝，或点 [url]INVITATION_URL[/url] 查看邀请内容。"
+    invitation_body: "USERNAME发了一个对局邀请。请点 [url]INVITATION_URL/accept[/url] 接受该邀请，或点 [url]INVITATION_URL/reject[/url] 拒绝，或点 [url]INVITATION_URL[/url] 查看邀请内容。"
     accept_invitation_subject: "USERNAME接受了你的对局邀请"
     accept_invitation_body: "USERNAME接受了你的对局邀请。请点 [url]GAME_URL[/url] 进入对局。"
     reject_invitation_subject: "USERNAME拒绝了你的对局邀请"
