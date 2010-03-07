@@ -94,7 +94,7 @@ module GameInPlay
   def undo_guess_moves
     return unless logged_in?
 
-    GameMove.moves_after(last_move).each do |move|
+    GameMove.moves_after(detail.last_move).each do |move|
       move.delete if move.player_id.nil? and move.guess_player_id == current_player.id
     end
   end
