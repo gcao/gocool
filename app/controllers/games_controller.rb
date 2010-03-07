@@ -52,4 +52,16 @@ class GamesController < ApplicationController
       render :text => "#{GameInPlay::OP_FAILURE}:#{t('games.user_is_not_player')}"
     end
   end
+
+  def undo_guess_moves
+    @game = Game.find params[:id]
+    raise "Game #{params[:id]} is not found!" unless @game
+
+    if @game.current_user_is_player?
+      @game.undo_guess_moves
+      redirect_to :action => :show
+    else
+      render :text => "#{GameInPlay::OP_FAILURE}:#{t('games.user_is_not_player')}"
+    end
+  end
 end

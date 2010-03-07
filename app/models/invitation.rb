@@ -131,7 +131,7 @@ class Invitation < ActiveRecord::Base
     self.game_id = game.id
     self.save!
 
-    GameDetail.create!(:game_id => game.id, :whose_turn => start_side)
+    GameDetail.create!(:game_id => game.id, :whose_turn => start_side, :formatted_moves => "")
 
     Discuz::PrivateMessage.send_message invitee, inviter,
                                         I18n.t('invitations.accept_invitation_subject').sub('USERNAME', invitee.username),

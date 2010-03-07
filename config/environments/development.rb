@@ -26,7 +26,7 @@ config.gem 'ruby-growl'
 config.gem 'bullet', :source => 'http://gemcutter.org', :version => ">=2.0.0.beta.2"
 config.after_initialize do
   Bullet.enable = true
-  Bullet.alert = true
+  Bullet.alert = false
   Bullet.bullet_logger = true
   Bullet.console = true
   Bullet.growl = true

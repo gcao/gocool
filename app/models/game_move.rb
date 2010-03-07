@@ -35,7 +35,9 @@ class GameMove < ActiveRecord::Base
   def to_sgf options = {}
     # Guess move by opponent
     return "" if guess_player_id and options[:player_id] and guess_player_id != options[:player_id]
-    
+
+    return children_to_sgf(options) if move_no == 0 and options[:with_children]
+
     sgf = move_to_sgf(color, x, y)
     sgf << "N[#{self.id}]" if options[:with_name]
     sgf << "C[#{I18n.t('games.guess_move_comment')}]" if player_id.blank?

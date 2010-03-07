@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 Thread.current[:user] = user = User.find_or_load('appoolloo')
 invitees, ignore = Invitation.parse_invitees('apollotest')
 
-invitation = Invitation.create!(:inviter_id => user.qiren_player, :invitees => invitees.to_json, :start_side => 1)
+invitation = Invitation.create!(:inviter_id => user.id, :invitees => invitees.to_json, :start_side => 1)
 
 Thread.current[:user] = User.find_or_load('apollotest')
 invitation.accept

@@ -20,57 +20,40 @@ module GameInPlay
       return OP_FAILURE, I18n.t('games.incorrect_move').sub('MOVE', "#{x}, #{y}")
     end
 
-    if moves > 0 and parent_move_id.blank?
+    if parent_move_id.blank?
       return OP_FAILURE, I18n.t('games.parent_move_required')
     end
 
-    parent_move = GameMove.find parent_move_id unless parent_move_id.blank?
+    parent_move = GameMove.find parent_move_id
 
-    if parent_move # not first move
-      unless move = parent_move.child_that_matches(x, y)
-        if guess_move?(parent_move.color, current_player.id)
-          # This is a counter move, should replace previous counter move
-          parent_move.children.each(&:destroy)
-        end
-
-        move = GameMove.new
-        move.game_detail_id = detail.id
-        move.move_no = parent_move.move_no + 1
-        move.color = parent_move.color == Game::BLACK ? Game::WHITE : Game::BLACK
-        move.x = x
-        move.y = y
-        move.parent_id = parent_move.id
-        move.guess_player_id = current_player.id
-        move.save!
+    unless move = parent_move.child_that_matches(x, y)
+      if guess_move?(parent_move.color, current_player.id)
+        # This is a counter move, should replace previous counter move
+        parent_move.children.each(&:destroy)
       end
 
-      if detail.last_move_id == parent_move.id and my_turn?
-        self.moves += 1
-        move.player_id = current_player.id
-        detail.last_move_time = Time.now
-        detail.change_turn
-        detail.last_move_id = move.id
-        detail.formatted_moves += move.to_sgf(:with_name => true)
-      end
-    else # first move
       move = GameMove.new
       move.game_detail_id = detail.id
-      move.move_no = 1
-      move.color = detail.whose_turn
+      move.move_no = parent_move.move_no + 1
+      if move.move_no == 1
+        move.color = start_side
+      else
+        move.color = parent_move.color == Game::BLACK ? Game::WHITE : Game::BLACK
+      end
       move.x = x
       move.y = y
+      move.parent_id = parent_move.id
       move.guess_player_id = current_player.id
       move.save!
+    end
 
-      if my_turn?
-        self.moves = 1
-        move.player_id = current_player.id
-        detail.last_move_time = Time.now
-        detail.change_turn
-        detail.first_move_id = move.id
-        detail.last_move_id = move.id
-        detail.formatted_moves = move.to_sgf(:with_name => true)
-      end
+    if detail.last_move_id == parent_move.id and my_turn?
+      self.moves += 1
+      move.player_id = current_player.id
+      detail.last_move_time = Time.now
+      detail.change_turn
+      detail.last_move_id = move.id
+      detail.formatted_moves += move.to_sgf(:with_name => true)
     end
 
     move.played_at = Time.now
@@ -108,10 +91,18 @@ module GameInPlay
     return code, message
   end
 
+  def undo_guess_moves
+    return unless logged_in?
+
+    GameMove.moves_after(last_move).each do |move|
+      move.delete if move.player_id.nil? and move.guess_player_id == current_player.id
+    end
+  end
+
   def process_guess_moves
     return unless logged_in?
 
-    guess_move = detail.last_move.children.detect do |move|
+    guess_move = detail.guess_moves.detect do |move|
       my_color and my_color != move.color and current_player.id != move.guess_player_id
     end
 
