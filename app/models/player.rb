@@ -25,7 +25,6 @@ class Player < ActiveRecord::Base
     unless player
       gaming_platform_id = platform.id if platform
       player = create!(:gaming_platform_id => gaming_platform_id, :name => name, :rank => rank)
-      PlayerStat.create!(:player_id => player.id)
     end
     player
   end
@@ -35,6 +34,10 @@ class Player < ActiveRecord::Base
     k = k.on_platform(platform)
     k = k.name_like(name) unless name.blank?
     k.include(:gaming_platform, :stat)
+  end
+
+  def after_create
+    PlayerStat.create!(:player_id => id)
   end
 
   def games

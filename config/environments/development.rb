@@ -21,3 +21,16 @@ config.middleware.use "Rack::Bug",
                       :password   => "admin"                      
 
 config.gem 'rubaidh-google_analytics', :lib => 'rubaidh/google_analytics', :source => 'http://gems.github.com'
+
+config.gem 'ruby-growl' 
+config.gem 'bullet', :source => 'http://gemcutter.org', :version => ">=2.0.0.beta.2"
+config.after_initialize do
+  Bullet.enable = true
+  Bullet.alert = true
+  Bullet.bullet_logger = true
+  Bullet.console = true
+  Bullet.growl = true
+  Bullet.rails_logger = true
+  Bullet.disable_browser_cache = true
+end
+

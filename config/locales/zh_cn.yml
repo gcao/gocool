@@ -147,6 +147,7 @@ zh_cn:
     japanese_rule: "日本规则"
     korean_rule: "韩国规则"
     ying_rule: "应氏规则"
+    guess_move_comment: "!!!这一步是我方预想的棋局走向!!!"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"
