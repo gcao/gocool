@@ -63,6 +63,7 @@ class InvitationsController < ApplicationController
       if invitation.state == 'new'
         invitation.accept
         invitation.save!
+        redirect_to game_url(invitation.game)
       elsif invitation.state == 'accepted'
         redirect_to game_url(invitation.game)
       else
