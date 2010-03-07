@@ -5,6 +5,8 @@ class GameDetail < ActiveRecord::Base
   belongs_to :first_move, :class_name => 'GameMove', :foreign_key => 'first_move_id'
   belongs_to :last_move,  :class_name => 'GameMove', :foreign_key => 'last_move_id'
 
+  has_many :all_moves, :class_name => 'GameMove', :dependent => :destroy
+
   def after_create
     move = GameMove.create!(:game_detail_id => id, :move_no => 0, :x => 0, :y => 0, :color => 0, :played_at => Time.now)
     self.first_move_id = self.last_move_id = move.id
