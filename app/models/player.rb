@@ -4,6 +4,8 @@ class Player < ActiveRecord::Base
   has_one :stat, :class_name => 'PlayerStat', :dependent => :destroy
   has_many :opponents, :class_name => "PairStat", :dependent => :destroy
 
+  has_one :user, :class_name => 'Discuz::User', :foreign_key => "qiren_player_id"
+
   named_scope :on_platform, lambda {|platform|
     if platform.blank?
       {:conditions => ["players.gaming_platform_id is null"]}
