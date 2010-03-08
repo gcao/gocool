@@ -4,6 +4,13 @@
   = show_flash 'span-24'
 
   %fieldset.span-18.no-border
+    -#.form_row.span-18
+      .span-3
+        %label(for="invitation_game_type")
+          = t('invitations.game_type_label')
+      .span-15.last
+        =game_type_select
+
     .form_row.span-18
       .span-3
         %label(for="invitation_invitees")

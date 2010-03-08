@@ -1,6 +1,6 @@
 zh_cn:
   shared:
-    page_title: "棋人 - 棋谱库"
+    page_title: "棋人"
     name_supports_wildcards: "* 代表任何字符。例如：<br/>cool* = cool开头<br/>go*cool = go开头cool结尾<br/>*99 = 99结尾"
     recommend_firefox: "<span style='color:#999;font-size:150%'>请使用<a href='http://www.mozillaonline.com'><img src='http://sfx-images.mozilla.org/affiliates/Buttons/Firefox3.5/96x31_blue.png' alt='火狐浏览器' border='0' style='vertical-align:middle'/></a>浏览本站。</span>"
     auth_failure_page_header: "操作失败"
@@ -17,12 +17,13 @@ zh_cn:
     pairs: "棋手+对手"
     games: "对局"
     tournaments: "赛事"
+    invitations: "对局邀请"
     my_uploads: "我的上传"
     my_favorites: "我的书签"
     admin_players: "棋手管理"
     admin_games: "对局管理"
   link:
-    home: "棋谱库首页"
+    home: "对弈首页"
     back: "返回"
     close: "关闭窗口"
     download_sgf: "下载SGF文件"
@@ -47,14 +48,15 @@ zh_cn:
     invalid: "Email不正确"
   homepage:
     page_title: "首页"
-    welcome: "欢迎访问棋人棋谱库"
-    description: "本棋谱库支持上传对局、打谱以及分享下棋心得。"
-    my_uploads:
-      label: "我上传的对局"
+    welcome: "欢迎访问棋人"
+    description: "本网站支持上传对局、打谱以及分享下棋心得。"
     recent_uploads:
       label: "上传的对局"
     qiren_games:
       label: "本站棋友对局"
+    welcome_member: "USERNAME，欢迎你回来"
+    my_uploads:
+      label: "我上传的对局"
   uploads:
     page_title: "上传对局"
     page_header: "上传对局"
@@ -137,6 +139,8 @@ zh_cn:
   games:
     page_title: "对局"
     page_header: "对局"
+    weiqi_label: "围棋"
+    daoqi_label: "道棋"
     platform_label: "对局平台："
     player1_label: "棋手"
     vs_label: "对"
@@ -177,7 +181,7 @@ zh_cn:
     game_not_found: "没找到对局"
     upload_not_found: "没找到上传记录"
   discuz:
-    gocool_app: "棋谱库"
+    gocool_app: "对弈"
     registration: "注册"
     login: "登录"
     online: "在线"
@@ -205,6 +209,7 @@ zh_cn:
     invitations_sent_to_me: "发给我的对局邀请"
     invitations_sent_by_me: "我发出的对局邀请"
     created_at_label: "邀请发出时间"
+    game_type_label: "类别"
     inviter_label: "邀请人"
     invitees_label: "被邀请人"
     invitees_table_label: "被邀请人"

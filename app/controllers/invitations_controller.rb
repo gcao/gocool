@@ -15,9 +15,12 @@ class InvitationsController < ApplicationController
     @start_side = params["invitation"]["start_side"]
     @note = params["invitation"]["note"]
 
+    @game_type = Game::WEIQI
+    @game_type = Game::DAOQI if params['invitation'].delete('game_type') == Game::DAOQI.to_s
+
     invitees, unrecognized = Invitation.parse_invitees(@invitees)
 
-    attrs = params[:invitation].merge(:invitees => invitees.to_json).merge(:inviter_id => @current_user.id)
+    attrs = params[:invitation].merge(:invitees => invitees.to_json, :inviter_id => @current_user.id, :game_type => @game_type)
     @invitation = Invitation.new(attrs)
 
     if unrecognized.blank? and @invitation.valid?
