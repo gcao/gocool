@@ -1,0 +1,17 @@
+.span-24
+  %h2= t('invitations.invitations_sent_to_me')
+  #invitations_container
+    =render 'invitations/invitations_to_me'
+
+%hr.space
+
+.span-24
+  .span-6
+    %h2= t('invitations.invitations_sent_by_me')
+  %a(href="#{new_invitation_url}")
+    = t('invitations.create_link_label')
+
+  %hr.space0
+
+  #invitations_container
+    =render 'invitations/invitations_by_me'

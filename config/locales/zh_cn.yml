@@ -206,6 +206,7 @@ zh_cn:
   invitations:
     page_title: "对局邀请"
     page_header: "对局邀请"
+    none: "没有新的邀请"
     create_page_header: "创建对局邀请"
     create_link_label: "创建对局邀请"
     invitations_sent_to_me: "发给我的对局邀请"
