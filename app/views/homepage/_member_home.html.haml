@@ -1,4 +1,4 @@
-%h1#welcome= t('homepage.welcome_member')
+%h1#welcome= t('homepage.welcome_member').sub('USERNAME', @current_user.username)
 
 #qiren_games_container
   %h2#qiren_games_label= t('homepage.qiren_games.label')

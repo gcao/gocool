@@ -153,6 +153,8 @@ zh_cn:
     korean_rule: "韩国规则"
     ying_rule: "应氏规则"
     guess_move_comment: "!!!这一步是我方预想的棋局走向!!!"
+    resign_subject: "PLAYER_COLOR PLAYER 认输，棋局结束"
+    resign_body: "请点 GAME_URL 欣赏棋局。"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"

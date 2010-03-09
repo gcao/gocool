@@ -78,10 +78,12 @@ module GameInPlay
       black_resign
       self.winner = Game::WHITE
       self.result = "W+R"
+      send_resign_message current_player.user, white_player.user, Game::BLACK
     elsif current_player.id == white_id
       white_resign
       self.winner = Game::BLACK
       self.result = "B+R"
+      send_resign_message current_player.user, black_player.user, Game::WHITE
     else
       code = OP_FAILURE
       message = I18n.t('games.not_a_player_in_game').sub('GAME_ID', self.id).sub('USERNAME', current_player.name)
@@ -140,5 +142,16 @@ module GameInPlay
   def guess_move? move_color, player_id
     (move_color == Game::WHITE and player_id == black_id) or 
             (move_color == Game::BLACK and player_id == white_id)
+  end
+
+  private
+
+  def send_resign_message from, to, loser_color
+    color_str = loser_color == Game::BLACK ? I18n.t('games_widget.black_player') : I18n.t('games_widget.white_player')
+
+    subject = I18n.t('games.resign_subject').sub('PLAYER_COLOR', color_str).sub('PLAYER', from.username)
+    body = I18n.t('games.resign_body').sub('GAME_URL', "#{ENV['BASE_URL']}/app/games/#{id}")
+    
+    Discuz::PrivateMessage.send_message from, to, subject, body
   end
 end

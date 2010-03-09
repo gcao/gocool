@@ -13,6 +13,9 @@ Can not create/accept invitations if you have pending games that are older than 
 
 Play
 Can not play on newer game if you have pending games that are older than 5 days
+Show status of opponent (online/offline)
+Redirect to game that opponent is online
+Chat (not comments)
 
 Resign
 Can resign at any time
