@@ -2,6 +2,27 @@
 
 = render :partial => "invitations/invitations"
 
+- unless @games_of_my_turn.blank?
+  %hr.space
+  #games_of_my_turn_container
+    %h2= t('games.games_of_my_turn')
+
+    = render_games_widget @games_of_my_turn
+
+- unless @games_of_not_my_turn.blank?
+  %hr.space
+  #games_of_not_my_turn_container
+    %h2= t('games.games_of_not_my_turn')
+
+    = render_games_widget @games_of_not_my_turn
+
+- unless @my_finished_games.blank?
+  %hr.space
+  #my_finished_games_container
+    %h2= t('games.my_finished_games')
+
+    = render_games_widget @my_finished_games
+
 %hr.space
 
 #qiren_games_container
@@ -9,9 +30,9 @@
 
   = render_games_widget @qiren_games
 
-%hr.space
 
-- if @my_uploads.size > 0
+- unless @my_uploads.blank?
+  %hr.space
   #my_uploads_container
     %h2#my_uploads_label= t('homepage.my_uploads.label')
 

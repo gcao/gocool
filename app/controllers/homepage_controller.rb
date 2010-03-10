@@ -5,6 +5,9 @@ class HomepageController < ApplicationController
       @invitations_by_me = Invitation.active.by_me
       @qiren_games = Game.on_platform(GamingPlatform.qiren).with_detail.sort_by_last_move_time
       @my_uploads = Upload.recent.find_all_by_uploader_id(@current_user.id)
+      @games_of_my_turn = Game.my_turn(@current_user.qiren_player).not_finished
+      @games_of_not_my_turn = Game.not_my_turn(@current_user.qiren_player).not_finished
+      @my_finished_games = Game.by_player(@current_user.qiren_player).finished
     else
       @qiren_games = Game.on_platform(GamingPlatform.qiren).with_detail.sort_by_last_move_time
       @uploads = Upload.recent

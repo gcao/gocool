@@ -34,7 +34,33 @@ class Game < ActiveRecord::Base
 
   named_scope :by_player, lambda {|p|
     {
-       :conditions => ["(black_id = ? or white_id = ?)", p.id, p.id]
+      :conditions => ["(black_id = ? or white_id = ?)", p.id, p.id]
+    }
+  }
+
+  named_scope :my_turn, lambda {|p|
+    {
+      :include => :detail,
+      :conditions => ["(black_id = ? and game_details.whose_turn = ?) or (white_id = ? and game_details.whose_turn = ?)", p.id, BLACK, p.id, WHITE]
+    }
+  }
+
+  named_scope :not_my_turn, lambda {|p|
+    {
+      :include => :detail,
+      :conditions => ["(black_id = ? and game_details.whose_turn = ?) or (white_id = ? and game_details.whose_turn = ?)", p.id, WHITE, p.id, BLACK]
+    }
+  }
+
+  named_scope :finished, lambda {
+    {
+      :conditions => ["result is not null and result != ''"]
+    }
+  }
+
+  named_scope :not_finished, lambda {
+    {
+      :conditions => ["result is null or result = ''"]
     }
   }
 
