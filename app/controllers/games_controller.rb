@@ -24,6 +24,22 @@ class GamesController < ApplicationController
     end
   end
 
+  def my_turn
+    if logged_in? and not Game.my_turn(current_player).not_finished.blank?
+      render :text => 'true'
+    else
+      render :text => 'false'
+    end
+  end
+
+  def waiting
+    if logged_in? and game = Game.my_turn(current_player).not_finished.first
+      redirect_to game_url(game)
+    else
+      redirect_to root_url
+    end
+  end
+
   def destroy
     Game.destroy(params[:id])
     render :text => 'SUCCESS'

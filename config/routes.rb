@@ -43,7 +43,8 @@ ActionController::Routing::Routes.draw do |map|
   map.my_uploads 'my_uploads', :controller => 'users', :action => 'my_uploads'
   map.my_favorites 'my_favorites', :controller => 'users', :action => 'my_favorites'
 
-  map.resources :games, :member => {:play => :get, :resign => :get, :undo_guess_moves => :get}
+  map.resources :games, :member => {:play => :get, :resign => :get, :undo_guess_moves => :get},
+                :collection => {:my_turn => :get, :waiting => :get}
   map.resources :uploads
   map.upload_search 'upload_search', :controller => 'upload_search', :action => 'index'
 

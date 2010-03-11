@@ -12,6 +12,7 @@ Can not create/accept after 10 games (unless marked as unlimited)
 Can not create/accept invitations if you have pending games that are older than 5 days
 
 Play
+Show "it is your turn" on forum pages and game server pages
 Can not play on newer game if you have pending games that are older than 5 days
 Show status of opponent (online/offline)
 Redirect to game that opponent is online

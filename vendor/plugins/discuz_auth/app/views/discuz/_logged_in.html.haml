@@ -1,5 +1,6 @@
+= render :file => RAILS_ROOT + "/public/shared/my_turn.html"
 %cite
-  %a.noborder{ :href => "/bbs/space.php?uid=#{login_session.uid}" }
+  %a#username.noborder{ :href => "/bbs/space.php?uid=#{login_session.uid}" }
     =login_session.username
   %span#loginstatus
     %a{ :href => "/bbs/member.php?action=switchstatus" }
