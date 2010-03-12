@@ -103,6 +103,14 @@ class Game < ActiveRecord::Base
 
   named_scope :sort_by_players, :order => "black_name, white_name"
 
+  named_scope :my_turn_by_name, lambda{|name|
+    {
+      :include => :detail,
+      :conditions => ["(black_name = ? and game_details.whose_turn = ?) or (white_name = ? and game_details.whose_turn = ?)",
+                      name, BLACK, name, WHITE] 
+    }
+  }
+
   def black_plays_first?
     not white_plays_first?
   end
