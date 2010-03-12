@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'RMagick'
+include Magick
+
+COLORS = "0123456789ab"
+
+10.downto(3) do |i|
+  gc = Draw.new
+  color = COLORS[i, 1]
+  gc.stroke("#bbbb#{color}#{color}")
+  gc.text(0, 0, "该我下了")
+
+  canvas = Image.new(60, 12){self.background_color = 'none'}
+  gc.draw canvas
+  canvas.write("/tmp/my_turn_#{i}.gif")
+end
+
+# http://atchieu.wordpress.com/2008/07/24/using-imagemagick-to-convert-a-series-of-images-to-animated-gif/
+`convert -verbose -delay 20 -loop 0 -density 200 /tmp/my_turn_*.gif /tmp/my_turn.gif`
