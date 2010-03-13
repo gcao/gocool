@@ -10,6 +10,7 @@ class GameDetail < ActiveRecord::Base
   def after_create
     move = GameMove.create!(:game_detail_id => id, :move_no => 0, :x => 0, :y => 0, :color => 0, :played_at => Time.now)
     self.first_move_id = self.last_move_id = move.id
+    self.last_move_time = Time.now
     save!
   end
 

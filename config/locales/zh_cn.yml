@@ -28,6 +28,8 @@ zh_cn:
     close: "关闭窗口"
     download_sgf: "下载SGF文件"
     undo_guess_moves: "删除预测的棋步"
+    prev_game: "上一局"
+    next_game: "下一局"
     pagination:
       prev: "&#171; 前一页"
       next: "后一页 &#187;"
@@ -139,6 +141,7 @@ zh_cn:
   games:
     page_title: "对局"
     page_header: "对局"
+    show_page_header: "对局 GAME_NO：WHITE（白）对 BLACK（黑）"
     weiqi_label: "围棋"
     daoqi_label: "道棋"
     platform_label: "对局平台："
@@ -158,6 +161,9 @@ zh_cn:
     games_of_my_turn: "轮到我方下的对局"
     games_of_not_my_turn: "轮到对方下的对局"
     my_finished_games: "我下完的对局"
+    no_other_game: "没有其他对局。"
+    no_other_waiting_game: "没有其他对局轮到你下子。"
+    next_game_not_logged_in: "只有登录后才可以看到你的下一局。"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"

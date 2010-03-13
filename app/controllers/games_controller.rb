@@ -24,6 +24,42 @@ class GamesController < ApplicationController
     end
   end
 
+  def prev
+    render :text => "TODO"
+  end
+
+  def next
+    if logged_in?
+      # Find waiting games, locate position of current game, return game immediately after current game, return first game if current is last
+      games = Game.my_turn(current_player).not_finished.sort_by_last_move_time
+      if games.size == 0
+        # If there is no waiting games, jump between games that are waiting for opponents to play
+        games = Game.by_player(current_player).not_finished.sort_by_last_move_time
+        if games.size == 0
+          flash[:notice] = t('games.no_other_game')
+          redirect_to game_url(params[:id])
+        elsif games.size == 1
+          game = games.first
+          flash[:notice] = t('games.no_other_game') if game.id == params[:id].to_i
+          redirect_to game_url(game)
+        else
+          next_game = find_next(games, params[:id])
+          redirect_to game_url(next_game)
+        end
+      elsif games.size == 1
+        game = games.first
+        flash[:notice] = t('games.no_other_waiting_game') if game.id == params[:id].to_i
+        redirect_to game_url(game)
+      else
+        next_game = find_next(games, params[:id])
+        redirect_to game_url(next_game)
+      end
+    else
+      flash[:notice] = t('games.next_game_not_logged_in')
+      render game_url(params[:id])
+    end
+  end
+
   def my_turn
     if logged_in? and not Game.my_turn(current_player).not_finished.blank?
       render :text => 'true'
@@ -79,5 +115,17 @@ class GamesController < ApplicationController
     else
       render :text => "#{GameInPlay::OP_FAILURE}:#{t('games.user_is_not_player')}"
     end
+  end
+
+  private
+
+  def find_next games, current_game_id
+    found = false
+    games.each do |game|
+      return game if found
+      
+      found = true if current_game_id.to_i == game.id
+    end
+    games.first
   end
 end

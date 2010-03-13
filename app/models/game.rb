@@ -103,6 +103,8 @@ class Game < ActiveRecord::Base
 
   named_scope :sort_by_players, :order => "black_name, white_name"
 
+  named_scope :sort_by_last_move_time, :include => :detail, :order => "game_details.last_move_time"
+
   named_scope :my_turn_by_name, lambda{|name|
     {
       :include => :detail,

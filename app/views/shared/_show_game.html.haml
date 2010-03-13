@@ -1,6 +1,11 @@
 %a{:href => url}= t('link.download_sgf')
-&nbsp;&nbsp;&nbsp;&nbsp;
+
 - if @game and not @game.finished? and @game.current_user_is_player?
+  -#&nbsp;&nbsp;&nbsp;&nbsp;
+  -#%a{:href => prev_game_url}= t('link.prev_game')
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  %a{:href => next_game_url}= t('link.next_game')
+  &nbsp;&nbsp;&nbsp;&nbsp;
   %a{:href => undo_guess_moves_game_url}= t('link.undo_guess_moves')
 #gameContainer
 
