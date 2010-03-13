@@ -24,10 +24,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def prev
-    render :text => "TODO"
-  end
-
   def next
     if logged_in?
       # Find waiting games, locate position of current game, return game immediately after current game, return first game if current is last

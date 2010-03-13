@@ -1,17 +1,16 @@
 %a{:href => url}= t('link.download_sgf')
 
 - if @game and not @game.finished? and @game.current_user_is_player?
-  -#&nbsp;&nbsp;&nbsp;&nbsp;
-  -#%a{:href => prev_game_url}= t('link.prev_game')
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  %a{:href => next_game_url}= t('link.next_game')
   &nbsp;&nbsp;&nbsp;&nbsp;
   %a{:href => undo_guess_moves_game_url}= t('link.undo_guess_moves')
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  %a{:href => next_game_url}= t('link.next_game')
+
 #gameContainer
 
 - if @game and not @game.finished? and @game.current_user_is_player?
   %div(style="width:720px")
-    %p 棋人对弈最特殊的功能是预测棋局的走向。
+    %p 棋人对弈最特殊的功能是猜测对方的应手。
     %p
       也就是说，不管是轮到你走，还是轮到对方走，你都可以随时在盘上下子，棋步会保存到服务器端。等到对方下子后，服务器会比较双方的位置，如果位置一致，
       则预测的棋步成为实战。如果不一致，则预测的棋步被取消。

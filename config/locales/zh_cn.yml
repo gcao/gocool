@@ -28,7 +28,6 @@ zh_cn:
     close: "关闭窗口"
     download_sgf: "下载SGF文件"
     undo_guess_moves: "删除预测的棋步"
-    prev_game: "上一局"
     next_game: "下一局"
     pagination:
       prev: "&#171; 前一页"
