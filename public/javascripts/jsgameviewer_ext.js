@@ -52,7 +52,7 @@ jQuery.extend(GocoolPlayer.prototype, {
           c.forwardAll();
           c.startUpdater(true);
         } else { // failure
-          alert(jsgvTranslations["error_thrown"] + "\n" + response);
+          jsgv.showAjaxError("", response);
           c.remove();
         }
       },
@@ -73,7 +73,7 @@ jQuery.extend(GocoolPlayer.prototype, {
           // TODO: move to next game
           c.refresh();
         } else { // failure
-          alert(jsgvTranslations["error_thrown"] + "\n" + response);
+          jsgv.showAjaxError("", response);
         }
       },
       error: function(XMLHttpRequest, textStatus, errorThrown){

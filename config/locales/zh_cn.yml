@@ -163,6 +163,7 @@ zh_cn:
     no_other_game: "没有其他对局。"
     no_other_waiting_game: "没有其他对局轮到你下子。"
     next_game_not_logged_in: "只有登录后才可以看到你的下一局。"
+    parent_move_required: "没有找到上一步，操作失败，请重试。"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"
