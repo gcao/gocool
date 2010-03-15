@@ -24,6 +24,10 @@ module GameInPlay
       return OP_FAILURE, I18n.t('games.parent_move_required')
     end
 
+    if parent_move_id.to_i < detail.last_move_id
+      return OP_FAILURE, I18n.t('games.not_last_move_or_after')
+    end
+
     parent_move = GameMove.find parent_move_id
 
     unless move = parent_move.child_that_matches(x, y)
