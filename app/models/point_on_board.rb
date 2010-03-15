@@ -1,4 +1,4 @@
-class Point
+class PointOnBoard
   attr_reader :x, :y, :id, :color, :move_no
 
   def initialize x, y, color, move_no, delete = nil
