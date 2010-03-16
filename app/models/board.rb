@@ -1,6 +1,6 @@
 class Board < Array
   def initialize size, game_type = Game::WEIQI
-    @size = size
+    @size      = size
     @game_type = game_type
     reset
   end

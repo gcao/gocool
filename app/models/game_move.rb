@@ -26,6 +26,18 @@ class GameMove < ActiveRecord::Base
     @children
   end
 
+  def board
+    return @board unless @board
+    if parent
+      @board = parent.board.clone
+    else
+      @board = Board.new(game_detail.game.size, game_detail.game.game_type)
+    end
+    # TODO place move on board
+    #@board.
+    # TODO remove dead stones
+  end
+
   def child_that_matches x, y
     children.detect {|move| move.x == x and move.y == y }
   end
