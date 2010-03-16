@@ -1,7 +1,7 @@
-class PointGroup
-  attr_accessor :color
+class PointGroup < Array
+  attr :color
 
-  def initialize
-    @points = []
+  def initialize color
+    @color = color
   end
 end
