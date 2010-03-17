@@ -246,6 +246,7 @@ zh_cn:
     invitee_start: "被邀请人"
     chinese_rule: "中国规则"
     invitees_required: "必填"
+    reselect_start_side: "请重新选择哪一方先下。"
     not_found: "没有找到该邀请。"
     user_not_found: "没有找到 USERNAME"
     accept: "接受"

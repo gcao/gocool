@@ -118,6 +118,10 @@ class Invitation < ActiveRecord::Base
     game.place = "#{GamingPlatform.qiren.name} #{GamingPlatform.qiren.url}"
 
     invitee = current_user
+
+    PairStat.find_or_create(inviter.qiren_player.id, invitee.qiren_player.id)
+    PairStat.find_or_create(invitee.qiren_player.id, inviter.qiren_player.id)
+
     if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first
       game.black_id = inviter.qiren_player.id
       game.black_name = inviter.qiren_player.name

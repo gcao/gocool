@@ -64,3 +64,17 @@
       required: true,
       errorMsg: "#{t('invitations.invitees_required')}"
     };
+    jQuery('#invitation_handicap').change(function(){
+      var handicap = jQuery(this).val();
+      if (handicap == "0") {
+        if (jQuery('#invitation_start_side option[value=0]').length == 0) {
+          jQuery('#invitation_start_side').prepend("<option value='0'>#{t('invitations.random_start')}</option>");
+        }
+      } else {
+        var start_side = jQuery('#invitation_start_side').val();
+        if (start_side == '0') {
+          alert("#{t('invitations.reselect_start_side')}");
+          jQuery('#invitation_start_side option[value=0]').remove();
+        }
+      }
+    });
