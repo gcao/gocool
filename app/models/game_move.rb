@@ -1,6 +1,7 @@
 class GameMove < ActiveRecord::Base
   include SGF::SGFHelper
 
+  belongs_to :parent, :class_name => 'GameMove', :foreign_key => 'parent_id'
   belongs_to :game_detail
 
   named_scope :moves_after, lambda { |move|
@@ -27,15 +28,20 @@ class GameMove < ActiveRecord::Base
   end
 
   def board
-    return @board unless @board
+    return @board if @board
+    
     if parent
       @board = parent.board.clone
     else
-      @board = Board.new(game_detail.game.size, game_detail.game.game_type)
+      @board = Board.new(game_detail.game.board_size, game_detail.game.game_type)
     end
-    # TODO place move on board
-    #@board.
-    # TODO remove dead stones
+
+    # place move on board
+    add_move_to_board
+    # remove dead stones after move
+    remove_dead_stones
+
+    @board
   end
 
   def child_that_matches x, y
@@ -63,5 +69,26 @@ class GameMove < ActiveRecord::Base
       sgf = move.to_sgf(options)
       sgf.blank? ? "" : "(#{sgf})"
     }.join
+  end
+
+  private
+
+  def add_move_to_board
+    @board[x][y] = color if color > 0
+  end
+
+  def remove_dead_stones
+    remove_group @board.get_dead_group(x-1, y) if x > 0
+    remove_group @board.get_dead_group(x+1, y) if x < @board.size - 1
+    remove_group @board.get_dead_group(x, y-1) if y > 0
+    remove_group @board.get_dead_group(x, y+1) if y < @board.size - 1
+    remove_group @board.get_dead_group(x, y)
+  end
+
+  def remove_group group
+    return if group.blank?
+    group.each do |x, y|
+      @board[x][y] = Game::NONE
+    end
   end
 end

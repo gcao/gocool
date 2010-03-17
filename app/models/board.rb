@@ -1,4 +1,6 @@
 class Board < Array
+  attr :game_type
+
   def initialize size, game_type = Game::WEIQI
     @size      = size
     @game_type = game_type
