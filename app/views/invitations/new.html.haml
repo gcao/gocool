@@ -9,7 +9,10 @@
         %label(for="invitation_game_type")
           = t('invitations.game_type_label')
       .span-15.last
-        =game_type_select
+        = radio_button "invitations", "game_type", "1"
+        = t('games.weiqi_label')
+        = radio_button "invitations", "game_type", "2"
+        = t('games.daoqi_label')
 
     .form_row.span-18
       .span-3
@@ -18,6 +21,13 @@
           =t('invitations.invitees_label')
       .span-15.last
         %input#invitation_invitees(type="text" name="invitation[invitees]" size="80" value="#{@invitees}")
+
+    .form_row.span-18
+      .span-3
+        %label(for="invitation_handicap")
+          = t('invitations.handicap_label')
+      .span-15.last
+        =handicap_select
 
     .form_row.span-18
       .span-3

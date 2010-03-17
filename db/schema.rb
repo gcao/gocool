@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100306212728) do
+ActiveRecord::Schema.define(:version => 20100317191853) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20100306212728) do
     t.integer  "game_id"
     t.integer  "whose_turn"
     t.datetime "last_move_time"
-    t.string   "handicaps"
     t.string   "formatted_moves", :limit => 4000
     t.integer  "first_move_id"
     t.integer  "last_move_id"
@@ -61,10 +60,9 @@ ActiveRecord::Schema.define(:version => 20100306212728) do
     t.integer  "guess_player_id"
     t.datetime "played_at"
     t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "setup_points"
   end
 
   add_index "game_moves", ["game_detail_id"], :name => "game_moves_detail_id"

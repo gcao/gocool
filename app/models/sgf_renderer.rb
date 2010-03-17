@@ -19,9 +19,9 @@ class SgfRenderer
     sgf << render_property("KM", @game.komi)
     sgf << render_property("HA", @game.handicap)
     sgf << render_property("RE", @game.result)
-    sgf << @game.detail.nil_or.handicaps.to_s
-    sgf << "N[#{@game.detail.nil_or.first_move_id}]"
-    sgf << @game.detail.nil_or.moves_to_sgf.to_s
+    if @game.detail
+      sgf << @game.detail.moves_to_sgf.to_s
+    end
     sgf << ")"
   end
 

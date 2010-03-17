@@ -55,8 +55,9 @@ class GameMove < ActiveRecord::Base
     return children_to_sgf(options) if move_no == 0 and options[:with_children]
 
     sgf = move_to_sgf(color, x, y)
+    sgf << setup_points_to_sgf
     sgf << "N[#{self.id}]" if options[:with_name]
-    sgf << "C[#{I18n.t('games.guess_move_comment')}]" if player_id.blank?
+    sgf << "C[#{I18n.t('games.guess_move_comment')}]" if move_no > 0 and player_id.blank?
     sgf << children_to_sgf(options) if options[:with_children]
     sgf
   end
@@ -90,5 +91,16 @@ class GameMove < ActiveRecord::Base
     group.each do |x, y|
       @board[x][y] = Game::NONE
     end
+  end
+
+  def setup_points_to_sgf
+    JSON.parse(setup_points).map {|item|
+      op, x, y = *item
+      if op == GameDetail::ADD_BLACK_STONE
+        "AB[#{xy_to_sgf_pos(x, y)}]"
+      else
+        ""
+      end
+    }.join
   end
 end
