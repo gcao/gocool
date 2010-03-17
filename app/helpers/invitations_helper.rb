@@ -13,16 +13,6 @@ module InvitationsHelper
   end
 
   def handicap_select
-    select "invitation", "handicap",
-           [[t('invitations.handicap_0'), 0],
-            [t('invitations.handicap_1'), 1],
-            [t('invitations.handicap_2'), 2],
-            [t('invitations.handicap_3'), 3],
-            [t('invitations.handicap_4'), 4],
-            [t('invitations.handicap_5'), 5],
-            [t('invitations.handicap_6'), 6],
-            [t('invitations.handicap_7'), 7],
-            [t('invitations.handicap_8'), 8],
-            [t('invitations.handicap_9'), 9]]
+    select "invitation", "handicap", (0..9).map{|i| [Invitation.handicap_str(i), i]}
   end
 end

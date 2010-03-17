@@ -8,6 +8,8 @@
   %td
     = invitation.start_side_str
   %td
+    = invitation.handicap_str
+  %td
     =h invitation.response || invitation.note
   %td.actions>
     %a(href="#{accept_invitation_url(invitation)}")>

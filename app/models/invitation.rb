@@ -70,6 +70,10 @@ class Invitation < ActiveRecord::Base
     return result, unrecognized
   end
 
+  def self.handicap_str handicap
+    I18n.t("invitations.handicap_#{handicap}")
+  end
+
   def after_create
     send_invitation_message
   end
@@ -86,6 +90,10 @@ class Invitation < ActiveRecord::Base
       when INVITEE_PLAY_FIRST then I18n.t('invitations.invitee_start')
       else I18n.t('invitations.random_start')
     end
+  end
+
+  def handicap_str
+    self.class.handicap_str(handicap.to_i)
   end
 
   def created_by_me?

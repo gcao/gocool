@@ -27,6 +27,13 @@
 
     .form_row.span-18
       .span-3
+        %label(for="invitation_handicap")
+          = t('invitations.handicap_label')
+      .span-15.last
+        = @invitation.handicap
+
+    .form_row.span-18
+      .span-3
         %label(for="invitation_rule")
           = t('invitations.rule_label')
       .span-15.last
