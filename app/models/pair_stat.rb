@@ -4,7 +4,8 @@ class PairStat < ActiveRecord::Base
   belongs_to :player, :class_name => "Player", :foreign_key => :player_id
   belongs_to :opponent, :class_name => "Player", :foreign_key => :opponent_id
 
-  default_scope :include => 'opponent', :conditions => ["pair_stats.games_as_black > 0 or pair_stats.games_as_white > 0"]
+  #default_scope :include => 'opponent', :conditions => ["pair_stats.games_as_black > 0 or pair_stats.games_as_white > 0"]
+  default_scope :include => 'opponent'
 
   named_scope :opponent_name_like, lambda{ |name|
     { :conditions => ["players.name like ?", name] }
