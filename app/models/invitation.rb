@@ -113,7 +113,7 @@ class Invitation < ActiveRecord::Base
     game.komi = komi
     game.name = note
     game.moves = 0
-    game.start_side = Game::BLACK
+    game.start_side = handicap < 2 ? Game::BLACK : Game::WHITE
     game.for_rating = for_rating
     game.place = "#{GamingPlatform.qiren.name} #{GamingPlatform.qiren.url}"
 

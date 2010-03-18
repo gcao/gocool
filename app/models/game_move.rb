@@ -94,6 +94,8 @@ class GameMove < ActiveRecord::Base
   end
 
   def setup_points_to_sgf
+    return "" if setup_points.blank?
+    
     JSON.parse(setup_points).map {|item|
       op, x, y = *item
       if op == GameDetail::ADD_BLACK_STONE
