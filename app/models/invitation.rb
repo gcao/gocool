@@ -16,18 +16,18 @@ class Invitation < ActiveRecord::Base
   }
 
   named_scope :by_me, lambda {
-    if user = current_user
+    if user = Thread.current[:user]
       {:conditions => ["invitations.inviter_id = ?", user.id]}
     else
-      {:conditions => ["invitations.inviter_id is null"]}
+      {:conditions => ["invitations.id < 0"]}
     end
   }
 
   named_scope :to_me, lambda {
-    if user = current_user
+    if user = Thread.current[:user]
       {:conditions => ["invitations.invitees like ?", "%\"#{user.id}\":%"]}
     else
-      {:conditions => ["invitations.invitees is null"]}
+      {:conditions => ["invitations.id < 0"]}
     end
   }
 
