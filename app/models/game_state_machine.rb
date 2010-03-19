@@ -8,26 +8,51 @@ module GameStateMachine
       aasm_initial_state :new
 
       aasm_state :new
-      aasm_state :black_to_play
-      aasm_state :white_to_play
+      aasm_state :playing
+      aasm_state :black_request_counting, :white_request_counting
+      aasm_state :counting
+      aasm_state :black_accept_counting, :white_accept_counting
       aasm_state :finished
 
       aasm_event :start do
-        transitions :to => :black_to_play, :from => [:new, :finished], :guard => :black_plays_first?
-        transitions :to => :white_to_play, :from => [:new, :finished], :guard => :white_plays_first?
-      end
-
-      aasm_event :stone_played do
-        transitions :to => :white_to_play, :from => [:black_to_play]
-        transitions :to => :black_to_play, :from => [:white_to_play]
+        transitions :to => :playing, :from => [:new]
       end
 
       aasm_event :black_resign do
-        transitions :to => :finished, :from => [:black_to_play, :white_to_play]
+        transitions :to => :finished
       end
 
       aasm_event :white_resign do
-        transitions :to => :finished, :from => [:black_to_play, :white_to_play]
+        transitions :to => :finished
+      end
+
+      aasm_event :request_counting do
+        transitions :to => :black_request_counting, :from => [:playing], :guard => :current_user_is_black?
+        transitions :to => :white_request_counting, :from => [:playing], :guard => :current_user_is_white?
+
+        transitions :to => :counting, :from => [:black_request_counting], :guard => :current_user_is_white?
+        transitions :to => :counting, :from => [:white_request_counting], :guard => :current_user_is_black?
+      end
+
+      aasm_event :reject_counting_request do
+        transitions :to => :playing, :from => [:black_request_counting, :white_request_counting]
+      end
+
+      aasm_event :accept_counting do
+        transitions :to => :black_accept_counting, :from => [:counting], :guard => :current_user_is_black?
+        transitions :to => :white_accept_counting, :from => [:counting], :guard => :current_user_is_white?
+
+        transitions :to => :finish, :from => [:black_accept_counting], :guard => :current_user_is_white?
+        transitions :to => :finish, :from => [:white_accept_counting], :guard => :current_user_is_black?
+      end
+
+      aasm_event :reject_counting do
+        transitions :to => :counting, :from => [:black_accept_counting, :white_accept_counting]
+      end
+
+      aasm_event :resume do
+        transitions :to => :playing, :from => [:black_request_counting, :white_request_counting,
+                                               :counting, :black_accept_counting, :white_accept_counting]
       end
 
       def finished?

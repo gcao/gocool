@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
-  before_filter :login_required, :only => [:play, :resign]
+  before_filter :check_game, :except => [:new, :index, :next, :waiting, :destroy]
+  before_filter :login_required, :only => [:play, :resign, :undo_guess_moves, :do_this]
+  before_filter :check_user_is_player, :only => [:undo_guess_moves, :do_this]
 
   def index
     @platform = params[:platform]
@@ -16,10 +18,12 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find params[:id]
-
     respond_to do |format|
-      format.html { render :layout => 'simple' }
+      format.html do
+        set_flash_message
+        render :layout => 'simple'
+      end
+
       format.sgf  { render :text => SgfRenderer.new(@game).render }
     end
   end
@@ -56,14 +60,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def my_turn
-    if logged_in? and not Game.my_turn(current_player).not_finished.blank?
-      render :text => 'true'
-    else
-      render :text => 'false'
-    end
-  end
-
   def waiting
     if logged_in? and game = Game.my_turn(current_player).not_finished.first
       redirect_to game_url(game)
@@ -78,9 +74,6 @@ class GamesController < ApplicationController
   end
 
   def play
-    @game = Game.find params[:id]
-    raise "Game #{params[:id]} is not found!" unless @game
-
     code, message = @game.play params
     if code == GameInPlay::OP_SUCCESS
       render :text => "#{code}:#{SgfRenderer.new(@game).render}"
@@ -90,9 +83,6 @@ class GamesController < ApplicationController
   end
 
   def resign
-    @game = Game.find params[:id]
-    raise "Game #{params[:id]} is not found!" unless @game
-
     if @game.current_user_is_player?
       code, message = @game.resign
       render :text => "#{code}:#{message}"
@@ -102,18 +92,56 @@ class GamesController < ApplicationController
   end
 
   def undo_guess_moves
-    @game = Game.find params[:id]
-    raise "Game #{params[:id]} is not found!" unless @game
+    @game.undo_guess_moves
+    render 'show'
+  end
 
-    if @game.current_user_is_player?
-      @game.undo_guess_moves
-      redirect_to :action => :show
+  def do_this
+    op = params[:op]
+    if %w(request_counting).include?(op)
+      send(op)
     else
-      render :text => "#{GameInPlay::OP_FAILURE}:#{t('games.user_is_not_player')}"
+      flash.now[:error] = t('games.unsupported_operation')
     end
+    render 'show'
   end
 
   private
+
+  def check_game
+    @game = Game.find params[:id]
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = t('games.not_found').sub('GAME_NO', params[:id])
+    redirect_to :controller => 'misc', :action => 'error'
+  end
+
+  def check_user_is_player
+    unless @game.current_user_is_player?
+      flash.now[:error] = t('games.user_is_not_player')
+      render 'show'
+    end
+  end
+
+  def request_counting
+    @game.undo_guess_moves
+    @game.request_counting
+  end
+
+  def reject_counting_request
+    @game.reject_counting_request
+  end
+
+  def accept_counting
+    @game.accept_counting
+  end
+
+  def reject_counting
+    @game.reject_counting
+  end
+
+  def resume
+    @game.resume
+  end
 
   def find_next games, current_game_id
     found = false
@@ -123,5 +151,38 @@ class GamesController < ApplicationController
       found = true if current_game_id.to_i == game.id
     end
     games.first
+  end
+
+  def set_flash_message
+    case @game.state
+      when 'playing' then
+        flash.now[:notice] = t('games.request_counting').gsub('GAME_URL', game_url(@game))
+      when 'black_request_counting' then
+        if @game.current_user_is_black?
+          flash.now[:notice] = t('games.requested_counting').gsub('GAME_URL', game_url(@game))
+        elsif @game.current_user_is_white?
+          flash.now[:error] = t('games.opponent_requested_counting').gsub('GAME_URL', game_url(@game))
+        end
+      when 'white_request_counting' then
+        if @game.current_user_is_white?
+          flash.now[:notice] = t('games.requested_counting').gsub('GAME_URL', game_url(@game))
+        elsif @game.current_user_is_black?
+          flash.now[:error] = t('games.opponent_requested_counting').gsub('GAME_URL', game_url(@game))
+        end
+      when 'counting' then
+        flash.now[:notice] = t('games.start_counting').gsub('GAME_URL', game_url(@game))
+      when 'black_accept_counting' then
+        if @game.current_user_is_black?
+          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game))
+        elsif @game.current_user_is_white?
+          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game))
+        end
+      when 'white_accept_counting' then
+        if @game.current_user_is_white?
+          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game))
+        elsif @game.current_user_is_black?
+          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game))
+        end
+    end
   end
 end

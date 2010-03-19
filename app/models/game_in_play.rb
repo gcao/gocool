@@ -3,9 +3,15 @@ module GameInPlay
   OP_FAILURE = 1
 
   def current_user_is_player?
-    return unless logged_in?
+    logged_in? and [black_id, white_id].include?(current_player.id)
+  end
 
-    [black_id, white_id].include?(current_player.id)
+  def current_user_is_black?
+    logged_in? and current_player.id == black_id
+  end
+
+  def current_user_is_white?
+    logged_in? and current_player.id == white_id
   end
 
   def play params

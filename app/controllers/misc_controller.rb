@@ -1,4 +1,7 @@
 class MiscController < ApplicationController
+  def error
+  end
+
   def process_newer_posts
     init_processed_counter
 
@@ -43,10 +46,6 @@ class MiscController < ApplicationController
   end
 
   private
-
-  def process_posts
-
-  end
 
   def init_processed_counter
     if Setting.last_processed_post == 0
