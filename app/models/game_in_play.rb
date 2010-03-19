@@ -16,7 +16,7 @@ module GameInPlay
     x = params[:x].to_i
     y = params[:y].to_i
 
-    if x < 0 or x > 18 or y < 0 or y > 18
+    if x < 0 or x > board_size - 1 or y < 0 or y > board_size - 1
       return OP_FAILURE, I18n.t('games.incorrect_move').sub('MOVE', "#{x}, #{y}")
     end
 
@@ -48,6 +48,13 @@ module GameInPlay
       move.y = y
       move.parent_id = parent_move.id
       move.guess_player_id = current_player.id
+
+      case move.process
+        when GameMove::OCCUPIED then return OP_FAILURE, I18n.t('games.occupied')
+        when GameMove::SUICIDE then return OP_FAILURE, I18n.t('games.suicide')
+        when GameMove::BAD_KO then return OP_FAILURE, I18n.t('games.bad_ko')
+      end
+
       move.save!
     end
 
@@ -72,7 +79,7 @@ module GameInPlay
 
   def resign
     unless logged_in?
-      raise OP_FAILURE, I18n.t('not_logged_in')
+      raise OP_FAILURE, I18n.t('games.not_logged_in')
     end
 
     code = OP_SUCCESS

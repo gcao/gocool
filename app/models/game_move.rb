@@ -1,8 +1,14 @@
 class GameMove < ActiveRecord::Base
   include SGF::SGFHelper
 
+  OCCUPIED = 1
+  SUICIDE  = 2
+  BAD_KO   = 3
+
   belongs_to :parent, :class_name => 'GameMove', :foreign_key => 'parent_id'
   belongs_to :game_detail
+
+  serialize :dead
 
   named_scope :moves_after, lambda { |move|
     {:conditions => ["game_detail_id = ? and id > ?", move.game_detail_id, move.id]}
@@ -29,19 +35,20 @@ class GameMove < ActiveRecord::Base
 
   def board
     return @board if @board
-    
-    if parent
-      @board = parent.board.clone
-    else
-      @board = Board.new(game_detail.game.board_size, game_detail.game.game_type)
-    end
+    return @board = Board.load(serialized_board) if serialized_board
 
-    # place move on board
-    add_move_to_board
-    # remove dead stones after move
-    remove_dead_stones
+    init_board
+  end
 
-    @board
+  def process
+    return OCCUPIED if parent and parent.board.occupied?(x, y)
+
+    init_board
+
+    return SUICIDE if suicide?
+    return BAD_KO if check_ko
+
+    self.serialized_board = board.dump
   end
 
   def child_that_matches x, y
@@ -79,16 +86,18 @@ class GameMove < ActiveRecord::Base
   end
 
   def remove_dead_stones
-    remove_group @board.get_dead_group(x-1, y) if x > 0
-    remove_group @board.get_dead_group(x+1, y) if x < @board.size - 1
-    remove_group @board.get_dead_group(x, y-1) if y > 0
-    remove_group @board.get_dead_group(x, y+1) if y < @board.size - 1
+    self.dead = []
+    remove_group @board.get_dead_group(x-1, y) if @board.game_type == Game::DAOQI or x > 0
+    remove_group @board.get_dead_group(x+1, y) if @board.game_type == Game::DAOQI or x < @board.size - 1
+    remove_group @board.get_dead_group(x, y-1) if @board.game_type == Game::DAOQI or y > 0
+    remove_group @board.get_dead_group(x, y+1) if @board.game_type == Game::DAOQI or y < @board.size - 1
     remove_group @board.get_dead_group(x, y)
   end
 
   def remove_group group
     return if group.blank?
     group.each do |x, y|
+      dead << [x, y]
       @board[x][y] = Game::NONE
     end
   end
@@ -104,5 +113,35 @@ class GameMove < ActiveRecord::Base
         ""
       end
     }.join
+  end
+
+  def init_board
+    if parent
+      @board = parent.board.clone
+    else
+      @board = Board.new(game_detail.game.board_size, game_detail.game.game_type)
+    end
+
+    # place move on board
+    add_move_to_board
+    # remove dead stones after move
+    remove_dead_stones
+
+    @board
+  end
+
+  def check_ko
+    return if dead.blank? or dead.size != 1
+    return unless parent
+    return if parent.dead.blank? or parent.dead.size != 1
+
+    dead_x, dead_y = *dead[0]
+    old_dead_x, old_dead_y = *parent.dead[0]
+    
+    dead_x == parent.x and dead_y == parent.y and old_dead_x == x and old_dead_y == y
+  end
+
+  def suicide?
+    dead == [[x, y]]
   end
 end

@@ -108,6 +108,7 @@ class Invitation < ActiveRecord::Base
     game = Game.new
     game.gaming_platform_id = GamingPlatform.qiren.id
     game.game_type = game_type
+    game.board_size = 19
     game.rule = rule
     game.handicap = handicap
     game.komi = komi

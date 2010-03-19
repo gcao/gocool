@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100317191853) do
+ActiveRecord::Schema.define(:version => 20100318193052) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -49,20 +49,20 @@ ActiveRecord::Schema.define(:version => 20100317191853) do
   add_index "game_details", ["game_id"], :name => "game_details_game_id"
 
   create_table "game_moves", :force => true do |t|
-    t.integer  "game_detail_id",  :null => false
+    t.integer  "game_detail_id",                       :null => false
     t.integer  "player_id"
-    t.integer  "move_no",         :null => false
-    t.integer  "color",           :null => false
-    t.integer  "x",               :null => false
-    t.integer  "y",               :null => false
+    t.integer  "move_no",                              :null => false
+    t.integer  "color",                                :null => false
+    t.integer  "x",                                    :null => false
+    t.integer  "y",                                    :null => false
     t.string   "dead"
-    t.boolean  "ko"
     t.integer  "guess_player_id"
     t.datetime "played_at"
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "setup_points"
+    t.text     "serialized_board", :limit => 16777215
   end
 
   add_index "game_moves", ["game_detail_id"], :name => "game_moves_detail_id"

@@ -5,10 +5,6 @@ zh_cn:
     recommend_firefox: "<span style='color:#999;font-size:150%'>请使用<a href='http://www.mozillaonline.com'><img src='http://sfx-images.mozilla.org/affiliates/Buttons/Firefox3.5/96x31_blue.png' alt='火狐浏览器' border='0' style='vertical-align:middle'/></a>浏览本站。</span>"
     auth_failure_page_header: "操作失败"
     operation_not_allowed: "操作失败，请和系统管理员联系。"
-    not_logged_in: "你没有登录到服务器，或者你的登录已经过期。请重新登录。"
-    not_a_player_in_game: "对局 GAME_NO 不是你（USERNAME）的对局。"
-    incorrect_move_number: "步数补正确：MOVE_NUMBER"
-    incorrect_move: "下子位置不正确：MOVE"
   menu:
     home: "首页"
     uploads: "上传对局"
@@ -165,6 +161,12 @@ zh_cn:
     next_game_not_logged_in: "只有登录后才可以看到你的下一局。"
     parent_move_required: "操作失败。没有找到上一步。请重试。"
     not_last_move_or_after: "操作失败。请从最后一步实战开始试下。"
+    not_logged_in: "你没有登录到服务器，或者你的登录已经过期。请重新登录。"
+    not_a_player_in_game: "对局 GAME_NO 不是你（USERNAME）的对局。"
+    incorrect_move: "下子位置不正确：MOVE"
+    occupied: "下子位置已经被占领"
+    suicide: "不能在该位置下子"
+    bad_ko: "不能马上提劫"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"

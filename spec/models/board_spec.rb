@@ -1,6 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + "/../spec_helper")
 
 describe Board do
+  it "occupied?" do
+    b = Board.new 19
+    b.occupied?(0, 0).should be_false
+    b[0][0] = 1
+    b.occupied?(0, 0).should be_true
+  end
+
   context "WEIQI" do
     before do
       @b = Board.new 19
