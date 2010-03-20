@@ -14,6 +14,10 @@ class GameMove < ActiveRecord::Base
     {:conditions => ["game_detail_id = ? and id > ?", move.game_detail_id, move.id]}
   }
 
+  def move_on_board?
+    color != Game::NONE
+  end
+
   def children moves = nil
     return @children unless @children.nil?
     

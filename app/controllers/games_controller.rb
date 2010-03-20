@@ -93,17 +93,18 @@ class GamesController < ApplicationController
 
   def undo_guess_moves
     @game.undo_guess_moves
-    render 'show'
+    render 'show', :layout => 'simple'
   end
 
   def do_this
     op = params[:op]
-    if %w(request_counting).include?(op)
+    if %w(request_counting reject_counting_request resume accept_counting reject_counting).include?(op)
       send(op)
+      @game.save!
     else
       flash.now[:error] = t('games.unsupported_operation')
     end
-    render 'show'
+    redirect_to :action => :show
   end
 
   private
@@ -118,13 +119,20 @@ class GamesController < ApplicationController
   def check_user_is_player
     unless @game.current_user_is_player?
       flash.now[:error] = t('games.user_is_not_player')
-      render 'show'
+      render 'show', :layout => 'simple'
     end
   end
 
   def request_counting
     @game.undo_guess_moves
     @game.request_counting
+    if @game.state == 'counting' and not @game.detail.last_move.move_on_board?
+      move = GameMove.create!(:game_detail_id => @game.detail.id, :move_no => @game.detail.last_move.move_no,
+                          :color => Game::NONE, :x => -1, :y => -1, :played_at => Time.now,
+                          :parent_id => @game.detail.last_move_id)
+      @game.detail.last_move_id = move.id
+      @game.detail.save!
+    end
   end
 
   def reject_counting_request

@@ -106,6 +106,7 @@ class Invitation < ActiveRecord::Base
 
   def create_game
     game = Game.new
+    game.state = 'new'
     game.gaming_platform_id = GamingPlatform.qiren.id
     game.game_type = game_type
     game.board_size = 19
@@ -114,7 +115,7 @@ class Invitation < ActiveRecord::Base
     game.komi = komi
     game.name = note
     game.moves = 0
-    game.start_side = handicap < 2 ? Game::BLACK : Game::WHITE
+    game.start_side = handicap.to_i < 2 ? Game::BLACK : Game::WHITE
     game.for_rating = for_rating
     game.place = "#{GamingPlatform.qiren.name} #{GamingPlatform.qiren.url}"
 

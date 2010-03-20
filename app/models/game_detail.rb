@@ -12,7 +12,7 @@ class GameDetail < ActiveRecord::Base
 
   def after_create
     move = GameMove.create!(:game_detail_id => id,
-                            :move_no => 0, :x => 0, :y => 0, :color => 0, :played_at => Time.now,
+                            :move_no => 0, :x => -1, :y => -1, :color => 0, :played_at => Time.now,
                             :setup_points => handicaps)
     self.formatted_moves = move.to_sgf(:with_name => true)
     self.first_move_id = self.last_move_id = move.id
