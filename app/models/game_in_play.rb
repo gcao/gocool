@@ -1,6 +1,7 @@
 module GameInPlay
-  OP_SUCCESS = 0
-  OP_FAILURE = 1
+  OP_SUCCESS    = 0
+  OP_FAILURE    = 1
+  OP_JAVASCRIPT = 2
 
   def current_user_is_player?
     logged_in? and [black_id, white_id].include?(current_player.id)
@@ -118,6 +119,31 @@ module GameInPlay
     end
   end
 
+  def mark_dead x, y
+    move = detail.last_move
+    #move.board
+  end
+
+  def my_color
+    if current_player.id == black_id
+      Game::BLACK
+    elsif current_player.id == white_id
+      Game::WHITE
+    end
+  end
+
+  def my_turn?
+    (current_player.id == black_id and detail.whose_turn == Game::BLACK) or
+            (current_player.id == white_id and detail.whose_turn == Game::WHITE)
+  end
+
+  def guess_move? move_color, player_id
+    (move_color == Game::WHITE and player_id == black_id) or 
+            (move_color == Game::BLACK and player_id == white_id)
+  end
+
+  private
+
   def process_guess_moves
     return unless logged_in?
 
@@ -142,26 +168,6 @@ module GameInPlay
 
     process_guess_moves
   end
-
-  def my_color
-    if current_player.id == black_id
-      Game::BLACK
-    elsif current_player.id == white_id
-      Game::WHITE
-    end
-  end
-
-  def my_turn?
-    (current_player.id == black_id and detail.whose_turn == Game::BLACK) or
-            (current_player.id == white_id and detail.whose_turn == Game::WHITE)
-  end
-
-  def guess_move? move_color, player_id
-    (move_color == Game::WHITE and player_id == black_id) or 
-            (move_color == Game::BLACK and player_id == white_id)
-  end
-
-  private
 
   def send_resign_message from, to, loser_color
     color_str = loser_color == Game::BLACK ? I18n.t('games_widget.black_player') : I18n.t('games_widget.white_player')

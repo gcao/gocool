@@ -21,6 +21,11 @@ class GamesController < ApplicationController
     respond_to do |format|
       format.html do
         set_flash_message
+        if @game.current_user_is_black?
+          @my_color = Game::BLACK
+        elsif @game.current_user_is_white?
+          @my_color = Game::WHITE
+        end
         render :layout => 'simple'
       end
 
@@ -85,6 +90,16 @@ class GamesController < ApplicationController
   def resign
     if @game.current_user_is_player?
       code, message = @game.resign
+      render :text => "#{code}:#{message}"
+    else
+      render :text => "#{GameInPlay::OP_FAILURE}:#{t('games.user_is_not_player')}"
+    end
+  end
+
+  def mark_dead
+    if @game.current_user_is_player?
+      x, y = params[:x].to_i, params[:y].to_i
+      code, message = @game.mark_dead x, y
       render :text => "#{code}:#{message}"
     else
       render :text => "#{GameInPlay::OP_FAILURE}:#{t('games.user_is_not_player')}"

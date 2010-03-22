@@ -7,6 +7,10 @@ class Board < Array
     reset
   end
 
+  def daoqi?
+    @game_type == Game::DAOQI
+  end
+
   def clone
     b = Board.new size, game_type
     0.upto(size - 1) do |x|
@@ -18,7 +22,7 @@ class Board < Array
   end
 
   def neighbor? x1, y1, x2, y2
-    if @game_type == Game::DAOQI
+    if daoqi?
       if x1 == x2
         y1 == (y2+1) % @size or y1 == (y2-1+@size) % @size
       elsif y1 == y2
@@ -59,7 +63,7 @@ class Board < Array
   end
 
   def get_dead_group x, y
-    if @game_type == Game::DAOQI
+    if daoqi?
       x = normalize(x)
       y = normalize(y)
     else
@@ -83,30 +87,35 @@ class Board < Array
     group = PointGroup.new(self[x][y])
     group << [x,y]
 
-    if @game_type == Game::DAOQI
-      return if expand_dead_group(group, x-1, y) or
-                expand_dead_group(group, x+1, y) or
-                expand_dead_group(group, x, y-1) or
-                expand_dead_group(group, x, y+1)
-    else
-      return if (x > 0       and expand_dead_group(group, x-1, y)) or
-                (x < @size-1 and expand_dead_group(group, x+1, y)) or
-                (y > 0       and expand_dead_group(group, x, y-1)) or
-                (y < @size-1 and expand_dead_group(group, x, y+1))
-    end
+    return if ((daoqi? or x > 0      ) and expand_dead_group(group, x-1, y)) or
+              ((daoqi? or x < @size-1) and expand_dead_group(group, x+1, y)) or
+              ((daoqi? or y > 0      ) and expand_dead_group(group, x, y-1)) or
+              ((daoqi? or y < @size-1) and expand_dead_group(group, x, y+1))
 
     group
   end
 
-#  def md5_hash force = true
-#    return @md5_hash if not force and @md5_hash
-#
-#    @md5_hash = Gocool::Md5.string_to_md5(points_str)
-#  end
-#
-#  def == other
-#    game_type == other.game_type and size == other.size and md5_hash == other.md5_hash
-#  end
+  def get_dead_group_for_marking x, y
+    if daoqi?
+      x = normalize(x)
+      y = normalize(y)
+    else
+      return if x < 0 or x>=@size or y<0 or y>= @size
+    end
+
+    return if self[x][y] == 0
+
+    group = PointGroup.new(self[x][y])
+    group << [x,y]
+
+    expand_dead_group_for_marking(group, x-1, y) if daoqi? or x > 0
+    expand_dead_group_for_marking(group, x+1, y) if daoqi? or x < @size-1
+    expand_dead_group_for_marking(group, x, y-1) if daoqi? or y > 0
+    expand_dead_group_for_marking(group, x, y+1) if daoqi? or y < @size-1
+
+    group.reject! {|point| self[point[0]][point[1]] == 0}
+    group
+  end
 
   def points_str
     @points_str = "0" * size * size
@@ -152,7 +161,7 @@ class Board < Array
   private
 
   def expand_dead_group group, x, y
-    if @game_type == Game::DAOQI
+    if daoqi?
       x = normalize(x)
       y = normalize(y)
     end
@@ -160,30 +169,42 @@ class Board < Array
     return if group.include?([x, y]) # already added to the group
     return if self[x][y] != group.color
 
-    if @game_type == Game::DAOQI
-      return true if self[normalize(x-1)][y] == 0 or
-                     self[normalize(x+1)][y] == 0 or
-                     self[x][normalize(y-1)] == 0 or
-                     self[x][normalize(y+1)] == 0
+    if daoqi?
+      return if self[normalize(x-1)][y] == 0 or
+                self[normalize(x+1)][y] == 0 or
+                self[x][normalize(y-1)] == 0 or
+                self[x][normalize(y+1)] == 0
     else
-      return true if (x > 0       and self[x-1][y] == 0) or
-                     (x < @size-1 and self[x+1][y] == 0) or
-                     (y > 0       and self[x][y-1] == 0) or
-                     (y < @size-1 and self[x][y+1] == 0)
+      return if (x > 0       and self[x-1][y] == 0) or
+                (x < @size-1 and self[x+1][y] == 0) or
+                (y > 0       and self[x][y-1] == 0) or
+                (y < @size-1 and self[x][y+1] == 0)
     end
 
     group << [x,y]
 
-    if @game_type == Game::DAOQI
-      return true if expand_dead_group(group, x-1, y) or
-                     expand_dead_group(group, x+1, y) or
-                     expand_dead_group(group, x, y-1) or
-                     expand_dead_group(group, x, y+1)
-    else
-      return true if (x > 0       and expand_dead_group(group, x-1, y)) or
-                     (x < @size-1 and expand_dead_group(group, x+1, y)) or
-                     (y > 0       and expand_dead_group(group, x, y-1)) or
-                     (y < @size-1 and expand_dead_group(group, x, y+1))
+    ((daoqi? or x > 0      ) and expand_dead_group(group, x-1, y)) or
+    ((daoqi? or x < @size-1) and expand_dead_group(group, x+1, y)) or
+    ((daoqi? or y > 0      ) and expand_dead_group(group, x, y-1)) or
+    ((daoqi? or y < @size-1) and expand_dead_group(group, x, y+1))
+  end
+
+  def expand_dead_group_for_marking group, x, y
+    if daoqi?
+      x = normalize(x)
+      y = normalize(y)
     end
+
+    return if group.include?([x, y]) # already added to the group
+
+    opponent_color = group.color == 1 ? 2 : 1
+    return if self[x][y] == opponent_color
+
+    group << [x,y]
+
+    expand_dead_group_for_marking(group, x-1, y) if daoqi? or x > 0
+    expand_dead_group_for_marking(group, x+1, y) if daoqi? or x < @size-1
+    expand_dead_group_for_marking(group, x, y-1) if daoqi? or y > 0
+    expand_dead_group_for_marking(group, x, y+1) if daoqi? or y < @size-1
   end
 end

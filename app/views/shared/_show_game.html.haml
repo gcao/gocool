@@ -24,6 +24,7 @@
     = javascript_include_tag "jsgameviewer_ext"
     :javascript
       var gameState = "#{@game.state}";
+      var myColor = #{@my_color.to_i};
       jQuery(document).ready(function(){
         new GameController({container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
           setPlayerInterval(15).startUpdater(true).saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});

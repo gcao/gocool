@@ -50,6 +50,34 @@ describe Board do
         group[1].should == [0, 1]
       end
     end
+
+    context "get_group" do
+      before do
+        for i in 0..18
+          @b[8][i] = 1
+          @b[9][i] = 2
+        end
+
+        @b[5][3] = @b[3][2] = 2
+        @b[3][3] = 1
+      end
+
+      it "should return nothing if current point is not occupied" do
+        @b.get_dead_group_for_marking(1, 1).should be_blank
+      end
+
+      it "should return group" do
+        group = @b.get_dead_group_for_marking(5, 3)
+        group.size.should == 2
+        group[0].should == [5, 3]
+        group[1].should == [3, 2]
+      end
+
+      it "should return group" do
+        group = @b.get_dead_group_for_marking(3, 3)
+        group.size.should == 20
+      end
+    end
   end
 
   context "DAOQI" do
