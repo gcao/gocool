@@ -31,6 +31,7 @@ module GameStateMachine
       aasm_event :request_counting do
         transitions :to => :counting, :from => [:black_request_counting], :guard => :current_user_is_white?
         transitions :to => :counting, :from => [:white_request_counting], :guard => :current_user_is_black?
+
         transitions :to => :black_request_counting, :from => [:playing, :black_request_counting], :guard => :current_user_is_black?
         transitions :to => :white_request_counting, :from => [:playing, :white_request_counting], :guard => :current_user_is_white?
       end

@@ -42,7 +42,11 @@ class GameDetail < ActiveRecord::Base
   def moves_to_sgf
     if game.current_user_is_player?
       sgf = formatted_moves.to_s
-      sgf << guess_moves_to_sgf
+      if last_move.move_on_board?
+        sgf << guess_moves_to_sgf
+      else
+        sgf << ";" << last_move.to_sgf
+      end
       sgf
     else
       formatted_moves.to_s

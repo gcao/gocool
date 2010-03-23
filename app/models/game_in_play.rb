@@ -121,7 +121,11 @@ module GameInPlay
 
   def mark_dead x, y
     move = detail.last_move
-    #move.board
+    orig_dead = move.dead.clone
+    if group = move.board.get_dead_group_for_marking(x, y)
+      move.dead = (orig_dead + group).uniq
+      move.save!
+    end
   end
 
   def my_color

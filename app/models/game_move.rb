@@ -67,8 +67,9 @@ class GameMove < ActiveRecord::Base
 
     sgf = move_to_sgf(color, x, y)
     sgf << setup_points_to_sgf
+    sgf << dead_points_to_sgf
     sgf << "N[#{self.id}]" if options[:with_name]
-    sgf << "C[#{I18n.t('games.guess_move_comment')}]" if move_no > 0 and player_id.blank?
+    sgf << "C[#{I18n.t('games.guess_move_comment')}]" if move_no > 0 and color != 0 and player_id.blank?
     sgf << children_to_sgf(options) if options[:with_children]
     sgf
   end
@@ -104,6 +105,12 @@ class GameMove < ActiveRecord::Base
       dead << [x, y]
       @board[x][y] = Game::NONE
     end
+  end
+
+  def dead_points_to_sgf
+    return "" if dead.blank?
+
+    "CR" + dead.map{|point| "[#{xy_to_sgf_pos(point[0], point[1])}]"}.join
   end
 
   def setup_points_to_sgf

@@ -1,3 +1,7 @@
+jsgv.OP_SUCCESS    = "0";
+jsgv.OP_FAILURE    = "1";
+jsgv.OP_JAVASCRIPT = "2";
+
 jQuery.extend(jsGameViewer.CONFIG, {
   gocoolUrlPrefix: "/app/"
 });
@@ -5,13 +9,28 @@ jQuery.extend(jsGameViewer.CONFIG, {
 jQuery.extend(jsGameViewer.GameController.prototype, {
   loadGocoolGame: function(id, n){
     this.gocoolId = id;
-    var conf = this.config;
-    return this.load(conf.gocoolUrlPrefix + "games/" + id + ".sgf", n);
+    return this.load(this.config.gocoolUrlPrefix + "games/" + id + ".sgf", n);
   },
 
   createGocoolPlayer: function(){
     this.setPlayer(new GocoolPlayer(this));
     return this;
+  },
+
+  play: function(x, y){
+    if (gameState == 'counting'){
+      var url = this.config.gocoolUrlPrefix + "games/" + this.gocoolId + "/mark_dead?x=" + x + "&y=" + y;
+      jQuery.ajax({
+        url: url,
+        success: function(){
+          location.reload(true);
+        }
+      });
+      return this;
+    }
+    if (this.origPlay(x, y) && this.player && this.player.sendMove){
+      return this.player.sendMove();
+    }
   }
 });
 
@@ -29,6 +48,16 @@ jQuery.extend(GocoolPlayer.prototype, {
     return true;
   },
 
+  parseResponse: function(response){
+    var status = jsgv.OP_FAILURE;
+    var message = response;
+    if (response && response[1] == ":"){
+      status = response[0];
+      message = response;
+    }
+    return { status: status, message: message };
+  },
+
   sendMove: function(){
     var c = this.gameController;
     var node = c.gameState.currentNode;
@@ -43,16 +72,19 @@ jQuery.extend(GocoolPlayer.prototype, {
     jQuery.ajax({url: url,
       //async: false,
       success:function(response){
-        if (response.charAt(0) == '0'){ // success
+        var parsed = this.parseResponse(response);
+        if (parsed.status == jsgv.OP_SUCCESS){
           var origUrl = c.game.url;
           var xys = c.gameState.getXYs();
-          c.loadSgf(response.substr(2), 0);
+          c.loadSgf(parsed.message);
           c.game.url = origUrl;
           c.goToXYs(xys);
           c.forwardAll();
           c.startUpdater(true);
-        } else { // failure
-          jsgv.showAjaxError("", response);
+        } else if (parsed.status == jsgv.OP_JAVASCRIPT){
+          eval(parsed.message);
+        } else {
+          jsgv.showAjaxError("", parsed.message);
           c.remove();
         }
       },
@@ -69,11 +101,13 @@ jQuery.extend(GocoolPlayer.prototype, {
     var url = c.config.gocoolUrlPrefix + "games/" + c.gocoolId + "/resign";
     jQuery.ajax({url: url,
       success:function(response){
-        if (response.charAt(0) == '0'){ // success
-          // TODO: move to next game
+        var parsed = this.parseResponse(response);
+        if (parsed.status == jsgv.OP_SUCCESS){
           c.refresh();
-        } else { // failure
-          jsgv.showAjaxError("", response);
+        } else if (parsed.status == jsgv.OP_JAVASCRIPT){
+          eval(parsed.message);
+        } else {
+          jsgv.showAjaxError("", parsed.message);
         }
       },
       error: function(XMLHttpRequest, textStatus, errorThrown){

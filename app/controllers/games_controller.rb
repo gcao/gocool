@@ -141,10 +141,10 @@ class GamesController < ApplicationController
   def request_counting
     @game.undo_guess_moves
     @game.request_counting
-    if @game.state == 'counting' and not @game.detail.last_move.move_on_board?
+    if @game.state == 'counting' and @game.detail.last_move.move_on_board?
       move = GameMove.create!(:game_detail_id => @game.detail.id, :move_no => @game.detail.last_move.move_no,
-                          :color => Game::NONE, :x => -1, :y => -1, :played_at => Time.now,
-                          :parent_id => @game.detail.last_move_id)
+                              :color => Game::NONE, :x => -1, :y => -1, :played_at => Time.now,
+                              :parent_id => @game.detail.last_move_id)
       @game.detail.last_move_id = move.id
       @game.detail.save!
     end
