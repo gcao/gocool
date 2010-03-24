@@ -51,14 +51,14 @@ module Gocool
       end
 
       def render_move color, x, y
-        return "" unless [SGF::Model::Constants::BLACK, SGF::Model::Constants::WHITE].include?(color)
+        return "" unless [::SGF::Model::Constants::BLACK, ::SGF::Model::Constants::WHITE].include?(color)
 
-        prop_name = color == SGF::Model::Constants::WHITE ? "W" : "B"
+        prop_name = color == ::SGF::Model::Constants::WHITE ? "W" : "B"
         render_property(prop_name, render_position(x, y))
       end
 
       def render_position x, y
-        SGF::Model::Constants::POSITIONS[x, 1] + SGF::Model::Constants::POSITIONS[y, 1]
+        ::SGF::Model::Constants::POSITIONS[x, 1] + ::SGF::Model::Constants::POSITIONS[y, 1]
       end
     end
   end

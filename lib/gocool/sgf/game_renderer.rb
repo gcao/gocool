@@ -33,7 +33,7 @@ module Gocool
         if game.current_user_is_player?
           sgf = game.detail.formatted_moves.to_s
           if game.detail.last_move.move_on_board?
-            sgf << render_guess_moves(game.detail.guess_moves)
+            sgf << render_guess_moves(game)
           else
             sgf << ";" << game.detail.last_move.to_sgf
           end
@@ -43,7 +43,8 @@ module Gocool
         end
       end
 
-      def render_guess_moves guess_moves
+      def render_guess_moves game
+        guess_moves = game.detail.guess_moves
         guess_moves.map{|move|
           sgf = NodeRenderer.new(:with_name => true, :with_children => true, :player_id => game.current_player.id).render(move)
           sgf = "(#{sgf})" unless sgf.empty?

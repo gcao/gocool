@@ -108,6 +108,6 @@ class GameMove < ActiveRecord::Base
   end
 
   def suicide?
-    dead == [[x, y]]
+    dead.include?([x, y])
   end
 end
