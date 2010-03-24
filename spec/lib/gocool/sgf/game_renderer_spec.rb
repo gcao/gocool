@@ -22,8 +22,43 @@ module Gocool::SGF
     it "should generate sgf with moves" do
       @g.stubs(:logged_in?).returns(true)
       @g.stubs(:current_player).returns(@black_player)
-      @g.play(:parent_move_id => @g.detail.first_move_id, :x => 3, :y => 4)
+      @g.play(:parent_move_id => @g.detail.last_move_id, :x => 3, :y => 4)
       GameRenderer.new.render(@g).should == "#{@sgf};B[de]N[#{@g.detail.last_move_id}])"
+    end
+
+    it "should generate sgf with my guess moves" do
+      @g.stubs(:logged_in?).returns(true)
+      @g.stubs(:current_player).returns(@black_player)
+      @g.play(:parent_move_id => @g.detail.last_move_id, :x => 3, :y => 4)
+      @g.reload
+      move1_id = @g.detail.last_move_id
+      @g.play(:parent_move_id => @g.detail.last_move_id, :x => 15, :y => 3)
+      @g.reload
+      move2_id = GameMove.find_all_by_game_detail_id(@g.detail.id).last.id
+      GameRenderer.new.render(@g).should == "#{@sgf};B[de]N[#{move1_id}](;W[pd]N[#{move2_id}]C[#{I18n.t('games.guess_move_comment')}]))"
+    end
+
+    it "should generate sgf without opponent's guess moves" do
+      @g.stubs(:logged_in?).returns(true)
+      @g.stubs(:current_player).returns(@black_player)
+      @g.play(:parent_move_id => @g.detail.last_move_id, :x => 3, :y => 4)
+      @g.reload
+      move1_id = @g.detail.last_move_id
+      @g.play(:parent_move_id => @g.detail.last_move_id, :x => 15, :y => 3)
+      @g.stubs(:current_player).returns(@white_player)
+      GameRenderer.new.render(@g).should == "#{@sgf};B[de]N[#{move1_id}])"
+    end
+
+    it "should generate sgf without guess moves if not logged in" do
+      @g.stubs(:logged_in?).returns(true)
+      @g.stubs(:current_player).returns(@black_player)
+      @g.play(:parent_move_id => @g.detail.last_move_id, :x => 3, :y => 4)
+      @g.reload
+      move1_id = @g.detail.last_move_id
+      @g.play(:parent_move_id => @g.detail.last_move_id, :x => 15, :y => 3)
+      @g.stubs(:logged_in?).returns(false)
+      @g.stubs(:current_player).returns(nil)
+      GameRenderer.new.render(@g).should == "#{@sgf};B[de]N[#{move1_id}])"
     end
   end
 end
