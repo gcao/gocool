@@ -1,5 +1,4 @@
 class GameDetail < ActiveRecord::Base
-  include SGF::SGFHelper
 
   ADD_BLACK_STONE = 1
   ADD_WHITE_STONE = 2
@@ -14,7 +13,7 @@ class GameDetail < ActiveRecord::Base
     move = GameMove.create!(:game_detail_id => id,
                             :move_no => 0, :x => -1, :y => -1, :color => 0, :played_at => Time.now,
                             :setup_points => handicaps)
-    self.formatted_moves = move.to_sgf(:with_name => true)
+    self.formatted_moves = Gocool::SGF::NodeRenderer.new(:with_name => true).render(move)
     self.first_move_id = self.last_move_id = move.id
     self.last_move_time = Time.now
     save!
@@ -30,27 +29,6 @@ class GameDetail < ActiveRecord::Base
 
   def guess_moves
     last_move.children
-  end
-
-  def guess_moves_to_sgf
-    guess_moves.map{|move|
-      sgf = move.to_sgf(:with_name => true, :with_children => true, :player_id => game.current_player.id)
-      sgf.blank? ? "" : "(#{sgf})"
-    }.join
-  end
-
-  def moves_to_sgf
-    if game.current_user_is_player?
-      sgf = formatted_moves.to_s
-      if last_move.move_on_board?
-        sgf << guess_moves_to_sgf
-      else
-        sgf << ";" << last_move.to_sgf
-      end
-      sgf
-    else
-      formatted_moves.to_s
-    end
   end
 
   private

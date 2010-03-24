@@ -71,7 +71,7 @@ module GameInPlay
       detail.last_move_time = Time.now
       detail.change_turn
       detail.last_move_id = move.id
-      detail.formatted_moves += move.to_sgf(:with_name => true)
+      detail.formatted_moves += Gocool::SGF::NodeRenderer.new(:with_name => true).render(move)
     end
 
     move.played_at = Time.now
@@ -164,7 +164,7 @@ module GameInPlay
     detail.last_move = guess_move
     detail.last_move_time = Time.now
     detail.change_turn
-    detail.formatted_moves += guess_move.to_sgf(:with_name => true)
+    detail.formatted_moves += Gocool::SGF::NodeRenderer.new(:with_name => true).render(guess_move)
     detail.save!
 
     self.moves += 1

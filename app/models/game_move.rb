@@ -1,5 +1,4 @@
 class GameMove < ActiveRecord::Base
-  include SGF::SGFHelper
 
   OCCUPIED = 1
   SUICIDE  = 2
@@ -59,31 +58,6 @@ class GameMove < ActiveRecord::Base
     children.detect {|move| move.x == x and move.y == y }
   end
 
-  def to_sgf options = {}
-    # Guess move by opponent
-    return "" if guess_player_id and options[:player_id] and guess_player_id != options[:player_id]
-
-    return children_to_sgf(options) if move_no == 0 and options[:with_children]
-
-    sgf = move_to_sgf(color, x, y)
-    sgf << setup_points_to_sgf
-    sgf << dead_points_to_sgf
-    sgf << "N[#{self.id}]" if options[:with_name]
-    sgf << "C[#{I18n.t('games.guess_move_comment')}]" if move_no > 0 and color != 0 and player_id.blank?
-    sgf << children_to_sgf(options) if options[:with_children]
-    sgf
-  end
-
-  def children_to_sgf options = {}
-    return "" if children.blank?
-    return children.first.to_sgf(options) if children.size == 1
-
-    children.map {|move|
-      sgf = move.to_sgf(options)
-      sgf.blank? ? "" : "(#{sgf})"
-    }.join
-  end
-
   private
 
   def add_move_to_board
@@ -105,25 +79,6 @@ class GameMove < ActiveRecord::Base
       dead << [x, y]
       @board[x][y] = Game::NONE
     end
-  end
-
-  def dead_points_to_sgf
-    return "" if dead.blank?
-
-    "CR" + dead.map{|point| "[#{xy_to_sgf_pos(point[0], point[1])}]"}.join
-  end
-
-  def setup_points_to_sgf
-    return "" if setup_points.blank?
-    
-    JSON.parse(setup_points).map {|item|
-      op, x, y = *item
-      if op == GameDetail::ADD_BLACK_STONE
-        "AB[#{xy_to_sgf_pos(x, y)}]"
-      else
-        ""
-      end
-    }.join
   end
 
   def init_board

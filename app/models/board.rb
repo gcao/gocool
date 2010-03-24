@@ -1,6 +1,14 @@
 class Board < Array
   attr :game_type
 
+  NONE            = 0
+  BLACK           = 1
+  WHITE           = 2
+  BLACK_DEAD      = 3
+  WHITE_DEAD      = 4
+  BLACK_TERRITORY = 5
+  WHITE_TERRITORY = 6
+
   def initialize size, game_type = Game::WEIQI
     @size      = size
     @game_type = game_type
@@ -115,6 +123,20 @@ class Board < Array
 
     group.reject! {|point| self[point[0]][point[1]] == 0}
     group
+  end
+
+  def mark_dead_group group
+    group.each do |x, y|
+      if self[x][y] == 1
+        self[x][y] = 3
+      elsif self[x][y] == 2
+        self[x][y] = 4
+      end
+    end
+  end
+
+  def mark_territories
+
   end
 
   def points_str

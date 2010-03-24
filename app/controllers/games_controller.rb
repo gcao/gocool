@@ -29,7 +29,7 @@ class GamesController < ApplicationController
         render :layout => 'simple'
       end
 
-      format.sgf  { render :text => SgfRenderer.new(@game).render }
+      format.sgf  { render :text => Gocool::SGF::GameRenderer.new.render(@game) }
     end
   end
 
@@ -81,7 +81,7 @@ class GamesController < ApplicationController
   def play
     code, message = @game.play params
     if code == GameInPlay::OP_SUCCESS
-      render :text => "#{code}:#{SgfRenderer.new(@game).render}"
+      render :text => "#{code}:#{Gocool::SGF::GameRenderer.new.render(@game)}"
     else
       render :text => "#{code}:#{message}"
     end
@@ -156,6 +156,11 @@ class GamesController < ApplicationController
 
   def accept_counting
     @game.accept_counting
+
+    if %w(black_accept_counting white_accept_counting).include?(@game.state)
+      @game.result = "w+1/4(pending)"
+      @game.save!
+    end
   end
 
   def reject_counting
@@ -164,6 +169,10 @@ class GamesController < ApplicationController
 
   def resume
     @game.resume
+    unless @game.detail.last_move.move_on_board?
+      @game.detail.last_move_id = @game.detail.last_move.parent_id
+      @game.detail.save!
+    end
   end
 
   def find_next games, current_game_id
