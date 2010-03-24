@@ -66,11 +66,15 @@ class GamesController < ApplicationController
   end
 
   def waiting
-    if logged_in? and game = Game.my_turn(current_player).not_finished.first
-      redirect_to game_url(game)
-    else
-      redirect_to root_url
+    if logged_in?
+      if game = Game.my_turn(current_player).not_finished.first
+        redirect_to game_url(game)
+      elsif game = Game.by_player(current_player).not_finished.first
+        redirect_to game_url(game)
+      end
     end
+
+    redirect_to root_url unless performed?
   end
 
   def destroy

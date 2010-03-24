@@ -6,12 +6,14 @@ class MyTurnChecker
     if env["PATH_INFO"] =~ %r(/games/my_turn$)
       request = Rack::Request.new(env)
 
-      if Game.my_turn_by_name(request.params['player']).not_finished.blank?
-        my_turn = false
+      if Game.my_turn_by_name(request.params['player']).not_finished.count > 0
+        response = "my_turn"
+      elsif Game.by_name(request.params['player']).not_finished.count > 0
+        response = "not_my_turn"
       else
-        my_turn = true
+        response = "no_game"
       end
-      [200, {"Content-Type" => "text/html"}, [my_turn.to_s]]
+      [200, {"Content-Type" => "text/html"}, [response]]
     else
       [404, {"Content-Type" => "text/html"}, ["Not Found"]]
     end

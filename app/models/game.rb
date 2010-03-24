@@ -112,6 +112,12 @@ class Game < ActiveRecord::Base
     }
   }
 
+  named_scope :by_name, lambda{|name|
+    {
+      :conditions => ["black_name = ? or white_name = ?", name, name]
+    }
+  }
+
   def black_plays_first?
     not white_plays_first?
   end
