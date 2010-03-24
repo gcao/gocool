@@ -60,27 +60,6 @@ class GameMove < ActiveRecord::Base
 
   private
 
-  def add_move_to_board
-    @board[x][y] = color if color > 0
-  end
-
-  def remove_dead_stones
-    self.dead = []
-    remove_group @board.get_dead_group(x-1, y) if @board.game_type == Game::DAOQI or x > 0
-    remove_group @board.get_dead_group(x+1, y) if @board.game_type == Game::DAOQI or x < @board.size - 1
-    remove_group @board.get_dead_group(x, y-1) if @board.game_type == Game::DAOQI or y > 0
-    remove_group @board.get_dead_group(x, y+1) if @board.game_type == Game::DAOQI or y < @board.size - 1
-    remove_group @board.get_dead_group(x, y)
-  end
-
-  def remove_group group
-    return if group.blank?
-    group.each do |x, y|
-      dead << [x, y]
-      @board[x][y] = Game::NONE
-    end
-  end
-
   def init_board
     if parent
       @board = parent.board.clone
@@ -88,10 +67,7 @@ class GameMove < ActiveRecord::Base
       @board = Board.new(game_detail.game.board_size, game_detail.game.game_type)
     end
 
-    # place move on board
-    add_move_to_board
-    # remove dead stones after move
-    remove_dead_stones
+    self.dead = @board.play(color, x, y)
 
     @board
   end

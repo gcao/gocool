@@ -30,17 +30,15 @@ module Gocool
       private
 
       def render_moves game
-        if game.current_user_is_player?
-          sgf = game.detail.formatted_moves.to_s
-          if game.detail.last_move.move_on_board?
-            sgf << render_guess_moves(game)
-          else
-            sgf << ";" << game.detail.last_move.to_sgf
-          end
-          sgf
-        else
-          game.detail.formatted_moves.to_s
+        sgf = game.detail.formatted_moves.to_s
+
+        if game.state == 'counting'
+          sgf << ";" << game.detail.last_move.to_sgf
+        elsif game.current_user_is_player?
+          sgf << render_guess_moves(game)
         end
+
+        sgf
       end
 
       def render_guess_moves game

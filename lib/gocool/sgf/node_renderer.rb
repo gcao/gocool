@@ -8,9 +8,9 @@ module Gocool
       def render node
         return "" if node.guess_player_id and @options[:player_id] and node.guess_player_id != @options[:player_id]
 
-        return render_children(node.children) if node.move_no == 0 and @options[:with_children]
-
-        sgf = render_move(node.color, node.x, node.y)
+        sgf = ""
+        sgf << ";" if node.move_on_board?
+        sgf << render_move(node.color, node.x, node.y)
         sgf << render_setup_points(node.setup_points)
         sgf << render_dead(node.dead)
         sgf << render_property("N", node.id) if @options[:with_name]
