@@ -9,6 +9,7 @@ class Board < Array
   BLACK_TERRITORY = 5
   WHITE_TERRITORY = 6
   SHARED          = 9
+  DAME            = 10 # dan guan
   VISITED         = 99
 
   def initialize size, game_type = Game::WEIQI
@@ -98,6 +99,28 @@ class Board < Array
     dead
   end
 
+  def count whose_turn
+    mark_territories
+    finish_dame whose_turn
+
+    b = w = 0
+    for i in 0..@size - 1
+      for j in 0..@size - 1
+        case self[i][j]
+          when BLACK, BLACK_TERRITORY, WHITE_DEAD
+            b += 1
+          when WHITE, WHITE_TERRITORY, BLACK_DEAD
+            w += 1
+          when SHARED
+            b += 0.5
+            w += 0.5
+        end
+      end
+    end
+
+    return b, w
+  end
+
   def get_dead_group x, y
     if daoqi?
       x = normalize(x)
@@ -171,14 +194,30 @@ class Board < Array
           group = expand_blank_group i, j
           unless group.blank?
             if @black_neighbor and @white_neighbor
-              group.each{|x, y| self[x][y] = SHARED }
+              group.each{|x, y| self[x][y] = DAME }
             elsif @black_neighbor
               group.each{|x, y| self[x][y] = BLACK_TERRITORY }
             elsif @white_neighbor
               group.each{|x, y| self[x][y] = WHITE_TERRITORY }
             else
-              group.each{|x, y| self[x][y] = SHARED }
+              group.each{|x, y| self[x][y] = DAME }
             end
+          end
+        end
+      end
+    end
+  end
+
+  def finish_dame whose_turn
+    for i in 0..@size - 1
+      for j in 0..@size - 1
+        if self[i][j] == DAME
+          if whose_turn == 1
+            self[i][j] = BLACK_TERRITORY
+            whose_turn = 2
+          else
+            self[i][j] = WHITE_TERRITORY
+            whose_turn = 1
           end
         end
       end

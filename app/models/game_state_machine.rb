@@ -50,12 +50,16 @@ module GameStateMachine
         transitions :to => :white_accept_counting, :from => [:counting], :guard => :current_user_is_white?,
                     :on_transition => :do_counting
 
-        transitions :to => :finish, :from => [:black_accept_counting], :guard => :current_user_is_white?
-        transitions :to => :finish, :from => [:white_accept_counting], :guard => :current_user_is_black?
+        transitions :to => :finished, :from => [:black_accept_counting], :guard => :current_user_is_white?
+        transitions :to => :finished, :from => [:white_accept_counting], :guard => :current_user_is_black?
       end
 
       aasm_event :reject_counting do
-        transitions :to => :counting, :from => [:black_accept_counting, :white_accept_counting]
+        transitions :to => :counting, :from => [:black_accept_counting, :white_accept_counting],
+                    :on_transition => lambda {|game|
+                      game.delete_counting
+                      game.create_counting
+                    }
       end
 
       aasm_event :resume do
@@ -70,7 +74,27 @@ module GameStateMachine
 
       def do_counting
         if result.blank?
-          self.result = "W+1/4(pending)"
+          black_total, white_total = detail.last_move.board.count(detail.whose_turn)
+          Rails.logger.info "#{id} result:   #{black_total} : #{white_total}"
+          if handicap.to_i == 0
+            black_won = black_total - 180.5 - 3.75
+          else
+            # TODO
+          end
+          if black_won > 0
+            self.result = I18n.t('games.black_won')
+          else
+            self.result = I18n.t('games.white_won')
+          end
+          black_won = black_won.abs
+          int_part = black_won.to_i
+          float_part = black_won - int_part
+          float_part_translated = case float_part
+            when 0.25 then " 1/4"
+            when 0.5  then " 1/2"
+            when 0.75 then " 3/4"
+          end
+          self.result.sub!('POINTS_WON', "#{int_part}#{float_part_translated}")
         end
       end
 
@@ -88,6 +112,7 @@ module GameStateMachine
       def delete_counting
         last_move = detail.last_move
         unless last_move.parent_id and last_move.move_on_board?
+          self.result = nil
           detail.last_move_id = last_move.parent_id
           detail.save!
           last_move.delete

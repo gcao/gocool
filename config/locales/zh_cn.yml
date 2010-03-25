@@ -20,6 +20,7 @@ zh_cn:
     admin_games: "对局管理"
   link:
     home: "对弈首页"
+    forum_home: "论坛首页"
     back: "返回"
     close: "关闭窗口"
     download_sgf: "下载SGF文件"
@@ -174,6 +175,9 @@ zh_cn:
     start_counting: "双方都已同意结束对局。请用鼠标点盘上死子，然后点 <a href='GAME_URL/do_this?op=accept_counting'>此处</a> 开始数子。如果数子结果不正确，请点 <a href='GAME_URL/do_this?op=resume'>此处</a> 恢复对局或通知管理员。"
     accepted_counting: "我方已接受数子结果，对方尚未回答。"
     opponent_accepted_counting: "对方已接受数子结果，如果不同意此结果，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 拒绝，然后重点盘上死子。"
+    black_won: "黑胜POINTS_WON子"
+    white_won: "白胜POINTS_WON子"
+    result_pending: "（待确认）"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"

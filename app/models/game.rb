@@ -53,13 +53,13 @@ class Game < ActiveRecord::Base
 
   named_scope :finished, lambda {
     {
-      :conditions => ["result is not null and result != ''"]
+      :conditions => ["state = 'finished'"]
     }
   }
 
   named_scope :not_finished, lambda {
     {
-      :conditions => ["result is null or result = ''"]
+      :conditions => ["state != 'finished'"]
     }
   }
 
