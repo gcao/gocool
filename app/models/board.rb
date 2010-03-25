@@ -8,6 +8,8 @@ class Board < Array
   WHITE_DEAD      = 4
   BLACK_TERRITORY = 5
   WHITE_TERRITORY = 6
+  SHARED          = 9
+  VISITED         = 99
 
   def initialize size, game_type = Game::WEIQI
     @size      = size
@@ -27,6 +29,10 @@ class Board < Array
       end
     end
     b
+  end
+
+  def inspect
+    "\n" + map(&:inspect).join("\n")
   end
 
   def neighbor? x1, y1, x2, y2
@@ -150,15 +156,33 @@ class Board < Array
   def mark_dead_group group
     group.each do |x, y|
       if self[x][y] == 1
-        self[x][y] = 3
+        self[x][y] = BLACK_DEAD
       elsif self[x][y] == 2
-        self[x][y] = 4
+        self[x][y] = WHITE_DEAD
       end
     end
   end
 
   def mark_territories
-
+    for i in 0..@size - 1
+      for j in 0..@size - 1
+        if self[i][j] == 0
+          @black_neighbor = @white_neighbor = false
+          group = expand_blank_group i, j
+          unless group.blank?
+            if @black_neighbor and @white_neighbor
+              group.each{|x, y| self[x][y] = SHARED }
+            elsif @black_neighbor
+              group.each{|x, y| self[x][y] = BLACK_TERRITORY }
+            elsif @white_neighbor
+              group.each{|x, y| self[x][y] = WHITE_TERRITORY }
+            else
+              group.each{|x, y| self[x][y] = SHARED }
+            end
+          end
+        end
+      end
+    end
   end
 
   def points_str
@@ -250,5 +274,29 @@ class Board < Array
     expand_dead_group_for_marking(group, x+1, y) if daoqi? or x < @size-1
     expand_dead_group_for_marking(group, x, y-1) if daoqi? or y > 0
     expand_dead_group_for_marking(group, x, y+1) if daoqi? or y < @size-1
+  end
+
+  def expand_blank_group x, y, group = nil
+    if daoqi?
+      x = normalize(x)
+      y = normalize(y)
+    end
+
+    case self[x][y]
+    when 0
+      group ||= []
+      group << [x, y]
+      self[x][y] = VISITED
+      expand_blank_group(x-1,y,group) if daoqi? or x > 0
+      expand_blank_group(x+1,y,group) if daoqi? or x < @size-1
+      expand_blank_group(x,y-1,group) if daoqi? or y > 0
+      expand_blank_group(x,y+1,group) if daoqi? or y < @size-1
+    when 1, WHITE_DEAD
+      @black_neighbor = true
+    when 2, BLACK_DEAD
+      @white_neighbor = true
+    end
+
+    group
   end
 end

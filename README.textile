@@ -18,6 +18,11 @@ Show status of opponent (online/offline)
 Redirect to game that opponent is online
 Chat (not comments)
 
+Count
+Mark dead and shared liberty(for 有眼双活)
+Assign 单官 automatically(depending on who plays next and how many are left)
+After accept counting, mark board with B/W/S(Shared liberty).
+
 Resign
 Can resign at any time
 Send private message

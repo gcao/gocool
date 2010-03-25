@@ -143,15 +143,7 @@ class GamesController < ApplicationController
   end
 
   def request_counting
-    @game.undo_guess_moves
     @game.request_counting
-    if @game.state == 'counting' and @game.detail.last_move.move_on_board?
-      move = GameMove.create!(:game_detail_id => @game.detail.id, :move_no => @game.detail.last_move.move_no,
-                              :color => Game::NONE, :x => -1, :y => -1, :played_at => Time.now,
-                              :parent_id => @game.detail.last_move_id)
-      @game.detail.last_move_id = move.id
-      @game.detail.save!
-    end
   end
 
   def reject_counting_request
@@ -160,11 +152,6 @@ class GamesController < ApplicationController
 
   def accept_counting
     @game.accept_counting
-
-    if %w(black_accept_counting white_accept_counting).include?(@game.state)
-      @game.result = "w+1/4(pending)"
-      @game.save!
-    end
   end
 
   def reject_counting
@@ -173,10 +160,6 @@ class GamesController < ApplicationController
 
   def resume
     @game.resume
-    unless @game.detail.last_move.move_on_board?
-      @game.detail.last_move_id = @game.detail.last_move.parent_id
-      @game.detail.save!
-    end
   end
 
   def find_next games, current_game_id
