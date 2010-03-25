@@ -23,7 +23,7 @@ module Gocool
 
       def render_children children
         return "" if children.blank?
-        return children.first.to_sgf(@options) if children.size == 1
+        return render(children.first) if children.size == 1
 
         children.map {|move|
           sgf = render(move)
