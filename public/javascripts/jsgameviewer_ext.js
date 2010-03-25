@@ -68,11 +68,12 @@ jQuery.extend(GocoolPlayer.prototype, {
     url += "&y=" + y;
     if (node.parent && node.parent.name) url += "&parent_move_id=" + node.parent.name;
 
+    var _this = this;
     // Important: this must be an async request to allow next moves
     jQuery.ajax({url: url,
       //async: false,
       success:function(response){
-        var parsed = this.parseResponse(response);
+        var parsed = _this.parseResponse(response);
         if (parsed.status == jsgv.OP_SUCCESS){
           var origUrl = c.game.url;
           var xys = c.gameState.getXYs();
@@ -99,9 +100,10 @@ jQuery.extend(GocoolPlayer.prototype, {
   resign: function(){
     var c = this.gameController;
     var url = c.config.gocoolUrlPrefix + "games/" + c.gocoolId + "/resign";
+    var _this = this;
     jQuery.ajax({url: url,
       success:function(response){
-        var parsed = this.parseResponse(response);
+        var parsed = _this.parseResponse(response);
         if (parsed.status == jsgv.OP_SUCCESS){
           c.refresh();
         } else if (parsed.status == jsgv.OP_JAVASCRIPT){
