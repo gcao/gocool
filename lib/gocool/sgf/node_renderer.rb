@@ -56,10 +56,6 @@ module Gocool
         prop_name = color == ::SGF::Model::Constants::WHITE ? "W" : "B"
         render_property(prop_name, render_position(x, y))
       end
-
-      def render_position x, y
-        ::SGF::Model::Constants::POSITIONS[x, 1] + ::SGF::Model::Constants::POSITIONS[y, 1]
-      end
     end
   end
 end

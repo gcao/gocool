@@ -1,6 +1,8 @@
 class Board < Array
   attr :game_type
 
+  CHARS = "0123456789:"
+
   NONE            = 0
   BLACK           = 1
   WHITE           = 2
@@ -228,12 +230,7 @@ class Board < Array
     @points_str = "0" * size * size
     0.upto(size-1) do |x|
       0.upto(size-1) do |y|
-        case self[x][y]
-          when 1
-            @points_str[x*size + y] = "1"
-          when 2
-            @points_str[x*size + y] = "2"
-        end
+        @points_str[x*size + y] = CHARS[self[x][y], 1]
       end
     end
     @points_str
@@ -251,16 +248,11 @@ class Board < Array
     hash = JSON.load input
     b = Board.new hash['size'], hash['game_type']
     s = hash['points']
-    black_char_code = 49 # '1'
-    white_char_code = 50 # '2'
+    start_char_code = 48 # '0'
     0.upto(s.length - 1) do |i|
       x = i/b.size
       y = i%b.size
-      if s[i] == black_char_code
-        b[x][y] = 1
-      elsif s[i] == white_char_code
-        b[x][y] = 2
-      end
+      b[x][y] = s[i] - start_char_code
     end
     b
   end

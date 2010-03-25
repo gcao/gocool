@@ -23,6 +23,7 @@ module Gocool
         sgf << render_property("RE", game.result)
         if game.detail
           sgf << render_moves(game)
+          sgf << render_territories(game) if %w(black_accept_counting white_accept_counting).include? game.state
         end
         sgf << ")"
       end
@@ -48,6 +49,26 @@ module Gocool
           sgf = "(#{sgf})" unless sgf.empty?
           sgf
         }.join
+      end
+
+      def render_territories game
+        sgf = ";LB"
+        board = game.detail.last_move.board
+        for i in 0..game.board_size - 1
+          for j in 0..game.board_size - 1
+            sgf << "[" << render_position(i, j) << ":"
+            case board[i][j]
+              when Board::BLACK, Board::BLACK_TERRITORY, Board::WHITE_DEAD
+                sgf << "B"
+              when Board::WHITE, Board::WHITE_TERRITORY, Board::BLACK_DEAD
+                sgf << "W"
+              when Board::SHARED
+                sgf << "S"
+            end
+            sgf << "]"
+          end
+        end
+        sgf
       end
     end
   end

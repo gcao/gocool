@@ -26,6 +26,9 @@ class Game < ActiveRecord::Base
   KOREAN_RULE   = 3
   YING_RULE     = 4
 
+  ADD_BLACK_STONE = 1
+  ADD_WHITE_STONE = 2
+
   default_scope :include => [:gaming_platform, :primary_source]
 
   named_scope :with_detail, :include => [:detail]

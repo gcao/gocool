@@ -56,10 +56,7 @@ module GameStateMachine
 
       aasm_event :reject_counting do
         transitions :to => :counting, :from => [:black_accept_counting, :white_accept_counting],
-                    :on_transition => lambda {|game|
-                      game.delete_counting
-                      game.create_counting
-                    }
+                    :on_transition => :recreate_counting
       end
 
       aasm_event :resume do
@@ -74,13 +71,20 @@ module GameStateMachine
 
       def do_counting
         if result.blank?
-          black_total, white_total = detail.last_move.board.count(detail.whose_turn)
+          board = detail.last_move.board
+          detail.last_move.dead.each do |x, y|
+            board[x][y] = 0
+          end
+
+          black_total, white_total = board.count(detail.whose_turn)
           Rails.logger.info "#{id} result:   #{black_total} : #{white_total}"
+
           if handicap.to_i == 0
             black_won = black_total - 180.5 - 3.75
           else
             # TODO
           end
+
           if black_won > 0
             self.result = I18n.t('games.black_won')
           else
@@ -95,6 +99,9 @@ module GameStateMachine
             when 0.75 then " 3/4"
           end
           self.result.sub!('POINTS_WON', "#{int_part}#{float_part_translated}")
+
+          detail.last_move.serialized_board = board.dump
+          detail.last_move.save!
         end
       end
 
@@ -117,6 +124,11 @@ module GameStateMachine
           detail.save!
           last_move.delete
         end
+      end
+
+      def recreate_counting
+        delete_counting
+        create_counting
       end
     end
   end
