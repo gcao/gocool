@@ -1,6 +1,6 @@
 module GameStateMachine
   def self.included(klass)
-    klass.instance_eval do
+    klass.class_eval do
       include AASM
 
       aasm_column :state
@@ -46,9 +46,9 @@ module GameStateMachine
 
       aasm_event :accept_counting do
         transitions :to => :black_accept_counting, :from => [:counting], :guard => :current_user_is_black?,
-                    :on_transition => :count
+                    :on_transition => :do_counting
         transitions :to => :white_accept_counting, :from => [:counting], :guard => :current_user_is_white?,
-                    :on_transition => :count
+                    :on_transition => :do_counting
 
         transitions :to => :finish, :from => [:black_accept_counting], :guard => :current_user_is_white?
         transitions :to => :finish, :from => [:white_accept_counting], :guard => :current_user_is_black?
@@ -68,7 +68,7 @@ module GameStateMachine
         state == :finished
       end
 
-      def count
+      def do_counting
         if result.blank?
           self.result = "W+1/4(pending)"
         end

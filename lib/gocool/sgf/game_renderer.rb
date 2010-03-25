@@ -33,7 +33,7 @@ module Gocool
         sgf = game.detail.formatted_moves.to_s
 
         if game.state == 'counting'
-          sgf << ";" << game.detail.last_move.to_sgf
+          sgf << ";" << NodeRenderer.new.render(game.detail.last_move)
         elsif game.current_user_is_player?
           sgf << render_guess_moves(game)
         end
