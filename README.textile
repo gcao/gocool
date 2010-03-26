@@ -46,3 +46,4 @@ Handicaps(White plays first, remove random from who plays first dropdown, defaul
 
 Performance tuning:
 Add expires header to js and css(at least for this app and the bbs)
+Add favicon ?
