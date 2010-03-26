@@ -269,15 +269,15 @@ class Board < Array
     return if self[x][y] != group.color
 
     if daoqi?
-      return if self[normalize(x-1)][y] == 0 or
-                self[normalize(x+1)][y] == 0 or
-                self[x][normalize(y-1)] == 0 or
-                self[x][normalize(y+1)] == 0
+      return true if self[normalize(x-1)][y] == 0 or
+                     self[normalize(x+1)][y] == 0 or
+                     self[x][normalize(y-1)] == 0 or
+                     self[x][normalize(y+1)] == 0
     else
-      return if (x > 0       and self[x-1][y] == 0) or
-                (x < @size-1 and self[x+1][y] == 0) or
-                (y > 0       and self[x][y-1] == 0) or
-                (y < @size-1 and self[x][y+1] == 0)
+      return true if (x > 0       and self[x-1][y] == 0) or
+                     (x < @size-1 and self[x+1][y] == 0) or
+                     (y > 0       and self[x][y-1] == 0) or
+                     (y < @size-1 and self[x][y+1] == 0)
     end
 
     group << [x,y]

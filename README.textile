@@ -7,30 +7,31 @@ Continuous Integration: to be added to http://www.coderuncode.com
 Game Server NOTES
 
 Invitations
-Send private messages through forum
+Send private messages through forum DONE
 Can not create/accept after 10 games (unless marked as unlimited)
 Can not create/accept invitations if you have pending games that are older than 5 days
 
 Play
-Show "it is your turn" on forum pages and game server pages
+Show "it is your turn" on forum pages and game server pages DONE
 Can not play on newer game if you have pending games that are older than 5 days
 Show status of opponent (online/offline)
 Redirect to game that opponent is online
 Chat (not comments)
 
 Count
-Mark dead and shared liberty(for 有眼双活)
-Assign 单官 automatically(depending on who plays next and how many are left)
-After accept counting, mark board with B/W/S(Shared liberty).
+Mark dead DONE
+Mark shared liberty(for 有眼双活)
+Assign 单官 automatically(depending on who plays next and how many are left) DONE
+After accept counting, mark board with B/W/S(Shared liberty) DONE
 
 Resign
-Can resign at any time
-Send private message
+Can resign at any time DONE
+Send private message DONE
 
 Guess Move
-Can send move no matter whether it is my turn
-Can undo all my guess moves(which is not applied)
-Can overwrite previous counter move (my move against my guess move)
+Can send move no matter whether it is my turn DONE
+Can undo all my guess moves(which is not applied) DONE
+Can overwrite previous counter move (my move against my guess move) DONE
 
 Comments
 Player can comment during the game
@@ -41,4 +42,7 @@ One to many DONE
 Open to all
 Restrictions
 Expiration date(default to 14 days)
-Handicaps(White plays first, remove random from who plays first dropdown, default to inviter)
+Handicaps(White plays first, remove random from who plays first dropdown, default to inviter) DONE
+
+Performance tuning:
+Add expires header to js and css(at least for this app and the bbs)

@@ -118,7 +118,7 @@ module GameStateMachine
 
       def delete_counting
         last_move = detail.last_move
-        unless last_move.parent_id and last_move.move_on_board?
+        if last_move.parent_id and not last_move.move_on_board?
           self.result = nil
           detail.last_move_id = last_move.parent_id
           detail.save!

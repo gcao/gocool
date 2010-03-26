@@ -49,6 +49,15 @@ describe Board do
         group[0].should == [0, 0]
         group[1].should == [0, 1]
       end
+
+      it "should return nil if it is connected to same color stone" do
+        @b[2][2] = 1
+        @b[2][3] = 1
+        @b[1][3] = 2
+        @b[3][3] = 2
+        @b[2][4] = 2
+        @b.get_dead_group(2, 3).should be_nil
+      end
     end
 
     context "get_group" do
