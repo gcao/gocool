@@ -42,7 +42,7 @@ module Gocool
 
         JSON.parse(setup_points).map {|item|
           op, x, y = *item
-          if op == GameDetail::ADD_BLACK_STONE
+          if op == Game::ADD_BLACK_STONE
             render_property("AB", render_position(x, y))
           else
             ""

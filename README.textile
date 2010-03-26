@@ -16,7 +16,7 @@ Show "it is your turn" on forum pages and game server pages DONE
 Can not play on newer game if you have pending games that are older than 5 days
 Show status of opponent (online/offline)
 Redirect to game that opponent is online
-Chat (not comments)
+Messages (System level, player level, game level, ...)
 
 Count
 Mark dead DONE
