@@ -18,7 +18,7 @@ config.action_controller.perform_caching             = true
 # config.cache_store = :mem_cache_store
 
 # Enable serving of images, stylesheets, and javascripts from an asset server
-config.action_controller.asset_host = "http://assets%d.go-cool.org"
+#config.action_controller.asset_host = "http://assets%d.go-cool.org"
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false

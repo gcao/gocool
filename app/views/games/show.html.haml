@@ -4,10 +4,12 @@
 
   = render "shared/jsgameviewer"
 
-= show_flash 'span-24'
-
 .span-24
   %h3= t('games.show_page_header').sub('GAME_NO', @game.id.to_s).sub('WHITE', @game.white_name_with_rank).sub('BLACK', @game.black_name_with_rank)
+
+  = show_flash 'span-24'
+  %br
+
   %a(href="/bbs/index.php")= t('link.forum_home')
   &nbsp;&nbsp;&nbsp;&nbsp;
   %a(href="/app")= t('link.home')
