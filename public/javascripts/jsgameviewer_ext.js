@@ -71,7 +71,7 @@ jQuery.extend(GocoolPlayer.prototype, {
     var _this = this;
     // Important: this must be an async request to allow next moves
     jQuery.ajax({url: url,
-      //async: false,
+      async: false,
       success:function(response){
         var parsed = _this.parseResponse(response);
         if (parsed.status == jsgv.OP_SUCCESS){
