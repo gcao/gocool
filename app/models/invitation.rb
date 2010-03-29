@@ -84,6 +84,13 @@ class Invitation < ActiveRecord::Base
     end
   end
 
+  def game_type_str
+    case game_type
+      when Game::DAOQI then I18n.t('games.daoqi_label')
+      else I18n.t('games.weiqi_label')
+    end
+  end
+
   def start_side_str
     case start_side
       when INVITER_PLAY_FIRST then I18n.t('invitations.inviter_start')
@@ -165,8 +172,11 @@ class Invitation < ActiveRecord::Base
     JSON.parse(invitees).keys.each do |invitee_id|
       invitee = User.find invitee_id
       Discuz::PrivateMessage.send_message inviter, invitee,
-                                          I18n.t('invitations.invitation_subject').sub('USERNAME', inviter.username),
-                                          I18n.t('invitations.invitation_body').sub('USERNAME', inviter.username).gsub("INVITATION_URL", "#{ENV['BASE_URL']}/app/invitations/#{id}")
+                                          I18n.t('invitations.invitation_subject').sub('USERNAME', inviter.username).
+                                                  sub('GAME_TYPE', game_type_str),
+                                          I18n.t('invitations.invitation_body').sub('USERNAME', inviter.username).
+                                                  gsub("INVITATION_URL", "#{ENV['BASE_URL']}/app/invitations/#{id}").
+                                                  sub('GAME_TYPE', game_type_str)
     end
   end
 end

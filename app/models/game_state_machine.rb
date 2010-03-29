@@ -79,10 +79,11 @@ module GameStateMachine
           black_total, white_total = board.count(detail.whose_turn)
           Rails.logger.info "#{id} result:   #{black_total} : #{white_total}"
 
+          black_won = black_total - 180.5
           if handicap.to_i == 0
-            black_won = black_total - 180.5 - 3.75
-          else
-            # TODO
+            black_won -= 3.75
+          elsif handicap.to_i > 1
+            black_won -= handicap.to_i/2.0
           end
 
           if black_won > 0

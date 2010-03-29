@@ -6,6 +6,13 @@
   .span-18.no-border
     .form_row.span-18
       .span-3
+        %label(for="invitation_game_type")
+          =t('invitations.game_type_label')
+      .span-15.last
+        #invitation_game_type= @invitation.game_type_str
+        
+    .form_row.span-18
+      .span-3
         %label(for="invitation_inviter")
           =t('invitations.inviter_label')
       .span-15.last
