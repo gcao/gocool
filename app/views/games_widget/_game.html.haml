@@ -1,5 +1,7 @@
 %tr{:id => "game_row_#{game.id}", :class => "record " + (game_counter%2 == 0 ? "even-record":"")}
-  %td= game.id
+  %td
+    = game.id
+    = "(#{t('games.daoqi_label')})" if game.daoqi?
   %td
     = "#{h game.name}&nbsp;"
   =black_player_html(game)

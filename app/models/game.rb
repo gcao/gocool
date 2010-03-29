@@ -121,6 +121,17 @@ class Game < ActiveRecord::Base
     }
   }
 
+  def daoqi?
+    game_type == DAOQI
+  end
+
+  def game_type_str
+    case game_type
+      when DAOQI then I18n.t('games.daoqi_label')
+      else I18n.t('games.weiqi_label')
+    end
+  end
+
   def black_plays_first?
     not white_plays_first?
   end
