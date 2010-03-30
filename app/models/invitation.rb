@@ -154,8 +154,7 @@ class Invitation < ActiveRecord::Base
 
     GameDetail.create!(:game_id => game.id, :whose_turn => game.start_side, :formatted_moves => "")
 
-    Discuz::PrivateMessage.send_message invitee, inviter,
-                                        I18n.t('invitations.accept_invitation_subject').sub('USERNAME', invitee.username),
+    Discuz::PrivateMessage.send_message invitee, inviter, "",
                                         I18n.t('invitations.accept_invitation_body').sub('USERNAME', invitee.username).sub("GAME_URL", "#{ENV['BASE_URL']}/app/games/#{game.id}")
 
     game
@@ -163,17 +162,14 @@ class Invitation < ActiveRecord::Base
 
   def send_reject_message
     invitee = current_user
-    Discuz::PrivateMessage.send_message invitee, inviter,
-                                        I18n.t('invitations.reject_invitation_subject').sub('USERNAME', invitee.username),
+    Discuz::PrivateMessage.send_message invitee, inviter, "",
                                         I18n.t('invitations.reject_invitation_body').sub('USERNAME', invitee.username).sub("INVITATION_URL", "#{ENV['BASE_URL']}/app/invitations/#{id}")
   end
 
   def send_invitation_message
     JSON.parse(invitees).keys.each do |invitee_id|
       invitee = User.find invitee_id
-      Discuz::PrivateMessage.send_message inviter, invitee,
-                                          I18n.t('invitations.invitation_subject').sub('USERNAME', inviter.username).
-                                                  sub('GAME_TYPE', game_type_str),
+      Discuz::PrivateMessage.send_message inviter, invitee, "",
                                           I18n.t('invitations.invitation_body').sub('USERNAME', inviter.username).
                                                   gsub("INVITATION_URL", "#{ENV['BASE_URL']}/app/invitations/#{id}").
                                                   sub('GAME_TYPE', game_type_str)

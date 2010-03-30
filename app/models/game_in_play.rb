@@ -178,8 +178,9 @@ module GameInPlay
   def send_resign_message from, to, loser_color
     color_str = loser_color == Game::BLACK ? I18n.t('games_widget.black_player') : I18n.t('games_widget.white_player')
 
-    subject = I18n.t('games.resign_subject').sub('PLAYER_COLOR', color_str).sub('PLAYER', from.username)
-    body = I18n.t('games.resign_body').sub('GAME_URL', "#{ENV['BASE_URL']}/app/games/#{id}")
+    subject = ""
+    body = I18n.t('games.resign_body').sub('PLAYER_COLOR', color_str).sub('PLAYER', from.username).
+            sub('GAME_URL', "#{ENV['BASE_URL']}/app/games/#{id}")
     
     Discuz::PrivateMessage.send_message from, to, subject, body
   end
