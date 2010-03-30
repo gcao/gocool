@@ -93,12 +93,14 @@ module GameInPlay
     message = ''
 
     if current_player.id == black_id
-      black_resign
+      undo_guess_moves
+      self.state = 'finished'
       self.winner = Game::WHITE
       self.result = "W+R"
       send_resign_message current_player.user, white_player.user, Game::BLACK
     elsif current_player.id == white_id
-      white_resign
+      undo_guess_moves
+      self.state = 'finished'
       self.winner = Game::BLACK
       self.result = "B+R"
       send_resign_message current_player.user, black_player.user, Game::WHITE

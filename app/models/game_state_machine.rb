@@ -20,14 +20,6 @@ module GameStateMachine
         transitions :to => :playing, :from => [:new]
       end
 
-      aasm_event :black_resign do
-        transitions :to => :finished
-      end
-
-      aasm_event :white_resign do
-        transitions :to => :finished
-      end
-
       aasm_event :request_counting do
         transitions :to => :counting, :from => [:black_request_counting], :guard => :current_user_is_white?,
                     :on_transition => :create_counting
