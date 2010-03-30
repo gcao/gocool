@@ -76,11 +76,21 @@ jQuery.extend(GocoolPlayer.prototype, {
         var parsed = _this.parseResponse(response);
         if (parsed.status == jsgv.OP_SUCCESS){
           var origUrl = c.game.url;
+          var x0 = c.config.x0 - c.config.vbw;
+          var y0 = c.config.y0 - c.config.vbw;
           var xys = c.gameState.getXYs();
           c.loadSgf(parsed.message);
           c.game.url = origUrl;
+          if (c.game.type == jsGameViewer.DAOQI) {
+            // Restore board position
+            c.config.x0 = c.config.y0 = c.config.vbw;
+            c.moveBoard(x0, y0);
+          }
           c.goToXYs(xys);
-          c.forwardAll();
+
+          // Forward to end of the game if I am not looking at a gusss move
+          if (!c.gameState.currentNode.hasComment()) c.forwardAll();
+
           c.startUpdater(true);
         } else if (parsed.status == jsgv.OP_JAVASCRIPT){
           eval(parsed.message);
