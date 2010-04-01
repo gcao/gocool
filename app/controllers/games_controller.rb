@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  include GamesHelper
+
   before_filter :check_game, :except => [:new, :index, :next, :waiting, :destroy]
   before_filter :login_required, :only => [:play, :resign, :undo_guess_moves, :do_this]
   before_filter :check_user_is_player, :only => [:undo_guess_moves, :do_this]
@@ -85,6 +87,11 @@ class GamesController < ApplicationController
   def play
     code, message = @game.play params
     if code == GameInPlay::OP_SUCCESS
+      if ENV['JUGGERNAUT_INTEGRATION'] == 'true'
+        render :juggernaut => {:type => :send_to_channels, :channels => to_channels} do |page|
+          page << "jsGameViewer.GV1.refresh();"
+        end
+      end
       render :text => "#{code}:#{Gocool::SGF::GameRenderer.new.render(@game)}"
     else
       render :text => "#{code}:#{message}"

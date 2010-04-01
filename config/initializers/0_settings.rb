@@ -4,6 +4,8 @@ ENV["USE_XSENDFILE"]        = "false"
 ENV['USE_OLD_JSGAMEVIEWER'] = "false"
 ENV['BASE_URL']             = 'http://localhost'
 
+ENV['JUGGERNAUT_INTEGRATION'] = 'false'
+
 ENV['DISCUZ_HOME']            = '/bbs'
 ENV['INTEGRATE_WITH_FORUM']   = 'true'
 ENV['FORUM_REGISTRATION_URL'] = '/bbs/register_qiren.php'
