@@ -45,5 +45,19 @@ Expiration date(default to 14 days)
 Handicaps(White plays first, remove random from who plays first dropdown, default to inviter) DONE
 
 Performance tuning:
-Add expires header to js and css(at least for this app and the bbs)
-Add favicon ?
+Add expires header to js and css(at least for this app and the bbs) DONE
+Add favicon DONE
+
+Messages:
+Level: system, player, game
+Type: permanent, transient(User is online, offline)
+Source: system, player
+Visibility: player, all
+Time
+Content
+
+Admin:
+Create game between players (as tournament organizer)
+Decide game result (as tournament organizer)
+Force counting (as tournament organizer)
+Undo last move
