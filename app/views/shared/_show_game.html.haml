@@ -26,8 +26,12 @@
       var gameType  = #{@game.game_type.to_i == Game::DAOQI} ? jsGameViewer.DAOQI : jsGameViewer.WEIQI;
       var gameState = "#{@game.state}";
       var myColor   = #{@my_color.to_i};
+      jQuery(document).ready(function(){
+        new GameController({gameType: gameType, container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
+          setPlayerInterval(15).startUpdater(true).saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});
+      });
 
-    - if ENV['JUGGERNAUT_INTEGRATION'] == 'true'
+    -# if ENV['JUGGERNAUT_INTEGRATION'] == 'true'
       = javascript_include_tag %w(jquery.json juggernaut/juggernaut juggernaut/jquerynaut juggernaut/swfobject)
       = juggernaut(:channels => my_channels, |
                    :swf_address => "/app/juggernaut/juggernaut.swf", |
@@ -37,7 +41,7 @@
           new GameController({gameType: gameType, container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
             saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});
         });
-    - else
+    -# else
       :javascript
         jQuery(document).ready(function(){
           new GameController({gameType: gameType, container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
