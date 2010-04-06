@@ -153,7 +153,7 @@ zh_cn:
     ying_rule: "应氏规则"
     guess_move_comment: "!!!这一步是我方预想的棋局走向!!!"
     resign_subject: ""
-    resign_body: "PLAYER_COLORPLAYER认输，棋局 GAME_URL 结束。"
+    resign_body: "PLAYER_COLORPLAYER认输，棋局 [url]GAME_URL[/url] 结束。"
     games_of_my_turn: "轮到我方下的对局"
     games_of_not_my_turn: "轮到对方下的对局"
     my_finished_games: "我下完的对局"

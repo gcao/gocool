@@ -61,3 +61,18 @@ Create game between players (as tournament organizer)
 Decide game result (as tournament organizer)
 Force counting (as tournament organizer)
 Undo last move
+
+Rails 2.3 => 3.0 Upgrade Notes
+
+Release Discuz_auth as a gem
+
+Create gocool2 app
+
+Modify chef project to
+  include gocool2 apache config
+  In gocool apache config, redirect new functionalities to gocool2
+
+Deploy gocool2 to production
+
+What do we do with migrations?
+Leave migrations in gocool app

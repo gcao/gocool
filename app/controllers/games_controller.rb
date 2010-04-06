@@ -180,6 +180,8 @@ class GamesController < ApplicationController
   end
 
   def set_flash_message
+    return unless @game.current_user_is_player?
+
     case @game.state
       when 'playing' then
         flash.now[:notice] = t('games.request_counting').gsub('GAME_URL', game_url(@game))

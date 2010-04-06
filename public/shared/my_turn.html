@@ -10,7 +10,7 @@
   var myTurnCheck = function(){
     jQuery.get("/app/games/my_turn", {player: jQuery.trim(jQuery('#umenu cite a.noborder').text())}, function(data){
       if (jQuery.trim(data) == 'my_turn') {
-        jQuery('#my_turn a').text('该你下了');
+        jQuery('#my_turn a').text('该我下了');
         if (!gocoolMyTurn) {
           jQuery('#my_turn').show();
           gocoolMyTurnEffects = setInterval(function(){jQuery('#my_turn a').fadeOut('fast').fadeIn('fast')}, 3000);
