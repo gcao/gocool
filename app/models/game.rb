@@ -31,42 +31,42 @@ class Game < ActiveRecord::Base
 
   default_scope :include => [:gaming_platform, :primary_source]
 
-  named_scope :with_detail, :include => [:detail]
-  named_scope :sort_by_last_move_time, :order => "game_details.last_move_time DESC"
+  scope :with_detail, :include => [:detail]
+  scope :sort_by_last_move_time, :order => "game_details.last_move_time DESC"
 
-  named_scope :by_player, lambda {|p|
+  scope :by_player, lambda {|p|
     {
       :conditions => ["(black_id = ? or white_id = ?)", p.id, p.id]
     }
   }
 
-  named_scope :my_turn, lambda {|p|
+  scope :my_turn, lambda {|p|
     {
       :include => :detail,
       :conditions => ["(black_id = ? and game_details.whose_turn = ?) or (white_id = ? and game_details.whose_turn = ?)", p.id, BLACK, p.id, WHITE]
     }
   }
 
-  named_scope :not_my_turn, lambda {|p|
+  scope :not_my_turn, lambda {|p|
     {
       :include => :detail,
       :conditions => ["(black_id = ? and game_details.whose_turn = ?) or (white_id = ? and game_details.whose_turn = ?)", p.id, WHITE, p.id, BLACK]
     }
   }
 
-  named_scope :finished, lambda {
+  scope :finished, lambda {
     {
       :conditions => ["state = 'finished'"]
     }
   }
 
-  named_scope :not_finished, lambda {
+  scope :not_finished, lambda {
     {
       :conditions => ["state != 'finished'"]
     }
   }
 
-  named_scope :on_platform, lambda { |platform|
+  scope :on_platform, lambda { |platform|
     if platform.is_a? GamingPlatform
       { :conditions => ["games.gaming_platform_id = ?", platform.id] }
     elsif platform.blank?
@@ -78,7 +78,7 @@ class Game < ActiveRecord::Base
     end
   }
 
-  named_scope :played_by, lambda {|player1, player2|
+  scope :played_by, lambda {|player1, player2|
     raise ArgumentError.new(I18n.t('games.first_player_is_required')) if player1.blank?
 
     player1 = player1.strip.gsub('*', '%')
@@ -96,18 +96,18 @@ class Game < ActiveRecord::Base
     end
   }
 
-  named_scope :played_between, lambda{|player1_id, player2_id|
+  scope :played_between, lambda{|player1_id, player2_id|
     raise ArgumentError.new "Player 1 is not set" if player1_id.blank?
     raise ArgumentError.new "Player 2 is not set" if player2_id.blank?
 
     { :conditions => ["(black_id = ? and white_id = ?) or (black_id = ? and white_id = ?)", player1_id, player2_id, player2_id, player1_id]}
   }
 
-  named_scope :sort_by_players, :order => "black_name, white_name"
+  scope :sort_by_players, :order => "black_name, white_name"
 
-  named_scope :sort_by_last_move_time, :include => :detail, :order => "game_details.last_move_time"
+  scope :sort_by_last_move_time, :include => :detail, :order => "game_details.last_move_time"
 
-  named_scope :my_turn_by_name, lambda{|name|
+  scope :my_turn_by_name, lambda{|name|
     {
       :include => :detail,
       :conditions => ["(black_name = ? and game_details.whose_turn = ?) or (white_name = ? and game_details.whose_turn = ?)",
@@ -115,7 +115,7 @@ class Game < ActiveRecord::Base
     }
   }
 
-  named_scope :by_name, lambda{|name|
+  scope :by_name, lambda{|name|
     {
       :conditions => ["black_name = ? or white_name = ?", name, name]
     }

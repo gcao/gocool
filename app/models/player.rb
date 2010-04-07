@@ -6,7 +6,7 @@ class Player < ActiveRecord::Base
 
   has_one :user, :class_name => 'User', :foreign_key => "qiren_player_id"
 
-  named_scope :on_platform, lambda {|platform|
+  scope :on_platform, lambda {|platform|
     if platform.blank?
       {:conditions => ["players.gaming_platform_id is null"]}
     elsif platform.is_a? GamingPlatform
@@ -17,10 +17,10 @@ class Player < ActiveRecord::Base
       {:conditions => ["players.gaming_platform_id = ?", platform]}
     end
   }
-  named_scope :name_like, lambda {|name| {:conditions => ["players.name like ?", name.gsub('*', '%')]} }
+  scope :name_like, lambda {|name| {:conditions => ["players.name like ?", name.gsub('*', '%')]} }
 
-  named_scope :with_stat, :include => :stat
-  named_scope :include, lambda {|associations| {:include => associations} }
+  scope :with_stat, :include => :stat
+  scope :include, lambda {|associations| {:include => associations} }
 
   def self.find_or_create platform, name, rank
     player = on_platform(platform).find_by_name(name)

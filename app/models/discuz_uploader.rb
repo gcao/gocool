@@ -1,6 +1,6 @@
 class DiscuzUploader
   def logger
-    RAILS_DEFAULT_LOGGER
+    Rails.logger
   end
   
   def upload post

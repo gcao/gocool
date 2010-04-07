@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift(RAILS_ROOT + '/vendor/plugins/cucumber/lib') if File.directory?(RAILS_ROOT + '/vendor/plugins/cucumber/lib')
+$LOAD_PATH.unshift(Rails.root + '/vendor/plugins/cucumber/lib') if File.directory?(Rails.root + '/vendor/plugins/cucumber/lib')
 
 namespace :cucumber do
   task :plain do
@@ -37,7 +37,7 @@ end
 namespace :db do
   namespace :cucumber do
     task :reset do
-      RAILS_ENV = 'cucumber'
+      Rails.env = 'cucumber'
       Rake::Task[:'db:migrate:reset'].invoke
     end
   end

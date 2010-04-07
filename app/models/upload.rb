@@ -11,11 +11,11 @@ class Upload < ActiveRecord::Base
 
   default_scope :include => :game, :conditions => "game_id is not null"
   
-  named_scope :with_hash, lambda { |hash|
+  scope :with_hash, lambda { |hash|
     {:conditions => ["hash_code = ?", hash]}
   }
 
-  named_scope :with_description, lambda { |description|
+  scope :with_description, lambda { |description|
     if description.blank?
       {}
     else
@@ -23,9 +23,9 @@ class Upload < ActiveRecord::Base
     end
   }
   
-  named_scope :recent, :order => 'created_at DESC'
+  scope :recent, :order => 'created_at DESC'
 
-  named_scope :between, lambda {|from, to|
+  scope :between, lambda {|from, to|
     if from
       if to
         conditions = ["date(uploads.created_at) >= ? and date(uploads.created_at) <= ?", from, to]

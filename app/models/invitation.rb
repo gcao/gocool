@@ -11,11 +11,11 @@ class Invitation < ActiveRecord::Base
 
   default_scope :order => "created_at DESC"
 
-  named_scope :active, lambda {
+  scope :active, lambda {
     {:conditions => ["invitations.state not in ('accepted', 'rejected', 'canceled', 'expired')"]}
   }
 
-  named_scope :by_me, lambda {
+  scope :by_me, lambda {
     if user = Thread.current[:user]
       {:conditions => ["invitations.inviter_id = ?", user.id]}
     else
@@ -23,7 +23,7 @@ class Invitation < ActiveRecord::Base
     end
   }
 
-  named_scope :to_me, lambda {
+  scope :to_me, lambda {
     if user = Thread.current[:user]
       {:conditions => ["invitations.invitees like ?", "%\"#{user.id}\":%"]}
     else
