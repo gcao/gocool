@@ -43,14 +43,16 @@ class Game < ActiveRecord::Base
   named_scope :my_turn, lambda {|p|
     {
       :include => :detail,
-      :conditions => ["(black_id = ? and game_details.whose_turn = ?) or (white_id = ? and game_details.whose_turn = ?)", p.id, BLACK, p.id, WHITE]
+      :conditions => ["(black_id = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
+                    or (white_id = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))", p.id, BLACK, p.id, WHITE]
     }
   }
 
   named_scope :not_my_turn, lambda {|p|
     {
       :include => :detail,
-      :conditions => ["(black_id = ? and game_details.whose_turn = ?) or (white_id = ? and game_details.whose_turn = ?)", p.id, WHITE, p.id, BLACK]
+      :conditions => ["(black_id = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
+                    or (white_id = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))", p.id, WHITE, p.id, BLACK]
     }
   }
 
@@ -110,7 +112,8 @@ class Game < ActiveRecord::Base
   named_scope :my_turn_by_name, lambda{|name|
     {
       :include => :detail,
-      :conditions => ["(black_name = ? and game_details.whose_turn = ?) or (white_name = ? and game_details.whose_turn = ?)",
+      :conditions => ["(black_name = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
+                    or (white_name = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))",
                       name, BLACK, name, WHITE] 
     }
   }
