@@ -80,8 +80,10 @@ module GameStateMachine
 
           if black_won > 0
             self.result = I18n.t('games.black_won')
+            self.winner = Game::BLACK
           else
             self.result = I18n.t('games.white_won')
+            self.winner = Game::WHITE
           end
           black_won = black_won.abs
           int_part = black_won.to_i
@@ -113,6 +115,7 @@ module GameStateMachine
         last_move = detail.last_move
         if last_move.parent_id and not last_move.move_on_board?
           self.result = nil
+          self.winner = nil
           detail.last_move_id = last_move.parent_id
           detail.save!
           last_move.delete
