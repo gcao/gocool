@@ -197,19 +197,21 @@ class GamesController < ApplicationController
         elsif @game.current_user_is_black?
           flash.now[:error] = t('games.opponent_requested_counting').gsub('GAME_URL', game_url(@game))
         end
-      when 'counting' then
+      when 'counting_preparation' then
         flash.now[:notice] = t('games.start_counting').gsub('GAME_URL', game_url(@game))
+      when 'counting' then
+        flash.now[:notice] = t('games.check_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
       when 'black_accept_counting' then
         if @game.current_user_is_black?
-          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game))
+          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
         elsif @game.current_user_is_white?
-          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game))
+          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
         end
       when 'white_accept_counting' then
         if @game.current_user_is_white?
-          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game))
+          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
         elsif @game.current_user_is_black?
-          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game))
+          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
         end
     end
   end

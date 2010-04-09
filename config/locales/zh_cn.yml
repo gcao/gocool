@@ -169,12 +169,32 @@ zh_cn:
     occupied: "下子位置已经被占领"
     suicide: "不能在该位置下子"
     bad_ko: "不能马上提劫"
-    request_counting: "如果只剩下单官，请点 <a href='GAME_URL/do_this?op=request_counting'>此处</a> 向对方提议结束对局。"
-    requested_counting: "我方已经提议结束对局，对方尚未回答。如果想要恢复对局请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。"
-    opponent_requested_counting: "对方认为对局已经结束，要求开始数子。请点 <a href='GAME_URL/do_this?op=request_counting'>此处</a> 接受，或点 <a href='GAME_URL/do_this?op=reject_counting_request'>此处</a> 拒绝。"
-    start_counting: "双方都已同意结束对局。请用鼠标点盘上死子，然后点 <a href='GAME_URL/do_this?op=accept_counting'>此处</a> 开始数子。如果数子结果不正确，请点 <a href='GAME_URL/do_this?op=resume'>此处</a> 恢复对局或通知管理员。"
-    accepted_counting: "我方已接受数子结果，对方尚未回答。"
-    opponent_accepted_counting: "对方已接受数子结果，请点 <a href='GAME_URL/do_this?op=accept_counting'>此处</a> 接受对局结果。如果不同意此结果，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 拒绝，然后重点盘上死子。"
+    request_counting:
+      如果只剩下单官，请点 <a href='GAME_URL/do_this?op=request_counting'>此处</a> 向对方提议结束对局。
+    requested_counting:
+      我方已经提议结束对局，对方尚未回答。
+      如果想要恢复对局，请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
+    opponent_requested_counting:
+      对方认为对局已经结束，要求开始数子。
+      请点 <a href='GAME_URL/do_this?op=request_counting'>此处</a> 接受，
+      或点 <a href='GAME_URL/do_this?op=reject_counting_request'>此处</a> 拒绝。
+    start_counting:
+      双方都已同意结束对局。请用鼠标点盘上死子，然后点 <a href='GAME_URL/do_this?op=do_counting'>此处</a> 开始数子。
+    check_counting:
+      数子结果为：GAME_RESULT。
+      如果数子结果不正确，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 重新数子。
+      如果想要恢复对局，请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
+    accepted_counting:
+      数子结果为：GAME_RESULT。
+      我方已接受数子结果，对方尚未回答。
+      如果数子结果不正确，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 重新数子。
+      如果想要恢复对局请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
+    opponent_accepted_counting:
+      数子结果为：GAME_RESULT。
+      对方已接受数子结果。
+      请点 <a href='GAME_URL/do_this?op=accept_counting'>此处</a> 接受对局结果。
+      如果不同意此结果，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 拒绝，然后重点盘上死子。
+      如果想要恢复对局请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
     black_won: "黑胜POINTS_WON子"
     white_won: "白胜POINTS_WON子"
     result_pending: "（待确认）"

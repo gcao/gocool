@@ -11,6 +11,7 @@ module GameStateMachine
       aasm_state :playing
       aasm_state :black_request_counting
       aasm_state :white_request_counting
+      aasm_state :counting_preparation
       aasm_state :counting
       aasm_state :black_accept_counting
       aasm_state :white_accept_counting
@@ -21,9 +22,9 @@ module GameStateMachine
       end
 
       aasm_event :request_counting do
-        transitions :to => :counting, :from => [:black_request_counting], :guard => :current_user_is_white?,
+        transitions :to => :counting_preparation, :from => [:black_request_counting], :guard => :current_user_is_white?,
                     :on_transition => :create_counting
-        transitions :to => :counting, :from => [:white_request_counting], :guard => :current_user_is_black?,
+        transitions :to => :counting_preparation, :from => [:white_request_counting], :guard => :current_user_is_black?,
                     :on_transition => :create_counting
 
         transitions :to => :black_request_counting, :from => [:playing, :black_request_counting],
@@ -36,68 +37,73 @@ module GameStateMachine
         transitions :to => :playing, :from => [:black_request_counting, :white_request_counting]
       end
 
+      aasm_event :do_counting do
+        transitions :to => :counting, :from => [:counting_preparation, :counting], :guard => :current_user_is_player?,
+                    :on_transition => :count
+      end
+
       aasm_event :accept_counting do
-        transitions :to => :black_accept_counting, :from => [:counting], :guard => :current_user_is_black?,
-                    :on_transition => :do_counting
-        transitions :to => :white_accept_counting, :from => [:counting], :guard => :current_user_is_white?,
-                    :on_transition => :do_counting
+        transitions :to => :black_accept_counting, :from => [:counting], :guard => :current_user_is_black?
+        transitions :to => :white_accept_counting, :from => [:counting], :guard => :current_user_is_white?
 
         transitions :to => :finished, :from => [:black_accept_counting], :guard => :current_user_is_white?
         transitions :to => :finished, :from => [:white_accept_counting], :guard => :current_user_is_black?
       end
 
       aasm_event :reject_counting do
-        transitions :to => :counting, :from => [:black_accept_counting, :white_accept_counting],
+        transitions :to => :counting_preparation, :from => [:counting, :black_accept_counting, :white_accept_counting],
                     :on_transition => :recreate_counting
       end
 
       aasm_event :resume do
-        transitions :to => :playing, :on_transition => :delete_counting,
+        transitions :to => :playing,
                     :from => [:black_request_counting, :white_request_counting,
-                              :counting, :black_accept_counting, :white_accept_counting]
+                              :counting_preparation, :counting,
+                              :black_accept_counting, :white_accept_counting],
+                    :on_transition => :delete_counting
       end
 
       def finished?
         state == :finished
       end
 
-      def do_counting
-        if result.blank?
-          board = detail.last_move.board
-          detail.last_move.dead.each do |x, y|
-            board[x][y] = 0
-          end
+      def count
+        return unless result.blank?
 
-          black_total, white_total = board.count(detail.whose_turn)
-          Rails.logger.info "#{id} result:   #{black_total} : #{white_total}"
-
-          black_won = black_total - 180.5
-          if handicap.to_i == 0
-            black_won -= 3.75
-          elsif handicap.to_i > 1
-            black_won -= handicap.to_i/2.0
-          end
-
-          if black_won > 0
-            self.result = I18n.t('games.black_won')
-            self.winner = Game::BLACK
-          else
-            self.result = I18n.t('games.white_won')
-            self.winner = Game::WHITE
-          end
-          black_won = black_won.abs
-          int_part = black_won.to_i
-          float_part = black_won - int_part
-          float_part_translated = case float_part
-            when 0.25 then " 1/4"
-            when 0.5  then " 1/2"
-            when 0.75 then " 3/4"
-          end
-          self.result.sub!('POINTS_WON', "#{int_part}#{float_part_translated}")
-
-          detail.last_move.serialized_board = board.dump
-          detail.last_move.save!
+        board = detail.last_move.board
+        detail.last_move.dead.each do |x, y|
+          board[x][y] = 0
         end
+
+        black_total, white_total = board.count(detail.whose_turn)
+        Rails.logger.info "#{id} result:   #{black_total} : #{white_total}"
+
+        black_won = black_total - 180.5
+        if handicap.to_i == 0
+          black_won -= 3.75
+        elsif handicap.to_i > 1
+          black_won -= handicap.to_i/2.0
+        end
+
+        if black_won > 0
+          self.result = I18n.t('games.black_won')
+          self.winner = Game::BLACK
+        else
+          self.result = I18n.t('games.white_won')
+          self.winner = Game::WHITE
+        end
+        black_won = black_won.abs
+        int_part = black_won.to_i
+        float_part = black_won - int_part
+        float_part_translated = case float_part
+          when 0.25 then " 1/4"
+          when 0.5  then " 1/2"
+          when 0.75 then " 3/4"
+        end
+        self.result.sub!('POINTS_WON', "#{int_part}#{float_part_translated}")
+
+        detail.last_move.serialized_board = board.dump
+        detail.last_move.save!
       end
 
       def create_counting
