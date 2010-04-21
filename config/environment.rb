@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "sgf_parser", :lib => 'sgf'
+  config.gem "discuz_int"
   config.gem "calendar_date_select", :version => ">=1.15"
   config.gem 'thoughtbot-paperclip', :version => ">=2.3.0", :lib => 'paperclip', :source => 'http://gems.github.com'
   config.gem 'haml', :version => ">=2.2.3"
