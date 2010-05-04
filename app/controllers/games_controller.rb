@@ -144,7 +144,7 @@ class GamesController < ApplicationController
 
   def check_user_is_player
     unless @game.current_user_is_player?
-      flash.now[:error] = t('games.user_is_not_player')
+      flash.now[:error] = t('games.user_is_not_player') # TODO: message is not defined in zh_cn.yml
       render 'show', :layout => 'simple'
     end
   end

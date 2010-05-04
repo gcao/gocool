@@ -16,4 +16,8 @@ module GamesHelper
       %W[game_#{@game.id} game_#{@game.id}_black]
     end
   end
+
+  def message_to_html message
+    "#{message.created_at} #{content}"
+  end
 end

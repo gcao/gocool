@@ -17,11 +17,11 @@ module GameStateMachine
       aasm_state :white_accept_counting
       aasm_state :finished
 
-      aasm_event :start do
+      aasm_event :start, :before => :before_start do
         transitions :to => :playing, :from => [:new]
       end
 
-      aasm_event :request_counting do
+      aasm_event :request_counting, :before => :before_request_counting do
         transitions :to => :counting_preparation, :from => [:black_request_counting], :guard => :current_user_is_white?,
                     :on_transition => :create_counting
         transitions :to => :counting_preparation, :from => [:white_request_counting], :guard => :current_user_is_black?,
@@ -33,16 +33,16 @@ module GameStateMachine
                     :guard => :current_user_is_white?, :on_transition => :undo_guess_moves
       end
 
-      aasm_event :reject_counting_request do
+      aasm_event :reject_counting_request, :before => :before_reject_counting_request do
         transitions :to => :playing, :from => [:black_request_counting, :white_request_counting]
       end
 
-      aasm_event :do_counting do
+      aasm_event :do_counting, :before => :before_do_counting do
         transitions :to => :counting, :from => [:counting_preparation, :counting], :guard => :current_user_is_player?,
                     :on_transition => :count
       end
 
-      aasm_event :accept_counting do
+      aasm_event :accept_counting, :before => :before_accept_counting do
         transitions :to => :black_accept_counting, :from => [:counting], :guard => :current_user_is_black?
         transitions :to => :white_accept_counting, :from => [:counting], :guard => :current_user_is_white?
 
@@ -50,12 +50,12 @@ module GameStateMachine
         transitions :to => :finished, :from => [:white_accept_counting], :guard => :current_user_is_black?
       end
 
-      aasm_event :reject_counting do
+      aasm_event :reject_counting, :before => :before_reject_counting do
         transitions :to => :counting_preparation, :from => [:counting, :black_accept_counting, :white_accept_counting],
                     :on_transition => :recreate_counting
       end
 
-      aasm_event :resume do
+      aasm_event :resume, :before => :before_resume do
         transitions :to => :playing,
                     :from => [:black_request_counting, :white_request_counting,
                               :counting_preparation, :counting,
@@ -131,6 +131,107 @@ module GameStateMachine
       def recreate_counting
         delete_counting
         create_counting
+      end
+
+      def before_start
+        Message.create!(:receiver_id => id, :content => 'Game is started.')
+      end
+
+      def before_request_counting
+        case state
+          when 'playing'
+              content = I18n.t('games.messages.request_counting')
+          when 'black_request_counting'
+            if current_user_is_white?
+              content = I18n.t('games.messages.accept_counting')
+            end
+          when 'white_request_counting'
+            if current_user_is_black?
+              content = I18n.t('games.messages.accept_counting')
+            end
+        end
+
+        generate_message content
+      end
+
+      def before_reject_counting_request
+        case state
+          when 'black_request_counting'
+            if current_user_is_white?
+              content = I18n.t('games.messages.reject_counting_request')
+            end
+          when 'white_request_counting'
+            if current_user_is_black?
+              content = I18n.t('games.messages.reject_counting_request')
+            end
+        end
+
+        generate_message content
+      end
+
+      def before_do_counting
+        case state
+          when 'black_request_counting'
+            if current_user_is_white?
+              content = I18n.t('games.messages.do_counting')
+            end
+          when 'white_request_counting'
+            if current_user_is_black?
+              content = I18n.t('games.messages.do_counting')
+            end
+        end
+
+        generate_message content
+      end
+
+      def before_accept_counting
+        case state
+          when 'counting'
+              content = I18n.t('games.messages.accept_counting')
+          when 'black_accept_counting'
+            if current_user_is_white?
+              content = I18n.t('games.messages.finish_counting')
+            end
+          when 'white_accept_counting'
+            if current_user_is_black?
+              content = I18n.t('games.messages.finish_counting')
+            end
+        end
+
+        generate_message content
+      end
+
+      def before_reject_counting
+        case state
+          when 'black_accept_counting'
+            if current_user_is_white?
+              content = I18n.t('games.messages.reject_counting')
+            end
+          when 'white_accept_counting'
+            if current_user_is_black?
+              content = I18n.t('games.messages.reject_counting')
+            end
+        end
+
+        generate_message content
+      end
+
+      def before_resume
+        case state
+          when 'new', 'playing', 'finished'
+          else
+            if current_user_is_player?
+              content = I18n.t('games.messages.resume')
+            end
+        end
+
+        generate_message content
+      end
+
+      private
+
+      def generate_message content
+        Message.create!(:receiver_id => id, :content => content.sub('PLAYER', current_player_str)) if content
       end
     end
   end

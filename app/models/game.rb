@@ -237,4 +237,13 @@ class Game < ActiveRecord::Base
       else ""
     end
   end
+
+  def current_player_str
+    player = if current_user_is_black?
+      I18n.t('games.black_name')
+    elsif current_user_is_white?
+      I18n.t('games.black_name')
+    end
+    player.nil_or.sub('PLAYER_NAME', current_user.username)
+  end
 end
