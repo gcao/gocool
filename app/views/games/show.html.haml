@@ -73,5 +73,5 @@
   - else
     :javascript
       jQuery(document).ready(function(){
-        new GameController({container: "gameContainer"}).load("#{url}");
+        new GameController({container: "gameContainer"}).load("#{game_url(@game, :sgf)}");
       });

@@ -8,6 +8,9 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::VendorGemSourceIndex.silence_spec_warnings = true
 
+# $LOAD_PATH.unshift(RAILS_ROOT + "/vendor/gems/aspect4r-0.1.0/lib")
+# require 'aspect4r'
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -22,6 +25,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "sgf_parser", :lib => 'sgf'
+  config.gem "aspect4r"
   config.gem "discuz_int"
   config.gem "calendar_date_select", :version => ">=1.15"
   config.gem 'thoughtbot-paperclip', :version => ">=2.3.0", :lib => 'paperclip', :source => 'http://gems.github.com'
