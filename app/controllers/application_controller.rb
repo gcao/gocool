@@ -9,11 +9,8 @@ class ApplicationController < ActionController::Base
   helper :urls, :games_widget, :uploads_widget, :players_widget, :player_widget, :opponents_widget
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  if ENV['INTEGRATE_WITH_FORUM'] == 'true'
-    before_filter :authenticate_via_bbs
-  end
-
-  before_filter :admin_required, :only => [:edit, :update, :destroy]
+  before_filter :authenticate_via_bbs if ENV['INTEGRATE_WITH_FORUM'] == 'true'
+  before_filter :admin_required, :only => [:edit, :update, :destroy] if RAILS_ENV != 'development'
   before_filter :set_title_and_header
 
   def is_admin?
