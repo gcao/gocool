@@ -1,4 +1,4 @@
-/* line 1, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 1, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 body {
   -moz-background-clip: border;
   -moz-background-inline-policy: continuous;
@@ -6,12 +6,12 @@ body {
   background: #0D2345 url(../../images/bodybg.gif) repeat-x scroll 0 90px;
   text-align: center; }
 
-/* line 8, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 8, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset {
   margin: 0;
   padding: 0; }
 
-/* line 12, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 12, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 body, td, input, textarea, select, button {
   color: #444444;
   font-family: Verdana,Helvetica,Arial,sans-serif;
@@ -22,51 +22,51 @@ body, td, input, textarea, select, button {
   font-weight: normal;
   line-height: 1.6em; }
 
-/* line 22, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 22, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 a {
   color: #000000;
   text-decoration: none; }
-  /* line 26, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+  /* line 26, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
   a img {
     border: medium none; }
 
-/* line 29, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 29, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 * {
   word-wrap: break-word; }
 
-/* line 32, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 32, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 .wrap {
   margin: 0 auto;
   text-align: left; }
 
-/* line 36, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 36, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 .pipe {
   margin: 0 5px; }
 
-/* line 39, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 39, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 .lighttxt, .lighttxt a, .pipe {
   color: #999999; }
 
-/* line 42, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 42, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 em, cite, strong, th {
   font-style: normal;
   text-align: left; }
 
-/* line 46, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 46, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 ul li {
   list-style-image: none;
   list-style-position: outside;
   list-style-type: none; }
 
-/* line 51, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 51, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 a:hover {
   text-decoration: underline; }
 
-/* line 54, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 54, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 .noborder, .noborder td {
   border: medium none !important; }
 
-/* line 57, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 57, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #header {
   -moz-background-clip: border;
   -moz-background-inline-policy: continuous;
@@ -75,45 +75,45 @@ a:hover {
   border-bottom: 1px solid #00B2E8;
   margin-bottom: 8px;
   width: 100%; }
-  /* line 66, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+  /* line 66, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
   #header h2 {
     float: left;
     margin: 0; }
-  /* line 70, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+  /* line 70, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
   #header .wrap {
     height: 120px;
     padding: 8px 0 4px;
     position: relative; }
 
-/* line 75, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 75, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #umenu, #umenu a, #umenu .pipe {
   color: #666666; }
 
-/* line 78, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 78, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #umenu {
   line-height: 20px;
   position: absolute;
   right: 0;
   top: 0;
   line-height: 20px; }
-  /* line 85, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+  /* line 85, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
   #umenu cite {
     font-weight: 700; }
-    /* line 88, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+    /* line 88, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
     #umenu cite span a {
       font-weight: 400;
       margin: 0; }
-  /* line 92, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+  /* line 92, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
   #umenu a {
     margin: 0 6px; }
 
-/* line 95, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 95, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #menu {
   bottom: 0;
   height: 26px;
   position: absolute;
   right: 0; }
-  /* line 101, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+  /* line 101, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
   #menu li {
     -moz-background-clip: border;
     -moz-background-inline-policy: continuous;
@@ -122,7 +122,7 @@ a:hover {
     display: inline;
     float: left;
     margin-left: 5px; }
-  /* line 110, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+  /* line 110, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
   #menu a {
     -moz-background-clip: border;
     -moz-background-inline-policy: continuous;
@@ -138,18 +138,18 @@ a:hover {
     overflow: hidden;
     padding: 0 14px;
     text-decoration: none; }
-  /* line 126, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+  /* line 126, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
   #menu li.current a {
     background-color: #1E4B7E;
     border-color: #00B2E8;
     color: #C3D3E4;
     height: 26px; }
 
-/* line 133, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 133, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #nav, #nav a {
   color: #C3D3E4; }
 
-/* line 136, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 136, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #nav {
   -moz-background-clip: border;
   -moz-background-inline-policy: continuous;
@@ -160,25 +160,25 @@ a:hover {
   text-align: left;
   text-indent: 25px; }
 
-/* line 147, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 147, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #footer, #footer a {
   color: #8691A2; }
 
-/* line 150, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 150, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #footer {
   padding: 1em 0;
   position: relative; }
 
-/* line 154, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 154, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #footlink {
   float: right;
   text-align: right; }
 
-/* line 158, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 158, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 .smalltext {
   font-family: Verdana,Helvetica,Arial,sans-serif;
   font-size: 0.83em; }
 
-/* line 162, ../../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
+/* line 162, ../../../../vendor/plugins/discuz_int/app/stylesheets/partials/_discuz.sass */
 #rightinfo {
   float: left; }
