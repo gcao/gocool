@@ -1,3 +1,6 @@
+- content_for :head do
+  = stylesheet_link_tag 'compiled/show_game.css'
+
 .span-24
   %h3= t('games.show_page_header').sub('GAME_NO', @game.id.to_s).sub('WHITE', @game.white_name_with_rank).sub('BLACK', @game.black_name_with_rank)
 
@@ -18,7 +21,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     %a{:href => url_for(:controller => 'admin/games', :action => 'edit', :id => @game.id)}= t('form.edit_button')
 
-  - if @game and not @game.finished? and @game.current_user_is_player?
+  - if not @game.finished? and @game.current_user_is_player?
     &nbsp;&nbsp;&nbsp;&nbsp;
     %a{:href => undo_guess_moves_game_url}= t('link.undo_guess_moves')
     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -26,9 +29,9 @@
 
   #gameContainer
 
-  - if @game and not @game.finished? and @game.current_user_is_player?
-    = render :partial => "games/messages"
+  = render :partial => "games/messages"
 
+  - if not @game.finished? and @game.current_user_is_player?
     %div(style="width:720px")
       %p 棋人对弈最特殊的功能是猜测对方的应手。
       %p
@@ -41,21 +44,30 @@
 
 - content_for :footer do
   = render "shared/jsgameviewer"
+  = javascript_include_tag "jquery.form"
   
   :javascript
     if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
     
-    function populateMessages(messages) {
-      $.each(messages, function() {
-        $('#message_container').prepend("<div class='message'>" + this.message.content + "</div>");
+    function showMessage(message) {
+      $('#message_container').show();
+      $('#message_container').prepend("<div class='message'>" + message.message.content + "</div>");
+    }
+    
+    function showMessages(messages) {
+      $.each(messages, function(){
+        showMessage(this)
       });
     }
     
     jQuery(document).ready(function(){
-      populateMessages(#{@messages.to_json});
+      $('#send_message_form').ajaxForm({dataType: 'json', success: function(response){
+        showMessage(eval(response));
+      }});
+      showMessages(#{@messages.to_json});
     });
 
-  - if @game and not @game.finished? and @game.current_user_is_player?
+  - if @game.finished? and @game.current_user_is_player?
     = javascript_include_tag "jsgameviewer_ext"
     :javascript
       var gameType  = #{@game.game_type.to_i == Game::DAOQI} ? jsGameViewer.DAOQI : jsGameViewer.WEIQI;

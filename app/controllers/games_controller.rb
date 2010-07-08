@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   before_filter :check_game, :except => [:new, :index, :next, :waiting, :destroy]
   before_filter :login_required, :only => [:play, :resign, :undo_guess_moves, :do_this]
-  before_filter :check_user_is_player, :only => [:undo_guess_moves, :do_this]
+  before_filter :check_user_is_player, :only => [:undo_guess_moves, :do_this, :send_message]
 
   def index
     @platform = params[:platform]
@@ -136,6 +136,13 @@ class GamesController < ApplicationController
   
   def messages
     render :text => Message.for_game(@game.id).to_json
+  end
+  
+  def send_message
+    message = Message.create!(:message_type => Message::PRIVATE, :receiver_id => @game.id, 
+                              :content => ERB::Util.html_escape(params[:message]), 
+                              :source_type => Message::PLAYER, :source_id => current_player.id)
+    render :text => message.to_json
   end
 
   private
