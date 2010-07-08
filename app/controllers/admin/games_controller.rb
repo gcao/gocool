@@ -1,5 +1,10 @@
 class Admin::GamesController < Admin::BaseController
   active_scaffold :game do |config|
+    common_setup(config)
+    
+    config.label = I18n.t('games.page_title')
+    config.action_links.add 'show', :label => I18n.t('form.view_button'),:parameters => {:controller => '/games'}, :type => :member, :page => true, :popup => true
+    
     config.columns = [:id, :name, :gaming_platform_id, :gaming_platform, :black_id, :black_name, :black_rank,
                       :white_id, :white_name, :white_rank, :result, :winner, :winner_str, :moves,
                       :handicap, :komi_raw, :rule_raw, :played_at, :played_at_raw, :place]

@@ -14,6 +14,9 @@
   %a(href="javascript:window.close();")= t('link.close')
   &nbsp;&nbsp;&nbsp;&nbsp;
   %a{:href => game_url(@game, :format => :sgf)}= t('link.download_sgf')
+  - show_if_admin do
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    %a{:href => url_for(:controller => 'admin/games', :action => 'edit', :id => @game.id)}= t('form.edit_button')
 
   - if @game and not @game.finished? and @game.current_user_is_player?
     &nbsp;&nbsp;&nbsp;&nbsp;

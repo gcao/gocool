@@ -1098,7 +1098,7 @@ body.bp .active-scaffold-calculations td {
 body.bp .active-scaffold tr.record td.actions {
   border-right: solid 1px #ccc;
   padding: 0;
-  min-width: 1%; }
+  /* min-width: 1% */ }
   /* line 205, ../../../app/stylesheets/partials/_activescaffold.sass */
   body.bp .active-scaffold tr.record td.actions table {
     float: right;
@@ -2056,6 +2056,16 @@ table#games_search_form label, table#pairs_search_form label {
 .header_with_link {
   width: 100% !important;
   height: 38px; }
+
+/* line 96, ../../../app/stylesheets/partials/_app.sass */
+a.edit_link {
+  padding-left: 20px;
+  background: url(../../images/icons/edit.gif) no-repeat; }
+
+/* line 100, ../../../app/stylesheets/partials/_app.sass */
+a.delete_link {
+  padding-left: 20px;
+  background: url(../../images/icons/delete.gif) no-repeat; }
 
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {

@@ -34,7 +34,10 @@ zh_cn:
     click_to_change: "(点此修改)"
     submit_button: "提交"
     reset_button: "清除"
-    view_button: "欣赏对局"
+    create_button: "新建"
+    show_button: "查看"
+    edit_button: "修改"
+    view_button: "欣赏"
     delete_button: "删除"
     detail_button: "详细信息"
     search_button: "搜索"
@@ -52,7 +55,7 @@ zh_cn:
       label: "上传的对局"
     qiren_games:
       label: "本站棋友对局"
-    welcome_member: "USERNAME，欢迎你回来"
+    welcome_member: "USERNAME，欢迎回来"
     my_uploads:
       label: "我上传的对局"
   uploads:
@@ -103,7 +106,6 @@ zh_cn:
     page_header: "棋手"
     platform_label: "对局平台："
     name_label: "棋手："
-    games_played_by: "PLATFORM_NAME 棋手：PLAYER_NAME"
     opponents_header: "对手"
   players_table:
     platform: "对局平台"

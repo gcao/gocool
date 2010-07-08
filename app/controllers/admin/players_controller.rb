@@ -1,5 +1,10 @@
 class Admin::PlayersController < Admin::BaseController
   active_scaffold :player do |config|
+    common_setup(config)
+    
+    config.label = I18n.t('players.page_title')
+    config.action_links.add 'show', :label => I18n.t('form.show_button'),:parameters => {:controller => '/players'}, :type => :member, :page => true, :popup => true
+    
     config.columns = [:id, :gaming_platform_id, :gaming_platform, :name, :rank, :sex, :birth_year, :birth_place, :other_names, :description]
 
     config.columns[:id                ].label = "ID"
