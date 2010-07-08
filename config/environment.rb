@@ -1,15 +1,12 @@
 # Be sure to restart your server when you modify this file
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
+# RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::VendorGemSourceIndex.silence_spec_warnings = true
-
-# $LOAD_PATH.unshift(RAILS_ROOT + "/vendor/gems/aspect4r-0.1.0/lib")
-# require 'aspect4r'
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -25,7 +22,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "sgf_parser", :lib => 'sgf'
-  config.gem "aspect4r"
+  # config.gem "aspect4r"
   config.gem "discuz_int"
   config.gem "calendar_date_select", :version => ">=1.15"
   config.gem 'thoughtbot-paperclip', :version => ">=2.3.0", :lib => 'paperclip', :source => 'http://gems.github.com'

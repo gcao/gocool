@@ -40,10 +40,20 @@
         此功能可广泛用于定式，中盘战斗，打劫以及官子定型等。
 
 - content_for :footer do
+  = render "shared/jsgameviewer"
+  
   :javascript
     if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
-
-  = render "shared/jsgameviewer"
+    
+    function populateMessages(messages) {
+      $.each(messages, function() {
+        $('#message_container').prepend("<div class='message'>" + this.message.content + "</div>");
+      });
+    }
+    
+    jQuery(document).ready(function(){
+      populateMessages(#{@messages.to_json});
+    });
 
   - if @game and not @game.finished? and @game.current_user_is_player?
     = javascript_include_tag "jsgameviewer_ext"

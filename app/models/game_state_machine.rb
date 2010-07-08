@@ -2,7 +2,7 @@ module GameStateMachine
   def self.included(klass)
     klass.class_eval do
       include AASM
-      include Aspect4r
+      # include Aspect4r
 
       aasm_column :state
 
@@ -135,11 +135,13 @@ module GameStateMachine
       end
 
       def before_start
-        I18n.t('games.messages.start_game') if state == 'new'
+        message = I18n.t('games.messages.start_game') if state == 'new'
+        
+        Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
       end
 
       def before_request_counting
-        case state
+        message = case state
           when 'playing'
               I18n.t('games.messages.request_counting')
           when 'black_request_counting'
@@ -151,10 +153,12 @@ module GameStateMachine
               I18n.t('games.messages.accept_counting')
             end
         end
+        
+        Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
       end
 
       def before_reject_counting_request
-        case state
+        message = case state
           when 'black_request_counting'
             if current_user_is_white?
               I18n.t('games.messages.reject_counting_request')
@@ -164,10 +168,12 @@ module GameStateMachine
               I18n.t('games.messages.reject_counting_request')
             end
         end
+        
+        Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
       end
 
       def before_do_counting
-        case state
+        message = case state
           when 'black_request_counting'
             if current_user_is_white?
               I18n.t('games.messages.do_counting')
@@ -177,10 +183,12 @@ module GameStateMachine
               I18n.t('games.messages.do_counting')
             end
         end
+        
+        Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
       end
 
       def before_accept_counting
-        case state
+        message = case state
           when 'counting'
               I18n.t('games.messages.accept_counting')
           when 'black_accept_counting'
@@ -192,10 +200,12 @@ module GameStateMachine
               I18n.t('games.messages.finish_counting')
             end
         end
+        
+        Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
       end
 
       def before_reject_counting
-        case state
+        message = case state
           when 'black_accept_counting'
             if current_user_is_white?
               I18n.t('games.messages.reject_counting')
@@ -205,22 +215,26 @@ module GameStateMachine
               I18n.t('games.messages.reject_counting')
             end
         end
+        
+        Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
       end
 
       def before_resume
-        case state
+        message = case state
           when 'new', 'playing', 'finished'
           else
             if current_user_is_player?
               I18n.t('games.messages.resume')
             end
         end
+        
+        Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
       end
       
-      after %w(before_start before_request_counting before_reject_counting_request 
-                      before_do_counting before_accept_counting before_reject_counting before_resume) do |result|
-        Message.create!(:receiver_id => id, :content => result.sub('PLAYER', current_player_str)) if result
-      end
+      # after %w(before_start before_request_counting before_reject_counting_request 
+      #          before_do_counting before_accept_counting before_reject_counting before_resume) do |result|
+      #   Message.create!(:receiver_id => id, :content => result.sub('PLAYER', current_player_str)) if result
+      # end
     end
   end
 end

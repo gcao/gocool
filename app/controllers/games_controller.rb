@@ -28,6 +28,7 @@ class GamesController < ApplicationController
         elsif @game.current_user_is_white?
           @my_color = Game::WHITE
         end
+        @messages = Message.for_game(@game.id)
         render :layout => 'simple'
       end
 
@@ -131,6 +132,10 @@ class GamesController < ApplicationController
       flash.now[:error] = t('games.unsupported_operation')
     end
     redirect_to :action => :show
+  end
+  
+  def messages
+    render :text => Message.for_game(@game.id).to_json
   end
 
   private

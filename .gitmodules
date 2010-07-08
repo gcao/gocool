@@ -7,9 +7,3 @@
 [submodule "vendor/gems/discuz_int-0.1.0"]
 	path = vendor/gems/discuz_int-0.1.0
 	url = git://github.com/gcao/discuz_int.git
-[submodule "vendor/gems/aspect4r-0.1.0"]
-	path = vendor/gems/aspect4r-0.1.0
-	url = git://github.com/gcao/aspect4r.git
-[submodule "vendor/plugins/discuz_int"]
-	path = vendor/plugins/discuz_int
-	url = git://github.com/gcao/discuz_int.git

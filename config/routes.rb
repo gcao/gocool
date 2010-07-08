@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :games,
                 :member => {:play => :get, :resign => :get, :undo_guess_moves => :get, :next => :get,
-                            :do_this => :get, :mark_dead => :get},
+                            :do_this => :get, :mark_dead => :get, :messages => :get},
                 :collection => {:waiting => :get}
   map.resources :uploads
   map.upload_search 'upload_search', :controller => 'upload_search', :action => 'index'

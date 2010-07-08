@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  # Type
+  # Message Type
   REGULAR = 0
   PRIVATE = 1
   COMMENT = 2
@@ -26,8 +26,8 @@ class Message < ActiveRecord::Base
     }
   }
 
-  def initialize(attributes)
-    defaults = {:type => REGULAR, :source_type => SYSTEM, :receiver_type => GAME, :level => INFO}
+  def initialize(attributes = {})
+    defaults = {:message_type => REGULAR, :source_type => SYSTEM, :receiver_type => GAME, :level => INFO}
     super(defaults.merge(attributes))
   end
 end
