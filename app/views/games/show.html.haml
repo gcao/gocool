@@ -56,13 +56,13 @@
     
     function showMessages(messages) {
       $.each(messages, function(){
-        showMessage(this)
+        showMessage(this);
       });
     }
     
     jQuery(document).ready(function(){
       $('#send_message_form').ajaxForm({dataType: 'json', success: function(response){
-        showMessage(eval(response));
+        showMessage(response);
       }});
       showMessages(#{@messages.to_json});
     });
