@@ -1,4 +1,4 @@
-%h1#welcome= t('homepage.welcome_member').sub('USERNAME', @current_user.username)
+%h1.header_separator#welcome= t('homepage.welcome_member').sub('USERNAME', @current_user.username)
 
 = render :partial => "invitations/invitations"
 

@@ -61,9 +61,10 @@ zh_cn:
   uploads:
     page_title: "上传对局"
     page_header: "上传对局"
-    description_label: "介绍："
+    description_label: "介绍"
     description_note: "请输入简单介绍内容，以便下次登录时搜索你上传的对局。"
-    file_label: "文件： <br/>(*.sgf, *.zip)"
+    file_label: "文件"
+    file_note: "(*.sgf, *.zip)"
     file_required: "文件为空"
     zip_file_note: "如果你上传的是 zip 文件，系统需要花比较长时间处理，在系统处理过程中，浏览器可能显示错误。如果显示错误，请勿重传以免系统过载，并等待 10~20 分钟后检查上传是否成功。谢谢合作！"
     submit_button: "上传"
@@ -83,11 +84,11 @@ zh_cn:
       parse_error: "SGF格式错误"
     already_uploaded_detail: "库中已经保存有你要上传的对局。"
 
-    data_label: "SGF内容："
+    data_label: "SGF内容"
     data_required: "SGF数据为空"
     data_invalid_parse_error: "SGF格式错误："
 
-    url_label: "URL："
+    url_label: "URL"
     url_required: "URL为空"
 
   upload_search:
@@ -264,8 +265,8 @@ zh_cn:
     page_title: "对局邀请"
     page_header: "对局邀请"
     none: "没有新的邀请"
-    create_page_header: "创建对局邀请"
-    create_link_label: "创建对局邀请"
+    create_page_header: "对局邀请"
+    create_link_label: "对局邀请"
     invitations_sent_to_me: "发给我的对局邀请"
     invitations_sent_by_me: "我发出的对局邀请"
     created_at_label: "邀请发出时间"

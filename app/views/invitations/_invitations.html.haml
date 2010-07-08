@@ -8,8 +8,7 @@
 .span-24
   .span-6
     %h2= t('invitations.invitations_sent_by_me')
-  %a(href="#{new_invitation_url}")
-    = t('invitations.create_link_label')
+  %a.create_link(href="#{new_invitation_url}")= t('invitations.create_link_label')
 
   %hr.space0
 

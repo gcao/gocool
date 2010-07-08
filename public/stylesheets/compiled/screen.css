@@ -2067,6 +2067,16 @@ a.delete_link {
   padding-left: 20px;
   background: url(../../images/icons/delete.gif) no-repeat; }
 
+/* line 104, ../../../app/stylesheets/partials/_app.sass */
+a.create_link {
+  padding-left: 20px;
+  background: url(../../images/icons/create.gif) no-repeat; }
+
+/* line 108, ../../../app/stylesheets/partials/_app.sass */
+.header_separator {
+  padding-bottom: 8px;
+  border-bottom: 3px solid #E6E7E1; }
+
 /* line 1, ../../../app/stylesheets/partials/_form.sass */
 .form_row {
   margin-top: 0.5em; }

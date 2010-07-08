@@ -13,8 +13,8 @@
     .form_row.span-18
       .span-3
         %label(for="upload_url")
-          %span.required_field *
           = t('uploads.url_label')
+          = mark_required
       .span-15.last
         %input#upload_url(type="text" name="upload[url]" size="80")
 

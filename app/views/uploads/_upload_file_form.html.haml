@@ -14,8 +14,10 @@
     .form_row.span-18
       .span-3
         %label(for="upload_upload")
-          %span.required_field *
           = t('uploads.file_label')
+          = mark_required
+          %br
+          = t('uploads.file_note')
       .span-15.last
         #file_fields
           %input#upload_upload(type="file" name="upload[upload]" size="60")

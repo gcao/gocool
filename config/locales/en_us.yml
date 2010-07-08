@@ -55,7 +55,8 @@ en_us:
 #      place: Place
 #      create_time: Added At
 #  uploads:
-#    file_label: "File <br/>(*.sgf, *.zip)"
+#    file_label: "File"
+#    file_note: (*.sgf, *.zip)
 #    file_required: No file is chosen.
 #    submit_button: Upload
 #    success: Upload is successful.
