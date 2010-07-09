@@ -50,14 +50,21 @@
   :javascript
     if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
     
+    var messageRowClass = "odd";
+    
     function showMessage(message) {
       message = message.message;
       $('#message_container').show();
       var createdAt = new Date(Date.parse(message.created_at)).format('gocool');
-      $('#message_container').prepend("<div class='message'><div class='created_at'>"
-        + createdAt + "</div> <div class='source'>"
-        + message.source + "</div><div class='content'> : " 
-        + message.content + "</div></div>");
+      
+      $('#message_table').prepend("<tr class='message " + messageRowClass + "'><td class='created_at'>"
+        + createdAt + "</td><td class='source'>"
+        + message.source + "</td><td class='content'>" 
+        + message.content + "</td></tr>");
+      if (messageRowClass == "odd")
+        messageRowClass = "even";
+      else
+        messageRowClass = "odd";
     }
     
     function showMessages(messages) {

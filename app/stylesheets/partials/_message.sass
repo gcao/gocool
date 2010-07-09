@@ -4,19 +4,27 @@
 
 #message_container
   display: none
-  margin: 5px 0px
-  padding: 2px
-  width: 716px
-  max-height: 120px
-  border: 1px solid #A6A7A1
   overflow: auto
+  padding: 2px
+  margin: 5px 0
+  width: 716px
+  max-height: 240px
+  border: 1px solid #A6A7A1
+
+#message_table
+  border: none
 
 .message
+  td
+    padding: 0 5px
   .created_at
-    display: inline
+    -# display: inline
   .source
-    display: inline
+    -# display: inline
     font-weight: bold
   .content
-    display: inline
-    
+    -# display: inline
+
+.message.odd
+  background-color: #E6F2FF
+
