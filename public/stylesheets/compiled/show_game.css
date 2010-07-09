@@ -7,7 +7,7 @@
 #message_container {
   display: none;
   overflow: auto;
-  padding: 2px;
+  padding: 0;
   margin: 5px 0;
   width: 716px;
   max-height: 240px;
@@ -15,15 +15,16 @@
 
 /* line 14, ../../../app/stylesheets/partials/_message.sass */
 #message_table {
-  border: none; }
+  border: none;
+  width: 100%; }
 
-/* line 18, ../../../app/stylesheets/partials/_message.sass */
+/* line 19, ../../../app/stylesheets/partials/_message.sass */
 .message td {
   padding: 0 5px; }
 /* line 22, ../../../app/stylesheets/partials/_message.sass */
 .message .source {
   font-weight: bold; }
 
-/* line 28, ../../../app/stylesheets/partials/_message.sass */
+/* line 25, ../../../app/stylesheets/partials/_message.sass */
 .message.odd {
   background-color: #E6F2FF; }

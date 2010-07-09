@@ -80,7 +80,7 @@
       showMessages(#{@messages.to_json});
     });
 
-  - if @game.finished? and @game.current_user_is_player?
+  - if not @game.finished? and @game.current_user_is_player?
     = javascript_include_tag "jsgameviewer_ext"
     :javascript
       var gameType  = #{@game.game_type.to_i == Game::DAOQI} ? jsGameViewer.DAOQI : jsGameViewer.WEIQI;
