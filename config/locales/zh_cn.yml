@@ -206,13 +206,14 @@ zh_cn:
     message_label: "留言："
     send_message: "提交"
     messages:
-      start_game: "对局开始了。"
+      start_game: "对局开始。"
       request_counting: "PLAYER要求开始数子。"
       reject_counting_request: "PLAYER拒绝了对方数子的要求。"
       do_counting: "双方都已同意开始数子。"
       accept_counting: "PLAYER接受了数子结果。"
       reject_counting: "PLAYER否决了数子结果。"
       finish_counting: "对局结束。"
+      resume: "PLAYER要求继续对局。"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"

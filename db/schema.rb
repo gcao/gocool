@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100708154937) do
+ActiveRecord::Schema.define(:version => 20100708211622) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -147,14 +147,17 @@ ActiveRecord::Schema.define(:version => 20100708154937) do
   add_index "invitations", ["inviter_id"], :name => "invitations_inviter_id"
 
   create_table "messages", :force => true do |t|
-    t.integer "source_type",                       :null => false
-    t.integer "source_id"
-    t.integer "receiver_type",                     :null => false
-    t.integer "receiver_id"
-    t.string  "message_type",                      :null => false
-    t.string  "level"
-    t.string  "visibility"
-    t.text    "content",       :limit => 16777215
+    t.integer  "source_type",                       :null => false
+    t.integer  "source_id"
+    t.integer  "receiver_type",                     :null => false
+    t.integer  "receiver_id"
+    t.string   "message_type",                      :null => false
+    t.string   "level"
+    t.string   "visibility"
+    t.text     "content",       :limit => 16777215
+    t.string   "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "messages", ["receiver_type", "receiver_id"], :name => "messages_receiver"

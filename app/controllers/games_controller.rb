@@ -141,7 +141,8 @@ class GamesController < ApplicationController
   def send_message
     message = Message.create!(:message_type => Message::PRIVATE, :receiver_id => @game.id, 
                               :content => ERB::Util.html_escape(params[:message]), 
-                              :source_type => Message::PLAYER, :source_id => current_player.id)
+                              :source_type => Message::PLAYER, :source_id => current_player.id,
+                              :source => current_player.name)
     render :text => message.to_json
   end
 

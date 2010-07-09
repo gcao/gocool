@@ -45,13 +45,19 @@
 - content_for :footer do
   = render "shared/jsgameviewer"
   = javascript_include_tag "jquery.form"
+  = javascript_include_tag "date_format"
   
   :javascript
     if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
     
     function showMessage(message) {
+      message = message.message;
       $('#message_container').show();
-      $('#message_container').prepend("<div class='message'>" + message.message.content + "</div>");
+      var createdAt = new Date(Date.parse(message.created_at)).format('gocool');
+      $('#message_container').prepend("<div class='message'><div class='created_at'>"
+        + createdAt + "</div> <div class='source'>"
+        + message.source + "</div><div class='content'> : " 
+        + message.content + "</div></div>");
     }
     
     function showMessages(messages) {
