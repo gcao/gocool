@@ -16,8 +16,8 @@ module GamesHelper
       %W[game_#{@game.id} game_#{@game.id}_black]
     end
   end
-
-  def message_to_html message
-    "#{message.created_at} #{content}"
+  
+  def container_css_classes
+    @game.game_type == Game::DAOQI ? "container daoqi" : "container weiqi"
   end
 end

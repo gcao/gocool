@@ -1,5 +1,11 @@
-#message_input_row
+.container.weiqi
   width: 720px
+
+.container.daoqi
+  width: 796px
+
+#message_input_row
+  width: 100%
   padding-top: 8px
 
 #message_container
@@ -7,7 +13,7 @@
   overflow: auto
   padding: 0
   margin: 5px 0
-  width: 716px
+  width: 100%
   max-height: 240px
   border: 1px solid #A6A7A1
 
@@ -18,9 +24,14 @@
 .message
   td
     padding: 0 5px
+    
+  .created_at
 
   .source
     font-weight: bold
+    
+  .content
+    width: 70%
 
 .message.odd
   background-color: #E6F2FF

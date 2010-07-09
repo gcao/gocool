@@ -30,4 +30,9 @@ class Message < ActiveRecord::Base
     defaults = {:message_type => REGULAR, :source_type => SYSTEM, :source => "SYSTEM", :receiver_type => GAME, :level => INFO}
     super(defaults.merge(attributes))
   end
+  
+  def to_json *args
+    created_at_str = created_at.strftime("%Y-%m-%d %H:%M")
+    {:created_at_str => created_at_str}.merge(attributes).to_json
+  end
 end

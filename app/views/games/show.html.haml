@@ -1,7 +1,7 @@
 - content_for :head do
   = stylesheet_link_tag 'compiled/show_game.css'
 
-.span-24
+%div{:class => container_css_classes}
   %h3= t('games.show_page_header').sub('GAME_NO', @game.id.to_s).sub('WHITE', @game.white_name_with_rank).sub('BLACK', @game.black_name_with_rank)
 
   = show_flash 'span-24'
@@ -32,7 +32,7 @@
   = render :partial => "games/messages"
 
   - if not @game.finished? and @game.current_user_is_player?
-    %div(style="width:720px")
+    .note
       %p 棋人对弈最特殊的功能是猜测对方的应手。
       %p
         也就是说，不管是轮到你走，还是轮到对方走，你都可以随时在盘上下子，棋步会保存到服务器端。等到对方下子后，服务器会比较双方的位置，如果位置一致，
@@ -45,17 +45,16 @@
 - content_for :footer do
   = render "shared/jsgameviewer"
   = javascript_include_tag "jquery.form"
-  = javascript_include_tag "date_format"
   
   :javascript
     if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
     
+    var gameType  = #{@game.game_type == Game::DAOQI} ? jsGameViewer.DAOQI : jsGameViewer.WEIQI;
     var messageRowClass = "odd";
     
     function showMessage(message) {
-      message = message.message;
       $('#message_container').show();
-      var createdAt = new Date(Date.parse(message.created_at)).format('gocool');
+      var createdAt = message.created_at_str;
       
       $('#message_table').prepend("<tr class='message " + messageRowClass + "'><td class='created_at'>"
         + createdAt + "</td><td class='source'>"
@@ -83,7 +82,6 @@
   - if not @game.finished? and @game.current_user_is_player?
     = javascript_include_tag "jsgameviewer_ext"
     :javascript
-      var gameType  = #{@game.game_type.to_i == Game::DAOQI} ? jsGameViewer.DAOQI : jsGameViewer.WEIQI;
       var gameState = "#{@game.state}";
       var myColor   = #{@my_color.to_i};
       jQuery(document).ready(function(){
@@ -111,5 +109,5 @@
   - else
     :javascript
       jQuery(document).ready(function(){
-        new GameController({container: "gameContainer"}).load("#{game_url(@game, :sgf)}");
+        new GameController({gameType: gameType, container: "gameContainer"}).load("#{game_url(@game, :sgf)}");
       });
