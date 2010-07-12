@@ -80,7 +80,7 @@ class UploadsController < ApplicationController
       flash.now[:success] = t('uploads.success')
     end
 
-    render :show, :layout => "simple"
+    redirect_to game_url(@upload.game_id)
   end
 
   def process_url
@@ -94,7 +94,7 @@ class UploadsController < ApplicationController
       flash.now[:success] = t('uploads.success')
     end
 
-    render :show, :layout => "simple"
+    redirect_to game_url(@upload.game_id)
   end
 
   def validate_sgf data

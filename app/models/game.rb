@@ -202,8 +202,10 @@ class Game < ActiveRecord::Base
     PairStat.find_or_create(white_id, black_id)
     
     if self.result =~ /B+/i or (self.result.try(:include?, '黑') and self.result.try(:include?, '胜'))
+      self.state = 'finished'
       self.winner = WINNER_BLACK
     elsif self.result =~ /W+/i or (self.result.try(:include?, '白') and self.result.try(:include?, '胜'))
+      self.state = 'finished'
       self.winner = WINNER_WHITE
     end
   end
@@ -245,5 +247,9 @@ class Game < ActiveRecord::Base
       I18n.t('games.black_name')
     end
     player.nil_or.sub('PLAYER_NAME', current_user.username)
+  end
+  
+  def from_url?
+    primary_source.try(:source_type) == Upload::UPLOAD_URL
   end
 end

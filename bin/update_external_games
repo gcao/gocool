@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+ENV["RAILS_ENV"] ||= "development"
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+puts "Update unfinished games..."
+uploads = Upload.find(:all, :include => :game, :conditions => ["uploads.source_type = 'url' and games.state != 'finished'"])
+puts "Total: #{uploads.size}"
+
+uploads.each do |upload|
+  puts upload.source
+  upload.reload_game_from_url
+end
+
+puts "Done!"

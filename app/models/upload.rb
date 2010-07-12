@@ -167,6 +167,18 @@ class Upload < ActiveRecord::Base
       "/bbs/viewthread.php?tid=#{discuz_tid}"
     end
   end
+  
+  def reload_game_from_url
+    return unless source_type == UPLOAD_URL
+    
+    open(source) do |new_data|
+      File.open(self.file.path, "w") do |to_file|
+        to_file.print(new_data.readlines)
+      end
+      game.load_parsed_game(parse)
+      game.save!
+    end
+  end
 
   private
 
