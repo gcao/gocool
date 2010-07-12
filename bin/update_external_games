@@ -5,7 +5,7 @@ puts "Update unfinished games..."
 ENV["RAILS_ENV"] ||= "development"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 
-uploads = Upload.find(:all, :include => :game, :conditions => ["uploads.source_type = 'url' and games.state != 'finished'"])
+uploads = Upload.find(:all, :include => :game, :conditions => ["uploads.source_type = 'url' and games.result is null"])
 puts "Total: #{uploads.size}"
 
 uploads.each do |upload|
