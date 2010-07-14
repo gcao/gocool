@@ -2137,6 +2137,18 @@ table#games_search_form, table#pairs_search_form {
       padding: 0px;
       text-align: left; }
 
+/* line 53, ../../../app/stylesheets/partials/_form.sass */
+.upload_search_label1, .upload_search_input1, .upload_search_label2, .upload_search_input2 {
+  display: inline-block; }
+
+/* line 56, ../../../app/stylesheets/partials/_form.sass */
+.upload_search_label1 {
+  width: 80px; }
+
+/* line 59, ../../../app/stylesheets/partials/_form.sass */
+.upload_search_label2 {
+  width: 40px; }
+
 /* line 4, ../../../app/stylesheets/partials/_homepage.sass */
 #recent_games_label {
   font-size: extra-large;

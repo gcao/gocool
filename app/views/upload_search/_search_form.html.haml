@@ -2,26 +2,31 @@
   %fieldset.span-24.no-border
     = show_flash 'span-24'
     .form_row.span-24.space
-      %label(for="search_username")
-        =t('upload_search.username_label')
-      %input#search_username(type="text" name="username" size="15"){:value => h(@username)}
+      .upload_search_label1
+        %label(for="search_username")
+          =t('upload_search.username_label')
+      .upload_search_input1
+        %input#search_username(type="text" name="username" size="15"){:value => h(@username)}
 
-      %label(for="search_description")
-        &nbsp;&nbsp;
-        =t('upload_search.description_label')
-      %input#search_description(type="text" name="description" size="40"){:value => h(@description)}
+      .upload_search_label2
+        %label(for="search_description")= t('upload_search.description_label')
+      .upload_search_input2
+        %input#search_description(type="text" name="description" size="30"){:value => h(@description)}
 
     %hr.space5
     
     .form_row.span-24
-      %label#from_date_label(for="from_date")
-        = t('upload_search.from_date_label')
-      =text_field_tag 'from_date', @from_date, :class => "date_input"
-      %label#to_date_label(for="to_date")
-        = t('upload_search.to_date_label')
-      =text_field_tag 'to_date', @to_date, :class => "date_input"
-      %input{:type => "hidden", :name => "op", :value => "search"}
-      =submit_tag t('form.search_button')
-      =reset_button
+      .upload_search_label1
+        %label#from_date_label(for="from_date")
+          = t('upload_search.from_date_label')
+      .upload_search_input1
+        =text_field_tag 'from_date', @from_date, :class => "date_input", :size => "15"
+      .upload_search_label2
+        %label#to_date_label(for="to_date")= t('upload_search.to_date_label')
+      .upload_search_input2
+        =text_field_tag 'to_date', @to_date, :class => "date_input", :size => "15"
+        %input{:type => "hidden", :name => "op", :value => "search"}
+        =submit_tag t('form.search_button')
+        =reset_button
 
 
