@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby -rubygems
+require 'open-uri'
+require 'nokogiri'
+
+puts "Posting..."
+
+host    = ARGV[0] || "localhost"
+subject = ARGV[1] || "TEST SUBJECT"
+message = ARGV[2] || "TEST MESSAGE"
+
+base_url    = "http://#{host}/bbs/"
+username    = "apollotest"
+password    = "xxx"
+forum_id    = 3
+cookie_file = "/tmp/c.txt"
+
+cmd = "curl -c #{cookie_file} #{base_url}logging.php?action=login"
+puts cmd
+login_form_doc = Nokogiri::HTML(%x(#{cmd}))
+formhash       = login_form_doc.css("form input[name=formhash]").first['value']
+
+login_url  = base_url + "logging.php?action=login&loginsubmit=yes"
+cmd = %Q(curl -b #{cookie_file} -c #{cookie_file} -d "formhash=#{formhash}&loginfield=username&username=#{username}&password=#{password}&questionid=0&answer=&cookietime=2592000" #{login_url})
+puts cmd
+login_resp = %x(#{cmd})
+
+# puts login_resp
+
+form_url  = base_url + "post.php?action=newthread&fid=#{forum_id}"
+cmd = "curl -b #{cookie_file} #{form_url}"
+puts cmd
+form_resp = %x(#{cmd})
+
+# puts form_resp
+
+form_doc = Nokogiri::HTML(form_resp)
+formhash = form_doc.css("form input[name=formhash]").first['value']
+posttime = form_doc.css("form input[name=posttime]").first['value']
+
+post_url  = base_url + "post.php?action=newthread&fid=#{forum_id}&extra=&topicsubmit=yes"
+cmd = %Q(curl -b #{cookie_file} -d "formhash=#{formhash}&posttime=#{posttime}&subject=#{subject}&message=#{message}" #{post_url})
+post_resp = %x(#{cmd})
+
+# puts post_resp
+
+puts "Done."

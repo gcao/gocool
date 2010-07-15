@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby -rubygems
+require 'open-uri'
+
+puts "Broadcast games..."
+
+base_url = "http://weiqi.sports.tom.com"
+
+require 'nokogiri'
+
+doc = Nokogiri::HTML(open(base_url), nil, "GB18030")
+
+doc.css("div.hotnews h2 a").each do |link|
+  puts link.content
+  puts link['href']
+  
+  hotnews_doc = Nokogiri::HTML(open(base_url + link['href']), nil, "GB18030")
+  hotnews_doc.css("div.hotinfor a").each do |link|
+    puts link.content
+    href = link['href']
+    if href =~ /\('(.*)'\)/
+      href = $1
+    end
+    puts href
+  end
+end
+
+puts "Done!"
