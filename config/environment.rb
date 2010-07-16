@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem "sgf_parser", :lib => 'sgf'
   # config.gem "aspect4r"
   config.gem "discuz_int"
+  config.gem "discuz_robot"
   config.gem "calendar_date_select", :version => ">=1.15"
   config.gem 'thoughtbot-paperclip', :version => ">=2.3.0", :lib => 'paperclip', :source => 'http://gems.github.com'
   config.gem 'haml', :version => ">=2.2.3"
