@@ -73,6 +73,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :games, :active_scaffold => true
     admin.resources :gaming_platforms, :active_scaffold => true
   end
+  
+  map.connect '/admin/misc/:action/:id.:format', :controller => 'admin/misc'
 
   # See how all your routes lay out with "rake routes"
 
