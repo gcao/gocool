@@ -56,10 +56,11 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 
 game_pages.each do |game_page|
   # Skip if already posted
-  next unless TomGame.find_all_by_page_url(game_page.url).empty?
-
-  puts game_page.name, game_page.url
-  robot.post forum_id, game_page.name, "#{game_page.name} \n[sgfremote]#{game_page.game_url}[/sgfremote]\n"
+  next unless TomGame.find_all_by_page_url(game_page.url).empty? and game_page.sgf_url
+  
+  puts "#{game_page.name}: #{game_page.url}      #{game_page.sgf_url}"
+  
+  robot.post forum_id, game_page.name, "#{game_page.name} [sgfremote]#{game_page.sgf_url}[/sgfremote]"
   
   next unless TomGame.find_all_by_sgf_url(game_page.sgf_url).empty?
   

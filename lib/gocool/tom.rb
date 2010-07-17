@@ -63,12 +63,12 @@ module Gocool
     
       # Return sgf location
       def sgf_url
-        return unless @game_url
+        return @sgf_url if @sgf_url
       
         open(@url) do |f|
           while line = f.gets
             if line =~ /name=filename.*(qipu.*\.sgf)/
-              return @game_url = $1
+              return @sgf_url = base_url + $1
             end
           end
         end
