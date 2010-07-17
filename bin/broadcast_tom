@@ -1,59 +1,22 @@
 #!/usr/bin/env ruby -rubygems
-# require 'open-uri'
-# require 'nokogiri'
-# 
-# puts "Broadcast games..."
-# 
-# base_url = "http://weiqi.sports.tom.com"
-# 
-# doc = Nokogiri::HTML(open(base_url), nil, "GB18030")
-# 
-# games = []
-# GameNameUrl = Struct.new(:name, :url)
-# 
-# doc.css("div.hotnews h2 a").each do |link|
-#   puts link.content
-#   puts link['href']
-#   
-#   hotnews_doc = Nokogiri::HTML(open(base_url + link['href']), nil, "GB18030")
-#   hotnews_doc.css("div.hotinfor a").each do |link|
-#     puts link.content
-#     href = link['href']
-#     if href =~ /\('(.*)'\)/
-#       href = $1
-#     end
-#     puts href
-#     open(href) do |f|
-#       while true
-#         if f.gets =~ /name=filename.*(qipu.*\.sgf)/
-#           games << GameNameUrl.new(link.content, "http://weiqi.sports.tom.com/#{$1}")
-#           break
-#         end
-#       end
-#     end
-#   end
-# end
+ENV["RAILS_ENV"] ||= "development"
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'gocool/tom'
+require 'discuz_robot'
 
-homepage   = Gocool::Tom::HomePage.new
-game_pages = homepage.children.collect {|zhuanti_page| zhuanti_page.children }.flatten
+puts "Broadcast games..."
 
-# Post games to forum
-require "#{File.dirname(__FILE__)}/../vendor/gems/discuz_robot-0.1.0/lib/discuz_robot"
-
-forum_id  = 18
-user      = %x(/usr/bin/env robot_user).strip
-pass      = %x(/usr/bin/env robot_pass).strip
+forum_id  = %x(/usr/bin/env bbsinfo fid).strip
+user      = %x(/usr/bin/env bbsinfo username).strip
+pass      = %x(/usr/bin/env bbsinfo password).strip
 wait_time = 16
 
 robot     = Discuz::Robot.new
 robot.login user, pass
 
-ENV["RAILS_ENV"] ||= "development"
-require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
-
+homepage   = Gocool::Tom::HomePage.new
+game_pages = homepage.children.collect {|zhuanti_page| zhuanti_page.children }.flatten
 game_pages.each do |game_page|
   # Skip if already posted
   next unless TomGame.find_all_by_page_url(game_page.url).empty? and game_page.sgf_url
