@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+url = ARGV[0] || "http://localhost:3000/misc/process_older_posts"
+puts cmd = "curl -s #{url}"
+
+result = ""
+while not result.include? "POST: 0"
+  puts "Processing..."
+  result = `#{cmd}`
+  puts result
+  puts "Sleeping..."
+  sleep 300
+end
