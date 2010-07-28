@@ -1,4 +1,5 @@
 .idea
+.bundle
 webrat-*.html
 config/initializers/1_settings.rb
 db/*.sqlite3

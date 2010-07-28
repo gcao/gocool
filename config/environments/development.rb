@@ -20,10 +20,11 @@ config.middleware.use "Rack::Bug",
                       :secret_key => "epT5uCIchlsHCeR9dloOeAPG66PtHd9K8l0q9avitiaA/KUrY7DE52hD4yWY+8z1",
                       :password   => "admin"                      
 
-config.gem 'rubaidh-google_analytics', :lib => 'rubaidh/google_analytics', :source => 'http://gems.github.com'
+# config.gem 'rubaidh-google_analytics', :lib => 'rubaidh/google_analytics', :source => 'http://gems.github.com'
+# 
+# config.gem 'ruby-growl' 
+# config.gem 'bullet', :source => 'http://gemcutter.org', :version => ">=2.0.0.beta.2"
 
-config.gem 'ruby-growl' 
-config.gem 'bullet', :source => 'http://gemcutter.org', :version => ">=2.0.0.beta.2"
 config.after_initialize do
   Bullet.enable = true
   Bullet.alert = false

@@ -1,0 +1,79 @@
+PATH
+  remote: vendor/gems/discuz_robot-0.1.0
+  specs:
+    discuz_robot (0.1.0)
+
+PATH
+  remote: vendor/gems/sgf_parser-0.1.0
+  specs:
+    sgf_parser (0.1.0)
+
+GEM
+  remote: http://rubygems.org/
+  remote: http://gems.github.com/
+  specs:
+    actionmailer (2.3.8)
+      actionpack (= 2.3.8)
+    actionpack (2.3.8)
+      activesupport (= 2.3.8)
+      rack (~> 1.1.0)
+    activerecord (2.3.8)
+      activesupport (= 2.3.8)
+    activeresource (2.3.8)
+      activesupport (= 2.3.8)
+    activesupport (2.3.8)
+    binarylogic-searchlogic (2.3.5)
+      activerecord (>= 2.0.0)
+    bullet (2.0.0.beta.2)
+    calendar_date_select (1.16.1)
+    chriseppstein-compass (0.8.17)
+      haml (>= 2.2.0)
+    haml (3.0.15)
+    hoptoad_notifier (2.3.2)
+      activesupport
+    mislav-will_paginate (2.3.11)
+    mocha (0.9.8)
+      rake
+    mysql (2.8.1)
+    nokogiri (1.4.2)
+    rack (1.1.0)
+    rails (2.3.8)
+      actionmailer (= 2.3.8)
+      actionpack (= 2.3.8)
+      activerecord (= 2.3.8)
+      activeresource (= 2.3.8)
+      activesupport (= 2.3.8)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    rspec (1.3.0)
+    rspec-rails (1.3.2)
+      rack (>= 1.0.0)
+      rspec (>= 1.3.0)
+    ruby-growl (2.0)
+    rubyist-aasm (2.1.1)
+    spork (0.8.4)
+    thoughtbot-paperclip (2.3.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  binarylogic-searchlogic
+  bullet (>= 2.0.0.beta.2)
+  calendar_date_select (>= 1.15)
+  chriseppstein-compass (>= 0.8.11)
+  discuz_robot!
+  haml (>= 2.2.3)
+  hoptoad_notifier
+  mislav-will_paginate (>= 2.3.11)
+  mocha
+  mysql
+  nokogiri
+  rails (= 2.3.8)
+  rspec (>= 1.2.8)
+  rspec-rails (>= 1.2.7.1)
+  ruby-growl
+  rubyist-aasm
+  sgf_parser!
+  spork
+  thoughtbot-paperclip (>= 2.3.0)

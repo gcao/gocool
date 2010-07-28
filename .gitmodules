@@ -4,9 +4,9 @@
 [submodule "vendor/gems/sgf_parser-0.1.0"]
 	path = vendor/gems/sgf_parser-0.1.0
 	url = git://github.com/gcao/sgf_parser.git
-[submodule "vendor/gems/discuz_int-0.1.0"]
-	path = vendor/gems/discuz_int-0.1.0
-	url = git://github.com/gcao/discuz_int.git
 [submodule "vendor/gems/discuz_robot-0.1.0"]
 	path = vendor/gems/discuz_robot-0.1.0
 	url = git://github.com/gcao/discuz_robot.git
+[submodule "vendor/plugins/discuz_int"]
+	path = vendor/plugins/discuz_int
+	url = git://github.com/gcao/discuz_int.git
