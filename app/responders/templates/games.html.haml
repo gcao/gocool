@@ -1,6 +1,6 @@
 %h1= @page_header || t('players.page_header')
     
--form_tag games_path, :method => :get, :class => 'bp' do
+%form.bp(action="/app/games")
   .span-24
     = show_flash 'span-24'
     %table#games_search_form

@@ -2,7 +2,7 @@ class GamesResponder < ApplicationResponder
   include GamesHelper
   
   def initialize games
-    super
+    super(nil)
     @games = games
     @children[:title] = "Games"
     @children[:body] = render_template("games.html")
