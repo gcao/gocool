@@ -1,0 +1,12 @@
+:javascript
+  validanguage.el.player1 = {
+    validations: [
+      {
+        name: validanguage.validateRequired,
+        errorMsg: "#{t('games.player1_required')}",
+      }
+    ]
+  };
+  jQuery('#player1, #player2, #player1_label, #vs_label, #player2_label').mouseover(function(){
+    mousetip("#{t('shared.name_supports_wildcards')}");
+  }).mouseout(hidemousetip);

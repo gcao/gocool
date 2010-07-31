@@ -1,0 +1,39 @@
+!!! transitional
+%html
+  %head
+    %meta(http-equiv="content-type" content="text/html;charset=UTF-8")
+    %link(rel="icon" type="image/x-icon" href="/app/favicon.ico")
+    %title= render :title
+
+    = stylesheet_link_tag 'compiled/discuz.css'
+    /[if IE]
+      = stylesheet_link_tag 'compiled/ie.css'
+
+    = render :head
+  %body.bp
+    = render_template 'discuz/header'
+    #container
+      %hr.space
+
+      = render :body
+
+      %hr.space
+      #cursor
+      = image_tag "arrow.gif", :id => "pointer", :alt => "", :width => 0, :height => 0
+
+      #firefox_container(style="display:none")= t('shared.recommend_firefox')
+    = render_template 'discuz/footer'
+    = include_jquery
+    = render_template 'layouts/js_init'
+    - bundle do
+      <script src="javascripts/jqueryslidemenu.js" type="text/javascript"></script>
+      <script src="javascripts/jquery.autocomplete.js" type="text/javascript"></script>
+      <script src="javascripts/jquery.livequery.js" type="text/javascript"></script>
+      <script src="javascripts/jquery.date_input.js" type="text/javascript"></script>
+      <script src="javascripts/jquery.date_input.zh_CN.js" type="text/javascript"></script>
+      <script src="javascripts/validanguage.js" type="text/javascript"></script>
+      <script src="javascripts/tooltip.js" type="text/javascript"></script>
+      <script src="javascripts/application.js" type="text/javascript"></script>
+      <script src="javascripts/upload.js" type="text/javascript"></script>
+
+    = render :footer

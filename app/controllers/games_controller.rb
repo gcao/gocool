@@ -17,6 +17,8 @@ class GamesController < ApplicationController
         @games = Game.search(@platform, @player1, @player2).sort_by_players
       end
     end
+    
+    GamesResponder.new(@games)
   end
 
   def show

@@ -53,7 +53,7 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   
-  config.load_paths += %W(#{RAILS_ROOT}/app/misc)
+  config.load_paths += %W(#{RAILS_ROOT}/app/misc #{RAILS_ROOT}/app/responders)
 
   config.action_controller.relative_url_root = "/app"
 end
