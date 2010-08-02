@@ -18,7 +18,10 @@ class GamesController < ApplicationController
       end
     end
     
-    GamesResponder.new(@games)
+    responder = ApplicationResponder.new
+    responder.children[:title] = "Games"
+    responder.children[:body] = GamesResponder.new @games
+    responder
   end
 
   def show

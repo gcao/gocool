@@ -1,4 +1,10 @@
 class BaseResponder
+  include ActionView::Helpers
+  include ApplicationHelper
+  include GamesWidgetHelper
+  
+  attr_reader :children
+  
   def initialize template
     @template = template
     @children = {}

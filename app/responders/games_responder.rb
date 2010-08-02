@@ -1,11 +1,6 @@
-class GamesResponder < ApplicationResponder
-  include GamesHelper
-  
+class GamesResponder < BaseResponder
   def initialize games
-    super(nil)
+    super "games.html"
     @games = games
-    @children[:title] = "Games"
-    @children[:body] = render_template("games.html")
-    @children[:footer] = render_template("games_footer.html")
   end
 end
