@@ -18,6 +18,7 @@ gem "hoptoad_notifier"
 gem "rubyist-aasm", :require => "aasm"
 gem "calendar_date_select", ">=1.15"
 gem "nokogiri"
+gem "cells"
 
 group :development do
   # bundler requires these gems in development
