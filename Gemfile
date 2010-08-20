@@ -6,8 +6,6 @@ source "http://gems.github.com"
 # bundler requires these gems in all environments
 gem "rails", "2.3.8"
 gem "mysql"
-gem "sgf_parser", :path => "vendor/gems/sgf_parser-0.1.0", :require => "sgf"
-gem "discuz_robot", :path => "vendor/gems/discuz_robot-0.1.0"
 gem "calendar_date_select", ">=1.15"
 gem "thoughtbot-paperclip", ">=2.3.0", :require => "paperclip"
 gem "haml", ">=2.2.3"
@@ -18,6 +16,14 @@ gem "hoptoad_notifier"
 gem "rubyist-aasm", :require => "aasm"
 gem "calendar_date_select", ">=1.15"
 gem "nokogiri"
+
+git "git://github.com/gcao/discuz_robot.git" do
+  gem "discuz_robot"
+end
+
+git "git://github.com/gcao/sgf_parser.git" do
+  gem "sgf_parser"
+end
 
 group :development do
   # bundler requires these gems in development
