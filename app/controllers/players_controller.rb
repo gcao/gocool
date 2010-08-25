@@ -2,21 +2,6 @@ class PlayersController < ApplicationController
   def index
   end
 
-  def auto_complete_for_name
-    if params[:platform_id].blank?
-      find_options = {
-        :conditions => [ "players.name LIKE ?", "%#{params[:name].downcase}%" ],
-        :order => "players.name ASC",
-        :limit => 10 }
-
-      @items = Player.find(:all, find_options)
-
-      render :inline => "<%= auto_complete_result @items, 'name' %>"
-    else
-      render :text => ""
-    end
-  end
-
   def show
     @player = Player.find params[:id]
     @games = Game.by_player(@player).sort_by_players

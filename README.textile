@@ -76,3 +76,14 @@ Deploy gocool2 to production
 
 What do we do with migrations?
 Leave migrations in gocool app
+
+MISC
+Add chinese support to Ubuntu
+http://hi.baidu.com/muinlive/blog/item/7568af50dd3628618435242d.html
+Add below content to /var/lib/locales/supported.d/zh
+zh_CN.GB18030 GB18030
+zh_CN.GBK GBK
+zh_CN.GB2312 GB2312
+zh_HK.BIG5 BIG5
+zh_TW.BIG5 BIG5
+And run sudo locale-gen

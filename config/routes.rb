@@ -60,10 +60,6 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "homepage"
   
-  map.player_auto_complete 'player_auto_complete',
-                           :controller => 'players',
-                           :action => 'auto_complete_for_name'
-
   map.chat 'chat', :controller => 'chat'
   map.send_chat_message 'send_chat_message', :controller => 'chat', :action => 'send_message'
   map.connect 'misc/:action/:id', :controller => 'misc'

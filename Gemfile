@@ -16,6 +16,7 @@ gem "hoptoad_notifier"
 gem "rubyist-aasm", :require => "aasm"
 gem "calendar_date_select", ">=1.15"
 gem "nokogiri"
+gem "newrelic_rpm"
 
 git "git://github.com/gcao/discuz_robot.git" do
   gem "discuz_robot"
@@ -31,6 +32,7 @@ group :development do
   # gem 'rubaidh-google_analytics', :require => 'rubaidh/google_analytics'
   gem 'ruby-growl' 
   gem 'bullet', ">=2.0.0.beta.2"
+  gem 'rack-bug', :require => "rack/bug"
 end
 
 group :test do
