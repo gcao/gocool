@@ -28,14 +28,24 @@ GEM
       activerecord (>= 2.0.0)
     bullet (2.0.0.beta.2)
     calendar_date_select (1.16.1)
+    cgi_multipart_eof_fix (2.5.0)
     chriseppstein-compass (0.8.17)
       haml (>= 2.2.0)
+    daemons (1.1.0)
+    fastthread (1.0.7)
+    gem_plugin (0.2.3)
     haml (3.0.15)
     hoptoad_notifier (2.3.2)
       activesupport
+    json (1.4.2)
     mislav-will_paginate (2.3.11)
     mocha (0.9.8)
       rake
+    mongrel (1.1.5)
+      cgi_multipart_eof_fix (>= 2.4)
+      daemons (>= 1.0.3)
+      fastthread (>= 1.0.1)
+      gem_plugin (>= 0.2.3)
     mysql (2.8.1)
     newrelic_rpm (2.12.3)
     nokogiri (1.4.2)
@@ -70,8 +80,10 @@ DEPENDENCIES
   discuz_robot!
   haml (>= 2.2.3)
   hoptoad_notifier
+  json
   mislav-will_paginate (>= 2.3.11)
   mocha
+  mongrel
   mysql
   newrelic_rpm
   nokogiri

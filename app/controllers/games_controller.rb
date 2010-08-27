@@ -94,11 +94,6 @@ class GamesController < ApplicationController
   def play
     code, message = @game.play params
     if code == GameInPlay::OP_SUCCESS
-      #if ENV['JUGGERNAUT_INTEGRATION'] == 'true'
-      #  render :juggernaut => {:type => :send_to_channels, :channels => to_channels} do |page|
-      #    page << "jsGameViewer.GV1.refresh();"
-      #  end
-      #end
       render :text => "#{code}:#{Gocool::SGF::GameRenderer.new.render(@game)}"
     else
       render :text => "#{code}:#{message}"

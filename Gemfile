@@ -6,6 +6,7 @@ source "http://gems.github.com"
 # bundler requires these gems in all environments
 gem "rails", "2.3.8"
 gem "mysql"
+gem "json"
 gem "calendar_date_select", ">=1.15"
 gem "thoughtbot-paperclip", ">=2.3.0", :require => "paperclip"
 gem "haml", ">=2.2.3"
@@ -23,7 +24,7 @@ git "git://github.com/gcao/discuz_robot.git" do
 end
 
 git "git://github.com/gcao/sgf_parser.git" do
-  gem "sgf_parser"
+  gem "sgf_parser", :require => "sgf"
 end
 
 group :development do
@@ -33,6 +34,7 @@ group :development do
   gem 'ruby-growl' 
   gem 'bullet', ">=2.0.0.beta.2"
   gem 'rack-bug', :require => "rack/bug"
+  gem "mongrel"
 end
 
 group :test do

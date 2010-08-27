@@ -89,23 +89,6 @@
           setPlayerInterval(15).startUpdater(true).saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});
       });
 
-    -# if ENV['JUGGERNAUT_INTEGRATION'] == 'true'
-      = javascript_include_tag %w(jquery.json juggernaut/juggernaut juggernaut/jquerynaut juggernaut/swfobject)
-      = juggernaut(:channels => my_channels, |
-                   :swf_address => "/app/juggernaut/juggernaut.swf", |
-                   :ei_swf_address => "/app/juggernaut/expressinstall.swf") |
-      :javascript
-        jQuery(document).ready(function(){
-          new GameController({gameType: gameType, container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
-            saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});
-        });
-    -# else
-      :javascript
-        jQuery(document).ready(function(){
-          new GameController({gameType: gameType, container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
-            setPlayerInterval(15).startUpdater(true).saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});
-        });
-
   - else
     :javascript
       jQuery(document).ready(function(){
