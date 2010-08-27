@@ -70,6 +70,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :gaming_platforms, :active_scaffold => true
   end
   
+  Jammit::Routes.draw(map)
+  
   map.connect '/admin/misc/:action/:id.:format', :controller => 'admin/misc'
 
   # See how all your routes lay out with "rake routes"

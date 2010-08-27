@@ -31,12 +31,16 @@ GEM
     cgi_multipart_eof_fix (2.5.0)
     chriseppstein-compass (0.8.17)
       haml (>= 2.2.0)
+    closure-compiler (0.3.2)
     daemons (1.1.0)
     fastthread (1.0.7)
     gem_plugin (0.2.3)
     haml (3.0.15)
     hoptoad_notifier (2.3.2)
       activesupport
+    jammit (0.5.1)
+      closure-compiler (>= 0.1.0)
+      yui-compressor (>= 0.9.1)
     json (1.4.2)
     mislav-will_paginate (2.3.11)
     mocha (0.9.8)
@@ -68,6 +72,7 @@ GEM
     rubyist-aasm (2.1.1)
     spork (0.8.4)
     thoughtbot-paperclip (2.3.1)
+    yui-compressor (0.9.1)
 
 PLATFORMS
   ruby
@@ -80,6 +85,7 @@ DEPENDENCIES
   discuz_robot!
   haml (>= 2.2.3)
   hoptoad_notifier
+  jammit
   json
   mislav-will_paginate (>= 2.3.11)
   mocha

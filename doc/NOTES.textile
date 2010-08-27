@@ -1,3 +1,16 @@
+h2. 2010-08-24
+
+h3. Add chinese support to Ubuntu
+
+*	http://hi.baidu.com/muinlive/blog/item/7568af50dd3628618435242d.html
+*	Add below content to /var/lib/locales/supported.d/zh
+<pre>zh_CN.GB18030 GB18030
+zh_CN.GBK GBK
+zh_CN.GB2312 GB2312
+zh_HK.BIG5 BIG5
+zh_TW.BIG5 BIG5
+And run sudo locale-gen</pre>
+
 h2. 2009-12-07
 
 h3. Integrate with Discuz!

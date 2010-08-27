@@ -18,6 +18,7 @@ gem "rubyist-aasm", :require => "aasm"
 gem "calendar_date_select", ">=1.15"
 gem "nokogiri"
 gem "newrelic_rpm"
+gem "jammit"
 
 git "git://github.com/gcao/discuz_robot.git" do
   gem "discuz_robot"
