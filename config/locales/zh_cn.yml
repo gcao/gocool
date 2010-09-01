@@ -34,7 +34,10 @@ zh_cn:
     click_to_change: "(点此修改)"
     submit_button: "提交"
     reset_button: "清除"
-    view_button: "欣赏对局"
+    create_button: "新建"
+    show_button: "查看"
+    edit_button: "修改"
+    view_button: "欣赏"
     delete_button: "删除"
     detail_button: "详细信息"
     search_button: "搜索"
@@ -52,15 +55,16 @@ zh_cn:
       label: "上传的对局"
     qiren_games:
       label: "本站棋友对局"
-    welcome_member: "USERNAME，欢迎你回来"
+    welcome_member: "USERNAME，欢迎回来"
     my_uploads:
       label: "我上传的对局"
   uploads:
     page_title: "上传对局"
     page_header: "上传对局"
-    description_label: "介绍："
+    description_label: "介绍"
     description_note: "请输入简单介绍内容，以便下次登录时搜索你上传的对局。"
-    file_label: "文件： <br/>(*.sgf, *.zip)"
+    file_label: "文件"
+    file_note: "(*.sgf, *.zip)"
     file_required: "文件为空"
     zip_file_note: "如果你上传的是 zip 文件，系统需要花比较长时间处理，在系统处理过程中，浏览器可能显示错误。如果显示错误，请勿重传以免系统过载，并等待 10~20 分钟后检查上传是否成功。谢谢合作！"
     submit_button: "上传"
@@ -80,11 +84,11 @@ zh_cn:
       parse_error: "SGF格式错误"
     already_uploaded_detail: "库中已经保存有你要上传的对局。"
 
-    data_label: "SGF内容："
+    data_label: "SGF内容"
     data_required: "SGF数据为空"
     data_invalid_parse_error: "SGF格式错误："
 
-    url_label: "URL："
+    url_label: "URL"
     url_required: "URL为空"
 
   upload_search:
@@ -103,7 +107,6 @@ zh_cn:
     page_header: "棋手"
     platform_label: "对局平台："
     name_label: "棋手："
-    games_played_by: "PLATFORM_NAME 棋手：PLAYER_NAME"
     opponents_header: "对手"
   players_table:
     platform: "对局平台"
@@ -151,6 +154,8 @@ zh_cn:
     japanese_rule: "日本规则"
     korean_rule: "韩国规则"
     ying_rule: "应氏规则"
+    black_name: "黑方（PLAYER_NAME）"
+    white_name: "白方（PLAYER_NAME）"
     guess_move_comment: "!!!这一步是我方预想的棋局走向!!!"
     resign_subject: ""
     resign_body: "PLAYER_COLORPLAYER认输，棋局 [url]GAME_URL[/url] 结束。"
@@ -169,15 +174,46 @@ zh_cn:
     occupied: "下子位置已经被占领"
     suicide: "不能在该位置下子"
     bad_ko: "不能马上提劫"
-    request_counting: "如果只剩下单官，请点 <a href='GAME_URL/do_this?op=request_counting'>此处</a> 向对方提议结束对局。"
-    requested_counting: "我方已经提议结束对局，对方尚未回答。如果想要恢复对局请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。"
-    opponent_requested_counting: "对方认为对局已经结束，要求开始数子。请点 <a href='GAME_URL/do_this?op=request_counting'>此处</a> 接受，或点 <a href='GAME_URL/do_this?op=reject_counting_request'>此处</a> 拒绝。"
-    start_counting: "双方都已同意结束对局。请用鼠标点盘上死子，然后点 <a href='GAME_URL/do_this?op=accept_counting'>此处</a> 开始数子。如果数子结果不正确，请点 <a href='GAME_URL/do_this?op=resume'>此处</a> 恢复对局或通知管理员。"
-    accepted_counting: "我方已接受数子结果，对方尚未回答。"
-    opponent_accepted_counting: "对方已接受数子结果，请点 <a href='GAME_URL/do_this?op=accept_counting'>此处</a> 接受对局结果。如果不同意此结果，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 拒绝，然后重点盘上死子。"
+    request_counting:
+      如果只剩下单官，请点 <a href='GAME_URL/do_this?op=request_counting'>此处</a> 向对方提议结束对局。
+    requested_counting:
+      我方已经提议结束对局，对方尚未回答。
+      如果想要恢复对局，请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
+    opponent_requested_counting:
+      对方认为对局已经结束，要求开始数子。
+      请点 <a href='GAME_URL/do_this?op=request_counting'>此处</a> 接受，
+      或点 <a href='GAME_URL/do_this?op=reject_counting_request'>此处</a> 拒绝。
+    start_counting:
+      双方都已同意结束对局。请用鼠标点盘上死子，然后点 <a href='GAME_URL/do_this?op=do_counting'>此处</a> 开始数子。
+    check_counting:
+      数子结果为：GAME_RESULT。
+      如果数子结果不正确，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 重新数子。
+      如果想要恢复对局，请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
+    accepted_counting:
+      数子结果为：GAME_RESULT。
+      我方已接受数子结果，对方尚未回答。
+      如果数子结果不正确，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 重新数子。
+      如果想要恢复对局请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
+    opponent_accepted_counting:
+      数子结果为：GAME_RESULT。
+      对方已接受数子结果。
+      请点 <a href='GAME_URL/do_this?op=accept_counting'>此处</a> 接受对局结果。
+      如果不同意此结果，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 拒绝，然后重点盘上死子。
+      如果想要恢复对局请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
     black_won: "黑胜POINTS_WON子"
     white_won: "白胜POINTS_WON子"
     result_pending: "（待确认）"
+    message_label: "留言："
+    send_message: "提交"
+    messages:
+      start_game: "对局开始。"
+      request_counting: "PLAYER要求开始数子。"
+      reject_counting_request: "PLAYER拒绝了对方数子的要求。"
+      do_counting: "双方都已同意开始数子。"
+      accept_counting: "PLAYER接受了数子结果。"
+      reject_counting: "PLAYER否决了数子结果。"
+      finish_counting: "对局结束。"
+      resume: "PLAYER要求继续对局。"
   my_uploads:
     page_title: "我的上传"
     page_header: "我的上传"
@@ -230,8 +266,8 @@ zh_cn:
     page_title: "对局邀请"
     page_header: "对局邀请"
     none: "没有新的邀请"
-    create_page_header: "创建对局邀请"
-    create_link_label: "创建对局邀请"
+    create_page_header: "对局邀请"
+    create_link_label: "对局邀请"
     invitations_sent_to_me: "发给我的对局邀请"
     invitations_sent_by_me: "我发出的对局邀请"
     created_at_label: "邀请发出时间"

@@ -61,6 +61,19 @@ module ApplicationHelper
   def reset_button
     "<input type='button' name='reset', value='#{t('form.reset_button')}'/>"
   end
+  
+  def platform_link platform, with_bracket = true
+    return unless platform
+    
+    # s = "<a href='#{platform_url(platform)}'>#{platform.name}</a>"
+    s = platform.name
+    
+    if with_bracket
+      "[#{s}]"
+    else
+      s
+    end
+  end
 
   private
 

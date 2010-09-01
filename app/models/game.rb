@@ -43,14 +43,16 @@ class Game < ActiveRecord::Base
   scope :my_turn, lambda {|p|
     {
       :include => :detail,
-      :conditions => ["(black_id = ? and game_details.whose_turn = ?) or (white_id = ? and game_details.whose_turn = ?)", p.id, BLACK, p.id, WHITE]
+      :conditions => ["(black_id = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
+                    or (white_id = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))", p.id, BLACK, p.id, WHITE]
     }
   }
 
   scope :not_my_turn, lambda {|p|
     {
       :include => :detail,
-      :conditions => ["(black_id = ? and game_details.whose_turn = ?) or (white_id = ? and game_details.whose_turn = ?)", p.id, WHITE, p.id, BLACK]
+      :conditions => ["(black_id = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
+                    or (white_id = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))", p.id, WHITE, p.id, BLACK]
     }
   }
 
@@ -110,7 +112,8 @@ class Game < ActiveRecord::Base
   scope :my_turn_by_name, lambda{|name|
     {
       :include => :detail,
-      :conditions => ["(black_name = ? and game_details.whose_turn = ?) or (white_name = ? and game_details.whose_turn = ?)",
+      :conditions => ["(black_name = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
+                    or (white_name = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))",
                       name, BLACK, name, WHITE] 
     }
   }
@@ -199,8 +202,10 @@ class Game < ActiveRecord::Base
     PairStat.find_or_create(white_id, black_id)
     
     if self.result =~ /B+/i or (self.result.try(:include?, '黑') and self.result.try(:include?, '胜'))
+      self.state = 'finished'
       self.winner = WINNER_BLACK
     elsif self.result =~ /W+/i or (self.result.try(:include?, '白') and self.result.try(:include?, '胜'))
+      self.state = 'finished'
       self.winner = WINNER_WHITE
     end
   end
@@ -233,5 +238,18 @@ class Game < ActiveRecord::Base
       when YING_RULE then I18n.t('games.ying_rule')
       else ""
     end
+  end
+
+  def current_player_str
+    player = if current_user_is_black?
+      I18n.t('games.black_name')
+    elsif current_user_is_white?
+      I18n.t('games.black_name')
+    end
+    player.nil_or.sub('PLAYER_NAME', current_user.username)
+  end
+  
+  def from_url?
+    primary_source.try(:source_type) == Upload::UPLOAD_URL
   end
 end

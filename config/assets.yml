@@ -1,0 +1,25 @@
+javascripts:
+  common:
+    - public/javascripts/jqueryslidemenu.js
+    - public/javascripts/jquery.autocomplete.js
+    - public/javascripts/jquery.livequery.js
+    - public/javascripts/jquery.date_input.js
+    - public/javascripts/jquery.date_input.zh_CN.js
+    - public/javascripts/validanguage.js
+    - public/javascripts/tooltip.js
+    - public/javascripts/application.js
+    - public/javascripts/upload.js
+  admin:
+    - public/javascripts/jquery.livequery.js
+    - public/javascripts/jquery.autocomplete.js
+    - public/javascripts/prototype.js
+    - public/javascripts/effects.js
+    - public/javascripts/dragdrop.js
+    - public/javascripts/controls.js
+    - public/javascripts//default/rico_container.js
+    - public/javascripts/active_scaffold/default/rico_container.js
+    - public/javascripts/active_scaffold/default/form_enhancements.js
+    - public/javascripts/active_scaffold/default/dhtml_history.js
+    - public/javascripts/active_scaffold/default/active_scaffold.js
+    - public/javascripts/calendar_date_select/calendar_date_select.js
+    - public/javascripts/admin.js

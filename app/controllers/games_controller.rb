@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   before_filter :check_game, :except => [:new, :index, :next, :waiting, :destroy]
   before_filter :login_required, :only => [:play, :resign, :undo_guess_moves, :do_this]
-  before_filter :check_user_is_player, :only => [:undo_guess_moves, :do_this]
+  before_filter :check_user_is_player, :only => [:undo_guess_moves, :do_this, :send_message]
 
   def index
     @platform = params[:platform]
@@ -28,10 +28,17 @@ class GamesController < ApplicationController
         elsif @game.current_user_is_white?
           @my_color = Game::WHITE
         end
+        @messages = Message.for_game(@game.id)
         render :layout => 'simple'
       end
 
-      format.sgf  { render :text => Gocool::SGF::GameRenderer.new.render(@game) }
+      format.sgf do
+        if @game.from_url?
+          redirect_to upload_url(@game.primary_source, :format => "sgf")
+        else
+          render :text => Gocool::SGF::GameRenderer.new.render(@game)
+        end
+      end
     end
   end
 
@@ -87,11 +94,6 @@ class GamesController < ApplicationController
   def play
     code, message = @game.play params
     if code == GameInPlay::OP_SUCCESS
-      #if ENV['JUGGERNAUT_INTEGRATION'] == 'true'
-      #  render :juggernaut => {:type => :send_to_channels, :channels => to_channels} do |page|
-      #    page << "jsGameViewer.GV1.refresh();"
-      #  end
-      #end
       render :text => "#{code}:#{Gocool::SGF::GameRenderer.new.render(@game)}"
     else
       render :text => "#{code}:#{message}"
@@ -132,6 +134,18 @@ class GamesController < ApplicationController
     end
     redirect_to :action => :show
   end
+  
+  def messages
+    render :text => Message.for_game(@game.id).to_json
+  end
+  
+  def send_message
+    message = Message.create!(:message_type => Message::PRIVATE, :receiver_id => @game.id, 
+                              :content => ERB::Util.html_escape(params[:message]), 
+                              :source_type => Message::PLAYER, :source_id => current_player.id,
+                              :source => current_player.name)
+    render :text => message.to_json
+  end
 
   private
 
@@ -144,7 +158,7 @@ class GamesController < ApplicationController
 
   def check_user_is_player
     unless @game.current_user_is_player?
-      flash.now[:error] = t('games.user_is_not_player')
+      flash.now[:error] = t('games.user_is_not_player') # TODO: message is not defined in zh_cn.yml
       render 'show', :layout => 'simple'
     end
   end
@@ -197,19 +211,21 @@ class GamesController < ApplicationController
         elsif @game.current_user_is_black?
           flash.now[:error] = t('games.opponent_requested_counting').gsub('GAME_URL', game_url(@game))
         end
-      when 'counting' then
+      when 'counting_preparation' then
         flash.now[:notice] = t('games.start_counting').gsub('GAME_URL', game_url(@game))
+      when 'counting' then
+        flash.now[:notice] = t('games.check_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
       when 'black_accept_counting' then
         if @game.current_user_is_black?
-          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game))
+          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
         elsif @game.current_user_is_white?
-          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game))
+          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
         end
       when 'white_accept_counting' then
         if @game.current_user_is_white?
-          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game))
+          flash.now[:notice] = t('games.accepted_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
         elsif @game.current_user_is_black?
-          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game))
+          flash.now[:error] = t('games.opponent_accepted_counting').gsub('GAME_URL', game_url(@game)).gsub('GAME_RESULT', @game.result)
         end
     end
   end

@@ -126,7 +126,7 @@ class Upload < ActiveRecord::Base
 
   def after_save
     if @file_changed
-      create_symbolic_link if is_sgf?
+      #create_symbolic_link if is_sgf?
       convert_to_utf
     end
   end
@@ -165,6 +165,20 @@ class Upload < ActiveRecord::Base
   def discuz_thread_url
     if discuz_tid
       "/bbs/viewthread.php?tid=#{discuz_tid}"
+    end
+  end
+  
+  def reload_game_from_url
+    return unless source_type == UPLOAD_URL
+    
+    open(source) do |new_data|
+      File.open(self.file.path, "w") do |to_file|
+        to_file.print(new_data.readlines)
+      end
+      convert_to_utf
+      game.primary_upload_id = id if game.primary_upload_id.nil?
+      game.load_parsed_game(parse)
+      game.save!
     end
   end
 

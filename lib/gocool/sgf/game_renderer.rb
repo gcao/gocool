@@ -23,7 +23,10 @@ module Gocool
         sgf << render_property("RE", game.result)
         if game.detail
           sgf << render_moves(game)
-          sgf << render_territories(game) if %w(black_accept_counting white_accept_counting).include? game.state
+          if %w(counting_preparation counting black_accept_counting white_accept_counting).include? game.state
+            sgf << ";" << NodeRenderer.new.render(game.detail.last_move)
+            sgf << render_territories(game)
+          end
         end
         sgf << ")"
       end
@@ -32,13 +35,7 @@ module Gocool
 
       def render_moves game
         sgf = game.detail.formatted_moves.to_s
-
-        if game.state == 'counting'
-          sgf << ";" << NodeRenderer.new.render(game.detail.last_move)
-        elsif game.current_user_is_player?
-          sgf << render_guess_moves(game)
-        end
-
+        sgf << render_guess_moves(game) if game.current_user_is_player?
         sgf
       end
 

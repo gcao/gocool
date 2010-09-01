@@ -23,7 +23,7 @@ class UploadsController < ApplicationController
     @upload = Upload.find(params[:id])
     
     respond_to do |format|
-      format.html { render :layout => 'simple' }
+      format.html { redirect_to :controller => :games, :action => :show, :id => @upload.game_id }
       format.sgf  { send_file(@upload.file.path) }
     end
   end
@@ -80,7 +80,7 @@ class UploadsController < ApplicationController
       flash.now[:success] = t('uploads.success')
     end
 
-    render :show, :layout => "simple"
+    redirect_to game_url(@upload.game_id)
   end
 
   def process_url
@@ -94,7 +94,7 @@ class UploadsController < ApplicationController
       flash.now[:success] = t('uploads.success')
     end
 
-    render :show, :layout => "simple"
+    redirect_to game_url(@upload.game_id)
   end
 
   def validate_sgf data

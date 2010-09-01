@@ -1,10 +1,7 @@
-- content_for :footer do
-  :javascript
-    if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
+- content_for :head do
+  = stylesheet_link_tag 'compiled/show_game.css'
 
-  = render "shared/jsgameviewer"
-
-.span-24
+%div{:class => container_css_classes}
   %h3= t('games.show_page_header').sub('GAME_NO', @game.id.to_s).sub('WHITE', @game.white_name_with_rank).sub('BLACK', @game.black_name_with_rank)
 
   = show_flash 'span-24'
@@ -19,4 +16,81 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
   %a(href="javascript:window.close();")= t('link.close')
   &nbsp;&nbsp;&nbsp;&nbsp;
-  = render :partial => "shared/show_game", :locals => {:url => game_url(@game, :format => :sgf)}
+  %a{:href => game_url(@game, :format => :sgf)}= t('link.download_sgf')
+  - show_if_admin do
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    %a{:href => url_for(:controller => 'admin/games', :action => 'edit', :id => @game.id)}= t('form.edit_button')
+
+  - if not @game.finished? and @game.current_user_is_player?
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    %a{:href => undo_guess_moves_game_url}= t('link.undo_guess_moves')
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    %a{:href => next_game_url}= t('link.next_game')
+
+  #gameContainer
+
+  = render :partial => "games/messages"
+
+  - if not @game.finished? and @game.current_user_is_player?
+    .note
+      %p 棋人对弈最特殊的功能是猜测对方的应手。
+      %p
+        也就是说，不管是轮到你走，还是轮到对方走，你都可以随时在盘上下子，棋步会保存到服务器端。等到对方下子后，服务器会比较双方的位置，如果位置一致，
+        则预测的棋步成为实战。如果不一致，则预测的棋步被取消。
+      %p
+        任何一方只能看到自己预测的棋步。
+      %p
+        此功能可广泛用于定式，中盘战斗，打劫以及官子定型等。
+
+- content_for :footer do
+  = render "shared/jsgameviewer"
+  = javascript_include_tag "jquery.form"
+  
+  :javascript
+    if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
+    
+    var gameType  = #{@game.game_type == Game::DAOQI} ? jsGameViewer.DAOQI : jsGameViewer.WEIQI;
+    var messageRowClass = "odd";
+    
+    function showMessage(message) {
+      $('#message_container').show();
+      var createdAt = message.created_at_str;
+      
+      $('#message_table').prepend("<tr class='message " + messageRowClass + "'><td class='created_at'>"
+        + createdAt + "</td><td class='source'>"
+        + message.source + "</td><td class='content'>" 
+        + message.content + "</td></tr>");
+      if (messageRowClass == "odd")
+        messageRowClass = "even";
+      else
+        messageRowClass = "odd";
+    }
+    
+    function showMessages(messages) {
+      $.each(messages, function(){
+        showMessage(this);
+      });
+    }
+    
+    jQuery(document).ready(function(){
+      $('#send_message_form').ajaxForm({dataType: 'json', success: function(response){
+        showMessage(response);
+      }});
+      showMessages(#{@messages.to_json});
+    });
+
+  - if not @game.finished? and @game.current_user_is_player?
+    = javascript_include_tag "jsgameviewer_ext"
+    :javascript
+      var gameState = "#{@game.state}";
+      var myColor   = #{@my_color.to_i};
+      jQuery(document).ready(function(){
+        new GameController({gameType: gameType, container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
+          setPlayerInterval(15).startUpdater(true).saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});
+      });
+
+  - else
+    :javascript
+      jQuery(document).ready(function(){
+        new GameController({gameType: gameType, container: "gameContainer"}).load("#{game_url(@game, :sgf)}");
+      });

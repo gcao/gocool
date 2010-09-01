@@ -55,7 +55,8 @@ en_us:
 #      place: Place
 #      create_time: Added At
 #  uploads:
-#    file_label: "File <br/>(*.sgf, *.zip)"
+#    file_label: "File"
+#    file_note: (*.sgf, *.zip)
 #    file_required: No file is chosen.
 #    submit_button: Upload
 #    success: Upload is successful.
@@ -87,7 +88,6 @@ en_us:
 #    page_header: Players
 #    platform_label: "Gaming platform:"
 #    username_label: "Username:"
-#    games_played_by: "<span style='font-style:italic'>PLATFORM_NAME</span>&nbsp;&nbsp; PLAYER_NAME's games"
 #  games:
 #    page_title: Games
 #    page_header: Games

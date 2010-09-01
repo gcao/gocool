@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :games,
                 :member => {:play => :get, :resign => :get, :undo_guess_moves => :get, :next => :get,
-                            :do_this => :get, :mark_dead => :get},
+                            :do_this => :get, :mark_dead => :get, :messages => :get, :send_message => :post},
                 :collection => {:waiting => :get}
   map.resources :uploads
   map.upload_search 'upload_search', :controller => 'upload_search', :action => 'index'
@@ -60,10 +60,6 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "homepage"
   
-  map.player_auto_complete 'player_auto_complete',
-                           :controller => 'players',
-                           :action => 'auto_complete_for_name'
-
   map.chat 'chat', :controller => 'chat'
   map.send_chat_message 'send_chat_message', :controller => 'chat', :action => 'send_message'
   map.connect 'misc/:action/:id', :controller => 'misc'
@@ -73,6 +69,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :games, :active_scaffold => true
     admin.resources :gaming_platforms, :active_scaffold => true
   end
+  
+  Jammit::Routes.draw(map)
+  
+  map.connect '/admin/misc/:action/:id.:format', :controller => 'admin/misc'
 
   # See how all your routes lay out with "rake routes"
 

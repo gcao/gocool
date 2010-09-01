@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100318193052) do
+ActiveRecord::Schema.define(:version => 20100716201944) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20100318193052) do
     t.integer  "game_id"
     t.integer  "whose_turn"
     t.datetime "last_move_time"
-    t.string   "formatted_moves", :limit => 4000
+    t.text     "formatted_moves", :limit => 16777215
     t.integer  "first_move_id"
     t.integer  "last_move_id"
     t.datetime "created_at"
@@ -143,8 +143,24 @@ ActiveRecord::Schema.define(:version => 20100318193052) do
     t.datetime "updated_at"
   end
 
-  add_index "invitations", ["invitees"], :name => "invitations_invitees"
+  add_index "invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>"255"}
   add_index "invitations", ["inviter_id"], :name => "invitations_inviter_id"
+
+  create_table "messages", :force => true do |t|
+    t.integer  "source_type",                       :null => false
+    t.integer  "source_id"
+    t.integer  "receiver_type",                     :null => false
+    t.integer  "receiver_id"
+    t.string   "message_type",                      :null => false
+    t.string   "level"
+    t.string   "visibility"
+    t.text     "content",       :limit => 16777215
+    t.string   "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["receiver_type", "receiver_id"], :name => "messages_receiver"
 
   create_table "nation_regions", :force => true do |t|
     t.string   "name"
@@ -241,6 +257,15 @@ ActiveRecord::Schema.define(:version => 20100318193052) do
   end
 
   add_index "settings", ["name"], :name => "index_settings_on_name"
+
+  create_table "tom_games", :force => true do |t|
+    t.string "name"
+    t.string "page_url"
+    t.string "sgf_url"
+  end
+
+  add_index "tom_games", ["page_url"], :name => "tom_games_page_url"
+  add_index "tom_games", ["sgf_url"], :name => "tom_games_sgf_url"
 
   create_table "tournament_games", :force => true do |t|
     t.integer  "tournament_id"
