@@ -38,6 +38,11 @@ Rails::Initializer.run do |config|
   config.load_paths += %W(#{RAILS_ROOT}/app/misc)
 
   config.action_controller.relative_url_root = "/app"
+  
+  config.action_controller.session = {
+    :key         => '_gocool_session',
+    :secret      => '3ab0ef9713356fa8d08424c770584d95ad14f2ae54d43c9b8e4881b5491fe024407ec2f45548384946410d5a412c0c1dea5ab21da811fb43e2c538fa817d1cdc'
+  }
 end
 
 Time.zone = "Beijing"

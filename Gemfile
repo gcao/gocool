@@ -32,8 +32,6 @@ group :development do
   # bundler requires these gems in development
   # gem "rails-footnotes"
   # gem 'rubaidh-google_analytics', :require => 'rubaidh/google_analytics'
-  gem 'ruby-growl' 
-  gem 'bullet', ">=2.0.0.beta.2"
   gem 'rack-bug', :require => "rack/bug"
   gem "mongrel"
 end
