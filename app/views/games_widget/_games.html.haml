@@ -1,6 +1,6 @@
 - if @games_for_widget.size > 0
   .games_widget.active-scaffold.blue-theme
-    .digg_pagination= will_paginate @games_for_widget, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next'), :param_name => 'games_page'
+    .digg_pagination=raw will_paginate(@games_for_widget, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next'), :param_name => 'games_page')
 
     %table.games_table
       %thead

@@ -7,7 +7,7 @@
   %a{:href => url_for_uploads_of_today} 今天
   上载 #{@games_of_today} 局。
 %p
-  本站共有 #{@games_of_kgs} 局 #{GamingPlatform.kgs.link_html} 对局，#{@games_of_tom} 局 #{GamingPlatform.tom.link_html} 对局，#{@games_of_dgs} 局 #{GamingPlatform.dgs.link_html} 对局。
+  本站共有 #{@games_of_kgs} 局 #{raw GamingPlatform.kgs.link_html} 对局，#{@games_of_tom} 局 #{raw GamingPlatform.tom.link_html} 对局，#{@games_of_dgs} 局 #{raw GamingPlatform.dgs.link_html} 对局。
 
 #qiren_games_container
   %h2#qiren_games_label= t('homepage.qiren_games.label')

@@ -1,6 +1,6 @@
 GIT
   remote: /Users/gcao/proj/discuz_int/.git
-  revision: eba67ce
+  revision: 8992b02
   branch: rails3
   specs:
     discuz_int (0.1.0)
@@ -72,11 +72,6 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
-    meta_search (0.9.3)
-      actionpack (~> 3.0.0)
-      activerecord (~> 3.0.0)
-      activesupport (~> 3.0.0)
-      arel (~> 1.0.1)
     mime-types (1.16)
     mocha (0.9.8)
       rake
@@ -136,7 +131,6 @@ DEPENDENCIES
   hoptoad_notifier
   jammit
   json
-  meta_search
   mocha
   mongrel
   mysql

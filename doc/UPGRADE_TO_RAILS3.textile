@@ -9,4 +9,5 @@ h3. discuz_int
 
 h2. Misc
 
-undefined method `each' for false:FalseClass
+ * Problem: undefined method `each' for false:FalseClass
+   Solution: add some content to all localization files.
