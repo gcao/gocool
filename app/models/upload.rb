@@ -48,13 +48,11 @@ class Upload < ActiveRecord::Base
   end
 
   def self.recent_7_days
-    # Re-use searchlogic named scope
-    # Note: Date.today - 6.days = beginning of recent 7 days
-    created_at_greater_than(Date.today - 6.days)
+    where("uploads.created_at > ?", Date.today - 6.days)
   end
 
   def self.today
-    created_at_greater_than(Date.today)
+    where("uploads.created_at > ?", Date.today)
   end
 
   def self.create_from_sgf description, data, sgf_game, hash_code = nil

@@ -1,18 +1,18 @@
 GIT
-  remote: git://github.com/gcao/discuz_int.git
-  revision: 71cc436
+  remote: /Users/gcao/proj/discuz_int/.git
+  revision: eba67ce
   branch: rails3
   specs:
     discuz_int (0.1.0)
 
 GIT
-  remote: git://github.com/gcao/discuz_robot.git
+  remote: /Users/gcao/proj/discuz_robot/.git
   revision: 7850ee6
   specs:
     discuz_robot (0.1.0)
 
 GIT
-  remote: git://github.com/gcao/sgf_parser.git
+  remote: /Users/gcao/proj/sgf_parser/.git
   revision: 070fefb
   specs:
     sgf_parser (0.1.0)
@@ -132,7 +132,7 @@ DEPENDENCIES
   compass
   discuz_int!
   discuz_robot!
-  haml (>= 2.2.3)
+  haml
   hoptoad_notifier
   jammit
   json

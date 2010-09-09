@@ -9,7 +9,7 @@ gem "mysql"
 gem "json"
 # gem "calendar_date_select"
 gem "paperclip"
-gem "haml", ">=2.2.3"
+gem "haml"
 gem "compass"
 gem "will_paginate"
 # gem "searchlogic"
@@ -20,19 +20,19 @@ gem "nokogiri"
 # gem "newrelic_rpm"
 gem "jammit"
 
-git "git://github.com/gcao/discuz_robot.git" do
-# git "../discuz_robot/.git" do
+# git "git://github.com/gcao/discuz_robot.git" do
+git File.expand_path(File.dirname(__FILE__) + "/../discuz_robot/.git") do
   gem "discuz_robot"
 end
 
-git "git://github.com/gcao/sgf_parser.git" do
-# git "../sgf_parser/.git" do
+# git "git://github.com/gcao/sgf_parser.git" do
+git File.expand_path(File.dirname(__FILE__) + "/../sgf_parser/.git") do
   gem "sgf_parser", :require => "sgf"
 end
 
-git "git://github.com/gcao/discuz_int.git", :branch => "rails3" do
-# git "../discuz_int/.git", :branch => "rails3" do
-  gem "discuz_int"
+# git "git://github.com/gcao/discuz_int.git", :branch => "rails3" do
+git File.expand_path(File.dirname(__FILE__) + "/../discuz_int/.git"), :branch => "rails3" do
+  gem "discuz_int", :require => 'discuz_int'
 end
 
 group :development do

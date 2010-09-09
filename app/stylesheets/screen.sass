@@ -1,11 +1,11 @@
 // This import applies a global reset to any page that imports this stylesheet.
-@import blueprint/reset.sass
+@import "blueprint/reset"
 // To configure blueprint, edit the partials/base.sass file.
-@import partials/base.sass
+@import "partials/base"
 // Import all the default blueprint modules so that we can access their mixins.
-@import blueprint
+@import "blueprint"
 // Import the non-default scaffolding module.
-@import blueprint/modules/scaffolding.sass
+@import "blueprint/modules/scaffolding"
 
 // To generate css equivalent to the blueprint css but with your configuration applied, uncomment:
 // +blueprint
@@ -41,13 +41,13 @@ body.three-col
     +column(!content_columns, true)
 
 // From plugins or gems
-@import partials/activescaffold.sass
-@import partials/jqueryslidemenu.sass
-@import partials/jquery.autocomplete.sass
-@import partials/pagination.sass
-@import partials/calendar_date_select.sass
+@import "partials/activescaffold"
+@import "partials/jqueryslidemenu"
+@import "partials/jquery.autocomplete"
+@import "partials/pagination"
+@import "partials/calendar_date_select"
 
-@import partials/activescaffold_extras.sass
-@import partials/app.sass
-@import partials/form.sass
-@import partials/homepage.sass
+@import "partials/activescaffold_extras"
+@import "partials/app"
+@import "partials/form"
+@import "partials/homepage"

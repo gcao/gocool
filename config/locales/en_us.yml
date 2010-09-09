@@ -3,6 +3,7 @@
 
 en_us:
   shared:
+    test: Test
 #    page_title: Go Library
 #    games_table:
 #      game_name: Game Name

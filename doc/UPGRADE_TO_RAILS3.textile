@@ -8,3 +8,5 @@ h2. Dependencies
 h3. discuz_int
 
 h2. Misc
+
+undefined method `each' for false:FalseClass

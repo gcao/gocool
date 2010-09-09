@@ -3,11 +3,12 @@
 
 class ApplicationController < ActionController::Base
   include ThreadGlobals
-  include Discuz::Authentication
+  include DiscuzInt::Authentication
   include GamesWidgetHelper, UploadsWidgetHelper, PlayerWidgetHelper, PlayersWidgetHelper, OpponentsWidgetHelper
 
   helper :urls, :games_widget, :uploads_widget, :players_widget, :player_widget, :opponents_widget
-  # protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  
+  protect_from_forgery
 
   before_filter :authenticate_via_bbs if ENV['INTEGRATE_WITH_FORUM'] == 'true'
   before_filter :admin_required, :only => [:edit, :update, :destroy]
