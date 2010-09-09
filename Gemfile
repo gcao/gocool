@@ -4,10 +4,10 @@ source "http://rubygems.org"
 source "http://gems.github.com"
 
 # bundler requires these gems in all environments
-gem "rails", "2.3.8"
+gem "rails", ">=3.0.0"
 gem "mysql"
 gem "json"
-gem "calendar_date_select", ">=1.15"
+# gem "calendar_date_select", ">=1.15"
 gem "thoughtbot-paperclip", ">=2.3.0", :require => "paperclip"
 gem "haml", ">=2.2.3"
 gem "chriseppstein-compass", ">=0.8.11", :require => "compass"
@@ -15,9 +15,8 @@ gem "mislav-will_paginate", ">=2.3.11", :require => "will_paginate"
 gem "binarylogic-searchlogic", :require => "searchlogic"
 gem "hoptoad_notifier"
 gem "rubyist-aasm", :require => "aasm"
-gem "calendar_date_select", ">=1.15"
 gem "nokogiri"
-gem "newrelic_rpm"
+# gem "newrelic_rpm"
 gem "jammit"
 
 git "git://github.com/gcao/discuz_robot.git" do
@@ -26,6 +25,11 @@ end
 
 git "git://github.com/gcao/sgf_parser.git" do
   gem "sgf_parser", :require => "sgf"
+end
+
+# git "git://github.com/gcao/discuz_int.git", :branch => "rails3" do
+git "../discuz_int/.git", :branch => "rails3" do
+  gem "discuz_int"
 end
 
 group :development do

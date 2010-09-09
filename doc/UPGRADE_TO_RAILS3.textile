@@ -1,0 +1,10 @@
+h2. Application
+
+h2. Dependencies
+
+ * Remove gems/plugins that are not absolutely needed to display the non-admin pages
+ * Change plugins to gems
+
+h3. discuz_int
+
+h2. Misc
