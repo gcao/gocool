@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_title_and_header
 
   def is_admin?
-     RAILS_ENV == 'development' or @current_user.nil_or.admin?
+     # RAILS_ENV == 'development' or @current_user.nil_or.admin?
   end
   helper_method :logged_in?, :is_admin?
 

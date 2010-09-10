@@ -27,6 +27,6 @@
         =text_field_tag 'to_date', @to_date, :class => "date_input", :size => "15"
         %input{:type => "hidden", :name => "op", :value => "search"}
         =submit_tag t('form.search_button')
-        =reset_button
+        =raw reset_button
 
 

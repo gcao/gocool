@@ -5,8 +5,7 @@
 
     .form_row.span-18
       .span-3
-        %label(for="upload_description2")
-          =t('uploads.description_label')
+        %label(for="upload_description2")= t('uploads.description_label')
       .span-15.last
         %input#upload_description2(type="text" name="upload_description" size="80")
 
@@ -14,7 +13,7 @@
       .span-3
         %label(for="upload_url")
           = t('uploads.url_label')
-          = mark_required
+          =raw mark_required
       .span-15.last
         %input#upload_url(type="text" name="upload[url]" size="80")
 

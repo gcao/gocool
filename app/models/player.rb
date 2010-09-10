@@ -43,7 +43,7 @@ class Player < ActiveRecord::Base
   end
 
   def games
-    Game.black_id_or_white_id_is(self.id)
+    Game.where("black_id = ? or white_id = ?", self.id, self.id)
   end
 
   def before_destroy

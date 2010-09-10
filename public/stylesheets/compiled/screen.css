@@ -529,7 +529,7 @@ table#games_search_form, table#pairs_search_form { width: auto; }
 table#games_search_form input[type='text'], table#pairs_search_form input[type='text'] { width: 150px; }
 
 table#games_search_form label, table#pairs_search_form label { position: relative; }
-table#games_search_form label em.msg, table#pairs_search_form label em.msg { position: absolute; text-align: right; left: 0px; top: -18px; width: 158px; font-size: 0.8em; font-style: normal; line-height: 2.5; color: #aaaaaa; }
+table#games_search_form label em.msg, table#pairs_search_form label em.msg { position: absolute; text-align: right; left: 0px; top: -3px; width: 158px; font-size: 0.8em; font-style: normal; line-height: 2.5; color: #aaaaaa; }
 
 #cursor { background-color: lightyellow; border: 1px solid black; font-size: 10px; left: -300px; padding: 5px; position: absolute; visibility: hidden; width: 150px; z-index: 100; }
 
