@@ -14,7 +14,9 @@
 
 = render :partial => "player_widget/player_info"
 
-= render_games_widget @player_for_widget.games.sort_by_players
+- games = @player_for_widget.games.sort_by_players
+- unless games.blank?
+  = render_games games 
 
 %hr.space
 

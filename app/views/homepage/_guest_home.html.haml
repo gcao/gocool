@@ -9,10 +9,11 @@
 %p
   本站共有 #{@games_of_kgs} 局 #{raw GamingPlatform.kgs.link_html} 对局，#{@games_of_tom} 局 #{raw GamingPlatform.tom.link_html} 对局，#{@games_of_dgs} 局 #{raw GamingPlatform.dgs.link_html} 对局。
 
-#qiren_games_container
-  %h2#qiren_games_label= t('homepage.qiren_games.label')
+- unless @qiren_games.blank?
+  #qiren_games_container
+    %h2#qiren_games_label= t('homepage.qiren_games.label')
 
-  = render_games_widget @qiren_games
+    = render_games @qiren_games
 
 %hr.space
 

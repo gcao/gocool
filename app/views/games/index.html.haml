@@ -28,8 +28,9 @@
           =submit_tag t('form.search_button')
           =raw reset_button
 %hr.space
-#games_widget_container
-  = render_games_widget @games
+- if @games
+  #games_widget_container
+    = render_games @games
 
 - content_for :footer do
   :javascript

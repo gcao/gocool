@@ -4,9 +4,10 @@
 class ApplicationController < ActionController::Base
   include ThreadGlobals
   include DiscuzInt::Authentication
-  include GamesWidgetHelper, UploadsWidgetHelper, PlayerWidgetHelper, PlayersWidgetHelper, OpponentsWidgetHelper
+  include UploadsWidgetHelper, PlayerWidgetHelper, PlayersWidgetHelper, OpponentsWidgetHelper
+  include WidgetsHelper
 
-  helper :urls, :games_widget, :uploads_widget, :players_widget, :player_widget, :opponents_widget
+  helper :urls, :uploads_widget, :players_widget, :player_widget, :opponents_widget
   
   protect_from_forgery
 
