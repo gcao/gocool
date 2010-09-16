@@ -1,6 +1,8 @@
-- if @uploads_for_widget.size > 0
+- if uploads.blank?
+  = t("games_widget.upload_not_found")
+- else
   .uploads.active-scaffold.blue-theme
-    .digg_pagination=raw will_paginate(@uploads_for_widget, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next'), :param_name => 'uploads_page')
+    .digg_pagination=raw will_paginate(uploads, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next'), :param_name => 'uploads_page')
 
     %table
       %thead
@@ -17,7 +19,4 @@
           %th.place_column=        t('games_widget.place')
           %th.actions_column &nbsp;
       %tbody.records
-        = render :partial => 'uploads_widget/upload', :collection => @uploads_for_widget, :as => :upload
-
-- else
-  = t("games_widget.upload_not_found")
+        = render :partial => 'widgets/upload', :collection => uploads, :as => :upload

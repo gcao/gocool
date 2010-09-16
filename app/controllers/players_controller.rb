@@ -24,9 +24,9 @@ class PlayersController < ApplicationController
     @players = Player.search(@platform, @opponent_name).with_stat
 
     if @players.size == 1
-      render_player_widget @players.first
+      redirect_to player_url(@players.first)
     else
-      render_players_widget @players
+      render_players @players
     end
   end
 
