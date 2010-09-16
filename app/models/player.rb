@@ -38,7 +38,7 @@ class Player < ActiveRecord::Base
     k.include(:gaming_platform, :stat)
   end
 
-  def after_create
+  after_create do
     PlayerStat.create!(:player_id => id)
   end
 
@@ -46,7 +46,7 @@ class Player < ActiveRecord::Base
     Game.where("black_id = ? or white_id = ?", self.id, self.id)
   end
 
-  def before_destroy
+  before_destroy do
     ActiveRecord::Base.connection.execute <<-SQL
       delete from pair_stats where opponent_id = #{self.id}
     SQL

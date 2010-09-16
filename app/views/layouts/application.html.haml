@@ -16,11 +16,6 @@
           alert(printStacktrace().join('\n\n'));
         }
 
-    - if @admin_page
-      = include_jquery
-      = render 'layouts/js_init'
-      = include_javascripts :admin
-
     = yield :head
   %body.bp
     = render 'discuz/header'

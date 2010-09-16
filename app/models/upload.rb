@@ -117,19 +117,19 @@ class Upload < ActiveRecord::Base
     paths.join('/')
   end
 
-  def before_save
+  before_save do
     @file_changed = self.changed.include?("file_file_name") || self.changed.include?("file_file_size") || self.changed.include?("file_updated_at")
     true
   end
 
-  def after_save
+  after_save do
     if @file_changed
       #create_symbolic_link if is_sgf?
       convert_to_utf
     end
   end
 
-  def after_create
+  after_create do
     super
 
     convert_to_utf

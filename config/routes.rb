@@ -1,84 +1,65 @@
-ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
+Gocool::Application.routes.draw do
+  # map.homepage 'homepage', :controller => 'homepage', :action => 'index'
+  match "homepage" => "homepage#index", :as => "homepage"
   
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
+  # map.signup 'signup', :controller => 'users', :action => 'new'
+  match "signup" => "users#new", :as => "signup"
+  # map.logout 'logout', :controller => 'sessions', :action => 'destroy'
+  match "logout" => "sessions#destroy", :as => "logout"
+  # map.login 'login', :controller => 'sessions', :action => 'new'
+  match "login" => "sessions#new", :as => "login"
 
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-  map.homepage 'homepage', :controller => 'homepage', :action => 'index'
-  map.signup 'signup', :controller => 'users', :action => 'new'
-  map.logout 'logout', :controller => 'sessions', :action => 'destroy'
-  map.login 'login', :controller => 'sessions', :action => 'new'
-
-  map.test 'test', :controller => 'internal/test', :action => 'index'
-
-  map.resources :sessions
-
-  map.resources :users
-  map.my_uploads 'my_uploads', :controller => 'users', :action => 'my_uploads'
-  map.my_favorites 'my_favorites', :controller => 'users', :action => 'my_favorites'
-
-  map.resources :games,
-                :member => {:play => :get, :resign => :get, :undo_guess_moves => :get, :next => :get,
-                            :do_this => :get, :mark_dead => :get, :messages => :get, :send_message => :post},
-                :collection => {:waiting => :get}
-  map.resources :uploads
-  map.upload_search 'upload_search', :controller => 'upload_search', :action => 'index'
-
-  map.resources :uploads
-  map.resources :pasties
-  map.resources :players, :collection => {:search => :get, :suggest => :get, :suggest_opponents => :get}
-  map.resources :pairs
-
-  map.resources :invitations, :member => {:accept => :get, :reject => :get, :cancel => :get}
-
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "homepage"
+  resources :sessions
+  resources :users
   
-  map.chat 'chat', :controller => 'chat'
-  map.send_chat_message 'send_chat_message', :controller => 'chat', :action => 'send_message'
-  map.connect 'misc/:action/:id', :controller => 'misc'
+  # map.my_uploads 'my_uploads', :controller => 'users', :action => 'my_uploads'
+  match "my_uploads" => "users#my_uploads"
+  # map.my_favorites 'my_favorites', :controller => 'users', :action => 'my_favorites'
+  match "my_favorites" => "users#my_favorites"
 
-  map.namespace :admin do |admin|
-    admin.resources :players, :active_scaffold => true
-    admin.resources :games, :active_scaffold => true
-    admin.resources :gaming_platforms, :active_scaffold => true
+  resources :games do
+    member do
+      get *%w(play resign undo_guess_moves next do_this mark_dead messages)
+      post *%w(send_message)
+    end
+    collection do
+      get *%w(waiting)
+    end
   end
   
-  Jammit::Routes.draw(map)
-  
-  map.connect '/admin/misc/:action/:id.:format', :controller => 'admin/misc'
+  resources :uploads
+  # map.upload_search 'upload_search', :controller => 'upload_search', :action => 'index'
+  match "upload_search" => "upload_search#index"
 
-  # See how all your routes lay out with "rake routes"
+  resources :uploads
+  resources :pasties
+  resources :players do
+    collection do
+      get *%w(search suggest suggest_opponents)
+    end
+  end
+  resources :pairs
 
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing the them or commenting them out if you're using named routes and resources.
-  # map.connect ':controller/:action/:id'
-  # map.connect ':controller/:action/:id.:format'
+  resources :invitations do
+    member do 
+      get *%w(accept reject cancel)
+    end
+  end
+
+  root :to => "homepage#index"
+
+  # map.test 'test', :controller => 'internal/test', :action => 'index'
+  namespace :internal do
+    match "test" => "test#index"
+  end
+  # map.connect 'misc/:action/:id', :controller => 'misc'
+  controller :misc do
+    match "/:action/:id.:format"
+  end
+  # map.connect '/admin/misc/:action/:id.:format', :controller => 'admin/misc'
+  namespace :admin do
+    controller :misc do
+      match "/:action/:id.:format"
+    end
+  end
 end

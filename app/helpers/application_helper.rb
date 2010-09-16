@@ -55,7 +55,7 @@ module ApplicationHelper
         "<option value='#{p[0]}'>#{p[1]}</option>"
       end
     }
-    select_tag field_name, options
+    select_tag field_name, options.join.html_safe
   end
 
   def reset_button
