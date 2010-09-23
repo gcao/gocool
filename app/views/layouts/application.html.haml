@@ -9,7 +9,7 @@
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css'
 
-    - if RAILS_ENV == 'development' # Javascript debug help
+    - if Rails.env == 'development' # Javascript debug help
       = javascript_include_tag "stacktrace"
       :javascript
         window.onerror = function() {

@@ -20,7 +20,7 @@ class Message < ActiveRecord::Base
   ATTENTION = 30
   IMPORTANT = 40
   
-  named_scope :for_game, lambda {|game_id|
+  scope :for_game, lambda {|game_id|
     {
       :conditions => ['receiver_id = ?', game_id]
     }

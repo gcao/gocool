@@ -74,7 +74,7 @@ class Invitation < ActiveRecord::Base
     I18n.t("invitations.handicap_#{handicap}")
   end
 
-  def after_create
+  after_create do
     send_invitation_message
   end
 
