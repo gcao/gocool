@@ -5,6 +5,7 @@ source "http://rubygems.org"
 
 # bundler requires these gems in all environments
 gem "rails", ">=3.0.0"
+gem "aspect4r"
 gem "mysql"
 gem "json"
 # gem "calendar_date_select"
@@ -17,6 +18,7 @@ gem "aasm"
 gem "nokogiri"
 # gem "newrelic_rpm"
 gem "jammit"
+gem "formtastic"
 
 # git "git://github.com/gcao/discuz_robot.git" do
 git File.expand_path(File.dirname(__FILE__) + "/../discuz_robot/.git") do

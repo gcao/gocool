@@ -53,16 +53,13 @@ Gocool::Application.routes.draw do
   namespace :internal do
     match "test" => "test#index"
   end
+
   # map.connect 'misc/:action/:id', :controller => 'misc'
   match "misc/:action(/:id.:format)", :controller => "misc"
-  #controller :misc do
-  #  match "/:action/:id.:format"
-  #end
+
   # map.connect '/admin/misc/:action/:id.:format', :controller => 'admin/misc'
-  match "admin/misc/:action(/:id.:format)", :controller => "admin/misc"
-  #namespace :admin do
-  #  controller :misc do
-  #    match "/:action/:id.:format"
-  #  end
-  #end
+  namespace :admin do
+    resources :games
+  end
+  match "admin/:controller/:action(/:id.:format)"
 end
