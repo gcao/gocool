@@ -4,7 +4,6 @@
 class ApplicationController < ActionController::Base
   include ThreadGlobals
   include DiscuzInt::Authentication
-  # include WidgetsHelper
 
   helper :urls
   

@@ -1,5 +1,17 @@
 h2. Application
 
+h3. Configuration
+
+h3. Models
+
+ * named_scope to scope
+
+h3. Controllers
+
+ * Change Rails Metal MyTurnChecker to regular controller
+
+h3. Views
+
 h2. Dependencies
 
  * Remove gems/plugins that are not absolutely needed to display the non-admin pages

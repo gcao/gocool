@@ -27,17 +27,18 @@ Gocool::Application.routes.draw do
     end
   end
   
+  match "games/my_turn" => "my_turn#my_turn"
+  
   resources :uploads
   # map.upload_search 'upload_search', :controller => 'upload_search', :action => 'index'
   match "upload_search" => "upload_search#index"
 
-  resources :uploads
-  resources :pasties
   resources :players do
     collection do
       get *%w(search suggest suggest_opponents)
     end
   end
+
   resources :pairs
 
   resources :invitations do
