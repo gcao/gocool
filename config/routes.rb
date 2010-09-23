@@ -17,6 +17,8 @@ Gocool::Application.routes.draw do
   # map.my_favorites 'my_favorites', :controller => 'users', :action => 'my_favorites'
   match "my_favorites" => "users#my_favorites"
 
+  match "games/my_turn" => "my_turn#my_turn"
+
   resources :games do
     member do
       get *%w(play resign undo_guess_moves next do_this mark_dead messages)
@@ -26,8 +28,6 @@ Gocool::Application.routes.draw do
       get *%w(waiting)
     end
   end
-  
-  match "games/my_turn" => "my_turn#my_turn"
   
   resources :uploads
   # map.upload_search 'upload_search', :controller => 'upload_search', :action => 'index'
@@ -54,13 +54,15 @@ Gocool::Application.routes.draw do
     match "test" => "test#index"
   end
   # map.connect 'misc/:action/:id', :controller => 'misc'
-  controller :misc do
-    match "/:action/:id.:format"
-  end
+  match "misc/:action(/:id.:format)", :controller => "misc"
+  #controller :misc do
+  #  match "/:action/:id.:format"
+  #end
   # map.connect '/admin/misc/:action/:id.:format', :controller => 'admin/misc'
-  namespace :admin do
-    controller :misc do
-      match "/:action/:id.:format"
-    end
-  end
+  match "admin/misc/:action(/:id.:format)", :controller => "admin/misc"
+  #namespace :admin do
+  #  controller :misc do
+  #    match "/:action/:id.:format"
+  #  end
+  #end
 end
