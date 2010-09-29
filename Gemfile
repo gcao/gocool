@@ -20,18 +20,18 @@ gem "nokogiri"
 gem "jammit"
 gem "formtastic"
 
-# git "git://github.com/gcao/discuz_robot.git" do
-git File.expand_path(File.dirname(__FILE__) + "/../discuz_robot/.git") do
+git "git://github.com/gcao/discuz_robot.git" do
+# git File.expand_path(File.dirname(__FILE__) + "/../discuz_robot/.git") do
   gem "discuz_robot"
 end
 
-# git "git://github.com/gcao/sgf_parser.git" do
-git File.expand_path(File.dirname(__FILE__) + "/../sgf_parser/.git") do
+git "git://github.com/gcao/sgf_parser.git" do
+# git File.expand_path(File.dirname(__FILE__) + "/../sgf_parser/.git") do
   gem "sgf_parser", :require => "sgf"
 end
 
-# git "git://github.com/gcao/discuz_int.git", :branch => "rails3" do
-git File.expand_path(File.dirname(__FILE__) + "/../discuz_int/.git"), :branch => "rails3" do
+git "git://github.com/gcao/discuz_int.git", :branch => "rails3" do
+# git File.expand_path(File.dirname(__FILE__) + "/../discuz_int/.git"), :branch => "rails3" do
   gem "discuz_int", :require => 'discuz_int'
 end
 
