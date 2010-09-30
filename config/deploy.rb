@@ -11,7 +11,7 @@ set :user, "root"
 set :use_sudo, false
 
 # ami_host = `ami_host`.strip
-ami_host = "ec2-184-73-35-156.compute-1.amazonaws.com"
+ami_host = `new_instance`.strip
 
 # AMI ami-0d729464: ubuntu 9.04 server base 
 server ami_host, :app, :web, :db, :primary => true

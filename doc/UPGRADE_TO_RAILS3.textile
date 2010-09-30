@@ -23,3 +23,40 @@ h2. Misc
 
  * Problem: undefined method `each' for false:FalseClass
    Solution: add some content to all localization files.
+
+h2. EC2 cut over notes
+
+ * Restore instance from yesterday's backup
+   $ restore_instance
+ * Connect to new instance
+   $ ssh root@`new_instance`
+ * Upgrade rubygems and install bundler
+   $ gem update --system
+   $ gem install bundler
+ * Update passenger
+   $ gem update passenger
+   $ passenger-install-apache2-module
+   $ vi /etc/apache2/sites-enabled/gocool.conf
+
+LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-2.2.15/ext/apache2/mod_passenger.so
+PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger-2.2.15
+PassengerRuby /usr/bin/ruby1.8
+
+  <Directory /data/apps/gocool/current/public>
+    Options FollowSymLinks
+    Options -MultiViews
+    AllowOverride all
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+	 $ apache2ctl restart
+	
+ * Start rails server from console and access app
+   $ cd gocool ; script/rails s
+   $ curl http://localhost:3000
+
+ * Test whole app and the forum after logged in
+
+ * Associate IP to the new instance
+   $ ec2-associate-address IP -i INSTANCE
