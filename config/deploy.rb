@@ -35,6 +35,10 @@ task :copy_over_config_files do
   run "chmod -R a+w #{release_path}/public/stylesheets/cache #{release_path}/public/javascripts/cache"
 end
 
+task :bundle, :role => [:app, :web] do
+  deploy.create_bundler_symlink
+  run "cd #{release_path} ; bundle check 2>&1 > /dev/null ; if [ $? -ne 0 ] ; then sh -c 'bundle install --deployment --without test' ; fi"
+end
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
   $: << File.join(vendored_notifier, 'lib')
