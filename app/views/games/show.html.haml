@@ -54,7 +54,7 @@
     
     function showMessage(message) {
       $('#message_container').show();
-      var createdAt = message.created_at_str;
+      var createdAt = message.created_at;
       
       $('#message_table').prepend("<tr class='message " + messageRowClass + "'><td class='created_at'>"
         + createdAt + "</td><td class='source'>"
@@ -68,7 +68,7 @@
     
     function showMessages(messages) {
       $.each(messages, function(){
-        showMessage(this);
+        showMessage(this.message);
       });
     }
     
