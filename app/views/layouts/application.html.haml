@@ -31,7 +31,7 @@
 
       #firefox_container(style="display:none")= t('shared.recommend_firefox')
     = render 'discuz/footer'
-    = include_jquery
+    =raw include_jquery
     = render 'layouts/js_init'
-    = include_javascripts :common
+    =raw include_javascripts(:common)
     = yield :footer
