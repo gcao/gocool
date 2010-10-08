@@ -1,3 +1,32 @@
+h2. 2010-10-07
+
+h3. Idea - separate data and presentation logic in web page
+
+ * Store data in a data structure which is independent from html/css
+ * Data are passed to a renderer which constructs html document and css to achieve
+   expected look and feel
+ * Forms are part of data
+ * Literal data that contains text with link will be splitted into
+   array, e.g. "I went to &lt;a href='#'>New York&lt;/t>." becomes 
+   ["I went to ", Link.new("New York", "#"), "."]
+ * HTML can be constructed on server side or on client side with help of Javascript
+ * Data can be stored in session and in browser(as javascript variable)
+ * If Data are stored, it is recommended to keep them up to date on client operation,
+   this can be basis of one page web application.
+ * Data can be easily navigated and each item can be uniquely identified.
+ * In generated html, data item id should be inserted (using HTML5 data property
+   might be good)
+ * Mapping between data item and DOM can be maintained (is this required for some
+   operations?)
+
+h3. Prototype of above idea
+
+ * Pick a typical web page (not too simple but not too complex either) and extract
+   all its text into a JSON format data structure (including url of links and images
+   except decorational or background images)
+ * Write ruby code to re-build the page (the purpose is to have same DOM structure)
+ * Refactor ruby code to investigate benefits and potentials of this idea
+
 h2. 2010-08-24
 
 h3. Add chinese support to Ubuntu
