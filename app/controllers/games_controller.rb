@@ -121,7 +121,7 @@ class GamesController < ApplicationController
 
   def undo_guess_moves
     @game.undo_guess_moves
-    render 'show', :layout => 'simple'
+    redirect_to :action => :show
   end
 
   def do_this
