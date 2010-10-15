@@ -119,6 +119,29 @@ module GameInPlay
     GameMove.moves_after(detail.last_move).each do |move|
       move.delete if move.player_id.nil? and move.guess_player_id == current_player.id
     end
+    
+    undo_last_move
+  end
+  
+  def undo_last_move
+    move = detail.last_move
+    return if move.player_id != current_player.id
+    
+    parent_move = move.parent
+    detail.last_move_id = parent_move.id
+    
+    if parent_move
+      detail.last_move_time = parent_move.created_at
+    else
+      detail.last_move_time = detail.created_at
+    end
+    detail.change_turn
+    
+    last_move_start = detail.formatted_moves.rindex(";") - 1
+    detail.formatted_moves = detail.formatted_moves[0..last_move_start] if last_move_start >= 0
+    
+    detail.save!
+    move.delete
   end
 
   def mark_dead x, y

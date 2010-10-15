@@ -25,13 +25,13 @@ config.middleware.use "Rack::Bug",
 # config.gem 'ruby-growl' 
 # config.gem 'bullet', :source => 'http://gemcutter.org', :version => ">=2.0.0.beta.2"
 
-config.after_initialize do
-  Bullet.enable = true
-  Bullet.alert = false
-  Bullet.bullet_logger = true
-  Bullet.console = true
-  Bullet.growl = true
-  Bullet.rails_logger = true
-  Bullet.disable_browser_cache = true
-end
+# config.after_initialize do
+#   Bullet.enable = true
+#   Bullet.alert = false
+#   Bullet.bullet_logger = true
+#   Bullet.console = true
+#   Bullet.growl = true
+#   Bullet.rails_logger = true
+#   Bullet.disable_browser_cache = true
+# end
 
