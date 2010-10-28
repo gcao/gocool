@@ -187,6 +187,7 @@ zh_cn:
       双方都已同意结束对局。请用鼠标点盘上死子，然后点 <a href='GAME_URL/do_this?op=do_counting'>此处</a> 开始数子。
     check_counting:
       数子结果为：GAME_RESULT。
+      请点 <a href='GAME_URL/do_this?op=accept_counting'>此处</a> 接受数子结果。
       如果数子结果不正确，请点 <a href='GAME_URL/do_this?op=reject_counting'>此处</a> 重新数子。
       如果想要恢复对局，请点 <a href='GAME_URL/do_this?op=resume'>此处</a>。
     accepted_counting:
