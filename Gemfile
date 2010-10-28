@@ -45,3 +45,8 @@ group :test do
   gem "mocha"
   gem "spork"
 end
+
+group :production do
+  gem "syslog-logger"
+  gem "rubaidh-google_analytics"
+end
