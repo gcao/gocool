@@ -18,7 +18,7 @@ jQuery.extend(jsGameViewer.GameController.prototype, {
   },
 
   play: function(x, y){
-    if (gameState == 'counting'){
+    if (gameState == 'counting_preparation'){
       var url = this.config.gocoolUrlPrefix + "games/" + this.gocoolId + "/mark_dead?x=" + x + "&y=" + y;
       jQuery.ajax({
         url: url,
