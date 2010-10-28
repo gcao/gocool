@@ -60,3 +60,36 @@ PassengerRuby /usr/bin/ruby1.8
 
  * Associate IP to the new instance
    $ ec2-associate-address IP -i INSTANCE
+
+h2. Upgrade planning
+
+h3. Requirement
+
+ * 3 hours
+ * Upgrade on new EC2 instance and switch after thoroughly tested
+ * Test thoroughly
+ ** Guest
+ ** Logged in
+ ** Forum integration
+ ** Create/accept invitation
+ ** Play/undo
+
+h3. Steps
+
+ * Post on forum
+ * Start new instance
+ * Update deploy.rb
+ * Modify config files on server
+ * Upgrade through Capistrano
+ * Start up application
+ * Check application and integration
+ * Fix and automate manual steps
+ * Run chef script
+ * Check application
+ * Switch over to new instance (point public IP to new instance)
+ * Post on forum
+ 
+h3. Misc
+
+ * Note down anything that is different from expected behaviour
+ * Update config/deployment script whenever necessary and test out the changes

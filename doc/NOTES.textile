@@ -1,3 +1,15 @@
+h2. 2010-10-25
+
+h3. TODOs
+
+ * Upgrade ec2 instance to Rails 3
+ * Integrate with gnugo
+ * Create special robot player, invitations are automatically accepted if opening
+   game limit is not reached
+ * Gnugo player can run on a different machine
+ * Modify game model and record misc game properties in a separate table
+ * Modify sgf_parser to fully conform to latest sgf spec
+
 h2. 2010-10-07
 
 h3. Idea - separate data and presentation logic in web page
