@@ -80,7 +80,9 @@ class Board < Array
   end
 
   def play color, x, y
-    self[x][y] = color if color != 0
+    return [] if color == 0
+
+    self[x][y] = color
 
     dead = []
     remove_group = lambda do |group|
@@ -91,11 +93,14 @@ class Board < Array
         end
       end
     end
+    
+    opponent_color = color == BLACK ? WHITE : BLACK
 
-    remove_group.call get_dead_group(x-1, y) if @game_type == Game::DAOQI or x > 0
-    remove_group.call get_dead_group(x+1, y) if @game_type == Game::DAOQI or x < @size - 1
-    remove_group.call get_dead_group(x, y-1) if @game_type == Game::DAOQI or y > 0
-    remove_group.call get_dead_group(x, y+1) if @game_type == Game::DAOQI or y < @size - 1
+    remove_group.call get_dead_group(x-1, y) if (@game_type == Game::DAOQI or x > 0        ) and self[x-1][y] == opponent_color
+    remove_group.call get_dead_group(x+1, y) if (@game_type == Game::DAOQI or x < @size - 1) and self[x+1][y] == opponent_color
+    remove_group.call get_dead_group(x, y-1) if (@game_type == Game::DAOQI or y > 0        ) and self[x][y-1] == opponent_color
+    remove_group.call get_dead_group(x, y+1) if (@game_type == Game::DAOQI or y < @size - 1) and self[x][y+1] == opponent_color
+    
     remove_group.call get_dead_group(x, y)
 
     dead
