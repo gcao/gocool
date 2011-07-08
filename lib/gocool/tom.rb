@@ -20,8 +20,8 @@ module Gocool
 
         zhuanti_pages = []
 
-        doc.css("div.hotnews h2 a").each do |link|
-          zhuanti_pages << ZhuantiPage.new(link.content, "#{base_url}#{link['href']}")
+        doc.css("div.main_tit h2 a").each do |link|
+          zhuanti_pages << ZhuantiPage.new(link.content, link['href'])
         end
       
         zhuanti_pages
@@ -39,10 +39,10 @@ module Gocool
       def children
         game_pages = []
       
-        doc = Nokogiri::HTML(open(@url).read, nil, "GB18030")
+        doc = Nokogiri::HTML(open(@url), nil, "GB18030")
         doc.css("div.hotinfor a").each do |link|
           href = link['href']
-          if href =~ /\('(.*)'\)/
+          if href =~ /(http.*html)/
             href = $1
           end
           game_pages << GamePage.new(link.content, href)
