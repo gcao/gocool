@@ -20,7 +20,7 @@ module Gocool
 
         zhuanti_pages = []
 
-        doc.css("div.main_tit h2 a").each do |link|
+        doc.css("div.main_tit a").each do |link|
           zhuanti_pages << ZhuantiPage.new(link.content, link['href'])
         end
       
