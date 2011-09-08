@@ -15,10 +15,10 @@ class HomepageController < ApplicationController
       @games_total = Game.count
       @games_of_seven_days = Upload.recent_7_days.count
       @games_of_today = Upload.today.count
-      @games_of_qiren = Game.gaming_platform_id_is(GamingPlatform.qiren.id).count
-      @games_of_kgs = Game.gaming_platform_id_is(GamingPlatform.kgs.id).count
-      @games_of_tom = Game.gaming_platform_id_is(GamingPlatform.tom.id).count
-      @games_of_dgs = Game.gaming_platform_id_is(GamingPlatform.dgs.id).count
+      @games_of_qiren = Game.where("games.gaming_platform_id = ?", GamingPlatform.qiren.id).count
+      @games_of_kgs = Game.where("games.gaming_platform_id = ?", GamingPlatform.kgs.id).count
+      @games_of_tom = Game.where("games.gaming_platform_id = ?", GamingPlatform.tom.id).count
+      @games_of_dgs = Game.where("games.gaming_platform_id = ?", GamingPlatform.dgs.id).count
     end
   end
 end

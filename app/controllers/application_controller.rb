@@ -3,18 +3,18 @@
 
 class ApplicationController < ActionController::Base
   include ThreadGlobals
-  include Discuz::Authentication
-  include GamesWidgetHelper, UploadsWidgetHelper, PlayerWidgetHelper, PlayersWidgetHelper, OpponentsWidgetHelper
+  include DiscuzInt::Authentication
 
-  helper :urls, :games_widget, :uploads_widget, :players_widget, :player_widget, :opponents_widget
-  # protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  helper :urls
+  
+  protect_from_forgery
 
   before_filter :authenticate_via_bbs if ENV['INTEGRATE_WITH_FORUM'] == 'true'
   before_filter :admin_required, :only => [:edit, :update, :destroy]
   before_filter :set_title_and_header
 
   def is_admin?
-     RAILS_ENV == 'development' or @current_user.nil_or.admin?
+     # Rails.env == 'development' or @current_user.nil_or.admin?
   end
   helper_method :logged_in?, :is_admin?
 

@@ -5,21 +5,17 @@
     %link(rel="icon" type="image/x-icon" href="/app/favicon.ico")
     %title= @page_title
 
+    = formtastic_stylesheet_link_tag if @formtastic
     = stylesheet_link_tag 'compiled/discuz.css'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css'
 
-    - if RAILS_ENV == 'development' # Javascript debug help
+    - if Rails.env == 'development' # Javascript debug help
       = javascript_include_tag "stacktrace"
       :javascript
         window.onerror = function() {
           alert(printStacktrace().join('\n\n'));
         }
-
-    - if @admin_page
-      = include_jquery
-      = render 'layouts/js_init'
-      = include_javascripts :admin
 
     = yield :head
   %body.bp
@@ -35,8 +31,7 @@
 
       #firefox_container(style="display:none")= t('shared.recommend_firefox')
     = render 'discuz/footer'
-    - unless @admin_page
-      = include_jquery
-      = render 'layouts/js_init'
-      = include_javascripts :common
+    =raw include_jquery
+    = render 'layouts/js_init'
+    =raw include_javascripts(:common)
     = yield :footer

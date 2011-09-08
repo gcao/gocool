@@ -11,11 +11,11 @@ class Upload < ActiveRecord::Base
 
   default_scope :include => :game, :conditions => "game_id is not null"
   
-  named_scope :with_hash, lambda { |hash|
+  scope :with_hash, lambda { |hash|
     {:conditions => ["hash_code = ?", hash]}
   }
 
-  named_scope :with_description, lambda { |description|
+  scope :with_description, lambda { |description|
     if description.blank?
       {}
     else
@@ -23,9 +23,9 @@ class Upload < ActiveRecord::Base
     end
   }
   
-  named_scope :recent, :order => 'created_at DESC'
+  scope :recent, :order => 'created_at DESC'
 
-  named_scope :between, lambda {|from, to|
+  scope :between, lambda {|from, to|
     if from
       if to
         conditions = ["date(uploads.created_at) >= ? and date(uploads.created_at) <= ?", from, to]
@@ -48,13 +48,11 @@ class Upload < ActiveRecord::Base
   end
 
   def self.recent_7_days
-    # Re-use searchlogic named scope
-    # Note: Date.today - 6.days = beginning of recent 7 days
-    created_at_greater_than(Date.today - 6.days)
+    where("uploads.created_at > ?", Date.today - 6.days)
   end
 
   def self.today
-    created_at_greater_than(Date.today)
+    where("uploads.created_at > ?", Date.today)
   end
 
   def self.create_from_sgf description, data, sgf_game, hash_code = nil
@@ -119,19 +117,19 @@ class Upload < ActiveRecord::Base
     paths.join('/')
   end
 
-  def before_save
+  before_save do
     @file_changed = self.changed.include?("file_file_name") || self.changed.include?("file_file_size") || self.changed.include?("file_updated_at")
     true
   end
 
-  def after_save
+  after_save do
     if @file_changed
       #create_symbolic_link if is_sgf?
       convert_to_utf
     end
   end
 
-  def after_create
+  after_create do
     super
 
     convert_to_utf

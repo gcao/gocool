@@ -17,8 +17,8 @@
     .form_row.span-18
       .span-3
         %label(for="invitation_invitees")
-          =t('invitations.invitees_label')
-          = mark_required
+          = t('invitations.invitees_label')
+          =raw mark_required
       .span-15.last
         %input#invitation_invitees(type="text" name="invitation[invitees]" size="80" value="#{@invitees}")
 

@@ -6,7 +6,7 @@ class GameDetail < ActiveRecord::Base
 
   has_many :all_moves, :class_name => 'GameMove', :dependent => :destroy
 
-  def after_create
+  after_create do
     move = GameMove.create!(:game_detail_id => id,
                             :move_no => 0, :x => -1, :y => -1, :color => 0, :played_at => Time.now,
                             :setup_points => handicaps)

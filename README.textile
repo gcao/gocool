@@ -56,6 +56,16 @@ Visibility: player, all
 Time
 Content
 
+Tournaments:
+Organize tournaments
+Enter games for tournaments not organized here
+Tournament can have sub-tournaments/stages
+
+Integration with Discuz and other forums:
+Has its own authentication and authorization logic
+Integrate with Discuz forum (can integrate with more than one: one for Chinese users, one for English users)
+Integrate with phpBB3 or other forums(low priority)
+
 Admin:
 Create game between players (as tournament organizer)
 Decide game result (as tournament organizer)

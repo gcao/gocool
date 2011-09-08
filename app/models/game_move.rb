@@ -9,7 +9,7 @@ class GameMove < ActiveRecord::Base
 
   serialize :dead
 
-  named_scope :moves_after, lambda { |move|
+  scope :moves_after, lambda { |move|
     {:conditions => ["game_detail_id = ? and id > ?", move.game_detail_id, move.id]}
   }
 

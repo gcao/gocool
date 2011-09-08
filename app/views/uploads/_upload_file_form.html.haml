@@ -5,8 +5,7 @@
 
     .form_row.span-18
       .span-3
-        %label(for="upload_description")
-          =t('uploads.description_label')
+        %label(for="upload_description")= t('uploads.description_label')
       .span-15.last
         %input#upload_description(type="text" name="upload_description" size="80")
         %p= t('uploads.description_note')
@@ -15,13 +14,13 @@
       .span-3
         %label(for="upload_upload")
           = t('uploads.file_label')
-          = mark_required
+          =raw mark_required
           %br
-          = t('uploads.file_note')
+          =raw t('uploads.file_note')
       .span-15.last
         #file_fields
           %input#upload_upload(type="file" name="upload[upload]" size="60")
-        %p= t('uploads.zip_file_note')
+        %p=raw t('uploads.zip_file_note')
 
     %hr.space
     .span-14{:align => 'center'}

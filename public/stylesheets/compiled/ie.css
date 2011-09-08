@@ -1,115 +1,44 @@
-/* line 19, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-body {
-  text-align: center; }
-  /* line 32, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-  * html body legend {
-    margin: 0px -8px 16px 0;
-    padding: 0; }
-  /* line 36, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-  html > body p code {
-    *white-space: normal; }
+body { text-align: center; }
+* html body legend { margin: 0px -8px 16px 0; padding: 0; }
+html > body p code { *white-space: normal; }
 
-/* line 51, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-.container {
-  text-align: left; }
+.container { text-align: left; }
 
-/* line 53, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-ol {
-  margin-left: 2em; }
+sup { vertical-align: text-top; }
 
-/* line 55, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-sup {
-  vertical-align: text-top; }
+sub { vertical-align: text-bottom; }
 
-/* line 57, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-sub {
-  vertical-align: text-bottom; }
+hr { margin: -8px auto 11px; }
 
-/* line 59, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-hr {
-  margin: -8px auto 11px; }
+img { -ms-interpolation-mode: bicubic; }
 
-/* line 61, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-img {
-  -ms-interpolation-mode: bicubic; }
+fieldset { padding-top: 0; }
 
-/* line 63, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-fieldset {
-  padding-top: 0; }
+textarea { overflow: auto; }
 
-/* line 66, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-input.text {
-  margin: 0.5em 0;
-  background-color: white;
-  border: 1px solid #bbbbbb; }
-  /* line 70, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-  input.text:focus {
-    border: 1px solid #666666; }
-/* line 72, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-input.title {
-  margin: 0.5em 0;
-  background-color: white;
-  border: 1px solid #bbbbbb; }
-  /* line 76, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-  input.title:focus {
-    border: 1px solid #666666; }
-/* line 78, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-input.checkbox {
-  position: relative;
-  top: 0.25em; }
-/* line 81, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-input.radio {
-  position: relative;
-  top: 0.25em; }
-/* line 84, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-input.button {
-  position: relative;
-  top: 0.25em; }
+input.text { margin: 0.5em 0; background-color: white; border: 1px solid #bbbbbb; }
+input.text:focus { border: 1px solid #666666; }
+input.title { margin: 0.5em 0; background-color: white; border: 1px solid #bbbbbb; }
+input.title:focus { border: 1px solid #666666; }
+input.checkbox { position: relative; top: 0.25em; }
+input.radio { position: relative; top: 0.25em; }
+input.button { position: relative; top: 0.25em; }
 
-/* line 87, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-textarea {
-  margin: 0.5em 0; }
+textarea { margin: 0.5em 0; }
 
-/* line 89, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-select {
-  margin: 0.5em 0; }
+select { margin: 0.5em 0; }
 
-/* line 91, ../../../dev/ruby/1.8/gems/chriseppstein-compass-0.8.17/frameworks/blueprint/stylesheets/blueprint/_ie.sass */
-button {
-  position: relative;
-  top: 0.25em; }
+button { position: relative; top: 0.25em; }
 
-/* line 3, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-* html body.bp .active-scaffold-header {
-  zoom: 1; }
-/* line 6, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-* html body.bp .active-scaffold td .messages-container {
-  border-top: solid 1px #daffcd; }
-/* line 9, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-* html body.bp .active-scaffold-header div.actions a.show_search {
-  background-image: none;
-  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../images/active_scaffold/default/magnifier.png', sizingMethod='crop'); }
-/* line 13, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-* html body.bp .active-scaffold .sub-form .association-record a.destroy {
-  background-image: none;
-  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../images/active_scaffold/default/cross.png', sizingMethod='crop'); }
+* html body.bp .active-scaffold-header { zoom: 1; }
+* html body.bp .active-scaffold td .messages-container { border-top: solid 1px #daffcd; }
+* html body.bp .active-scaffold-header div.actions a.show_search { background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../images/active_scaffold/default/magnifier.png', sizingMethod='crop'); }
+* html body.bp .active-scaffold .sub-form .association-record a.destroy { background-image: none; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../images/active_scaffold/default/cross.png', sizingMethod='crop'); }
 
-/* line 18, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-body.bp .active-scaffold-header div.actions a.disabled {
-  filter: alpha(opacity=50); }
-/* line 22, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-body.bp .active-scaffold .show-view dd {
-  float: none; }
-/* line 26, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-body.bp .active-scaffold li.form-element dd {
-  float: none; }
-/* line 29, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-body.bp .active-scaffold li.form-element dt {
-  padding: 4px 0; }
-/* line 31, ../../../app/stylesheets/partials/_activescaffold_ie.sass */
-body.bp .active-scaffold li.form-element.form-element, body.bp .active-scaffold li.form-element.sub-section {
-  zoom: 1; }
+body.bp .active-scaffold-header div.actions a.disabled { filter: alpha(opacity=50); }
+body.bp .active-scaffold .show-view dd { float: none; }
+body.bp .active-scaffold li.form-element dd { float: none; }
+body.bp .active-scaffold li.form-element dt { padding: 4px 0; }
+body.bp .active-scaffold li.form-element.form-element, body.bp .active-scaffold li.form-element.sub-section { zoom: 1; }
 
-/* line 9, ../../../app/stylesheets/ie.sass */
-html .jqueryslidemenu {
-  height: 1%; }
+html .jqueryslidemenu { height: 1%; }

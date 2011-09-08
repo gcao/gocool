@@ -4,7 +4,7 @@
 %div{:class => container_css_classes}
   %h3= t('games.show_page_header').sub('GAME_NO', @game.id.to_s).sub('WHITE', @game.white_name_with_rank).sub('BLACK', @game.black_name_with_rank)
 
-  = show_flash 'span-24'
+  =raw show_flash('span-24')
   %br
 
   %a(href="/bbs/index.php")= t('link.forum_home')
@@ -54,7 +54,7 @@
     
     function showMessage(message) {
       $('#message_container').show();
-      var createdAt = message.created_at_str;
+      var createdAt = message.created_at;
       
       $('#message_table').prepend("<tr class='message " + messageRowClass + "'><td class='created_at'>"
         + createdAt + "</td><td class='source'>"
@@ -68,7 +68,7 @@
     
     function showMessages(messages) {
       $.each(messages, function(){
-        showMessage(this);
+        showMessage(this.message);
       });
     }
     

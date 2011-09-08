@@ -1,9 +1,9 @@
 class GamesController < ApplicationController
   include GamesHelper
 
-  before_filter :check_game, :except => [:new, :index, :next, :waiting, :destroy]
-  before_filter :login_required, :only => [:play, :resign, :undo_guess_moves, :do_this]
-  before_filter :check_user_is_player, :only => [:undo_guess_moves, :do_this, :send_message]
+  before_filter :check_game          , :except => [:new, :index, :next, :waiting, :destroy]
+  before_filter :login_required      , :only   => [:play, :resign, :undo_guess_moves, :do_this]
+  before_filter :check_user_is_player, :only   => [:undo_guess_moves, :do_this, :send_message]
 
   def index
     @platform = params[:platform]
