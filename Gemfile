@@ -53,5 +53,5 @@ end
 
 group :production do
   gem "syslog-logger"
-  gem "rubaidh-google_analytics"
+  # gem "rubaidh-google_analytics"
 end

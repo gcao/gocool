@@ -126,6 +126,7 @@ GEM
     rspec-rails (2.0.0)
       rspec (= 2.0.0)
     spork (0.8.4)
+    syslog-logger (1.6.4)
     thor (0.14.3)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -158,4 +159,5 @@ DEPENDENCIES
   rspec-rails (>= 1.2.7.1)
   sgf_parser!
   spork
+  syslog-logger
   will_paginate

@@ -9,7 +9,7 @@ class CreateMessages < ActiveRecord::Migration
       t.string :type,           :null => false # private(player-player), admin, public, comment, game_state_change, other
       t.string :level      # important, attention, info, trivial
       t.string :visibility # Combination of B: black, W: white, O: observer
-      t.string :content, :limit => 65000
+      t.text :content
     end
 
     add_index :messages, [:receiver_type, :receiver_id], :name => 'messages_receiver'

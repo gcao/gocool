@@ -1,10 +1,11 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
@@ -39,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.integer  "game_id"
     t.integer  "whose_turn"
     t.datetime "last_move_time"
-    t.text     "formatted_moves", :limit => 16777215
+    t.text     "formatted_moves"
     t.integer  "first_move_id"
     t.integer  "last_move_id"
     t.datetime "created_at"
@@ -49,12 +50,12 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
   add_index "game_details", ["game_id"], :name => "game_details_game_id"
 
   create_table "game_moves", :force => true do |t|
-    t.integer  "game_detail_id",                       :null => false
+    t.integer  "game_detail_id",   :null => false
     t.integer  "player_id"
-    t.integer  "move_no",                              :null => false
-    t.integer  "color",                                :null => false
-    t.integer  "x",                                    :null => false
-    t.integer  "y",                                    :null => false
+    t.integer  "move_no",          :null => false
+    t.integer  "color",            :null => false
+    t.integer  "x",                :null => false
+    t.integer  "y",                :null => false
     t.string   "dead"
     t.integer  "guess_player_id"
     t.datetime "played_at"
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "setup_points"
-    t.text     "serialized_board", :limit => 16777215
+    t.text     "serialized_board"
   end
 
   add_index "game_moves", ["game_detail_id"], :name => "game_moves_detail_id"
@@ -143,18 +144,18 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.datetime "updated_at"
   end
 
-  add_index "invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>"255"}
+  add_index "invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>"767"}
   add_index "invitations", ["inviter_id"], :name => "invitations_inviter_id"
 
   create_table "messages", :force => true do |t|
-    t.integer  "source_type",                       :null => false
+    t.integer  "source_type",   :null => false
     t.integer  "source_id"
-    t.integer  "receiver_type",                     :null => false
+    t.integer  "receiver_type", :null => false
     t.integer  "receiver_id"
-    t.string   "message_type",                      :null => false
+    t.string   "message_type",  :null => false
     t.string   "level"
     t.string   "visibility"
-    t.text     "content",       :limit => 16777215
+    t.text     "content"
     t.string   "source"
     t.datetime "created_at"
     t.datetime "updated_at"

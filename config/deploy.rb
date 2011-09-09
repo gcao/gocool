@@ -1,4 +1,4 @@
-set :application, "gocool"
+set :application, "gocool3"
 set :deploy_to, "/data/apps/#{application}"
  
 set :scm, :git
@@ -10,8 +10,8 @@ set :git_enable_submodules, true
 set :user, "root"
 set :use_sudo, false
 
-# ami_host = `ami_host`.strip
-ami_host = `new_instance`.strip
+ami_host = `ami_host`.strip
+# ami_host = `new_instance`.strip
 
 # AMI ami-0d729464: ubuntu 9.04 server base 
 server ami_host, :app, :web, :db, :primary => true
