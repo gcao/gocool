@@ -16,7 +16,7 @@ module Gocool
     
       # Return ZhuantiPage list
       def children
-        doc = Nokogiri::HTML(open(@url), nil, "GB18030")
+        doc = Nokogiri::HTML(open(@url).read, nil, "GB18030")
 
         zhuanti_pages = []
 
@@ -39,7 +39,7 @@ module Gocool
       def children
         game_pages = []
       
-        doc = Nokogiri::HTML(open(@url), nil, "GB18030")
+        doc = Nokogiri::HTML(open(@url).read, nil, "GB18030")
         doc.css("div.hotinfor a").each do |link|
           href = link['href']
           if href =~ /\('(.*)'\)/
