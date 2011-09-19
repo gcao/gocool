@@ -5,7 +5,7 @@ set :scm, :git
 set :repository, "git://github.com/gcao/gocool.git"
 set :branch, "rails3"
 set :git_enable_submodules, true
-#set :deploy_via, :remote_cache
+set :git_submodules_recursive, false
 
 set :user, "root"
 set :use_sudo, false
