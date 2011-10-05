@@ -1,4 +1,4 @@
-%tr{:id => "invitation_row_#{invitation.id}", :class => "record " + (invitation_to_me_counter%2 == 0 ? "even-record":"")}
+%tr{:id => "invitation_row_#{invitation.id}", :class => "record " + (invitation_counter%2 == 0 ? "even-record":"")}
   %td
     = invitation.created_at.strftime("%Y-%m-%d %I:%M%p")
   %td

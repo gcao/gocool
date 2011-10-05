@@ -7,14 +7,22 @@ set :branch, "rails3"
 set :git_enable_submodules, true
 set :git_submodules_recursive, false
 
-set :user, "root"
-set :use_sudo, false
+if ENV['DEPLOYMENT_TARGET'] == 'production'
+  set :user, "root"
+  set :use_sudo, false
+  
+  ami_host = `ami_host`.strip
+  # ami_host = `new_instance`.strip
+  
+  # AMI ami-0d729464: ubuntu 9.04 server base 
+  server ami_host, :app, :web, :db, :primary => true
+else
+  set :user, "vagrant"
+  set :use_sudo, true
+  set :runner, "root"
 
-ami_host = `ami_host`.strip
-# ami_host = `new_instance`.strip
-
-# AMI ami-0d729464: ubuntu 9.04 server base 
-server ami_host, :app, :web, :db, :primary => true
+  server 'vagrant', :app, :web, :db, :primary => true
+end
 
 namespace :deploy do
   task :start do
@@ -35,9 +43,5 @@ task :copy_over_config_files do
   run "chmod -R a+w #{release_path}/public/stylesheets/cache #{release_path}/public/javascripts/cache"
 end
 
-Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
-  $: << File.join(vendored_notifier, 'lib')
-end
-
 require 'bundler/capistrano'
-require 'hoptoad_notifier/capistrano'
+require 'hoptoad_notifier/capistrano' if ENV['DEPLOYMENT_TARGET'] == 'production'
