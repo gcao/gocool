@@ -1,4 +1,4 @@
-set :application, "gocool3"
+set :application, "gocool"
 set :deploy_to, "/data/apps/#{application}"
  
 set :scm, :git

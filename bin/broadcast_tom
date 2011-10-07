@@ -7,9 +7,9 @@ require 'discuz_robot'
 
 puts "Broadcast games..."
 
-forum_id  = %x(/usr/bin/env bbsinfo fid).strip
-user      = %x(/usr/bin/env bbsinfo username).strip
-pass      = %x(/usr/bin/env bbsinfo password).strip
+forum_id  = 3
+user      = ENV["ROBOT_USERNAME"]
+pass      = ENV["ROBOT_PASSWORD"]
 wait_time = 16
 
 robot     = Discuz::Robot.new
