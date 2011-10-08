@@ -8,8 +8,8 @@ require 'discuz_robot'
 puts "Broadcast games..."
 
 forum_id  = 3
-user      = ENV["ROBOT_USERNAME"]
-pass      = ENV["ROBOT_PASSWORD"]
+user      = ENV["CHEF_ROBOT_USERNAME"]
+pass      = ENV["CHEF_ROBOT_PASSWORD"]
 wait_time = 16
 
 robot     = Discuz::Robot.new
