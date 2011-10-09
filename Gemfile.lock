@@ -58,19 +58,15 @@ GEM
     aspect4r (0.10.0)
     builder (3.0.0)
     cgi_multipart_eof_fix (2.5.0)
-    chunky_png (1.2.5)
     cocaine (0.2.0)
-    compass (0.11.5)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
+    compass (0.10.6)
+      haml (>= 3.0.4)
     daemons (1.1.4)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     fastthread (1.0.7)
     formtastic (2.0.2)
       rails (~> 3.0)
-    fssm (0.2.7)
     gem_plugin (0.2.3)
     haml (3.0.25)
     hike (1.2.1)
@@ -146,7 +142,6 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
-    sass (3.1.10)
     spork (0.8.5)
     sprockets (2.0.2)
       hike (~> 1.2)
@@ -169,7 +164,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   aspect4r
-  compass
+  compass (~> 0.10.0)
   discuz_int!
   discuz_robot!
   formtastic
