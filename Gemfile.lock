@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gcao/discuz_int.git
-  revision: 8992b02635ca95cb32a3913d38c1d96f54c6b31b
+  revision: b4147b9776cec7e0a49f77c21b72d4bffcfb9092
   branch: rails3
   specs:
     discuz_int (0.1.0)
