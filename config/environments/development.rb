@@ -12,7 +12,6 @@ Gocool::Application.configure do
   config.active_support.deprecation = :log
 
   # Show full error reports and disable caching
-  config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send

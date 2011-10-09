@@ -4,7 +4,7 @@ development: &DEV
   adapter: mysql
   database: gocool_dev
   user: root
-  password: <%= %x(msp).strip %>
+  password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
   pool: 5
   timeout: 5000
 
@@ -19,7 +19,7 @@ production:
   adapter: mysql
   database: gocool_production
   user: root
-  password: <%= %x(msp).strip %>
+  password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
   pool: 5
   timeout: 5000
 

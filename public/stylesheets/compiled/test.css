@@ -1,184 +1,102 @@
-/* line 1, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-body {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #0D2345 url(../../images/bodybg.gif) repeat-x scroll 0 90px;
-  text-align: center; }
+/*
+Syntax error: File to import not found or unreadable: partials/discuz.sass.
+              Load paths:
+                Compass::SpriteImporter
+                /Users/gcao/proj/gocool/public/stylesheets/sass
+                /Users/gcao/proj/gocool/app/stylesheets
+                /Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/compass-0.11.5/frameworks/blueprint/stylesheets
+                /Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/compass-0.11.5/frameworks/compass/stylesheets
+                /Users/gcao/proj/gocool/vendor/gems/discuz_int-0.1.0/app/stylesheets
+        on line 1 of /Users/gcao/proj/gocool/app/stylesheets/test.sass
 
-/* line 8, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-body, ul, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset {
-  margin: 0;
-  padding: 0; }
+1: @import partials/discuz.sass
 
-/* line 12, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-body, td, input, textarea, select, button {
-  color: #444444;
-  font-family: Verdana,Helvetica,Arial,sans-serif;
-  font-size: 12px;
-  font-size-adjust: none;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1.6em; }
-
-/* line 22, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-a {
-  color: #000000;
-  text-decoration: none; }
-  /* line 26, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-  a img {
-    border: medium none; }
-
-/* line 29, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-* {
-  word-wrap: break-word; }
-
-/* line 32, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-.wrap {
-  margin: 0 auto;
-  text-align: left; }
-
-/* line 36, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-.pipe {
-  margin: 0 5px; }
-
-/* line 39, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-.lighttxt, .lighttxt a, .pipe {
-  color: #999999; }
-
-/* line 42, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-em, cite, strong, th {
-  font-style: normal;
-  text-align: left; }
-
-/* line 46, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-ul li {
-  list-style-image: none;
-  list-style-position: outside;
-  list-style-type: none; }
-
-/* line 51, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-a:hover {
-  text-decoration: underline; }
-
-/* line 54, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-.noborder, .noborder td {
-  border: medium none !important; }
-
-/* line 57, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#header {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: #FFFFFF none repeat scroll 0 0;
-  border-bottom: 1px solid #00B2E8;
-  margin-bottom: 8px;
-  width: 100%; }
-  /* line 66, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-  #header h2 {
-    float: left;
-    margin: 0; }
-  /* line 70, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-  #header .wrap {
-    height: 120px;
-    padding: 8px 0 4px;
-    position: relative; }
-
-/* line 75, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#umenu, #umenu a, #umenu .pipe {
-  color: #666666; }
-
-/* line 78, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#umenu {
-  line-height: 20px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  line-height: 20px; }
-  /* line 85, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-  #umenu cite {
-    font-weight: 700; }
-    /* line 88, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-    #umenu cite span a {
-      font-weight: 400;
-      margin: 0; }
-  /* line 92, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-  #umenu a {
-    margin: 0 6px; }
-
-/* line 95, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#menu {
-  bottom: 0;
-  height: 26px;
-  position: absolute;
-  right: 0; }
-  /* line 101, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-  #menu li {
-    -moz-background-clip: border;
-    -moz-background-inline-policy: continuous;
-    -moz-background-origin: padding;
-    background: #EBF4FD url(../../images/mtabbg.gif) repeat-x scroll 0 100%;
-    display: inline;
-    float: left;
-    margin-left: 5px; }
-  /* line 110, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-  #menu a {
-    -moz-background-clip: border;
-    -moz-background-inline-policy: continuous;
-    -moz-background-origin: padding;
-    background: transparent none repeat scroll 0 0;
-    border-color: #B0E4EF;
-    border-style: solid;
-    border-width: 1px 1px 0;
-    color: #666666;
-    float: left;
-    height: 25px;
-    line-height: 25px;
-    overflow: hidden;
-    padding: 0 14px;
-    text-decoration: none; }
-  /* line 126, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-  #menu li.current a {
-    background-color: #1E4B7E;
-    border-color: #00B2E8;
-    color: #C3D3E4;
-    height: 26px; }
-
-/* line 133, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#nav, #nav a {
-  color: #C3D3E4; }
-
-/* line 136, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#nav {
-  -moz-background-clip: border;
-  -moz-background-inline-policy: continuous;
-  -moz-background-origin: padding;
-  background: transparent url(../../images/icon_nav.gif) no-repeat scroll 0 50%;
-  line-height: 3em;
-  margin: -8px auto 0;
-  text-align: left;
-  text-indent: 25px; }
-
-/* line 147, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#footer, #footer a {
-  color: #8691A2; }
-
-/* line 150, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#footer {
-  padding: 1em 0;
-  position: relative; }
-
-/* line 154, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#footlink {
-  float: right;
-  text-align: right; }
-
-/* line 158, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-.smalltext {
-  font-family: Verdana,Helvetica,Arial,sans-serif;
-  font-size: 0.83em; }
-
-/* line 162, ../../../vendor/gems/discuz_int-0.1.0/app/stylesheets/partials/_discuz.sass */
-#rightinfo {
-  float: left; }
+Backtrace:
+/Users/gcao/proj/gocool/app/stylesheets/test.sass:1
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/import_node.rb:64:in `import'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/import_node.rb:25:in `imported_file'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:147:in `visit_import'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `map'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:27:in `visit_children'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `send'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/base.rb:37:in `visit'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:18:in `visit'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:7:in `send'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/visitors/perform.rb:7:in `visit'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/tree/root_node.rb:20:in `render'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/engine.rb:300:in `_render'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/engine.rb:248:in `render'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/util.rb:297:in `silence_sass_warnings'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/engine.rb:248:in `render'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:319:in `update_stylesheet'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:181:in `update_stylesheets'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:175:in `each'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:175:in `update_stylesheets'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:173:in `each'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin/compiler.rb:173:in `update_stylesheets'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin.rb:81:in `update_stylesheets'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin.rb:54:in `check_for_updates'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/sass-3.1.10/lib/sass/../sass/plugin/rack.rb:51:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/etag.rb:23:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/conditionalget.rb:25:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/flash.rb:243:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/session/abstract/id.rb:195:in `context'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/session/abstract/id.rb:190:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/cookies.rb:331:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/activerecord-3.1.1/lib/active_record/query_cache.rb:62:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/activerecord-3.1.1/lib/active_record/connection_adapters/abstract/connection_pool.rb:477:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/callbacks.rb:29:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/activesupport-3.1.1/lib/active_support/callbacks.rb:392:in `_run_call_callbacks'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/activesupport-3.1.1/lib/active_support/callbacks.rb:81:in `send'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/activesupport-3.1.1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/reloader.rb:68:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/sendfile.rb:101:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/show_exceptions.rb:47:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/railties-3.1.1/lib/rails/rack/logger.rb:13:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/methodoverride.rb:24:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/runtime.rb:17:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/activesupport-3.1.1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/lock.rb:15:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/actionpack-3.1.1/lib/action_dispatch/middleware/static.rb:53:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/hoptoad_notifier-2.4.11/lib/hoptoad_notifier/user_informer.rb:12:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/railties-3.1.1/lib/rails/engine.rb:456:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/railties-3.1.1/lib/rails/rack/content_length.rb:16:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/railties-3.1.1/lib/rails/rack/log_tailer.rb:14:in `call'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/handler/mongrel.rb:77:in `process'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/handler/mongrel.rb:38:in `run'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/rack-1.3.4/lib/rack/server.rb:265:in `start'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/railties-3.1.1/lib/rails/commands/server.rb:70:in `start'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/railties-3.1.1/lib/rails/commands.rb:54
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/railties-3.1.1/lib/rails/commands.rb:49:in `tap'
+/Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/railties-3.1.1/lib/rails/commands.rb:49
+script/rails:6:in `require'
+script/rails:6
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: partials/discuz.sass.\A               Load paths:\A                 Compass::SpriteImporter\A                 /Users/gcao/proj/gocool/public/stylesheets/sass\A                 /Users/gcao/proj/gocool/app/stylesheets\A                 /Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/compass-0.11.5/frameworks/blueprint/stylesheets\A                 /Users/gcao/.rvm/gems/ruby-1.8.7-p334@gocool/gems/compass-0.11.5/frameworks/compass/stylesheets\A                 /Users/gcao/proj/gocool/vendor/gems/discuz_int-0.1.0/app/stylesheets\A         on line 1 of /Users/gcao/proj/gocool/app/stylesheets/test.sass\A \A 1: @import partials/discuz.sass"; }

@@ -1,5 +1,4 @@
 class Invitation < ActiveRecord::Base
-  include ActionController::UrlWriter
   include ThreadGlobals
   include AASM
   
