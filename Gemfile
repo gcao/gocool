@@ -4,7 +4,7 @@ source "http://rubygems.org"
 # source "http://gems.github.com"
 
 # bundler requires these gems in all environments
-gem "rails", ">=3.0.0"
+gem "rails", "~>3.0.0"
 gem "aspect4r"
 gem "mysql"
 gem "json"
