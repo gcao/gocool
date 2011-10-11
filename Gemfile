@@ -41,6 +41,13 @@ group :development do
   # gem 'rubaidh-google_analytics', :require => 'rubaidh/google_analytics'
   gem 'rack-bug', :require => "rack/bug"
   gem "mongrel"
+  gem "guard"
+  gem "guard-bundler"
+  gem "guard-sass"
+  gem "guard-shell"
+  gem "rb-fsevent"
+  # brew install growl_notify
+  gem "growl"
 end
 
 group :test do
