@@ -46,6 +46,8 @@ h2. Design Considerations
 
 h3. Misc
 
+* Switch from haml to slim
+
 * Do not use AJAX on search form submission and pagination because browser history does not work well with ajax
 * Remember parameters on pagination, e.g. on players page, remember gaming platform, username when navigate to next page
 * Flash message cleanup

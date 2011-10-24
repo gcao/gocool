@@ -43,7 +43,6 @@ group :development do
   gem "mongrel"
   gem "guard"
   gem "guard-bundler"
-  gem "guard-sass"
   gem "guard-shell"
   gem "rb-fsevent"
   # brew install growl_notify

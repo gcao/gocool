@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.datetime "updated_at"
   end
 
-  add_index "invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>"767"}
+  add_index "invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>"255"}
   add_index "invitations", ["inviter_id"], :name => "invitations_inviter_id"
 
   create_table "messages", :force => true do |t|
