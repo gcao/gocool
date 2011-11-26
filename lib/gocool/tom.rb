@@ -16,7 +16,7 @@ module Gocool
     
       # Return ZhuantiPage list
       def children
-        doc = Nokogiri::HTML(open(@url), nil, "GB18030")
+        doc = Nokogiri::HTML(open(@url).read, nil, "GB18030")
 
         zhuanti_pages = []
 

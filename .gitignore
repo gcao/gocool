@@ -7,3 +7,4 @@ app/stylesheets/.sass-cache
 vendor/plugins/discuz_auth/app/stylesheets/.sass-cache
 tmp
 log
+.sass-cache/
