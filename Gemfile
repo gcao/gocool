@@ -20,14 +20,8 @@ gem "nokogiri"
 gem "newrelic_rpm"
 gem "jammit"
 gem "capistrano"
-
-git "git://github.com/gcao/discuz_robot.git" do
-  gem "discuz_robot"
-end
-
-git "git://github.com/gcao/sgf_parser.git" do
-  gem "sgf_parser", :require => "sgf"
-end
+gem "discuz_robot", "~>0.1.0"
+gem "sgf_parser", "~>0.1.0"
 
 group :development do
   # bundler requires these gems in development

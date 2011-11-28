@@ -1,5 +1,9 @@
-raise "Environment variable CHEF_SERVER is not set." unless ENV["CHEF_SERVER"]
-raise "Environment variable CHEF_USER is not set." unless ENV["CHEF_USER"]
+%w(CHEF_SERVER CHEF_USER).each do |env|
+  raise "Environment variable #{env} is not set." unless ENV[env]
+end
+
+require 'hoptoad_notifier/capistrano'
+require 'bundler/capistrano'
 
 set :application, "gocool"
 set :deploy_to, "/data/apps/#{application}"
@@ -33,9 +37,7 @@ task :copy_over_config_files do
   run "chmod -R a+w #{release_path}/public/stylesheets/cache #{release_path}/public/javascripts/cache"
 end
 
-
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
   $: << File.join(vendored_notifier, 'lib')
 end
 
-require 'hoptoad_notifier/capistrano'
