@@ -8,3 +8,7 @@ vendor/plugins/discuz_auth/app/stylesheets/.sass-cache
 tmp
 log
 .sass-cache
+vendor/plugins/active_scaffold
+vendor/plugins/discuz_int
+vendor/gems/communityengine-2.0.0
+

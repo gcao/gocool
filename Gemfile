@@ -4,7 +4,7 @@ source "http://rubygems.org"
 # source "http://gems.github.com"
 
 # bundler requires these gems in all environments
-gem "rails", "~>3.0.0"
+gem "rails", "~>3.1.0"
 gem "aspect4r"
 gem "mysql"
 gem "json"
@@ -19,6 +19,7 @@ gem "nokogiri"
 # gem "newrelic_rpm"
 gem "jammit"
 gem "formtastic"
+gem "community_engine", :path => "vendor/gems/communityengine-2.0.0"
 
 git "git://github.com/gcao/discuz_robot.git" do
 # git File.expand_path(File.dirname(__FILE__) + "/../discuz_robot/.git") do

@@ -4,3 +4,6 @@
 [submodule "vendor/plugins/discuz_int"]
 	path = vendor/plugins/discuz_int
 	url = git://github.com/gcao/discuz_int.git
+[submodule "vendor/gems/communityengine-2.0.0"]
+	path = vendor/gems/communityengine-2.0.0
+	url = https://github.com/bborn/communityengine.git

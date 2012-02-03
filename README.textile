@@ -86,3 +86,8 @@ Deploy gocool2 to production
 
 What do we do with migrations?
 Leave migrations in gocool app
+
+
+NOTES:
+To fix undefined method `context_class' for nil:NilClass
+See https://github.com/rails/sass-rails/commit/636f668e6f80832833669546a605f09422eb1253#diff-0
