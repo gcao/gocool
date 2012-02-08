@@ -58,6 +58,7 @@ group :test do
 end
 
 group :production do
-  gem "syslog-logger"
+  gem "SyslogLogger", :require => 'syslog_logger'
   # gem "rubaidh-google_analytics"
 end
+

@@ -28,11 +28,14 @@ namespace :deploy do
   end
 end
 
-after "deploy:update_code", :copy_over_config_files
+after "deploy:update_code" do
+  copy_over_config_files
+  run "mkdir #{release_path}/public/assets"
+  run "chmod -R a+w #{release_path}/public/assets #{release_path}/public/javascripts/cache #{release_path}/public/stylesheets/cache #{release_path}/public/stylesheets/compiled"
+end
 
 task :copy_over_config_files do
   run "cp -rf #{deploy_to}/#{shared_dir}/config/* #{release_path}/config/"
-  run "chmod -R a+w #{release_path}/public/stylesheets/cache #{release_path}/public/javascripts/cache"
 end
 
 require 'bundler/capistrano'
