@@ -56,7 +56,6 @@ GEM
       activesupport (= 3.0.11)
     activesupport (3.0.11)
     arel (2.0.10)
-    aspect4r (0.10.0)
     builder (2.1.2)
     cgi_multipart_eof_fix (2.5.0)
     cocaine (0.2.1)
@@ -167,7 +166,6 @@ PLATFORMS
 DEPENDENCIES
   SyslogLogger
   aasm
-  aspect4r
   compass (~> 0.10.0)
   discuz_int!
   discuz_robot!

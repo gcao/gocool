@@ -5,7 +5,6 @@ source "http://rubygems.org"
 
 # bundler requires these gems in all environments
 gem "rails", "~>3.0.0"
-gem "aspect4r"
 gem "mysql"
 gem "json"
 # gem "calendar_date_select"

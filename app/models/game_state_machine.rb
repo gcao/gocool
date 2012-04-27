@@ -2,7 +2,6 @@ module GameStateMachine
   def self.included(klass)
     klass.class_eval do
       include AASM
-      # include Aspect4r
 
       aasm_column :state
 
