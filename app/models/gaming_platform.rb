@@ -1,3 +1,4 @@
+# coding: utf-8
 class GamingPlatform < ActiveRecord::Base
   ALL = 999
 

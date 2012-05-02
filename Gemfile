@@ -4,13 +4,18 @@ source "http://rubygems.org"
 # source "http://gems.github.com"
 
 # bundler requires these gems in all environments
-gem "rails", "~>3.0.0"
+gem "rails", "~>3.2.0"
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
 gem "mysql"
 gem "json"
 # gem "calendar_date_select"
 gem "paperclip"
-gem "haml", "~>3.0.0"
-gem "compass", "~>0.10.0"
+gem "haml", "~>3.1.0"
+#gem "compass", "~>0.10.0"
 gem "will_paginate"
 gem "hoptoad_notifier"
 gem "aasm"
@@ -39,7 +44,6 @@ group :development do
   # gem "rails-footnotes"
   # gem 'rubaidh-google_analytics', :require => 'rubaidh/google_analytics'
   gem 'rack-bug', :require => "rack/bug"
-  gem "mongrel"
   gem "guard"
   gem "guard-bundler"
   gem "guard-shell"

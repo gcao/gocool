@@ -19,5 +19,11 @@ Gocool::Application.configure do
 
   # config.middleware.use "Rack::Bug",
   #                       :secret_key => "epT5uCIchlsHCeR9dloOeAPG66PtHd9K8l0q9avitiaA/KUrY7DE52hD4yWY+8z1",
-  #                       :password   => "admin"                      
+  #                       :password   => "admin"
+
+  # Do not compress assets
+  config.assets.compress = false
+
+  # Expands the lines which load the assets
+  config.assets.debug = true
 end

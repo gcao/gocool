@@ -42,6 +42,12 @@ module Gocool
     config.autoload_paths += %W(#{Rails.root}/app/misc)
 
     # config.action_controller.relative_url_root = "/app"
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
+
+    # Version of your assets, change this if you want to expire all your assets
+    config.assets.version = '1.0'
   end
 end
 

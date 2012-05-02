@@ -6,16 +6,9 @@
     %title= @page_title
 
     = formtastic_stylesheet_link_tag if @formtastic
-    = stylesheet_link_tag 'compiled/discuz.css'
+    = stylesheet_link_tag 'discuz.css'
     /[if IE]
-      = stylesheet_link_tag 'compiled/ie.css'
-
-    - if Rails.env == 'development' # Javascript debug help
-      = javascript_include_tag "stacktrace"
-      :javascript
-        window.onerror = function() {
-          alert(printStacktrace().join('\n\n'));
-        }
+      = stylesheet_link_tag 'ie.css'
 
     = yield :head
   %body.bp

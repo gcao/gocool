@@ -1,3 +1,4 @@
+# coding: utf-8
 class Game < ActiveRecord::Base
   include GameStateMachine
   include GameInPlay
