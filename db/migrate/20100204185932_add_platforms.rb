@@ -1,3 +1,4 @@
+# coding: utf-8
 class AddPlatforms < ActiveRecord::Migration
   def self.up
     china = NationRegion.find_by_name('China')

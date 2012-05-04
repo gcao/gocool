@@ -1,4 +1,7 @@
 class Setting < ActiveRecord::Base
+
+  attr_accessible :name, :data_type, :value
+
   all.each do |setting|
     self.class.send :define_method, setting.name do |*args|
       setting = Setting.find_by_name(setting.name)

@@ -1,3 +1,4 @@
+# coding: utf-8
 class NationsAndPlatforms < ActiveRecord::Migration
   def self.up
     china = NationRegion.create!(:name => 'China')

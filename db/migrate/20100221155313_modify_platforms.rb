@@ -1,3 +1,4 @@
+# coding: utf-8
 class ModifyPlatforms < ActiveRecord::Migration
   def self.up
     add_column :gaming_platforms, :sort_order, :integer

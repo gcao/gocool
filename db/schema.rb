@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -19,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.integer  "external_id"
     t.integer  "external_id2"
     t.text     "options"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "favorites", ["user_id", "favorite_type"], :name => "index_favorites_on_user_id_and_favorite_type"
@@ -104,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.string   "white_team"
     t.integer  "primary_upload_id"
     t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.boolean  "for_rating"
   end
 
@@ -121,8 +122,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.boolean  "is_turn_based"
     t.text     "description"
     t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "sort_order"
   end
 
@@ -140,11 +141,11 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.string   "response",   :limit => 4000
     t.date     "expires_on"
     t.integer  "game_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
   end
 
-  add_index "invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>"255"}
+  add_index "invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>255}
   add_index "invitations", ["inviter_id"], :name => "invitations_inviter_id"
 
   create_table "messages", :force => true do |t|
@@ -167,8 +168,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.string   "name"
     t.text     "description"
     t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "pair_stats", :force => true do |t|
@@ -180,8 +181,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.integer  "games_as_white",      :default => 0
     t.integer  "games_won_as_white",  :default => 0
     t.integer  "games_lost_as_white", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   add_index "pair_stats", ["opponent_id"], :name => "index_pair_stats_on_opponent_id"
@@ -198,8 +199,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.integer  "games_lost_as_white", :default => 0
     t.datetime "first_game_played"
     t.datetime "last_game_played"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   add_index "player_stats", ["player_id"], :name => "index_player_stats_on_player_id", :unique => true
@@ -223,8 +224,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.string   "email"
     t.text     "description"
     t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "parent_id"
     t.integer  "gaming_platform_id"
     t.integer  "temp_id"
@@ -252,8 +253,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.string   "name",                              :null => false
     t.string   "description"
     t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "data_type",   :default => "String"
   end
 
@@ -277,8 +278,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.integer  "black_id"
     t.integer  "white_id"
     t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "tournament_players", :force => true do |t|
@@ -288,8 +289,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.boolean  "is_winner"
     t.text     "description"
     t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "tournaments", :force => true do |t|
@@ -306,8 +307,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.integer  "lft"
     t.integer  "rgt"
     t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "uploads", :force => true do |t|
@@ -323,8 +324,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.text     "description"
     t.string   "hash_code"
     t.string   "updated_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
@@ -343,8 +344,8 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "user_type",       :default => 0
     t.integer  "external_id"
     t.integer  "role",            :default => 0
