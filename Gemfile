@@ -1,17 +1,7 @@
-# See here: http://gembundler.com/v1.0/rails23.html
-
 source "http://rubygems.org"
-# source "http://gems.github.com"
 
 # bundler requires these gems in all environments
 gem "rails", "~>3.2.0"
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem "compass", "~>0.12.0"
-  gem 'compass-rails', '~> 1.0.0'
-  gem 'uglifier', '>= 1.0.3'
-end
 gem "mysql2"
 gem "json"
 # gem "calendar_date_select"
@@ -22,8 +12,15 @@ gem "hoptoad_notifier"
 gem "aasm"
 gem "nokogiri"
 # gem "newrelic_rpm"
-gem "jammit"
 gem "formtastic"
+
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem "compass", "~>0.12.0"
+  gem 'compass-rails', '~> 1.0.0'
+  gem 'uglifier', '>= 1.0.3'
+end
 
 git "git://github.com/gcao/discuz_robot.git" do
 # git File.expand_path(File.dirname(__FILE__) + "/../discuz_robot/.git") do

@@ -8,14 +8,6 @@ module ApplicationHelper
     render :partial => 'shared/show_flash', :locals => {:container_class => container_class}
   end
 
-  def include_jquery
-    if Rails.env.production?
-      '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>'
-    else
-      javascript_include_tag "jquery"
-    end
-  end
-  
   def black_player_html(game)
     name      = game.black_name_with_rank
     is_winner = game.winner == Game::WINNER_BLACK

@@ -1,6 +1,15 @@
+//= require jquery-1.2.6
+//= require jqueryslidemenu.js
+//= require jquery.autocomplete.js
+//= require jquery.livequery.js
+//= require jquery.date_input.js
+//= require jquery.date_input.zh_CN.js
+//= require validanguage.js
+//= require tooltip.js
+//= require upload.js
 jQuery(document).ready(function(){
-  arrowimages.down[1]="/images/down.gif";
-  arrowimages.right[1]="/images/right.gif";
+  arrowimages.down[1]="/assets/down.gif";
+  arrowimages.right[1]="/assets/right.gif";
   jQuery('#myslidemenu .#' + controller_name).addClass('active');
 
   if (!jQuery.browser.mozilla) jQuery('#firefox_container').show();
