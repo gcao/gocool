@@ -48,7 +48,8 @@ Gocool::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  # Precompile *all* assets, except those that start with underscore
+  config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
 
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.delivery_method = :sendmail
