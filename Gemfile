@@ -8,6 +8,8 @@ gem "rails", "~>3.2.0"
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem "compass", "~>0.12.0"
+  gem 'compass-rails', '~> 1.0.0'
   gem 'uglifier', '>= 1.0.3'
 end
 gem "mysql"
@@ -15,7 +17,6 @@ gem "json"
 # gem "calendar_date_select"
 gem "paperclip"
 gem "haml", "~>3.1.0"
-#gem "compass", "~>0.10.0"
 gem "will_paginate"
 gem "hoptoad_notifier"
 gem "aasm"
