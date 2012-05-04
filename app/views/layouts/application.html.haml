@@ -1,4 +1,4 @@
-!!! transitional
+!!! html
 %html
   %head
     %meta(http-equiv="content-type" content="text/html;charset=UTF-8")
@@ -10,6 +10,7 @@
     /[if IE]
       = stylesheet_link_tag 'ie.css'
 
+    = csrf_meta_tags
     = yield :head
   %body.bp
     = render 'discuz/header'

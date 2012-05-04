@@ -1,4 +1,5 @@
-//= require jquery-1.2.6
+//= require jquery
+//= require jquery_ujs
 //= require jqueryslidemenu.js
 //= require jquery.autocomplete.js
 //= require jquery.livequery.js

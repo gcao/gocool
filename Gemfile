@@ -1,7 +1,8 @@
-source "http://rubygems.org"
+source 'https://rubygems.org'
 
 # bundler requires these gems in all environments
 gem "rails", "~>3.2.0"
+gem 'jquery-rails'
 gem "mysql2"
 gem "json"
 # gem "calendar_date_select"
@@ -63,3 +64,11 @@ group :production do
   # gem "rubaidh-google_analytics"
 end
 
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'ruby-debug19', :require => 'ruby-debug'

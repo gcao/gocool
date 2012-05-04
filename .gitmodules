@@ -1,6 +1,0 @@
-[submodule "vendor/plugins/active_scaffold"]
-	path = vendor/plugins/active_scaffold
-	url = git://github.com/activescaffold/active_scaffold.git
-[submodule "vendor/plugins/discuz_int"]
-	path = vendor/plugins/discuz_int
-	url = git://github.com/gcao/discuz_int.git
