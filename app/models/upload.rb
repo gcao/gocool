@@ -130,10 +130,8 @@ class Upload < ActiveRecord::Base
   end
 
   after_create do
-    super
-
     convert_to_utf
-   end
+  end
 
   def update_hash_code
     self.hash_code = Gocool::Md5.file_to_md5(self.file.path)

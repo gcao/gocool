@@ -1,8 +1,6 @@
 # coding: utf-8
 class GamingPlatform < ActiveRecord::Base
 
-  attr_accessible :name, :description, :url, :nation_region_id, :is_turn_based
-
   ALL = 999
 
   default_scope :order => 'name'
