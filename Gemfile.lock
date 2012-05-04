@@ -107,7 +107,7 @@ GEM
     mocha (0.11.4)
       metaclass (~> 0.0.1)
     multi_json (1.3.4)
-    mysql (2.8.1)
+    mysql2 (0.3.11)
     nokogiri (1.5.2)
     open4 (1.3.0)
     paperclip (3.0.2)
@@ -202,7 +202,7 @@ DEPENDENCIES
   jammit
   json
   mocha
-  mysql
+  mysql2
   nokogiri
   paperclip
   rack-bug

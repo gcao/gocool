@@ -12,7 +12,7 @@ group :assets do
   gem 'compass-rails', '~> 1.0.0'
   gem 'uglifier', '>= 1.0.3'
 end
-gem "mysql"
+gem "mysql2"
 gem "json"
 # gem "calendar_date_select"
 gem "paperclip"
