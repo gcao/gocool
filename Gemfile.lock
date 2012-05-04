@@ -1,19 +1,15 @@
-GIT
-  remote: git://github.com/gcao/discuz_int.git
-  revision: 58be39ffe05b607e517cfd148d037ee0044c478c
-  branch: rails3
+PATH
+  remote: vendor/gems/discuz_int
   specs:
     discuz_int (0.1.0)
 
-GIT
-  remote: git://github.com/gcao/discuz_robot.git
-  revision: 8dfa9a2e5f3b55ee99010b3afa99b571f5f65e28
+PATH
+  remote: vendor/gems/discuz_robot
   specs:
     discuz_robot (0.1.0)
 
-GIT
-  remote: git://github.com/gcao/sgf_parser.git
-  revision: 2fa89fc746065102809b7d501cbd3a7cf2687032
+PATH
+  remote: vendor/gems/sgf_parser
   specs:
     sgf_parser (0.1.0)
 

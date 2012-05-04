@@ -7,3 +7,6 @@
 [submodule "public/jsgameviewer"]
 	path = public/jsgameviewer
 	url = git://github.com/gcao/jsgameviewer.git
+[submodule "vendor/gems/discuz_robot"]
+	path = vendor/gems/discuz_robot
+	url = git://github.com/gcao/discuz_robot.git

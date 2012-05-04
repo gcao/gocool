@@ -23,20 +23,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-git "git://github.com/gcao/discuz_robot.git" do
-# git File.expand_path(File.dirname(__FILE__) + "/../discuz_robot/.git") do
-  gem "discuz_robot"
-end
-
-git "git://github.com/gcao/sgf_parser.git" do
-# git File.expand_path(File.dirname(__FILE__) + "/../sgf_parser/.git") do
-  gem "sgf_parser", :require => "sgf"
-end
-
-git "git://github.com/gcao/discuz_int.git", :branch => "rails3" do
-# git File.expand_path(File.dirname(__FILE__) + "/../discuz_int/.git"), :branch => "rails3" do
-  gem "discuz_int", :require => 'discuz_int'
-end
+gem "discuz_robot", :path => "vendor/gems/discuz_robot"
+gem "sgf_parser", :require => "sgf", :path => "vendor/gems/sgf_parser"
+gem "discuz_int", :require => 'discuz_int', :path => "vendor/gems/discuz_int"
 
 group :development do
   # bundler requires these gems in development
