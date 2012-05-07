@@ -10,3 +10,6 @@
 [submodule "vendor/gems/discuz_robot"]
 	path = vendor/gems/discuz_robot
 	url = git://github.com/gcao/discuz_robot.git
+[submodule "vendor/gems/perens-instant-user"]
+	path = vendor/gems/perens-instant-user
+	url = git://github.com/gcao/perens-instant-user.git

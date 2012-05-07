@@ -214,6 +214,6 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-end
 
-Rails.application.config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  Rails.application.config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+end if defined?(Devise)
