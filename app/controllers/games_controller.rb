@@ -33,10 +33,10 @@ class GamesController < ApplicationController
       end
 
       format.sgf do
-        if @game.from_url?
-          redirect_to upload_url(@game.primary_source, :format => "sgf")
-        else
+        if @game.detail
           render :text => Gocool::SGF::GameRenderer.new.render(@game)
+        else
+          redirect_to upload_url(@game.primary_source, :format => "sgf")
         end
       end
     end

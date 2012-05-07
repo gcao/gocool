@@ -50,11 +50,11 @@ class UploadsController < ApplicationController
     when UploadResult::SUCCESS
       flash.now[:success] = t('uploads.success')
       @upload = upload_result.upload
-      render :show, :layout => "simple"
+      redirect_to upload_url(@upload)
     when UploadResult::FOUND
       flash.now[:notice] = t('uploads.game_found')
       @upload = upload_result.found_upload
-      render :show, :layout => "simple"
+      redirect_to upload_url(@upload)
     when UploadResult::VALIDATION_ERROR
       flash.now[:error] = t('uploads.file_required')
       render :index

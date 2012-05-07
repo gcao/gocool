@@ -8,8 +8,6 @@ class Upload < ActiveRecord::Base
 
   belongs_to :game
   has_attached_file :file
-
-  default_scope :include => :game, :conditions => "game_id is not null"
   
   scope :with_hash, lambda { |hash|
     {:conditions => ["hash_code = ?", hash]}
