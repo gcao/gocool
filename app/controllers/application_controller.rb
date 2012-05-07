@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
 
+  layout "application_devise" if ENV['AUTH_ENGINE'] == 'devise'
+
   before_filter :authenticate_via_bbs if ENV['INTEGRATE_WITH_FORUM'] == 'true'
   before_filter :admin_required, :only => [:edit, :update, :destroy]
   before_filter :set_title_and_header

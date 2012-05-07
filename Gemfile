@@ -27,6 +27,8 @@ gem "discuz_robot", :path => "vendor/gems/discuz_robot"
 gem "sgf_parser", :require => "sgf", :path => "vendor/gems/sgf_parser"
 gem "discuz_int", :require => 'discuz_int', :path => "vendor/gems/discuz_int" # Use branch rails3
 
+gem "perens-instant-user"
+
 group :development do
   # bundler requires these gems in development
   # gem "rails-footnotes"

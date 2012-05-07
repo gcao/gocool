@@ -4,6 +4,8 @@ ENV["USE_XSENDFILE"]        = "false"
 ENV['USE_OLD_JSGAMEVIEWER'] = "false"
 ENV['BASE_URL']             = 'http://localhost'
 
+ENV['AUTH_ENGINE']          ||= 'discuz' # discuz or devise
+
 ENV['JUGGERNAUT_INTEGRATION'] = 'false'
 
 ENV['DISCUZ_HOME']            = '/bbs'
