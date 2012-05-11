@@ -1,6 +1,6 @@
 class HomepageController < ApplicationController
   def index
-    if logged_in?
+    if user_signed_in?
       @invitations_to_me = Invitation.active.to_me
       @invitations_by_me = Invitation.active.by_me
       @qiren_games = Game.on_platform(GamingPlatform.qiren).with_detail.sort_by_last_move_time

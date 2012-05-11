@@ -2,7 +2,7 @@
 class Game < ActiveRecord::Base
   include GameStateMachine
   include GameInPlay
-  include ThreadGlobals
+  #include ThreadGlobals
 
   belongs_to :gaming_platform
   belongs_to :primary_source, :class_name => 'Upload', :foreign_key => 'primary_upload_id', :dependent => :destroy

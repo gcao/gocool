@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  include ThreadGlobals
+  #include ThreadGlobals
   #include DiscuzInt::Authentication
 
   helper :urls
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   layout "application_devise" if ENV['AUTH_ENGINE'] == 'devise'
 
   before_filter do
-    Thread.current[:user] = user_signed_in
+    Thread.current[:user] = current_user
   end
   #before_filter :authenticate_via_bbs if ENV['INTEGRATE_WITH_FORUM'] == 'true'
   #before_filter :admin_required, :only => [:edit, :update, :destroy]

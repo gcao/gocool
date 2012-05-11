@@ -13,8 +13,9 @@
     = csrf_meta_tags
     = yield :head
   %body.bp
+    #menu-container
+      = render "layouts/menu_body"
     #container
-      AUTH ENGINE IS DEVISE.
       %hr.space
 
       = yield

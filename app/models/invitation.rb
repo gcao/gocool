@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  include ThreadGlobals
+  #include ThreadGlobals
   include AASM
   
   belongs_to :inviter, :class_name => 'User', :foreign_key => 'inviter_id'
