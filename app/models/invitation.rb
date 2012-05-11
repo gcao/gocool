@@ -14,20 +14,20 @@ class Invitation < ActiveRecord::Base
     {:conditions => ["invitations.state not in ('accepted', 'rejected', 'canceled', 'expired')"]}
   }
 
-  scope :by_me, lambda {
-    if user = Thread.current[:user]
+  scope :by_me, lambda { |user|
+    #if user = Thread.current[:user]
       {:conditions => ["invitations.inviter_id = ?", user.id]}
-    else
-      {:conditions => ["invitations.id < 0"]}
-    end
+    #else
+    #  {:conditions => ["invitations.id < 0"]}
+    #end
   }
 
-  scope :to_me, lambda {
-    if user = Thread.current[:user]
+  scope :to_me, lambda { |user|
+    #if user = Thread.current[:user]
       {:conditions => ["invitations.invitees like ?", "%\"#{user.id}\":%"]}
-    else
-      {:conditions => ["invitations.id < 0"]}
-    end
+    #else
+    #  {:conditions => ["invitations.id < 0"]}
+    #end
   }
 
   aasm_column :state

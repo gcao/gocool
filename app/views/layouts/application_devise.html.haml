@@ -13,7 +13,6 @@
     = csrf_meta_tags
     = yield :head
   %body.bp
-    = render 'discuz/header'
     #container
       AUTH ENGINE IS DEVISE.
       %hr.space
@@ -24,7 +23,6 @@
       #cursor
       = image_tag "arrow.gif", :id => "pointer", :alt => "", :width => 0, :height => 0
 
-    = render 'discuz/footer'
     = render 'layouts/js_init'
     = javascript_include_tag 'application'
     = yield :footer
