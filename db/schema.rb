@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100716201944) do
+ActiveRecord::Schema.define(:version => 20120511121027) do
 
   create_table "favorites", :force => true do |t|
     t.string   "description"
@@ -188,6 +188,35 @@ ActiveRecord::Schema.define(:version => 20100716201944) do
   add_index "pair_stats", ["opponent_id"], :name => "index_pair_stats_on_opponent_id"
   add_index "pair_stats", ["player_id", "opponent_id"], :name => "index_pair_stats_on_player_id_and_opponent_id", :unique => true
   add_index "pair_stats", ["player_id"], :name => "index_pair_stats_on_player_id"
+
+  create_table "perens_instant_user_users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.string   "authentication_token"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "perens_instant_user_users", ["authentication_token"], :name => "index_perens_instant_user_users_on_authentication_token", :unique => true
+  add_index "perens_instant_user_users", ["confirmation_token"], :name => "index_perens_instant_user_users_on_confirmation_token", :unique => true
+  add_index "perens_instant_user_users", ["email"], :name => "index_perens_instant_user_users_on_email", :unique => true
+  add_index "perens_instant_user_users", ["reset_password_token"], :name => "index_perens_instant_user_users_on_reset_password_token", :unique => true
+  add_index "perens_instant_user_users", ["unlock_token"], :name => "index_perens_instant_user_users_on_unlock_token", :unique => true
 
   create_table "player_stats", :force => true do |t|
     t.integer  "player_id",                          :null => false

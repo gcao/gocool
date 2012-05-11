@@ -210,7 +210,11 @@ Devise.setup do |config|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-  config.warden.default_strategies :discuz if ENV["AUTH_ENGINE"] == 'discuz'
+  config.warden do |manager|
+    manager.default_strategies :discuz if ENV["AUTH_ENGINE"] == 'discuz'
+  end
 
   Rails.application.config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  Devise.parent_controller = "ApplicationController"
 end if defined?(Devise)

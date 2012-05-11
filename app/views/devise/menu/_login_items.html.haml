@@ -2,7 +2,9 @@
   %li
     = current_user.username
   %li
-    = link_to(t('discuz.logout'), destroy_session_path, :method => :delete)
+    = link_to(t('discuz.logout'), '/users/sign_out', :method => :delete)
+    -#= link_to(t('discuz.logout'), destroy_user_session_path, :method => :delete)
 - else
   %li
-    = link_to(t('discuz.login'), new_session_path)
+    = link_to(t('discuz.login'), '/users/sign_in')
+    -#= link_to(t('discuz.login'), new_user_session_path)
