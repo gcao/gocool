@@ -1,7 +1,7 @@
-require "migration_helpers"
+require "gocool/migration_helpers"
 
 class CreateOnlinePlayers < ActiveRecord::Migration
-  extend MigrationHelpers
+  extend Gocool::MigrationHelpers
   
   def self.up
     create_table :online_players do |t|
