@@ -26,9 +26,9 @@ class Message < ActiveRecord::Base
     }
   }
 
-  def initialize(attributes = {})
+  def initialize(attributes = {}, options = {})
     defaults = {:message_type => REGULAR, :source_type => SYSTEM, :source => "SYSTEM", :receiver_type => GAME, :level => INFO}
-    super(defaults.merge(attributes))
+    super(defaults.merge(attributes), options)
   end
   
   def to_json *args

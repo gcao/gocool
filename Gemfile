@@ -1,65 +1,44 @@
+require 'rbconfig'
+HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
-
-# bundler requires these gems in all environments
-gem "rails", "~>3.2.0"
-gem 'jquery-rails'
-gem "mysql2"
-gem "json"
-# gem "calendar_date_select"
-gem "paperclip"
-gem "haml", "~>3.1.0"
-gem "will_paginate"
-gem "hoptoad_notifier"
-gem "aasm"
-gem "nokogiri"
-# gem "newrelic_rpm"
-gem "formtastic"
-
+gem 'rails', '3.2.3'
+gem 'mysql2', "~> 0.3.0"
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem "compass", "~>0.12.0"
-  gem 'compass-rails', '~> 1.0.0'
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem "discuz_robot", :path => "vendor/gems/discuz_robot"
+gem 'jquery-rails'
+gem "haml", ">= 3.1.5"
+gem "haml-rails", ">= 0.3.4", :group => :development
+gem "rspec-rails", ">= 2.10.1", :group => [:development, :test]
+gem "machinist", :group => :test
+gem "factory_girl_rails", ">= 3.2.0", :group => [:development, :test]
+gem "email_spec", ">= 1.2.1", :group => :test
+gem "guard", ">= 0.6.2", :group => :development  
+case HOST_OS
+  when /darwin/i
+    gem 'rb-fsevent', :group => :development
+    gem 'growl', :group => :development
+  when /linux/i
+    gem 'libnotify', :group => :development
+    gem 'rb-inotify', :group => :development
+  when /mswin|windows/i
+    gem 'rb-fchange', :group => :development
+    gem 'win32console', :group => :development
+    gem 'rb-notifu', :group => :development
+end
+gem "guard-bundler", ">= 0.1.3", :group => :development
+gem "guard-rails", ">= 0.0.3", :group => :development
+gem "guard-livereload", ">= 0.3.0", :group => :development
+gem "guard-rspec", ">= 0.4.3", :group => :development
+gem "devise", ">= 2.1.0.rc2"
+gem "cancan", ">= 1.6.7"
+gem "rolify", ">= 3.1.0"
+gem "bootstrap-sass", ">= 2.0.1"
+gem "simple_form", "~> 2.0.0"
+gem "aasm", "~> 3.0.0"
+gem "will_paginate", ">= 3.0.3"
+gem "paperclip", "~> 3.0.0"
 gem "sgf_parser", :require => "sgf", :path => "vendor/gems/sgf_parser"
-gem "discuz_int", :path => "vendor/gems/discuz_int" # Use branch rails3
-
-gem "perens-instant-user", :path => "vendor/gems/perens-instant-user"
-
-group :development do
-  # bundler requires these gems in development
-  # gem "rails-footnotes"
-  # gem 'rubaidh-google_analytics', :require => 'rubaidh/google_analytics'
-  gem 'rack-bug', :require => "rack/bug"
-  gem "guard"
-  gem "guard-bundler"
-  gem "guard-shell"
-  gem "rb-fsevent"
-  # brew install growl_notify
-  gem "growl"
-end
-
-group :test do
-  # bundler requires these gems while running tests
-  gem "rspec", ">= 1.2.8"
-  gem "rspec-rails", ">= 1.2.7.1"
-  gem "mocha"
-  gem "spork"
-end
-
-group :production do
-  gem "SyslogLogger", :require => 'syslog_logger'
-  # gem "rubaidh-google_analytics"
-end
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem "thin", :group => :development

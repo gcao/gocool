@@ -1,59 +1,57 @@
 %h1= t('invitations.create_page_header')
 
-%form.bp{:action=>invitations_url, :method=>"post"}
-  = show_flash 'span-24'
-
-  %fieldset.span-18.no-border
-    .form_row.span-18
-      .span-3
+= form_tag invitations_url do
+  %fieldset
+    .row
+      .span3
         %label(for="invitation_game_type")
           = t('invitations.game_type_label')
-      .span-15.last
+      .span9
         %input(id="invitations_game_type" name="invitation[game_type]" type="radio" value="1" checked="checked")
         = t('games.weiqi_label')
         %input(id="invitations_game_type" name="invitation[game_type]" type="radio" value="2")
         = t('games.daoqi_label')
 
-    .form_row.span-18
-      .span-3
+    .row
+      .span3
         %label(for="invitation_invitees")
           = t('invitations.invitees_label')
           =raw mark_required
-      .span-15.last
+      .span9
         %input#invitation_invitees(type="text" name="invitation[invitees]" size="80" value="#{@invitees}")
 
-    .form_row.span-18
-      .span-3
+    .row
+      .span3
         %label(for="invitation_start_side")
           = t('invitations.start_side_label')
-      .span-15.last
+      .span9
         =start_side_select
 
-    .form_row.span-18
-      .span-3
+    .row
+      .span3
         %label(for="invitation_handicap")
           = t('invitations.handicap_label')
-      .span-15.last
+      .span9
         =handicap_select
 
-    .form_row.span-18
-      .span-3
+    .row
+      .span3
         %label(for="invitation_rule")
           = t('invitations.rule_label')
-      .span-15.last
+      .span9
         =t('invitations.chinese_rule')
 
-    .form_row.span-18
-      .span-3
+    .row
+      .span3
         %label(for="invitation_note")
           = t('invitations.note_label')
-      .span-15.last
+      .span9
         %input#invitation_note(type="text" name="invitation[note]" size="80" value="#{@note}")
 
-    %hr.space
-    .span-14{:align => 'center'}
-      %input{:type => "submit", :name => "commit", :value => t('form.submit_button')}
-      %input{:type => "reset", :value => t('form.reset_button')}
+    .row
+      .offset3.span9
+        %input{:type => "submit", :name => "commit", :value => t('form.submit_button')}
+        %input{:type => "reset", :value => t('form.reset_button')}
 
 - content_for :footer do
   - if @errors

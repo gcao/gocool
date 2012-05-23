@@ -1,2 +1,0 @@
-module Internal::TestHelper
-end

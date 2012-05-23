@@ -1,12 +1,7 @@
-.header_with_link
-  .span-4
+.row
+  .span3
     %h1= t('invitations.page_header')
   %a(href="#{new_invitation_url}")
     = t('invitations.create_link_label')
-
-%hr.space0
-
-= show_flash 'span-24'
-%hr.space0
 
 = render :partial => "invitations"

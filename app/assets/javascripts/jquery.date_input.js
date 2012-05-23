@@ -101,14 +101,14 @@ DateInput.prototype = {
         this.changeInput($(event.target).attr("date"));
       }));
       
-      $("td[date=" + this.dateToString(new Date()) + "]", this.tbody).addClass("today");
+      $("td[date='" + this.dateToString(new Date()) + "']", this.tbody).addClass("today");
       
       $("td.selectable_day", this.tbody).mouseover(function() { $(this).addClass("hover") });
       $("td.selectable_day", this.tbody).mouseout(function() { $(this).removeClass("hover") });
     };
     
     $('.selected', this.tbody).removeClass("selected");
-    $('td[date=' + this.selectedDateString + ']', this.tbody).addClass("selected");
+    $("td[date='" + this.selectedDateString + "']", this.tbody).addClass("selected");
   },
   
   // Select a particular date. If the date is not specified it is read from the input. If no date is
@@ -386,22 +386,3 @@ $.date_input = { initialize: function(opts) {
 
 return DateInput;
 })(jQuery); // End localisation of the $ function
-
-jQuery.extend(DateInput.DEFAULT_OPTS, {
-  stringToDate: function(string) {
-    var matches;
-    if (matches = string.match(/^(\d{4,4})-(\d{2,2})-(\d{2,2})$/)) {
-      return new Date(matches[1], matches[2] - 1, matches[3]);
-    } else {
-      return null;
-    };
-  },
-
-  dateToString: function(date) {
-    var month = (date.getMonth() + 1).toString();
-    var dom = date.getDate().toString();
-    if (month.length == 1) month = "0" + month;
-    if (dom.length == 1) dom = "0" + dom;
-    return date.getFullYear() + "-" + month + "-" + dom;
-  }
-});

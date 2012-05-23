@@ -3,7 +3,8 @@ jsgv.OP_FAILURE    = "1";
 jsgv.OP_JAVASCRIPT = "2";
 
 jQuery.extend(jsGameViewer.CONFIG, {
-  gocoolUrlPrefix: "/app/"
+  //gocoolUrlPrefix: "/app/"
+  gocoolUrlPrefix: "/"
 });
 
 jQuery.extend(jsGameViewer.GameController.prototype, {
@@ -91,7 +92,7 @@ jQuery.extend(GocoolPlayer.prototype, {
           // Forward to end of the game if I am not looking at a gusss move
           if (!c.gameState.currentNode.hasComment()) c.forwardAll();
 
-          c.startUpdater(true);
+          //c.startUpdater(true); // TODO: auto refresh game
         } else if (parsed.status == jsgv.OP_JAVASCRIPT){
           eval(parsed.message);
         } else {

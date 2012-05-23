@@ -22,15 +22,15 @@ class GamingPlatform < ActiveRecord::Base
   end
 
   def self.sina
-    @sina ||= self.find_by_name('新浪')
+    @sina ||= self.find_by_name('Sina')
   end
 
   def self.eweiqi
-    @eweiqi ||= self.find_by_name('弈城')
+    @eweiqi ||= self.find_by_name('eWeiqi')
   end
 
-  def self.qiren
-    @qiren ||= self.find_by_name('棋人')
+  def self.gocool
+    @gocool ||= self.find_by_name('Gocool')
   end
 
   def link_html

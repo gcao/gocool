@@ -22,17 +22,3 @@ production:
   password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
   pool: 5
   timeout: 5000
-
-cucumber:
-  <<: *DEV
-  database: gocool_cucumber
-
-discuz:
-  <<: *DEV
-  database: bbs
-  encoding: gbk
-
-ucenter:
-  <<: *DEV
-  database: ucenter
-  encoding: gbk

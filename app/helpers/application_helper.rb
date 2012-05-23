@@ -1,9 +1,9 @@
-# Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+
   def mark_required
-    "<span class='required_field'>*</span>&nbsp;"
+    raw "<span class='required_field'>*</span>&nbsp;"
   end
-  
+
   def show_flash container_class
     render :partial => 'shared/show_flash', :locals => {:container_class => container_class}
   end
@@ -14,22 +14,12 @@ module ApplicationHelper
     url       = player_url(game.black_id) if game.black_id
     player_html(name, url, is_winner)
   end
-  
+
   def white_player_html(game)
     name      = game.white_name_with_rank
     is_winner = game.winner == Game::WINNER_WHITE
     url       = player_url(game.white_id) if game.white_id
     player_html(name, url, is_winner)
-  end
-
-  def upload_description_html upload
-    if upload.nil?
-      ""
-    elsif upload.discuz_tid.not_blank? and upload.description.not_nil?
-      "<a href='#{upload.discuz_thread_url}' target='_new'>#{h(upload.description)}</a>"
-    else
-      h upload.description
-    end
   end
 
   def view_game_html(game)
@@ -51,15 +41,15 @@ module ApplicationHelper
   end
 
   def reset_button
-    "<input type='button' name='reset', value='#{t('form.reset_button')}'/>"
+    raw "<input type='button' name='reset', value='#{t('form.reset_button')}'/>"
   end
-  
+
   def platform_link platform, with_bracket = true
     return unless platform
-    
+
     # s = "<a href='#{platform_url(platform)}'>#{platform.name}</a>"
     s = platform.name
-    
+
     if with_bracket
       "[#{s}]"
     else

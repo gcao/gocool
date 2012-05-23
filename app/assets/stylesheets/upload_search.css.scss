@@ -1,0 +1,9 @@
+#upload_search_form {
+  label[for=search_username], label[for=from_date] {
+    width: 80px;
+  }
+
+  label[for=search_description], label[for=to_date] {
+    width: 80px;
+  }
+}

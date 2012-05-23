@@ -1,8 +1,8 @@
 %h2= t('players.opponents_header')
 
-.opponents.span-24.active-scaffold.blue-theme
+.opponents
   .digg_pagination= will_paginate opponents, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next'), :param_name => 'opponents_page'
-  %table
+  %table.table
     %thead
       %tr.header
         %th.id_column=    "ID"
@@ -10,6 +10,6 @@
         %th.games_column= t('players_table.games')
         %th.won_column=   t('players_table.my_won')
         %th.lost_column=  t('players_table.my_lost')
-        %th.actions_column &nbsp;
+        %th.actions_column= t('table.actions_label')
     %tbody.records
       = render :partial => 'widgets/opponent', :collection => opponents

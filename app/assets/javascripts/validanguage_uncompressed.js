@@ -1650,7 +1650,7 @@ showError: function( errorMsg ) {
          var errorDisplay = document.getElementById(this.id + settings.errorMsgSpanSuffix);            
     } else {         
          var errorDiv = errorDisplay.parentNode;
-         errorDiv.style.display = 'block';
+         errorDiv.style.display = 'inline-block';
          errorDiv.className = settings.onErrorClassName;
     }
     if(validanguage.useLibrary=='scriptaculous') new Effect.Highlight(errorDiv, { startcolor: '#A85F5F', endcolor: '#C0A6A6', restorecolor: '#ddd' });

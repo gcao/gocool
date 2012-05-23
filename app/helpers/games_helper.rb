@@ -18,6 +18,6 @@ module GamesHelper
   end
   
   def container_css_classes
-    @game.game_type == Game::DAOQI ? "container daoqi" : "container weiqi"
+    @game.game_type == Game::DAOQI ? "game_container daoqi" : "game_container weiqi"
   end
 end

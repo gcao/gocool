@@ -1,36 +1,24 @@
-%h1= @page_header || t('players.page_header')
+%h1= @page_header || t('games.page_header')
     
--form_tag games_path, :method => :get, :class => 'bp' do
-  .span-24
-    = show_flash 'span-24'
-    %table#games_search_form
-      %tr
-        %td
-          %span
-            %label(for="platform")
-              = t('games.platform_label')
-            =gaming_platforms_select 'platform'
-        %td
-          %label#player1_label(for="player1")
-            %em.msg
-              = t('games.player1_label')
-          =text_field_tag 'player1', h(@player1)
-        %td
-          %label#vs_label(for="player2")
-            = t('games.vs_label')
-        %td
-          %label#player2_label(for="player2")
-            %em.msg
-              = t('games.player2_label')
-          =text_field_tag 'player2', h(@player2)
-        %td
-          %input{:type => "hidden", :name => "op", :value => "search"}
-          =submit_tag t('form.search_button')
-          =raw reset_button
-%hr.space
-- if @games
-  #games_widget_container
-    = render_games @games
+=form_tag games_path, :method => :get, :id => 'games_search_form', :class => "horizontal" do
+  %fieldset
+    .row
+      .span12
+        %label(for="platform")
+          = t('games.platform_label')
+        =gaming_platforms_select 'platform'
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        =text_field_tag 'player1', h(@player1), :placeholder => t('games.player1_label')
+        %label#vs_label(for="player2")
+          = t('games.vs_label')
+        =text_field_tag 'player2', h(@player2), :placeholder => t('games.player2_label')
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        %input{:type => "hidden", :name => "op", :value => "search"}
+        =submit_tag t('form.search_button')
+        =raw reset_button
+
+#games_widget_container
+  = render_games @games if @games
 
 - content_for :footer do
   :javascript
@@ -42,6 +30,3 @@
         }
       ]
     };
-    jQuery('#player1, #player2, #player1_label, #vs_label, #player2_label').mouseover(function(){
-      mousetip("#{t('shared.name_supports_wildcards')}");
-    }).mouseout(hidemousetip);

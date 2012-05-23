@@ -1,0 +1,29 @@
+= link_to "Gocool", root_path, :class => 'brand'
+%ul.nav
+  %li.uploads
+    %a{:href=>uploads_url}= t('menu.uploads')
+  %li.upload_search
+    %a{:href=>upload_search_url}= t('menu.upload_search')
+  %li.players
+    %a{:href=>players_url}= t('menu.players')
+  %li.pairs
+    %a{:href=>pairs_url}= t('menu.pairs')
+  %li.games
+    %a{:href=>games_url}= t('menu.games')
+  - if user_signed_in?
+    %li
+      = link_to(t('menu.invitations'), invitations_path)
+    %li
+      = link_to('Logout', destroy_user_session_path, :method=>'delete')
+  - else
+    %li
+      = link_to('Login', new_user_session_path)
+  - if user_signed_in?
+    %li
+      = link_to('Edit account', edit_user_registration_path)
+    - if current_user.has_role? :admin
+      %li
+        = link_to('Admin', users_path)
+  - else
+    %li
+      = link_to('Sign up', new_user_registration_path)

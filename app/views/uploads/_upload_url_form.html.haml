@@ -1,27 +1,24 @@
-%form.bp{:action=>uploads_url, :name=>"uploadUrlForm", :method=>"post"}
-  %fieldset.span-18.no-border
-    - if @upload_type == UploadsController::UPLOAD_URL
-      = show_flash 'span-18'
-
-    .form_row.span-18
-      .span-3
+= form_tag uploads_url, :name => "upload_url_form", :id => "upload_url_form" do
+  %fieldset
+    .row
+      .span4
         %label(for="upload_description2")= t('uploads.description_label')
-      .span-15.last
+      .span8
         %input#upload_description2(type="text" name="upload_description" size="80")
 
-    .form_row.span-18
-      .span-3
+    .row
+      .span4
         %label(for="upload_url")
           = t('uploads.url_label')
           =raw mark_required
-      .span-15.last
+      .span8
         %input#upload_url(type="text" name="upload[url]" size="80")
 
-    %hr.space
-    .span-14{:align => 'center'}
-      %input(type='hidden' name='upload_type' value='url')
-      %input.upload_submit{:type => "submit", :name => "commit", :value => t('uploads.submit_button')}
-      %input{:type => "reset", :value => t('form.reset_button')}
+    .row
+      .offset4
+        %input(type='hidden' name='upload_type' value='url')
+        %input.upload_submit{:type => "submit", :name => "commit", :value => t('uploads.submit_button')}
+        %input{:type => "reset", :value => t('form.reset_button')}
 
 - content_for :footer do
   :javascript

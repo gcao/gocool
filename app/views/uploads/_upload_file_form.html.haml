@@ -1,32 +1,29 @@
-%form.bp{:action=>uploads_url, :name=>"uploadForm", :enctype=>"multipart/form-data", :method=>"post"}
-  %fieldset.span-18.no-border
-    - if @upload_type == UploadsController::UPLOAD_FILE
-      = show_flash 'span-18'
-
-    .form_row.span-18
-      .span-3
+= form_tag uploads_url, :name=>"upload_file_form", :id => "upload_file_form", :multipart => true do
+  %fieldset
+    .row
+      .span4
         %label(for="upload_description")= t('uploads.description_label')
-      .span-15.last
+      .span8
         %input#upload_description(type="text" name="upload_description" size="80")
         %p= t('uploads.description_note')
 
-    .form_row.span-18
-      .span-3
+    .row
+      .span4
         %label(for="upload_upload")
           = t('uploads.file_label')
           =raw mark_required
           %br
           =raw t('uploads.file_note')
-      .span-15.last
+      .span8
         #file_fields
           %input#upload_upload(type="file" name="upload[upload]" size="60")
         %p=raw t('uploads.zip_file_note')
 
-    %hr.space
-    .span-14{:align => 'center'}
-      %input(type='hidden' name='upload_type' value='file')
-      %input.upload_submit{:type => "submit", :name => "commit", :value => t('uploads.submit_button')}
-      %input#resetButton{:type => "reset", :value => t('form.reset_button')}
+    .row.buttons
+      .offset4
+        %input(type='hidden' name='upload_type' value='file')
+        %input.upload_submit{:type => "submit", :name => "commit", :value => t('uploads.submit_button')}
+        %input#resetButton{:type => "reset", :value => t('form.reset_button')}
 
 - content_for :footer do
   :javascript

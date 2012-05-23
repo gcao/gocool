@@ -1,88 +1,59 @@
-Deployment: http://www.go-cool.org/app
-Monitoring: New Relic RPM (http://rpm.newrelic.com)
+h1. Gocool
 
-Issue tracking: http://www.pivotaltracker.com/projects/43301
-Continuous Integration: to be added to http://www.coderuncode.com
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-Game Server NOTES
+h2. More Information
 
-Invitations
-Send private messages through forum DONE
-Can not create/accept after 10 games (unless marked as unlimited)
-Can not create/accept invitations if you have pending games that are older than 5 days
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-Play
-Show "it is your turn" on forum pages and game server pages DONE
-Can not play on newer game if you have pending games that are older than 5 days
-Show status of opponent (online/offline)
-Redirect to game that opponent is online
-Messages (System level, player level, game level, ...)
+h2. Required Gems
 
-Count
-Mark dead DONE
-Mark shared liberty(for 有眼双活)
-Assign 单官 automatically(depending on who plays next and how many are left) DONE
-After accept counting, mark board with B/W/S(Shared liberty) DONE
+This application requires this gem:
 
-Resign
-Can resign at any time DONE
-Send private message DONE
+* "rails":http://rubygems.org/gems/rails
 
-Guess Move
-Can send move no matter whether it is my turn DONE
-Can undo all my guess moves(which is not applied) DONE
-Can overwrite previous counter move (my move against my guess move) DONE
+h2. Dependencies
 
-Comments
-Player can comment during the game
-Observers can comment after the game is finished
+To use this application, you will need:
 
-Invitations:
-One to many DONE
-Open to all
-Restrictions
-Expiration date(default to 14 days)
-Handicaps(White plays first, remove random from who plays first dropdown, default to inviter) DONE
+* The Ruby language (version 1.8.7 or 1.9.2)
+* Rails (version 3.0.4 or newer)
 
-Performance tuning:
-Add expires header to js and css(at least for this app and the bbs) DONE
-Add favicon DONE
+h2. Installing the Application
 
-Messages:
-Level: system, player, game
-Type: permanent, transient(User is online, offline)
-Source: system, player
-Visibility: player, all
-Time
-Content
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-Tournaments:
-Organize tournaments
-Enter games for tournaments not organized here
-Tournament can have sub-tournaments/stages
+h2. Getting Started
 
-Integration with Discuz and other forums:
-Has its own authentication and authorization logic
-Integrate with Discuz forum (can integrate with more than one: one for Chinese users, one for English users)
-Integrate with phpBB3 or other forums(low priority)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-Admin:
-Create game between players (as tournament organizer)
-Decide game result (as tournament organizer)
-Force counting (as tournament organizer)
-Undo last move
+h2. Documentation and Support
 
-Rails 2.3 => 3.0 Upgrade Notes
+This is the only documentation.
 
-Release Discuz_auth as a gem
+h4. Issues
 
-Create gocool2 app
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-Modify chef project to
-  include gocool2 apache config
-  In gocool apache config, redirect new functionalities to gocool2
+h2. Similar Projects
 
-Deploy gocool2 to production
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-What do we do with migrations?
-Leave migrations in gocool app
+h2. Contributing
+
+If you make improvements to this application, please share with others.
+
+* Fork the project on GitHub.
+* Make your feature addition or bug fix.
+* Commit with Git.
+* Send the author a pull request.
+
+If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
+
+h2. Credits
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+h2. License
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.

@@ -1,37 +1,19 @@
 class User < ActiveRecord::Base
-  # User types
-  DISCUZ_USER = 1
+  rolify
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  # Roles
-  ADMIN = 1
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at
 
-  belongs_to :qiren_player, :class_name => 'Player', :foreign_key => 'qiren_player_id'
-  
-  validates_presence_of :username
-  validates_presence_of :user_type
+  has_one :player, :class_name => 'Player', :dependent => :destroy, :foreign_key => 'parent_id'
 
-  def self.find_or_load username
-    user = find_by_username(username)
-    return user if user 
+  after_create :create_player
 
-    discuz_member = Discuz::Member.find_by_username(username)
-    raise ActiveRecord::RecordNotFound.new("#{username} is not found") unless discuz_member
-
-    player = Player.create!(:gaming_platform_id => GamingPlatform.qiren.id, :name => username, :email => discuz_member.email)
-    create!(:user_type => DISCUZ_USER, :username => username, :external_id => discuz_member.id, :email => discuz_member.email, :qiren_player_id => player.id)
-  end
-
-  def email
-    if attributes[:email].blank?
-      if discuz_member = Discuz::Member.find_by_username(username)
-        self.email = discuz_member.email
-        save!
-      end
-    end
-    super
-  end
-
-  def admin?
-    role == ADMIN
+  def create_player
+    Player.create!(:gaming_platform => GamingPlatform.gocool, :parent_id => id, :email => email, :name => email)
   end
 end

@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Gocool::Application.config.secret_token = '5d7c0840a2fd75f724790185b2051cfc40e19a12a92cd64afcec7535290817dea31c7220025b1e2ca09f17a0e157a972ee35ec70dc1c2f7db9bd79a11f4def43'
+Gocool::Application.config.secret_token = '94878edc1c4ea2f9a44b0efed6b196af2e81004ffbc41e62b824bfd2decfaae6b3884760a5dbf677ed704e8531c96c0c672af80ad9e993e0f843a25741dcc63c'

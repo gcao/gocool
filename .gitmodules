@@ -1,15 +1,6 @@
 [submodule "vendor/gems/sgf_parser"]
 	path = vendor/gems/sgf_parser
 	url = git://github.com/gcao/sgf_parser.git
-[submodule "vendor/gems/discuz_int"]
-	path = vendor/gems/discuz_int
-	url = git://github.com/gcao/discuz_int.git
 [submodule "public/jsgameviewer"]
 	path = public/jsgameviewer
 	url = git://github.com/gcao/jsgameviewer.git
-[submodule "vendor/gems/discuz_robot"]
-	path = vendor/gems/discuz_robot
-	url = git://github.com/gcao/discuz_robot.git
-[submodule "vendor/gems/perens-instant-user"]
-	path = vendor/gems/perens-instant-user
-	url = git://github.com/gcao/perens-instant-user.git

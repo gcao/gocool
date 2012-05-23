@@ -7,8 +7,8 @@ class PairsController < ApplicationController
     if params[:op] == 'search'
       @status = :success
 
-      @player1 = Player.on_platform(@platform).name_is(@player1_name).first
-      @player2 = Player.on_platform(@platform).name_is(@player2_name).first
+      @player1 = Player.on_platform(@platform).find_by_name(@player1_name)
+      @player2 = Player.on_platform(@platform).find_by_name(@player2_name)
 
       if @player1.blank? or @player2.blank?
         @status = :player_not_found

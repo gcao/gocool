@@ -1,2 +1,0 @@
-module PairsHelper
-end

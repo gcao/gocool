@@ -2,7 +2,7 @@
 class Game < ActiveRecord::Base
   include GameStateMachine
   include GameInPlay
-  #include ThreadGlobals
+  include ThreadGlobals
 
   belongs_to :gaming_platform
   belongs_to :primary_source, :class_name => 'Upload', :foreign_key => 'primary_upload_id', :dependent => :destroy
@@ -247,7 +247,7 @@ class Game < ActiveRecord::Base
     elsif current_user_is_white?
       I18n.t('games.black_name')
     end
-    player.nil_or.sub('PLAYER_NAME', current_user.username)
+    player.nil_or.sub('PLAYER_NAME', current_user.email)
   end
   
   def from_url?

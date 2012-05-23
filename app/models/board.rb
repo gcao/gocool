@@ -257,7 +257,7 @@ class Board < Array
     0.upto(s.length - 1) do |i|
       x = i/b.size
       y = i%b.size
-      b[x][y] = s[i] - start_char_code
+      b[x][y] = s[i].ord - start_char_code # TODO: String#ord works in Ruby 1.9 only
     end
     b
   end

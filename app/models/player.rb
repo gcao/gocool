@@ -4,8 +4,6 @@ class Player < ActiveRecord::Base
   has_one :stat, :class_name => 'PlayerStat', :dependent => :destroy
   has_many :opponents, :class_name => "PairStat", :dependent => :destroy
 
-  has_one :user, :class_name => 'User', :foreign_key => "qiren_player_id"
-
   scope :on_platform, lambda {|platform|
     if platform.blank?
       {:conditions => ["players.gaming_platform_id is null"]}
@@ -20,7 +18,7 @@ class Player < ActiveRecord::Base
   scope :name_like, lambda {|name| {:conditions => ["players.name like ?", name.gsub('*', '%')]} }
 
   scope :with_stat, :include => :stat
-  scope :include, lambda {|associations| {:include => associations} }
+  scope :include, lambda {|*associations| {:include => associations} }
 
   def self.find_or_create platform, name, rank
     player = on_platform(platform).find_by_name(name)
@@ -50,5 +48,14 @@ class Player < ActiveRecord::Base
     ActiveRecord::Base.connection.execute <<-SQL
       delete from pair_stats where opponent_id = #{self.id}
     SQL
+  end
+
+  def user
+    return unless gaming_platform == GamingPlatform.gocool and parent_id > 0
+
+    @user ||= User.find(parent_id)
+  #rescue ActiveRecord::RecordNotFound
+  #  # Ignore not found error
+  #  nil
   end
 end

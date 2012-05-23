@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "admin@go-cool.org"
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -82,8 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = <%= SecureRandom.hex(64).inspect %>
-  config.pepper = "6ea2c831de2103d65c88b382c133d545f0efb59f142b4f6f7ddbef03a8896a8fda195394c4904b5e3e58088354222fa7c98b2ed8b1b5b11da1d9fa6c893b2657"
+  # config.pepper = "b98d10eb6b9081ece19183718ca142a7d8f1af022288c1ff901a33ee83a9341b1cb7aba0258348d34cbc167813ffb69d40a5b7282ee09b3d0037cdd9767d2844"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -210,11 +209,8 @@ Devise.setup do |config|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-  config.warden do |manager|
-    manager.default_strategies :discuz if ENV["AUTH_ENGINE"] == 'discuz'
-  end
-
-  Rails.application.config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-
-  Devise.parent_controller = "ApplicationController"
-end if defined?(Devise)
+  # config.warden do |manager|
+  #   manager.intercept_401 = false
+  #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
+  # end
+end

@@ -4,18 +4,6 @@
 %div{:class => container_css_classes}
   %h3= t('games.show_page_header').sub('GAME_NO', @game.id.to_s).sub('WHITE', @game.white_name_with_rank).sub('BLACK', @game.black_name_with_rank)
 
-  =raw show_flash('span-24')
-  %br
-
-  %a(href="/bbs/index.php")= t('link.forum_home')
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  %a(href="/app")= t('link.home')
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  %span#backLink
-    %a(href="javascript:history.back();")= t('link.back')
-    &nbsp;&nbsp;&nbsp;&nbsp;
-  %a(href="javascript:window.close();")= t('link.close')
-  &nbsp;&nbsp;&nbsp;&nbsp;
   %a{:href => game_url(@game, :format => :sgf)}= t('link.download_sgf')
   -# show_if_admin do
     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -45,30 +33,23 @@
 - content_for :footer do
   = render "shared/jsgameviewer"
   = javascript_include_tag "jquery.form"
-  
+
   :javascript
-    if (history.length <= 1) document.getElementById("backLink").innerHTML = "";
-    
     var gameType  = #{@game.game_type == Game::DAOQI} ? jsGameViewer.DAOQI : jsGameViewer.WEIQI;
-    var messageRowClass = "odd";
-    
+
     function showMessage(message) {
       $('#message_container').show();
       var createdAt = message.created_at;
       
-      $('#message_table').prepend("<tr class='message " + messageRowClass + "'><td class='created_at'>"
+      $('#message_table').prepend("<tr class='message'><td class='created_at'>"
         + createdAt + "</td><td class='source'>"
-        + message.source + "</td><td class='content'>" 
+        + message.source + "</td><td class='message-body'>"
         + message.content + "</td></tr>");
-      if (messageRowClass == "odd")
-        messageRowClass = "even";
-      else
-        messageRowClass = "odd";
     }
     
     function showMessages(messages) {
       $.each(messages, function(){
-        showMessage(this.message);
+        showMessage(this);
       });
     }
     
@@ -85,8 +66,11 @@
       var gameState = "#{@game.state}";
       var myColor   = #{@my_color.to_i};
       jQuery(document).ready(function(){
-        new GameController({gameType: gameType, container: "gameContainer"}).createGocoolPlayer().loadGocoolGame(#{@game.id}).
-          setPlayerInterval(15).startUpdater(true).saveSession("#{ENV['DISCUZ_KEEP_ALIVE_URL']}", #{ENV['FORUM_KEEP_ALIVE_INTERVAL'].to_i});
+        new GameController({gameType: gameType, container: "gameContainer"})
+          .createGocoolPlayer()
+          .loadGocoolGame(#{@game.id})
+          //.setPlayerInterval(15)
+          //.startUpdater(true);
       });
 
   - else

@@ -8,7 +8,7 @@ class Upload < ActiveRecord::Base
 
   belongs_to :game
   has_attached_file :file
-  
+
   scope :with_hash, lambda { |hash|
     {:conditions => ["hash_code = ?", hash]}
   }
@@ -20,7 +20,7 @@ class Upload < ActiveRecord::Base
       {:conditions => ["uploads.description like ?", "%#{description.strip}%"]}
     end
   }
-  
+
   scope :recent, :order => 'created_at DESC'
 
   scope :between, lambda {|from, to|
@@ -150,21 +150,9 @@ class Upload < ActiveRecord::Base
     end
   end
 
-  def discuz_tid
-    if attributes['description'] =~ /"tid"=>(\d+),/i
-      $1
-    end
-  end
-
-  def discuz_thread_url
-    if discuz_tid
-      "/bbs/viewthread.php?tid=#{discuz_tid}"
-    end
-  end
-  
   def reload_game_from_url
     return unless source_type == UPLOAD_URL
-    
+
     open(source) do |new_data|
       File.open(self.file.path, "w") do |to_file|
         to_file.print(new_data.readlines)
@@ -202,3 +190,4 @@ class Upload < ActiveRecord::Base
     encoding.include?('charset=') and not (encoding.include?('charset=us-ascii') or encoding.include?('charset=utf'))
   end
 end
+

@@ -42,7 +42,7 @@ module Gocool
       def render_guess_moves game
         guess_moves = game.detail.guess_moves
         guess_moves.map{|move|
-          sgf = NodeRenderer.new(:with_name => true, :with_children => true, :player_id => game.current_player.id).render(move)
+          sgf = NodeRenderer.new(:with_name => true, :with_children => true, :player_id => game.current_user.player.id).render(move)
           sgf = "(#{sgf})" unless sgf.empty?
           sgf
         }.join

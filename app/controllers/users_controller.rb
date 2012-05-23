@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-  def my_uploads
-    @page_title = t('shared.page_title') + " - " + t('my_uploads.page_title')
-    @uploads = Upload.recent.find_all_by_uploader_id(@current_user.id)
+  before_filter :authenticate_user!
+
+  def index
+    authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    @users = User.paginate(:page => params[:page])
   end
 
-  def my_favorites
+  def show
+    @user = User.find(params[:id])
   end
+
 end

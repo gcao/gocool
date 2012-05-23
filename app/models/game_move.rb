@@ -25,7 +25,7 @@ class GameMove < ActiveRecord::Base
     moves.each do |move|
       if move.parent_id == id
         @children << move
-        moves.delete move
+        moves.delete_at moves.index(move)
       end
     end
 

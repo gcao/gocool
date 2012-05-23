@@ -4,15 +4,15 @@ module GameInPlay
   OP_JAVASCRIPT = 2
 
   def current_user_is_player?
-    logged_in? and [black_id, white_id].include?(current_player.id)
+    logged_in? and [black_id, white_id].include?(current_user.player.id)
   end
 
   def current_user_is_black?
-    logged_in? and current_player.id == black_id
+    logged_in? and current_user.player.id == black_id
   end
 
   def current_user_is_white?
-    logged_in? and current_player.id == white_id
+    logged_in? and current_user.player.id == white_id
   end
 
   def play params
@@ -38,7 +38,7 @@ module GameInPlay
     parent_move = GameMove.find parent_move_id
 
     unless move = parent_move.child_that_matches(x, y)
-      if guess_move?(parent_move.color, current_player.id)
+      if guess_move?(parent_move.color, current_user.player.id)
         # This is a counter move, should replace previous counter move
         parent_move.children.each(&:destroy)
       end
@@ -54,7 +54,7 @@ module GameInPlay
       move.x = x
       move.y = y
       move.parent_id = parent_move.id
-      move.guess_player_id = current_player.id
+      move.guess_player_id = current_user.player.id
 
       case move.process
         when GameMove::OCCUPIED then return OP_FAILURE, I18n.t('games.occupied')
@@ -67,7 +67,7 @@ module GameInPlay
 
     if detail.last_move_id == parent_move.id and my_turn?
       self.moves += 1
-      move.player_id = current_player.id
+      move.player_id = current_user.player.id
       detail.last_move_time = Time.now
       detail.change_turn
       detail.last_move_id = move.id
@@ -92,21 +92,21 @@ module GameInPlay
     code = OP_SUCCESS
     message = ''
 
-    if current_player.id == black_id
+    if current_user.player.id == black_id
       undo_guess_moves
       self.state = 'finished'
       self.winner = Game::WHITE
       self.result = "W+R"
-      send_resign_message current_player.user, white_player.user, Game::BLACK
-    elsif current_player.id == white_id
+      send_resign_message current_user.player.user, white_player.user, Game::BLACK
+    elsif current_user.player.id == white_id
       undo_guess_moves
       self.state = 'finished'
       self.winner = Game::BLACK
       self.result = "B+R"
-      send_resign_message current_player.user, black_player.user, Game::WHITE
+      send_resign_message current_user.player.user, black_player.user, Game::WHITE
     else
       code = OP_FAILURE
-      message = I18n.t('games.not_a_player_in_game').sub('GAME_ID', self.id).sub('USERNAME', current_player.name)
+      message = I18n.t('games.not_a_player_in_game').sub('GAME_ID', self.id).sub('USERNAME', current_user.player.name)
     end
 
     save!
@@ -117,7 +117,7 @@ module GameInPlay
     return unless logged_in?
 
     GameMove.moves_after(detail.last_move).each do |move|
-      move.delete if move.player_id.nil? and move.guess_player_id == current_player.id
+      move.delete if move.player_id.nil? and move.guess_player_id == current_user.player.id
     end
     
     undo_last_move
@@ -125,7 +125,7 @@ module GameInPlay
   
   def undo_last_move
     move = detail.last_move
-    return if move.player_id != current_player.id
+    return if move.player_id != current_user.player.id
     
     parent_move = move.parent
     detail.last_move_id = parent_move.id
@@ -154,16 +154,16 @@ module GameInPlay
   end
 
   def my_color
-    if current_player.id == black_id
+    if current_user.player.id == black_id
       Game::BLACK
-    elsif current_player.id == white_id
+    elsif current_user.player.id == white_id
       Game::WHITE
     end
   end
 
   def my_turn?
-    (current_player.id == black_id and detail.whose_turn == Game::BLACK) or
-            (current_player.id == white_id and detail.whose_turn == Game::WHITE)
+    (current_user.player.id == black_id and detail.whose_turn == Game::BLACK) or
+            (current_user.player.id == white_id and detail.whose_turn == Game::WHITE)
   end
 
   def guess_move? move_color, player_id
@@ -177,7 +177,7 @@ module GameInPlay
     return unless logged_in?
 
     guess_move = detail.guess_moves.detect do |move|
-      my_color and my_color != move.color and current_player.id != move.guess_player_id
+      my_color and my_color != move.color and current_user.player.id != move.guess_player_id
     end
 
     return unless guess_move

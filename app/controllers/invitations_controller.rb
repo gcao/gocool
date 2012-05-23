@@ -1,10 +1,9 @@
 class InvitationsController < ApplicationController
-  before_filter :login_required
-  skip_filter :admin_required, :only => [:update]
+  before_filter :authenticate_user!
 
   def index
-    @invitations_to_me = Invitation.active.to_me
-    @invitations_by_me = Invitation.active.by_me
+    @invitations_to_me = Invitation.active.to_me(current_user)
+    @invitations_by_me = Invitation.active.by_me(current_user)
   end
 
   def new
@@ -64,6 +63,7 @@ class InvitationsController < ApplicationController
     invitation = Invitation.find(params[:id])
     if invitation
       if invitation.state == 'new'
+        invitation.invitee = current_user
         invitation.accept
         invitation.save!
         redirect_to game_url(invitation.game)

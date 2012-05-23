@@ -26,7 +26,7 @@ class PlayersController < ApplicationController
     if @players.size == 1
       redirect_to player_url(@players.first)
     else
-      render_players @players
+      render :partial => 'widgets/players', :locals => {:players => @players.paginate(page_params(:players_page))}
     end
   end
 
@@ -53,7 +53,7 @@ class PlayersController < ApplicationController
     @player = Player.search(@platform, @player_name).first
     render :text => "" and return if @player.blank?
 
-    @pairs = PairStat.player_id_is(@player.id)
+    @pairs = PairStat.find_all_by_player_id(@player.id)
     @pairs = @pairs.opponent_name_like @opponent_name unless @opponent_name.blank?
     @pairs = @pairs.first(10)
 

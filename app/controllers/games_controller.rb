@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   include GamesHelper
 
   before_filter :check_game          , :except => [:new, :index, :next, :waiting, :destroy]
-  before_filter :login_required      , :only   => [:play, :resign, :undo_guess_moves, :do_this]
+  before_filter :authenticate_user!  , :only   => [:play, :resign, :undo_guess_moves, :do_this]
   before_filter :check_user_is_player, :only   => [:undo_guess_moves, :do_this, :send_message]
 
   def index
@@ -29,7 +29,6 @@ class GamesController < ApplicationController
           @my_color = Game::WHITE
         end
         @messages = Message.for_game(@game.id)
-        render :layout => 'simple'
       end
 
       format.sgf do
@@ -159,7 +158,7 @@ class GamesController < ApplicationController
   def check_user_is_player
     unless @game.current_user_is_player?
       flash.now[:error] = t('games.user_is_not_player') # TODO: message is not defined in zh_cn.yml
-      render 'show', :layout => 'simple'
+      render 'show'
     end
   end
 

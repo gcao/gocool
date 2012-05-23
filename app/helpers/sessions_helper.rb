@@ -1,3 +1,0 @@
-# TOREMOVE?
-module SessionsHelper
-end

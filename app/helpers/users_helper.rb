@@ -1,3 +1,2 @@
-# TOREMOVE?
 module UsersHelper
 end

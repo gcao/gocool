@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
   include ParseErrorHelper
-  
+
   UPLOAD_FILE = 'file'
   UPLOAD_SGF  = 'sgf'
   UPLOAD_URL  = 'url'
@@ -18,16 +18,16 @@ class UploadsController < ApplicationController
       when UPLOAD_URL  then process_url
     end
   end
-  
+
   def show
     @upload = Upload.find(params[:id])
-    
+
     respond_to do |format|
       format.html { redirect_to :controller => :games, :action => :show, :id => @upload.game_id }
       format.sgf  { send_file(@upload.file.path) }
     end
   end
-  
+
   private
 
   def process_files
@@ -110,3 +110,4 @@ class UploadsController < ApplicationController
     end
   end
 end
+

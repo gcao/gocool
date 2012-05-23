@@ -1,10 +1,10 @@
 - if uploads.blank?
   = t("games_widget.upload_not_found")
 - else
-  .uploads.active-scaffold.blue-theme
+  .uploads
     .digg_pagination=raw will_paginate(uploads, :previous_label => t('link.pagination.prev'), :next_label => t('link.pagination.next'), :param_name => 'uploads_page')
 
-    %table
+    %table.table
       %thead
         %tr.header
           %th.create_time_column=  t('games_widget.create_time')
@@ -17,6 +17,6 @@
           %th.result_column=       t('games_widget.result')
           %th.play_time_column=    t('games_widget.play_time')
           %th.place_column=        t('games_widget.place')
-          %th.actions_column &nbsp;
+          %th.actions_column=      t('table.actions_label')
       %tbody.records
         = render :partial => 'widgets/upload', :collection => uploads, :as => :upload
