@@ -1,29 +1,29 @@
-= link_to "Gocool", root_path, :class => 'brand'
+= link_to "Gocool", main_app.root_path, :class => 'brand'
 %ul.nav
   %li.uploads
-    %a{:href=>uploads_url}= t('menu.uploads')
+    %a{:href=>cool_games.uploads_path}= t('menu.uploads')
   %li.upload_search
-    %a{:href=>upload_search_url}= t('menu.upload_search')
+    %a{:href=>cool_games.upload_search_path}= t('menu.upload_search')
   %li.players
-    %a{:href=>players_url}= t('menu.players')
+    %a{:href=>cool_games.players_path}= t('menu.players')
   %li.pairs
-    %a{:href=>pairs_url}= t('menu.pairs')
+    %a{:href=>cool_games.pairs_path}= t('menu.pairs')
   %li.games
-    %a{:href=>games_url}= t('menu.games')
+    %a{:href=>cool_games.games_path}= t('menu.games')
   - if user_signed_in?
     %li
-      = link_to(t('menu.invitations'), invitations_path)
+      = link_to(t('menu.invitations'), cool_games.invitations_path)
     %li
-      = link_to('Logout', destroy_user_session_path, :method=>'delete')
+      = link_to('Logout', main_app.destroy_user_session_path, :method=>'delete')
   - else
     %li
-      = link_to('Login', new_user_session_path)
+      = link_to('Login', main_app.new_user_session_path)
   - if user_signed_in?
     %li
-      = link_to('Edit account', edit_user_registration_path)
+      = link_to('Edit account', main_app.edit_user_registration_path)
     - if current_user.has_role? :admin
       %li
-        = link_to('Admin', users_path)
+        = link_to('Admin', main_app.users_path)
   - else
     %li
-      = link_to('Sign up', new_user_registration_path)
+      = link_to('Sign up', main_app.new_user_registration_path)

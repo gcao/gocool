@@ -1,4 +1,9 @@
 PATH
+  remote: vendor/gems/cool_games
+  specs:
+    cool_games (0.1.0)
+
+PATH
   remote: vendor/gems/sgf_parser
   specs:
     sgf_parser (0.1.0)
@@ -193,6 +198,7 @@ DEPENDENCIES
   bootstrap-sass (>= 2.0.1)
   cancan (>= 1.6.7)
   coffee-rails (~> 3.2.1)
+  cool_games!
   devise (>= 2.1.0.rc2)
   email_spec (>= 1.2.1)
   factory_girl_rails (>= 3.2.0)
