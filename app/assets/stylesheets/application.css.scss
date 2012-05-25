@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap_and_overrides
- *= require date_input
+ *= require cool_games
  *= require_self
  */
 
@@ -23,46 +23,4 @@
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
-}
-
-form.horizontal {
-  label {
-    display: inline-block;
-  }
-}
-
-fieldset label {
-  text-align: right;
-  line-height: 30px;
-  vertical-align: middle;
-}
-
-span.note {
-  font-style: italic;
-  color: #666666;
-}
-
-.sgf_good {
-  color: #008800;
-}
-
-.sgf_bad {
-  background: #000;
-  color: red;
-  font-weight: bold;
-  padding: 0 4px;
-}
-
-.sgf_rest {
-  color: #888888;
-}
-
-.failedField {
-  border: red 1px solid;
-}
-
-.vdError {
-  display: inline-block;
-  color: red;
-  font-size: small;
 }
