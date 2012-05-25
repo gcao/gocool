@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   after_create :create_player
 
   def create_player
-    Player.create!(:gaming_platform => GamingPlatform.gocool, :parent_id => id, :email => email, :name => email)
+    CoolGames::Player.create!(:gaming_platform => CoolGames::GamingPlatform.gocool, :parent_id => id, :email => email, :name => email)
   end
 end
