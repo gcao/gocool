@@ -11,46 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513001045) do
+ActiveRecord::Schema.define(:version => 20120525120443) do
 
-  create_table "favorites", :force => true do |t|
-    t.string   "description"
-    t.integer  "user_id",       :null => false
-    t.integer  "favorite_type", :null => false
-    t.integer  "external_id"
-    t.integer  "external_id2"
-    t.text     "options"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "favorites", ["user_id", "favorite_type"], :name => "index_favorites_on_user_id_and_favorite_type"
-  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
-
-  create_table "game_comments", :force => true do |t|
+  create_table "cg_game_comments", :force => true do |t|
     t.integer  "game_id"
     t.integer  "move_no"
     t.integer  "commenter_id"
     t.boolean  "by_player"
     t.string   "content",      :limit => 4000
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
-  create_table "game_details", :force => true do |t|
+  create_table "cg_game_details", :force => true do |t|
     t.integer  "game_id"
     t.integer  "whose_turn"
     t.datetime "last_move_time"
     t.text     "formatted_moves"
     t.integer  "first_move_id"
     t.integer  "last_move_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "setup_points"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "game_details", ["game_id"], :name => "game_details_game_id"
+  add_index "cg_game_details", ["game_id"], :name => "game_details_game_id"
 
-  create_table "game_moves", :force => true do |t|
+  create_table "cg_game_moves", :force => true do |t|
     t.integer  "game_detail_id",   :null => false
     t.integer  "player_id"
     t.integer  "move_no",          :null => false
@@ -61,24 +48,23 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.integer  "guess_player_id"
     t.datetime "played_at"
     t.integer  "parent_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "setup_points"
     t.text     "serialized_board"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
-  add_index "game_moves", ["game_detail_id"], :name => "game_moves_detail_id"
-  add_index "game_moves", ["guess_player_id"], :name => "game_moves_guess_player_id"
-  add_index "game_moves", ["parent_id"], :name => "game_moves_parent_id"
+  add_index "cg_game_moves", ["game_detail_id"], :name => "game_moves_detail_id"
+  add_index "cg_game_moves", ["guess_player_id"], :name => "game_moves_guess_player_id"
+  add_index "cg_game_moves", ["parent_id"], :name => "game_moves_parent_id"
 
-  create_table "games", :force => true do |t|
+  create_table "cg_games", :force => true do |t|
     t.integer  "game_type"
-    t.string   "state",              :default => "finished"
+    t.string   "status",             :default => "finished"
     t.integer  "rule"
     t.string   "rule_raw"
     t.integer  "board_size"
     t.integer  "handicap"
-    t.integer  "start_side"
+    t.integer  "start_color"
     t.float    "komi"
     t.string   "komi_raw"
     t.string   "result"
@@ -93,8 +79,10 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.datetime "played_at"
     t.string   "played_at_raw"
     t.string   "time_rule"
+    t.boolean  "is_online_game"
     t.integer  "gaming_platform_id"
     t.text     "description"
+    t.boolean  "for_rating"
     t.integer  "black_id"
     t.integer  "white_id"
     t.string   "black_name"
@@ -107,15 +95,14 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.string   "updated_by"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
-    t.boolean  "for_rating"
   end
 
-  add_index "games", ["black_id"], :name => "games_black_id"
-  add_index "games", ["gaming_platform_id", "black_id", "white_id"], :name => "games_platform_black_white"
-  add_index "games", ["gaming_platform_id"], :name => "games_platform_id"
-  add_index "games", ["white_id"], :name => "games_white_id"
+  add_index "cg_games", ["black_id"], :name => "games_black_id"
+  add_index "cg_games", ["gaming_platform_id", "black_id", "white_id"], :name => "games_platform_black_white"
+  add_index "cg_games", ["gaming_platform_id"], :name => "games_platform_id"
+  add_index "cg_games", ["white_id"], :name => "games_white_id"
 
-  create_table "gaming_platforms", :force => true do |t|
+  create_table "cg_gaming_platforms", :force => true do |t|
     t.integer  "nation_region_id"
     t.string   "name",             :null => false
     t.string   "url"
@@ -124,10 +111,9 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.string   "updated_by"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.integer  "sort_order"
   end
 
-  create_table "invitations", :force => true do |t|
+  create_table "cg_invitations", :force => true do |t|
     t.integer  "inviter_id"
     t.string   "invitees",   :limit => 1024
     t.integer  "game_type"
@@ -145,26 +131,26 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.datetime "updated_at",                                   :null => false
   end
 
-  add_index "invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>255}
-  add_index "invitations", ["inviter_id"], :name => "invitations_inviter_id"
+  add_index "cg_invitations", ["invitees"], :name => "invitations_invitees", :length => {"invitees"=>255}
+  add_index "cg_invitations", ["inviter_id"], :name => "invitations_inviter_id"
 
-  create_table "messages", :force => true do |t|
+  create_table "cg_messages", :force => true do |t|
     t.integer  "source_type",   :null => false
     t.integer  "source_id"
+    t.string   "source"
     t.integer  "receiver_type", :null => false
     t.integer  "receiver_id"
     t.string   "message_type",  :null => false
     t.string   "level"
     t.string   "visibility"
     t.text     "content"
-    t.string   "source"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
-  add_index "messages", ["receiver_type", "receiver_id"], :name => "messages_receiver"
+  add_index "cg_messages", ["receiver_type", "receiver_id"], :name => "messages_receiver"
 
-  create_table "nation_regions", :force => true do |t|
+  create_table "cg_nation_regions", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "updated_by"
@@ -172,7 +158,7 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "pair_stats", :force => true do |t|
+  create_table "cg_pair_stats", :force => true do |t|
     t.integer  "player_id",                          :null => false
     t.integer  "opponent_id",                        :null => false
     t.integer  "games_as_black",      :default => 0
@@ -185,11 +171,11 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.datetime "updated_at",                         :null => false
   end
 
-  add_index "pair_stats", ["opponent_id"], :name => "index_pair_stats_on_opponent_id"
-  add_index "pair_stats", ["player_id", "opponent_id"], :name => "index_pair_stats_on_player_id_and_opponent_id", :unique => true
-  add_index "pair_stats", ["player_id"], :name => "index_pair_stats_on_player_id"
+  add_index "cg_pair_stats", ["opponent_id"], :name => "index_cg_pair_stats_on_opponent_id"
+  add_index "cg_pair_stats", ["player_id", "opponent_id"], :name => "index_cg_pair_stats_on_player_id_and_opponent_id", :unique => true
+  add_index "cg_pair_stats", ["player_id"], :name => "index_cg_pair_stats_on_player_id"
 
-  create_table "player_stats", :force => true do |t|
+  create_table "cg_player_stats", :force => true do |t|
     t.integer  "player_id",                          :null => false
     t.integer  "games_as_black",      :default => 0
     t.integer  "games_won_as_black",  :default => 0
@@ -203,17 +189,13 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.datetime "updated_at",                         :null => false
   end
 
-  add_index "player_stats", ["player_id"], :name => "index_player_stats_on_player_id", :unique => true
+  add_index "cg_player_stats", ["player_id"], :name => "index_cg_player_stats_on_player_id", :unique => true
 
-  create_table "players", :force => true do |t|
+  create_table "cg_players", :force => true do |t|
     t.integer  "nation_region_id"
-    t.string   "first_name_en"
-    t.string   "last_name_en"
-    t.string   "full_name_en"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "name"
-    t.string   "other_names"
     t.boolean  "is_amateur"
     t.string   "rank"
     t.string   "sex"
@@ -223,106 +205,17 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.string   "website"
     t.string   "email"
     t.text     "description"
-    t.string   "updated_by"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
     t.integer  "parent_id"
     t.integer  "gaming_platform_id"
-    t.integer  "temp_id"
     t.datetime "registered_at"
-    t.boolean  "open_for_invitation"
-  end
-
-  add_index "players", ["name"], :name => "players_full_name"
-
-  create_table "problems", :force => true do |t|
-    t.string   "name"
-    t.string   "level"
-    t.integer  "start_side"
-    t.string   "result"
-    t.boolean  "multiple"
-    t.text     "description"
-    t.string   "source"
-    t.integer  "upload_id"
-    t.integer  "solution_upload_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
-  add_index "roles", ["name"], :name => "index_roles_on_name"
-
-  create_table "settings", :force => true do |t|
-    t.string   "name",                              :null => false
-    t.string   "description"
-    t.string   "value"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.string   "data_type",   :default => "String"
-  end
-
-  add_index "settings", ["name"], :name => "index_settings_on_name"
-
-  create_table "tom_games", :force => true do |t|
-    t.string "name"
-    t.string "page_url"
-    t.string "sgf_url"
-  end
-
-  add_index "tom_games", ["page_url"], :name => "tom_games_page_url"
-  add_index "tom_games", ["sgf_url"], :name => "tom_games_sgf_url"
-
-  create_table "tournament_games", :force => true do |t|
-    t.integer  "tournament_id"
-    t.integer  "game_id"
-    t.string   "status"
-    t.string   "result"
-    t.text     "description"
-    t.integer  "black_id"
-    t.integer  "white_id"
     t.string   "updated_by"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
-  create_table "tournament_players", :force => true do |t|
-    t.integer  "tournament_id"
-    t.integer  "player_id"
-    t.boolean  "is_seed_player"
-    t.boolean  "is_winner"
-    t.text     "description"
-    t.string   "updated_by"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
+  add_index "cg_players", ["name"], :name => "cg_players_name"
 
-  create_table "tournaments", :force => true do |t|
-    t.integer  "parent_id"
-    t.boolean  "is_series"
-    t.boolean  "is_primary"
-    t.string   "name"
-    t.string   "organizer"
-    t.text     "description"
-    t.string   "stage"
-    t.boolean  "has_sub_tournaments"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.string   "updated_by"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-  end
-
-  create_table "uploads", :force => true do |t|
+  create_table "cg_uploads", :force => true do |t|
     t.integer  "game_id"
     t.string   "format"
     t.string   "charset"
@@ -335,8 +228,6 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.text     "description"
     t.string   "hash_code"
     t.string   "updated_by"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
@@ -345,10 +236,23 @@ ActiveRecord::Schema.define(:version => 20120513001045) do
     t.text     "status_detail"
     t.string   "uploader"
     t.integer  "uploader_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
-  add_index "uploads", ["game_id"], :name => "index_uploads_on_game_id"
-  add_index "uploads", ["hash_code"], :name => "index_uploads_on_hash_code"
+  add_index "cg_uploads", ["game_id"], :name => "index_cg_uploads_on_game_id"
+  add_index "cg_uploads", ["hash_code"], :name => "index_cg_uploads_on_hash_code"
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
