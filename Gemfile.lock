@@ -3,7 +3,6 @@ PATH
   specs:
     cool_games (0.1.0)
       aasm (= 3.0.5)
-      cancan
       sgf_parser
       will_paginate (>= 3.0.3)
 
