@@ -2,6 +2,10 @@ PATH
   remote: vendor/gems/cool_games
   specs:
     cool_games (0.1.0)
+      aasm (= 3.0.5)
+      cancan
+      sgf_parser
+      will_paginate (>= 3.0.3)
 
 PATH
   remote: vendor/gems/sgf_parser
@@ -11,7 +15,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    aasm (3.0.6)
+    aasm (3.0.5)
       activerecord
     actionmailer (3.2.3)
       actionpack (= 3.2.3)
