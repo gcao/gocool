@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20120525120443) do
 
   create_table "cg_games", :force => true do |t|
     t.integer  "game_type"
-    t.string   "status",             :default => "finished"
+    t.string   "state",              :default => "finished"
     t.integer  "rule"
     t.string   "rule_raw"
     t.integer  "board_size"

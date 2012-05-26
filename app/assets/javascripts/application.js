@@ -17,6 +17,6 @@
 
 jQuery(document).ready(function(){
     jQuery("#container input[name=reset]").click(function(){
-        jQuery("#container form :input[type=text], #container form textarea").val("");
+        jQuery("#container form input[type=text], #container form textarea").val("");
     });
 });
