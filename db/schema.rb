@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525120443) do
+ActiveRecord::Schema.define(:version => 20120601154132) do
 
   create_table "cg_game_comments", :force => true do |t|
     t.integer  "game_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20120525120443) do
     t.text     "serialized_board"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "setup_points"
   end
 
   add_index "cg_game_moves", ["game_detail_id"], :name => "game_moves_detail_id"
@@ -64,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20120525120443) do
     t.string   "rule_raw"
     t.integer  "board_size"
     t.integer  "handicap"
-    t.integer  "start_color"
+    t.integer  "start_side"
     t.float    "komi"
     t.string   "komi_raw"
     t.string   "result"
@@ -272,6 +273,7 @@ ActiveRecord::Schema.define(:version => 20120525120443) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
