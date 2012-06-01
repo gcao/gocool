@@ -1,10 +1,11 @@
 h1. Gocool
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+A rails 3 Go games application
 
 h2. More Information
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+# Use below command to deploy a branch to heroku
+git push heroku rails3_fresh:master
 
 h2. Required Gems
 
