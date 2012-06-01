@@ -41,6 +41,8 @@ gem "simple_form", "~> 2.0.0"
 gem "aasm", "~> 3.0.0"
 gem "will_paginate", ">= 3.0.3"
 gem "paperclip", "~> 3.0.0"
+gem "tlsmail", :group => :production
 gem "sgf_parser", :require => "sgf", :path => "vendor/gems/sgf_parser"
 gem "cool_games", :path => "vendor/gems/cool_games"
 gem "thin", :group => :development
+

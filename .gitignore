@@ -1,7 +1,7 @@
 .idea
 .bundle
 webrat-*.html
-config/initializers/1_settings.rb
+config/initializers/000.rb
 db/*.sqlite3
 app/stylesheets/.sass-cache
 public/system
