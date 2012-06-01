@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          :authentication_keys => [:login]
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :username, :login, :password, :password_confirmation, :remember_me, :confirmed_at
+  attr_accessible :email, :username, :login, :password, :password_confirmation, :remember_me, :confirmed_at
   attr_accessor :login
 
   has_one :player, :class_name => 'CoolGames::Player', :dependent => :destroy, :foreign_key => 'parent_id'
