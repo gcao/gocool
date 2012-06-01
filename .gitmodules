@@ -4,3 +4,6 @@
 [submodule "public/jsgameviewer"]
 	path = public/jsgameviewer
 	url = git://github.com/gcao/jsgameviewer.git
+[submodule "vendor/gems/cool_games"]
+	path = vendor/gems/cool_games
+	url = git@github.com:gcao/cool_games.git

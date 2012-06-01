@@ -5,8 +5,6 @@ config/initializers/000.rb
 db/*.sqlite3
 app/stylesheets/.sass-cache
 public/system
-sgf_parser
-vendor/gems/cool_games
 tmp
 log
 .sass-cache
