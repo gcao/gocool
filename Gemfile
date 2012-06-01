@@ -32,6 +32,7 @@ gem "guard-bundler", ">= 0.1.3", :group => :development
 gem "guard-rails", ">= 0.0.3", :group => :development
 gem "guard-livereload", ">= 0.3.0", :group => :development
 gem "guard-rspec", ">= 0.4.3", :group => :development
+gem "rack-livereload", ">= 0.3.6", :group => :development
 gem "devise", ">= 2.1.0.rc2"
 gem "cancan", ">= 1.6.7"
 gem "rolify", ">= 3.1.0"
