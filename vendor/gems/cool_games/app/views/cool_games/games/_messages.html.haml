@@ -1,0 +1,9 @@
+- if @game.current_user_is_player?
+  %div#message_input_row
+    = form_tag send_message_game_url(@game), :id => "send_message_form" do
+      = t('games.message_label')
+      %input#message(type="text" name='message' size="80")
+      %input#send_message(type="submit" value="#{t('games.send_message')}")
+
+%div#message_container
+  %table#message_table.table

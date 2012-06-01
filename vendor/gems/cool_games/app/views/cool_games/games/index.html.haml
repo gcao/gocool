@@ -1,0 +1,32 @@
+%h1= @page_header || t('games.page_header')
+    
+=form_tag games_path, :method => :get, :id => 'games_search_form', :class => "horizontal" do
+  %fieldset
+    .row
+      .span12
+        %label(for="platform")
+          = t('games.platform_label')
+        =gaming_platforms_select 'platform'
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        =text_field_tag 'player1', h(@player1), :placeholder => t('games.player1_label')
+        %label#vs_label(for="player2")
+          = t('games.vs_label')
+        =text_field_tag 'player2', h(@player2), :placeholder => t('games.player2_label')
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        %input{:type => "hidden", :name => "op", :value => "search"}
+        =submit_tag t('form.search_button')
+        =raw reset_button
+
+#games_widget_container
+  = render_games @games if @games
+
+- content_for :footer do
+  :javascript
+    validanguage.el.player1 = {
+      validations: [
+        {
+          name: validanguage.validateRequired,
+          errorMsg: "#{t('games.player1_required')}",
+        }
+      ]
+    };

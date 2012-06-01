@@ -1,0 +1,28 @@
+= form_tag uploads_url, :name => "upload_url_form", :id => "upload_url_form", :class => "upload_game" do
+  %fieldset
+    .row
+      .span4
+        %label(for="upload_description2")= t('uploads.description_label')
+      .span8
+        %input#upload_description2(type="text" name="upload_description" size="80")
+
+    .row
+      .span4
+        %label(for="upload_url")
+          = t('uploads.url_label')
+          =raw mark_required
+      .span8
+        %input#upload_url(type="text" name="upload[url]" size="80")
+
+    .row
+      .offset4
+        %input(type='hidden' name='upload_type' value='url')
+        %input.upload_submit{:type => "submit", :name => "commit", :value => t('uploads.submit_button')}
+        %input{:type => "reset", :value => t('form.reset_button')}
+
+- content_for :footer do
+  :javascript
+    validanguage.el.upload_url = {
+      required: true,
+      errorMsg: "#{t('uploads.url_required')}"
+    };

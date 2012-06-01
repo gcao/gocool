@@ -1,0 +1,60 @@
+%h1= t('invitations.page_header')
+
+= form_tag invitation_path(@invitation), :method=>:put, :class => "vertical" do
+  .row
+    .span3
+      %label(for="invitation_game_type")
+        =t('invitations.game_type_label')
+    .span9
+      #invitation_game_type= @invitation.game_type_str
+
+  .row
+    .span3
+      %label(for="invitation_inviter")
+        =t('invitations.inviter_label')
+    .span9
+      #invitation_inviter= @invitation.inviter.player.name
+
+  .row
+    .span3
+      %label(for="invitation_invitees")
+        =t('invitations.invitees_label')
+    .span9
+      #invitation_invitees= @invitation.invitees_str
+
+  .row
+    .span3
+      %label(for="invitation_start_side")
+        = t('invitations.start_side_label')
+    .span9
+      = @invitation.start_side_str
+
+  .row
+    .span3
+      %label(for="invitation_handicap")
+        = t('invitations.handicap_label')
+    .span9
+      = @invitation.handicap_str
+
+  .row
+    .span3
+      %label(for="invitation_rule")
+        = t('invitations.rule_label')
+    .span9
+      = t('invitations.chinese_rule')
+
+  .row
+    .span3
+      %label(for="invitation_note")
+        = t('invitations.note_label')
+    .span9
+      = @invitation.note
+
+  - if @invitation.state == 'new' and (@invitation.created_by_me?(current_user) or @invitation.for_me?(current_user))
+    .row
+      .offset3.span9
+        - if @invitation.created_by_me?(current_user)
+          %input{:type => "submit", :name => "cancel", :value => t('invitations.cancel')}
+        - else
+          %input{:type => "submit", :name => "accept", :value => t('invitations.accept')}
+          %input{:type => "submit", :name => "reject", :value => t('invitations.reject')}

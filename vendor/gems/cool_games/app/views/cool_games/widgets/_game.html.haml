@@ -1,0 +1,27 @@
+%tr{:id => "game_row_#{game.id}", :class => "record " + (game_counter%2 == 0 ? "even-record":"")}
+  %td
+    = game.id
+    = "(#{t('games.daoqi_label')})" if game.daoqi?
+  %td
+    = "#{game.name}"
+  =raw black_player_html(game)
+  =raw white_player_html(game)
+  %td
+    = "#{game.handicap_str}"
+  %td
+    = "#{game.komi_str}"
+  %td
+    = "#{game.moves}"
+  %td
+    = "#{game.result}"
+  %td
+    = "#{game.played_at_raw}"
+  %td
+    = "#{game.place}"
+  %td
+    = "#{game.primary_source.nil_or.description}"
+  %td.actions
+    =raw view_game_html(game)
+    -#- if current_user.nil_or.admin?
+    -#  %a{:href => url_for(:controller => 'admin/games', :action => 'edit', :id => game.id)}= t('form.edit_button')
+    -#  = link_to_function t('form.delete_button'), "if (confirm('#{t('games.confirm_deletion').gsub('GAME_ID', game.id.to_s)}')) deleteGame(#{game.id}); return false;"

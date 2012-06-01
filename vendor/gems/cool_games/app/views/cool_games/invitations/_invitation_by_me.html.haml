@@ -1,0 +1,17 @@
+%tr{:id => "invitation_row_#{invitation.id}", :class => "record " + (invitation_counter%2 == 0 ? "even-record":"")}
+  %td
+    = invitation.created_at.strftime("%Y-%m-%d %I:%M%p")
+  %td
+    = invitation.state
+  %td
+    = invitation.game_type_str
+  %td
+    =h invitation.invitees_str
+  %td
+    = invitation.start_side_str
+  %td
+    = invitation.handicap_str
+  %td
+    =h invitation.response || invitation.note
+  %td.actions
+    %a(href="#{cancel_invitation_url(invitation)}")= t('invitations.cancel')

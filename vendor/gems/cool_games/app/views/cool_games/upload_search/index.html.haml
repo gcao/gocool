@@ -1,0 +1,20 @@
+- content_for :head do
+  = stylesheet_link_tag "date_input.css"
+
+.row
+  .span3
+    %h1= @page_header || t('upload_search.page_header')
+
+  %a{:href => url_for_uploads_of_today}= t("upload_search.uploads_of_today")
+  &nbsp;&nbsp;
+  %a{:href => url_for_uploads_of_7_days}= t("upload_search.uploads_of_7_days")
+
+= render :partial => "search_form"
+
+- if @uploads
+  #uploads_container
+    = render_uploads @uploads
+
+- content_for :footer do
+  :javascript
+    jQuery(jQuery.date_input.initialize);

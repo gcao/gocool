@@ -1,10 +1,11 @@
 .idea
 .bundle
-webrat-*.html
+.sass-cache
+app/stylesheets/.sass-cache
 config/initializers/000.rb
 db/*.sqlite3
-app/stylesheets/.sass-cache
 public/system
-tmp
+vendor/gems/cool_games/.git
 log
-.sass-cache
+tmp
+webrat-*.html

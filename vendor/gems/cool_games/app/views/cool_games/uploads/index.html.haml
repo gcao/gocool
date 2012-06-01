@@ -1,0 +1,14 @@
+%h1= t('uploads.page_header')
+
+#upload_forms
+  = render :partial => 'upload_file_form'
+  %hr.no-margin
+
+  = render :partial => 'upload_url_form'
+  %hr.no-margin
+  
+  = render :partial => 'upload_sgf_form'
+
+- content_for :footer do
+  :javascript
+    initUploadPage();

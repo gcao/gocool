@@ -1,0 +1,21 @@
+.row
+  .span12
+    %h1
+      = platform_link(@player.gaming_platform)
+      = t('players.name_label')
+      = @player.name
+
+  -#- if current_user.nil_or.admin?
+  -#  %a.edit_link{:href => url_for(:controller => 'admin/players', :action => 'edit', :id => @player.id)}= t('form.edit_button')
+  -#  - if @player.stat.games == 0
+  -#    = link_to_function t('form.delete_button'), "if (confirm('#{t('players_table.confirm_deletion').gsub('PLAYER_ID', @player.id.to_s)}')) deletePlayer(#{@player.id}); return false;"
+
+= render :partial => "player_info"
+
+- games = @player.games.sort_by_players
+- unless games.blank?
+  = render_games games 
+
+%hr.space
+
+= render_opponents @player.opponents.sort_by_opponent_name

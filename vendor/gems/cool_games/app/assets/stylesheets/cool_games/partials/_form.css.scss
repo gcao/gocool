@@ -1,0 +1,19 @@
+form.horizontal {
+  label {
+    display: inline-block;
+  }
+}
+
+form.vertical, form.upload_game {
+  label {
+    display: block;
+    text-align: right;
+    line-height: 30px;
+    vertical-align: middle;
+  }
+}
+
+.field.game_type, .field.rule {
+  line-height: 30px;
+  vertical-align: middle;
+}

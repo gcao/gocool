@@ -1,0 +1,11 @@
+.row
+  .span12
+    %h2= t('invitations.invitations_sent_to_me')
+    #invitations_container
+      =render 'invitations_to_me'
+
+.row
+  .span12
+    %h2= t('invitations.invitations_sent_by_me')
+    #invitations_container
+      =render 'invitations_by_me'

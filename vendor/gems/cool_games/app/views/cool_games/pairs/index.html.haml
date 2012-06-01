@@ -1,0 +1,95 @@
+%h1= @page_header || t('pairs.page_header')
+
+=form_tag pairs_path, :method => :get, :id => 'pairs_search_form', :class => "horizontal" do
+  %fieldset
+    .row
+      .span12
+        %label(for="platform")
+          = t('games.platform_label')
+        =gaming_platforms_select 'platform'
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        =text_field_tag 'player1', h(@player1_name), :class => 'ac_input', :placeholder => t('pairs.player1_label')
+        %label#vs_label(for="player2")
+          = t('games.vs_label')
+        =text_field_tag 'player2', h(@player2_name), :class => 'ac_input', :placeholder => t('pairs.player2_label')
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        %input{:type => "hidden", :name => "op", :value => "search"}
+        =submit_tag t('form.search_button')
+        =raw reset_button
+
+%hr.space
+#pairs_widget_container
+  - if @status == :success
+    = render :partial => "pair"
+  - elsif @status == :pair_not_found
+    = t('pairs.no_game_between').sub("PLAYER1", @player1_name).gsub("PLAYER2", @player2_name)
+
+- content_for :footer do
+  - if @status == :player_not_found
+    :javascript
+      showErrors(#{@errors.to_json});
+  :javascript
+    jQuery("#platform").change(function(){
+      jQuery("#player1, #player2").val("");
+    });
+    jQuery("#player1").change(function(){
+      jQuery("#player2").val("");
+    });
+    jQuery("#player1").autocomplete("#", {
+      makeUrl: function(q) {
+        if (jQuery.trim(q).length == 0) return;
+        return "#{suggest_players_path}?name=" + q + "&platform=" + jQuery("#platform").val();
+      },
+      minChars:1,
+      matchSubset:1,
+      matchContains:1,
+      mustMatch:0,
+      cacheLength:1,
+      autoFill:true,
+      selectFirst:true,
+      selectOny:true,
+      onItemSelect: function(li) {
+        jQuery('#player2').focus();
+      }
+    });
+
+    jQuery("#player2").autocomplete("#", {
+      makeUrl: function(q) {
+        var player = jQuery('#player1').val();
+
+        return "#{suggest_opponents_players_path}?platform=" + jQuery("#platform").val() + "&player=" + player + "&opponent=" + q;
+      },
+      minChars:0,
+      matchSubset:1,
+      matchContains:1,
+      mustMatch:0,
+      cacheLength:1,
+      autoFill:true,
+      selectFirst:true,
+      selectOny:true,
+      onItemSelect: function(li) {
+        jQuery('#player2_id').val(li.extra);
+        jQuery('#pairs_search_form input[type=submit]').focus();
+      }
+    });
+
+    jQuery("#player2").focus(function(){
+      this.autocompleter.trigger();
+    });
+
+    validanguage.el.player1 = {
+      validations: [
+        {
+          name: validanguage.validateRequired,
+          errorMsg: "#{t('pairs.player1_required')}",
+        }
+      ]
+    };
+    validanguage.el.player2 = {
+      validations: [
+        {
+          name: validanguage.validateRequired,
+          errorMsg: "#{t('pairs.player2_required')}",
+        }
+      ]
+    };

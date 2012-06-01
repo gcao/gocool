@@ -1,0 +1,22 @@
+- if games.blank?
+  = t("games_widget.game_not_found")
+- else
+  .games_widget
+    = page_navigation_links(games, :param_name => 'games_page')
+    %table.games_table.table
+      %thead
+        %tr.header
+          %th.id_column=           "ID"
+          %th.game_name_column=    t('games_widget.game_name')
+          %th.black_player_column= t('games_widget.black_player')
+          %th.white_player_column= t('games_widget.white_player')
+          %th.handicap_column=     t('games_widget.handicap')
+          %th.komi_column=         t('games_widget.komi')
+          %th.moves_column=        t('games_widget.moves')
+          %th.result_column=       t('games_widget.result')
+          %th.play_time_column=    t('games_widget.play_time')
+          %th.place_column=        t('games_widget.place')
+          %th.upload_description_column=  t('games_widget.upload_description')
+          %th.actions_column=      t('table.actions_label')
+      %tbody.records
+        = render :partial => 'cool_games/widgets/game', :collection => games, :as => :game

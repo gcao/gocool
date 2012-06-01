@@ -1,0 +1,50 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require cool_games/date_input
+ *= require_self
+ *= require cool_games/uploads
+ *= require cool_games/upload_search
+ *= require cool_games/games
+ */
+
+@import "cool_games/partials/form";
+@import "cool_games/partials/pagination";
+
+span.note {
+  font-style: italic;
+  color: #666666;
+}
+
+.sgf_good {
+  color: #008800;
+}
+
+.sgf_bad {
+  background: #000;
+  color: red;
+  font-weight: bold;
+  padding: 0 4px;
+}
+
+.sgf_rest {
+  color: #888888;
+}
+
+.failedField {
+  border: red 1px solid;
+}
+
+.vdError {
+  display: inline-block;
+  color: red;
+  font-size: small;
+}
+

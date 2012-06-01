@@ -1,0 +1,19 @@
+= form_tag upload_search_url, :name=>"searchForm", :id => "upload_search_form", :class => "horizontal", :method => "get" do
+  %fieldset
+    .row
+      .span12
+        %label(for="search_username")=t('upload_search.username_label')
+        %input#search_username(type="text" name="username" size="15"){:value => h(@username)}
+        %label(for="search_description")= t('upload_search.description_label')
+        %input#search_description(type="text" name="description" size="30"){:value => h(@description)}
+    
+    .row
+      .span12
+        %label#from_date_label(for="from_date")= t('upload_search.from_date_label')
+        =text_field_tag 'from_date', @from_date, :class => "date_input", :size => "15", :placeholder => t('upload_search.from_date_placeholder')
+        %label#to_date_label(for="to_date")= t('upload_search.to_date_label')
+        =text_field_tag 'to_date', @to_date, :class => "date_input", :size => "15", :placeholder => t('upload_search.to_date_placeholder')
+        %input{:type => "hidden", :name => "op", :value => "search"}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        =submit_tag t('form.search_button')
+        =raw reset_button

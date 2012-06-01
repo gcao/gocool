@@ -1,0 +1,34 @@
+%h1= @page_header || t('players.page_header')
+
+= form_tag url_for(:controller => 'players', :action => 'search'), :id => 'players_search_form', :class => "horizontal", :method => 'get' do
+  %fieldset
+    .row
+      .span12
+        %label(for="player_platform")= t('players.platform_label')
+        =gaming_platforms_select 'platform'
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        %label#name_label(for="name")= t('players.name_label')
+        =text_field_tag 'name'
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        =submit_tag t('form.search_button')
+        =raw reset_button
+
+#players_result_container
+  #players_result
+
+- content_for :footer do      
+  :javascript
+    $('#players_search_form').submit(function(){
+      $.get('#{url_for(:controller => 'players', :action => 'search')}',
+        {name: $('#name').val(), platform: $('#platform').val()}, function(data){
+          $('#players_result_container').html(data);
+        });
+      return false;
+    });
+    $('div.pagination a').live('click', function() {
+      $('#players_result').load(this.href);
+      return false;
+    });
+    //jQuery('#name_label, #name').mouseover(function(){
+    //  mousetip("#{t('shared.name_supports_wildcards')}");
+    //}).mouseout(hidemousetip);

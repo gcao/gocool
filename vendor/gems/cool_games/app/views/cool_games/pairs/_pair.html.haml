@@ -1,0 +1,9 @@
+%h2
+  = platform_link(@pair.player.gaming_platform)
+  #{h @pair.player.name}  对 #{h @pair.opponent.name}
+
+%p= "共有 #{@pair.games} 盘对局，其中#{h @pair.player.name}胜 #{@pair.games_won} 局，#{h @pair.opponent.name}胜 #{@pair.games_lost} 局。"
+
+- unless @games.blank?
+  #games_container
+    = render_games @games
