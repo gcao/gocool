@@ -2,8 +2,7 @@ require 'rbconfig'
 HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
 gem 'rails', '3.2.3'
-gem 'mysql2', "~> 0.3.0", :group => [:development, :test]
-gem 'pg', "~> 0.13.2", :group => :production
+gem 'mysql2', "~> 0.3.0"
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
