@@ -21,7 +21,7 @@ module CoolGames
       if description.blank?
         {}
       else
-        {:conditions => ["uploads.description like ?", "%#{description.strip}%"]}
+        {:conditions => ["cg_uploads.description like ?", "%#{description.strip}%"]}
       end
     }
 
@@ -30,12 +30,12 @@ module CoolGames
     scope :between, lambda {|from, to|
       if from
         if to
-          conditions = ["date(uploads.created_at) >= ? and date(uploads.created_at) <= ?", from, to]
+          conditions = ["date(cg_uploads.created_at) >= ? and date(cg_uploads.created_at) <= ?", from, to]
         else
-          conditions = ["date(uploads.created_at) >= ?", from]
+          conditions = ["date(cg_uploads.created_at) >= ?", from]
         end
       elsif to
-        conditions = ["date(uploads.created_at) <= ?", to]
+        conditions = ["date(cg_uploads.created_at) <= ?", to]
       end
       if conditions
         { :conditions => conditions }
@@ -50,11 +50,11 @@ module CoolGames
     end
 
     def self.recent_7_days
-      where("uploads.created_at > ?", Date.today - 6.days)
+      where("cg_uploads.created_at > ?", Date.today - 6.days)
     end
 
     def self.today
-      where("uploads.created_at > ?", Date.today)
+      where("cg_uploads.created_at > ?", Date.today)
     end
 
     def self.create_from_sgf description, data, sgf_game, hash_code = nil
