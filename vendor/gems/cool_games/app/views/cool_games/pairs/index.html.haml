@@ -14,8 +14,8 @@
         =text_field_tag 'player2', h(@player2_name), :class => 'ac_input', :placeholder => t('pairs.player2_label')
         &nbsp;&nbsp;&nbsp;&nbsp;
         %input{:type => "hidden", :name => "op", :value => "search"}
-        =submit_tag t('form.search_button')
-        =raw reset_button
+        =submit_tag t('form.search_button'), :class => "btn btn-primary"
+        =button_tag t('form.reset_button'), :name => "reset", :class => "btn"
 
 %hr.space
 #pairs_widget_container

@@ -10,13 +10,13 @@
         %label#name_label(for="name")= t('players.name_label')
         =text_field_tag 'name'
         &nbsp;&nbsp;&nbsp;&nbsp;
-        =submit_tag t('form.search_button')
-        =raw reset_button
+        =submit_tag t('form.search_button'), :class => "btn btn-primary"
+        =button_tag t('form.reset_button'), :name => "reset", :class => "btn"
 
 #players_result_container
   #players_result
 
-- content_for :footer do      
+- content_for :footer do
   :javascript
     $('#players_search_form').submit(function(){
       $.get('#{url_for(:controller => 'players', :action => 'search')}',

@@ -17,8 +17,8 @@
     .row
       .offset4
         %input(type='hidden' name='upload_type' value='sgf')
-        %input.upload_submit{:type => "submit", :name => "commit", :value => t('uploads.submit_button')}
-        %input{:type => "reset", :value => t('form.reset_button')}
+        =submit_tag t('uploads.submit_button'), :class => "upload_submit btn btn-primary"
+        =button_tag t('form.reset_button'), :name => "reset", :class => "btn"
 
 - content_for :footer do
   :javascript
