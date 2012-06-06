@@ -25,7 +25,8 @@ module CoolGames
 
       respond_to do |format|
         format.html { redirect_to :controller => :games, :action => :show, :id => @upload.game_id }
-        format.sgf  { send_file(@upload.file.path) }
+        #format.sgf  { send_file(@upload.file.path) }
+        format.sgf  { render :text => @upload.data || @upload.file_content }
       end
     end
 

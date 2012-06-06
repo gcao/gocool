@@ -59,18 +59,19 @@ module CoolGames
 
     def self.create_from_sgf description, data, sgf_game, hash_code = nil
       hash_code ||= CoolGames::Md5.string_to_md5 data
-      upload = create!(:source_type => Upload::UPLOAD_SGF, :description => description, :data => data, :hash_code => hash_code)
+      #upload = create!(:source_type => Upload::UPLOAD_SGF, :description => description, :data => data, :hash_code => hash_code)
+      upload = create!(:source_type => Upload::UPLOAD_SGF, :description => description, :file_content => data, :hash_code => hash_code)
 
       game = Game.new(:primary_source => upload)
       game.load_parsed_game(sgf_game)
       game.save!
 
-      temp_file = "/tmp/game_#{upload.id}_#{rand(100)}.sgf"
-      File.open(temp_file, "w") do |file|
-        file.print data
-      end
-
-      upload.file = File.new temp_file
+      #temp_file = "/tmp/game_#{upload.id}_#{rand(100)}.sgf"
+      #File.open(temp_file, "w") do |file|
+      #  file.print data
+      #end
+      #
+      #upload.file = File.new temp_file
       upload.game = game
       upload.save!
       upload
@@ -80,14 +81,15 @@ module CoolGames
       open(url) do |file|
         hash_code ||= CoolGames::Md5.string_to_md5 url
 
-        temp_file = "/tmp/game_#{rand(100000)}.sgf"
-        File.open(temp_file, "w") do |to_file|
-          to_file.print(file.readlines)
-        end
+        #temp_file = "/tmp/game_#{rand(100000)}.sgf"
+        #File.open(temp_file, "w") do |to_file|
+        #  to_file.print(file.readlines)
+        #end
         upload = create!(:source_type => Upload::UPLOAD_URL,
                          :description => description,
                          :source => url,
-                         :file => File.new(temp_file),
+                         #:file => File.new(temp_file),
+                         :file_content => file.read,
                          :hash_code => hash_code)
 
         upload.parse_and_save
@@ -97,7 +99,8 @@ module CoolGames
 
     def parse
       self.status = STATUS_PARSE_SUCCESS
-      SGF::Parser.parse_file self.file.path
+      #SGF::Parser.parse_file self.file.path
+      SGF::Parser.parse file_content
     rescue SGF::ParseError => e
       self.status = STATUS_PARSE_FAILURE
       self.status_detail = e.message
@@ -113,11 +116,11 @@ module CoolGames
       save!
     end
 
-    def raw_file_path
-      paths = self.file.path.split('/')
-      paths[-1] = 'RAW_' + paths[-1]
-      paths.join('/')
-    end
+    #def raw_file_path
+    #  paths = self.file.path.split('/')
+    #  paths[-1] = 'RAW_' + paths[-1]
+    #  paths.join('/')
+    #end
 
     #before_save do
     #  @file_changed = self.changed.include?("file_file_name") || self.changed.include?("file_file_size") || self.changed.include?("file_updated_at")
@@ -136,7 +139,8 @@ module CoolGames
     #end
 
     def update_hash_code
-      self.hash_code = CoolGames::Md5.file_to_md5(self.file.path)
+      #self.hash_code = CoolGames::Md5.file_to_md5(self.file.path)
+      self.hash_code = CoolGames::Md5.string_to_md5(self.file_content)
     end
 
     #def is_sgf?
@@ -158,10 +162,11 @@ module CoolGames
       return unless source_type == UPLOAD_URL
 
       open(source) do |new_data|
-        File.open(self.file.path, "w") do |to_file|
-          to_file.print(new_data.readlines)
-        end
-        convert_to_utf
+        #File.open(self.file.path, "w") do |to_file|
+        #  to_file.print(new_data.readlines)
+        #end
+        #convert_to_utf
+        self.file_content = new_data.read
         game.primary_upload_id = id if game.primary_upload_id.nil?
         game.load_parsed_game(parse)
         game.save!
@@ -170,9 +175,9 @@ module CoolGames
 
     private
 
-    def create_symbolic_link
-      `ln -F -s #{self.file.path} #{File.dirname(self.file.path)}/1.sgf`
-    end
+    #def create_symbolic_link
+    #  `ln -F -s #{self.file.path} #{File.dirname(self.file.path)}/1.sgf`
+    #end
 
     #def convert_to_utf
     #  return unless is_sgf? and File.exists?(file.path)

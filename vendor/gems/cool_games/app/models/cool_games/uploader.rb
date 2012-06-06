@@ -36,14 +36,14 @@ module CoolGames
         result.status = UploadResult::SUCCESS
       end
       result
-    rescue SGF::ParseError => e
-      result.status = UploadResult::SGF_ERROR
-      result.detail = upload.status_detail
-      result
-    rescue => e
-      result.status = UploadResult::ERROR
-      result.detail = e.to_s
-      result
+    #rescue SGF::ParseError => e
+    #  result.status = UploadResult::SGF_ERROR
+    #  result.detail = upload.status_detail
+    #  result
+    #rescue => e
+    #  result.status = UploadResult::ERROR
+    #  result.detail = e.to_s
+    #  result
     end
 
     def process_compressed_upload upload

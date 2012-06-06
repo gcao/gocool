@@ -7,7 +7,6 @@ class CreateUploads < ActiveRecord::Migration
       t.string      :source_type # data, path, url, upload
       t.string      :source
       t.text        :data
-      t.references  :upload
       t.boolean     :is_commented
       t.string      :commented_by
       t.text        :description
