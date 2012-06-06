@@ -14,6 +14,7 @@ class CreateUploads < ActiveRecord::Migration
       t.string      :hash_code
       t.string      :updated_by
       t.string      :file_file_name
+      t.binary      :file_content
       t.string      :file_content_type
       t.integer     :file_file_size
       t.datetime    :file_updated_at

@@ -16,7 +16,9 @@
           =raw t('uploads.file_note')
       .span8
         #file_fields
-          %input#upload_upload(type="file" name="upload[upload]" size="60")
+          #upload_upload0
+            %input#upload_upload(type="file" name="upload[upload]" size="60")
+            %input.btn.btn-danger(type="button" value="Delete This" onclick="removeUploadField('upload_upload0')")
         %p=raw t('uploads.zip_file_note')
 
     .row.buttons

@@ -11,7 +11,7 @@ module CoolGames
     UPLOAD_URL  = 'url'
 
     belongs_to :game
-    has_attached_file :file
+    #has_attached_file :file
 
     scope :with_hash, lambda { |hash|
       {:conditions => ["hash_code = ?", hash]}
@@ -58,7 +58,7 @@ module CoolGames
     end
 
     def self.create_from_sgf description, data, sgf_game, hash_code = nil
-      hash_code ||= Gocool::Md5.string_to_md5 data
+      hash_code ||= CoolGames::Md5.string_to_md5 data
       upload = create!(:source_type => Upload::UPLOAD_SGF, :description => description, :data => data, :hash_code => hash_code)
 
       game = Game.new(:primary_source => upload)
@@ -78,7 +78,7 @@ module CoolGames
 
     def self.create_from_url description, url, hash_code = nil
       open(url) do |file|
-        hash_code ||= Gocool::Md5.string_to_md5 url
+        hash_code ||= CoolGames::Md5.string_to_md5 url
 
         temp_file = "/tmp/game_#{rand(100000)}.sgf"
         File.open(temp_file, "w") do |to_file|
@@ -119,29 +119,29 @@ module CoolGames
       paths.join('/')
     end
 
-    before_save do
-      @file_changed = self.changed.include?("file_file_name") || self.changed.include?("file_file_size") || self.changed.include?("file_updated_at")
-      true
-    end
+    #before_save do
+    #  @file_changed = self.changed.include?("file_file_name") || self.changed.include?("file_file_size") || self.changed.include?("file_updated_at")
+    #  true
+    #end
 
-    after_save do
-      if @file_changed
-        #create_symbolic_link if is_sgf?
-        convert_to_utf
-      end
-    end
+    #after_save do
+    #  if @file_changed
+    #    #create_symbolic_link if is_sgf?
+    #    convert_to_utf
+    #  end
+    #end
 
-    after_create do
-      convert_to_utf
-    end
+    #after_create do
+    #  convert_to_utf
+    #end
 
     def update_hash_code
-      self.hash_code = Gocool::Md5.file_to_md5(self.file.path)
+      self.hash_code = CoolGames::Md5.file_to_md5(self.file.path)
     end
 
-    def is_sgf?
-      file and file.path and file.path.downcase.include?(".sgf")
-    end
+    #def is_sgf?
+    #  file and file.path and file.path.downcase.include?(".sgf")
+    #end
 
     DESCRIPTION_PATTERN = /"upload_time"=>"([^"]+)", .*"subject"=>"([^"]*)"/
 
@@ -174,24 +174,24 @@ module CoolGames
       `ln -F -s #{self.file.path} #{File.dirname(self.file.path)}/1.sgf`
     end
 
-    def convert_to_utf
-      return unless is_sgf? and File.exists?(file.path)
+    #def convert_to_utf
+    #  return unless is_sgf? and File.exists?(file.path)
 
-      file_encoding = %x(/usr/bin/file -i #{self.file.path}).strip
+    #  file_encoding = %x(/usr/bin/file -i #{self.file.path}).strip
 
-      if contains_not_recognizable_chars?(file_encoding)
-        %x(cp #{self.file.path} #{self.raw_file_path})
+    #  if contains_not_recognizable_chars?(file_encoding)
+    #    %x(cp #{self.file.path} #{self.raw_file_path})
 
-        contents = File.open(self.file.path).read
-        output = Iconv.conv('utf8', 'gb18030', contents)
-        File.open(self.file.path, 'w') do |file|
-          file.write(output)
-        end
-      end
-    end
+    #    contents = File.open(self.file.path).read
+    #    output = Iconv.conv('utf8', 'gb18030', contents)
+    #    File.open(self.file.path, 'w') do |file|
+    #      file.write(output)
+    #    end
+    #  end
+    #end
 
-    def contains_not_recognizable_chars? encoding
-      encoding.include?('charset=') and not (encoding.include?('charset=us-ascii') or encoding.include?('charset=utf'))
-    end
+    #def contains_not_recognizable_chars? encoding
+    #  encoding.include?('charset=') and not (encoding.include?('charset=us-ascii') or encoding.include?('charset=utf'))
+    #end
   end
 end

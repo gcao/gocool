@@ -16,10 +16,10 @@ guard 'livereload' do
   watch(%r{(app|vendor/gems/cool_games)/assets/\w+/(.+\.(css|js|html)).*})  { |m| puts m; "/assets/#{m[2]}" }
 end
 
-#guard 'rails' do
-#  watch('Gemfile.lock')
-#  watch(%r{^config/.*})
-#end
+guard 'rails' do
+  watch('Gemfile.lock')
+  watch(%r{^config/.*})
+end
 
 #guard 'rspec', :version => 2 do
 #  watch(%r{^spec/.+_spec\.rb$})

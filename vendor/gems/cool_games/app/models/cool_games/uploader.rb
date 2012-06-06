@@ -2,10 +2,17 @@ module CoolGames
   class Uploader
 
     def process_files description, files
-      uploads = files.map {|file| Upload.create!(:source_type => Upload::UPLOAD_FILE, :description => description, :file => file) }
-      uploads = uploads.inject([]) do |new_uploads, upload|
-        new_uploads << process_compressed_upload(upload)
-      end.flatten
+      uploads = files.map do |file|
+        Upload.create!(:source_type => Upload::UPLOAD_FILE,
+                       :description => description,
+                       :file_file_name => file.original_filename,
+                       :file_content => file.read)
+                       #:file => file)
+      end
+      # Remove zip file upload support
+      #uploads = uploads.inject([]) do |new_uploads, upload|
+      #  new_uploads << process_compressed_upload(upload)
+      #end.flatten
       uploads.map do |upload|
         process_upload upload
       end
@@ -16,10 +23,11 @@ module CoolGames
     def process_upload upload
       result = UploadResult.new
       result.upload = upload
-      if not upload.is_sgf?
-        result.status = UploadResult::VALIDATION_ERROR
-        result.detail = "#{upload.file_file_name} is not a SGF file."
-      elsif found = process_duplicate_upload(upload)
+      #if not upload.is_sgf?
+      #  result.status = UploadResult::VALIDATION_ERROR
+      #  result.detail = "#{upload.file_file_name} is not a SGF file."
+      #elsif found = process_duplicate_upload(upload)
+      if found = process_duplicate_upload(upload)
         result.found_upload = found
         result.status = UploadResult::FOUND
         result.detail = I18n.t('uploads.already_uploaded_detail')

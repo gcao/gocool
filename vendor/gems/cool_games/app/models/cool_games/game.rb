@@ -36,7 +36,7 @@ module CoolGames
     default_scope :include => [:gaming_platform, :primary_source]
 
     scope :with_detail, :include => [:detail]
-    scope :sort_by_last_move_time, :order => "game_details.last_move_time DESC"
+    scope :sort_by_last_move_time, :order => "cg_game_details.last_move_time DESC"
 
     scope :by_player, lambda {|p|
       {
@@ -47,16 +47,16 @@ module CoolGames
     scope :my_turn, lambda {|p|
       {
         :include => :detail,
-        :conditions => ["(black_id = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
-                      or (white_id = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))", p.id, BLACK, p.id, WHITE]
+        :conditions => ["(black_id = ? and (cg_games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (cg_games.state in ('new', 'playing') and cg_game_details.whose_turn = ?)))
+                      or (white_id = ? and (cg_games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (cg_games.state in ('new', 'playing') and cg_game_details.whose_turn = ?)))", p.id, BLACK, p.id, WHITE]
       }
     }
 
     scope :not_my_turn, lambda {|p|
       {
         :include => :detail,
-        :conditions => ["(black_id = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
-                      or (white_id = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))", p.id, WHITE, p.id, BLACK]
+        :conditions => ["(black_id = ? and (cg_games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (cg_games.state in ('new', 'playing') and cg_game_details.whose_turn = ?)))
+                      or (white_id = ? and (cg_games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (cg_games.state in ('new', 'playing') and cg_game_details.whose_turn = ?)))", p.id, WHITE, p.id, BLACK]
       }
     }
 
@@ -74,18 +74,18 @@ module CoolGames
 
     scope :on_platform, lambda { |platform|
       if platform.is_a? GamingPlatform
-        { :conditions => ["games.gaming_platform_id = ?", platform.id] }
+        { :conditions => ["cg_games.gaming_platform_id = ?", platform.id] }
       elsif platform.blank?
-        { :conditions => "games.gaming_platform_id is null" }
+        { :conditions => "cg_games.gaming_platform_id is null" }
       elsif platform.to_i == GamingPlatform::ALL
         {}
       else
-        { :conditions => ["games.gaming_platform_id = ?", platform] }
+        { :conditions => ["cg_games.gaming_platform_id = ?", platform] }
       end
     }
 
     scope :played_by, lambda {|player1, player2|
-      raise ArgumentError.new(I18n.t('games.first_player_is_required')) if player1.blank?
+      raise ArgumentError.new(I18n.t('cg_games.first_player_is_required')) if player1.blank?
 
       player1 = player1.strip.gsub('*', '%')
 
@@ -111,13 +111,13 @@ module CoolGames
 
     scope :sort_by_players, :order => "black_name, white_name"
 
-    scope :sort_by_last_move_time, :include => :detail, :order => "game_details.last_move_time"
+    scope :sort_by_last_move_time, :include => :detail, :order => "cg_game_details.last_move_time"
 
     scope :my_turn_by_name, lambda{|name|
       {
         :include => :detail,
-        :conditions => ["(black_name = ? and (games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))
-                      or (white_name = ? and (games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (games.state in ('new', 'playing') and game_details.whose_turn = ?)))",
+        :conditions => ["(black_name = ? and (cg_games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (cg_games.state in ('new', 'playing') and cg_game_details.whose_turn = ?)))
+                      or (white_name = ? and (cg_games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (cg_games.state in ('new', 'playing') and cg_game_details.whose_turn = ?)))",
                         name, BLACK, name, WHITE]
       }
     }

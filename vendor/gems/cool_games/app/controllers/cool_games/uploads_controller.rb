@@ -35,7 +35,7 @@ module CoolGames
       files = params[:upload].values
 
       if files.length == 0
-        flash.now[:error] = "TODO"
+        flash.now[:error] = t('uploads.file_required')
         return
       end
 
@@ -73,7 +73,7 @@ module CoolGames
         return
       end
 
-      hash_code = Gocool::Md5.string_to_md5 data
+      hash_code = CoolGames::Md5.string_to_md5 data
       if @upload = Upload.with_hash(hash_code).first
         flash.now[:notice] = t('uploads.game_found')
       else
@@ -87,7 +87,7 @@ module CoolGames
     def process_url
       url = params[:upload][:url]
 
-      hash_code = Gocool::Md5.string_to_md5 url
+      hash_code = CoolGames::Md5.string_to_md5 url
       if @upload = Upload.with_hash(hash_code).first
         flash.now[:notice] = t('uploads.game_found')
       else
