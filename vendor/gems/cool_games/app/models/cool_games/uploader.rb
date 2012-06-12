@@ -3,10 +3,13 @@ module CoolGames
 
     def process_files description, files
       uploads = files.map do |file|
+        # Use enca to convert to utf-8
+        `#{ENV['ENCA_EXECUTABLE']} -c -C extern -L zh -x utf-8 #{file.path}`
+        data = file.read
         Upload.create!(:source_type => Upload::UPLOAD_FILE,
                        :description => description,
                        :file_file_name => file.original_filename,
-                       :file_content => file.read)
+                       :file_content => data)
                        #:file => file)
       end
       # Remove zip file upload support
