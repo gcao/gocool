@@ -188,13 +188,13 @@ module CoolGames
         platform = GamingPlatform.kgs
       elsif self.place =~ /dragongoserver/i
         platform = GamingPlatform.dgs
-      elsif self.place =~ /tom对弈/i
+      elsif self.place =~ /tom/i
         platform = GamingPlatform.tom
-      elsif self.place =~ /弈城/i
+      elsif self.place =~ /eweiqi/i
         platform = GamingPlatform.eweiqi
       elsif self.place =~ /igs/i
         platform = GamingPlatform.igs
-      elsif self.place =~ /新浪/i
+      elsif self.place =~ /sina/i
         platform = GamingPlatform.sina
       end
 
@@ -205,10 +205,10 @@ module CoolGames
       PairStat.find_or_create(black_id, white_id)
       PairStat.find_or_create(white_id, black_id)
 
-      if self.result =~ /B+/i or (self.result.try(:include?, '黑') and self.result.try(:include?, '胜'))
+      if self.result =~ /B+/i or (self.result.nil_or.include?('hei') and self.result.nil_or.include?('sheng'))
         self.state = 'finished'
         self.winner = WINNER_BLACK
-      elsif self.result =~ /W+/i or (self.result.try(:include?, '白') and self.result.try(:include?, '胜'))
+      elsif self.result =~ /W+/i or (self.result.nil_or.include?('bai') and self.result.nil_or.include?('sheng'))
         self.state = 'finished'
         self.winner = WINNER_WHITE
       end

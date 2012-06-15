@@ -17,7 +17,6 @@
         =submit_tag t('form.search_button'), :class => "btn btn-primary"
         =button_tag t('form.reset_button'), :name => "reset", :class => "btn"
 
-%hr.space
 #pairs_widget_container
   - if @status == :success
     = render :partial => "pair"

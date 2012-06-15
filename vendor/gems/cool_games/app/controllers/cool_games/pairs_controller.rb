@@ -17,7 +17,7 @@ module CoolGames
           @errors << ['player1', t('pairs.player_not_found').gsub('PLAYER_NAME', @player1_name)] if @player1.blank?
           @errors << ['player2', t('pairs.player_not_found').gsub('PLAYER_NAME', @player2_name)] if @player2.blank?
         else
-          @pair = PairStat.player_id_is(@player1.id).opponent_id_is(@player2.id).first
+          @pair = PairStat.where(player_id: @player1.id).where(opponent_id: @player2.id).first
 
           if @pair
             @games = Game.played_between(@player1.id, @player2.id)
