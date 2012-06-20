@@ -6,7 +6,7 @@ CoolGames::Engine.routes.draw do
     end
 
     collection do
-      get *%w(waiting)
+      get *%w(waiting api_index)
     end
   end
 
@@ -25,5 +25,9 @@ CoolGames::Engine.routes.draw do
     member do
       get *%w(accept reject cancel)
     end
+  end
+
+  namespace :api do
+    resources :games
   end
 end

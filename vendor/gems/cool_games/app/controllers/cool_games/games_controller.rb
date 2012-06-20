@@ -2,7 +2,7 @@ module CoolGames
   class GamesController < BaseController
     include GamesHelper
 
-    before_filter :check_game          , :except => [:new, :index, :next, :waiting, :destroy]
+    before_filter :check_game          , :except => [:new, :index, :next, :waiting, :destroy, :api_index]
     before_filter :authenticate_user!  , :only   => [:play, :resign, :undo_guess_moves, :do_this]
     before_filter :check_user_is_player, :only   => [:undo_guess_moves, :do_this, :send_message]
 
@@ -18,6 +18,9 @@ module CoolGames
           @games = Game.search(@platform, @player1, @player2).sort_by_players
         end
       end
+    end
+
+    def api_index
     end
 
     def show

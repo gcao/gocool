@@ -51,6 +51,9 @@ GEM
     cancan (1.6.7)
     cocaine (0.2.1)
     coderay (1.0.6)
+    coffee-filter (0.1.1)
+      coffee-script (>= 2.2.0)
+      haml (>= 3.0.18)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -212,6 +215,7 @@ DEPENDENCIES
   aasm (~> 3.0.0)
   bootstrap-sass (>= 2.0.1)
   cancan (>= 1.6.7)
+  coffee-filter
   coffee-rails (~> 3.2.1)
   cool_games!
   devise (>= 2.1.0.rc2)
