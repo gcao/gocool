@@ -6,8 +6,8 @@
     %a{:href=>cool_games.upload_search_path}= t('menu.upload_search')
   %li.players
     %a{:href=>cool_games.players_path}= t('menu.players')
-  %li.pairs
-    %a{:href=>cool_games.pairs_path}= t('menu.pairs')
+  -#%li.pairs
+  -#  %a{:href=>cool_games.pairs_path}= t('menu.pairs')
   %li.games
     %a{:href=>cool_games.games_path}= t('menu.games')
   - if user_signed_in?

@@ -1,3 +1,2 @@
-%h3 Home
-- @users.each do |user|
-  %p User: #{link_to user.username, user}
+%h3= t('games.my_games_section_title')
+= render_games CoolGames::Game.by_player(current_user.player) if user_signed_in?

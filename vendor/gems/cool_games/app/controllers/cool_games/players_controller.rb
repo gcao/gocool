@@ -27,7 +27,7 @@ module CoolGames
       if @players.size == 1
         redirect_to player_url(@players.first)
       else
-        render :partial => 'cool_games/widgets/players', :locals => {:players => @players.paginate(page_params(:players_page))}
+        render :partial => 'cool_games/widgets/players', :locals => {:players => @players.paginate}
       end
     end
 

@@ -12,19 +12,19 @@ module CoolGames
     def black_player_html(game)
       name      = game.black_name_with_rank
       is_winner = game.winner == Game::WINNER_BLACK
-      url       = player_url(game.black_id) if game.black_id
+      url       = cool_games.player_url(game.black_id) if game.black_id
       player_html(name, url, is_winner)
     end
 
     def white_player_html(game)
       name      = game.white_name_with_rank
       is_winner = game.winner == Game::WINNER_WHITE
-      url       = player_url(game.white_id) if game.white_id
+      url       = cool_games.player_url(game.white_id) if game.white_id
       player_html(name, url, is_winner)
     end
 
     def view_game_html(game)
-      url = game.primary_upload_id ? upload_url(game.primary_upload_id) : game_url(game)
+      url = game.primary_upload_id ? upload_url(game.primary_upload_id) : cool_games.game_url(game)
       "<a target='_new#{rand(1000)}' href='#{url}'>#{t('form.view_button')}</a>"
     end
 
@@ -62,6 +62,11 @@ module CoolGames
       options = { :class => 'pagination', :inner_window => 2, :outer_window => 0, :renderer => BootstrapLinkRenderer,
         :previous_label => '&larr;'.html_safe, :next_label => '&rarr;'.html_safe}.merge!(options)
       will_paginate(pages, options)
+    end
+
+    def page_params page_no_param = :page
+      page_size = (ENV['ROWS_PER_PAGE'] || 15).to_i
+      { :per_page => page_size, :page => params[page_no_param] }
     end
 
     private
