@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require cool_games
+//= require cool_games/api
 
 jQuery(document).ready(function(){
     jQuery("#container input[name=reset]").click(function(){
