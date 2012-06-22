@@ -48,4 +48,5 @@ gem "coffee-filter"
 gem "sgf_parser", :require => "sgf", :path => "vendor/gems/sgf_parser"
 gem "cool_games", :path => "vendor/gems/cool_games"
 gem "thin", :group => :development
+gem 'api_taster', :group => :development
 

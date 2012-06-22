@@ -10,4 +10,11 @@ Gocool::Application.routes.draw do
 
   mount CoolGames::Engine, :at => '/'
 
+  if Rails.env.development?
+    ApiTaster.routes do
+      get '/api/games'
+    end
+
+    mount ApiTaster::Engine => "/test"
+  end
 end
