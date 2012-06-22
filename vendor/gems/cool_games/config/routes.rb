@@ -6,7 +6,7 @@ CoolGames::Engine.routes.draw do
     end
 
     collection do
-      get *%w(waiting api_index)
+      get *%w(search waiting api_index)
     end
   end
 

@@ -2,25 +2,28 @@ module CoolGames
   class GamesController < BaseController
     include GamesHelper
 
-    before_filter :check_game          , :except => [:new, :index, :next, :waiting, :destroy, :api_index]
+    before_filter :check_game          , :except => [:new, :index, :next, :waiting, :destroy, :search, :api_index]
     before_filter :authenticate_user!  , :only   => [:play, :resign, :undo_guess_moves, :do_this]
     before_filter :check_user_is_player, :only   => [:undo_guess_moves, :do_this, :send_message]
 
     def index
+    end
+
+    def api_index
+    end
+
+    def search
       @platform = params[:platform]
       @player1  = params[:player1]
       @player2  = params[:player2]
 
-      if params[:op] == 'search'
-        if @player1.blank?
-          flash.now[:error] = t('games.player1_is_required')
-        else
-          @games = Game.search(@platform, @player1, @player2).sort_by_players
-        end
+      if @player1.blank?
+        flash.now[:error] = t('games.player1_is_required')
+      else
+        @games = Game.search(@platform, @player1, @player2).sort_by_players
       end
-    end
 
-    def api_index
+      render 'index'
     end
 
     def show
