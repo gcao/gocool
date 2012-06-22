@@ -18,7 +18,7 @@ end
 
 guard 'rails' do
   watch('Gemfile.lock')
-  watch(%r{^config/.*})
+  watch(%r{^(config|vendor/gems/cool_games/config)/.*})
 end
 
 #guard 'rspec', :version => 2 do
