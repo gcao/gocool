@@ -1,9 +1,10 @@
 %h2= t('games.page_title')
+
 #games_not_found(style='display:none;')
   = t("games_widget.game_not_found")
 #games_table(style='display:none;')
   .games_widget
-    .pagination
+    .pagination(style='display:none')
     %table.games_table.table
       %thead
         %tr.header
