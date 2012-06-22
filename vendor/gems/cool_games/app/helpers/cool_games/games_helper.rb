@@ -21,5 +21,11 @@ module CoolGames
     def container_css_classes
       @game.game_type == Game::DAOQI ? "game_container daoqi" : "game_container weiqi"
     end
+
+    def games_to_json games
+      result = {}
+      result[:games] = games
+      result.to_json
+    end
   end
 end

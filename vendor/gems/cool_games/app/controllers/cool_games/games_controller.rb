@@ -2,9 +2,10 @@ module CoolGames
   class GamesController < BaseController
     include GamesHelper
 
-    before_filter :check_game          , :except => [:new, :index, :next, :waiting, :destroy, :search, :api_index]
-    before_filter :authenticate_user!  , :only   => [:play, :resign, :undo_guess_moves, :do_this]
-    before_filter :check_user_is_player, :only   => [:undo_guess_moves, :do_this, :send_message]
+    before_filter :check_game, :only => [:show, :play, :resign, :mark_dead, :undo_guess_moves,
+                                         :do_this, :messages, :send_message]
+    before_filter :authenticate_user!, :only => [:play, :resign, :undo_guess_moves, :do_this]
+    before_filter :check_user_is_player, :only => [:undo_guess_moves, :do_this, :send_message]
 
     def index
     end
@@ -23,7 +24,13 @@ module CoolGames
         @games = Game.search(@platform, @player1, @player2).sort_by_players
       end
 
-      render 'index'
+      respond_to do |format|
+        format.html { render 'index' }
+        format.json do
+          @games ||= Game
+          render :json => games_to_json(@games.paginate(page_params))
+        end
+      end
     end
 
     def show

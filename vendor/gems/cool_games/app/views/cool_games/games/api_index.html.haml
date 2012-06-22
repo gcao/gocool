@@ -23,5 +23,5 @@
       %tbody.records
 
 :coffeescript
-  initApiGames('#{cool_games.api_games_url}')
+  initApiGames('#{cool_games.search_games_url(:format => 'json')}')
 
