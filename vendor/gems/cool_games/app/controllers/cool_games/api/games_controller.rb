@@ -10,7 +10,10 @@ module CoolGames
           games = Game.search(@platform, @player1, @player2)
         end
 
-        render :json => games_to_json(games.sort_by_players.paginate(page_params))
+        resp = JsonResponse.new
+        resp.body = games.sort_by_players.paginate(page_params)
+
+        render :json => resp.to_s
       end
     end
   end

@@ -1,10 +1,11 @@
 window.initApiGames = (games_url) ->
   jQuery.getJSON games_url, (response) ->
     console.log response
-    if response.games
+    games = response.body
+    if games
       jQuery('#games_not_found').hide()
       jQuery('#games_table').show()
-      for game in response.games
+      for game in games
         jQuery('#games_table tbody').append """
           <tr>
             <td>#{[game.id]}</td>
