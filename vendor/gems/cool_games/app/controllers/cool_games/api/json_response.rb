@@ -6,9 +6,11 @@ module CoolGames
 
       attr_accessor :body
 
-      def initialize status = 200, &block
+      def initialize status = 200, body = nil, &block
         @status = status
+        @body   = body
         @errors = []
+
         instance_eval &block if block_given?
       end
 

@@ -1,22 +1,19 @@
-class CoolGames::BaseController < ApplicationController
+module CoolGames
+  class BaseController < ApplicationController
+    include PaginationHelper
 
-  helper "cool_games/urls", "cool_games/widgets"
+    helper "cool_games/urls", "cool_games/widgets", "cool_games/pagination"
 
-  before_filter do
-    Thread.current[:user] = current_user
-  end
+    before_filter do
+      Thread.current[:user] = current_user
+    end
 
-  after_filter do
-    Thread.current[:user] = nil
-  end
+    after_filter do
+      Thread.current[:user] = nil
+    end
 
-  def page_params page_no_param = :page
-    page_size = (ENV['ROWS_PER_PAGE'] || 15).to_i
-    { :per_page => page_size, :page => params[page_no_param] }
-  end
-  helper_method :page_params
-
-  def current_player
-    current_user.nil_or.player
+    def current_player
+      current_user.nil_or.player
+    end
   end
 end

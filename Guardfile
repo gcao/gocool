@@ -16,7 +16,7 @@ guard 'livereload' do
   watch(%r{(app|vendor/gems/cool_games)/assets/\w+/(.+\.(css|js|html)).*})  { |m| puts m; "/assets/#{m[2]}" }
 end
 
-guard 'rails' do
+guard 'rails', :port => 5000 do
   watch('Gemfile.lock')
   watch(%r{^(config|vendor/gems/cool_games/config)/.*})
 end
