@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'execjs'
   gem 'therubyracer-heroku'
+  gem 'jquery-ui-rails'
 end
 gem 'jquery-rails'
 gem "haml", ">= 3.1.5"

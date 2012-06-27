@@ -18,6 +18,7 @@ window.initApiGames = (games_url) ->
     success: (response) ->
       console.log response
       showGames(response.body)
+      paginate('#games_table .pagination', response.pagination)
 
 window.showGames = (games) ->
   if games && games.length > 0
@@ -44,3 +45,11 @@ window.showGames = (games) ->
   else
     $('#games_not_found').show()
     $('#games_table').hide()
+
+window.paginate = (container, pagination) ->
+  if pagination
+    $(container).show().jillpaginate
+      totalPages: pagination.total_pages
+      currentPage: pagination.page
+  else
+    $(container).hide()
