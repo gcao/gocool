@@ -43,6 +43,7 @@ en:
     search_button: "搜索"
     select_all: "全部"
     select_other: "其他"
+    please_wait: "请稍侯..."
   table:
     actions_label: "操作"
   email:

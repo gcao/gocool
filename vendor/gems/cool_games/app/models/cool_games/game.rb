@@ -86,7 +86,7 @@ module CoolGames
     }
 
     scope :played_by, lambda {|player1, player2|
-      raise ArgumentError.new(I18n.t('cg_games.first_player_is_required')) if player1.blank?
+      raise ArgumentError.new(I18n.t('games.first_player_is_required')) if player1.blank?
 
       player1 = player1.strip.gsub('*', '%')
 

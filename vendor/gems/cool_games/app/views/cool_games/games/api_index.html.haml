@@ -1,5 +1,22 @@
 %h2= t('games.page_title')
 
+=form_tag search_api_games_path, :method => :get, :remote => true, |
+          :id => 'games_search_form', :class => "horizontal" do |
+  %fieldset
+    .row
+      .span12
+        %label(for="platform")
+          = t('games.platform_label')
+        =gaming_platforms_select 'platform'
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        =text_field_tag 'player1', h(@player1), :placeholder => t('games.player1_label')
+        %label#vs_label(for="player2")
+          = t('games.vs_label')
+        =text_field_tag 'player2', h(@player2), :placeholder => t('games.player2_label')
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        =submit_tag t('form.search_button'), :class => "btn btn-primary", :disable_with => t('form.please_wait')
+        =button_tag t('form.reset_button'), :name => "reset", :class => "btn"
+
 #games_not_found(style='display:none;')
   = t("games_widget.game_not_found")
 #games_table(style='display:none;')
@@ -23,6 +40,5 @@
       %tbody.records
 
 :coffeescript
-  #initApiGames('#{cool_games.search_games_url(:format => 'json')}')
   initApiGames('#{cool_games.api_games_url}')
 
