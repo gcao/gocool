@@ -37,6 +37,7 @@ module CoolGames
 
     scope :with_detail, :include => [:detail]
     scope :sort_by_last_move_time, :order => "cg_game_details.last_move_time DESC"
+    scope :sort_by_creation_time, :order => "cg_games.created_at DESC"
 
     scope :by_player, lambda {|p|
       {

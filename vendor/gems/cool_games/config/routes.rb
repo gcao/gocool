@@ -28,6 +28,10 @@ CoolGames::Engine.routes.draw do
   end
 
   namespace :api do
-    resources :games
+    resources :games do
+      collection do
+        get *%w(search)
+      end
+    end
   end
 end

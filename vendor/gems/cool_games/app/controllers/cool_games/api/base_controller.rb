@@ -5,6 +5,8 @@ module CoolGames
 
       helper 'cool_games/base', 'cool_games/pagination'
 
+      respond_to :json
+
       protected
 
       def authenticate_user!
