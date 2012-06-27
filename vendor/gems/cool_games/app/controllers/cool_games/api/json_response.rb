@@ -6,7 +6,7 @@ module CoolGames
       VALIDATION_ERROR = :validation_error
 
       Error = Struct.new(:code, :message, :field)
-      Pagination = Struct.new(:page, :page_size, :total_entries)
+      Pagination = Struct.new(:page, :page_size, :total_pages, :total_entries)
 
       def initialize status = :success, body = nil, &block
         @status   = status
@@ -18,7 +18,7 @@ module CoolGames
 
       def body= body
         if body.respond_to? :current_page
-          @pagination = Pagination.new(body.current_page, body.per_page, body.total_entries)
+          @pagination = Pagination.new(body.current_page, body.per_page, body.total_pages, body.total_entries)
         end
 
         @body = body
