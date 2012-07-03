@@ -2,8 +2,9 @@ module CoolGames
   module Api
     class JsonResponse
 
-      SUCCESS          = :success
-      VALIDATION_ERROR = :validation_error
+      SUCCESS           = :success
+      VALIDATION_ERROR  = :validation_error
+      NOT_AUTHENTICATED = :not_authenticated
 
       Error = Struct.new(:code, :message, :field)
       Pagination = Struct.new(:page, :page_size, :total_pages, :total_entries)
@@ -41,6 +42,13 @@ module CoolGames
 
       def self.success body = nil, &block
         new SUCCESS, body, &block
+      end
+
+      def self.not_authenticated
+        new NOT_AUTHENTICATED do
+          error_code = 'api.errors.not_authenticated'
+          add_error error_code, I18n.t(error_code), :authentication_token
+        end
       end
     end
   end

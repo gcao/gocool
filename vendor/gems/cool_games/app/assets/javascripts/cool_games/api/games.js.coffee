@@ -1,4 +1,4 @@
-window.initApiGames = (games_url) ->
+window.initApiGames = ->
   $('#games_search_form').bind 'ajax:success', (event, response) ->
     console.log response
     switch response.status
@@ -10,13 +10,16 @@ window.initApiGames = (games_url) ->
         for error in response.errors
           showError(error.field, error.message)
 
-  #$.getJSON games_url, (response) ->
-  #  console.log response
-  $.ajax games_url,
+  $.ajax urls.api.games,
     dataType: 'jsonp'
     crossDomain: true
     success: (response) ->
       console.log response
+
+      if response.status == 'not_authenticated'
+        window.location = '/users/sign_in'
+        return
+
       showGames(response.body)
       paginate('#games_table .pagination', response.pagination)
 

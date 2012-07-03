@@ -1,7 +1,9 @@
 module CoolGames
   module Api
     class GamesController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w(index search))
+      JsonResponseHandler.apply(self, :methods => %w[index search])
+
+      before_filter :authenticate_user!, :only => %w[show]
 
       def index
         games = Game.sort_by_creation_time.paginate(page_params)

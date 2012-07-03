@@ -9,6 +9,13 @@
     %meta{:content => "", :name => "author"}
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
+    = render 'layouts/urls'
+    :coffeescript
+      $.ajaxSetup
+        statusCode:
+          401: ->
+            console.log '401 returned'
+            window.location = urls.login
     = csrf_meta_tags
     = yield(:head)
   %body
