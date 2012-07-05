@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601154132) do
+ActiveRecord::Schema.define(:version => 20120625133826) do
 
   create_table "cg_game_comments", :force => true do |t|
     t.integer  "game_id"
@@ -223,7 +223,6 @@ ActiveRecord::Schema.define(:version => 20120601154132) do
     t.string   "source_type"
     t.string   "source"
     t.text     "data"
-    t.integer  "upload_id"
     t.boolean  "is_commented"
     t.string   "commented_by"
     t.text     "description"
@@ -274,6 +273,7 @@ ActiveRecord::Schema.define(:version => 20120601154132) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "username"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
