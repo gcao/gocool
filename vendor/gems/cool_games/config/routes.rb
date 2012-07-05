@@ -1,12 +1,12 @@
 CoolGames::Engine.routes.draw do
   resources :games do
     member do
-      get *%w(play resign undo_guess_moves next do_this mark_dead messages)
-      post *%w(send_message)
+      get *%w[play resign undo_guess_moves next do_this mark_dead messages]
+      post *%w[send_message]
     end
 
     collection do
-      get *%w(search waiting api_index)
+      get *%w[search waiting]
     end
   end
 
@@ -15,7 +15,7 @@ CoolGames::Engine.routes.draw do
 
   resources :players do
     collection do
-      get *%w(search suggest suggest_opponents)
+      get *%w[search suggest suggest_opponents]
     end
   end
 
@@ -23,14 +23,14 @@ CoolGames::Engine.routes.draw do
 
   resources :invitations do
     member do
-      get *%w(accept reject cancel)
+      get *%w[accept reject cancel]
     end
   end
 
   namespace :api do
     resources :games do
       collection do
-        get *%w(search)
+        get *%w[search]
       end
     end
   end

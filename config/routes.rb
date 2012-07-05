@@ -6,7 +6,11 @@ Gocool::Application.routes.draw do
   end
   root :to => "home#index"
   devise_for :users
-  resources :users, :only => [:show, :index]
+  resources :users, :only => %w[show index]
+
+  namespace :api do
+    resources :sessions, :only => %w[index create destroy]
+  end
 
   mount CoolGames::Engine, :at => '/'
 end

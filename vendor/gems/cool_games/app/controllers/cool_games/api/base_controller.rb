@@ -5,7 +5,9 @@ module CoolGames
 
       helper 'cool_games/base', 'cool_games/pagination'
 
-      respond_to :json
+      layout 'application'
+
+      respond_to :html, :json
 
       before_filter :authenticate_user
 

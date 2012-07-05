@@ -6,9 +6,14 @@ module CoolGames
       before_filter :authenticate_user!, :only => %w[show]
 
       def index
-        games = Game.sort_by_creation_time.paginate(page_params)
+        respond_to do |format|
+          format.html { render 'index' }
+          format.json do
+            games = Game.sort_by_creation_time.paginate(page_params)
 
-        JsonResponse.success(games)
+            JsonResponse.success(games)
+          end
+        end
       end
 
       def search

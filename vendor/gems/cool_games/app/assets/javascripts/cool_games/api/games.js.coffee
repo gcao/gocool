@@ -10,7 +10,7 @@ window.initApiGames = ->
         for error in response.errors
           showError(error.field, error.message)
 
-  $.ajax urls.api.games,
+  $.ajax urls.api.games + ".json",
     dataType: 'jsonp'
     crossDomain: true
     success: (response) ->

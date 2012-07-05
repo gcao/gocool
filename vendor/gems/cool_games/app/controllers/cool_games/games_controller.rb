@@ -10,9 +10,6 @@ module CoolGames
     def index
     end
 
-    def api_index
-    end
-
     def search
       @platform = params[:platform]
       @player1  = params[:player1]
