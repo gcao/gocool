@@ -5,6 +5,7 @@ module CoolGames
       SUCCESS           = :success
       VALIDATION_ERROR  = :validation_error
       NOT_AUTHENTICATED = :not_authenticated
+      LOGIN_FAILURE     = :login_failure
 
       Error = Struct.new(:code, :message, :field)
       Pagination = Struct.new(:page, :page_size, :total_pages, :total_entries)
