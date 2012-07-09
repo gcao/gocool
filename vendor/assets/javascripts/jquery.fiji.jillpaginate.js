@@ -4,7 +4,7 @@
  * Copyright (c) 2011 Kai Schlamp
  * Dual licensed under the MIT or GPL Version 2 licenses.
  *
- * https://github.com/medihack/jquery-fiji
+ * https://github.com/medihack/fiji
  *
  * Depends:
  *   jquery.ui.core.js
@@ -43,7 +43,7 @@
 				return "javascript:void(0);"
 			}
 		},
-	
+
 		_create: function() {
 			var self = this;
 
@@ -61,12 +61,12 @@
 
 			self._render();
 		},
-	
+
 		_init: function() {},
 
 		destroy: function() {
 			var self = this;
-		
+
 			self.element.empty();
 
 			self.element.removeClass(CONTAINER_CLASSES);
@@ -77,10 +77,10 @@
 
 			return $.Widget.prototype.destroy.call(self);
 		},
-	
+
 		page: function(page, totalPages) {
 			var self = this, options = self.options;
-      
+
 			if (totalPages === undefined) {
 				totalPages = options.totalPages;
 			}

@@ -48,7 +48,7 @@ module CoolGames
       def self.not_authenticated
         new NOT_AUTHENTICATED do
           error_code = 'api.errors.not_authenticated'
-          add_error error_code, I18n.t(error_code), :authentication_token
+          add_error error_code, I18n.t(error_code), :auth_token
         end
       end
     end

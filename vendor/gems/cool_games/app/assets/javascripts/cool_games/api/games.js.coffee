@@ -17,7 +17,7 @@ window.initApiGames = ->
       console.log response
 
       if response.status == 'not_authenticated'
-        window.location = '/users/sign_in'
+        window.location = urls.api.login
         return
 
       showGames(response.body)
@@ -54,5 +54,8 @@ window.paginate = (container, pagination) ->
     $(container).show().jillpaginate
       totalPages: pagination.total_pages
       currentPage: pagination.page
+      page: (page) ->
+        console.log page
+        true
   else
     $(container).hide()
