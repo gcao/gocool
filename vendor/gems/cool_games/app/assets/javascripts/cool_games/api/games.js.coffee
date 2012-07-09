@@ -1,16 +1,26 @@
 window.initApiGames = ->
   $('#games_search_form').bind 'ajax:success', (event, response) ->
     console.log response
+
     switch response.status
       when 'success'
         showGames(response.body)
+        paginate '#games_table .pagination', response.pagination, (page) ->
+          console.log "Page #{page}"
+          true
+
       when 'validation_error'
         $('#games_not_found').hide()
         $('#games_table').hide()
         for error in response.errors
           showError(error.field, error.message)
 
-  $.ajax urls.api.games + ".json",
+  loadGames()
+
+loadGames = (page) ->
+  url = urls.api.games + ".json"
+  url = url + "?page=#{page}" if page
+  $.ajax url,
     dataType: 'jsonp'
     crossDomain: true
     success: (response) ->
@@ -21,9 +31,12 @@ window.initApiGames = ->
         return
 
       showGames(response.body)
-      paginate('#games_table .pagination', response.pagination)
+      paginate '#games_table .pagination', response.pagination, (page) ->
+        console.log "Page #{page}"
+        loadGames(page)
+        true
 
-window.showGames = (games) ->
+showGames = (games) ->
   if games && games.length > 0
     $('#games_not_found').hide()
     $('#games_table').show()
@@ -49,13 +62,3 @@ window.showGames = (games) ->
     $('#games_not_found').show()
     $('#games_table').hide()
 
-window.paginate = (container, pagination) ->
-  if pagination
-    $(container).show().jillpaginate
-      totalPages: pagination.total_pages
-      currentPage: pagination.page
-      page: (page) ->
-        console.log page
-        true
-  else
-    $(container).hide()
