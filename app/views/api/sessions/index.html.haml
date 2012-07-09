@@ -1,5 +1,5 @@
 %h2 Sign in
-= form_tag(api_sessions_path, :class => "vertical") do
+= form_tag(api_sessions_path, :id => 'login_form', :class => "vertical", :remote => true) do
   .row
     .span3
       %label(for="login")= "Login"
@@ -13,3 +13,7 @@
   .row
     .offset3.span9
       =submit_tag "Sign in", :class => "btn btn-primary"
+
+:coffeescript
+  initApiSessions()
+

@@ -16,6 +16,7 @@
 //= require jquery.ui.widget
 //= require jquery.fiji.jillpaginate
 //= require bootstrap
+//= require api/sessions
 //= require cool_games
 //= require cool_games/api
 
