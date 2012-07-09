@@ -1,0 +1,15 @@
+%h2 Sign in
+= form_tag(api_sessions_path, :class => "vertical") do
+  .row
+    .span3
+      %label(for="login")= "Login"
+    .span9
+      = text_field_tag :login, '', :placeholder => 'Username or Email', :autofocus => true
+  .row
+    .span3
+      %label(for="password")= "Password"
+    .span9
+      = password_field_tag :password
+  .row
+    .offset3.span9
+      =submit_tag "Sign in", :class => "btn btn-primary"

@@ -7,6 +7,8 @@
     %title= content_for?(:title) ? yield(:title) : "Gocool"
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
+    :coffeescript
+      window.server2js = #{ (@server2js || {}).to_json }
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = render 'layouts/urls'

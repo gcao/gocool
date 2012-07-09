@@ -38,7 +38,8 @@ module Api
       @user.ensure_authentication_token!
 
       if @user.valid_password?(password)
-        return JsonResponse.success(@user.authentication_token)
+        session[:auth_token] = @user.authentication_token
+        return CoolGames::Api::JsonResponse.success(@user.authentication_token)
       else
         logger.info("User #{login} failed to sign in due to bad password.")
         return CoolGames::Api::JsonResponse.new(CoolGames::Api::JsonResponse::LOGIN_FAILURE) do

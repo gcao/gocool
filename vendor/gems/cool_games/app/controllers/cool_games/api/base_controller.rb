@@ -9,6 +9,12 @@ module CoolGames
 
       respond_to :html, :json
 
+      before_filter do
+        @server2js = {
+          :auth_token => session[:auth_token]
+        }
+      end
+
       before_filter :authenticate_user
 
       protected
