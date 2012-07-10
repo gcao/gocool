@@ -1,12 +1,15 @@
 window.initApiGames = ->
   $('#games_search_form').bind 'ajax:success', (event, response) ->
     console.log response
+    $('#games_search_form input[name=page]').val(1)
 
     switch response.status
       when 'success'
         showGames(response.body)
         paginate '#games_table .pagination', response.pagination, (page) ->
           console.log "Page #{page}"
+          $('#games_search_form input[name=page]').val(page)
+          $('#games_search_form input[type=submit]').click()
           true
 
       when 'validation_error'

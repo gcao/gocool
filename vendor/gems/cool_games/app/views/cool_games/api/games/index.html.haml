@@ -14,6 +14,7 @@
           = t('games.vs_label')
         =text_field_tag 'player2', h(@player2), :placeholder => t('games.player2_label')
         &nbsp;&nbsp;&nbsp;&nbsp;
+        =hidden_field_tag 'page', '1'
         =submit_tag t('form.search_button'), :class => "btn btn-primary", :disable_with => t('form.please_wait')
         =button_tag t('form.reset_button'), :name => "reset", :class => "btn"
 
