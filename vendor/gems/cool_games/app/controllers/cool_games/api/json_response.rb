@@ -2,7 +2,10 @@ module CoolGames
   module Api
     class JsonResponse
 
+      # TODO: return 404 for not_found and 401 for not_authenticated ?
+
       SUCCESS           = :success
+      NOT_FOUND         = :not_found
       VALIDATION_ERROR  = :validation_error
       NOT_AUTHENTICATED = :not_authenticated
       LOGIN_FAILURE     = :login_failure
@@ -43,6 +46,10 @@ module CoolGames
 
       def self.success body = nil, &block
         new SUCCESS, body, &block
+      end
+
+      def self.not_found body = nil, &block
+        new NOT_FOUND, body, &block
       end
 
       def self.not_authenticated

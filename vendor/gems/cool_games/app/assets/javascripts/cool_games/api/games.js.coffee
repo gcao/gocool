@@ -58,10 +58,22 @@ showGames = (games) ->
           <td>#{[game.played_at]}</td>
           <td>#{[game.place]}</td>
           <td>#{[game.description]}</td>
-          <td><a href='#{[game.url]}'>欣赏</a></td>
+          <td><a href='#{[urls.api.games + "/" + game.id + ".html"]}'>欣赏</a></td>
         </tr>
       """
   else
     $('#games_not_found').show()
     $('#games_table').hide()
+
+window.initApiGame = (id) ->
+  url = urls.api.games + "/#{id}.json"
+  $.ajax url,
+    dataType: 'jsonp'
+    crossDomain: true
+    success: (response) ->
+      handleResponse response,
+        before: -> console.log url
+        callback: -> showGame(response.body)
+
+showGame = (game) ->
 

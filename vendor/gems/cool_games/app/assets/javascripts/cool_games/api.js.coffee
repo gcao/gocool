@@ -13,8 +13,7 @@ window.paginate = (container, pagination, pageHandler) ->
     $(container).hide()
 
 window.handleResponse = (response, options = {}) ->
-  if options.before
-    options.before(response)
+  options.before? response
 
   console.log response
 
@@ -22,8 +21,7 @@ window.handleResponse = (response, options = {}) ->
     window.location = urls.api.login
     return
 
-  if options.callback
-    options.callback(response)
+  options.callback? response
 
   if options.pagination
     paginate options.pagination.container, response.pagination, (page) ->

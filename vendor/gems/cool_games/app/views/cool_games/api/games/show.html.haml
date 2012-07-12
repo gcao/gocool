@@ -1,0 +1,11 @@
+%div
+  %h3
+
+  #gameContainer
+
+- content_for :footer do
+  = render "cool_games/shared/jsgameviewer"
+
+:coffeescript
+  initApiGame(#{params[:id]})
+
