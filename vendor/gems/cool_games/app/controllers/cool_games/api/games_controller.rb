@@ -3,7 +3,7 @@ module CoolGames
     class GamesController < ::CoolGames::Api::BaseController
       JsonResponseHandler.apply(self, :methods => %w[index search])
 
-      before_filter :authenticate_user!, :only => %w[show]
+      before_filter :authenticate_user!, :only => %w[search]
 
       def index
         respond_to do |format|

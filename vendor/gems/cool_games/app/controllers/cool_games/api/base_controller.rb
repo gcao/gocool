@@ -20,8 +20,8 @@ module CoolGames
       protected
 
       def authenticate_user
-        unless params[:token].blank?
-          @current_user = User.find_by_authentication_token(params[:token])
+        unless params[:auth_token].blank?
+          @current_user = User.find_by_authentication_token(params[:auth_token])
         end
       end
 

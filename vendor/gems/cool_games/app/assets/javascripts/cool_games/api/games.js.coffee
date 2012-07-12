@@ -1,25 +1,27 @@
 window.initApiGames = (page) ->
   $('#games_search_form').bind 'ajax:success', (event, response) ->
-    console.log "#games_search_form is submitted"
-    console.log response
+    handleResponse response,
+      before: -> console.log "#games_search_form is submitted" 
 
-    # Reset page number hidden field
-    $('#games_search_form input[name=page]').val(1)
+      callback: (response) ->
+        # Reset page number hidden field
+        $('#games_search_form input[name=page]').val(1)
 
-    switch response.status
-      when 'success'
-        showGames(response.body)
-        paginate '#games_table .pagination', response.pagination, (page) ->
-          console.log "Page #{page}"
+        switch response.status
+          when 'success'
+            showGames(response.body)
+
+          when 'validation_error'
+            $('#games_not_found').hide()
+            $('#games_table').hide()
+            for error in response.errors
+              showError(error.field, error.message)
+
+      pagination:
+        container: '#games_table .pagination'
+        callback: (page) ->
           $('#games_search_form input[name=page]').val(page)
           $('#games_search_form input[type=submit]').click()
-          true
-
-      when 'validation_error'
-        $('#games_not_found').hide()
-        $('#games_table').hide()
-        for error in response.errors
-          showError(error.field, error.message)
 
   loadGames(page)
 
@@ -30,18 +32,12 @@ loadGames = (page) ->
     dataType: 'jsonp'
     crossDomain: true
     success: (response) ->
-      console.log url
-      console.log response
-
-      if response.status == 'not_authenticated'
-        window.location = urls.api.login
-        return
-
-      showGames(response.body)
-      paginate '#games_table .pagination', response.pagination, (page) ->
-        console.log "Page #{page}"
-        loadGames(page)
-        true
+      handleResponse response,
+        before: -> console.log url
+        callback: -> showGames(response.body)
+        pagination:
+          container: '#games_table .pagination'
+          callback: (page) -> loadGames(page)
 
 showGames = (games) ->
   if games && games.length > 0
