@@ -38,7 +38,7 @@ module CoolGames
         respond_to do |format|
           format.html
           format.json do
-            JsonResponse.success @game.to_json
+            JsonResponse.success @game
           end
         end
       end

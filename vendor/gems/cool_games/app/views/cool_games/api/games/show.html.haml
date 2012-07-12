@@ -1,11 +1,21 @@
-%div
-  %h3
+%h3
 
-  #gameContainer
+#gameContainer
+
+:coffeescript
+  id = "#{params[:id]}"
+  url = urls.api.games + "/" + id + ".json"
+  if server2js.auth_token then url = url + "?auth_token=" + server2js.auth_token
+
+  $.ajax url,
+    dataType: 'jsonp'
+    crossDomain: true
+    success: (response) ->
+      handleResponse response,
+        before: -> console.log url
+        callback: -> showGame(response.body)
 
 - content_for :footer do
   = render "cool_games/shared/jsgameviewer"
-
-:coffeescript
-  initApiGame(#{params[:id]})
+  = javascript_include_tag "cool_games/jsgameviewer_ext"
 

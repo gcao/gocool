@@ -65,15 +65,16 @@ showGames = (games) ->
     $('#games_not_found').show()
     $('#games_table').hide()
 
-window.initApiGame = (id) ->
-  url = urls.api.games + "/#{id}.json"
-  $.ajax url,
-    dataType: 'jsonp'
-    crossDomain: true
-    success: (response) ->
-      handleResponse response,
-        before: -> console.log url
-        callback: -> showGame(response.body)
+window.showGame = (game, user) ->
+  $('.content h3').html('Game ' + game.id + ': ' + game.black_name + '(' + game.black_rank + ') vs ' + game.white_name + '(' + game.white_rank + ')')
 
-showGame = (game) ->
+  window.gameState = game.state
+  gameType = jsGameViewer.WEIQI
+  controller = new GameController({gameType: gameType, container: "gameContainer"})
+
+  if user == game.black_name || user == game.white_name
+    controller.createGocoolPlayer().loadGocoolGame(game.id)
+  else
+    url = urls.games + '/' + game.id + '.sgf'
+    controller.load(url)
 
