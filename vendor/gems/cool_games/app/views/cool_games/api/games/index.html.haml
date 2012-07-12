@@ -41,5 +41,5 @@
       %tbody.records
 
 :coffeescript
-  initApiGames()
+  initApiGames(#{params[:page].blank? ? '' : params[:page]})
 

@@ -1,6 +1,9 @@
-window.initApiGames = ->
+window.initApiGames = (page) ->
   $('#games_search_form').bind 'ajax:success', (event, response) ->
+    console.log "#games_search_form is submitted"
     console.log response
+
+    # Reset page number hidden field
     $('#games_search_form input[name=page]').val(1)
 
     switch response.status
@@ -18,7 +21,7 @@ window.initApiGames = ->
         for error in response.errors
           showError(error.field, error.message)
 
-  loadGames()
+  loadGames(page)
 
 loadGames = (page) ->
   url = urls.api.games + ".json"
@@ -27,6 +30,7 @@ loadGames = (page) ->
     dataType: 'jsonp'
     crossDomain: true
     success: (response) ->
+      console.log url
       console.log response
 
       if response.status == 'not_authenticated'
