@@ -3,19 +3,20 @@
 #gameContainer
 
 :coffeescript
-  id = "#{params[:id]}"
-  url = urls.api.games + "/" + id + ".json"
-  if server2js.auth_token then url = url + "?auth_token=" + server2js.auth_token
+  $(document).ready ->
+    id = "#{params[:id]}"
+    url = urls.api.games + "/" + id + ".json"
+    url = addAuthToUrl(url)
 
-  $.ajax url,
-    dataType: 'jsonp'
-    crossDomain: true
-    success: (response) ->
-      handleResponse response,
-        before: -> console.log url
-        callback: -> showGame(response.body, response.user)
+    $.ajax url,
+      dataType: 'jsonp'
+      crossDomain: true
+      success: (response) ->
+        handleResponse response,
+          before: -> console.log url
+          callback: -> showGame(response.body, response.user)
 
 - content_for :footer do
   = render "cool_games/shared/jsgameviewer"
-  = javascript_include_tag "cool_games/jsgameviewer_ext"
+  = javascript_include_tag "cool_games/api/player"
 

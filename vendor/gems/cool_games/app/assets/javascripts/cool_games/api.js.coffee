@@ -29,3 +29,8 @@ window.handleResponse = (response, options = {}) ->
       options.pagination.callback(page) 
       true
 
+window.addAuthToUrl = (url) ->
+  return url unless server2js?.auth_token 
+  url += if url.indexOf('?') >= 0 then '&' else '?'
+  url += "auth_token=" + server2js.auth_token
+

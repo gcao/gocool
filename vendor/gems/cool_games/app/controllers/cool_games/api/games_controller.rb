@@ -40,6 +40,22 @@ module CoolGames
           format.json do
             JsonResponse.success @game
           end
+          format.sgf do
+            if @game.detail
+              render :text => CoolGames::Sgf::GameRenderer.new.render(@game)
+            else
+              redirect_to upload_url(@game.primary_source, :format => "sgf")
+            end
+          end
+        end
+      end
+
+      def play
+        code, message = @game.play params
+        if code == GameInPlay::OP_SUCCESS
+          JsonResponse.success CoolGames::Sgf::GameRenderer.new.render(@game)
+        else
+          JsonResponse.failure message
         end
       end
 

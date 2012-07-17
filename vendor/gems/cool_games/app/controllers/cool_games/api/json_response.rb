@@ -5,6 +5,7 @@ module CoolGames
       # TODO: return 404 for not_found and 401 for not_authenticated ?
 
       SUCCESS           = :success
+      FAILURE           = :failure
       NOT_FOUND         = :not_found
       VALIDATION_ERROR  = :validation_error
       NOT_AUTHENTICATED = :not_authenticated
@@ -49,6 +50,10 @@ module CoolGames
 
       def self.success body = nil, &block
         new SUCCESS, body, &block
+      end
+
+      def self.failure body = nil, &block
+        new FAILURE, body, &block
       end
 
       def self.not_found body = nil, &block
