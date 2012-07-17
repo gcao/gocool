@@ -13,7 +13,7 @@
     success: (response) ->
       handleResponse response,
         before: -> console.log url
-        callback: -> showGame(response.body)
+        callback: -> showGame(response.body, response.user)
 
 - content_for :footer do
   = render "cool_games/shared/jsgameviewer"

@@ -5,13 +5,11 @@
   %fieldset
     .row
       .span12
-        %label(for="platform")
-          = t('games.platform_label')
+        %label(for="platform")= t('games.platform_label')
         =gaming_platforms_select 'platform'
         &nbsp;&nbsp;&nbsp;&nbsp;
         =text_field_tag 'player1', h(@player1), :placeholder => t('games.player1_label')
-        %label#vs_label(for="player2")
-          = t('games.vs_label')
+        %label#vs_label(for="player2")= t('games.vs_label')
         =text_field_tag 'player2', h(@player2), :placeholder => t('games.player2_label')
         &nbsp;&nbsp;&nbsp;&nbsp;
         =hidden_field_tag 'page', '1'
@@ -42,5 +40,31 @@
       %tbody.records
 
 :coffeescript
-  initApiGames(#{params[:page].blank? ? '' : params[:page]})
+  page = #{params[:page].blank? ? 1 : params[:page].to_i}
+
+  $('#games_search_form').bind 'ajax:success', (event, response) ->
+    handleResponse response,
+      before: -> console.log "#games_search_form is submitted" 
+
+      callback: (response) ->
+        # Reset page number hidden field
+        $('#games_search_form input[name=page]').val(1)
+
+        switch response.status
+          when 'success'
+            showGames(response.body)
+
+          when 'validation_error'
+            $('#games_not_found').hide()
+            $('#games_table').hide()
+            for error in response.errors
+              showError(error.field, error.message)
+
+      pagination:
+        container: '#games_table .pagination'
+        callback: (page) ->
+          $('#games_search_form input[name=page]').val(page)
+          $('#games_search_form input[type=submit]').click()
+
+  loadGames(page)
 

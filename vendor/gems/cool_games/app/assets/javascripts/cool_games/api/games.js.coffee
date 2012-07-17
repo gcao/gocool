@@ -1,31 +1,4 @@
-window.initApiGames = (page) ->
-  $('#games_search_form').bind 'ajax:success', (event, response) ->
-    handleResponse response,
-      before: -> console.log "#games_search_form is submitted" 
-
-      callback: (response) ->
-        # Reset page number hidden field
-        $('#games_search_form input[name=page]').val(1)
-
-        switch response.status
-          when 'success'
-            showGames(response.body)
-
-          when 'validation_error'
-            $('#games_not_found').hide()
-            $('#games_table').hide()
-            for error in response.errors
-              showError(error.field, error.message)
-
-      pagination:
-        container: '#games_table .pagination'
-        callback: (page) ->
-          $('#games_search_form input[name=page]').val(page)
-          $('#games_search_form input[type=submit]').click()
-
-  loadGames(page)
-
-loadGames = (page) ->
+window.loadGames = (page) ->
   url = urls.api.games + ".json"
   url = url + "?page=#{page}" if page
   $.ajax url,
@@ -66,16 +39,14 @@ showGames = (games) ->
     $('#games_table').hide()
 
 gameNameTmpl = tmpl """
-  <h3>
-    Game <%= id %>:
-    <%= black_name %><% if (black_rank) { %>(<%= black_rank %>) <% } %>
-    vs
-    <%= white_name %><% if (white_rank) { %>(<%= white_rank %>) <% } %>
-  </h3>
+  Game <%= id %>:
+  <%= black_name %><% if (black_rank) { %>(<%= black_rank %>) <% } %>
+  vs
+  <%= white_name %><% if (white_rank) { %>(<%= white_rank %>) <% } %>
 """
 
 window.showGame = (game, user) ->
-  $('.content h3').replaceWith(gameNameTmpl(game))
+  $('.content h3').html(gameNameTmpl(game))
 
   window.gameState = game.state
   gameType = jsGameViewer.WEIQI
@@ -85,5 +56,5 @@ window.showGame = (game, user) ->
     controller.createGocoolPlayer().loadGocoolGame(game.id)
   else
     url = urls.games + '/' + game.id + '.sgf'
-    #controller.load(url)
+    controller.load(url)
 
