@@ -66,7 +66,7 @@ showGames = (games) ->
     $('#games_table').hide()
 
 window.showGame = (game, user) ->
-  $('.content h3').html('Game ' + game.id + ': ' + game.black_name + '(' + game.black_rank + ') vs ' + game.white_name + '(' + game.white_rank + ')')
+  $('.content h3').replaceWith(tmpl('game_name_tmpl', game))
 
   window.gameState = game.state
   gameType = jsGameViewer.WEIQI
@@ -76,5 +76,5 @@ window.showGame = (game, user) ->
     controller.createGocoolPlayer().loadGocoolGame(game.id)
   else
     url = urls.games + '/' + game.id + '.sgf'
-    controller.load(url)
+    #controller.load(url)
 

@@ -15,6 +15,7 @@
 #= require jquery.ui.core
 #= require jquery.ui.widget
 #= require jquery.fiji.jillpaginate
+#= require tmpl
 #= require bootstrap
 #= require api/sessions
 #= require cool_games
