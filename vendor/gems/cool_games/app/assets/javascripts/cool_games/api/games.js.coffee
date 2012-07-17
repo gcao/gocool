@@ -65,8 +65,17 @@ showGames = (games) ->
     $('#games_not_found').show()
     $('#games_table').hide()
 
+gameNameTmpl = tmpl """
+  <h3>
+    Game <%= id %>:
+    <%= black_name %><% if (black_rank) { %>(<%= black_rank %>) <% } %>
+    vs
+    <%= white_name %><% if (white_rank) { %>(<%= white_rank %>) <% } %>
+  </h3>
+"""
+
 window.showGame = (game, user) ->
-  $('.content h3').replaceWith(tmpl('game_name_tmpl', game))
+  $('.content h3').replaceWith(gameNameTmpl(game))
 
   window.gameState = game.state
   gameType = jsGameViewer.WEIQI
