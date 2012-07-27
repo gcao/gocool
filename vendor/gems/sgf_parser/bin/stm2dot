@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+dot_file = File.expand_path(File.dirname(__FILE__) + "/../doc/sgf_state_machine.dot")
+dot_file = ARGV[0] if ARGV.size > 0
+
+sgf_rb = File.expand_path(File.dirname(__FILE__) + '/../lib/sgf.rb')
+if File.exists?(sgf_rb)
+  require sgf_rb
+  require File.expand_path(File.dirname(__FILE__) + '/../lib/sgf/more/stm_dot_converter.rb')
+else
+  require 'rubygems'
+  require 'sgf'
+  require 'sgf/more/stm_dot_converter'
+end
+
+File.open(dot_file, 'w') do |f|
+  f.print SGF::More::StmDotConverter.new.process(SGF::SGFStateMachine.new)
+end

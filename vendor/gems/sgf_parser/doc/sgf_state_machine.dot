@@ -1,0 +1,58 @@
+digraph SGF_STATE_MACHINE{
+        {rank = same; begin;}
+        {rank = same; game_begin;}
+        {rank = same; var_begin game_node;}
+        {rank = same; prop_name_begin;}
+        {rank = same; prop_name;}
+        {rank = same; value_begin;}
+        {rank = same; value value_escape;}
+        {rank = same; value_end;}
+        {rank = same; var_end;}
+        {rank = same; game_end invalid;}
+        begin[style = "filled",shape = "circle",fillcolor = "#44ff44"];
+value[];
+value_escape[];
+value -> value_escape[label="\\"];
+value -> value[label="[^\]]"];
+value_end[];
+value -> value_end[label="\]", weight=100];
+game_node[];
+value_end -> game_node[label=";"];
+var_begin[];
+value_end -> var_begin[label="\("];
+prop_name_begin[];
+value_end -> prop_name_begin[label="[a-zA-Z]"];
+value_begin[];
+value_end -> value_begin[label="\["];
+var_end[];
+value_end -> var_end[label="\)", weight=100];
+invalid[style = "filled",label = "error",shape = "octagon",fillcolor = "#ff4444"];
+value_end -> invalid[color="#FFBBBB", weight=-100];
+var_end -> game_node[label=";", weight=90];
+var_end -> var_begin[label="\("];
+game_end[style = "filled",label = "end",shape = "doublecircle",fillcolor = "#44ff44"];
+var_end -> game_end[label="EOS", weight=100];
+var_end -> var_end[label="\)"];
+var_end -> invalid[color="#FFBBBB", weight=-100];
+value_begin -> value[label="[^\]]", weight=100];
+value_begin -> value_escape[label="\\"];
+value_begin -> value_end[label="\]"];
+game_begin[];
+begin -> game_begin[label="\(", weight=100];
+begin -> invalid[color="#FFBBBB", weight=-100];
+game_node -> var_begin[label="\("];
+game_node -> prop_name_begin[label="[a-zA-Z]", weight=100];
+game_node -> var_end[label="\)"];
+game_node -> invalid[color="#FFBBBB", weight=-100];
+prop_name[];
+prop_name_begin -> prop_name[label="[a-zA-Z]", weight=100];
+prop_name_begin -> value_begin[label="\["];
+prop_name_begin -> invalid[color="#FFBBBB", weight=-100];
+game_begin -> game_node[label=";", weight=100];
+game_begin -> invalid[color="#FFBBBB", weight=-100];
+value_escape -> value[label="."];
+var_begin -> game_node[label=";"];
+var_begin -> invalid[color="#FFBBBB", weight=-100];
+prop_name -> value_begin[label="\[", weight=100];
+prop_name -> invalid[color="#FFBBBB", weight=-100];
+}

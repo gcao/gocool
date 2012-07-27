@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+if ARGV.size == 0
+  puts <<-USAGE
+Usage: 
+  sgf <DIRECTORY_OR_FILE>
+  USAGE
+  exit 1
+end
+
+sgf_rb = File.expand_path(File.dirname(__FILE__) + '/../lib/sgf.rb')
+if File.exists?(sgf_rb)
+  require sgf_rb
+else
+  require 'rubygems'
+  require 'sgf'
+end
+
+filename = ARGV[0]
+debug    = ENV["DEBUG"] == "true"
+
+if File.directory?(filename)
+  Dir["#{filename}/**/*"].each do |file|
+    SGF::Parser.parse_file(file, debug)
+  end
+else
+  SGF::Parser.parse_file(filename, debug)
+end
