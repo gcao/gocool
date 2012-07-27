@@ -1,10 +1,10 @@
 module CoolGames
   module Api
     class GamesController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w[index search show play])
+      JsonResponseHandler.apply(self, :methods => %w[index search show play undo_guess_moves])
 
-      before_filter :authenticate_user!, :only => %w[play]
-      before_filter :check_game, :only => %w[show play]
+      before_filter :authenticate_user!, :only => %w[play undo_guess_moves]
+      before_filter :check_game, :only => %w[show play undo_guess_moves]
 
       def index
         respond_to do |format|
@@ -64,15 +64,21 @@ module CoolGames
         end
       end
 
+      def undo_guess_moves
+        @game.undo_guess_moves
+        JsonResponse.success
+      end
+
       private
 
       def check_game
-        # html format is only used to setup page, then game data is retrived through ajax
-        return if request.format.html?
-
         @game = Game.find params[:id]
       rescue ActiveRecord::RecordNotFound
-        render :json => JsonResponse.not_found.to_json, :callback => params['callback']
+        if request.format.json?
+          render :json => JsonResponse.not_found.to_json, :callback => params['callback']
+        else
+          raise
+        end
       end
     end
   end

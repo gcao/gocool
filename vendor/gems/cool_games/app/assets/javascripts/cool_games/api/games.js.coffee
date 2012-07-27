@@ -53,8 +53,12 @@ window.showGame = (game, user) ->
   controller = new GameController({gameType: gameType, container: "gameContainer"})
 
   if user == game.black_name || user == game.white_name
+    url = "#{urls.api.games}/#{game.id}/undo_guess_moves.json"
+    url = addAuthToUrl(url)
+    $('#actions').show().html("<a href='#{url}'>Undo</a>")
     controller.createGocoolPlayer().loadGocoolGame(game.id)
   else
+    $('#actions').hide()
     url = urls.games + '/' + game.id + '.sgf'
     controller.load(url)
 
