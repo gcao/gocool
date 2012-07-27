@@ -1,0 +1,45 @@
+$viewer_l_padding : 2px
+$viewer_r_padding : $viewer_l_padding
+$viewer_t_padding : 2px
+$viewer_b_padding : $viewer_t_padding
+
+$header_l_margin : 0px
+$header_r_margin : $header_l_margin
+$header_t_margin : 2px
+$header_b_margin : $header_t_margin
+$header_top : 0px
+$header_left : 0px
+$header_height : 22px
+
+$weiqi_board_grid : 21px
+$weiqi_board_size : 19
+$weiqi_board_top : $header_t_margin + $header_height + $header_b_margin
+$weiqi_board_left : 0px
+$weiqi_board_width : 425px
+$weiqi_board_height : 420px
+
+$weiqi_control_area_top : 0
+$weiqi_control_area_left : $weiqi_board_width - ($weiqi_board_grid * $weiqi_board_size)
+
+$toolbar_l_margin : 2px
+$toolbar_r_margin : $toolbar_l_margin
+$toolbar_top : $weiqi_board_top
+$toolbar_left : $weiqi_board_width + $toolbar_l_margin
+$toolbar_width : 35px
+
+$left_pane_width : $weiqi_board_width + $toolbar_l_margin + $toolbar_width + $toolbar_r_margin
+$left_pane_height : $header_t_margin + $header_height + $header_b_margin + $weiqi_board_height
+
+$header_width : $left_pane_width - $header_l_margin - $header_r_margin
+
+$info_width : 300px
+$info_height : 500px
+
+$weiqi_body_height : $info_height
+@if $info_height < $left_pane_height
+  $weiqi_body_height : $left_pane_height
+
+$weiqi_height : $viewer_t_padding + $weiqi_body_height + $viewer_b_padding
+$weiqi_width : $viewer_l_padding + $weiqi_body_height + $viewer_r_padding
+
+$toolbar_height : $weiqi_height - $viewer_t_padding - $header_t_margin - $header_height - $header_b_margin - $viewer_b_padding

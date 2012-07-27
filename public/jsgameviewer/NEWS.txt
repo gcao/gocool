@@ -1,0 +1,31 @@
+2009-10-30
+
+* Jsgameviewer's homepage is moved to http://www.go-cool.org/jsgameviewer/index.php
+* http://www.daoqigame.com/bbs/index.php is moved to http://www.go-cool.org/bbs/index.php
+* Jsgameviewer is integrated with gocool Rails application (which will run on http://www.go-cool.org when
+  it goes public)
+
+2009-10-01
+
+* Jsgameviewer reaches 1.5a
+  Features:
+    * Localization
+    * Unobtrusive game loading
+
+2008-12-24
+
+* Jsgameviewer is moved to github (http://www.github.com/gcao/jsgameviewer).
+
+2008-03-15
+  
+* Jsgameviewer is integrated into a Discuz! based forum (http://www.daoqigame.com/bbs/index.php which has moved
+  to http://www.go-cool.org/bbs/index.php in 2009-10).
+
+2008-03-01
+  
+* Jsgameviewer reaches 1.0a milestone and has its own homepage (http://www.daoqigame.com/jsgameviewer/index.php)
+
+2006-11-03
+  
+* Jsgameviewer is registered on sourceforge.net (http://sourceforge.net/projects/jsgameviewer)
+* Initial code is checked in.

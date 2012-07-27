@@ -1,0 +1,2 @@
+Bookmarklet:
+javascript:(function(){var%20script=document.createElement('script');script.src='http://localhost/jsgameviewer/js/loader_with_finder.js';document.getElementsByTagName('head')[0].appendChild(script);})()

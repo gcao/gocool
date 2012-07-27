@@ -1,0 +1,92 @@
+#GV1.gvreset.gameviewerdq
+  #GV1_banner.gvreset.gvbannerdq
+    #GV1_bannerbg.gvreset.gvbanner-overlay
+      =t('whose_turn')
+      \&nbsp;
+      %img#GV1_nextPlayer.gvreset.nextPlayerImg{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    .gvreset.gvmove-outerdq.gvbutton
+      %a.gvreset.thickbox{ :href => "#TB_inline?test=0&width=250&height=56&inlineId=GV1_goTo&focus=GV1_goToInput&modal=true&test1=0", :title => t('jump_to_xx') + " [Alt Shift G]" }
+        =t('move_number_before')
+        \&nbsp;
+        %span#GV1_curMove.gvreset.gvcontrol-text
+          0
+        \&nbsp;
+        =t('move_number_after')
+    #GV1_resign.gvreset.gvreset.gvresigndq
+      %span.gvreset.gvbutton
+        %a{ :href => "#", :onclick => "jsGameViewer.GV1.resign();return false;" }
+          =t('resign')
+    .gvreset.gvbanner-overlay
+      .gvreset.gvprisoners-outerdq
+        .gvreset.gvblack-prisoners-outerdq
+          %span#GV1_blackPrisonersOuter.gvreset.gvbutton
+            %a{ :href => "#", :onclick => "return false;" }
+              =t('black_dead')
+              %span#GV1_blackPrisoners.gvcontrol-text
+                0
+        .gvreset.gvwhite-prisoners-outerdq
+          %span#GV1_whitePrisonersOuter.gvreset.gvbutton
+            %a{ :href => "#", :onclick => "return false;" }
+              =t('white_dead')
+              %span#GV1_whitePrisoners.gvreset.gvcontrol-text
+                0
+      .gvreset.gvopen-window-outerdq
+        %a{:title=>t('open_in_new_window') + " [Alt Shift W]", :href=>"#", :onclick=>"jsGameViewer.GV1.openInWindow();return false;"}
+          %img.gvreset.gvsprite-newwindow{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+  .gvreset.gvboard-realdq
+  #GV1_boardOuter.gvreset.gvboard-outerdq
+    #GV1_board.gvreset.gvboarddq.gvsprite-19-boarddq
+      #GV1_boardPoints.gvreset.gvboard-overlay
+      #GV1_boardMarks.gvreset.gvboard-overlay
+      #GV1_boardBranches.gvreset.gvboard-overlay
+      #GV1_moveMarks.gvreset
+      #GV1_prisoners.gvreset.gvboard-overlay
+      #GV1_boardFascade.gvreset.gvboard-overlay.gvboard-fascade
+        %img.gvreset.gvsprite-19-blankboarddq{ :src => "/jsgameviewer/view/images/default.gif" }
+    #GV1_vlabel.gvreset.gvboardvlabel
+    #GV1_hlabel.gvreset.gvboardhlabel
+  #GV1_toolbar.gvreset.gvtoolbardq
+    #GV1_refresh.gvreset.gvtb-item
+      %a.toggleopacity{ :href => "#", :title => t('refresh') + " [Alt Shift R]", :onclick => "jsGameViewer.GV1.refresh();return false;" }
+        %img#GV1_refreshImg.gvreset.gvreset.gvsprite-refresh{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_toggleNumber.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('show_hide_move_number') + " [Alt Shift M]", :onclick => "jsGameViewer.GV1.toggleNumber();return false;" }
+        %img#GV1_toggleNumberImg.gvreset.gvsprite-shownumber{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_backAll.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('home') + " [Ctrl Alt &#8592;]", :onclick => "jsGameViewer.GV1.backAll();return false;" }
+        %img.gvreset.gvsprite-backall{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_backC.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('prev_comment_or_branch') + " [Alt Shift &#8592;]", :onclick => "jsGameViewer.GV1.backToComment();return false;" }
+        %img.gvreset.gvsprite-backc{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_backN.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('fast_back') + " [Ctrl &#8592;]", :onclick => "jsGameViewer.GV1.backN();return false;" }
+        %img.gvreset.gvsprite-backn{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_back.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('back') + " [&#8592;]", :onclick => "jsGameViewer.GV1.back();return false;" }
+        %img.gvreset.gvsprite-back{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_forward.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('forward') + " [&#8594;]", :onclick => "jsGameViewer.GV1.forward();return false;" }
+        %img.gvreset.gvsprite-forward{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_forwardN.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('fast_forward') + " [Ctrl &#8594;]", :onclick => "jsGameViewer.GV1.forwardN();return false;" }
+        %img.gvreset.gvsprite-forwardn{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_forwardC.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('next_comment_or_branch') + " [Alt Shift &#8594;]", :onclick => "jsGameViewer.GV1.forwardToComment();return false;" }
+        %img.gvreset.gvsprite-forwardc{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_forwardAll.gvreset.gvtb-item
+      %a.gvreset.toggleopacity{ :href => "#", :title => t('end') + " [Ctrl Alt &#8594;]", :onclick => "jsGameViewer.GV1.forwardAll();return false;" }
+        %img.gvreset.gvsprite-forwardall{ :src => "/jsgameviewer/view/images/default.gif", :border => "0px" }
+    #GV1_branches.gvreset.gvtb-branches
+  #GV1_pointLabel.gvreset.gvpoint-labeldq{ :align => "center" }
+  #GV1_rightPane.gvreset.gvright-panedq
+    #GV1_info.gvreset.gvinfo
+    #GV1_comment.gvreset.gvcomment
+  #GV1_goTo{ :style => "display:none;" }
+    %form{ :name => "GV1_goToForm", :onsubmit => "return false;", :action => "#" }
+      =t('jump_to')
+      %input#GV1_goToInput{ :name => "goToInput", :size => "5", :type => "text", :onKeyDown => "jsGameViewer.GV1.goToKeyDown(this,event);", :style => "text-align:center" }
+      =t('move_number_after')
+      \&nbsp;&nbsp;&nbsp;&nbsp;
+      %input{ :type => "submit", :value => t('submit'), :onclick => "jsGameViewer.GV1.goToOkHandler();" }
+      \&nbsp;&nbsp;
+      %input{ :type => "submit", :value => t('cancel'), :onclick => "tb_remove();jsGameViewer.GV1.postThickBoxFix();" }
