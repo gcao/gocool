@@ -1,6 +1,3 @@
 [submodule "vendor/gems/sgf_parser"]
 	path = vendor/gems/sgf_parser
 	url = git://github.com/gcao/sgf_parser.git
-[submodule "public/jsgameviewer"]
-	path = public/jsgameviewer
-	url = git://github.com/gcao/jsgameviewer.git
