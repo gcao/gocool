@@ -1,3 +1,0 @@
-[submodule "vendor/gems/sgf_parser"]
-	path = vendor/gems/sgf_parser
-	url = git://github.com/gcao/sgf_parser.git
