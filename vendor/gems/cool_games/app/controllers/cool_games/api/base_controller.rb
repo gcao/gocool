@@ -7,7 +7,7 @@ module CoolGames
 
       layout 'application'
 
-      respond_to :html, :json
+      #respond_to :html, :json, :sgf
 
       before_filter do
         @server2js = {
@@ -21,7 +21,7 @@ module CoolGames
 
       def authenticate_user
         unless params[:auth_token].blank?
-          @current_user = User.find_by_authentication_token(params[:auth_token])
+          Thread.current[:user] = @current_user = User.find_by_authentication_token(params[:auth_token])
         end
       end
 

@@ -1,7 +1,7 @@
 module CoolGames
   class Upload < ActiveRecord::Base
 
-    set_table_name "cg_uploads"
+    self.table_name = "cg_uploads"
 
     STATUS_PARSE_SUCCESS = 'parse_success'
     STATUS_PARSE_FAILURE = 'parse_failure'

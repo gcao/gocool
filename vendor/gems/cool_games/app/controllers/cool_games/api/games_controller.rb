@@ -1,7 +1,7 @@
 module CoolGames
   module Api
     class GamesController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w[index search show])
+      JsonResponseHandler.apply(self, :methods => %w[index search show play])
 
       before_filter :authenticate_user!, :only => %w[play]
       before_filter :check_game, :only => %w[show play]
@@ -37,15 +37,20 @@ module CoolGames
       def show
         respond_to do |format|
           format.html
+
           format.json do
             JsonResponse.success @game
           end
+
           format.sgf do
-            if @game.detail
-              render :text => CoolGames::Sgf::GameRenderer.new.render(@game)
-            else
-              redirect_to upload_url(@game.primary_source, :format => "sgf")
-            end
+            sgf = if @game.detail
+                    CoolGames::Sgf::GameRenderer.new.render(@game)
+                  else
+                    upload = Upload.find(@game.primary_source)
+                    upload.data || upload.file_content
+                  end
+
+            render :text => sgf
           end
         end
       end

@@ -1,7 +1,7 @@
 module CoolGames
   class GameDetail < ActiveRecord::Base
 
-    set_table_name "cg_game_details"
+    self.table_name = "cg_game_details"
 
     belongs_to :game
     belongs_to :first_move, :class_name => 'GameMove', :foreign_key => 'first_move_id'

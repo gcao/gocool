@@ -2,7 +2,7 @@ module CoolGames
   class Invitation < ActiveRecord::Base
     include AASM
 
-    set_table_name "cg_invitations"
+    self.table_name = "cg_invitations"
 
     belongs_to :inviter, :class_name => 'CoolGames::Player', :foreign_key => 'inviter_id'
     belongs_to :game
