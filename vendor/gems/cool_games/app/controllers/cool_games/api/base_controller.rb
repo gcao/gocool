@@ -30,7 +30,7 @@ module CoolGames
         return if request.format.html?
 
         unless @current_user
-          render :json => JsonResponse.not_authenticated.to_json, :callback => params['callback']
+          render :json => JsonResponse.not_authenticated.as_json, :callback => params['callback']
         end
       end
     end

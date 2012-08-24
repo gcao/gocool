@@ -21,7 +21,7 @@ module CoolGames
         self.body = body
         @errors   = []
 
-        instance_eval &block if block_given?
+        yield if block_given?
       end
 
       def body= body
@@ -36,17 +36,15 @@ module CoolGames
         @errors << Error.new(code, message, field)
       end
 
-      def to_s *args
+      def as_json *args
         result = {}
         result[:status]     = @status
         result[:body]       = @body       if @body
         result[:user]       = @user       if @user
         result[:pagination] = @pagination if @pagination
         result[:errors]     = @errors     unless @errors.empty?
-
-        result.to_json
+        result
       end
-      alias to_json to_s
 
       def self.success body = nil, &block
         new SUCCESS, body, &block

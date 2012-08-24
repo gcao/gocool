@@ -4,7 +4,7 @@ module CoolGames
       after do |result|
         if result.is_a? JsonResponse
           result.user = current_user.username if user_signed_in?
-          render :json => result.to_json, :callback => params['callback']
+          render :json => result, :callback => params['callback']
         end
       end
     end

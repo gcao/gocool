@@ -169,5 +169,13 @@ module CoolGames
       #                                              sub('GAME_TYPE', game_type_str)
       #end
     end
+
+    def as_json options = {}
+      result = super(options)
+      result.merge! :game_type_str  => game_type_str,
+                    :handicap_str   => handicap_str,
+                    :start_side_str => start_side_str
+      result
+    end
   end
 end
