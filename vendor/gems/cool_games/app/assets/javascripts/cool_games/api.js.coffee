@@ -1,5 +1,6 @@
 #= require_self
 #= require cool_games/api/games
+#= require cool_games/api/invitations
 
 window.paginate = (container, pagination, pageHandler) ->
   if pagination and pagination.total_pages > 1

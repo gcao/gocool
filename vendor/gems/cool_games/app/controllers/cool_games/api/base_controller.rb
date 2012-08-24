@@ -22,10 +22,13 @@ module CoolGames
       def authenticate_user
         unless params[:auth_token].blank?
           Thread.current[:user] = @current_user = User.find_by_authentication_token(params[:auth_token])
+          @current_player = @current_user.nil_or.player
         end
       end
 
       def authenticate_user!
+        return if request.format.html?
+
         unless @current_user
           render :json => JsonResponse.not_authenticated.to_json, :callback => params['callback']
         end

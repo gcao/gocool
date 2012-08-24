@@ -256,7 +256,7 @@ en:
     page_header: "对局邀请"
     none: "没有新的邀请"
     create_page_header: "对局邀请"
-    create_link_label: "对局邀请"
+    create_link_label: "发出邀请"
     invitations_sent_to_me: "发给我的对局邀请"
     invitations_sent_by_me: "我发出的对局邀请"
     created_at_label: "邀请发出时间"

@@ -37,5 +37,7 @@ CoolGames::Engine.routes.draw do
         get *%w[search]
       end
     end
+
+    resources :invitations
   end
 end
