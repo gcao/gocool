@@ -174,7 +174,8 @@ module CoolGames
       result = super(options)
       result.merge! :game_type_str  => game_type_str,
                     :handicap_str   => handicap_str,
-                    :start_side_str => start_side_str
+                    :start_side_str => start_side_str,
+                    :invitees       => JSON.parse(invitees)
       result
     end
   end

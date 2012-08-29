@@ -85,6 +85,9 @@ GEM
       factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
     ffi (1.1.0)
+    gon (4.0.0)
+      actionpack (>= 2.3.0)
+      json
     growl (1.0.3)
     guard (1.2.3)
       listen (>= 0.4.2)
@@ -235,6 +238,7 @@ DEPENDENCIES
   email_spec (>= 1.2.1)
   execjs
   factory_girl_rails (>= 3.2.0)
+  gon
   growl
   guard (>= 0.6.2)
   guard-bundler (>= 0.1.3)

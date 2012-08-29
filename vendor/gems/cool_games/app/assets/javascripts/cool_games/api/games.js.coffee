@@ -1,5 +1,5 @@
 window.loadGames = (page) ->
-  url = urls.api.games + ".json"
+  url = gon.urls.api.games + ".json"
   url = url + "?page=#{page}" if page
   $.ajax url,
     dataType: 'jsonp'
@@ -31,7 +31,7 @@ showGames = (games) ->
           <td>#{[game.played_at]}</td>
           <td>#{[game.place]}</td>
           <td>#{[game.description]}</td>
-          <td><a href='#{[urls.api.games + "/" + game.id + ".html"]}'>欣赏</a></td>
+          <td><a href='#{[gon.urls.api.games + "/" + game.id + ".html"]}'>欣赏</a></td>
         </tr>
       """
   else
@@ -53,12 +53,12 @@ window.showGame = (game, user) ->
   controller = new GameController({gameType: gameType, container: "gameContainer"})
 
   if user == game.black_name || user == game.white_name
-    url = "#{urls.api.games}/#{game.id}/undo_guess_moves.json"
+    url = "#{gon.urls.api.games}/#{game.id}/undo_guess_moves.json"
     url = addAuthToUrl(url)
     $('#actions').show().html("<a href='#{url}'>Undo</a>")
     controller.createGocoolPlayer().loadGocoolGame(game.id)
   else
     $('#actions').hide()
-    url = urls.games + '/' + game.id + '.sgf'
+    url = gon.urls.games + '/' + game.id + '.sgf'
     controller.load(url)
 

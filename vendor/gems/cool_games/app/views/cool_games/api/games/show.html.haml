@@ -7,7 +7,7 @@
 :coffeescript
   $(document).ready ->
     id = "#{params[:id]}"
-    url = urls.api.games + "/" + id + ".json"
+    url = gon.urls.api.games + "/" + id + ".json"
     url = addAuthToUrl(url)
 
     $.ajax url,
@@ -16,7 +16,7 @@
       success: (response) ->
         handleResponse response,
           before: -> console.log url
-          callback: -> showGame(response.body, response.user)
+          callback: -> showGame(response.body, gon.user)
 
 - content_for :footer do
   = render "cool_games/shared/jsgameviewer"

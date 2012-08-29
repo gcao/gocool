@@ -49,5 +49,6 @@ gem "aspector", "~> 0.12.0"
 gem "coffee-filter"
 gem "sgf_parser", :require => "sgf", :path => "vendor/gems/sgf_parser"
 gem "cool_games", :path => "vendor/gems/cool_games"
+gem "gon"
 gem "thin", :group => :development
 

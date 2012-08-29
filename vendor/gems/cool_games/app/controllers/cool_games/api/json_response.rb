@@ -14,14 +14,12 @@ module CoolGames
       Error = Struct.new(:code, :message, :field)
       Pagination = Struct.new(:page, :page_size, :total_pages, :total_entries)
 
-      attr_accessor :user
-
       def initialize status = :success, body = nil, &block
         @status   = status
         self.body = body
         @errors   = []
 
-        yield if block_given?
+        instance_eval &block if block_given?
       end
 
       def body= body
@@ -40,7 +38,6 @@ module CoolGames
         result = {}
         result[:status]     = @status
         result[:body]       = @body       if @body
-        result[:user]       = @user       if @user
         result[:pagination] = @pagination if @pagination
         result[:errors]     = @errors     unless @errors.empty?
         result

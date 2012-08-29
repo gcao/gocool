@@ -5,7 +5,6 @@ module CoolGames
     helper "cool_games/urls", "cool_games/widgets", "cool_games/pagination"
 
     before_filter do
-      @server2js = {}
       Thread.current[:user] = current_user
     end
 

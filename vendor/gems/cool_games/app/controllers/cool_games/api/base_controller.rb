@@ -10,8 +10,15 @@ module CoolGames
       #respond_to :html, :json, :sgf
 
       before_filter do
-        @server2js = {
-          :auth_token => session[:auth_token]
+        gon.auth_token = session[:auth_token]
+        gon.user = current_user.username if user_signed_in?
+        gon.urls = {
+          games: cool_games.games_path,
+          api: {
+            games: cool_games.api_games_path,
+            invitations: cool_games.api_invitations_path,
+            login: main_app.api_sessions_path
+          }
         }
       end
 

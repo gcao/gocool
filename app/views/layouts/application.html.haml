@@ -7,17 +7,15 @@
     %title= content_for?(:title) ? yield(:title) : "Gocool"
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
-    :coffeescript
-      window.server2js = #{ (@server2js || {}).to_json }
     = stylesheet_link_tag    "application", :media => "all"
+    = include_gon
     = javascript_include_tag "application"
-    = render 'layouts/urls'
     :coffeescript
       $.ajaxSetup
         statusCode:
           401: ->
             console.log '401 returned'
-            window.location = urls.login
+            window.location = gon.urls.login
     = csrf_meta_tags
     = yield(:head)
   %body

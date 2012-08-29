@@ -19,7 +19,7 @@ window.handleResponse = (response, options = {}) ->
   console.log response
 
   if response.status == 'not_authenticated'
-    window.location = urls.api.login
+    window.location = gon.urls.api.login
     return
 
   options.callback? response
@@ -27,11 +27,11 @@ window.handleResponse = (response, options = {}) ->
   if options.pagination
     paginate options.pagination.container, response.pagination, (page) ->
       console.log "Page #{page}"
-      options.pagination.callback(page) 
+      options.pagination.callback(page)
       true
 
 window.addAuthToUrl = (url) ->
-  return url unless server2js?.auth_token 
+  return url unless gon.auth_token
   url += if url.indexOf('?') >= 0 then '&' else '?'
-  url += "auth_token=" + server2js.auth_token
+  url += "auth_token=" + gon.auth_token
 
