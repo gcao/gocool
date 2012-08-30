@@ -8,7 +8,7 @@ module CoolGames
 
       def index
         respond_to do |format|
-          format.html { render 'index' }
+          format.html
           format.json do
             games = Game.sort_by_creation_time.paginate(page_params)
 

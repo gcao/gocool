@@ -1,0 +1,89 @@
+%h1= t('invitations.create_page_header')
+
+= form_tag api_invitations_url, :remote => true, :class => "vertical", :id => 'new_invitation_form' do
+  .row
+    .span3
+      %label(for="invitation_game_type")
+        = t('invitations.game_type_label')
+    .span9
+      .field.game_type
+        %input(id="invitations_game_type" name="invitation[game_type]" type="radio" value="1" checked="checked")
+        = t('games.weiqi_label')
+        %input(id="invitations_game_type" name="invitation[game_type]" type="radio" value="2")
+        = t('games.daoqi_label')
+
+  .row
+    .span3
+      %label(for="invitation_invitees")
+        = t('invitations.invitees_label')
+        =raw mark_required
+    .span9
+      %input#invitation_invitees(type="text" name="invitation[invitees]" size="80" value="#{@invitees}")
+
+  .row
+    .span3
+      %label(for="invitation_start_side")
+        = t('invitations.start_side_label')
+    .span9
+      =start_side_select
+
+  .row
+    .span3
+      %label(for="invitation_handicap")
+        = t('invitations.handicap_label')
+    .span9
+      =handicap_select
+
+  .row
+    .span3
+      %label(for="invitation_rule")
+        = t('invitations.rule_label')
+    .span9
+      .field.rule= t('invitations.chinese_rule')
+
+  .row
+    .span3
+      %label(for="invitation_note")
+        = t('invitations.note_label')
+    .span9
+      %input#invitation_note(type="text" name="invitation[note]" size="80" value="#{@note}")
+
+  .row
+    .offset3.span9
+      =submit_tag t('form.submit_button'), :class => "btn btn-primary"
+      =button_tag t('form.reset_button'), :name => "reset", :class => "btn"
+
+- content_for :footer do
+  :coffeescript
+    validanguage.el.invitation_invitees =
+      required: true
+      errorMsg: "#{t('invitations.invitees_required')}"
+
+    $('#invitation_handicap').change ->
+      handicap = $(this).val()
+      if handicap == "0"
+        if $('#invitation_start_side option[value=0]').length == 0
+          $('#invitation_start_side').prepend("<option value='0'>#{t('invitations.random_start')}</option>")
+      else
+        start_side = $('#invitation_start_side').val()
+        if start_side == '0'
+          alert("#{t('invitations.reselect_start_side')}")
+          $('#invitation_start_side option[value=0]').remove()
+
+    $('#new_invitation_form').bind 'ajax:beforeSend', (event, _, xhr) ->
+      console.log 'ajax:beforeSend'
+      xhr.data += "&auth_token=" + gon.auth_token
+
+    $('#new_invitation_form').bind 'ajax:success', (event, response) ->
+      handleResponse response,
+        before: -> console.log "#new_invitation_form is submitted"
+
+        callback: (response) ->
+          switch response.status
+            when 'success'
+              console.log "TODO: redirect to invitations page"
+
+            when 'validation_error'
+              for error in response.errors
+                showError(error.field, error.message)
+
