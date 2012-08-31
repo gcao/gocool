@@ -81,7 +81,7 @@
         callback: (response) ->
           switch response.status
             when 'success'
-              console.log "TODO: redirect to invitations page"
+              window.location = gon.urls.api.invitations
 
             when 'validation_error'
               for error in response.errors

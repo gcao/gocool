@@ -50,7 +50,7 @@ module CoolGames
         return JsonResponse.not_found unless invitation
 
         if invitation.state == 'new'
-          invitation.invitee = current_player
+          invitation.invitee = @current_player
           invitation.accept
           invitation.save!
 
