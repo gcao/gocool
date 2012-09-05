@@ -137,7 +137,7 @@ module CoolGames
         def before_start
           message = I18n.t('games.messages.start_game') if state == 'new'
 
-          Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
+          #Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
         end
 
         def before_request_counting
@@ -154,7 +154,7 @@ module CoolGames
               end
           end
 
-          Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
+          #Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
         end
 
         def before_reject_counting_request
@@ -169,7 +169,7 @@ module CoolGames
               end
           end
 
-          Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
+          #Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
         end
 
         def before_do_counting
@@ -184,7 +184,7 @@ module CoolGames
               end
           end
 
-          Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
+          #Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
         end
 
         def before_accept_counting
@@ -201,7 +201,7 @@ module CoolGames
               end
           end
 
-          Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
+          #Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
         end
 
         def before_reject_counting
@@ -216,7 +216,7 @@ module CoolGames
               end
           end
 
-          Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
+          #Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
         end
 
         def before_resume
@@ -228,7 +228,7 @@ module CoolGames
               end
           end
 
-          Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
+          #Message.create!(:receiver_id => id, :content => message.sub('PLAYER', current_player_str)) if message
         end
 
         # after %w(before_start before_request_counting before_reject_counting_request

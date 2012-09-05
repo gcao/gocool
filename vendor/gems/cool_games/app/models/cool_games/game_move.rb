@@ -1,43 +1,41 @@
 module CoolGames
-  class GameMove < ActiveRecord::Base
-
-    self.table_name = "cg_game_moves"
+  class GameMove
+    include Mongoid::Document
+    include Mongoid::Timestamps
 
     OCCUPIED = 1
     SUICIDE  = 2
     BAD_KO   = 3
 
-    belongs_to :parent, :class_name => 'GameMove', :foreign_key => 'parent_id'
-    belongs_to :game_detail
+    embeds_many :children, :class_name => 'CoolGames::GameMove'
+    embedded_in :game
 
-    serialize :dead
-
-    scope :moves_after, lambda { |move|
-      {:conditions => ["game_detail_id = ? and id > ?", move.game_detail_id, move.id]}
-    }
+    #scope :moves_after, lambda { |move|
+    #  {:conditions => ["game_detail_id = ? and id > ?", move.game_detail_id, move.id]}
+    #}
 
     def move_on_board?
       color != Game::NONE
     end
 
-    def children moves = nil
-      return @children unless @children.nil?
+    #def children moves = nil
+    #  return @children unless @children.nil?
 
-      @children = []
-      moves ||= self.class.moves_after(self)
-      moves.each do |move|
-        if move.parent_id == id
-          @children << move
-          moves.delete_at moves.index(move)
-        end
-      end
+    #  @children = []
+    #  moves ||= self.class.moves_after(self)
+    #  moves.each do |move|
+    #    if move.parent_id == id
+    #      @children << move
+    #      moves.delete_at moves.index(move)
+    #    end
+    #  end
 
-      @children.each do |move|
-        move.children moves
-      end
+    #  @children.each do |move|
+    #    move.children moves
+    #  end
 
-      @children
-    end
+    #  @children
+    #end
 
     def board
       return @board if @board
@@ -67,7 +65,7 @@ module CoolGames
       if parent
         @board = parent.board.clone
       else
-        @board = Board.new(game_detail.game.board_size, game_detail.game.game_type)
+        @board = Board.new(game.board_size, game.game_type)
       end
 
       self.dead = @board.play(color, x, y)

@@ -48,20 +48,23 @@ class User
 
   has_one :player, :class_name => 'CoolGames::Player', :dependent => :destroy, :foreign_key => 'parent_id'
 
-  #after_create :create_player
+  after_create :create_player
 
-  #def create_player
-  #  CoolGames::Player.create!(:gaming_platform => CoolGames::GamingPlatform.gocool,
-  #                            :parent_id => id,
-  #                            :email => email,
-  #                            :name => username)
-  #end
+  def create_player
+    CoolGames::Player.create!(:gaming_platform => CoolGames::GamingPlatform.gocool,
+                              :parent_id => id,
+                              :email => email,
+                              :name => username)
+  end
 
   #this method is for letting users authenticate both with emails and usernames
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
+
     if login = conditions.delete(:login)
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      login.downcase!
+
+      where(conditions).any_of({username: login},  {email: login}).first
     else
       where(conditions).first
     end

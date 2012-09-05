@@ -1,29 +1,42 @@
 module CoolGames
-  class Invitation < ActiveRecord::Base
+  class Invitation
+    include Mongoid::Document
+    include Mongoid::Timestamps
     include AASM
-
-    self.table_name = "cg_invitations"
-
-    belongs_to :inviter, :class_name => 'CoolGames::Player', :foreign_key => 'inviter_id'
-    belongs_to :game
-
-    attr_accessor :invitee
 
     INVITER_PLAY_FIRST = 1
     INVITEE_PLAY_FIRST = 2
 
-    default_scope :order => "created_at DESC"
+    belongs_to :inviter, :class_name => 'CoolGames::Player'
+    belongs_to :invitee, :class_name => 'CoolGames::Player'
+    has_one :game
+
+    field "game_type" , type: Integer, default: Game::WEIQI
+    field "state"     , type: String , default: 'new'
+    field "rule"      , type: Integer, default: 1
+    field "handicap"  , type: Integer
+    field "start_side", type: Integer, default: INVITER_PLAY_FIRST
+    field "komi"      , type: Float  , default: 7.5
+    field "for_rating", type: Boolean
+    field "note"      , type: String
+    field "response"  , type: String
+    field "expires_on", type: Date
+
+    default_scope order_by([[:created_at, :desc]])
 
     scope :active, lambda {
-      {:conditions => ["state not in ('accepted', 'rejected', 'canceled', 'expired')"]}
+      #{:conditions => ["state not in ('accepted', 'rejected', 'canceled', 'expired')"]}
+      where(:state.nin => %w[accepted rejected canceled expired])
     }
 
     scope :by_me, lambda { |player|
-      {:conditions => ["inviter_id = ?", player.id]}
+      #{:conditions => ["inviter_id = ?", player.id]}
+      where(inviter: player)
     }
 
     scope :to_me, lambda { |player|
-      {:conditions => ["invitees like ?", "%\"#{player.id}\":%"]}
+      #{:conditions => ["invitees like ?", "%\"#{player.id}\":%"]}
+      where(invitee: player)
     }
 
     aasm_column :state
@@ -56,7 +69,7 @@ module CoolGames
       invitees.split(/[ ,]+/).each do |invitee|
         invitee.strip!
 
-        player = Player.find_by_name invitee
+        player = Player.find_by name: invitee
         if player
           result[player.id] = invitee
         else
@@ -72,12 +85,6 @@ module CoolGames
 
     after_create do
       send_invitation_message
-    end
-
-    def invitees_str
-      unless invitees.blank?
-        JSON.parse(invitees).values.join(", ")
-      end
     end
 
     def game_type_str
@@ -104,7 +111,7 @@ module CoolGames
     end
 
     def for_me? player
-      JSON.parse(invitees)[player.id.to_s]
+      invitee == player
     end
 
     def create_game
@@ -122,8 +129,8 @@ module CoolGames
       game.for_rating = for_rating
       #game.place = "#{GamingPlatform.gocool.name} #{GamingPlatform.gocool.url}"
 
-      PairStat.find_or_create(inviter.id, invitee.id)
-      PairStat.find_or_create(invitee.id, inviter.id)
+      #PairStat.find_or_create(inviter.id, invitee.id)
+      #PairStat.find_or_create(invitee.id, inviter.id)
 
       if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first
         game.black_id = inviter.id
@@ -146,7 +153,7 @@ module CoolGames
       self.game_id = game.id
       self.save!
 
-      GameDetail.create!(:game_id => game.id, :whose_turn => game.start_side, :formatted_moves => "")
+      #GameDetail.create!(:game_id => game.id, :whose_turn => game.start_side, :formatted_moves => "")
 
       #Discuz::PrivateMessage.send_message invitee, inviter, "",
       #                                    I18n.t('invitations.accept_invitation_body').sub('USERNAME', invitee.name).sub("GAME_URL", "#{ENV['BASE_URL']}/app/games/#{game.id}")
@@ -174,8 +181,7 @@ module CoolGames
       result = super(options)
       result.merge! :game_type_str  => game_type_str,
                     :handicap_str   => handicap_str,
-                    :start_side_str => start_side_str,
-                    :invitees       => JSON.parse(invitees)
+                    :start_side_str => start_side_str
       result
     end
   end
