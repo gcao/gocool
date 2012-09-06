@@ -9,7 +9,7 @@ module CoolGames
         respond_to do |format|
           format.html { render 'index' }
           format.json do
-            invitations = Invitation.active.to_me(@current_player)
+            invitations = Invitation.includes(:inviter).active.to_me(@current_player)
 
             JsonResponse.success(invitations)
           end
@@ -20,20 +20,24 @@ module CoolGames
       end
 
       def create
-        @invitees = params["invitation"]["invitees"]
+        @invitees   = params["invitation"].delete("invitees")
         @start_side = params["invitation"]["start_side"]
-        @note = params["invitation"]["note"]
+        @note       = params["invitation"]["note"]
 
         @game_type = Game::WEIQI
         @game_type = Game::DAOQI if params['invitation'].delete('game_type') == Game::DAOQI.to_s
 
         invitees, unrecognized = Invitation.parse_invitees(@invitees)
 
-        attrs = params[:invitation].merge(:invitees => invitees.to_json, :inviter_id => @current_player.id, :game_type => @game_type)
-        @invitation = Invitation.new(attrs)
+        if unrecognized.blank?
+          invitees.each do |invitee|
+            attrs = params[:invitation].merge(:invitee => invitee,
+                                              :inviter => @current_player, 
+                                              :game_type => @game_type)
+            invitation = Invitation.new(attrs)
+            invitation.save!
+          end
 
-        if unrecognized.blank? and @invitation.valid?
-          @invitation.save!
           JsonResponse.success
         else
           JsonResponse.new JsonResponse::VALIDATION_ERROR do

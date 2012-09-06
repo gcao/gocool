@@ -31,12 +31,12 @@ module CoolGames
 
     scope :by_me, lambda { |player|
       #{:conditions => ["inviter_id = ?", player.id]}
-      where(inviter: player)
+      where(inviter_id: player.id)
     }
 
     scope :to_me, lambda { |player|
       #{:conditions => ["invitees like ?", "%\"#{player.id}\":%"]}
-      where(invitee: player)
+      where(invitee_id: player.id)
     }
 
     aasm_column :state
@@ -65,17 +65,18 @@ module CoolGames
 
     def self.parse_invitees invitees
       unrecognized = []
-      result = {}
+      result       = []
+
       invitees.split(/[ ,]+/).each do |invitee|
         invitee.strip!
 
-        player = Player.find_by name: invitee
-        if player
-          result[player.id] = invitee
+        if player = Player.find_by(name: invitee)
+          result << player
         else
           unrecognized << invitee
         end
       end
+
       return result, unrecognized
     end
 
@@ -89,7 +90,7 @@ module CoolGames
 
     def game_type_str
       case game_type
-        when Game::DAOQI then I18n.t('games.daoqi_label')
+        when CoolGames::Game::DAOQI then I18n.t('games.daoqi_label')
         else I18n.t('games.weiqi_label')
       end
     end
@@ -178,10 +179,12 @@ module CoolGames
     end
 
     def as_json options = {}
-      result = super(options)
+      result = as_document.as_json(options)
       result.merge! :game_type_str  => game_type_str,
                     :handicap_str   => handicap_str,
-                    :start_side_str => start_side_str
+                    :start_side_str => start_side_str,
+                    :inviter        => inviter,
+                    :invitee        => invitee
       result
     end
   end
