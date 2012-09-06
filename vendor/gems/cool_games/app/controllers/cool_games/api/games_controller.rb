@@ -73,7 +73,7 @@ module CoolGames
 
       def check_game
         @game = Game.find params[:id]
-      rescue ActiveRecord::RecordNotFound
+      rescue
         if request.format.json?
           render :json => JsonResponse.not_found, :callback => params['callback']
         else

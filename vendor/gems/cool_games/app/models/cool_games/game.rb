@@ -361,6 +361,12 @@ module CoolGames
       last_move.children
     end
 
+    def as_json options = {}
+      result = super(options)
+      result[:id] = _id
+      result
+    end
+
     private
 
     def handicaps

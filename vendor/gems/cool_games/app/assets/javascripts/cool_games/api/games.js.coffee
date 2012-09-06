@@ -20,7 +20,6 @@ showGames = (games) ->
     for game in games
       $('#games_table tbody').append """
         <tr>
-          <td>#{[game.id]}</td>
           <td>#{[game.name]}</td>
           <td>#{[game.black_name]}</td>
           <td>#{[game.white_name]}</td>
@@ -30,7 +29,6 @@ showGames = (games) ->
           <td>#{[game.result]}</td>
           <td>#{[game.played_at]}</td>
           <td>#{[game.place]}</td>
-          <td>#{[game.description]}</td>
           <td><a href='#{[gon.urls.api.games + "/" + game.id + ".html"]}'>欣赏</a></td>
         </tr>
       """
@@ -39,7 +37,6 @@ showGames = (games) ->
     $('#games_table').hide()
 
 gameNameTmpl = tmpl """
-  Game <%= id %>:
   <%= black_name %><% if (black_rank) { %>(<%= black_rank %>) <% } %>
   vs
   <%= white_name %><% if (white_rank) { %>(<%= white_rank %>) <% } %>

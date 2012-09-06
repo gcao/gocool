@@ -179,7 +179,7 @@ module CoolGames
     end
 
     def as_json options = {}
-      result = as_document.as_json(options)
+      result = super(options)
       result[:id            ] = _id
       result[:game_type_str ] = game_type_str
       result[:handicap_str  ] = handicap_str
