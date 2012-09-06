@@ -23,8 +23,8 @@ showInvitations = (invitations) ->
           <td>#{[invitation.handicap_str]}</td>
           <td>#{[invitation.note]}</td>
           <td>
-            <a href='javascript:acceptInvitation(#{invitation.id})'>接受</a>
-            <a href='javascript:rejectInvitation(#{invitation.id})'>拒绝</a>
+            <a href='javascript:acceptInvitation("#{invitation.id}")'>接受</a>
+            <a href='javascript:rejectInvitation("#{invitation.id}")'>拒绝</a>
           </td>
         </tr>
       """

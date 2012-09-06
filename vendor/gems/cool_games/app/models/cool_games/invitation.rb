@@ -116,35 +116,35 @@ module CoolGames
     end
 
     def create_game
-      game = Game.new
-      game.state = 'new'
+      game                    = Game.new
+      game.state              = 'new'
       game.gaming_platform_id = GamingPlatform.gocool.id
-      game.game_type = game_type
-      game.board_size = 19
-      game.rule = rule
-      game.handicap = handicap
-      game.komi = komi
-      game.name = note
-      game.moves = 0
-      game.start_side = handicap.to_i < 2 ? Game::BLACK : Game::WHITE
-      game.for_rating = for_rating
-      #game.place = "#{GamingPlatform.gocool.name} #{GamingPlatform.gocool.url}"
+      game.game_type          = game_type
+      game.board_size         = 19
+      game.rule               = rule
+      game.handicap           = handicap
+      game.komi               = komi
+      game.name               = note
+      game.moves              = 0
+      game.start_side         = handicap.to_i < 2 ? Game::BLACK : Game::WHITE
+      game.for_rating         = for_rating
+      game.place              = "#{GamingPlatform.gocool.name} #{GamingPlatform.gocool.url}"
 
       #PairStat.find_or_create(inviter.id, invitee.id)
       #PairStat.find_or_create(invitee.id, inviter.id)
 
       if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first
-        game.black_id = inviter.id
+        game.black_id   = inviter.id
         game.black_name = inviter.name
         game.black_rank = inviter.rank
-        game.white_id = invitee.id
+        game.white_id   = invitee.id
         game.white_name = invitee.name
         game.white_rank = invitee.rank
       else # invitee plays first
-        game.black_id = invitee.id
+        game.black_id   = invitee.id
         game.black_name = invitee.name
         game.black_rank = invitee.rank
-        game.white_id = inviter.id
+        game.white_id   = inviter.id
         game.white_name = inviter.name
         game.white_rank = inviter.rank
       end
@@ -180,11 +180,12 @@ module CoolGames
 
     def as_json options = {}
       result = as_document.as_json(options)
-      result.merge! :game_type_str  => game_type_str,
-                    :handicap_str   => handicap_str,
-                    :start_side_str => start_side_str,
-                    :inviter        => inviter,
-                    :invitee        => invitee
+      result[:id            ] = _id
+      result[:game_type_str ] = game_type_str
+      result[:handicap_str  ] = handicap_str
+      result[:start_side_str] = start_side_str
+      result[:inviter       ] = inviter
+      result[:invitee       ] = invitee
       result
     end
   end
