@@ -11,10 +11,12 @@ class User
          :authentication_keys => [:login]
 
   ## Database authenticatable
-  field :email,              :type => String, :default => ""
-  field :encrypted_password, :type => String, :default => ""
+  field :email,              :type => String
+  field :username,           :type => String
+  field :encrypted_password, :type => String
 
   validates_presence_of :email
+  validates_presence_of :username
   validates_presence_of :encrypted_password
   
   ## Recoverable

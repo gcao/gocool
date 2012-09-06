@@ -14,6 +14,8 @@ module CoolGames
       Error = Struct.new(:code, :message, :field)
       Pagination = Struct.new(:page, :page_size, :total_pages, :total_entries)
 
+      attr_reader :status, :body, :errors
+
       def initialize status = :success, body = nil, &block
         @status   = status
         self.body = body
@@ -23,9 +25,9 @@ module CoolGames
       end
 
       def body= body
-        if body.respond_to? :current_page
-          @pagination = Pagination.new(body.current_page, body.per_page, body.total_pages, body.total_entries)
-        end
+        #if body.respond_to? :current_page
+        #  @pagination = Pagination.new(body.current_page, body.per_page, body.total_pages, body.total_entries)
+        #end
 
         @body = body
       end

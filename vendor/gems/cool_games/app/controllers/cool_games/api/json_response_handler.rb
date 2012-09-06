@@ -3,7 +3,7 @@ module CoolGames
     class JsonResponseHandler < Aspector::Base
       after do |result|
         if result.is_a? JsonResponse
-          render :json => result.as_json, :callback => params['callback']
+          render :json => result.to_json, :callback => params['callback']
         end
       end
     end

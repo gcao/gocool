@@ -4,7 +4,7 @@ module CoolGames
     include Mongoid::Timestamps
 
     belongs_to :gaming_platform, class_name: 'CoolGames::GamingPlatform'
-    belongs_to :user, class_name: 'User', inverse_of: :player
+    belongs_to :user           , class_name: 'User'                     , inverse_of: :player
 
     #has_one :stat, :class_name => 'PlayerStat', :dependent => :destroy
     #has_many :opponents, :class_name => "PairStat", :dependent => :destroy
@@ -12,7 +12,6 @@ module CoolGames
     field "first_name"   , type: String
     field "last_name"    , type: String
     field "name"         , type: String
-    field "is_amateur"   , type: Boolean
     field "rank"         , type: String
     field "sex"          , type: Integer
     field "birth_year"   , type: Integer

@@ -18,6 +18,10 @@ module ObjectExtension
     !self.blank?
   end
 
+  # see https://github.com/mongoid/moped/issues/55
+  def __bson_dump__(io = "", key = nil)
+    as_document.__bson_dump__(io, key)
+  end
 end
 
 Object.send :include, ObjectExtension

@@ -10,7 +10,7 @@ module CoolGames
         respond_to do |format|
           format.html
           format.json do
-            games = Game.sort_by_creation_time.paginate(page_params)
+            games = Game.order_by([[:creation_time]]).paginate(page_params)
 
             JsonResponse.success(games)
           end
