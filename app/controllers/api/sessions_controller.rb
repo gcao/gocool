@@ -36,6 +36,7 @@ module Api
 
       # http://rdoc.info/github/plataformatec/devise/master/Devise/Models/TokenAuthenticatable
       @user.ensure_authentication_token!
+      @user.save!
 
       if @user.valid_password?(password)
         session[:auth_token] = @user.authentication_token
@@ -50,8 +51,10 @@ module Api
     end
 
     def destroy
-      @user = User.find_by_authentication_token(params[:token])
-      @user.nil_or.reset_authentication_token!
+      if @user = User.find_by_authentication_token(params[:token])
+        @user.reset_authentication_token!
+        @user.save!
+      end
 
       render :text => "success"
     end

@@ -4,10 +4,11 @@ module CoolGames
     include Mongoid::Timestamps
 
     belongs_to :gaming_platform, class_name: 'CoolGames::GamingPlatform'
+    belongs_to :user, class_name: 'User', inverse_of: :player
+
     #has_one :stat, :class_name => 'PlayerStat', :dependent => :destroy
     #has_many :opponents, :class_name => "PairStat", :dependent => :destroy
 
-    field "parent_id"    , type: String
     field "first_name"   , type: String
     field "last_name"    , type: String
     field "name"         , type: String
@@ -75,13 +76,5 @@ module CoolGames
       #SQL
     end
 
-    def user
-      return unless gaming_platform == GamingPlatform.gocool and parent_id.blank?
-
-      @user ||= User.find(parent_id)
-    #rescue ActiveRecord::RecordNotFound
-    #  # Ignore not found error
-    #  nil
-    end
   end
 end

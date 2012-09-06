@@ -46,15 +46,14 @@ class User
   attr_accessible :email, :username, :login, :password, :password_confirmation, :remember_me, :confirmed_at
   attr_accessor :login
 
-  has_one :player, :class_name => 'CoolGames::Player', :dependent => :destroy, :foreign_key => 'parent_id'
+  has_one :player, :class_name => 'CoolGames::Player', inverse_of: :user
 
-  after_create :create_player
-
-  def create_player
-    CoolGames::Player.create!(:gaming_platform => CoolGames::GamingPlatform.gocool,
-                              :parent_id => id,
-                              :email => email,
-                              :name => username)
+  after_create do
+    self.player = CoolGames::Player.create!(:gaming_platform => CoolGames::GamingPlatform.gocool,
+                                            :user            => self,
+                                            :email           => email,
+                                            :name            => username)
+    self.save!
   end
 
   #this method is for letting users authenticate both with emails and usernames
