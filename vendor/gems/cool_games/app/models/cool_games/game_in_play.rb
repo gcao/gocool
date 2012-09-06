@@ -32,9 +32,10 @@ module CoolGames
         return OP_FAILURE, I18n.t('games.parent_move_required')
       end
 
-      if parent_move_id.to_i < detail.last_move_id
-        return OP_FAILURE, I18n.t('games.not_last_move_or_after')
-      end
+      # TODO
+      #if parent_move_id.to_i < last_move_id
+      #  return OP_FAILURE, I18n.t('games.not_last_move_or_after')
+      #end
 
       parent_move = GameMove.find parent_move_id
 
@@ -45,7 +46,7 @@ module CoolGames
         end
 
         move = GameMove.new
-        move.game_detail_id = detail.id
+        move.game = game
         move.move_no = parent_move.move_no + 1
         if move.move_no == 1
           move.color = start_side
@@ -54,8 +55,8 @@ module CoolGames
         end
         move.x = x
         move.y = y
-        move.parent_id = parent_move.id
-        move.guess_player_id = current_user.player.id
+        move.parent = parent_move
+        move.guess_player = current_user.player
 
         case move.process
           when GameMove::OCCUPIED then return OP_FAILURE, I18n.t('games.occupied')
@@ -66,18 +67,16 @@ module CoolGames
         move.save!
       end
 
-      if detail.last_move_id == parent_move.id and my_turn?
+      if last_move.id == parent_move.id and my_turn?
         self.moves += 1
-        move.player_id = current_user.player.id
-        detail.last_move_time = Time.now
+        move.player = current_user.player
         detail.change_turn
-        detail.last_move_id = move.id
+        detail.last_move = move
         detail.formatted_moves += CoolGames::Sgf::NodeRenderer.new(:with_name => true).render(move)
       end
 
       move.played_at = Time.now
       move.save!
-      detail.save!
       save!
 
       process_guess_moves
@@ -117,7 +116,7 @@ module CoolGames
     def undo_guess_moves
       return unless logged_in?
 
-      GameMove.moves_after(detail.last_move).each do |move|
+      GameMove.moves_after(last_move).each do |move|
         move.delete if move.player_id.nil? and move.guess_player_id == current_user.player.id
       end
 
@@ -125,28 +124,22 @@ module CoolGames
     end
 
     def undo_last_move
-      move = detail.last_move
+      move = last_move
       return if move.player_id != current_user.player.id
 
       parent_move = move.parent
-      detail.last_move_id = parent_move.id
+      self.last_move = parent_move
 
-      if parent_move
-        detail.last_move_time = parent_move.created_at
-      else
-        detail.last_move_time = detail.created_at
-      end
-      detail.change_turn
+      change_turn
 
-      last_move_start = detail.formatted_moves.rindex(";") - 1
-      detail.formatted_moves = detail.formatted_moves[0..last_move_start] if last_move_start >= 0
+      last_move_start = formatted_moves.rindex(";") - 1
+      formatted_moves = formatted_moves[0..last_move_start] if last_move_start >= 0
 
-      detail.save!
       move.delete
     end
 
     def mark_dead x, y
-      move = detail.last_move
+      move = last_move
       orig_dead = move.dead.nil? ? [] : move.dead.clone
       if group = move.board.get_dead_group_for_marking(x, y)
         move.dead = (orig_dead + group).uniq
@@ -163,8 +156,8 @@ module CoolGames
     end
 
     def my_turn?
-      (current_user.player.id == black_id and detail.whose_turn == Game::BLACK) or
-              (current_user.player.id == white_id and detail.whose_turn == Game::WHITE)
+      (current_user.player.id == black_id and whose_turn == Game::BLACK) or
+              (current_user.player.id == white_id and whose_turn == Game::WHITE)
     end
 
     def guess_move? move_color, player_id
@@ -177,22 +170,19 @@ module CoolGames
     def process_guess_moves
       return unless logged_in?
 
-      guess_move = detail.guess_moves.detect do |move|
-        my_color and my_color != move.color and current_user.player.id != move.guess_player_id
+      guess_move = guess_moves.detect do |move|
+        my_color and my_color != move.color and current_user.player != move.guess_player
       end
 
       return unless guess_move
 
-      guess_move.player_id = guess_move.guess_player_id
+      guess_move.player    = guess_move.guess_player
       guess_move.played_at = Time.now
       guess_move.save!
 
-      detail.last_move = guess_move
-      detail.last_move_time = Time.now
-      detail.change_turn
-      detail.formatted_moves += CoolGames::Sgf::NodeRenderer.new(:with_name => true).render(guess_move)
-      detail.save!
-
+      self.last_move = guess_move
+      change_turn
+      formatted_moves += CoolGames::Sgf::NodeRenderer.new(:with_name => true).render(guess_move)
       self.moves += 1
       self.save!
 

@@ -7,16 +7,16 @@ module CoolGames
     include GameInPlay
     include ThreadGlobals
 
-    belongs_to :gaming_platform
-    belongs_to :black_player, :class_name => 'CoolGames::Player', :foreign_key => 'black_id'
-    belongs_to :white_player, :class_name => 'CoolGames::Player', :foreign_key => 'white_id'
-
-    embeds_one :root, :class_name => 'GameMove'
+    belongs_to :gaming_platform, class_name: 'CoolGames::GamingPlatform'
+    belongs_to :black_player   , class_name: 'CoolGames::Player'        , foreign_key: 'black_id'
+    belongs_to :white_player   , class_name: 'CoolGames::Player'        , foreign_key: 'white_id'
+    belongs_to :invitation     , class_name: 'CoolGames::Invitation'    , inverse_of:  :game
+    embeds_one :root           , class_name: 'CoolGames::GameMove'      , autobuild:    true
+    embeds_one :last_move      , class_name: 'CoolGames::GameMove'
 
     field "game_type"         , type: Integer
     field "state"             , type: String
     field "whose_turn"        , type: Integer
-    field "last_move_time"    , type: Date
     field "formatted_moves"   , type: String
     field "setup_points"      , type: String
     field "rule"              , type: Integer
@@ -191,11 +191,16 @@ module CoolGames
     }
 
     after_create do
-      self.root = GameMove.create!(:move_no => 0, :x => -1, :y => -1, :color => 0, 
-                                   :played_at => Time.now,
-                                   :setup_points => handicaps)
-      self.formatted_moves = ::CoolGames::Sgf::NodeRenderer.new(:with_name => true).render(move)
-      self.last_move_time = Time.now
+      root.move_no      = 0
+      root.x            = -1
+      root.y            = -1
+      root.color        = 0
+      root.played_at    = Time.now
+      root.setup_points = handicaps
+      root.save!
+
+      self.last_move = root
+      self.formatted_moves = ::CoolGames::Sgf::NodeRenderer.new(:with_name => true).render(root)
       save!
     end
 

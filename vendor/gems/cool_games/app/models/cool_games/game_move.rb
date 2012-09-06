@@ -7,8 +7,20 @@ module CoolGames
     SUICIDE  = 2
     BAD_KO   = 3
 
-    embeds_many :children, :class_name => 'CoolGames::GameMove'
-    embedded_in :game
+    embedded_in :game        , class_name: 'CoolGames::Game'
+    embedded_in :parent      , class_name: "CoolGames::GameMove", :cyclic => true
+    embeds_many :children    , class_name: "CoolGames::GameMove", :cyclic => true
+    belongs_to  :player      , class_name: 'CoolGames::Player'
+    belongs_to  :guess_player, class_name: 'CoolGames::Player'
+
+    field "move_no"         , type: Integer
+    field "color"           , type: Integer
+    field "x"               , type: Integer
+    field "y"               , type: Integer
+    field "dead"            , type: String
+    field "played_at"       , type: Date
+    field "setup_points"    , type: String
+    field "serialized_board", type: String
 
     #scope :moves_after, lambda { |move|
     #  {:conditions => ["game_detail_id = ? and id > ?", move.game_detail_id, move.id]}

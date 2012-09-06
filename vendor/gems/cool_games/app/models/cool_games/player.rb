@@ -3,7 +3,7 @@ module CoolGames
     include Mongoid::Document
     include Mongoid::Timestamps
 
-    belongs_to :gaming_platform
+    belongs_to :gaming_platform, class_name: 'CoolGames::GamingPlatform'
     #has_one :stat, :class_name => 'PlayerStat', :dependent => :destroy
     #has_many :opponents, :class_name => "PairStat", :dependent => :destroy
 

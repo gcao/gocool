@@ -7,9 +7,9 @@ module CoolGames
     INVITER_PLAY_FIRST = 1
     INVITEE_PLAY_FIRST = 2
 
-    belongs_to :inviter, :class_name => 'CoolGames::Player'
-    belongs_to :invitee, :class_name => 'CoolGames::Player'
-    has_one :game
+    belongs_to :inviter, class_name: 'CoolGames::Player'
+    belongs_to :invitee, class_name: 'CoolGames::Player'
+    has_one    :game   , class_name: 'CoolGames::Game'  , inverse_of: :invitation
 
     field "game_type" , type: Integer, default: Game::WEIQI
     field "state"     , type: String , default: 'new'
@@ -150,7 +150,7 @@ module CoolGames
       game.start
       game.save!
 
-      self.game_id = game.id
+      self.game = game
       self.save!
 
       #GameDetail.create!(:game_id => game.id, :whose_turn => game.start_side, :formatted_moves => "")
