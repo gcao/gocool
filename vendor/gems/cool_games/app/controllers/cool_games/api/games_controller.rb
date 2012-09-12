@@ -1,10 +1,10 @@
 module CoolGames
   module Api
     class GamesController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w[index search show play undo_guess_moves])
+      JsonResponseHandler.apply(self, :methods => %w[index search show play resign undo_guess_moves])
 
-      before_filter :authenticate_user!, :only => %w[play undo_guess_moves]
-      before_filter :check_game, :only => %w[show play undo_guess_moves]
+      before_filter :authenticate_user!, :only => %w[play resign undo_guess_moves]
+      before_filter :check_game, :only => %w[show play resign undo_guess_moves]
 
       def index
         respond_to do |format|
@@ -43,12 +43,7 @@ module CoolGames
           end
 
           format.sgf do
-            sgf = if @game.detail
-                    CoolGames::Sgf::GameRenderer.new.render(@game)
-                  else
-                    upload = Upload.find(@game.primary_source)
-                    upload.data || upload.file_content
-                  end
+            sgf = CoolGames::Sgf::GameRenderer.new.render(@game)
 
             render :text => sgf
           end
@@ -57,6 +52,15 @@ module CoolGames
 
       def play
         code, message = @game.play params
+        if code == GameInPlay::OP_SUCCESS
+          JsonResponse.success CoolGames::Sgf::GameRenderer.new.render(@game)
+        else
+          JsonResponse.failure message
+        end
+      end
+
+      def resign
+        code, message = @game.resign
         if code == GameInPlay::OP_SUCCESS
           JsonResponse.success CoolGames::Sgf::GameRenderer.new.render(@game)
         else

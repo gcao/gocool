@@ -7,9 +7,9 @@ module CoolGames
     SUICIDE  = 2
     BAD_KO   = 3
 
-    embedded_in :game        , class_name: 'CoolGames::Game'
-    embedded_in :parent      , class_name: "CoolGames::GameMove", :cyclic => true
-    embeds_many :children    , class_name: "CoolGames::GameMove", :cyclic => true
+    embedded_in :game        , class_name: 'CoolGames::Game'    , inverse_of: :root
+    embedded_in :parent      , class_name: "CoolGames::GameMove", cyclic: true, inverse_of: :children
+    embeds_many :children    , class_name: "CoolGames::GameMove", cyclic: true, inverse_of: :parent
     belongs_to  :player      , class_name: 'CoolGames::Player'
     belongs_to  :guess_player, class_name: 'CoolGames::Player'
 
@@ -17,7 +17,7 @@ module CoolGames
     field "color"           , type: Integer
     field "x"               , type: Integer
     field "y"               , type: Integer
-    field "dead"            , type: String
+    field "dead"            , type: Array
     field "played_at"       , type: Date
     field "setup_points"    , type: String
     field "serialized_board", type: String
@@ -71,6 +71,12 @@ module CoolGames
       children.detect {|move| move.x == x and move.y == y }
     end
 
+    def find_move id
+      return self if self.id.to_s == id
+
+      children.detect {|move| move.id.to_s == id}
+    end
+
     private
 
     def init_board
@@ -97,7 +103,7 @@ module CoolGames
     end
 
     def suicide?
-      dead.include?([x, y])
+      dead.nil_or.include?([x, y])
     end
   end
 end

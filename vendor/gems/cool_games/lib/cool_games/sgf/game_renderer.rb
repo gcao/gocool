@@ -21,12 +21,10 @@ module CoolGames
         sgf << render_property("KM", game.komi)
         sgf << render_property("HA", game.handicap)
         sgf << render_property("RE", game.result)
-        if game.detail
-          sgf << render_moves(game)
-          if %w(counting_preparation counting black_accept_counting white_accept_counting).include? game.state
-            sgf << ";" << NodeRenderer.new.render(game.detail.last_move)
-            sgf << render_territories(game)
-          end
+        sgf << render_moves(game)
+        if %w(counting_preparation counting black_accept_counting white_accept_counting).include? game.state
+          sgf << ";" << NodeRenderer.new.render(game.last_move)
+          sgf << render_territories(game)
         end
         sgf << ")"
       end
@@ -34,13 +32,13 @@ module CoolGames
       private
 
       def render_moves game
-        sgf = game.detail.formatted_moves.to_s
-        sgf << render_guess_moves(game) if game.current_user_is_player?
+        sgf = NodeRenderer.new(:with_name => true, :with_children => true, :player_id => game.current_player.nil_or.id).render(game.root)
+        #sgf << render_guess_moves(game) if game.current_user_is_player?
         sgf
       end
 
       def render_guess_moves game
-        guess_moves = game.detail.guess_moves
+        guess_moves = game.guess_moves
         guess_moves.map{|move|
           sgf = NodeRenderer.new(:with_name => true, :with_children => true, :player_id => game.current_user.player.id).render(move)
           sgf = "(#{sgf})" unless sgf.empty?
@@ -50,7 +48,7 @@ module CoolGames
 
       def render_territories game
         sgf = ";LB"
-        board = game.detail.last_move.board
+        board = game.last_move.board
         for i in 0..game.board_size - 1
           for j in 0..game.board_size - 1
             sgf << "[" << render_position(i, j) << ":"

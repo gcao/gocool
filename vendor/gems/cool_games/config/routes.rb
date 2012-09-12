@@ -28,6 +28,9 @@ CoolGames::Engine.routes.draw do
   end
 
   namespace :api do
+    resources :players do
+    end
+
     resources :games do
       member do
         get *%w[play resign undo_guess_moves do_this mark_dead]

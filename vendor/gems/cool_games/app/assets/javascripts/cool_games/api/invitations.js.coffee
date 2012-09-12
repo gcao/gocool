@@ -40,7 +40,7 @@ window.acceptInvitation = (id) ->
     success    : (response) ->
       handleResponse response,
         before  : -> console.log url
-        callback: -> window.location = gon.urls.api.games + "/" + response.game_id
+        callback: -> window.location = gon.urls.api.games + "/" + response.body.game_id
 
 window.rejectInvitation = (id) ->
   url = gon.urls.api.invitations + "/#{id}/reject.json"

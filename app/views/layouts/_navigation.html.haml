@@ -9,10 +9,10 @@
   -#%li.pairs
   -#  %a{:href=>cool_games.pairs_path}= t('menu.pairs')
   %li.games
-    %a{:href=>cool_games.games_path}= t('menu.games')
+    %a{:href=>cool_games.api_games_path}= t('menu.games')
   - if user_signed_in?
     %li
-      = link_to(t('menu.invitations'), cool_games.invitations_path)
+      = link_to(t('menu.invitations'), cool_games.api_invitations_path)
     %li
       = link_to('Logout', main_app.destroy_user_session_path, :method=>'delete')
   - else

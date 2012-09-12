@@ -186,6 +186,7 @@ module CoolGames
       result[:start_side_str] = start_side_str
       result[:inviter       ] = inviter
       result[:invitee       ] = invitee
+      result[:game_id       ] = game.id if game
       result
     end
   end

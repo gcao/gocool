@@ -7,17 +7,35 @@ module CoolGames
     include GameInPlay
     include ThreadGlobals
 
+    WEIQI = 1
+    DAOQI = 2
+
+    NONE  = 0
+    BLACK = 1
+    WHITE = 2
+    ERASE = 3
+
+    WINNER_BLACK = 1
+    WINNER_WHITE = 2
+
+    CHINESE_RULE  = 1
+    JAPANESE_RULE = 2
+    KOREAN_RULE   = 3
+    YING_RULE     = 4
+
+    ADD_BLACK_STONE = 1
+    ADD_WHITE_STONE = 2
+
     belongs_to :gaming_platform, class_name: 'CoolGames::GamingPlatform'
     belongs_to :black_player   , class_name: 'CoolGames::Player'        , foreign_key: 'black_id'
     belongs_to :white_player   , class_name: 'CoolGames::Player'        , foreign_key: 'white_id'
     belongs_to :invitation     , class_name: 'CoolGames::Invitation'    , inverse_of:  :game
     embeds_one :root           , class_name: 'CoolGames::GameMove'      , autobuild:    true
-    embeds_one :last_move      , class_name: 'CoolGames::GameMove'
 
     field "game_type"         , type: Integer
     field "state"             , type: String
-    field "whose_turn"        , type: Integer
-    field "formatted_moves"   , type: String
+    field "whose_turn"        , type: Integer, default: BLACK
+    #field "formatted_moves"   , type: String
     field "setup_points"      , type: String
     field "rule"              , type: Integer
     field "rule_raw"          , type: String
@@ -47,25 +65,6 @@ module CoolGames
     field "white_rank"        , type: String
     field "white_team"        , type: String
     field "updated_by"        , type: String
-
-    WEIQI = 1
-    DAOQI = 2
-
-    NONE  = 0
-    BLACK = 1
-    WHITE = 2
-    ERASE = 3
-
-    WINNER_BLACK = 1
-    WINNER_WHITE = 2
-
-    CHINESE_RULE  = 1
-    JAPANESE_RULE = 2
-    KOREAN_RULE   = 3
-    YING_RULE     = 4
-
-    ADD_BLACK_STONE = 1
-    ADD_WHITE_STONE = 2
 
     #default_scope :include => [:gaming_platform, :primary_source]
 
@@ -201,10 +200,8 @@ module CoolGames
       root.color        = 0
       root.played_at    = Time.now
       root.setup_points = handicaps
-      root.save!
 
-      self.last_move = root
-      self.formatted_moves = ::CoolGames::Sgf::NodeRenderer.new(:with_name => true).render(root)
+      #self.formatted_moves = ::CoolGames::Sgf::NodeRenderer.new(:with_name => true).render(root)
       save!
     end
 
@@ -351,10 +348,16 @@ module CoolGames
       move = root
 
       while move.children.size > 0
-        move = move.children.first
+        m = move.children.first
+        break if m.guess_player and not m.player
+        move = m
       end
 
       move
+    end
+
+    def find_move id
+      root.find_move id
     end
 
     def guess_moves
