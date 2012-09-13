@@ -64,7 +64,6 @@ module CoolGames
     field "white_name"        , type: String
     field "white_rank"        , type: String
     field "white_team"        , type: String
-    field "updated_by"        , type: String
 
     #default_scope :include => [:gaming_platform, :primary_source]
 

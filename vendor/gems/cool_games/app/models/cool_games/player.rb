@@ -13,7 +13,8 @@ module CoolGames
     field "last_name"    , type: String
     field "name"         , type: String
     field "rank"         , type: String
-    field "sex"          , type: Integer
+    field "rating"       , type: Integer
+    field "sex"          , type: String # M/F
     field "birth_year"   , type: Integer
     field "birthday"     , type: Date
     field "birth_place"  , type: String
@@ -21,7 +22,10 @@ module CoolGames
     field "email"        , type: String
     field "description"  , type: String
     field "registered_at", type: Date
-    field "updated_by"   , type: String
+
+    scope :paginate, lambda {|params|
+      page(params[:page]).per(params[:per_page])
+    }
 
     scope :on_platform, lambda {|platform|
       if platform.blank?

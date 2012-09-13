@@ -29,6 +29,9 @@ CoolGames::Engine.routes.draw do
 
   namespace :api do
     resources :players do
+      collection do
+        get *%w[search]
+      end
     end
 
     resources :games do

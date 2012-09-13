@@ -1,0 +1,55 @@
+%h2= t('players.page_title')
+
+=form_tag search_api_players_path, :method => :get, :remote => true, |
+          :id => 'players_search_form', :class => "horizontal" do |
+  %fieldset
+    .row
+      .span12
+        =text_field_tag 'name', h(@name), :placeholder => t('players.name_placeholder')
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        =hidden_field_tag 'page', '1'
+        =submit_tag t('form.search_button'), :class => "btn btn-primary", :disable_with => t('form.please_wait')
+        =button_tag t('form.reset_button'), :name => "reset", :class => "btn"
+
+#players_not_found(style='display:none;')
+  = t("players_table.player_not_found")
+#players_table(style='display:none;')
+  .players_widget
+    .pagination(style='display:none')
+    %table.players_table.table
+      %thead
+        %tr.header
+          %th.player_name_column= t('players_table.name')
+          %th.rank_column=        t('players_table.rank')
+          %th.actions_column=     t('table.actions_label')
+      %tbody.records
+
+:coffeescript
+  page = #{params[:page].blank? ? 1 : params[:page].to_i}
+
+  $('#players_search_form').bind 'ajax:success', (event, response) ->
+    handleResponse response,
+      before: -> console.log "#players_search_form is submitted" 
+
+      callback: (response) ->
+        # Reset page number hidden field
+        $('#players_search_form input[name=page]').val(1)
+
+        switch response.status
+          when 'success'
+            showplayers(response.body)
+
+          when 'validation_error'
+            $('#players_not_found').hide()
+            $('#players_table').hide()
+            for error in response.errors
+              showError(error.field, error.message)
+
+      pagination:
+        container: '#players_table .pagination'
+        callback: (page) ->
+          $('#players_search_form input[name=page]').val(page)
+          $('#players_search_form input[type=submit]').click()
+
+  loadPlayers(page)
+

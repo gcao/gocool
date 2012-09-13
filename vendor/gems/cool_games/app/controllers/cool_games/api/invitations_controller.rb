@@ -17,6 +17,7 @@ module CoolGames
       end
 
       def new
+        @invitees = params[:invitees]
       end
 
       def create

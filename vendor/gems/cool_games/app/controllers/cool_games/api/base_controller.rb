@@ -15,9 +15,10 @@ module CoolGames
         gon.urls = {
           games: cool_games.games_path,
           api: {
-            games: cool_games.api_games_path,
+            players:     cool_games.api_players_path,
+            games:       cool_games.api_games_path,
             invitations: cool_games.api_invitations_path,
-            login: main_app.api_sessions_path
+            login:       main_app.api_sessions_path
           }
         }
       end

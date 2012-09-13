@@ -112,6 +112,7 @@ en:
     page_header: "棋手"
     platform_label: "对局平台："
     name_label: "棋手："
+    name_placeholder: "棋手名"
     opponents_header: "对手"
   players_table:
     platform: "对局平台"

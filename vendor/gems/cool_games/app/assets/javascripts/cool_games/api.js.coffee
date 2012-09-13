@@ -1,4 +1,5 @@
 #= require_self
+#= require cool_games/api/players
 #= require cool_games/api/games
 #= require cool_games/api/invitations
 
