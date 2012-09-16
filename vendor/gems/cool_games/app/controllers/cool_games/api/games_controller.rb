@@ -1,9 +1,9 @@
 module CoolGames
   module Api
     class GamesController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w[index search show play resign undo_guess_moves])
+      JsonResponseHandler.apply(self, :methods => %w[index search my_turn show play resign undo_guess_moves])
 
-      before_filter :authenticate_user!, :only => %w[play resign undo_guess_moves]
+      before_filter :authenticate_user!, :only => %w[my_turn play resign undo_guess_moves]
       before_filter :check_game, :only => %w[show play resign undo_guess_moves]
 
       def index
@@ -32,6 +32,12 @@ module CoolGames
 
           JsonResponse.success(games)
         end
+      end
+
+      def my_turn
+        games = Game.order_by([[:creation_time]]).my_turn(@current_player)
+
+        JsonResponse.success(games)
       end
 
       def show

@@ -88,12 +88,16 @@ module CoolGames
       #  :conditions => ["(black_id = ? and (cg_games.state in ('white_request_counting', 'counting', 'white_accept_counting') or (cg_games.state in ('new', 'playing') and cg_game_details.whose_turn = ?)))
       #                or (white_id = ? and (cg_games.state in ('black_request_counting', 'counting', 'black_accept_counting') or (cg_games.state in ('new', 'playing') and cg_game_details.whose_turn = ?)))", p.id, BLACK, p.id, WHITE]
       #}
-      any_of(where(black_id: p.id). 
-               any_of({:state.in => %w[white_request_counting counting white_accept_counting]}, 
-                      {:state.in => %w[white_request_counting counting white_accept_counting]}),
-             where(white_id: p.id).
-               any_of({:state.in => %w[black_request_counting counting black_accept_counting]}, 
-                      {:state.in => %w[black_request_counting counting black_accept_counting]}))
+      #any_of(where(black_id: p.id). 
+      #         any_of({:state.in => %w[white_request_counting counting white_accept_counting]}, 
+      #                {:state.in => %w[new playing], whose_turn: BLACK}),
+      #       where(white_id: p.id).
+      #         any_of({:state.in => %w[black_request_counting counting black_accept_counting]}, 
+      #                {:state.in => %w[new playing], whose_turn: WHITE}))
+      any_of({black_id: p.id, :state.in => %w[white_request_counting counting white_accept_counting]}, 
+             {black_id: p.id, :state.in => %w[new playing], whose_turn: BLACK},
+             {white_id: p.id, :state.in => %w[black_request_counting counting black_accept_counting]}, 
+             {white_id: p.id, :state.in => %w[new playing], whose_turn: WHITE})
     }
 
     #scope :not_my_turn, lambda {|p|

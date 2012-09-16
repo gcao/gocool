@@ -28,8 +28,15 @@ module CoolGames
       protected
 
       def authenticate_user
-        unless params[:auth_token].blank?
-          Thread.current[:user] = @current_user = User.find_by(authentication_token: params[:auth_token])
+        if params[:login].not_blank? and params[:password].not_blank?
+          user = User.find_first_by_auth_conditions(:login => params[:login])
+          user = nil unless user.valid_password?(params[:password])
+        elsif params[:auth_token].not_blank?
+          user = User.find_by(authentication_token: params[:auth_token])
+        end
+
+        if user
+          Thread.current[:user] = @current_user = user
           @current_player = @current_user.nil_or.player
         end
       end

@@ -39,7 +39,7 @@ gem "rack-livereload", ">= 0.3.6", :group => :development
 gem "pry-rails", :group => :development
 gem "devise", ">= 2.1.0.rc2"
 gem "cancan", ">= 1.6.7"
-#gem "rolify", ">= 3.1.0"
+gem "rolify", ">= 3.1.0"
 gem "bootstrap-sass", ">= 2.0.1"
 gem "simple_form", "~> 2.0.0"
 gem "aasm", "~> 3.0.0"

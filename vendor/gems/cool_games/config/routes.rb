@@ -40,7 +40,7 @@ CoolGames::Engine.routes.draw do
       end
 
       collection do
-        get *%w[search]
+        get *%w[search my_turn]
       end
     end
 
