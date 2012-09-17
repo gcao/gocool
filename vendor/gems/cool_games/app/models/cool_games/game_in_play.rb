@@ -24,20 +24,18 @@ module CoolGames
       x = params[:x].to_i
       y = params[:y].to_i
 
+      # color is optional and used for validation purpose only
+      color = translate_color params[:color]
+      if color and color != whose_turn
+        message_key = color == Game::WHITE ? 'games.black_to_play_next' : 'games.white_to_play_next'
+        return OP_FAILURE, I18n.t(message_key)
+      end
+
       if x < 0 or x > board_size - 1 or y < 0 or y > board_size - 1
         return OP_FAILURE, I18n.t('games.incorrect_move').sub('MOVE', "#{x}, #{y}")
       end
 
-      if parent_move_id.blank?
-        return OP_FAILURE, I18n.t('games.parent_move_required')
-      end
-
-      # TODO
-      #if parent_move_id.to_i < last_move_id
-      #  return OP_FAILURE, I18n.t('games.not_last_move_or_after')
-      #end
-
-      parent_move = find_move parent_move_id
+      parent_move = parent_move_id.blank? ? last_move : find_move(parent_move_id)
 
       unless move = parent_move.child_that_matches(x, y)
         if guess_move?(parent_move.color, current_player.id)
@@ -158,6 +156,16 @@ module CoolGames
     end
 
     private
+
+    def translate_color color_str
+      color_str.downcase!
+
+      if color_str == 'black' || color_str == Game::BLACK.to_s
+        Game::BLACK
+      elsif color_str == 'white' || color_str == Game::WHITE.to_s
+        Game::WHITE
+      end
+    end
 
     def process_guess_moves
       return unless logged_in?
