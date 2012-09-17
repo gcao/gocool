@@ -6,7 +6,7 @@ module CoolGames
       end
 
       def render node
-        return "" if node.guess_player_id and @options[:player_id] and node.guess_player_id != @options[:player_id]
+        return "" unless node.visible_to @options[:player_id]
 
         sgf = ""
         sgf << ";" if node.move_on_board?

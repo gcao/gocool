@@ -77,6 +77,12 @@ module CoolGames
       children.detect {|move| move.id.to_s == id}
     end
 
+    def visible_to player_id
+      return true if self.player_id or guess_player_id.nil?
+
+      guess_player_id == player_id
+    end
+
     private
 
     def init_board
