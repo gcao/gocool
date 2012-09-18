@@ -53,7 +53,7 @@ window.showGame = (game, user) ->
     url = "#{gon.urls.api.games}/#{game.id}/undo_guess_moves.json"
     url = addAuthToUrl(url)
     $('#actions').show().html("<a href='#{url}'>Undo</a>")
-    controller.createGocoolPlayer().loadGocoolGame(game.id)
+    controller.createGocoolPlayer().loadGocoolGame(game.id).startUpdater(true)
   else
     $('#actions').hide()
     url = gon.urls.games + '/' + game.id + '.sgf'
