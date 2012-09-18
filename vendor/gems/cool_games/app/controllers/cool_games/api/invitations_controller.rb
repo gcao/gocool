@@ -1,15 +1,29 @@
 module CoolGames
   module Api
     class InvitationsController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w[index create accept reject])
+      JsonResponseHandler.apply(self, :methods => %w[index create accept reject cancel])
 
       before_filter :authenticate_user!
+
+      aspector do
+        before :accept, :reject, :cancel do
+          begin
+            @invitation = Invitation.find params[:id]
+          rescue
+            if request.format.json?
+              returns JsonResponse.not_found
+            else
+              raise
+            end
+          end
+        end
+      end
 
       def index
         respond_to do |format|
           format.html { render 'index' }
           format.json do
-            invitations = Invitation.includes(:inviter).active.to_me(@current_player)
+            invitations = Invitation.includes(:inviter).active.of_player(@current_player)
 
             JsonResponse.success(invitations)
           end
@@ -50,41 +64,47 @@ module CoolGames
       end
 
       def accept
-        invitation = Invitation.find(params[:id])
+        @invitation.accept
 
-        return JsonResponse.not_found unless invitation
+        if @invitation.state == 'accepted'
+          @invitation.save!
 
-        if invitation.state == 'new'
-          invitation.invitee = @current_player
-          invitation.accept
-          invitation.save!
-
-          JsonResponse.success invitation
-        elsif invitation.state == 'accepted'
-          JsonResponse.success invitation
+          JsonResponse.success @invitation
         else
-          JsonResponse.failure invitation do
-            add_error 'invalid_invitation_state', invitation.state
+          JsonResponse.failure @invitation do
+            add_error 'invalid_invitation_state', @invitation.state
           end
         end
       end
 
       def reject
-        invitation = Invitation.find(params[:id])
+        @invitation.reject
 
-        return JsonResponse.not_found unless invitation
-
-        if invitation.state == 'new'
-          invitation.reject
-          invitation.save!
+        if @invitation.state == 'rejected'
+          @invitation.save!
 
           JsonResponse.success
         else
-          JsonResponse.failure invitation do
-            add_error 'invalid_invitation_state', invitation.state
+          JsonResponse.failure @invitation do
+            add_error 'invalid_invitation_state', @invitation.state
           end
         end
       end
+
+      def cancel
+        @invitation.cancel
+
+        if @invitation.state == 'canceled'
+          @invitation.save!
+
+          JsonResponse.success
+        else
+          JsonResponse.failure @invitation do
+            add_error 'invalid_invitation_state', @invitation.state
+          end
+        end
+      end
+
     end
   end
 end

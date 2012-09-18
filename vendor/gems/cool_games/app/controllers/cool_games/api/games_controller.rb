@@ -4,7 +4,20 @@ module CoolGames
       JsonResponseHandler.apply(self, :methods => %w[index search my_turn show play resign undo_guess_moves])
 
       before_filter :authenticate_user!, :only => %w[my_turn play resign undo_guess_moves]
-      before_filter :check_game, :only => %w[show play resign undo_guess_moves]
+
+      aspector do
+        before :show, :play, :resign, :undo_guess_moves do
+          begin
+            @game = Game.find params[:id]
+          rescue
+            if request.format.json?
+              returns JsonResponse.not_found
+            else
+              raise
+            end
+          end
+        end
+      end
 
       def index
         respond_to do |format|
@@ -77,18 +90,6 @@ module CoolGames
       def undo_guess_moves
         @game.undo_guess_moves
         JsonResponse.success
-      end
-
-      private
-
-      def check_game
-        @game = Game.find params[:id]
-      rescue
-        if request.format.json?
-          render :json => JsonResponse.not_found, :callback => params['callback']
-        else
-          raise
-        end
       end
     end
   end

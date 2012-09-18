@@ -3,6 +3,7 @@ module CoolGames
     include Mongoid::Document
     include Mongoid::Timestamps
     include AASM
+    include ThreadGlobals
 
     INVITER_PLAY_FIRST = 1
     INVITEE_PLAY_FIRST = 2
@@ -24,9 +25,10 @@ module CoolGames
 
     default_scope order_by([[:created_at, :desc]])
 
-    scope :active, lambda {
-      #{:conditions => ["state not in ('accepted', 'rejected', 'canceled', 'expired')"]}
-      where(:state.nin => %w[accepted rejected canceled expired])
+    scope :active, where(:state.nin => %w[accepted rejected canceled expired])
+
+    scope :of_player, lambda { |player|
+      any_of({inviter_id: player.id}, {invitee_id: player.id})
     }
 
     scope :by_me, lambda { |player|
@@ -46,21 +48,29 @@ module CoolGames
     aasm_state :new
     aasm_state :accepted, :enter => :create_game
     aasm_state :rejected, :enter => :send_reject_message
-    #aasm_state :changed_by_inviter
-    #aasm_state :changed_by_invitee
+    aasm_state :changed_by_inviter
+    aasm_state :changed_by_invitee
     aasm_state :canceled
     aasm_state :expired
 
-    aasm_event :accept do |*args|
-      transitions :to => :accepted, :from => [:new]
+    aasm_event :accept do
+      transitions :to => :accepted, :from => [:new, :changed_by_inviter], :guard => :current_player_is_invitee?
+      transitions :to => :accepted, :from => [:changed_by_invitee      ], :guard => :current_player_is_inviter?
     end
 
     aasm_event :reject do
-      transitions :to => :rejected, :from => [:new]
+      transitions :to => :rejected, :from => [:new, :changed_by_inviter], :guard => :current_player_is_invitee?
+      transitions :to => :rejected, :from => [:changed_by_invitee      ], :guard => :current_player_is_inviter?
     end
 
     aasm_event :cancel do
-      transitions :to => :canceled, :from => [:new]
+      transitions :to => :canceled, :from => [:new, :changed_by_inviter], :guard => :current_player_is_inviter?
+      transitions :to => :canceled, :from => [:changed_by_invitee      ], :guard => :current_player_is_invitee?
+    end
+
+    aasm_event :change do
+      transitions :to => :changed_by_inviter, :from => [:new, :changed_by_invitee], :guard => :current_player_is_inviter?
+      transitions :to => :changed_by_invitee, :from => [:new, :changed_by_inviter], :guard => :current_player_is_invitee?
     end
 
     def self.parse_invitees invitees
@@ -86,6 +96,14 @@ module CoolGames
 
     after_create do
       send_invitation_message
+    end
+
+    def current_player_is_inviter?
+      logged_in? and current_player.id == inviter_id
+    end
+
+    def current_player_is_invitee?
+      logged_in? and current_player.id == invitee_id
     end
 
     def game_type_str
@@ -187,6 +205,8 @@ module CoolGames
       result[:inviter       ] = inviter
       result[:invitee       ] = invitee
       result[:game_id       ] = game.id if game
+      result[:is_inviter    ] = current_player_is_inviter?
+      result[:is_invitee    ] = current_player_is_invitee?
       result
     end
   end
