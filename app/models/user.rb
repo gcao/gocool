@@ -57,7 +57,6 @@ class User
                                             :user            => self,
                                             :email           => email,
                                             :name            => username)
-    self.save!
   end
 
   #this method is for letting users authenticate both with emails and usernames
