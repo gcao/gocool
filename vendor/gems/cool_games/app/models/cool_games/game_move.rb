@@ -74,7 +74,11 @@ module CoolGames
     def find_move id
       return self if self.id.to_s == id
 
-      children.detect {|move| move.id.to_s == id}
+      children.each do |move|
+        if found = move.find_move(id)
+          return found
+        end
+      end
     end
 
     def visible_to player_id

@@ -158,6 +158,8 @@ module CoolGames
     private
 
     def translate_color color_str
+      return unless color_str
+
       color_str.downcase!
 
       if color_str == 'black' || color_str == Game::BLACK.to_s
