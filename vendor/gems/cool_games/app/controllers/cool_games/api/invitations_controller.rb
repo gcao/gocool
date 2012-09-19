@@ -1,7 +1,7 @@
 module CoolGames
   module Api
     class InvitationsController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w[index create update accept reject cancel])
+      JsonResponseHandler.apply(self, :methods => %w[index open create update accept reject cancel])
 
       before_filter :authenticate_user!
 
@@ -23,7 +23,7 @@ module CoolGames
         respond_to do |format|
           format.html { render 'index' }
           format.json do
-            invitations = Invitation.includes(:inviter).active.of_player(@current_player)
+            invitations = Invitation.active.of_player(@current_player)
 
             JsonResponse.success(invitations)
           end
@@ -45,12 +45,18 @@ module CoolGames
         invitees, unrecognized = Invitation.parse_invitees(@invitees)
 
         if unrecognized.blank?
-          invitees.each do |invitee|
-            attrs = params[:invitation].merge(:invitee => invitee,
-                                              :inviter => @current_player, 
-                                              :game_type => @game_type)
+          if invitees.blank?
+            attrs = params[:invitation].merge(inviter: @current_player, game_type: @game_type)
             invitation = Invitation.new(attrs)
             invitation.save!
+          else
+            invitees.each do |invitee|
+              attrs = params[:invitation].merge(:invitee => invitee,
+                                                :inviter => @current_player, 
+                                                :game_type => @game_type)
+              invitation = Invitation.new(attrs)
+              invitation.save!
+            end
           end
 
           JsonResponse.success
@@ -61,6 +67,12 @@ module CoolGames
             add_error error_code, message, "invitation_invitees"
           end
         end
+      end
+
+      def open
+        invitations = Invitation.active.open_to_other(@current_player)
+
+        JsonResponse.success(invitations)
       end
 
       def edit

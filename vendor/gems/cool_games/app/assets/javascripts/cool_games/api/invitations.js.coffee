@@ -13,14 +13,15 @@ invitationRowTmpl = tmpl """
   <tr>
     <td><%= invitation.created_at %></td>
     <td>
-      <% if (invitation.state == "new") { %>等待被邀请人回应
+      <% if (!invitation.invitee) { %>等待棋友加入
+      <% } else if (invitation.state == "new") { %>等待被邀请人回应
       <% } else if (invitation.state == "changed_by_invitee") { %>被邀请人修改了设置，等待邀请人回应
       <% } else if (invitation.state == "changed_by_inviter") { %>邀请人修改了设置，等待被邀请人回应
       <% } %>
     </td>
     <td><%= invitation.game_type_str %></td>
     <td><%= invitation.inviter.name %></td>
-    <td><%= invitation.invitee.name %></td>
+    <td><% if (invitation.invitee) { %><%= invitation.invitee.name %><% } %></td>
     <td><%= invitation.start_side_str %></td>
     <td><%= invitation.handicap_str %></td>
     <td><%= invitation.note %></td>
@@ -50,6 +51,39 @@ showInvitations = (invitations) ->
       $('#invitations_container table tbody').append invitationRowTmpl(invitation: invitation)
   else
     $('#invitations_container').hide()
+
+window.loadOpenInvitations = ->
+  url = gon.urls.api.invitations + "/open.json"
+  url = addAuthToUrl(url)
+  $.ajax url,
+    dataType   : 'jsonp'
+    crossDomain: true
+    success    : (response) ->
+      handleResponse response,
+        before  : -> console.log url
+        callback: -> showOpenInvitations(response.body)
+
+openInvitationRowTmpl = tmpl """
+  <tr>
+    <td><%= invitation.created_at %></td>
+    <td><%= invitation.game_type_str %></td>
+    <td><%= invitation.inviter.name %></td>
+    <td><%= invitation.start_side_str %></td>
+    <td><%= invitation.handicap_str %></td>
+    <td><%= invitation.note %></td>
+    <td>
+      <a href=\'javascript:acceptInvitation("<%= invitation.id %>")\'>开始对局</a>
+    </td>
+  </tr>
+"""
+
+showOpenInvitations = (invitations) ->
+  if invitations && invitations.length > 0
+    $('#open_invitations_container').show()
+    for invitation in invitations
+      $('#open_invitations_container table tbody').append openInvitationRowTmpl(invitation: invitation)
+  else
+    $('#open_invitations_container').hide()
 
 window.cancelInvitation = (id) ->
   url = gon.urls.api.invitations + "/#{id}/cancel.json"

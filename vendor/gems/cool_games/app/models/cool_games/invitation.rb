@@ -20,12 +20,15 @@ module CoolGames
     field "komi"      , type: Float  , default: 7.5
     field "for_rating", type: Boolean
     field "note"      , type: String
-    field "response"  , type: String
     field "expires_on", type: Date
 
     default_scope order_by([[:created_at, :desc]])
 
     scope :active, where(:state.nin => %w[accepted rejected canceled expired])
+
+    scope :open_to_other, lambda { |player| 
+      where(:inviter_id.ne => player.id, :invitee => nil)
+    }
 
     scope :of_player, lambda { |player|
       any_of({inviter_id: player.id}, {invitee_id: player.id})

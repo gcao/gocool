@@ -20,6 +20,22 @@
           %th.actions_column=    t('table.actions_label')
       %tbody.records
 
+#open_invitations_container.row{:style => 'display:none;'}
+  .span12
+    %h2= t('invitations.open_invitations_header')
+    %table.table
+      %thead
+        %tr.header
+          %th.created_at_column= t('invitations.created_at_label')
+          %th.game_type_column=  t('invitations.game_type_label')
+          %th.inviter_column=    t('invitations.inviter_label')
+          %th.start_side_column= t('invitations.start_side_label')
+          %th.handicap_column=   t('invitations.handicap_label')
+          %th.note_column=       t('invitations.note_label')
+          %th.actions_column=    t('table.actions_label')
+      %tbody.records
+
 :coffeescript
   loadInvitations()
+  loadOpenInvitations()
 

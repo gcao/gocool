@@ -16,9 +16,8 @@
     .span3
       %label(for="invitation_invitees")
         = t('invitations.invitees_label')
-        =raw mark_required
     .span9
-      %input#invitation_invitees(type="text" name="invitation[invitees]" size="80" value="#{@invitees}")
+      %input#invitation_invitees(type="text" name="invitation[invitees]" size="80" value="#{@invitees}" placeholder="#{t('invitations.open_invitation_note')}")
 
   .row
     .span3
@@ -56,10 +55,6 @@
 
 - content_for :footer do
   :coffeescript
-    validanguage.el.invitation_invitees =
-      required: true
-      errorMsg: "#{t('invitations.invitees_required')}"
-
     $('#invitation_handicap').change ->
       handicap = $(this).val()
       if handicap == "0"

@@ -266,6 +266,8 @@ en:
     game_type_label: "棋种"
     inviter_label: "邀请人"
     invitees_label: "被邀请人"
+    open_invitations_header: "开放式对局邀请"
+    open_invitation_note: "所有满足条件的棋友"
     invitees_table_label: "被邀请人"
     start_side_label: "先行"
     handicap_label: "棋份"

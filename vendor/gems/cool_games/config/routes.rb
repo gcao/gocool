@@ -45,6 +45,10 @@ CoolGames::Engine.routes.draw do
     end
 
     resources :invitations do
+      collection do
+        get *%w[open]
+      end
+
       member do
         get *%w[accept reject cancel]
       end
