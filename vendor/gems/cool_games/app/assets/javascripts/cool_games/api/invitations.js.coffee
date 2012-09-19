@@ -22,9 +22,11 @@ invitationRowTmpl = tmpl """
     <td>
       <% if (invitation.is_inviter) { %>
       <a href=\'javascript:cancelInvitation("<%= invitation.id %>")\'>取消</a>
+      <a href=\'#{gon.urls.api.invitations}/<%= invitation.id %>/edit\'>修改设置</a>
       <% } else { %>
       <a href=\'javascript:acceptInvitation("<%= invitation.id %>")\'>接受</a>
       <a href=\'javascript:rejectInvitation("<%= invitation.id %>")\'>拒绝</a>
+      <a href=\'#{gon.urls.api.invitations}/<%= invitation.id %>/edit\'>修改设置</a>
       <% } %>
     </td>
   </tr>
@@ -34,7 +36,7 @@ showInvitations = (invitations) ->
   if invitations && invitations.length > 0
     $('#invitations_container').show()
     for invitation in invitations
-      $('#invitations_container table tbody').append invitationRowTmpl {invitation: invitation}
+      $('#invitations_container table tbody').append invitationRowTmpl(invitation: invitation)
   else
     $('#invitations_container').hide()
 

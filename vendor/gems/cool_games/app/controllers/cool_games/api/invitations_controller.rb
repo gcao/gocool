@@ -1,12 +1,12 @@
 module CoolGames
   module Api
     class InvitationsController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w[index create accept reject cancel])
+      JsonResponseHandler.apply(self, :methods => %w[index create update, accept reject cancel])
 
       before_filter :authenticate_user!
 
       aspector do
-        before :accept, :reject, :cancel do
+        before :edit, :update, :accept, :reject, :cancel do
           begin
             @invitation = Invitation.find params[:id]
           rescue
@@ -59,6 +59,25 @@ module CoolGames
             error_code = :invitee_not_found
             message = t('invitations.user_not_found').gsub('USERNAME', unrecognized.join(", "))
             add_error error_code, message, "invitation_invitees"
+          end
+        end
+      end
+
+      def edit
+      end
+
+      def update
+        @invitation.game_type  = params["invitation"]["game_type"]
+        @invitation.start_side = params["invitation"]["start_side"]
+        @invitation.handicap   = params["invitation"]["handicap"]
+        @invitation.note       = params["invitation"]["note"]
+
+        if @invitation.valid?
+          @invitation.save!
+          JsonResponse.success @invitation
+        else
+          JsonResponse.new JsonResponse::VALIDATION_ERROR do
+            add_error "TODO", "TODO"
           end
         end
       end

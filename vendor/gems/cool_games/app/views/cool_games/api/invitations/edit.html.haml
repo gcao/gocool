@@ -1,15 +1,18 @@
 %h1= t('invitations.create_page_header')
 
-= form_tag api_invitations_url, :remote => true, :class => "vertical", :id => 'new_invitation_form' do
+-#= form_tag api_invitations_url, :remote => true, :class => "vertical", :id => 'edit_invitation_form' do
+= form_for @invitation, :url => api_invitation_path(@invitation), :remote => true, :class => "vertical", :id => 'edit_invitation_form' do
   .row
     .span3
       %label(for="invitation_game_type")
         = t('invitations.game_type_label')
     .span9
       .field.game_type
-        %input(id="invitations_game_type" name="invitation[game_type]" type="radio" value="1" checked="checked")
+        -#%input(id="invitations_game_type" name="invitation[game_type]" type="radio" value="1" checked="checked")
+        = radio_button :invitation, :game_type, '1'
         = t('games.weiqi_label')
-        %input(id="invitations_game_type" name="invitation[game_type]" type="radio" value="2")
+        -#%input(id="invitations_game_type" name="invitation[game_type]" type="radio" value="2")
+        = radio_button :invitation, :game_type, '2'
         = t('games.daoqi_label')
 
   .row
@@ -18,7 +21,8 @@
         = t('invitations.invitees_label')
         =raw mark_required
     .span9
-      %input#invitation_invitees(type="text" name="invitation[invitees]" size="80" value="#{@invitees}")
+      -#%input#invitation_invitee(type="text" name="invitation[invitee]" size="80" value="#{@invitation.invitee.name}")
+      .field.invitee= @invitation.invitee.name
 
   .row
     .span3
@@ -46,7 +50,8 @@
       %label(for="invitation_note")
         = t('invitations.note_label')
     .span9
-      %input#invitation_note(type="text" name="invitation[note]" size="80" value="#{@note}")
+      -#%input#invitation_note(type="text" name="invitation[note]" size="80" value="#{@invitation.note}")
+      = text_field :invitation, :note
 
   .row
     .offset3.span9
@@ -56,10 +61,6 @@
 
 - content_for :footer do
   :coffeescript
-    validanguage.el.invitation_invitees =
-      required: true
-      errorMsg: "#{t('invitations.invitees_required')}"
-
     $('#invitation_handicap').change ->
       handicap = $(this).val()
       if handicap == "0"
@@ -71,13 +72,13 @@
           alert("#{t('invitations.reselect_start_side')}")
           $('#invitation_start_side option[value=0]').remove()
 
-    #$('#new_invitation_form').bind 'ajax:beforeSend', (event, _, xhr) ->
+    #$('#edit_invitation_form').bind 'ajax:beforeSend', (event, _, xhr) ->
     #  console.log 'ajax:beforeSend'
     #  xhr.data += "&auth_token=" + gon.auth_token
 
-    $('#new_invitation_form').bind 'ajax:success', (event, response) ->
+    $('#edit_invitation_form').bind 'ajax:success', (event, response) ->
       handleResponse response,
-        before: -> console.log "#new_invitation_form is submitted"
+        before: -> console.log "#edit_invitation_form is submitted"
 
         callback: (response) ->
           switch response.status
@@ -86,5 +87,6 @@
 
             when 'validation_error'
               for error in response.errors
-                showError(error.field, error.message)
+                alert("Server returned error: " + error.message)
+                #showError(error.field, error.message)
 
