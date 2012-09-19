@@ -13,7 +13,7 @@ invitationRowTmpl = tmpl """
   <tr>
     <td><%= invitation.created_at %></td>
     <td>
-      <% if (!invitation.invitee) { %>等待棋友加入
+      <% if (invitation.is_open) { %>等待棋友加入
       <% } else if (invitation.state == "new") { %>等待被邀请人回应
       <% } else if (invitation.state == "changed_by_invitee") { %>被邀请人修改了设置，等待邀请人回应
       <% } else if (invitation.state == "changed_by_inviter") { %>邀请人修改了设置，等待被邀请人回应

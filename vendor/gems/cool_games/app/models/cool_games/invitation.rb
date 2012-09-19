@@ -12,6 +12,7 @@ module CoolGames
     belongs_to :invitee, class_name: 'CoolGames::Player'
     has_one    :game   , class_name: 'CoolGames::Game'  , inverse_of: :invitation
 
+    field "is_open"   , type: Boolean, default: false
     field "game_type" , type: Integer, default: Game::WEIQI
     field "state"     , type: String , default: 'new'
     field "rule"      , type: Integer, default: 1
@@ -27,7 +28,7 @@ module CoolGames
     scope :active, where(:state.nin => %w[accepted rejected canceled expired])
 
     scope :open_to_other, lambda { |player| 
-      where(:inviter_id.ne => player.id, :invitee => nil)
+      where(:inviter_id.ne => player.id, :is_open => true)
     }
 
     scope :of_player, lambda { |player|

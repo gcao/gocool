@@ -46,7 +46,7 @@ module CoolGames
 
         if unrecognized.blank?
           if invitees.blank?
-            attrs = params[:invitation].merge(inviter: @current_player, game_type: @game_type)
+            attrs = params[:invitation].merge(inviter: @current_player, game_type: @game_type, is_open: true)
             invitation = Invitation.new(attrs)
             invitation.save!
           else

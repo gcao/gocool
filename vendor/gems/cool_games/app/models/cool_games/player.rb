@@ -3,9 +3,9 @@ module CoolGames
     include Mongoid::Document
     include Mongoid::Timestamps
 
-    belongs_to :gaming_platform, class_name: 'CoolGames::GamingPlatform'
-    belongs_to :user           , class_name: 'User'                     , inverse_of: :player
-    has_many   :opponents      , class_name: 'CoolGames::PairStat'      , inverse_of: :player
+    belongs_to  :gaming_platform, class_name: 'CoolGames::GamingPlatform'
+    belongs_to  :user           , class_name: 'User'                     , inverse_of: :player
+    embeds_many :opponents      , class_name: 'CoolGames::PairStat'      , inverse_of: :player
 
     field "first_name"   , type: String
     field "last_name"    , type: String
