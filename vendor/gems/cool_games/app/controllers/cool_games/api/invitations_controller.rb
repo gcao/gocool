@@ -57,7 +57,7 @@ module CoolGames
         else
           JsonResponse.new JsonResponse::VALIDATION_ERROR do
             error_code = :invitee_not_found
-            message = t('invitations.user_not_found').gsub('USERNAME', unrecognized.join(", "))
+            message = I18n.t('invitations.user_not_found').gsub('USERNAME', unrecognized.join(", "))
             add_error error_code, message, "invitation_invitees"
           end
         end

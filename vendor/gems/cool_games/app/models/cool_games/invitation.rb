@@ -80,9 +80,13 @@ module CoolGames
       invitees.split(/[ ,]+/).each do |invitee|
         invitee.strip!
 
-        if player = Player.find_by(name: invitee)
-          result << player
-        else
+        begin
+          if player = Player.find_by(name: invitee)
+            result << player
+          else
+            unrecognized << invitee
+          end
+        rescue Mongoid::Errors::DocumentNotFound
           unrecognized << invitee
         end
       end
