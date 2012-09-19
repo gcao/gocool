@@ -1,7 +1,7 @@
 %h1= t('invitations.create_page_header')
 
 -#= form_tag api_invitations_url, :remote => true, :class => "vertical", :id => 'edit_invitation_form' do
-= form_for @invitation, :url => api_invitation_path(@invitation), :remote => true, :class => "vertical", :id => 'edit_invitation_form' do
+= form_for @invitation, :url => api_invitation_path(@invitation), :remote => true, :html => {:class => "vertical", :id => 'edit_invitation_form'} do
   .row
     .span3
       %label(for="invitation_game_type")

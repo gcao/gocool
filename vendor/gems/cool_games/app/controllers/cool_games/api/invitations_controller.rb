@@ -1,7 +1,7 @@
 module CoolGames
   module Api
     class InvitationsController < ::CoolGames::Api::BaseController
-      JsonResponseHandler.apply(self, :methods => %w[index create update, accept reject cancel])
+      JsonResponseHandler.apply(self, :methods => %w[index create update accept reject cancel])
 
       before_filter :authenticate_user!
 
