@@ -73,6 +73,7 @@ module CoolGames
         @invitation.note       = params["invitation"]["note"]
 
         if @invitation.valid?
+          @invitation.change
           @invitation.save!
           JsonResponse.success @invitation
         else

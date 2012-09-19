@@ -71,10 +71,6 @@
           alert("#{t('invitations.reselect_start_side')}")
           $('#invitation_start_side option[value=0]').remove()
 
-    #$('#new_invitation_form').bind 'ajax:beforeSend', (event, _, xhr) ->
-    #  console.log 'ajax:beforeSend'
-    #  xhr.data += "&auth_token=" + gon.auth_token
-
     $('#new_invitation_form').bind 'ajax:success', (event, response) ->
       handleResponse response,
         before: -> console.log "#new_invitation_form is submitted"
