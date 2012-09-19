@@ -12,7 +12,7 @@ window.loadPlayers = (page) ->
           container: '#players_table .pagination'
           callback: (page) -> loadPlayers(page)
 
-showPlayers = (players) ->
+window.showPlayers = (players) ->
   if players && players.length > 0
     $('#players_not_found').hide()
     $('#players_table').show()

@@ -5,9 +5,7 @@ module CoolGames
 
     belongs_to :gaming_platform, class_name: 'CoolGames::GamingPlatform'
     belongs_to :user           , class_name: 'User'                     , inverse_of: :player
-
-    #has_one :stat, :class_name => 'PlayerStat', :dependent => :destroy
-    #has_many :opponents, :class_name => "PairStat", :dependent => :destroy
+    has_many   :opponents      , class_name: 'CoolGames::PairStat'      , inverse_of: :player
 
     field "first_name"   , type: String
     field "last_name"    , type: String
@@ -43,7 +41,7 @@ module CoolGames
       end
     }
     #scope :name_like, lambda {|name| {:conditions => ["name like ?", name.gsub('*', '%')]} }
-    scope :name_like, where(name: Regexp.new(name.gsub('*', '.*')))
+    scope :name_like, lambda {|name_pattern| where(name: name_pattern) }
 
     #scope :with_stat, :include => :stat
     #scope :include, lambda {|*associations| {:include => associations} }
@@ -55,13 +53,6 @@ module CoolGames
         player = create!(:gaming_platform_id => gaming_platform_id, :name => name, :rank => rank)
       end
       player
-    end
-
-    def self.search platform, name
-      k = self
-      k = k.on_platform(platform)
-      k = k.name_like(name) unless name.blank?
-      #k.include(:gaming_platform, :stat)
     end
 
     after_create do

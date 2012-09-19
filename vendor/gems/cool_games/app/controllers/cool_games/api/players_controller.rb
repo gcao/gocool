@@ -21,9 +21,9 @@ module CoolGames
             add_error error_code, I18n.t(error_code), :name
           end
         else
-          @name  = params[:name]
+          @name_pattern  = Regexp.new(params[:name])
 
-          players = Player.search(name).paginate(page_params)
+          players = Player.name_like(@name_pattern).paginate(page_params)
 
           JsonResponse.success(players)
         end

@@ -37,7 +37,7 @@
 
         switch response.status
           when 'success'
-            showplayers(response.body)
+            showPlayers(response.body)
 
           when 'validation_error'
             $('#players_not_found').hide()
