@@ -60,6 +60,7 @@ module CoolGames
     aasm_event :accept do
       transitions :to => :accepted, :from => [:new, :changed_by_inviter], :guard => :current_player_is_invitee?
       transitions :to => :accepted, :from => [:changed_by_invitee      ], :guard => :current_player_is_inviter?
+      transitions :to => :accepted, :from => [:new, :changed_by_inviter], :guard => :is_open
     end
 
     aasm_event :reject do
@@ -159,17 +160,21 @@ module CoolGames
       #PairStat.find_or_create(inviter.id, invitee.id)
       #PairStat.find_or_create(invitee.id, inviter.id)
 
+      second_player = is_open ? current_player : invitee
+
       if start_side == INVITER_PLAY_FIRST or (start_side != INVITEE_PLAY_FIRST and rand(1000)%2 == 0) # inviter plays first
         game.black_id   = inviter.id
         game.black_name = inviter.name
         game.black_rank = inviter.rank
-        game.white_id   = invitee.id
-        game.white_name = invitee.name
-        game.white_rank = invitee.rank
+
+        game.white_id   = second_player.id
+        game.white_name = second_player.name
+        game.white_rank = second_player.rank
       else # invitee plays first
-        game.black_id   = invitee.id
-        game.black_name = invitee.name
-        game.black_rank = invitee.rank
+        game.black_id   = second_player.id
+        game.black_name = second_player.name
+        game.black_rank = second_player.rank
+
         game.white_id   = inviter.id
         game.white_name = inviter.name
         game.white_rank = inviter.rank

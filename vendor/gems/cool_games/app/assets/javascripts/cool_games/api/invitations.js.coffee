@@ -28,16 +28,16 @@ invitationRowTmpl = tmpl """
     <td>
       <% if (invitation.is_inviter) { %>
         <% if (invitation.state == "changed_by_invitee") { %>
-          <a href=\'javascript:acceptInvitation("<%= invitation.id %>")\'>接受</a>
+          <a href="javascript:void(0)" onclick=\'acceptInvitation("<%= invitation.id %>")\'>接受</a>
         <% } %>
         <a href=\'#{gon.urls.api.invitations}/<%= invitation.id %>/edit\'>修改设置</a>
-        <a href=\'javascript:cancelInvitation("<%= invitation.id %>")\'>取消</a>
+        <a href="javascript:void(0)" onclick=\'cancelInvitation("<%= invitation.id %>")\'>取消</a>
       <% } %>
       <% if (invitation.is_invitee) { %>
         <% if (["new", "changed_by_inviter"].indexOf(invitation.state) >= 0) { %>
-          <a href=\'javascript:acceptInvitation("<%= invitation.id %>")\'>接受</a>
+          <a href="javascript:void(0)" onclick=\'acceptInvitation("<%= invitation.id %>")\'>接受</a>
         <% } %>
-        <a href=\'javascript:rejectInvitation("<%= invitation.id %>")\'>拒绝邀请</a>
+        <a href="javascript:void(0)" onclick=\'rejectInvitation("<%= invitation.id %>")\'>拒绝邀请</a>
         <a href=\'#{gon.urls.api.invitations}/<%= invitation.id %>/edit\'>修改设置</a>
       <% } %>
     </td>
@@ -72,7 +72,7 @@ openInvitationRowTmpl = tmpl """
     <td><%= invitation.handicap_str %></td>
     <td><%= invitation.note %></td>
     <td>
-      <a href=\'javascript:acceptInvitation("<%= invitation.id %>")\'>开始对局</a>
+      <a href="javascript:void(0)" onclick=\'acceptInvitation("<%= invitation.id %>")\'>开始对局</a>
     </td>
   </tr>
 """

@@ -16,9 +16,8 @@
     .span3
       %label(for="invitation_invitees")
         = t('invitations.invitees_label')
-        =raw mark_required
     .span9
-      .field.invitee= @invitation.invitee.name
+      .field.invitee= @invitation.is_open ? t('invitations.open_invitation_note') : @invitation.invitee.nil_or.name
 
   .row
     .span3
