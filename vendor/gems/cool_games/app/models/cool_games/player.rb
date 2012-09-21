@@ -2,22 +2,26 @@ module CoolGames
   class Player
     include Mongoid::Document
     include Mongoid::Timestamps
+    extend Forwardable
 
     belongs_to  :gaming_platform, class_name: 'CoolGames::GamingPlatform'
     belongs_to  :user           , class_name: 'User'                     , inverse_of: :player
     embeds_many :opponents      , class_name: 'CoolGames::PairStat'      , inverse_of: :player
+    embeds_one  :rating_info    , class_name: 'CoolGames::RatingInfo'    , inverse_of: :player, autobuild: true
+    embeds_many :rating_history , class_name: 'CoolGames::RatingInfo'
+
+    def_delegators :rating_info, :rating, :rank, :rated_games
 
     field "first_name"   , type: String
     field "last_name"    , type: String
     field "name"         , type: String
-    field "rank"         , type: String
-    field "rating"       , type: Integer
     field "sex"          , type: String # M/F
     field "birth_year"   , type: Integer
     field "birthday"     , type: Date
     field "birth_place"  , type: String
     field "website"      , type: String
     field "email"        , type: String
+    field "pro_rank"     , type: String
     field "description"  , type: String
     field "registered_at", type: Date
 

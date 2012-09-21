@@ -54,3 +54,5 @@ gem "gon"
 gem "thin", :group => :development
 gem "mongoid", ">= 3.0.5"
 #gem "mongoid-rspec", ">= 1.4.6", :group => :test
+gem "elo" # Rating library, see https://github.com/iain/elo
+
