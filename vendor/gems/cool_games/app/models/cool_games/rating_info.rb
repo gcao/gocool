@@ -31,6 +31,7 @@ module CoolGames
       self.rank
     end
 
+    # https://github.com/iain/elo
     def self.rate_game game
       return unless game.for_rating
       return unless game.black_player and game.white_player
