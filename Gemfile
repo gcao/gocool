@@ -8,7 +8,8 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'execjs'
-  gem 'therubyracer-heroku'
+  gem 'therubyracer', '~> 0.11.0beta5'
+  gem 'libv8', "~> 3.11.8"
   gem 'jquery-ui-rails'
 end
 gem 'jquery-rails'
