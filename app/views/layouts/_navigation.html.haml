@@ -17,7 +17,7 @@
       = link_to('Logout', main_app.destroy_user_session_path, :method=>'delete')
   - else
     %li
-      = link_to('Login', main_app.new_user_session_path)
+      = link_to('Login', main_app.api_sessions_path)
   - if user_signed_in?
     %li
       = link_to('Edit account', main_app.edit_user_registration_path)
